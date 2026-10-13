@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="pt-PT" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AJAVP - Associação Jovens e Adultos de Vilar do Pinheiro</title>
+  <meta name="description" content="Associação Jovens e Adultos de Vilar do Pinheiro - Desporto para todos, companheirismo e futuro na nossa terra.">
+  <meta property="og:title" content="AJAVP - Associação Jovens e Adultos de Vilar do Pinheiro">
+  <meta property="og:description" content="Inscrições Abertas - 'Vem e Traz um Amigo'. A Tua Terra Tem Futuro!">
+  <meta property="og:image" content="assets/images/logo.png">
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#1b4557',
+              navyDark: '#12303d',
+              green: '#387b5b',
+              greenDark: '#295c43',
+              greenLight: '#e4f0e9',
+              accent: '#f2a93b',
+              grayBg: '#f8faf9',
+            }
+          },
+          fontFamily: {
+            heading: ['Montserrat', 'sans-serif'],
+            body: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    h1, h2, h3, h4, h5, h6, .font-heading {
+      font-family: 'Montserrat', sans-serif;
+    }
+    .hero-pattern {
+      background-color: #1b4557;
+      background-image: radial-gradient(rgba(56, 123, 91, 0.45) 1.5px, transparent 1.5px), radial-gradient(rgba(242, 169, 59, 0.25) 1.5px, #1b4557 1.5px);
+      background-size: 60px 60px;
+      background-position: 0 0, 30px 30px;
+    }
+  </style>
+</head>
+<body class="bg-brand-grayBg text-slate-800 antialiased selection:bg-brand-green selection:text-white">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-brand-green text-white py-2 px-4 text-center text-xs sm:text-sm font-medium flex items-center justify-center gap-2 shadow-inner">
+    <span class="inline-flex items-center justify-center px-2 py-0.5 rounded-full text-xs font-bold bg-white text-brand-green uppercase tracking-wider">Inscrições Abertas</span>
+    <span>"Vem e Traz um Amigo" — Desporto para todos na AJAVP! 🤩</span>
+    <a href="https://forms.gle/YJdnZyUsMB8aBADj6" target="_blank" rel="noopener noreferrer" class="underline hover:text-amber-200 font-semibold ml-1 hidden sm:inline">Inscreve-te já &rarr;</a>
+  </div>
+
+  <!-- Navbar -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-300" id="mainHeader">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logo + Association Name -->
+      <a href="#inicio" class="flex items-center gap-3 group">
+        <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105">
+        <div class="flex flex-col">
+          <span class="font-heading font-extrabold text-brand-navy text-lg sm:text-xl tracking-tight leading-tight">AJAVP</span>
+          <span class="text-xs text-brand-green font-semibold tracking-wide hidden sm:block">Associação Jovens e Adultos de Vilar do Pinheiro</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#inicio" class="text-slate-600 hover:text-brand-green font-medium text-sm transition-colors">Início</a>
+        <a href="#sobre" class="text-slate-600 hover:text-brand-green font-medium text-sm transition-colors">Sobre Nós</a>
+        <a href="#modalidades" class="text-slate-600 hover:text-brand-green font-medium text-sm transition-colors">Modalidades</a>
+        <a href="#treinos" class="text-slate-600 hover:text-brand-green font-medium text-sm transition-colors">Treinos & Horários</a>
+        <a href="#documentacao" class="text-slate-600 hover:text-brand-green font-medium text-sm transition-colors">Documentação</a>
+        <a href="#contactos" class="text-slate-600 hover:text-brand-green font-medium text-sm transition-colors">Contactos</a>
+      </nav>
+
+      <!-- Action Button -->
+      <div class="hidden md:flex items-center gap-3">
+        <a href="https://forms.gle/YJdnZyUsMB8aBADj6" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-brand-green hover:bg-brand-greenDark text-white px-5 py-2.5 rounded-full font-heading font-semibold text-sm shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+          <i data-lucide="user-plus" class="w-4 h-4"></i>
+          <span>Quero Fazer Parte!</span>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobileMenuBtn" aria-label="Abrir menu" class="md:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100 transition-colors">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-slate-200 px-6 py-6 shadow-xl space-y-4">
+      <div class="flex flex-col space-y-3 font-medium">
+        <a href="#inicio" class="mobile-link py-2 text-slate-700 hover:text-brand-green border-b border-slate-50">Início</a>
+        <a href="#sobre" class="mobile-link py-2 text-slate-700 hover:text-brand-green border-b border-slate-50">Sobre Nós</a>
+        <a href="#modalidades" class="mobile-link py-2 text-slate-700 hover:text-brand-green border-b border-slate-50">Modalidades</a>
+        <a href="#treinos" class="mobile-link py-2 text-slate-700 hover:text-brand-green border-b border-slate-50">Treinos & Horários</a>
+        <a href="#documentacao" class="mobile-link py-2 text-slate-700 hover:text-brand-green border-b border-slate-50">Documentação</a>
+        <a href="#contactos" class="mobile-link py-2 text-slate-700 hover:text-brand-green border-b border-slate-50">Contactos</a>
+      </div>
+      <div class="pt-2">
+        <a href="https://forms.gle/YJdnZyUsMB8aBADj6" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 w-full bg-brand-green hover:bg-brand-greenDark text-white py-3 rounded-xl font-heading font-bold shadow-md">
+          <i data-lucide="user-plus" class="w-5 h-5"></i>
+          <span>Quero Fazer Parte!</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="inicio" class="relative hero-pattern text-white overflow-hidden py-16 sm:py-24 lg:py-28">
+    <div class="absolute inset-0 bg-gradient-to-r from-brand-navy/95 via-brand-navy/90 to-brand-green/75"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Hero Text -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-emerald-300 text-xs sm:text-sm font-semibold tracking-wide">
+            <i data-lucide="sparkles" class="w-4 h-4 text-amber-400"></i>
+            <span>"A Tua Terra Tem Futuro"</span>
+          </div>
+
+          <h1 class="font-heading font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-tight sm:leading-none">
+            Associação Jovens e Adultos de <br class="hidden sm:inline">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-amber-300">Vilar do Pinheiro</span>
+          </h1>
+
+          <p class="text-lg sm:text-xl text-slate-200 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            Pensavas que éramos só futebol? A nossa família é muito maior e mais diversa! Se gostas de correr, jogar futsal, duatlo ou ténis de mesa, temos um lugar para ti.
+          </p>
+
+          <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <a href="https://forms.gle/YJdnZyUsMB8aBADj6" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-brand-accent hover:bg-amber-500 text-slate-900 font-heading font-extrabold px-8 py-4 rounded-xl shadow-lg hover:shadow-amber-500/30 transition-all transform hover:-translate-y-0.5">
+              <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+              <span>Fazer Inscrição Agora</span>
+            </a>
+            <a href="#modalidades" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-heading font-semibold px-6 py-4 rounded-xl backdrop-blur-sm transition-all">
+              <i data-lucide="compass" class="w-5 h-5"></i>
+              <span>Ver Modalidades</span>
+            </a>
+          </div>
+
+          <!-- Quick Stats / Highlights -->
+          <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/15 max-w-lg mx-auto lg:mx-0">
+            <div>
+              <div class="font-heading font-black text-2xl sm:text-3xl text-emerald-300">7+</div>
+              <div class="text-xs text-slate-300">Modalidades</div>
+            </div>
+            <div>
+              <div class="font-heading font-black text-2xl sm:text-3xl text-amber-300">100%</div>
+              <div class="text-xs text-slate-300">Companheirismo</div>
+            </div>
+            <div>
+              <div class="font-heading font-black text-2xl sm:text-3xl text-emerald-300">Todos</div>
+              <div class="text-xs text-slate-300">Os Escalões</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Card / Badge -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-3xl shadow-2xl max-w-md w-full text-center space-y-6">
+            <div class="w-36 h-36 mx-auto bg-white rounded-2xl p-3 shadow-lg flex items-center justify-center">
+              <img src="assets/images/logo.png" alt="Emblema AJAVP" class="max-h-full max-w-full object-contain">
+            </div>
+            
+            <div class="space-y-2">
+              <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-200 border border-emerald-400/30 rounded-full text-xs font-bold uppercase tracking-wider">Espírito JAVIP</span>
+              <h2 class="font-heading font-bold text-xl text-white">"O resultado mais importante é a amizade."</h2>
+              <p class="text-sm text-slate-300">
+                Seja a lebre, o caracol, o professor de smash ou o guarda-redes que pergunta pelo café, todos temos o nosso lugar aqui.
+              </p>
+            </div>
+
+            <div class="pt-2 flex items-center justify-center gap-3">
+              <a href="https://chat.whatsapp.com/BLxsjBfDw7AEAonDy72187" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                <span>Comunidade WhatsApp</span>
+              </a>
+              <a href="tel:+351917194933" class="inline-flex items-center gap-2 text-xs bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                <i data-lucide="phone" class="w-4 h-4"></i>
+                <span>917 194 933</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- O Espírito AJAVP (Sobre Nós) -->
+  <section id="sobre" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-brand-green">Identidade & Comunidade</h2>
+        <h3 class="font-heading font-black text-3xl sm:text-4xl text-brand-navy">O Espírito AJAVP: Onde a Animação e o Companheirismo Vencem Sempre!</h3>
+        <p class="text-slate-600 text-base sm:text-lg">
+          Se há algo que faz a nossa Associação mover-se, não são só os golos, os smashs épicos ou os recordes de corrida. É, acima de tudo, a energia e a união em cada treino e evento.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Card 1 -->
+        <div class="bg-brand-grayBg border border-slate-200/80 p-8 rounded-2xl hover:shadow-lg transition-all duration-300 space-y-4 group">
+          <div class="w-14 h-14 rounded-xl bg-brand-greenLight text-brand-green flex items-center justify-center group-hover:scale-110 transition-transform">
+            <i data-lucide="trophy" class="w-7 h-7"></i>
+          </div>
+          <h4 class="font-heading font-bold text-xl text-brand-navy">A "Séria" Rivalidade</h4>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            A rivalidade saudável no Ténis de Mesa ou no Futsal, sempre acompanhada pelas maiores gargalhadas e abraços no fim do jogo.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-brand-grayBg border border-slate-200/80 p-8 rounded-2xl hover:shadow-lg transition-all duration-300 space-y-4 group">
+          <div class="w-14 h-14 rounded-xl bg-amber-50 text-brand-accent flex items-center justify-center group-hover:scale-110 transition-transform">
+            <i data-lucide="flame" class="w-7 h-7"></i>
+          </div>
+          <h4 class="font-heading font-bold text-xl text-brand-navy">Esforço Incansável</h4>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            A determinação inspiradora dos nossos atletas de Duatlo, Corta-Mato e Estrada, celebrando a superação de cada um, passo a passo.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-brand-grayBg border border-slate-200/80 p-8 rounded-2xl hover:shadow-lg transition-all duration-300 space-y-4 group">
+          <div class="w-14 h-14 rounded-xl bg-brand-navy/10 text-brand-navy flex items-center justify-center group-hover:scale-110 transition-transform">
+            <i data-lucide="heart-handshake" class="w-7 h-7"></i>
+          </div>
+          <h4 class="font-heading font-bold text-xl text-brand-navy">Emoção Genuína</h4>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Formação dos nossos jovens em valores de respeito, equipa e alegria. O desporto é o melhor pretexto para criar memórias para a vida.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Invite Banner -->
+      <div class="mt-12 bg-gradient-to-r from-brand-navy to-brand-navyDark text-white p-8 sm:p-10 rounded-3xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="space-y-2 text-center md:text-left">
+          <h4 class="font-heading font-bold text-xl sm:text-2xl text-white">Deixa a preguiça de lado e vem experimentar!</h4>
+          <p class="text-slate-300 text-sm sm:text-base">Temos treinos experimentais gratuitos e atividades adaptadas a todas as idades e talentos.</p>
+        </div>
+        <a href="https://forms.gle/YJdnZyUsMB8aBADj6" target="_blank" rel="noopener noreferrer" class="whitespace-nowrap bg-emerald-500 hover:bg-emerald-400 text-white font-heading font-bold px-7 py-3.5 rounded-xl transition-all shadow-md">
+          Inscreve-te no Formulário
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modalidades Section -->
+  <section id="modalidades" class="py-20 bg-brand-grayBg border-y border-slate-200/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-green">Desporto Para Todos</span>
+        <h2 class="font-heading font-black text-3xl sm:text-4xl text-brand-navy">As Nossas Modalidades</h2>
+        <p class="text-slate-600 text-base sm:text-lg">
+          Do atletismo à praia, descobre a modalidade ideal para ti ou para os teus filhos em Vilar do Pinheiro.
+        </p>
+      </div>
+
+      <!-- Grid of Modalities -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- 1. Atletismo -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:border-brand-green hover:shadow-lg transition-all group flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-3xl">🏃</span>
+              <span class="text-xs font-bold uppercase px-3 py-1 bg-emerald-100 text-brand-green rounded-full">Todos os escalões</span>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-brand-navy mb-2 group-hover:text-brand-green transition-colors">Atletismo</h3>
+            <p class="text-slate-600 text-sm mb-4">
+              Treinos de corrida e resistência preparados para competições e convívios locais.
+            </p>
+            <div class="space-y-1.5 text-xs text-slate-500">
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Milha Urbana</div>
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Corta-Mato</div>
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Provas de Estrada</div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100">
+            <a href="https://forms.gle/YJdnZyUsMB8aBADj6" target="_blank" class="text-xs font-bold text-brand-green hover:text-brand-greenDark flex items-center justify-between">
+              <span>Experimentar Atletismo</span>
+              <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. Futsal -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:border-brand-green hover:shadow-lg transition-all group flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-3xl">🥅</span>
+              <span class="text-xs font-bold uppercase px-3 py-1 bg-amber-100 text-amber-800 rounded-full">Sub-7 a Sub-16</span>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-brand-navy mb-2 group-hover:text-brand-green transition-colors">Futsal</h3>
+            <p class="text-slate-600 text-sm mb-4">
+              A alma coletiva do ringue! Formação competitiva e lúdica com treinadores dedicados.
+            </p>
+            <div class="space-y-1.5 text-xs text-slate-500">
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Campeonato (Sub-7, 9, 11, 13 e 16)</div>
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Taça (Sub-9, 11, 13 e 16)</div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100">
+            <a href="https://forms.gle/YJdnZyUsMB8aBADj6" target="_blank" class="text-xs font-bold text-brand-green hover:text-brand-greenDark flex items-center justify-between">
+              <span>Experimentar Futsal</span>
+              <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. Ténis de Mesa -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:border-brand-green hover:shadow-lg transition-all group flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-3xl">🏓</span>
+              <span class="text-xs font-bold uppercase px-3 py-1 bg-blue-100 text-blue-800 rounded-full">Jovens & Adultos</span>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-brand-navy mb-2 group-hover:text-brand-green transition-colors">Ténis de Mesa</h3>
+            <p class="text-slate-600 text-sm mb-4">
+              Agilidade mental, reflexos rápidos e momentos de grande diversão e competição.
+            </p>
+            <div class="space-y-1.5 text-xs text-slate-500">
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> 3 + 1 Encontros oficiais</div>
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Sub-11, 13, 16 e Sub-15 Feminino</div>
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Escalão Livre Masculino e Feminino</div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100">
+            <a href="https://forms.gle/YJdnZyUsMB8aBADj6" target="_blank" class="text-xs font-bold text-brand-green hover:text-brand-greenDark flex items-center justify-between">
+              <span>Experimentar Ténis de Mesa</span>
+              <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4. Duatlo -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:border-brand-green hover:shadow-lg transition-all group flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-3xl">🚴</span>
+              <span class="text-xs font-bold uppercase px-3 py-1 bg-purple-100 text-purple-800 rounded-full">Sub-11 a Livres</span>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-brand-navy mb-2 group-hover:text-brand-green transition-colors">Duatlo</h3>
+            <p class="text-slate-600 text-sm mb-4">
+              A combinação perfeita entre corrida e ciclismo para quem adora desafios completos.
+            </p>
+            <div class="space-y-1.5 text-xs text-slate-500">
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> 2 Provas oficiais</div>
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Sub-11, 13, 16 e Sub-15 Fem.</div>
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Livre Masculino e Feminino</div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100">
+            <a href="https://forms.gle/YJdnZyUsMB8aBADj6" target="_blank" class="text-xs font-bold text-brand-green hover:text-brand-greenDark flex items-center justify-between">
+              <span>Experimentar Duatlo</span>
+              <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 5. Badminton -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:border-brand-green hover:shadow-lg transition-all group flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-3xl">🏸</span>
+              <span class="text-xs font-bold uppercase px-3 py-1 bg-rose-100 text-rose-800 rounded-full">Sub-15 e Livres</span>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-brand-navy mb-2 group-hover:text-brand-green transition-colors">Badminton</h3>
+            <p class="text-slate-600 text-sm mb-4">
+              Velocidade, precisão e ritmo acelerado na quadra.
+            </p>
+            <div class="space-y-1.5 text-xs text-slate-500">
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> 2 Encontros oficiais</div>
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Sub-15 Feminino</div>
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Livre Masculino e Feminino</div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100">
+            <a href="https://forms.gle/YJdnZyUsMB8aBADj6" target="_blank" class="text-xs font-bold text-brand-green hover:text-brand-greenDark flex items-center justify-between">
+              <span>Experimentar Badminton</span>
+              <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 6. Futebol & Futebol de Praia -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:border-brand-green hover:shadow-lg transition-all group flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex gap-1 text-3xl">
+                <span>⚽</span>
+                <span>🏖️</span>
+              </div>
+              <span class="text-xs font-bold uppercase px-3 py-1 bg-teal-100 text-teal-800 rounded-full">Torneios Sazonais</span>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-brand-navy mb-2 group-hover:text-brand-green transition-colors">Futebol & Praia</h3>
+            <p class="text-slate-600 text-sm mb-4">
+              Torneios inter-freguesias e animação nas férias de verão no areal.
+            </p>
+            <div class="space-y-1.5 text-xs text-slate-500">
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Futebol: 3 Torneios (Sub-7 a Sub-16)</div>
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Futebol Praia: 1 Torneio (Sub-9 a Sub-16)</div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100">
+            <a href="https://forms.gle/YJdnZyUsMB8aBADj6" target="_blank" class="text-xs font-bold text-brand-green hover:text-brand-greenDark flex items-center justify-between">
+              <span>Participar nos Torneios</span>
+              <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Treinos & Horários Section -->
+  <section id="treinos" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-green">Atividades & Espaços</span>
+        <h2 class="font-heading font-black text-3xl sm:text-4xl text-brand-navy">Treinos & Instalações</h2>
+        <p class="text-slate-600 text-base sm:text-lg">
+          Os nossos treinos decorrem nas instalações desportivas da freguesia, com acompanhamento de monitores experientes.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+        
+        <!-- Info Card: Ringue & Treinos -->
+        <div class="bg-gradient-to-br from-slate-50 to-emerald-50/50 border border-emerald-100 p-8 rounded-3xl space-y-6 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-100 text-brand-green rounded-full text-xs font-bold">
+              <i data-lucide="calendar" class="w-4 h-4"></i>
+              <span>Época Desportiva em Curso</span>
+            </div>
+            <h3 class="font-heading font-bold text-2xl text-brand-navy">Como Funcionam os Treinos?</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Os horários são organizados por escalão etário e modalidade, garantindo o melhor equilíbrio entre escola, trabalho e desporto.
+            </p>
+
+            <div class="space-y-3 pt-2">
+              <div class="flex items-start gap-3">
+                <div class="p-2 bg-white rounded-lg shadow-sm text-brand-green"><i data-lucide="map-pin" class="w-5 h-5"></i></div>
+                <div>
+                  <h4 class="font-bold text-sm text-slate-800">Campo de Treinos / Ringue</h4>
+                  <p class="text-xs text-slate-500">Instalações em Vilar do Pinheiro preparadas para treinos de futsal e atividades polidesportivas.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="p-2 bg-white rounded-lg shadow-sm text-brand-green"><i data-lucide="award" class="w-5 h-5"></i></div>
+                <div>
+                  <h4 class="font-bold text-sm text-slate-800">Treino Experimental Gratuito</h4>
+                  <p class="text-xs text-slate-500">Podes experimentar qualquer modalidade sem compromisso antes de formalizar a inscrição.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="p-2 bg-white rounded-lg shadow-sm text-brand-green"><i data-lucide="users" class="w-5 h-5"></i></div>
+                <div>
+                  <h4 class="font-bold text-sm text-slate-800">Acompanhamento e Segurança</h4>
+                  <p class="text-xs text-slate-500">Todos os atletas são integrados de acordo com os regulamentos e autorizações necessárias.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-emerald-200/60 flex flex-col sm:flex-row items-center gap-3">
+            <a href="https://drive.google.com/file/d/18FvwM6ge-8DQrFbSaeHmLjOtq2AbDPOD/view?usp=drive_link" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand-navy hover:bg-brand-navyDark text-white px-5 py-3 rounded-xl text-xs font-bold shadow transition-colors">
+              <i data-lucide="file-text" class="w-4 h-4"></i>
+              <span>Autorização Treino Experimental</span>
+            </a>
+            <a href="#contactos" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 px-5 py-3 rounded-xl text-xs font-bold transition-colors">
+              <i data-lucide="help-circle" class="w-4 h-4"></i>
+              <span>Perguntar Horários à Direção</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Info Card: Comunicação Direta -->
+        <div class="bg-brand-navy text-white p-8 rounded-3xl space-y-6 flex flex-col justify-between shadow-xl">
+          <div class="space-y-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/10 text-emerald-300 rounded-full text-xs font-bold">
+              <i data-lucide="bell" class="w-4 h-4"></i>
+              <span>Informações em Tempo Real</span>
+            </div>
+            <h3 class="font-heading font-bold text-2xl text-white">Canal e Grupos AJAVP</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Para além do calendário desportivo, todas as alterações meteorológicas, convocatórias e novidades são partilhadas no WhatsApp oficial e nas redes sociais.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4">
+              <a href="https://chat.whatsapp.com/BLxsjBfDw7AEAonDy72187" target="_blank" class="p-4 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 transition-colors flex items-center gap-3">
+                <i data-lucide="message-circle" class="w-6 h-6 text-emerald-400"></i>
+                <div>
+                  <div class="font-bold text-sm">WhatsApp</div>
+                  <div class="text-xs text-slate-300">Entrar na Comunidade</div>
+                </div>
+              </a>
+
+              <a href="https://www.instagram.com/ajavp.javip" target="_blank" class="p-4 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 transition-colors flex items-center gap-3">
+                <i data-lucide="instagram" class="w-6 h-6 text-pink-400"></i>
+                <div>
+                  <div class="font-bold text-sm">Instagram</div>
+                  <div class="text-xs text-slate-300">@ajavp.javip</div>
+                </div>
+              </a>
+
+              <a href="https://www.facebook.com/ajavp.oficial" target="_blank" class="p-4 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 transition-colors flex items-center gap-3">
+                <i data-lucide="facebook" class="w-6 h-6 text-blue-400"></i>
+                <div>
+                  <div class="font-bold text-sm">Facebook</div>
+                  <div class="text-xs text-slate-300">ajavp.oficial</div>
+                </div>
+              </a>
+
+              <a href="https://www.tiktok.com/@ajavp.oficial" target="_blank" class="p-4 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 transition-colors flex items-center gap-3">
+                <i data-lucide="video" class="w-6 h-6 text-amber-300"></i>
+                <div>
+                  <div class="font-bold text-sm">TikTok</div>
+                  <div class="text-xs text-slate-300">@ajavp.oficial</div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="pt-4 text-xs text-slate-400 border-t border-white/10 flex items-center gap-2">
+            <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+            <span>Seguro desportivo e termos de assiduidade válidos para toda a época.</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Documentação Section -->
+  <section id="documentacao" class="py-20 bg-brand-grayBg border-y border-slate-200/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-green">Transparência & Inscrições</span>
+        <h2 class="font-heading font-black text-3xl sm:text-4xl text-brand-navy">Documentação Oficial</h2>
+        <p class="text-slate-600 text-base sm:text-lg">
+          Consulta os estatutos, regulamentos e declarações oficiais da Associação Jovens e Adultos de Vilar do Pinheiro.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Doc 1: Comunicado Oficial -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-md transition-shadow flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
+              <i data-lucide="file-check" class="w-5 h-5"></i>
+            </div>
+            <span class="text-xs font-semibold text-blue-600 uppercase tracking-wider">Comunicado Oficial</span>
+            <h3 class="font-heading font-bold text-base text-slate-800">
+              1º Comunicado - Constituição da Associação e Eleição dos Órgãos Sociais
+            </h3>
+            <p class="text-xs text-slate-500">Documento histórico de fundação e definição dos órgãos sociais.</p>
+          </div>
+          <div class="pt-4 mt-4 border-t border-slate-100">
+            <a href="https://drive.google.com/file/d/1F0DrwMzSioop_dyUVbqdEgmP7I0g24qL/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-bold text-brand-green hover:underline">
+              <span>Abrir no Google Drive</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Doc 2: Regulamento Interno -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-md transition-shadow flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-emerald-50 text-brand-green flex items-center justify-center">
+              <i data-lucide="scale" class="w-5 h-5"></i>
+            </div>
+            <span class="text-xs font-semibold text-brand-green uppercase tracking-wider">Regulamento</span>
+            <h3 class="font-heading font-bold text-base text-slate-800">
+              Regulamento Interno da Associação
+            </h3>
+            <p class="text-xs text-slate-500">Direitos e deveres de atletas, associados e equipas técnicas.</p>
+          </div>
+          <div class="pt-4 mt-4 border-t border-slate-100">
+            <a href="https://drive.google.com/file/d/1ZNM66sC4utRexz40rBJzbF7MJm6CtXFf/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-bold text-brand-green hover:underline">
+              <span>Abrir no Google Drive</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Doc 3: Manual de Assiduidade -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-md transition-shadow flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-amber-50 text-brand-accent flex items-center justify-center">
+              <i data-lucide="calendar-check" class="w-5 h-5"></i>
+            </div>
+            <span class="text-xs font-semibold text-amber-700 uppercase tracking-wider">Normas</span>
+            <h3 class="font-heading font-bold text-base text-slate-800">
+              Manual de Assiduidade <span class="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded-full font-bold">Novo</span>
+            </h3>
+            <p class="text-xs text-slate-500">Regras de assiduidade aos treinos e convocatórias para jogos.</p>
+          </div>
+          <div class="pt-4 mt-4 border-t border-slate-100">
+            <a href="https://drive.google.com/file/d/1B3VBHHsfP3yC0T0u9-nv15TFklk6T6RI/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-bold text-brand-green hover:underline">
+              <span>Abrir no Google Drive</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Doc 4: Formulário de Inscrição -->
+        <div class="bg-emerald-50/70 p-6 rounded-2xl border border-emerald-200 hover:shadow-md transition-shadow flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-brand-green text-white flex items-center justify-center">
+              <i data-lucide="edit-3" class="w-5 h-5"></i>
+            </div>
+            <span class="text-xs font-semibold text-brand-green uppercase tracking-wider">Inscrições</span>
+            <h3 class="font-heading font-bold text-base text-slate-800">
+              Formulário de Inscrição Oficial
+            </h3>
+            <p class="text-xs text-slate-600">Submissão dos dados de atleta e encarregado de educação.</p>
+          </div>
+          <div class="pt-4 mt-4 border-t border-emerald-200/60">
+            <a href="https://forms.gle/YJdnZyUsMB8aBADj6" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-bold text-brand-green hover:underline">
+              <span>Preencher Formulário Online</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Doc 5: Declaração de Recolha de Imagem -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-md transition-shadow flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center">
+              <i data-lucide="camera" class="w-5 h-5"></i>
+            </div>
+            <span class="text-xs font-semibold text-purple-600 uppercase tracking-wider">Consentimento</span>
+            <h3 class="font-heading font-bold text-base text-slate-800">
+              Declaração de Recolha de Imagem
+            </h3>
+            <p class="text-xs text-slate-500">Autorização para registo fotográfico e Jogos Inter-Freguesias.</p>
+          </div>
+          <div class="pt-4 mt-4 border-t border-slate-100">
+            <a href="https://drive.google.com/file/d/1H_pJp6fOknpFQXDx_ZLuxGAFOu1MA_qc/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-bold text-brand-green hover:underline">
+              <span>Abrir no Google Drive</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Doc 6: Treino Experimental -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-md transition-shadow flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center">
+              <i data-lucide="user-check" class="w-5 h-5"></i>
+            </div>
+            <span class="text-xs font-semibold text-rose-600 uppercase tracking-wider">Autorização</span>
+            <h3 class="font-heading font-bold text-base text-slate-800">
+              Autorização para Treino Experimental
+            </h3>
+            <p class="text-xs text-slate-500">Documento indispensável para a primeira sessão de treino de atletas menores.</p>
+          </div>
+          <div class="pt-4 mt-4 border-t border-slate-100">
+            <a href="https://drive.google.com/file/d/18FvwM6ge-8DQrFbSaeHmLjOtq2AbDPOD/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-bold text-brand-green hover:underline">
+              <span>Abrir no Google Drive</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contactos & Localização Section -->
+  <section id="contactos" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-green">Fale Connosco</span>
+        <h2 class="font-heading font-black text-3xl sm:text-4xl text-brand-navy">Contactos & Localizações</h2>
+        <p class="text-slate-600 text-base sm:text-lg">
+          Estamos sempre disponíveis para esclarecer dúvidas, apoiar inscrições ou ouvir a nossa comunidade.
+        </p>
+      </div>
+
+      <!-- Quick Contact Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        
+        <!-- Telefone -->
+        <a href="tel:+351917194933" class="p-6 bg-brand-grayBg rounded-2xl border border-slate-200 hover:border-brand-green hover:shadow-md transition-all text-center group">
+          <div class="w-12 h-12 mx-auto rounded-xl bg-emerald-100 text-brand-green flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="phone" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-heading font-bold text-slate-800 text-sm">Telefone</h3>
+          <p class="text-brand-green font-semibold mt-1 text-sm">+351 917 194 933</p>
+          <span class="text-xs text-slate-400 block mt-1">Ligar diretamente</span>
+        </a>
+
+        <!-- Email -->
+        <a href="mailto:geralajavp@gmail.com" class="p-6 bg-brand-grayBg rounded-2xl border border-slate-200 hover:border-brand-green hover:shadow-md transition-all text-center group">
+          <div class="w-12 h-12 mx-auto rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="mail" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-heading font-bold text-slate-800 text-sm">Email Geral</h3>
+          <p class="text-brand-navy font-semibold mt-1 text-sm break-all">geralajavp@gmail.com</p>
+          <span class="text-xs text-slate-400 block mt-1">Enviar mensagem</span>
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://chat.whatsapp.com/BLxsjBfDw7AEAonDy72187" target="_blank" rel="noopener noreferrer" class="p-6 bg-brand-grayBg rounded-2xl border border-slate-200 hover:border-brand-green hover:shadow-md transition-all text-center group">
+          <div class="w-12 h-12 mx-auto rounded-xl bg-green-100 text-green-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="message-square" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-heading font-bold text-slate-800 text-sm">WhatsApp</h3>
+          <p class="text-green-700 font-semibold mt-1 text-sm">Comunidade AJAVP</p>
+          <span class="text-xs text-slate-400 block mt-1">Entrar no canal</span>
+        </a>
+
+        <!-- Inscrição -->
+        <a href="https://forms.gle/YJdnZyUsMB8aBADj6" target="_blank" rel="noopener noreferrer" class="p-6 bg-brand-grayBg rounded-2xl border border-slate-200 hover:border-brand-green hover:shadow-md transition-all text-center group">
+          <div class="w-12 h-12 mx-auto rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="form-input" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-heading font-bold text-slate-800 text-sm">Inscrição Online</h3>
+          <p class="text-amber-700 font-semibold mt-1 text-sm">Google Forms</p>
+          <span class="text-xs text-slate-400 block mt-1">Submeter formulário</span>
+        </a>
+
+      </div>
+
+      <!-- Google Maps Embeds: Sede & Ringue -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        <!-- Sede da Associação -->
+        <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xs font-bold text-brand-green uppercase tracking-wider">Instalações</span>
+              <h3 class="font-heading font-bold text-xl text-brand-navy">Sede da Associação</h3>
+              <p class="text-xs text-slate-500">Vilar do Pinheiro, Portugal</p>
+            </div>
+            <a href="https://maps.google.com/?q=41.265929,-8.673955" target="_blank" class="p-2.5 bg-slate-100 hover:bg-slate-200 rounded-xl text-slate-700 transition-colors" title="Abrir no Google Maps">
+              <i data-lucide="map" class="w-5 h-5"></i>
+            </a>
+          </div>
+
+          <div class="w-full h-72 rounded-2xl overflow-hidden border border-slate-200 shadow-inner">
+            <iframe 
+              title="Mapa Sede AJAVP"
+              src="https://maps.google.com/maps?q=41.265929,-8.673955&z=17&output=embed" 
+              class="w-full h-full border-0" 
+              loading="lazy" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+
+        <!-- Campo de Treinos / Ringue -->
+        <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xs font-bold text-brand-green uppercase tracking-wider">Desporto</span>
+              <h3 class="font-heading font-bold text-xl text-brand-navy">Campo de Treinos / Ringue</h3>
+              <p class="text-xs text-slate-500">Vilar do Pinheiro, Portugal</p>
+            </div>
+            <a href="https://maps.google.com/?q=41.272285,-8.663397" target="_blank" class="p-2.5 bg-slate-100 hover:bg-slate-200 rounded-xl text-slate-700 transition-colors" title="Abrir no Google Maps">
+              <i data-lucide="map" class="w-5 h-5"></i>
+            </a>
+          </div>
+
+          <div class="w-full h-72 rounded-2xl overflow-hidden border border-slate-200 shadow-inner">
+            <iframe 
+              title="Mapa Campo de Treinos AJAVP"
+              src="https://maps.google.com/maps?q=41.272285,-8.663397&z=17&output=embed" 
+              class="w-full h-full border-0" 
+              loading="lazy" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-brand-navyDark text-white pt-16 pb-12 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+        
+        <!-- Brand Column -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-3">
+            <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto bg-white p-1 rounded-lg">
+            <div>
+              <h3 class="font-heading font-bold text-lg text-white">AJAVP</h3>
+              <p class="text-xs text-emerald-300">Vilar do Pinheiro</p>
+            </div>
+          </div>
+          <p class="text-slate-300 text-sm max-w-sm">
+            Associação Jovens e Adultos de Vilar do Pinheiro. Promovemos o desporto, a saúde e os laços comunitários de todas as gerações.
+          </p>
+          <p class="text-xs text-amber-300 font-semibold italic">
+            "A Tua Terra Tem Futuro"
+          </p>
+        </div>
+
+        <!-- Links Rápidos -->
+        <div class="space-y-3">
+          <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-white">Navegação</h4>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li><a href="#inicio" class="hover:text-emerald-300 transition-colors">Início</a></li>
+            <li><a href="#sobre" class="hover:text-emerald-300 transition-colors">Sobre a Associação</a></li>
+            <li><a href="#modalidades" class="hover:text-emerald-300 transition-colors">Modalidades</a></li>
+            <li><a href="#treinos" class="hover:text-emerald-300 transition-colors">Treinos e Horários</a></li>
+            <li><a href="#documentacao" class="hover:text-emerald-300 transition-colors">Documentos</a></li>
+          </ul>
+        </div>
+
+        <!-- Modalidades -->
+        <div class="space-y-3">
+          <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-white">Modalidades</h4>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li><a href="#modalidades" class="hover:text-emerald-300 transition-colors">Atletismo</a></li>
+            <li><a href="#modalidades" class="hover:text-emerald-300 transition-colors">Futsal & Futebol</a></li>
+            <li><a href="#modalidades" class="hover:text-emerald-300 transition-colors">Ténis de Mesa</a></li>
+            <li><a href="#modalidades" class="hover:text-emerald-300 transition-colors">Duatlo</a></li>
+            <li><a href="#modalidades" class="hover:text-emerald-300 transition-colors">Badminton</a></li>
+          </ul>
+        </div>
+
+        <!-- Redes Sociais -->
+        <div class="space-y-3">
+          <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-white">Siga-nos</h4>
+          <div class="flex flex-col space-y-2 text-sm text-slate-300">
+            <a href="https://www.instagram.com/ajavp.javip" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-emerald-300 transition-colors">
+              <i data-lucide="instagram" class="w-4 h-4 text-pink-400"></i>
+              <span>Instagram</span>
+            </a>
+            <a href="https://www.facebook.com/ajavp.oficial" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-emerald-300 transition-colors">
+              <i data-lucide="facebook" class="w-4 h-4 text-blue-400"></i>
+              <span>Facebook</span>
+            </a>
+            <a href="https://www.tiktok.com/@ajavp.oficial" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-emerald-300 transition-colors">
+              <i data-lucide="video" class="w-4 h-4 text-amber-300"></i>
+              <span>TikTok</span>
+            </a>
+            <a href="https://chat.whatsapp.com/BLxsjBfDw7AEAonDy72187" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-emerald-300 transition-colors">
+              <i data-lucide="message-circle" class="w-4 h-4 text-green-400"></i>
+              <span>Comunidade WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+        <p>&copy; 2026 Associação Jovens e Adultos de Vilar do Pinheiro. Todos os direitos reservados.</p>
+        <p class="text-slate-500">Desenvolvido com dedicação para a comunidade de Vilar do Pinheiro.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Floating Action Button for Mobile & Desktop -->
+  <a href="https://forms.gle/YJdnZyUsMB8aBADj6" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-40 bg-brand-green hover:bg-brand-greenDark text-white px-5 py-3.5 rounded-full shadow-2xl flex items-center gap-2.5 font-heading font-bold text-sm border-2 border-white/30 transform hover:scale-105 transition-all">
+    <i data-lucide="user-plus" class="w-5 h-5"></i>
+    <span class="hidden sm:inline">Quero Fazer Parte!</span>
+  </a>
+
+  <!-- Script for Icons and Mobile Menu -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Mobile Menu Toggle
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  </script>
+
+</body>
+</html>
