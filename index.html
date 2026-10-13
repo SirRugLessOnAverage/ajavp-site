@@ -81,7 +81,7 @@
       </a>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden lg:flex items-center gap-7">
+      <nav class="hidden xl:flex items-center gap-6">
         <a href="#inicio" class="text-slate-600 hover:text-brand-green font-medium text-sm transition-colors">Início</a>
         <a href="#sobre" class="text-slate-600 hover:text-brand-green font-medium text-sm transition-colors">Sobre Nós</a>
         <a href="#modalidades" class="text-slate-600 hover:text-brand-green font-medium text-sm transition-colors">Modalidades</a>
@@ -89,13 +89,17 @@
           <i data-lucide="play-circle" class="w-4 h-4 text-red-500"></i>
           <span>Vídeos</span>
         </a>
+        <a href="#galeria" class="text-slate-600 hover:text-brand-green font-medium text-sm transition-colors flex items-center gap-1.5">
+          <i data-lucide="image" class="w-4 h-4 text-emerald-600"></i>
+          <span>Galeria</span>
+        </a>
         <a href="#treinos" class="text-slate-600 hover:text-brand-green font-medium text-sm transition-colors">Treinos & Horários</a>
         <a href="#documentacao" class="text-slate-600 hover:text-brand-green font-medium text-sm transition-colors">Documentação</a>
         <a href="#contactos" class="text-slate-600 hover:text-brand-green font-medium text-sm transition-colors">Contactos</a>
       </nav>
 
       <!-- Action Button -->
-      <div class="hidden lg:flex items-center gap-3">
+      <div class="hidden xl:flex items-center gap-3">
         <a href="https://forms.gle/YJdnZyUsMB8aBADj6" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-brand-green hover:bg-brand-greenDark text-white px-5 py-2.5 rounded-full font-heading font-semibold text-sm shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
           <i data-lucide="user-plus" class="w-4 h-4"></i>
           <span>Quero Fazer Parte!</span>
@@ -103,13 +107,13 @@
       </div>
 
       <!-- Mobile Hamburger Button -->
-      <button id="mobileMenuBtn" aria-label="Abrir menu" class="lg:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100 transition-colors">
+      <button id="mobileMenuBtn" aria-label="Abrir menu" class="xl:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100 transition-colors">
         <i data-lucide="menu" class="w-6 h-6"></i>
       </button>
     </div>
 
     <!-- Mobile Navigation Drawer -->
-    <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-200 px-6 py-6 shadow-xl space-y-4">
+    <div id="mobileMenu" class="hidden xl:hidden bg-white border-b border-slate-200 px-6 py-6 shadow-xl space-y-4">
       <div class="flex flex-col space-y-3 font-medium">
         <a href="#inicio" class="mobile-link py-2 text-slate-700 hover:text-brand-green border-b border-slate-50">Início</a>
         <a href="#sobre" class="mobile-link py-2 text-slate-700 hover:text-brand-green border-b border-slate-50">Sobre Nós</a>
@@ -117,6 +121,10 @@
         <a href="#videos" class="mobile-link py-2 text-slate-700 hover:text-brand-green border-b border-slate-50 flex items-center gap-2">
           <i data-lucide="play-circle" class="w-4 h-4 text-red-500"></i>
           <span>Vídeos & Momentos</span>
+        </a>
+        <a href="#galeria" class="mobile-link py-2 text-slate-700 hover:text-brand-green border-b border-slate-50 flex items-center gap-2">
+          <i data-lucide="image" class="w-4 h-4 text-emerald-600"></i>
+          <span>Galeria de Fotos</span>
         </a>
         <a href="#treinos" class="mobile-link py-2 text-slate-700 hover:text-brand-green border-b border-slate-50">Treinos & Horários</a>
         <a href="#documentacao" class="mobile-link py-2 text-slate-700 hover:text-brand-green border-b border-slate-50">Documentação</a>
@@ -158,9 +166,9 @@
               <i data-lucide="check-circle-2" class="w-5 h-5"></i>
               <span>Fazer Inscrição Agora</span>
             </a>
-            <a href="#videos" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-heading font-semibold px-6 py-4 rounded-xl backdrop-blur-sm transition-all">
-              <i data-lucide="play" class="w-5 h-5 text-red-400"></i>
-              <span>Ver Nossos Vídeos</span>
+            <a href="#galeria" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-heading font-semibold px-6 py-4 rounded-xl backdrop-blur-sm transition-all">
+              <i data-lucide="images" class="w-5 h-5 text-emerald-400"></i>
+              <span>Ver Fotos & Momentos</span>
             </a>
           </div>
 
@@ -181,17 +189,23 @@
           </div>
         </div>
 
-        <!-- Hero Card / Badge -->
+        <!-- Hero Card com Foto Real da Associação -->
         <div class="lg:col-span-5 flex justify-center">
-          <div class="relative bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-3xl shadow-2xl max-w-md w-full text-center space-y-6">
-            <div class="w-36 h-36 mx-auto bg-white rounded-2xl p-3 shadow-lg flex items-center justify-center">
-              <img src="assets/images/logo.png" alt="Emblema AJAVP" class="max-h-full max-w-full object-contain">
+          <div class="relative bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-3xl shadow-2xl max-w-md w-full text-center space-y-5">
+            
+            <div class="relative rounded-2xl overflow-hidden shadow-lg border-2 border-white/30 aspect-[4/3]">
+              <img src="assets/images/galeria/foto_01.jpg" alt="Atletas AJAVP em Prova" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4 text-left">
+                <div>
+                  <span class="inline-block px-2.5 py-0.5 bg-emerald-500 text-white text-[10px] font-extrabold uppercase rounded-full mb-1">União & Raça</span>
+                  <p class="text-white text-xs font-bold leading-snug">"O resultado mais importante é a amizade."</p>
+                </div>
+              </div>
             </div>
             
             <div class="space-y-2">
-              <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-200 border border-emerald-400/30 rounded-full text-xs font-bold uppercase tracking-wider">Espírito JAVIP</span>
-              <h2 class="font-heading font-bold text-xl text-white">"O resultado mais importante é a amizade."</h2>
-              <p class="text-sm text-slate-300">
+              <h2 class="font-heading font-bold text-lg text-white">Espírito JAVIP em Ação</h2>
+              <p class="text-xs text-slate-300">
                 Seja a lebre, o caracol, o professor de smash ou o guarda-redes que pergunta pelo café, todos temos o nosso lugar aqui.
               </p>
             </div>
@@ -294,7 +308,7 @@
     </div>
   </section>
 
-  <!-- Modalidades Section -->
+  <!-- Modalidades Section (Com Fotos Reais) -->
   <section id="modalidades" class="py-20 bg-brand-grayBg border-y border-slate-200/60">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -307,26 +321,31 @@
       </div>
 
       <!-- Grid of Modalities -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
         <!-- 1. Atletismo -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:border-brand-green hover:shadow-lg transition-all group flex flex-col justify-between">
+        <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 hover:border-brand-green hover:shadow-xl transition-all group flex flex-col justify-between">
           <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-3xl">🏃</span>
-              <span class="text-xs font-bold uppercase px-3 py-1 bg-emerald-100 text-brand-green rounded-full">Todos os escalões</span>
+            <div class="relative h-48 overflow-hidden">
+              <img src="assets/images/galeria/foto_02.jpg" alt="Atletas de Corrida AJAVP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+              <span class="absolute top-3 right-3 text-xs font-bold uppercase px-3 py-1 bg-emerald-600 text-white rounded-full shadow">Todos os escalões</span>
             </div>
-            <h3 class="font-heading font-bold text-xl text-brand-navy mb-2 group-hover:text-brand-green transition-colors">Atletismo</h3>
-            <p class="text-slate-600 text-sm mb-4">
-              Treinos de corrida e resistência preparados para competições e convívios locais.
-            </p>
-            <div class="space-y-1.5 text-xs text-slate-500 mb-4">
-              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Milha Urbana</div>
-              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Corta-Mato</div>
-              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Provas de Estrada</div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-2xl">🏃</span>
+                <h3 class="font-heading font-bold text-xl text-brand-navy group-hover:text-brand-green transition-colors">Atletismo</h3>
+              </div>
+              <p class="text-slate-600 text-sm mb-4">
+                Treinos de corrida e resistência preparados para competições e convívios locais.
+              </p>
+              <div class="space-y-1.5 text-xs text-slate-500">
+                <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Milha Urbana</div>
+                <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Corta-Mato</div>
+                <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Provas de Estrada</div>
+              </div>
             </div>
           </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+          <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between">
             <button onclick="openVideoModal('ga7ouvyWdN8', 'AJAVP - Prova de Corta-Mato Época 25/26')" class="inline-flex items-center gap-1 text-xs font-semibold text-red-600 hover:text-red-700">
               <i data-lucide="play-circle" class="w-4 h-4"></i>
               <span>Ver Prova</span>
@@ -339,22 +358,27 @@
         </div>
 
         <!-- 2. Futsal -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:border-brand-green hover:shadow-lg transition-all group flex flex-col justify-between">
+        <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 hover:border-brand-green hover:shadow-xl transition-all group flex flex-col justify-between">
           <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-3xl">🥅</span>
-              <span class="text-xs font-bold uppercase px-3 py-1 bg-amber-100 text-amber-800 rounded-full">Sub-7 a Sub-16</span>
+            <div class="relative h-48 overflow-hidden">
+              <img src="assets/images/galeria/foto_05.jpg" alt="Equipa de Futsal AJAVP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+              <span class="absolute top-3 right-3 text-xs font-bold uppercase px-3 py-1 bg-amber-500 text-white rounded-full shadow">Sub-7 a Sub-16</span>
             </div>
-            <h3 class="font-heading font-bold text-xl text-brand-navy mb-2 group-hover:text-brand-green transition-colors">Futsal</h3>
-            <p class="text-slate-600 text-sm mb-4">
-              A alma coletiva do ringue! Formação competitiva e lúdica com treinadores dedicados.
-            </p>
-            <div class="space-y-1.5 text-xs text-slate-500 mb-4">
-              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Campeonato (Sub-7, 9, 11, 13 e 16)</div>
-              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Taça (Sub-9, 11, 13 e 16)</div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-2xl">🥅</span>
+                <h3 class="font-heading font-bold text-xl text-brand-navy group-hover:text-brand-green transition-colors">Futsal</h3>
+              </div>
+              <p class="text-slate-600 text-sm mb-4">
+                A alma coletiva do ringue! Formação competitiva e lúdica com treinadores dedicados.
+              </p>
+              <div class="space-y-1.5 text-xs text-slate-500">
+                <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Campeonato (Sub-7, 9, 11, 13 e 16)</div>
+                <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Taça (Sub-9, 11, 13 e 16)</div>
+              </div>
             </div>
           </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+          <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between">
             <button onclick="openVideoModal('z6y5z2Rvz3k', 'AJAVP - Festa do Futebol Final de Época')" class="inline-flex items-center gap-1 text-xs font-semibold text-red-600 hover:text-red-700">
               <i data-lucide="play-circle" class="w-4 h-4"></i>
               <span>Ver Festa</span>
@@ -367,23 +391,28 @@
         </div>
 
         <!-- 3. Ténis de Mesa -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:border-brand-green hover:shadow-lg transition-all group flex flex-col justify-between">
+        <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 hover:border-brand-green hover:shadow-xl transition-all group flex flex-col justify-between">
           <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-3xl">🏓</span>
-              <span class="text-xs font-bold uppercase px-3 py-1 bg-blue-100 text-blue-800 rounded-full">Jovens & Adultos</span>
+            <div class="relative h-48 overflow-hidden">
+              <img src="assets/images/galeria/foto_09.jpg" alt="Ténis de Mesa AJAVP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+              <span class="absolute top-3 right-3 text-xs font-bold uppercase px-3 py-1 bg-blue-600 text-white rounded-full shadow">Jovens & Adultos</span>
             </div>
-            <h3 class="font-heading font-bold text-xl text-brand-navy mb-2 group-hover:text-brand-green transition-colors">Ténis de Mesa</h3>
-            <p class="text-slate-600 text-sm mb-4">
-              Agilidade mental, reflexos rápidos e momentos de grande diversão e competição.
-            </p>
-            <div class="space-y-1.5 text-xs text-slate-500 mb-4">
-              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> 3 + 1 Encontros oficiais</div>
-              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Sub-11, 13, 16 e Sub-15 Feminino</div>
-              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Escalão Livre Masculino e Feminino</div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-2xl">🏓</span>
+                <h3 class="font-heading font-bold text-xl text-brand-navy group-hover:text-brand-green transition-colors">Ténis de Mesa</h3>
+              </div>
+              <p class="text-slate-600 text-sm mb-4">
+                Agilidade mental, reflexos rápidos e momentos de grande diversão e competição.
+              </p>
+              <div class="space-y-1.5 text-xs text-slate-500">
+                <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> 3 + 1 Encontros oficiais</div>
+                <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Sub-11, 13, 16 e Sub-15 Feminino</div>
+                <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Livre Masculino e Feminino</div>
+              </div>
             </div>
           </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+          <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between">
             <button onclick="openVideoModal('8AnzOtDopgc', 'AJAVP - Encontros de Ténis de Mesa')" class="inline-flex items-center gap-1 text-xs font-semibold text-red-600 hover:text-red-700">
               <i data-lucide="play-circle" class="w-4 h-4"></i>
               <span>Ver Encontro</span>
@@ -396,23 +425,28 @@
         </div>
 
         <!-- 4. Duatlo -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:border-brand-green hover:shadow-lg transition-all group flex flex-col justify-between">
+        <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 hover:border-brand-green hover:shadow-xl transition-all group flex flex-col justify-between">
           <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-3xl">🚴</span>
-              <span class="text-xs font-bold uppercase px-3 py-1 bg-purple-100 text-purple-800 rounded-full">Sub-11 a Livres</span>
+            <div class="relative h-48 overflow-hidden">
+              <img src="assets/images/galeria/foto_10.jpg" alt="Duatlo AJAVP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+              <span class="absolute top-3 right-3 text-xs font-bold uppercase px-3 py-1 bg-purple-600 text-white rounded-full shadow">Sub-11 a Livres</span>
             </div>
-            <h3 class="font-heading font-bold text-xl text-brand-navy mb-2 group-hover:text-brand-green transition-colors">Duatlo</h3>
-            <p class="text-slate-600 text-sm mb-4">
-              A combinação perfeita entre corrida e ciclismo para quem adora desafios completos.
-            </p>
-            <div class="space-y-1.5 text-xs text-slate-500 mb-4">
-              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> 2 Provas oficiais</div>
-              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Sub-11, 13, 16 e Sub-15 Fem.</div>
-              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Livre Masculino e Feminino</div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-2xl">🚴</span>
+                <h3 class="font-heading font-bold text-xl text-brand-navy group-hover:text-brand-green transition-colors">Duatlo</h3>
+              </div>
+              <p class="text-slate-600 text-sm mb-4">
+                A combinação perfeita entre corrida e ciclismo para quem adora desafios completos.
+              </p>
+              <div class="space-y-1.5 text-xs text-slate-500">
+                <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> 2 Provas oficiais</div>
+                <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Sub-11, 13, 16 e Sub-15 Fem.</div>
+                <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Livre Masculino e Feminino</div>
+              </div>
             </div>
           </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+          <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between">
             <button onclick="openVideoModal('OJr7tweWsiM', 'AJAVP - Duatlo em Duplas 25/26')" class="inline-flex items-center gap-1 text-xs font-semibold text-red-600 hover:text-red-700">
               <i data-lucide="play-circle" class="w-4 h-4"></i>
               <span>Ver Prova</span>
@@ -425,23 +459,28 @@
         </div>
 
         <!-- 5. Badminton -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:border-brand-green hover:shadow-lg transition-all group flex flex-col justify-between">
+        <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 hover:border-brand-green hover:shadow-xl transition-all group flex flex-col justify-between">
           <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-3xl">🏸</span>
-              <span class="text-xs font-bold uppercase px-3 py-1 bg-rose-100 text-rose-800 rounded-full">Sub-15 e Livres</span>
+            <div class="relative h-48 overflow-hidden">
+              <img src="assets/images/galeria/foto_14.jpg" alt="Badminton AJAVP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+              <span class="absolute top-3 right-3 text-xs font-bold uppercase px-3 py-1 bg-rose-600 text-white rounded-full shadow">Sub-15 e Livres</span>
             </div>
-            <h3 class="font-heading font-bold text-xl text-brand-navy mb-2 group-hover:text-brand-green transition-colors">Badminton</h3>
-            <p class="text-slate-600 text-sm mb-4">
-              Velocidade, precisão e ritmo acelerado na quadra para todos os escalões.
-            </p>
-            <div class="space-y-1.5 text-xs text-slate-500 mb-4">
-              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> 2 Encontros oficiais</div>
-              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Sub-15 Feminino</div>
-              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Livre Masculino e Feminino</div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-2xl">🏸</span>
+                <h3 class="font-heading font-bold text-xl text-brand-navy group-hover:text-brand-green transition-colors">Badminton</h3>
+              </div>
+              <p class="text-slate-600 text-sm mb-4">
+                Velocidade, precisão e ritmo acelerado na quadra para todos os escalões.
+              </p>
+              <div class="space-y-1.5 text-xs text-slate-500">
+                <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> 2 Encontros oficiais</div>
+                <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Sub-15 Feminino</div>
+                <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Livre Masculino e Feminino</div>
+              </div>
             </div>
           </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+          <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between">
             <span class="text-xs text-slate-400">Torneios e Convívios</span>
             <a href="https://forms.gle/YJdnZyUsMB8aBADj6" target="_blank" class="text-xs font-bold text-brand-green hover:text-brand-greenDark flex items-center gap-1">
               <span>Experimentar</span>
@@ -451,25 +490,30 @@
         </div>
 
         <!-- 6. Futebol & Futebol de Praia -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:border-brand-green hover:shadow-lg transition-all group flex flex-col justify-between">
+        <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 hover:border-brand-green hover:shadow-xl transition-all group flex flex-col justify-between">
           <div>
-            <div class="flex items-center justify-between mb-4">
-              <div class="flex gap-1 text-3xl">
-                <span>⚽</span>
-                <span>🏖️</span>
-              </div>
-              <span class="text-xs font-bold uppercase px-3 py-1 bg-teal-100 text-teal-800 rounded-full">Torneios Sazonais</span>
+            <div class="relative h-48 overflow-hidden">
+              <img src="assets/images/galeria/foto_17.jpg" alt="Torneio Futebol AJAVP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+              <span class="absolute top-3 right-3 text-xs font-bold uppercase px-3 py-1 bg-teal-600 text-white rounded-full shadow">Torneios Sazonais</span>
             </div>
-            <h3 class="font-heading font-bold text-xl text-brand-navy mb-2 group-hover:text-brand-green transition-colors">Futebol & Praia</h3>
-            <p class="text-slate-600 text-sm mb-4">
-              Torneios inter-freguesias e animação nas férias de verão no areal.
-            </p>
-            <div class="space-y-1.5 text-xs text-slate-500 mb-4">
-              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Futebol: 3 Torneios (Sub-7 a Sub-16)</div>
-              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Futebol Praia: 1 Torneio (Sub-9 a Sub-16)</div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <div class="flex gap-1 text-2xl">
+                  <span>⚽</span>
+                  <span>🏖️</span>
+                </div>
+                <h3 class="font-heading font-bold text-xl text-brand-navy group-hover:text-brand-green transition-colors">Futebol & Praia</h3>
+              </div>
+              <p class="text-slate-600 text-sm mb-4">
+                Torneios inter-freguesias e animação nas férias de verão no areal.
+              </p>
+              <div class="space-y-1.5 text-xs text-slate-500">
+                <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Futebol: 3 Torneios (Sub-7 a Sub-16)</div>
+                <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Futebol Praia: 1 Torneio (Sub-9 a Sub-16)</div>
+              </div>
             </div>
           </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+          <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between">
             <button onclick="openVideoModal('bj3W5UlWn9Y', 'AJAVP - Resumo de Época Desportiva')" class="inline-flex items-center gap-1 text-xs font-semibold text-red-600 hover:text-red-700">
               <i data-lucide="play-circle" class="w-4 h-4"></i>
               <span>Ver Resumo</span>
@@ -486,8 +530,195 @@
     </div>
   </section>
 
-  <!-- NOVO: Secção Canal AJAVP & Vídeos Oficiais -->
-  <section id="videos" class="py-20 bg-white">
+  <!-- NOVO: Secção Galeria Fotográfica Oficial da AJAVP -->
+  <section id="galeria" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div class="space-y-3 max-w-2xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-100 text-brand-green rounded-full text-xs font-bold uppercase tracking-wider">
+            <i data-lucide="camera" class="w-4 h-4"></i>
+            <span>Galeria Fotográfica Oficial</span>
+          </div>
+          <h2 class="font-heading font-black text-3xl sm:text-4xl text-brand-navy">O Álbum da Família AJAVP</h2>
+          <p class="text-slate-600 text-sm sm:text-base">
+            Capturámos mais do que apenas resultados: o sorriso após o esforço, o abraço depois do jogo e o apoio incondicional da nossa terra.
+          </p>
+        </div>
+
+        <div class="text-xs text-slate-500 font-semibold flex items-center gap-1.5 self-start md:self-auto bg-slate-100 px-4 py-2 rounded-xl">
+          <i data-lucide="zoom-in" class="w-4 h-4 text-brand-green"></i>
+          <span>Clica em qualquer foto para ampliar</span>
+        </div>
+      </div>
+
+      <!-- Grelha de Fotos (Masonry Responsivo) -->
+      <div id="photosGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+
+        <!-- Foto 1 -->
+        <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 cursor-pointer shadow-sm hover:shadow-xl transition-all" onclick="openLightbox('assets/images/galeria/foto_01.jpg', 'Atletas AJAVP em Prova')">
+          <img src="assets/images/galeria/foto_01.jpg" alt="Atletas AJAVP" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <i data-lucide="maximize-2" class="w-6 h-6 text-white drop-shadow"></i>
+          </div>
+        </div>
+
+        <!-- Foto 2 -->
+        <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 cursor-pointer shadow-sm hover:shadow-xl transition-all" onclick="openLightbox('assets/images/galeria/foto_02.jpg', 'Prova e Competição')">
+          <img src="assets/images/galeria/foto_02.jpg" alt="Prova e Competição" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <i data-lucide="maximize-2" class="w-6 h-6 text-white drop-shadow"></i>
+          </div>
+        </div>
+
+        <!-- Foto 3 -->
+        <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 cursor-pointer shadow-sm hover:shadow-xl transition-all" onclick="openLightbox('assets/images/galeria/foto_03.jpg', 'Atletas e Família AJAVP')">
+          <img src="assets/images/galeria/foto_03.jpg" alt="Atletas e Família" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <i data-lucide="maximize-2" class="w-6 h-6 text-white drop-shadow"></i>
+          </div>
+        </div>
+
+        <!-- Foto 4 -->
+        <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 cursor-pointer shadow-sm hover:shadow-xl transition-all" onclick="openLightbox('assets/images/galeria/foto_04.jpg', 'Superação Desportiva')">
+          <img src="assets/images/galeria/foto_04.jpg" alt="Superação Desportiva" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <i data-lucide="maximize-2" class="w-6 h-6 text-white drop-shadow"></i>
+          </div>
+        </div>
+
+        <!-- Foto 5 -->
+        <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 cursor-pointer shadow-sm hover:shadow-xl transition-all" onclick="openLightbox('assets/images/galeria/foto_05.jpg', 'Equipa Unida')">
+          <img src="assets/images/galeria/foto_05.jpg" alt="Equipa Unida" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <i data-lucide="maximize-2" class="w-6 h-6 text-white drop-shadow"></i>
+          </div>
+        </div>
+
+        <!-- Foto 6 -->
+        <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 cursor-pointer shadow-sm hover:shadow-xl transition-all" onclick="openLightbox('assets/images/galeria/foto_06.jpg', 'Momentos de Glória')">
+          <img src="assets/images/galeria/foto_06.jpg" alt="Momentos de Glória" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <i data-lucide="maximize-2" class="w-6 h-6 text-white drop-shadow"></i>
+          </div>
+        </div>
+
+        <!-- Foto 7 -->
+        <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 cursor-pointer shadow-sm hover:shadow-xl transition-all" onclick="openLightbox('assets/images/galeria/foto_07.jpg', 'Dedicação e Foco')">
+          <img src="assets/images/galeria/foto_07.jpg" alt="Dedicação e Foco" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <i data-lucide="maximize-2" class="w-6 h-6 text-white drop-shadow"></i>
+          </div>
+        </div>
+
+        <!-- Foto 8 -->
+        <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 cursor-pointer shadow-sm hover:shadow-xl transition-all" onclick="openLightbox('assets/images/galeria/foto_08.jpg', 'Celebração Coletiva')">
+          <img src="assets/images/galeria/foto_08.jpg" alt="Celebração Coletiva" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <i data-lucide="maximize-2" class="w-6 h-6 text-white drop-shadow"></i>
+          </div>
+        </div>
+
+        <!-- Foto 9 -->
+        <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 cursor-pointer shadow-sm hover:shadow-xl transition-all" onclick="openLightbox('assets/images/galeria/foto_09.jpg', 'Ténis de Mesa e Foco')">
+          <img src="assets/images/galeria/foto_09.jpg" alt="Ténis de Mesa" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <i data-lucide="maximize-2" class="w-6 h-6 text-white drop-shadow"></i>
+          </div>
+        </div>
+
+        <!-- Foto 10 -->
+        <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 cursor-pointer shadow-sm hover:shadow-xl transition-all" onclick="openLightbox('assets/images/galeria/foto_10.jpg', 'Duatlo e Ciclismo')">
+          <img src="assets/images/galeria/foto_10.jpg" alt="Duatlo" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <i data-lucide="maximize-2" class="w-6 h-6 text-white drop-shadow"></i>
+          </div>
+        </div>
+
+        <!-- Foto 11 -->
+        <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 cursor-pointer shadow-sm hover:shadow-xl transition-all" onclick="openLightbox('assets/images/galeria/foto_11.jpg', 'Pódio e Conquistas')">
+          <img src="assets/images/galeria/foto_11.jpg" alt="Pódio e Conquistas" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <i data-lucide="maximize-2" class="w-6 h-6 text-white drop-shadow"></i>
+          </div>
+        </div>
+
+        <!-- Foto 12 -->
+        <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 cursor-pointer shadow-sm hover:shadow-xl transition-all" onclick="openLightbox('assets/images/galeria/foto_12.jpg', 'Companheirismo e Alegria')">
+          <img src="assets/images/galeria/foto_12.jpg" alt="Companheirismo" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <i data-lucide="maximize-2" class="w-6 h-6 text-white drop-shadow"></i>
+          </div>
+        </div>
+
+        <!-- Extra photos container (initially hidden, expands on click) -->
+        <div id="extraPhotos" class="hidden contents">
+          <!-- Fotos 13 a 42 geradas dinamicamente ou listadas -->
+          <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 cursor-pointer shadow-sm hover:shadow-xl transition-all" onclick="openLightbox('assets/images/galeria/foto_13.jpg', 'Momento AJAVP')">
+            <img src="assets/images/galeria/foto_13.jpg" alt="Momento AJAVP" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i data-lucide="maximize-2" class="w-6 h-6 text-white"></i></div>
+          </div>
+          <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 cursor-pointer shadow-sm hover:shadow-xl transition-all" onclick="openLightbox('assets/images/galeria/foto_14.jpg', 'Momento AJAVP')">
+            <img src="assets/images/galeria/foto_14.jpg" alt="Momento AJAVP" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i data-lucide="maximize-2" class="w-6 h-6 text-white"></i></div>
+          </div>
+          <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 cursor-pointer shadow-sm hover:shadow-xl transition-all" onclick="openLightbox('assets/images/galeria/foto_15.jpg', 'Momento AJAVP')">
+            <img src="assets/images/galeria/foto_15.jpg" alt="Momento AJAVP" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i data-lucide="maximize-2" class="w-6 h-6 text-white"></i></div>
+          </div>
+          <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 cursor-pointer shadow-sm hover:shadow-xl transition-all" onclick="openLightbox('assets/images/galeria/foto_16.jpg', 'Momento AJAVP')">
+            <img src="assets/images/galeria/foto_16.jpg" alt="Momento AJAVP" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i data-lucide="maximize-2" class="w-6 h-6 text-white"></i></div>
+          </div>
+          <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 cursor-pointer shadow-sm hover:shadow-xl transition-all" onclick="openLightbox('assets/images/galeria/foto_17.jpg', 'Momento AJAVP')">
+            <img src="assets/images/galeria/foto_17.jpg" alt="Momento AJAVP" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i data-lucide="maximize-2" class="w-6 h-6 text-white"></i></div>
+          </div>
+          <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 cursor-pointer shadow-sm hover:shadow-xl transition-all" onclick="openLightbox('assets/images/galeria/foto_18.jpg', 'Momento AJAVP')">
+            <img src="assets/images/galeria/foto_18.jpg" alt="Momento AJAVP" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i data-lucide="maximize-2" class="w-6 h-6 text-white"></i></div>
+          </div>
+          <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 cursor-pointer shadow-sm hover:shadow-xl transition-all" onclick="openLightbox('assets/images/galeria/foto_19.jpg', 'Momento AJAVP')">
+            <img src="assets/images/galeria/foto_19.jpg" alt="Momento AJAVP" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i data-lucide="maximize-2" class="w-6 h-6 text-white"></i></div>
+          </div>
+          <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 cursor-pointer shadow-sm hover:shadow-xl transition-all" onclick="openLightbox('assets/images/galeria/foto_20.jpg', 'Momento AJAVP')">
+            <img src="assets/images/galeria/foto_20.jpg" alt="Momento AJAVP" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i data-lucide="maximize-2" class="w-6 h-6 text-white"></i></div>
+          </div>
+          <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 cursor-pointer shadow-sm hover:shadow-xl transition-all" onclick="openLightbox('assets/images/galeria/foto_21.jpg', 'Momento AJAVP')">
+            <img src="assets/images/galeria/foto_21.jpg" alt="Momento AJAVP" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i data-lucide="maximize-2" class="w-6 h-6 text-white"></i></div>
+          </div>
+          <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 cursor-pointer shadow-sm hover:shadow-xl transition-all" onclick="openLightbox('assets/images/galeria/foto_22.jpg', 'Momento AJAVP')">
+            <img src="assets/images/galeria/foto_22.jpg" alt="Momento AJAVP" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i data-lucide="maximize-2" class="w-6 h-6 text-white"></i></div>
+          </div>
+          <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 cursor-pointer shadow-sm hover:shadow-xl transition-all" onclick="openLightbox('assets/images/galeria/foto_23.jpg', 'Momento AJAVP')">
+            <img src="assets/images/galeria/foto_23.jpg" alt="Momento AJAVP" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i data-lucide="maximize-2" class="w-6 h-6 text-white"></i></div>
+          </div>
+          <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 cursor-pointer shadow-sm hover:shadow-xl transition-all" onclick="openLightbox('assets/images/galeria/foto_24.jpg', 'Momento AJAVP')">
+            <img src="assets/images/galeria/foto_24.jpg" alt="Momento AJAVP" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i data-lucide="maximize-2" class="w-6 h-6 text-white"></i></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Botão para Expandir Galeria Completa -->
+      <div class="mt-10 text-center">
+        <button id="togglePhotosBtn" onclick="toggleExtraPhotos()" class="inline-flex items-center gap-2 bg-brand-navy hover:bg-brand-navyDark text-white px-8 py-3.5 rounded-full font-heading font-semibold text-sm shadow-md transition-all">
+          <i data-lucide="image" class="w-4 h-4 text-emerald-400"></i>
+          <span id="togglePhotosText">Ver Mais Fotos da Galeria (+30 Fotos)</span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Secção Canal AJAVP & Vídeos Oficiais -->
+  <section id="videos" class="py-20 bg-brand-grayBg border-y border-slate-200/60">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
@@ -512,7 +743,7 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
         <!-- Video 1 -->
-        <div class="bg-brand-grayBg rounded-2xl overflow-hidden border border-slate-200 hover:shadow-xl transition-all group flex flex-col justify-between">
+        <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 hover:shadow-xl transition-all group flex flex-col justify-between">
           <div class="relative cursor-pointer overflow-hidden aspect-video" onclick="openVideoModal('z6y5z2Rvz3k', 'AJAVP - Festa do Futebol Final de Época 25/26')">
             <img src="https://i.ytimg.com/vi/z6y5z2Rvz3k/hqdefault.jpg" alt="Festa do Futebol" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 flex items-center justify-center transition-colors">
@@ -531,7 +762,7 @@
         </div>
 
         <!-- Video 2 -->
-        <div class="bg-brand-grayBg rounded-2xl overflow-hidden border border-slate-200 hover:shadow-xl transition-all group flex flex-col justify-between">
+        <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 hover:shadow-xl transition-all group flex flex-col justify-between">
           <div class="relative cursor-pointer overflow-hidden aspect-video" onclick="openVideoModal('ga7ouvyWdN8', 'AJAVP - Prova de Corta-Mato Época 25/26')">
             <img src="https://i.ytimg.com/vi/ga7ouvyWdN8/hqdefault.jpg" alt="Prova de Corta-Mato" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 flex items-center justify-center transition-colors">
@@ -550,7 +781,7 @@
         </div>
 
         <!-- Video 3 -->
-        <div class="bg-brand-grayBg rounded-2xl overflow-hidden border border-slate-200 hover:shadow-xl transition-all group flex flex-col justify-between">
+        <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 hover:shadow-xl transition-all group flex flex-col justify-between">
           <div class="relative cursor-pointer overflow-hidden aspect-video" onclick="openVideoModal('8AnzOtDopgc', 'AJAVP - Encontros de Ténis de Mesa 25/26')">
             <img src="https://i.ytimg.com/vi/8AnzOtDopgc/hqdefault.jpg" alt="Ténis de Mesa" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 flex items-center justify-center transition-colors">
@@ -569,7 +800,7 @@
         </div>
 
         <!-- Video 4 -->
-        <div class="bg-brand-grayBg rounded-2xl overflow-hidden border border-slate-200 hover:shadow-xl transition-all group flex flex-col justify-between">
+        <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 hover:shadow-xl transition-all group flex flex-col justify-between">
           <div class="relative cursor-pointer overflow-hidden aspect-video" onclick="openVideoModal('OJr7tweWsiM', 'AJAVP - Duatlo em Duplas 25/26')">
             <img src="https://i.ytimg.com/vi/OJr7tweWsiM/hqdefault.jpg" alt="Duatlo em Duplas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 flex items-center justify-center transition-colors">
@@ -588,7 +819,7 @@
         </div>
 
         <!-- Video 5 -->
-        <div class="bg-brand-grayBg rounded-2xl overflow-hidden border border-slate-200 hover:shadow-xl transition-all group flex flex-col justify-between">
+        <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 hover:shadow-xl transition-all group flex flex-col justify-between">
           <div class="relative cursor-pointer overflow-hidden aspect-video" onclick="openVideoModal('AXcuh4QRXew', 'AJAVP - Uma Equipa Para Todos')">
             <img src="https://i.ytimg.com/vi/AXcuh4QRXew/hqdefault.jpg" alt="Uma Equipa Para Todos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 flex items-center justify-center transition-colors">
@@ -607,7 +838,7 @@
         </div>
 
         <!-- Video 6 -->
-        <div class="bg-brand-grayBg rounded-2xl overflow-hidden border border-slate-200 hover:shadow-xl transition-all group flex flex-col justify-between">
+        <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 hover:shadow-xl transition-all group flex flex-col justify-between">
           <div class="relative cursor-pointer overflow-hidden aspect-video" onclick="openVideoModal('bj3W5UlWn9Y', 'AJAVP - Resumo de Época 25/26')">
             <img src="https://i.ytimg.com/vi/bj3W5UlWn9Y/hqdefault.jpg" alt="Resumo de Época" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 flex items-center justify-center transition-colors">
@@ -631,7 +862,7 @@
   </section>
 
   <!-- Treinos & Horários Section -->
-  <section id="treinos" class="py-20 bg-brand-grayBg border-y border-slate-200/60">
+  <section id="treinos" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
@@ -645,7 +876,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
         
         <!-- Info Card: Ringue & Treinos -->
-        <div class="bg-white border border-emerald-100 p-8 rounded-3xl space-y-6 flex flex-col justify-between shadow-sm">
+        <div class="bg-brand-grayBg border border-emerald-100 p-8 rounded-3xl space-y-6 flex flex-col justify-between shadow-sm">
           <div class="space-y-4">
             <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-100 text-brand-green rounded-full text-xs font-bold">
               <i data-lucide="calendar" class="w-4 h-4"></i>
@@ -658,7 +889,7 @@
 
             <div class="space-y-3 pt-2">
               <div class="flex items-start gap-3">
-                <div class="p-2 bg-brand-grayBg rounded-lg shadow-sm text-brand-green"><i data-lucide="map-pin" class="w-5 h-5"></i></div>
+                <div class="p-2 bg-white rounded-lg shadow-sm text-brand-green"><i data-lucide="map-pin" class="w-5 h-5"></i></div>
                 <div>
                   <h4 class="font-bold text-sm text-slate-800">Campo de Treinos / Ringue</h4>
                   <p class="text-xs text-slate-500">Instalações em Vilar do Pinheiro preparadas para treinos de futsal e atividades polidesportivas.</p>
@@ -666,7 +897,7 @@
               </div>
 
               <div class="flex items-start gap-3">
-                <div class="p-2 bg-brand-grayBg rounded-lg shadow-sm text-brand-green"><i data-lucide="award" class="w-5 h-5"></i></div>
+                <div class="p-2 bg-white rounded-lg shadow-sm text-brand-green"><i data-lucide="award" class="w-5 h-5"></i></div>
                 <div>
                   <h4 class="font-bold text-sm text-slate-800">Treino Experimental Gratuito</h4>
                   <p class="text-xs text-slate-500">Podes experimentar qualquer modalidade sem compromisso antes de formalizar a inscrição.</p>
@@ -674,7 +905,7 @@
               </div>
 
               <div class="flex items-start gap-3">
-                <div class="p-2 bg-brand-grayBg rounded-lg shadow-sm text-brand-green"><i data-lucide="users" class="w-5 h-5"></i></div>
+                <div class="p-2 bg-white rounded-lg shadow-sm text-brand-green"><i data-lucide="users" class="w-5 h-5"></i></div>
                 <div>
                   <h4 class="font-bold text-sm text-slate-800">Acompanhamento e Segurança</h4>
                   <p class="text-xs text-slate-500">Todos os atletas são integrados de acordo com os regulamentos e autorizações necessárias.</p>
@@ -683,12 +914,12 @@
             </div>
           </div>
 
-          <div class="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center gap-3">
+          <div class="pt-6 border-t border-slate-200/60 flex flex-col sm:flex-row items-center gap-3">
             <a href="https://drive.google.com/file/d/18FvwM6ge-8DQrFbSaeHmLjOtq2AbDPOD/view?usp=drive_link" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand-navy hover:bg-brand-navyDark text-white px-5 py-3 rounded-xl text-xs font-bold shadow transition-colors">
               <i data-lucide="file-text" class="w-4 h-4"></i>
               <span>Autorização Treino Experimental</span>
             </a>
-            <a href="#contactos" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 px-5 py-3 rounded-xl text-xs font-bold transition-colors">
+            <a href="#contactos" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 px-5 py-3 rounded-xl text-xs font-bold transition-colors">
               <i data-lucide="help-circle" class="w-4 h-4"></i>
               <span>Perguntar Horários à Direção</span>
             </a>
@@ -754,7 +985,7 @@
   </section>
 
   <!-- Documentação Section -->
-  <section id="documentacao" class="py-20 bg-white">
+  <section id="documentacao" class="py-20 bg-brand-grayBg border-y border-slate-200/60">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
@@ -768,7 +999,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
         <!-- Doc 1: Comunicado Oficial -->
-        <div class="bg-brand-grayBg p-6 rounded-2xl border border-slate-200 hover:shadow-md transition-shadow flex flex-col justify-between">
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-md transition-shadow flex flex-col justify-between">
           <div class="space-y-3">
             <div class="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
               <i data-lucide="file-check" class="w-5 h-5"></i>
@@ -779,7 +1010,7 @@
             </h3>
             <p class="text-xs text-slate-500">Documento histórico de fundação e definição dos órgãos sociais.</p>
           </div>
-          <div class="pt-4 mt-4 border-t border-slate-200/60">
+          <div class="pt-4 mt-4 border-t border-slate-100">
             <a href="https://drive.google.com/file/d/1F0DrwMzSioop_dyUVbqdEgmP7I0g24qL/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-bold text-brand-green hover:underline">
               <span>Abrir no Google Drive</span>
               <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
@@ -788,7 +1019,7 @@
         </div>
 
         <!-- Doc 2: Regulamento Interno -->
-        <div class="bg-brand-grayBg p-6 rounded-2xl border border-slate-200 hover:shadow-md transition-shadow flex flex-col justify-between">
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-md transition-shadow flex flex-col justify-between">
           <div class="space-y-3">
             <div class="w-10 h-10 rounded-lg bg-emerald-50 text-brand-green flex items-center justify-center">
               <i data-lucide="scale" class="w-5 h-5"></i>
@@ -799,7 +1030,7 @@
             </h3>
             <p class="text-xs text-slate-500">Direitos e deveres de atletas, associados e equipas técnicas.</p>
           </div>
-          <div class="pt-4 mt-4 border-t border-slate-200/60">
+          <div class="pt-4 mt-4 border-t border-slate-100">
             <a href="https://drive.google.com/file/d/1ZNM66sC4utRexz40rBJzbF7MJm6CtXFf/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-bold text-brand-green hover:underline">
               <span>Abrir no Google Drive</span>
               <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
@@ -808,7 +1039,7 @@
         </div>
 
         <!-- Doc 3: Manual de Assiduidade -->
-        <div class="bg-brand-grayBg p-6 rounded-2xl border border-slate-200 hover:shadow-md transition-shadow flex flex-col justify-between">
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-md transition-shadow flex flex-col justify-between">
           <div class="space-y-3">
             <div class="w-10 h-10 rounded-lg bg-amber-50 text-brand-accent flex items-center justify-center">
               <i data-lucide="calendar-check" class="w-5 h-5"></i>
@@ -819,7 +1050,7 @@
             </h3>
             <p class="text-xs text-slate-500">Regras de assiduidade aos treinos e convocatórias para jogos.</p>
           </div>
-          <div class="pt-4 mt-4 border-t border-slate-200/60">
+          <div class="pt-4 mt-4 border-t border-slate-100">
             <a href="https://drive.google.com/file/d/1B3VBHHsfP3yC0T0u9-nv15TFklk6T6RI/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-bold text-brand-green hover:underline">
               <span>Abrir no Google Drive</span>
               <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
@@ -848,7 +1079,7 @@
         </div>
 
         <!-- Doc 5: Declaração de Recolha de Imagem -->
-        <div class="bg-brand-grayBg p-6 rounded-2xl border border-slate-200 hover:shadow-md transition-shadow flex flex-col justify-between">
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-md transition-shadow flex flex-col justify-between">
           <div class="space-y-3">
             <div class="w-10 h-10 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center">
               <i data-lucide="camera" class="w-5 h-5"></i>
@@ -859,7 +1090,7 @@
             </h3>
             <p class="text-xs text-slate-500">Autorização para registo fotográfico e Jogos Inter-Freguesias.</p>
           </div>
-          <div class="pt-4 mt-4 border-t border-slate-200/60">
+          <div class="pt-4 mt-4 border-t border-slate-100">
             <a href="https://drive.google.com/file/d/1H_pJp6fOknpFQXDx_ZLuxGAFOu1MA_qc/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-bold text-brand-green hover:underline">
               <span>Abrir no Google Drive</span>
               <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
@@ -868,7 +1099,7 @@
         </div>
 
         <!-- Doc 6: Treino Experimental -->
-        <div class="bg-brand-grayBg p-6 rounded-2xl border border-slate-200 hover:shadow-md transition-shadow flex flex-col justify-between">
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-md transition-shadow flex flex-col justify-between">
           <div class="space-y-3">
             <div class="w-10 h-10 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center">
               <i data-lucide="user-check" class="w-5 h-5"></i>
@@ -879,7 +1110,7 @@
             </h3>
             <p class="text-xs text-slate-500">Documento indispensável para a primeira sessão de treino de atletas menores.</p>
           </div>
-          <div class="pt-4 mt-4 border-t border-slate-200/60">
+          <div class="pt-4 mt-4 border-t border-slate-100">
             <a href="https://drive.google.com/file/d/18FvwM6ge-8DQrFbSaeHmLjOtq2AbDPOD/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-bold text-brand-green hover:underline">
               <span>Abrir no Google Drive</span>
               <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
@@ -893,7 +1124,7 @@
   </section>
 
   <!-- Contactos & Localização Section -->
-  <section id="contactos" class="py-20 bg-brand-grayBg border-t border-slate-200/60">
+  <section id="contactos" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
@@ -908,7 +1139,7 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
         
         <!-- Telefone -->
-        <a href="tel:+351917194933" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-brand-green hover:shadow-md transition-all text-center group">
+        <a href="tel:+351917194933" class="p-6 bg-brand-grayBg rounded-2xl border border-slate-200 hover:border-brand-green hover:shadow-md transition-all text-center group">
           <div class="w-12 h-12 mx-auto rounded-xl bg-emerald-100 text-brand-green flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
             <i data-lucide="phone" class="w-6 h-6"></i>
           </div>
@@ -918,7 +1149,7 @@
         </a>
 
         <!-- Email -->
-        <a href="mailto:geralajavp@gmail.com" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-brand-green hover:shadow-md transition-all text-center group">
+        <a href="mailto:geralajavp@gmail.com" class="p-6 bg-brand-grayBg rounded-2xl border border-slate-200 hover:border-brand-green hover:shadow-md transition-all text-center group">
           <div class="w-12 h-12 mx-auto rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
             <i data-lucide="mail" class="w-6 h-6"></i>
           </div>
@@ -928,7 +1159,7 @@
         </a>
 
         <!-- YouTube -->
-        <a href="https://www.youtube.com/@AJAVP" target="_blank" rel="noopener noreferrer" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-brand-green hover:shadow-md transition-all text-center group">
+        <a href="https://www.youtube.com/@AJAVP" target="_blank" rel="noopener noreferrer" class="p-6 bg-brand-grayBg rounded-2xl border border-slate-200 hover:border-brand-green hover:shadow-md transition-all text-center group">
           <div class="w-12 h-12 mx-auto rounded-xl bg-red-100 text-red-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
             <i data-lucide="youtube" class="w-6 h-6"></i>
           </div>
@@ -938,7 +1169,7 @@
         </a>
 
         <!-- WhatsApp -->
-        <a href="https://chat.whatsapp.com/BLxsjBfDw7AEAonDy72187" target="_blank" rel="noopener noreferrer" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-brand-green hover:shadow-md transition-all text-center group">
+        <a href="https://chat.whatsapp.com/BLxsjBfDw7AEAonDy72187" target="_blank" rel="noopener noreferrer" class="p-6 bg-brand-grayBg rounded-2xl border border-slate-200 hover:border-brand-green hover:shadow-md transition-all text-center group">
           <div class="w-12 h-12 mx-auto rounded-xl bg-green-100 text-green-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
             <i data-lucide="message-square" class="w-6 h-6"></i>
           </div>
@@ -1035,6 +1266,7 @@
             <li><a href="#inicio" class="hover:text-emerald-300 transition-colors">Início</a></li>
             <li><a href="#sobre" class="hover:text-emerald-300 transition-colors">Sobre a Associação</a></li>
             <li><a href="#modalidades" class="hover:text-emerald-300 transition-colors">Modalidades</a></li>
+            <li><a href="#galeria" class="hover:text-emerald-300 transition-colors">Galeria de Fotos</a></li>
             <li><a href="#videos" class="hover:text-emerald-300 transition-colors">Vídeos & Momentos</a></li>
             <li><a href="#treinos" class="hover:text-emerald-300 transition-colors">Treinos e Horários</a></li>
             <li><a href="#documentacao" class="hover:text-emerald-300 transition-colors">Documentos</a></li>
@@ -1097,6 +1329,17 @@
     <span class="hidden sm:inline">Quero Fazer Parte!</span>
   </a>
 
+  <!-- Lightbox Modal para Fotos -->
+  <div id="lightboxModal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="relative max-w-5xl w-full flex flex-col items-center">
+      <button onclick="closeLightbox()" class="absolute -top-12 right-0 p-2 text-white hover:text-amber-400 transition-colors">
+        <i data-lucide="x" class="w-7 h-7"></i>
+      </button>
+      <img id="lightboxImg" src="" alt="Foto AJAVP" class="max-h-[80vh] w-auto rounded-2xl shadow-2xl object-contain border border-white/20">
+      <p id="lightboxCaption" class="text-white text-sm font-medium mt-3 text-center"></p>
+    </div>
+  </div>
+
   <!-- Video Modal -->
   <div id="videoModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="relative w-full max-w-4xl bg-black rounded-3xl overflow-hidden shadow-2xl border border-white/20">
@@ -1135,6 +1378,48 @@
       });
     });
 
+    // Lightbox Functions
+    const lightboxModal = document.getElementById('lightboxModal');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+
+    function openLightbox(src, caption) {
+      lightboxImg.src = src;
+      lightboxCaption.textContent = caption || '';
+      lightboxModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightboxModal.classList.add('hidden');
+      lightboxImg.src = '';
+      document.body.style.overflow = '';
+    }
+
+    lightboxModal.addEventListener('click', (e) => {
+      if (e.target === lightboxModal) {
+        closeLightbox();
+      }
+    });
+
+    // Toggle Extra Photos in Gallery
+    const extraPhotos = document.getElementById('extraPhotos');
+    const togglePhotosText = document.getElementById('togglePhotosText');
+    let isExpanded = false;
+
+    function toggleExtraPhotos() {
+      isExpanded = !isExpanded;
+      if (isExpanded) {
+        extraPhotos.classList.remove('hidden');
+        togglePhotosText.textContent = 'Mostrar Menos Fotos';
+      } else {
+        extraPhotos.classList.add('hidden');
+        togglePhotosText.textContent = 'Ver Mais Fotos da Galeria (+30 Fotos)';
+        document.getElementById('galeria').scrollIntoView({ behavior: 'smooth' });
+      }
+      lucide.createIcons();
+    }
+
     // Video Modal Functions
     const videoModal = document.getElementById('videoModal');
     const modalIframe = document.getElementById('modalVideoIframe');
@@ -1153,7 +1438,6 @@
       document.body.style.overflow = '';
     }
 
-    // Close modal on background click
     videoModal.addEventListener('click', (e) => {
       if (e.target === videoModal) {
         closeVideoModal();
@@ -1162,8 +1446,9 @@
 
     // Close on Escape key
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !videoModal.classList.contains('hidden')) {
-        closeVideoModal();
+      if (e.key === 'Escape') {
+        if (!lightboxModal.classList.contains('hidden')) closeLightbox();
+        if (!videoModal.classList.contains('hidden')) closeVideoModal();
       }
     });
   </script>
