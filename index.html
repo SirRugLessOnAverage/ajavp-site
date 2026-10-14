@@ -71,31 +71,41 @@
       touch-action: manipulation;
     }
 
-    /* Tactile Press Feedback (Emil Kowalski: scale(0.97) on :active) */
+    /* Tactile Press Feedback (Emil Kowalski: scale(0.965) on :active) */
     html.craft-mode button:active,
     html.craft-mode a[href]:active,
     html.craft-mode .craft-tactile:active {
-      transform: scale(0.97) !important;
-      transition: transform 140ms var(--ease-out) !important;
+      transform: scale(0.965) !important;
+      transition: transform 120ms var(--ease-out) !important;
     }
 
     /* Diffuse Multi-layered Shadows & Inner Rim Lights */
-    html.craft-mode .craft-card-light {
-      box-shadow: 0 1px 2px rgba(0,0,0,0.03), 0 10px 25px -5px rgba(0,0,0,0.06), inset 0 1px 0 0 rgba(255,255,255,0.9) !important;
-      transition: transform 220ms var(--ease-spring), box-shadow 220ms var(--ease-spring), border-color 200ms ease !important;
-    }
-    html.craft-mode .craft-card-light:hover {
-      transform: translateY(-4px) scale(1.008) !important;
-      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.12), 0 8px 16px -4px rgba(0,0,0,0.06), inset 0 1px 0 0 rgba(255,255,255,1) !important;
-    }
-
-    html.craft-mode .craft-card-dark {
-      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.45), 0 10px 15px -5px rgba(0,0,0,0.3), inset 0 1px 0 0 rgba(255,255,255,0.12) !important;
+    html.craft-mode .craft-card-light,
+    html.craft-mode .bg-white.rounded-2xl,
+    html.craft-mode .bg-white.rounded-3xl,
+    html.craft-mode article {
+      box-shadow: 0 1px 2px rgba(15,23,42,0.03), 0 12px 28px -6px rgba(15,23,42,0.07), inset 0 1px 0 0 rgba(255,255,255,0.95) !important;
       transition: transform 240ms var(--ease-spring), box-shadow 240ms var(--ease-spring), border-color 200ms ease !important;
     }
-    html.craft-mode .craft-card-dark:hover {
+    html.craft-mode .craft-card-light:hover,
+    html.craft-mode .bg-white.rounded-2xl:hover,
+    html.craft-mode .bg-white.rounded-3xl:hover,
+    html.craft-mode article:hover {
+      transform: translateY(-4px) scale(1.008) !important;
+      box-shadow: 0 24px 38px -10px rgba(15,23,42,0.12), 0 8px 16px -4px rgba(15,23,42,0.05), inset 0 1px 0 0 rgba(255,255,255,1) !important;
+    }
+
+    html.craft-mode .craft-card-dark,
+    html.craft-mode .bg-slate-900.rounded-3xl,
+    html.craft-mode .bg-brand-navy.rounded-3xl {
+      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.45), 0 10px 15px -5px rgba(0,0,0,0.3), inset 0 1px 0 0 rgba(255,255,255,0.16) !important;
+      transition: transform 260ms var(--ease-spring), box-shadow 260ms var(--ease-spring), border-color 200ms ease !important;
+    }
+    html.craft-mode .craft-card-dark:hover,
+    html.craft-mode .bg-slate-900.rounded-3xl:hover,
+    html.craft-mode .bg-brand-navy.rounded-3xl:hover {
       transform: translateY(-5px) scale(1.015) !important;
-      box-shadow: 0 30px 45px -12px rgba(0,0,0,0.6), 0 12px 20px -6px rgba(0,0,0,0.4), inset 0 1px 0 0 rgba(255,255,255,0.22) !important;
+      box-shadow: 0 32px 50px -12px rgba(0,0,0,0.6), 0 12px 20px -6px rgba(0,0,0,0.4), inset 0 1px 0 0 rgba(255,255,255,0.25) !important;
     }
 
     /* Natural Modal/Popup Entrance (Never animate from scale(0)) */
@@ -113,23 +123,24 @@
       }
     }
 
-    /* Sonner-Style Toast */
+    /* Sonner-Style Toast (Centered on screen with translate(-50%, ...)) */
     #craftToast {
-      transition: transform 240ms var(--ease-spring), opacity 200ms ease;
+      transition: transform 280ms var(--ease-spring), opacity 220ms ease;
     }
     #craftToast.toast-hidden {
-      transform: translateY(-120%) scale(0.96);
+      transform: translate(-50%, -150%) scale(0.94);
       opacity: 0;
       pointer-events: none;
     }
     #craftToast.toast-visible {
-      transform: translateY(0) scale(1);
+      transform: translate(-50%, 0) scale(1);
       opacity: 1;
+      pointer-events: auto;
     }
 
     /* Mode Switcher Pill Indicator */
     #modeIndicator {
-      transition: transform 220ms var(--ease-spring), width 200ms var(--ease-spring);
+      transition: transform 260ms var(--ease-spring), width 220ms var(--ease-spring), background 200ms ease;
     }
   </style>
 </head>
@@ -2845,6 +2856,126 @@
     </button>
   </div>
 
+  <!-- Floating Mode Switcher Dock (Clássico vs Emil Kowalski Craft) -->
+  <aside id="modeSwitcherDock" aria-label="Alternador de Modos de Design" class="fixed bottom-20 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-1.5 p-1.5 rounded-full bg-slate-900/95 backdrop-blur-xl border border-white/20 shadow-2xl text-xs font-semibold select-none transition-all duration-300">
+    <div class="relative flex items-center gap-1">
+      <!-- Active pill indicator -->
+      <div id="modeIndicator" class="absolute top-0 bottom-0 left-0 rounded-full transition-all duration-300 pointer-events-none"></div>
+      
+      <!-- Option 1: Clássico -->
+      <button id="btnModeClassic" type="button" class="relative z-10 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full transition-colors cursor-pointer text-white">
+        <i data-lucide="layout" class="w-3.5 h-3.5"></i>
+        <span>Clássico</span>
+      </button>
+
+      <!-- Option 2: Emil Craft -->
+      <button id="btnModeCraft" type="button" class="relative z-10 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full transition-colors cursor-pointer text-slate-300 hover:text-white">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-300"></i>
+        <span>Craft &amp; Motion</span>
+      </button>
+    </div>
+
+    <!-- Info / Compare Modal Trigger -->
+    <button id="btnOpenCompareModal" type="button" title="Ver tabela comparativa (Emil Kowalski)" class="relative z-10 w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all cursor-pointer">
+      <i data-lucide="info" class="w-3.5 h-3.5 text-slate-300"></i>
+    </button>
+  </aside>
+
+  <!-- Sonner-style Toast Notification -->
+  <aside id="craftToast" aria-live="polite" class="fixed top-24 left-1/2 z-50 toast-hidden flex items-center gap-3 px-4 py-3 rounded-2xl bg-slate-900/95 backdrop-blur-xl border border-white/15 text-white shadow-2xl max-w-md w-[calc(100vw-2rem)] sm:w-auto">
+    <div id="craftToastIcon" class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center flex-shrink-0">
+      <i data-lucide="check" class="w-4 h-4"></i>
+    </div>
+    <div class="flex-1">
+      <div id="craftToastTitle" class="font-heading font-bold text-xs text-white">Modo Alterado</div>
+      <div id="craftToastDesc" class="text-[11px] text-slate-300 leading-snug">Descrição da alteração</div>
+    </div>
+    <button id="btnCloseToast" aria-label="Fechar notificação" class="text-slate-400 hover:text-white p-1 cursor-pointer">
+      <i data-lucide="x" class="w-3.5 h-3.5"></i>
+    </button>
+  </aside>
+
+  <!-- Modal Comparativo: Clássico vs Emil Kowalski Craft -->
+  <div id="compareCraftModal" role="dialog" aria-modal="true" aria-labelledby="compareModalTitle" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-white/15 rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl text-left relative overflow-hidden flex flex-col max-h-[90vh]">
+      
+      <!-- Modal Header -->
+      <div class="flex items-start justify-between gap-4 pb-4 border-b border-white/10 flex-shrink-0">
+        <div>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold border border-amber-500/30 mb-2">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            <span>Skill: emil-design-eng</span>
+          </span>
+          <h3 id="compareModalTitle" class="font-heading font-black text-xl sm:text-2xl text-white">Comparador de Modos de Design</h3>
+          <p class="text-xs text-slate-400 mt-1">Filosofia de Design Engineering por Emil Kowalski</p>
+        </div>
+        <button id="btnCloseCompareModal" aria-label="Fechar comparador" class="text-slate-400 hover:text-white p-1.5 rounded-xl hover:bg-white/10 transition-colors cursor-pointer">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Quote -->
+      <div class="p-3 my-4 rounded-xl bg-white/5 border border-white/10 text-xs text-slate-300 italic flex-shrink-0">
+        "All those unseen details combine to produce something that's just stunning, like a thousand barely audible voices all singing in tune." — Paul Graham
+      </div>
+
+      <!-- Comparison Table (Required Emil Review Format) -->
+      <div class="overflow-y-auto flex-1 pr-1 space-y-3">
+        <table class="w-full text-xs text-left text-slate-300 border-collapse">
+          <thead>
+            <tr class="border-b border-white/10 text-white font-bold">
+              <th class="py-2.5 pr-2 font-heading">Elemento</th>
+              <th class="py-2.5 px-2 font-heading text-slate-400">Modo Clássico</th>
+              <th class="py-2.5 px-2 font-heading text-emerald-400">✨ Modo Emil Craft</th>
+              <th class="py-2.5 pl-2 font-heading text-amber-300">Porquê (Why)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/5">
+            <tr>
+              <td class="py-2.5 pr-2 font-semibold text-white">Feedback de Botões</td>
+              <td class="py-2.5 px-2 text-slate-400">Sem efeito :active</td>
+              <td class="py-2.5 px-2 text-emerald-300 font-mono">scale(0.965)</td>
+              <td class="py-2.5 pl-2 text-slate-300">O utilizador sente confirmação tátil imediata do clique</td>
+            </tr>
+            <tr>
+              <td class="py-2.5 pr-2 font-semibold text-white">Curvas de Movimento</td>
+              <td class="py-2.5 px-2 text-slate-400">ease ou linear</td>
+              <td class="py-2.5 px-2 text-emerald-300 font-mono text-[11px]">bezier(0.16, 1, 0.3, 1)</td>
+              <td class="py-2.5 pl-2 text-slate-300">Começa rápido e desacelera suavemente com sensação orgânica</td>
+            </tr>
+            <tr>
+              <td class="py-2.5 pr-2 font-semibold text-white">Sombras &amp; Bordas</td>
+              <td class="py-2.5 px-2 text-slate-400">Bordas duras de 1px</td>
+              <td class="py-2.5 px-2 text-emerald-300">Sombras multi-camada + 1px rim light</td>
+              <td class="py-2.5 pl-2 text-slate-300">Profundidade natural e tridimensional em vez de linhas desenhadas a caneta</td>
+            </tr>
+            <tr>
+              <td class="py-2.5 pr-2 font-semibold text-white">Modais &amp; Popups</td>
+              <td class="py-2.5 px-2 text-slate-400">Aparecem sem transição</td>
+              <td class="py-2.5 px-2 text-emerald-300 font-mono">scale(0.95) &rarr; 1 + opacidade</td>
+              <td class="py-2.5 pl-2 text-slate-300">No mundo real nada surge do zero absoluto; transição suave</td>
+            </tr>
+            <tr>
+              <td class="py-2.5 pr-2 font-semibold text-white">Mobile Touch</td>
+              <td class="py-2.5 px-2 text-slate-400">Flash azul de tap padrão</td>
+              <td class="py-2.5 px-2 text-emerald-300">Touch manipulation + sem flash</td>
+              <td class="py-2.5 pl-2 text-slate-300">Elimina o atraso de 300ms em telemóveis e parece uma app nativa</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Footer Buttons -->
+      <div class="pt-4 border-t border-white/10 flex items-center justify-between gap-3 flex-shrink-0 mt-3">
+        <span class="text-[11px] text-slate-400">Experimenta clicar nos botões e cartões em ambos os modos!</span>
+        <button onclick="document.getElementById('compareCraftModal').classList.add('hidden')" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-xs font-bold transition-colors cursor-pointer">
+          Fechar
+        </button>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script>
     // Initialize Lucide icons
@@ -3055,247 +3186,168 @@
     // ==========================================
     // EMIL KOWALSKI CRAFT & MOTION MODE CONTROLLER
     // ==========================================
-    const btnModeClassic = document.getElementById('btnModeClassic');
-    const btnModeCraft = document.getElementById('btnModeCraft');
-    const modeIndicator = document.getElementById('modeIndicator');
-    const craftToast = document.getElementById('craftToast');
-    const craftToastTitle = document.getElementById('craftToastTitle');
-    const craftToastDesc = document.getElementById('craftToastDesc');
-    const btnCloseToast = document.getElementById('btnCloseToast');
-    const btnOpenCompareModal = document.getElementById('btnOpenCompareModal');
-    const compareCraftModal = document.getElementById('compareCraftModal');
-    const btnCloseCompareModal = document.getElementById('btnCloseCompareModal');
+    function initCraftModeController() {
+      const btnModeClassic = document.getElementById('btnModeClassic');
+      const btnModeCraft = document.getElementById('btnModeCraft');
+      const modeIndicator = document.getElementById('modeIndicator');
+      const craftToast = document.getElementById('craftToast');
+      const craftToastTitle = document.getElementById('craftToastTitle');
+      const craftToastDesc = document.getElementById('craftToastDesc');
+      const craftToastIcon = document.getElementById('craftToastIcon');
+      const btnCloseToast = document.getElementById('btnCloseToast');
+      const btnOpenCompareModal = document.getElementById('btnOpenCompareModal');
+      const compareCraftModal = document.getElementById('compareCraftModal');
+      const btnCloseCompareModal = document.getElementById('btnCloseCompareModal');
 
-    let toastTimer = null;
-
-    function showToast(title, desc, isCraft) {
-      if (!craftToast) return;
-      clearTimeout(toastTimer);
-      craftToastTitle.textContent = title;
-      craftToastDesc.textContent = desc;
-      
-      const iconWrap = document.getElementById('craftToastIcon');
-      if (iconWrap) {
-        iconWrap.innerHTML = isCraft 
-          ? '<i data-lucide="sparkles" class="w-4 h-4 text-amber-300"></i>' 
-          : '<i data-lucide="layout" class="w-4 h-4 text-emerald-400"></i>';
+      if (!btnModeClassic || !btnModeCraft) {
+        console.warn('Mode switcher elements not ready in DOM');
+        return;
       }
-      
-      craftToast.classList.remove('toast-hidden');
-      craftToast.classList.add('toast-visible');
-      if (window.lucide) lucide.createIcons();
 
-      toastTimer = setTimeout(() => {
-        craftToast.classList.remove('toast-visible');
-        craftToast.classList.add('toast-hidden');
-      }, 4200);
-    }
+      let toastTimer = null;
 
-    if (btnCloseToast) {
-      btnCloseToast.addEventListener('click', () => {
-        craftToast.classList.remove('toast-visible');
-        craftToast.classList.add('toast-hidden');
+      function showToast(title, desc, isCraft) {
+        if (!craftToast) return;
+        clearTimeout(toastTimer);
+        if (craftToastTitle) craftToastTitle.textContent = title;
+        if (craftToastDesc) craftToastDesc.textContent = desc;
+        
+        if (craftToastIcon) {
+          craftToastIcon.innerHTML = isCraft 
+            ? '<i data-lucide="sparkles" class="w-4 h-4 text-amber-300"></i>' 
+            : '<i data-lucide="layout" class="w-4 h-4 text-emerald-400"></i>';
+        }
+        
+        craftToast.classList.remove('toast-hidden');
+        craftToast.classList.add('toast-visible');
+        if (window.lucide) lucide.createIcons();
+
+        toastTimer = setTimeout(() => {
+          craftToast.classList.remove('toast-visible');
+          craftToast.classList.add('toast-hidden');
+        }, 4000);
+      }
+
+      if (btnCloseToast) {
+        btnCloseToast.addEventListener('click', () => {
+          clearTimeout(toastTimer);
+          craftToast.classList.remove('toast-visible');
+          craftToast.classList.add('toast-hidden');
+        });
+      }
+
+      function updatePillIndicator(targetBtn) {
+        if (!modeIndicator || !targetBtn) return;
+        const width = targetBtn.offsetWidth;
+        const left = targetBtn.offsetLeft;
+        modeIndicator.style.width = width + 'px';
+        modeIndicator.style.transform = `translateX(${left}px)`;
+      }
+
+      function setViewMode(mode, showNotification = true) {
+        const isCraft = mode === 'craft';
+        if (isCraft) {
+          document.documentElement.classList.add('craft-mode');
+          btnModeCraft.classList.remove('text-slate-300');
+          btnModeCraft.classList.add('text-white');
+          btnModeClassic.classList.remove('text-white');
+          btnModeClassic.classList.add('text-slate-300');
+          if (modeIndicator) {
+            modeIndicator.className = 'absolute top-0 bottom-0 left-0 rounded-full bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-500 shadow-md border border-emerald-400/30 transition-all duration-300 pointer-events-none';
+          }
+          updatePillIndicator(btnModeCraft);
+          if (showNotification) {
+            showToast(
+              '✨ Modo Emil Kowalski Ativo',
+              'Física bezier, feedback tátil nos cliques (:active scale 0.965) e sombras multi-camada.',
+              true
+            );
+          }
+        } else {
+          document.documentElement.classList.remove('craft-mode');
+          btnModeClassic.classList.remove('text-slate-300');
+          btnModeClassic.classList.add('text-white');
+          btnModeCraft.classList.remove('text-white');
+          btnModeCraft.classList.add('text-slate-300');
+          if (modeIndicator) {
+            modeIndicator.className = 'absolute top-0 bottom-0 left-0 rounded-full bg-slate-700/90 border border-white/10 shadow-sm transition-all duration-300 pointer-events-none';
+          }
+          updatePillIndicator(btnModeClassic);
+          if (showNotification) {
+            showToast(
+              'Modo Clássico Ativo',
+              'Layout e comportamento padrão original do website da AJAVP.',
+              false
+            );
+          }
+        }
+
+        try {
+          localStorage.setItem('ajavp_view_mode', mode);
+        } catch (e) {}
+
+        if (navigator.vibrate) {
+          try { navigator.vibrate(10); } catch (e) {}
+        }
+      }
+
+      btnModeClassic.addEventListener('click', (e) => {
+        e.preventDefault();
+        setViewMode('classic', true);
       });
-    }
 
-    function updatePillIndicator(targetBtn) {
-      if (!modeIndicator || !targetBtn) return;
-      modeIndicator.style.width = `${targetBtn.offsetWidth}px`;
-      modeIndicator.style.transform = `translateX(${targetBtn.offsetLeft}px)`;
-    }
+      btnModeCraft.addEventListener('click', (e) => {
+        e.preventDefault();
+        setViewMode('craft', true);
+      });
 
-    function setViewMode(mode, showNotification = true) {
-      const isCraft = mode === 'craft';
-      if (isCraft) {
-        document.documentElement.classList.add('craft-mode');
-        btnModeCraft.classList.remove('text-slate-300');
-        btnModeCraft.classList.add('text-white');
-        btnModeClassic.classList.remove('text-white');
-        btnModeClassic.classList.add('text-slate-300');
-        updatePillIndicator(btnModeCraft);
-        if (showNotification) {
-          showToast(
-            '✨ Modo Emil Kowalski Ativo',
-            'Curvas bezier fortes, micro-interações táteis (scale 0.97) e sombras multi-camada.',
-            true
-          );
-        }
-      } else {
-        document.documentElement.classList.remove('craft-mode');
-        btnModeClassic.classList.remove('text-slate-300');
-        btnModeClassic.classList.add('text-white');
-        btnModeCraft.classList.remove('text-white');
-        btnModeCraft.classList.add('text-slate-300');
-        updatePillIndicator(btnModeClassic);
-        if (showNotification) {
-          showToast(
-            'Modo Clássico Ativo',
-            'Layout padrão original do website da AJAVP.',
-            false
-          );
-        }
-      }
-
-      try {
-        localStorage.setItem('ajavp_view_mode', mode);
-      } catch (e) {}
-
-      if (navigator.vibrate) {
-        navigator.vibrate(10);
-      }
-    }
-
-    if (btnModeClassic && btnModeCraft) {
-      btnModeClassic.addEventListener('click', () => setViewMode('classic'));
-      btnModeCraft.addEventListener('click', () => setViewMode('craft'));
-
-      // Restore saved preference or default to classic
+      // Restore saved preference (default to classic)
       const savedMode = localStorage.getItem('ajavp_view_mode') || 'classic';
       setTimeout(() => {
         setViewMode(savedMode, false);
-      }, 100);
+      }, 50);
 
       window.addEventListener('resize', () => {
-        const currentBtn = document.documentElement.classList.contains('craft-mode') ? btnModeCraft : btnModeClassic;
-        updatePillIndicator(currentBtn);
+        const isCraft = document.documentElement.classList.contains('craft-mode');
+        updatePillIndicator(isCraft ? btnModeCraft : btnModeClassic);
       });
+
+      // Comparison Modal
+      if (btnOpenCompareModal && compareCraftModal) {
+        btnOpenCompareModal.addEventListener('click', (e) => {
+          e.preventDefault();
+          compareCraftModal.classList.remove('hidden');
+          if (window.lucide) lucide.createIcons();
+        });
+      }
+
+      if (btnCloseCompareModal && compareCraftModal) {
+        btnCloseCompareModal.addEventListener('click', (e) => {
+          e.preventDefault();
+          compareCraftModal.classList.add('hidden');
+        });
+      }
+
+      if (compareCraftModal) {
+        compareCraftModal.addEventListener('click', (e) => {
+          if (e.target === compareCraftModal) {
+            compareCraftModal.classList.add('hidden');
+          }
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && !compareCraftModal.classList.contains('hidden')) {
+            compareCraftModal.classList.add('hidden');
+          }
+        });
+      }
     }
 
-    // Modal de Comparação
-    if (btnOpenCompareModal && compareCraftModal) {
-      btnOpenCompareModal.addEventListener('click', () => {
-        compareCraftModal.classList.remove('hidden');
-        if (window.lucide) lucide.createIcons();
-      });
-    }
-    if (btnCloseCompareModal && compareCraftModal) {
-      btnCloseCompareModal.addEventListener('click', () => {
-        compareCraftModal.classList.add('hidden');
-      });
-      compareCraftModal.addEventListener('click', (e) => {
-        if (e.target === compareCraftModal) compareCraftModal.classList.add('hidden');
-      });
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initCraftModeController);
+    } else {
+      initCraftModeController();
     }
   </script>
-
-  <!-- Floating Mode Switcher Dock (Clássico vs Emil Kowalski Craft) -->
-  <aside id="modeSwitcherDock" aria-label="Alternador de Modos de Design" class="fixed bottom-20 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-1.5 p-1.5 rounded-full bg-slate-900/90 backdrop-blur-xl border border-white/20 shadow-2xl text-xs font-semibold select-none transition-all duration-300">
-    <div class="relative flex items-center gap-1">
-      <!-- Active pill indicator -->
-      <div id="modeIndicator" class="absolute top-0 bottom-0 left-0 rounded-full bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-500 shadow-md"></div>
-      
-      <!-- Option 1: Clássico -->
-      <button id="btnModeClassic" type="button" class="relative z-10 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full transition-colors cursor-pointer text-white">
-        <i data-lucide="layout" class="w-3.5 h-3.5"></i>
-        <span>Clássico</span>
-      </button>
-
-      <!-- Option 2: Emil Craft -->
-      <button id="btnModeCraft" type="button" class="relative z-10 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full transition-colors cursor-pointer text-slate-300 hover:text-white">
-        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-300"></i>
-        <span>Craft &amp; Motion</span>
-      </button>
-    </div>
-
-    <!-- Info / Compare Modal Trigger -->
-    <button id="btnOpenCompareModal" type="button" title="Ver tabela comparativa (Emil Kowalski)" class="relative z-10 w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all cursor-pointer">
-      <i data-lucide="info" class="w-3.5 h-3.5 text-slate-300"></i>
-    </button>
-  </aside>
-
-  <!-- Sonner-style Toast Notification -->
-  <aside id="craftToast" aria-live="polite" class="fixed top-24 left-1/2 -translate-x-1/2 z-50 toast-hidden flex items-center gap-3 px-4 py-3 rounded-2xl bg-slate-900/95 backdrop-blur-xl border border-white/15 text-white shadow-2xl max-w-md w-[calc(100vw-2rem)] sm:w-auto">
-    <div id="craftToastIcon" class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center flex-shrink-0">
-      <i data-lucide="check" class="w-4 h-4"></i>
-    </div>
-    <div class="flex-1">
-      <div id="craftToastTitle" class="font-heading font-bold text-xs text-white">Modo Alterado</div>
-      <div id="craftToastDesc" class="text-[11px] text-slate-300 leading-snug">Descrição da alteração</div>
-    </div>
-    <button id="btnCloseToast" aria-label="Fechar notificação" class="text-slate-400 hover:text-white p-1">
-      <i data-lucide="x" class="w-3.5 h-3.5"></i>
-    </button>
-  </aside>
-
-  <!-- Modal Comparativo: Clássico vs Emil Kowalski Craft -->
-  <dialog id="compareCraftModal" aria-labelledby="compareModalTitle" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="bg-slate-900 border border-white/15 rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl text-left relative overflow-hidden flex flex-col max-h-[90vh]">
-      
-      <!-- Modal Header -->
-      <div class="flex items-start justify-between gap-4 pb-4 border-b border-white/10 flex-shrink-0">
-        <div>
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold border border-amber-500/30 mb-2">
-            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-            <span>Skill: emil-design-eng</span>
-          </span>
-          <h3 id="compareModalTitle" class="font-heading font-black text-xl sm:text-2xl text-white">Comparador de Modos de Design</h3>
-          <p class="text-xs text-slate-400 mt-1">Filosofia de Design Engineering por Emil Kowalski</p>
-        </div>
-        <button id="btnCloseCompareModal" aria-label="Fechar comparador" class="text-slate-400 hover:text-white p-1.5 rounded-xl hover:bg-white/10 transition-colors">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
-
-      <!-- Quote -->
-      <div class="p-3 my-4 rounded-xl bg-white/5 border border-white/10 text-xs text-slate-300 italic flex-shrink-0">
-        "All those unseen details combine to produce something that's just stunning, like a thousand barely audible voices all singing in tune." — Paul Graham
-      </div>
-
-      <!-- Comparison Table (Required Emil Review Format) -->
-      <div class="overflow-y-auto flex-1 pr-1 space-y-3">
-        <table class="w-full text-xs text-left text-slate-300 border-collapse">
-          <thead>
-            <tr class="border-b border-white/10 text-white font-bold">
-              <th class="py-2.5 pr-2 font-heading">Elemento</th>
-              <th class="py-2.5 px-2 font-heading text-slate-400">Modo Clássico</th>
-              <th class="py-2.5 px-2 font-heading text-emerald-400">✨ Modo Emil Craft</th>
-              <th class="py-2.5 pl-2 font-heading text-amber-300">Porquê (Why)</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-white/5">
-            <tr>
-              <td class="py-2.5 pr-2 font-semibold text-white">Feedback de Botões</td>
-              <td class="py-2.5 px-2 text-slate-400">Sem efeito :active</td>
-              <td class="py-2.5 px-2 text-emerald-300 font-mono">scale(0.97)</td>
-              <td class="py-2.5 pl-2 text-slate-300">O utilizador sente confirmação tátil imediata do clique</td>
-            </tr>
-            <tr>
-              <td class="py-2.5 pr-2 font-semibold text-white">Curvas de Movimento</td>
-              <td class="py-2.5 px-2 text-slate-400">ease ou linear</td>
-              <td class="py-2.5 px-2 text-emerald-300 font-mono text-[11px]">bezier(0.23, 1, 0.32, 1)</td>
-              <td class="py-2.5 pl-2 text-slate-300">Começa rápido e desacelera suavemente; o ease-in parece lento</td>
-            </tr>
-            <tr>
-              <td class="py-2.5 pr-2 font-semibold text-white">Sombras &amp; Bordas</td>
-              <td class="py-2.5 px-2 text-slate-400">Bordas duras de 1px</td>
-              <td class="py-2.5 px-2 text-emerald-300">Sombras multi-camada + 1px rim light</td>
-              <td class="py-2.5 pl-2 text-slate-300">Profundidade natural em vez de linhas desenhadas a caneta</td>
-            </tr>
-            <tr>
-              <td class="py-2.5 pr-2 font-semibold text-white">Modais &amp; Popups</td>
-              <td class="py-2.5 px-2 text-slate-400">Aparecem sem transição</td>
-              <td class="py-2.5 px-2 text-emerald-300 font-mono">scale(0.95) &rarr; 1 + opacidade</td>
-              <td class="py-2.5 pl-2 text-slate-300">No mundo real nada surge do zero absoluto; transição suave</td>
-            </tr>
-            <tr>
-              <td class="py-2.5 pr-2 font-semibold text-white">Mobile Touch</td>
-              <td class="py-2.5 px-2 text-slate-400">Flash azul de tap padrão</td>
-              <td class="py-2.5 px-2 text-emerald-300">Touch manipulation + sem flash</td>
-              <td class="py-2.5 pl-2 text-slate-300">Elimina o atraso de 300ms em telemóveis e parece nativo</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Footer Buttons -->
-      <div class="pt-4 border-t border-white/10 flex items-center justify-between gap-3 flex-shrink-0 mt-3">
-        <span class="text-[11px] text-slate-400">Experimenta clicar nos botões e cartões em ambos os modos!</span>
-        <button onclick="document.getElementById('compareCraftModal').classList.add('hidden')" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-xs font-bold transition-colors">
-          Fechar
-        </button>
-      </div>
-
-    </div>
-  </dialog>
 </body>
 </html>
