@@ -198,18 +198,22 @@
             <span class="text-xs font-bold text-slate-300 uppercase tracking-wide">Representa a tua terra</span>
             <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-black uppercase">Vilar do Pinheiro</span>
           </div>
-          <div class="space-y-2 text-xs text-slate-200">
-            <div class="flex items-center justify-between">
-              <span class="text-slate-400">Início Oficial:</span>
-              <span class="font-bold text-white">03 de Outubro de 2026 (Corta-Mato)</span>
+          <div class="space-y-2 text-xs text-slate-200" id="jifTopSummary">
+            <div class="flex items-center justify-between pb-1 border-b border-white/10">
+              <span class="text-slate-300">Corta-Mato (03 Out):</span>
+              <span class="font-bold text-emerald-300 flex items-center gap-1"><i data-lucide="check" class="w-3.5 h-3.5"></i> Concluído</span>
             </div>
-            <div class="flex items-center justify-between">
-              <span class="text-slate-400">Jornadas Futsal:</span>
-              <span class="font-bold text-amber-300">18 sábados ao longo da época</span>
+            <div class="flex items-center justify-between pb-1 border-b border-white/10">
+              <span class="text-slate-300">1ª Jornada Futsal (10 Out):</span>
+              <span class="font-bold text-emerald-300 flex items-center gap-1"><i data-lucide="check" class="w-3.5 h-3.5"></i> Concluída</span>
             </div>
-            <div class="flex items-center justify-between">
-              <span class="text-slate-400">Grande Encerramento:</span>
-              <span class="font-bold text-emerald-300">12 de Junho de 2027 (Pav. Desportos)</span>
+            <div class="flex items-center justify-between p-2 rounded-xl bg-amber-500/20 border border-amber-400/40">
+              <span class="text-amber-200 font-semibold">Próxima Prova:</span>
+              <span class="font-black text-amber-300">17 Out &bull; 2ª J. Futsal</span>
+            </div>
+            <div class="flex items-center justify-between pt-1">
+              <span class="text-slate-400">Encerramento Oficial:</span>
+              <span class="font-bold text-slate-300">12 de Junho de 2027</span>
             </div>
           </div>
           <a href="https://forms.gle/YJdnZyUsMB8aBADj6" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-heading font-black text-xs py-3 rounded-xl shadow-lg transition-all">
@@ -287,8 +291,8 @@
         <!-- Timeline of Events -->
         <div class="space-y-3" id="jifEventList">
           
-          <!-- 1. 03/Out/2026: Atletismo Corta Mato -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-emerald-500/50 hover:bg-white/10 transition-all gap-3" data-sport="atletismo">
+          <!-- 1. 03/Out/2026: Atletismo Corta Mato  -->
+          <div class="jif-event-row opacity-85 jif-event-past flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-emerald-500/50 hover:bg-white/10 transition-all gap-3" data-sport="atletismo" data-date="2026-10-03">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-emerald-400">OUT</span>
@@ -308,15 +312,15 @@
               </div>
             </div>
             <div class="sm:text-right flex sm:flex-col items-center sm:items-end justify-between gap-1 border-t sm:border-t-0 border-white/5 pt-2 sm:pt-0">
-              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-amber-500/20 text-[11px] font-bold text-amber-300 border border-amber-500/30">
-                <i data-lucide="flag" class="w-3 h-3"></i>
-                <span>Abertura Oficial</span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-800 text-[11px] font-bold text-slate-300 border border-slate-700 shadow-xs">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <span>Realizada &bull; 03 Out</span>
               </span>
             </div>
           </div>
 
-          <!-- 2. 10/Out/2026: Futsal 1ª Jornada -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal">
+          <!-- 2. 10/Out/2026: Futsal 1ª Jornada  -->
+          <div class="jif-event-row opacity-85 jif-event-past flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal" data-date="2026-10-10">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-amber-400">OUT</span>
@@ -336,12 +340,15 @@
               </div>
             </div>
             <div class="sm:text-right flex sm:flex-col items-center sm:items-end justify-between gap-1 border-t sm:border-t-0 border-white/5 pt-2 sm:pt-0">
-              <span class="text-xs text-slate-300 font-semibold">1ª Jornada</span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-800 text-[11px] font-bold text-slate-300 border border-slate-700 shadow-xs">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <span>Realizada &bull; 10 Out</span>
+              </span>
             </div>
           </div>
 
-          <!-- 3. 17/Out/2026: Futsal 2ª Jornada -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal">
+          <!-- 3. 17/Out/2026: Futsal 2ª Jornada  -->
+          <div class="jif-event-row ring-2 ring-amber-400/50 border-amber-400/80 bg-amber-500/10 jif-event-active shadow-lg flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal" data-date="2026-10-17">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-amber-400">OUT</span>
@@ -361,12 +368,15 @@
               </div>
             </div>
             <div class="sm:text-right flex sm:flex-col items-center sm:items-end justify-between gap-1 border-t sm:border-t-0 border-white/5 pt-2 sm:pt-0">
-              <span class="text-xs text-slate-300 font-semibold">2ª Jornada</span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-[11px] font-black text-slate-950 shadow-lg shadow-amber-500/20 border border-amber-300 animate-pulse">
+                <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+                <span>PRÓXIMA PROVA</span>
+              </span>
             </div>
           </div>
 
-          <!-- 4. 24/Out/2026: Futsal 3ª Jornada -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal">
+          <!-- 4. 24/Out/2026: Futsal 3ª Jornada  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal" data-date="2026-10-24">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-amber-400">OUT</span>
@@ -389,8 +399,8 @@
             </div>
           </div>
 
-          <!-- 5. 31/Out/2026: Futsal 4ª Jornada -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal">
+          <!-- 5. 31/Out/2026: Futsal 4ª Jornada  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal" data-date="2026-10-31">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-amber-400">OUT</span>
@@ -413,8 +423,8 @@
             </div>
           </div>
 
-          <!-- 6. 07/Nov/2026: Futsal 5ª Jornada -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal">
+          <!-- 6. 07/Nov/2026: Futsal 5ª Jornada  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal" data-date="2026-11-07">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-amber-400">NOV</span>
@@ -437,8 +447,8 @@
             </div>
           </div>
 
-          <!-- 7. 14/Nov/2026: Futsal 6ª Jornada -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal">
+          <!-- 7. 14/Nov/2026: Futsal 6ª Jornada  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal" data-date="2026-11-14">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-amber-400">NOV</span>
@@ -461,8 +471,8 @@
             </div>
           </div>
 
-          <!-- 8. 21/Nov/2026: Ténis de Mesa Individual -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-500/50 hover:bg-white/10 transition-all gap-3" data-sport="tenis-mesa">
+          <!-- 8. 21/Nov/2026: Ténis de Mesa Individual  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-500/50 hover:bg-white/10 transition-all gap-3" data-sport="tenis-mesa" data-date="2026-11-21">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-blue-500/15 border border-blue-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-blue-400">NOV</span>
@@ -488,8 +498,8 @@
             </div>
           </div>
 
-          <!-- 9. 28/Nov/2026: Futsal 7ª Jornada -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal">
+          <!-- 9. 28/Nov/2026: Futsal 7ª Jornada  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal" data-date="2026-11-28">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-amber-400">NOV</span>
@@ -512,8 +522,8 @@
             </div>
           </div>
 
-          <!-- 10. 05/Dez/2026: Futsal 8ª Jornada -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal">
+          <!-- 10. 05/Dez/2026: Futsal 8ª Jornada  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal" data-date="2026-12-05">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-amber-400">DEZ</span>
@@ -536,8 +546,8 @@
             </div>
           </div>
 
-          <!-- 11. 12/Dez/2026: Futsal 9ª Jornada -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal">
+          <!-- 11. 12/Dez/2026: Futsal 9ª Jornada  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal" data-date="2026-12-12">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-amber-400">DEZ</span>
@@ -560,8 +570,8 @@
             </div>
           </div>
 
-          <!-- 12. 19/Dez/2026: Torneio de Natal -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/30 hover:border-emerald-400 hover:bg-emerald-950/60 transition-all gap-3" data-sport="futsal">
+          <!-- 12. 19/Dez/2026: Torneio de Natal  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/30 hover:border-emerald-400 hover:bg-emerald-950/60 transition-all gap-3" data-sport="futsal" data-date="2026-12-19">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-emerald-500/20 border border-emerald-400/40 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-black text-emerald-300">DEZ</span>
@@ -587,8 +597,8 @@
             </div>
           </div>
 
-          <!-- 13. 09/Jan/2027: Futsal 10ª Jornada -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal">
+          <!-- 13. 09/Jan/2027: Futsal 10ª Jornada  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal" data-date="2027-01-09">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-amber-400">JAN</span>
@@ -611,8 +621,8 @@
             </div>
           </div>
 
-          <!-- 14. 16/Jan/2027: Futsal 11ª Jornada -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal">
+          <!-- 14. 16/Jan/2027: Futsal 11ª Jornada  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal" data-date="2027-01-16">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-amber-400">JAN</span>
@@ -635,8 +645,8 @@
             </div>
           </div>
 
-          <!-- 15. 23/Jan/2027: Badminton Individual -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-purple-500/50 hover:bg-white/10 transition-all gap-3" data-sport="badminton">
+          <!-- 15. 23/Jan/2027: Badminton Individual  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-purple-500/50 hover:bg-white/10 transition-all gap-3" data-sport="badminton" data-date="2027-01-23">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-purple-500/15 border border-purple-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-purple-400">JAN</span>
@@ -662,8 +672,8 @@
             </div>
           </div>
 
-          <!-- 16. 30/Jan/2027: Futsal 12ª Jornada -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal">
+          <!-- 16. 30/Jan/2027: Futsal 12ª Jornada  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal" data-date="2027-01-30">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-amber-400">JAN</span>
@@ -686,8 +696,8 @@
             </div>
           </div>
 
-          <!-- 17. 06/Fev/2027: Futsal 13ª Jornada -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal">
+          <!-- 17. 06/Fev/2027: Futsal 13ª Jornada  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal" data-date="2027-02-06">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-amber-400">FEV</span>
@@ -710,8 +720,8 @@
             </div>
           </div>
 
-          <!-- 18. 20/Fev/2027: Futsal 14ª Jornada -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal">
+          <!-- 18. 20/Fev/2027: Futsal 14ª Jornada  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal" data-date="2027-02-20">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-amber-400">FEV</span>
@@ -734,8 +744,8 @@
             </div>
           </div>
 
-          <!-- 19. 27/Fev/2027: Duatlo em Duplas -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-emerald-500/50 hover:bg-white/10 transition-all gap-3" data-sport="duatlo">
+          <!-- 19. 27/Fev/2027: Duatlo em Duplas  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-emerald-500/50 hover:bg-white/10 transition-all gap-3" data-sport="duatlo" data-date="2027-02-27">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-emerald-400">FEV</span>
@@ -761,8 +771,8 @@
             </div>
           </div>
 
-          <!-- 20. 06/Mar/2027: Futsal 15ª Jornada -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal">
+          <!-- 20. 06/Mar/2027: Futsal 15ª Jornada  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal" data-date="2027-03-06">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-amber-400">MAR</span>
@@ -785,8 +795,8 @@
             </div>
           </div>
 
-          <!-- 21. 13/Mar/2027: Futsal 16ª Jornada -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal">
+          <!-- 21. 13/Mar/2027: Futsal 16ª Jornada  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal" data-date="2027-03-13">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-amber-400">MAR</span>
@@ -809,8 +819,8 @@
             </div>
           </div>
 
-          <!-- 22. 20/Mar/2027: Futsal 17ª Jornada -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal">
+          <!-- 22. 20/Mar/2027: Futsal 17ª Jornada  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal" data-date="2027-03-20">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-amber-400">MAR</span>
@@ -833,8 +843,8 @@
             </div>
           </div>
 
-          <!-- 23. 27/Mar/2027: Torneio de Páscoa -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-amber-950/40 border border-amber-500/30 hover:border-amber-400 hover:bg-amber-950/60 transition-all gap-3" data-sport="futsal">
+          <!-- 23. 27/Mar/2027: Torneio de Páscoa  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-amber-950/40 border border-amber-500/30 hover:border-amber-400 hover:bg-amber-950/60 transition-all gap-3" data-sport="futsal" data-date="2027-03-27">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-amber-500/20 border border-amber-400/40 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-black text-amber-300">MAR</span>
@@ -859,8 +869,8 @@
             </div>
           </div>
 
-          <!-- 24. 10/Abr/2027: Futsal 18ª Jornada (Última) -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal">
+          <!-- 24. 10/Abr/2027: Futsal 18ª Jornada (Última)  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal" data-date="2027-04-10">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-amber-400">ABR</span>
@@ -886,8 +896,8 @@
             </div>
           </div>
 
-          <!-- 25. 17/Abr/2027: Atletismo Pista e Milha -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-emerald-500/50 hover:bg-white/10 transition-all gap-3" data-sport="atletismo">
+          <!-- 25. 17/Abr/2027: Atletismo Pista e Milha  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-emerald-500/50 hover:bg-white/10 transition-all gap-3" data-sport="atletismo" data-date="2027-04-17">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-emerald-400">ABR</span>
@@ -910,8 +920,8 @@
             </div>
           </div>
 
-          <!-- 26. 24/Abr/2027: Futebol de 7 Infantis -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-green-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futebol">
+          <!-- 26. 24/Abr/2027: Futebol de 7 Infantis  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-green-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futebol" data-date="2027-04-24">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-green-500/15 border border-green-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-green-400">ABR</span>
@@ -934,8 +944,8 @@
             </div>
           </div>
 
-          <!-- 27. 01/Mai/2027: Torneio Inter-Freguesias 1º de Maio -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-green-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futebol">
+          <!-- 27. 01/Mai/2027: Torneio Inter-Freguesias 1º de Maio  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-green-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futebol" data-date="2027-05-01">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-green-500/15 border border-green-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-green-400">MAI</span>
@@ -956,8 +966,8 @@
             </div>
           </div>
 
-          <!-- 28. 08/Mai/2027: Ténis de Mesa por Equipas -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-500/50 hover:bg-white/10 transition-all gap-3" data-sport="tenis-mesa">
+          <!-- 28. 08/Mai/2027: Ténis de Mesa por Equipas  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-500/50 hover:bg-white/10 transition-all gap-3" data-sport="tenis-mesa" data-date="2027-05-08">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-blue-500/15 border border-blue-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-blue-400">MAI</span>
@@ -980,8 +990,8 @@
             </div>
           </div>
 
-          <!-- 29. 15/Mai/2027: Badminton em Duplas -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-purple-500/50 hover:bg-white/10 transition-all gap-3" data-sport="badminton">
+          <!-- 29. 15/Mai/2027: Badminton em Duplas  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-purple-500/50 hover:bg-white/10 transition-all gap-3" data-sport="badminton" data-date="2027-05-15">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-purple-500/15 border border-purple-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-purple-400">MAI</span>
@@ -1004,8 +1014,8 @@
             </div>
           </div>
 
-          <!-- 30. 22/Mai/2027: Finais Futebol de 7 -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-green-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futebol">
+          <!-- 30. 22/Mai/2027: Finais Futebol de 7  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-green-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futebol" data-date="2027-05-22">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-green-500/15 border border-green-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-green-400">MAI</span>
@@ -1030,8 +1040,8 @@
             </div>
           </div>
 
-          <!-- 31. 29/Mai/2027: Futebol de Praia (Abertura no Areal) -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="praia">
+          <!-- 31. 29/Mai/2027: Futebol de Praia (Abertura no Areal)  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="praia" data-date="2027-05-29">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-amber-400">MAI</span>
@@ -1054,8 +1064,8 @@
             </div>
           </div>
 
-          <!-- 32. 05/Jun/2027: Futebol de Praia (Finais no Areal) -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="praia">
+          <!-- 32. 05/Jun/2027: Futebol de Praia (Finais no Areal)  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="praia" data-date="2027-06-05">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
                 <span class="text-[10px] uppercase font-extrabold text-amber-400">JUN</span>
@@ -1080,8 +1090,8 @@
             </div>
           </div>
 
-          <!-- 33. 12/Jun/2027: GRANDE ENCERRAMENTO E FESTA OFICIAL -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-5 rounded-3xl bg-gradient-to-r from-amber-950/70 via-slate-900 to-emerald-950/70 border-2 border-amber-400/50 shadow-2xl gap-4" data-sport="all">
+          <!-- 33. 12/Jun/2027: GRANDE ENCERRAMENTO E FESTA OFICIAL  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-5 rounded-3xl bg-gradient-to-r from-amber-950/70 via-slate-900 to-emerald-950/70 border-2 border-amber-400/50 shadow-2xl gap-4data-sport="all" data-date="2027-06-12">
             <div class="flex items-start sm:items-center gap-4">
               <div class="w-16 h-16 rounded-2xl bg-amber-500 text-slate-950 flex flex-col items-center justify-center flex-shrink-0 text-center shadow-lg font-heading">
                 <span class="text-[11px] uppercase font-black tracking-wider">JUN</span>
@@ -1507,6 +1517,58 @@
         });
       });
     }
+
+    // Auto-update event rows dynamically based on current date
+    function updateJifCalendarByDate() {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const day = String(now.getDate()).padStart(2, '0');
+      const todayStr = `${year}-${month}-${day}`;
+      
+      const activeDate = todayStr < '2026-10-03' ? '2026-10-14' : todayStr;
+      
+      const rows = document.querySelectorAll('.jif-event-row[data-date]');
+      let firstUpcoming = null;
+      let pastCount = 0;
+      
+      rows.forEach(row => {
+        const rowDate = row.getAttribute('data-date');
+        if (!rowDate) return;
+        
+        if (rowDate < activeDate) {
+          pastCount++;
+          row.classList.add('opacity-85', 'jif-event-past');
+          row.classList.remove('ring-2', 'ring-amber-400/50', 'border-amber-400/80', 'bg-amber-500/10', 'jif-event-active', 'shadow-lg');
+          const badgeCol = row.querySelector('.sm\\:text-right');
+          if (badgeCol && !badgeCol.querySelector('.jif-done-badge')) {
+            badgeCol.innerHTML = `
+              <span class="jif-done-badge inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-800 text-[11px] font-bold text-slate-300 border border-slate-700 shadow-xs">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <span>Realizada</span>
+              </span>
+            `;
+          }
+        } else if (!firstUpcoming && rowDate >= activeDate) {
+          firstUpcoming = row;
+          row.classList.add('ring-2', 'ring-amber-400/50', 'border-amber-400/80', 'bg-amber-500/10', 'jif-event-active', 'shadow-lg');
+          row.classList.remove('opacity-85', 'jif-event-past');
+          const badgeCol = row.querySelector('.sm\\:text-right');
+          if (badgeCol && !badgeCol.querySelector('.jif-next-badge')) {
+            badgeCol.innerHTML = `
+              <span class="jif-next-badge inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-[11px] font-black text-slate-950 shadow-lg shadow-amber-500/20 border border-amber-300 animate-pulse">
+                <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+                <span>PRÓXIMA PROVA</span>
+              </span>
+            `;
+          }
+        }
+      });
+
+      if (window.lucide) lucide.createIcons();
+    }
+    document.addEventListener('DOMContentLoaded', updateJifCalendarByDate);
+    updateJifCalendarByDate();
   </script>
 </body>
 </html>
