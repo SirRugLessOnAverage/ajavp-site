@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O Clube &bull; História, Instalações &amp; Documentos • AJAVP</title>
+  <meta name="description" content="Conhece a história da Associação Jovens e Adultos de Vilar do Pinheiro, os 3 pavilhões e instalações desportivas, a documentação oficial e o projeto associativo.">
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-brand-green: #387b5b;
+      --color-brand-greenDark: #2d6349;
+      --color-brand-navy: #1b4557;
+      --color-brand-navyDark: #13323f;
+      --color-brand-accent: #f2a93b;
+      --color-brand-grayBg: #f8fafc;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-sans: 'Inter', sans-serif;
+    }
+  </style>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+    }
+    h1, h2, h3, h4, h5, h6, .font-heading {
+      font-family: 'Montserrat', sans-serif;
+    }
+    .hero-pattern {
+      background-color: #1b4557;
+      background-image: radial-gradient(rgba(56, 123, 91, 0.45) 1.5px, transparent 1.5px), radial-gradient(rgba(242, 169, 59, 0.25) 1.5px, #1b4557 1.5px);
+      background-size: 60px 60px;
+      background-position: 0 0, 30px 30px;
+    }
+
+    /* Emil Kowalski Craft & Motion System */
+    :root {
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    html, body {
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      scroll-behavior: smooth;
+    }
+    button:active,
+    a[href]:active,
+    .cursor-pointer:active {
+      transform: scale(0.965) !important;
+      transition: transform 120ms var(--ease-out) !important;
+    }
+    .bg-white.rounded-2xl,
+    .bg-white.rounded-3xl,
+    article {
+      box-shadow: 0 1px 2px rgba(15,23,42,0.03), 0 12px 28px -6px rgba(15,23,42,0.07), inset 0 1px 0 0 rgba(255,255,255,0.95) !important;
+      transition: transform 240ms var(--ease-spring), box-shadow 240ms var(--ease-spring) !important;
+    }
+    .bg-white.rounded-2xl:hover,
+    .bg-white.rounded-3xl:hover {
+      transform: translateY(-4px) scale(1.008) !important;
+      box-shadow: 0 24px 38px -10px rgba(15,23,42,0.12), 0 8px 16px -4px rgba(15,23,42,0.05), inset 0 1px 0 0 rgba(255,255,255,1) !important;
+    }
+    #whatsappPopup:not(.hidden) {
+      animation: craftModalEnter 220ms var(--ease-spring) forwards !important;
+    }
+    @keyframes craftModalEnter {
+      from { opacity: 0; transform: scale(0.95) translateY(10px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-brand-grayBg text-slate-800 antialiased selection:bg-brand-green selection:text-white">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-brand-green text-white py-2 px-4 text-center text-xs sm:text-sm font-medium flex items-center justify-center gap-2 shadow-inner">
+    <span class="inline-flex items-center justify-center px-2 py-0.5 rounded-full text-xs font-bold bg-white text-brand-green uppercase tracking-wider">Fundada em 1989</span>
+    <span>AJAVP &bull; "A Tua Terra Tem Futuro" &bull; Vilar do Pinheiro, Vila do Conde 🌲</span>
+    <a href="contactos.html" class="underline hover:text-amber-200 font-semibold ml-1 hidden sm:inline">Visita a nossa sede &rarr;</a>
+  </div>
+
+  <!-- Header & Navbar -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-300" id="mainHeader">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105">
+        <div class="flex flex-col">
+          <span class="font-heading font-extrabold text-brand-navy text-lg sm:text-xl tracking-tight leading-tight">AJAVP</span>
+          <span class="text-xs text-brand-green font-semibold tracking-wide hidden sm:block">Associação Jovens e Adultos de Vilar do Pinheiro</span>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-1 xl:gap-2">
+        <a href="index.html" class="text-slate-700 hover:text-brand-green font-semibold text-sm px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">Início</a>
+        <a href="jif.html" class="text-slate-700 hover:text-amber-600 font-semibold text-sm px-3.5 py-2 rounded-xl hover:bg-amber-50/60 transition-colors flex items-center gap-1.5">
+          <i data-lucide="medal" class="w-4 h-4 text-amber-500"></i>
+          <span>JIF 2026/27</span>
+          <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-500 text-white">XXXX</span>
+        </a>
+        <a href="modalidades.html" class="text-slate-700 hover:text-brand-green font-semibold text-sm px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">Modalidades &amp; Treinos</a>
+        <a href="clube.html" class="text-brand-green bg-emerald-50/80 font-bold text-sm px-3.5 py-2 rounded-xl transition-colors border border-emerald-200/60">O Clube</a>
+        <a href="multimedia.html" class="text-slate-700 hover:text-brand-green font-semibold text-sm px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">Multimédia</a>
+        <a href="contactos.html" class="text-slate-700 hover:text-brand-green font-semibold text-sm px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">Contactos</a>
+      </nav>
+
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="https://forms.gle/YJdnZyUsMB8aBADj6" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-brand-green hover:bg-brand-greenDark text-white px-4 py-2.5 rounded-full font-heading font-semibold text-sm shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 whitespace-nowrap">
+          <i data-lucide="user-plus" class="w-4 h-4"></i>
+          <span>Quero Fazer Parte!</span>
+        </a>
+      </div>
+
+      <button id="mobileMenuBtn" aria-label="Abrir menu" class="lg:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100 transition-colors">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-200 px-6 py-6 shadow-xl space-y-3 max-h-[85vh] overflow-y-auto">
+      <div class="space-y-1.5 text-sm font-medium">
+        <a href="index.html" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-50">
+          <span class="flex items-center gap-2.5 font-bold"><i data-lucide="home" class="w-4 h-4 text-emerald-600"></i> Início</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="jif.html" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 hover:bg-amber-50">
+          <span class="flex items-center gap-2.5 font-bold"><i data-lucide="medal" class="w-4 h-4 text-amber-500"></i> Jogos Inter-Freguesias (JIF)</span>
+          <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-500 text-white">XXXX</span>
+        </a>
+        <a href="modalidades.html" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-50">
+          <span class="flex items-center gap-2.5 font-bold"><i data-lucide="trophy" class="w-4 h-4 text-emerald-600"></i> Modalidades &amp; Treinos</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="clube.html" class="flex items-center justify-between py-2.5 px-3 rounded-xl bg-emerald-50 text-emerald-900 border border-emerald-200/70 font-bold">
+          <span class="flex items-center gap-2.5"><i data-lucide="shield" class="w-4 h-4 text-blue-600"></i> O Clube &amp; Pavilhões</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="multimedia.html" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-50">
+          <span class="flex items-center gap-2.5 font-bold"><i data-lucide="image" class="w-4 h-4 text-purple-600"></i> Galeria &amp; Vídeos</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="contactos.html" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-50">
+          <span class="flex items-center gap-2.5 font-bold"><i data-lucide="phone" class="w-4 h-4 text-teal-600"></i> Contactos &amp; Inscrições</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+      </div>
+      <div class="pt-3 border-t border-slate-100">
+        <a href="https://forms.gle/YJdnZyUsMB8aBADj6" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 bg-brand-green text-white py-3 rounded-xl font-heading font-bold text-xs shadow-md">
+          <i data-lucide="user-plus" class="w-4 h-4"></i>
+          <span>Inscrever Atleta na AJAVP</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Header -->
+  <section class="relative hero-pattern text-white py-16 sm:py-20 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-500/30">
+          <i data-lucide="shield" class="w-4 h-4 text-emerald-400"></i>
+          <span>Identidade, Valores &amp; Instalações</span>
+        </div>
+        <h1 class="font-heading font-black text-3xl sm:text-5xl text-white tracking-tight leading-tight">
+          O Clube &bull; AJAVP
+        </h1>
+        <p class="text-slate-200 text-sm sm:text-base leading-relaxed">
+          Fundada a 14 de Abril de 1989, a Associação Jovens e Adultos de Vilar do Pinheiro tem como missão primordial incentivar a atividade física, o civismo e a união entre gerações na nossa terra.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre a Associação & Órgãos Sociais -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+          <div class="space-y-2">
+            <span class="text-xs font-bold uppercase tracking-widest text-brand-green">A Nossa História</span>
+            <h2 class="font-heading font-black text-3xl sm:text-4xl text-brand-navy">
+              Mais de 35 Anos ao Serviço de Vilar do Pinheiro
+            </h2>
+          </div>
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+            A AJAVP nasceu da vontade de criar um espaço onde as crianças, os jovens e os adultos da freguesia pudessem praticar desporto com qualidade, segurança e valores éticos sólidos.
+          </p>
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+            Ao longo de mais de três décadas, o clube formou centenas de atletas, participou ininterruptamente nos Jogos Inter-Freguesias de Vila do Conde e expandiu as suas atividades para modalidades como o Futsal, Atletismo, Ténis de Mesa, Duatlo e Badminton.
+          </p>
+          <div class="grid grid-cols-3 gap-4 pt-4 border-t border-slate-100 text-center">
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
+              <div class="font-heading font-black text-2xl sm:text-3xl text-brand-navy">+150</div>
+              <div class="text-[11px] font-semibold text-slate-500 uppercase mt-0.5">Atletas Ativos</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
+              <div class="font-heading font-black text-2xl sm:text-3xl text-brand-green">6</div>
+              <div class="text-[11px] font-semibold text-slate-500 uppercase mt-0.5">Modalidades</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
+              <div class="font-heading font-black text-2xl sm:text-3xl text-amber-600">35+</div>
+              <div class="text-[11px] font-semibold text-slate-500 uppercase mt-0.5">Anos de História</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-slate-900 text-white space-y-6 shadow-2xl border border-white/10">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+              <i data-lucide="scale" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="font-heading font-bold text-lg text-white">Órgãos Sociais &amp; Legalidade</h3>
+              <p class="text-xs text-slate-400">Associação legalmente constituída sem fins lucrativos</p>
+            </div>
+          </div>
+          <div class="space-y-3 text-xs text-slate-300">
+            <div class="flex justify-between py-2 border-b border-white/10">
+              <span class="text-slate-400">Nome Oficial:</span>
+              <span class="font-bold text-white text-right">Associação Jovens e Adultos de Vilar do Pinheiro</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-white/10">
+              <span class="text-slate-400">NIPC / NIF:</span>
+              <span class="font-mono font-bold text-amber-300">519 096 045</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-white/10">
+              <span class="text-slate-400">Data de Constituição:</span>
+              <span class="font-bold text-white">14 de Abril de 1989</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-white/10">
+              <span class="text-slate-400">Sede Social:</span>
+              <span class="font-bold text-white">Vilar do Pinheiro, Vila do Conde</span>
+            </div>
+            <div class="flex justify-between py-2">
+              <span class="text-slate-400">Filiação Desportiva:</span>
+              <span class="font-bold text-emerald-300">ADCCVC / Jogos Inter-Freguesias</span>
+            </div>
+          </div>
+          <a href="https://drive.google.com/file/d/1F0DrwMzSioop_dyUVbqdEgmP7I0g24qL/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white py-3 rounded-xl font-bold text-xs transition-colors border border-white/15">
+            <i data-lucide="file-text" class="w-4 h-4"></i>
+            <span>Consultar Estatutos de Fundação (PDF)</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- As Nossas Instalações & 3 Pavilhões (Com Google Maps) -->
+  <section id="locais" class="py-20 bg-brand-grayBg border-y border-slate-200/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <div class="max-w-3xl space-y-3">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-green">Instalações Desportivas</span>
+        <h2 class="font-heading font-black text-3xl sm:text-4xl text-brand-navy">Onde Treinamos e Jogamos</h2>
+        <p class="text-slate-600 text-sm sm:text-base">
+          Conhece a localização exata de cada um dos recintos com mapas interativos e rotas GPS diretas para o telemóvel.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- 1. Pavilhão de Canidelo -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800 uppercase">Pavilhão Coberto &bull; 4.ªs Feiras</span>
+              <a href="https://maps.google.com/?q=41.314959,-8.681144" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-blue-600 transition-colors" title="Abrir Google Maps">
+                <i data-lucide="external-link" class="w-4 h-4"></i>
+              </a>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-brand-navy">Pavilhão de Canidelo</h3>
+            <p class="text-xs text-slate-500">Canidelo, Vila do Conde</p>
+            <p class="text-xs text-slate-600">Treinos de Futsal Sub-11 (19h00–20h00) e Sub-13 (20h00–21h00) todas as quartas-feiras.</p>
+          </div>
+          <div class="h-56 rounded-2xl overflow-hidden border border-slate-200">
+            <iframe title="Mapa Pavilhão Canidelo" src="https://maps.google.com/maps?q=41.314959,-8.681144&z=16&output=embed" class="w-full h-full border-0" loading="lazy"></iframe>
+          </div>
+          <a href="https://maps.google.com/?q=41.314959,-8.681144" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-brand-green hover:underline flex items-center justify-between pt-1">
+            <span>Traçar Rota no Google Maps</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <!-- 2. Pavilhão MaiaSport -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 uppercase">Pavilhão Coberto &bull; 5.ªs Feiras</span>
+              <a href="https://maps.google.com/?q=41.248649,-8.658671" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-emerald-600 transition-colors" title="Abrir Google Maps">
+                <i data-lucide="external-link" class="w-4 h-4"></i>
+              </a>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-brand-navy">Pavilhão MaiaSport (Pedras Rubras)</h3>
+            <p class="text-xs text-slate-500">Moreira da Maia, Maia</p>
+            <p class="text-xs text-slate-600">Treinos dados principalmente aos Sub-9 às quintas-feiras (19h00–20h00), rotativo com Sub-7 e Sub-13.</p>
+          </div>
+          <div class="h-56 rounded-2xl overflow-hidden border border-slate-200">
+            <iframe title="Mapa Pavilhão MaiaSport" src="https://maps.google.com/maps?q=41.248649,-8.658671&z=16&output=embed" class="w-full h-full border-0" loading="lazy"></iframe>
+          </div>
+          <a href="https://maps.google.com/?q=41.248649,-8.658671" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-brand-green hover:underline flex items-center justify-between pt-1">
+            <span>Traçar Rota no Google Maps</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <!-- 3. Ringue de Vilar do Pinheiro -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 uppercase">Ringue Polidesportivo</span>
+              <a href="https://maps.google.com/?q=41.272285,-8.663397" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-amber-600 transition-colors" title="Abrir Google Maps">
+                <i data-lucide="external-link" class="w-4 h-4"></i>
+              </a>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-brand-navy">Ringue de Vilar do Pinheiro</h3>
+            <p class="text-xs text-slate-500">Vilar do Pinheiro, Vila do Conde</p>
+            <p class="text-xs text-slate-600">Recinto ao ar livre de treinos regulares de 2.ª a 6.ª (19h00) e sábados de manhã (09h00–11h00).</p>
+          </div>
+          <div class="h-56 rounded-2xl overflow-hidden border border-slate-200">
+            <iframe title="Mapa Ringue AJAVP" src="https://maps.google.com/maps?q=41.272285,-8.663397&z=17&output=embed" class="w-full h-full border-0" loading="lazy"></iframe>
+          </div>
+          <a href="https://maps.google.com/?q=41.272285,-8.663397" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-brand-green hover:underline flex items-center justify-between pt-1">
+            <span>Traçar Rota no Google Maps</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <!-- 4. Sede da Associação AJAVP -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-800 uppercase">Sede &bull; Secretaria</span>
+              <a href="https://maps.google.com/?q=41.265929,-8.673955" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-slate-700 transition-colors" title="Abrir Google Maps">
+                <i data-lucide="external-link" class="w-4 h-4"></i>
+              </a>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-brand-navy">Sede Social da AJAVP</h3>
+            <p class="text-xs text-slate-500">Vilar do Pinheiro, Vila do Conde</p>
+            <p class="text-xs text-slate-600">Atendimento aos associados, reuniões de direção e entrega de documentação.</p>
+          </div>
+          <div class="h-56 rounded-2xl overflow-hidden border border-slate-200">
+            <iframe title="Mapa Sede AJAVP" src="https://maps.google.com/maps?q=41.265929,-8.673955&z=17&output=embed" class="w-full h-full border-0" loading="lazy"></iframe>
+          </div>
+          <a href="https://maps.google.com/?q=41.265929,-8.673955" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-brand-green hover:underline flex items-center justify-between pt-1">
+            <span>Traçar Rota no Google Maps</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <!-- 5. Junta de Freguesia (Salão Nobre) -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between space-y-4 md:col-span-2">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 uppercase">Salão Nobre &bull; Ténis de Mesa &amp; Atletismo</span>
+              <a href="https://maps.google.com/?q=Junta+de+Freguesia+de+Vilar+do+Pinheiro" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-amber-600 transition-colors" title="Abrir Google Maps">
+                <i data-lucide="external-link" class="w-4 h-4"></i>
+              </a>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-brand-navy">Junta de Freguesia de Vilar do Pinheiro</h3>
+            <p class="text-xs text-slate-500">Rua da Igreja, Vilar do Pinheiro</p>
+            <p class="text-xs text-slate-600">Local oficial dos treinos de Ténis de Mesa aos sábados (16h00 e 17h00) e ponto de encontro dominical do Atletismo (09h00).</p>
+          </div>
+          <div class="h-56 rounded-2xl overflow-hidden border border-slate-200">
+            <iframe title="Mapa Junta de Freguesia" src="https://maps.google.com/maps?q=Junta+de+Freguesia+de+Vilar+do+Pinheiro&z=17&output=embed" class="w-full h-full border-0" loading="lazy"></iframe>
+          </div>
+          <a href="https://maps.google.com/?q=Junta+de+Freguesia+de+Vilar+do+Pinheiro" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-brand-green hover:underline flex items-center justify-between pt-1">
+            <span>Traçar Rota no Google Maps</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Documentação Oficial & Fichas de Inscrição em PDF -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <div class="max-w-3xl space-y-3">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-green">Transparência &amp; Atendimento</span>
+        <h2 class="font-heading font-black text-3xl sm:text-4xl text-brand-navy">Balcão Documental da AJAVP</h2>
+        <p class="text-slate-600 text-sm sm:text-base">
+          Descarrega e consulta os regulamentos internos, autorizações de treino experimental e o caderno oficial de patrocínios.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Doc 1: Estatutos -->
+        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow">
+          <div class="space-y-2">
+            <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center">
+              <i data-lucide="file-check" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-heading font-bold text-base text-brand-navy">Estatutos &amp; Constituição</h4>
+            <p class="text-xs text-slate-500">Documento legal de fundação da associação e constituição dos órgãos sociais.</p>
+          </div>
+          <a href="https://drive.google.com/file/d/1F0DrwMzSioop_dyUVbqdEgmP7I0g24qL/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-brand-green hover:underline inline-flex items-center gap-1.5 pt-2 border-t border-slate-200">
+            <span>Abrir no Google Drive (PDF)</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Doc 2: Regulamento Interno -->
+        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow">
+          <div class="space-y-2">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-brand-green flex items-center justify-center">
+              <i data-lucide="scale" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-heading font-bold text-base text-brand-navy">Regulamento Interno</h4>
+            <p class="text-xs text-slate-500">Normas disciplinares, direitos e deveres dos atletas, encarregados e equipas técnicas.</p>
+          </div>
+          <a href="https://drive.google.com/file/d/1ZNM66sC4utRexz40rBJzbF7MJm6CtXFf/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-brand-green hover:underline inline-flex items-center gap-1.5 pt-2 border-t border-slate-200">
+            <span>Abrir no Google Drive (PDF)</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Doc 3: Manual de Assiduidade -->
+        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow">
+          <div class="space-y-2">
+            <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center">
+              <i data-lucide="calendar-check" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-heading font-bold text-base text-brand-navy">Manual de Assiduidade</h4>
+            <p class="text-xs text-slate-500">Regras de assiduidade aos treinos para convocatórias aos jogos oficiais JIF.</p>
+          </div>
+          <a href="https://drive.google.com/file/d/1B3VBHHsfP3yC0T0u9-nv15TFklk6T6RI/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-brand-green hover:underline inline-flex items-center gap-1.5 pt-2 border-t border-slate-200">
+            <span>Abrir no Google Drive (PDF)</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Doc 4: Treino Experimental -->
+        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow">
+          <div class="space-y-2">
+            <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center">
+              <i data-lucide="user-check" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-heading font-bold text-base text-brand-navy">Treino Experimental</h4>
+            <p class="text-xs text-slate-500">Autorização prévia obrigatória dos pais para a primeira sessão de treino de atletas menores.</p>
+          </div>
+          <a href="https://drive.google.com/file/d/18FvwM6ge-8DQrFbSaeHmLjOtq2AbDPOD/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-brand-green hover:underline inline-flex items-center gap-1.5 pt-2 border-t border-slate-200">
+            <span>Abrir no Google Drive (PDF)</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Doc 5: Declaração de Imagem -->
+        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow">
+          <div class="space-y-2">
+            <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center">
+              <i data-lucide="camera" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-heading font-bold text-base text-brand-navy">Recolha de Imagem</h4>
+            <p class="text-xs text-slate-500">Autorização para registo fotográfico institucional, Jogos Inter-Freguesias e redes sociais.</p>
+          </div>
+          <a href="https://drive.google.com/file/d/1H_pJp6fOknpFQXDx_ZLuxGAFOu1MA_qc/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-brand-green hover:underline inline-flex items-center gap-1.5 pt-2 border-t border-slate-200">
+            <span>Abrir no Google Drive (PDF)</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Doc 6: Caderno de Patrocínios -->
+        <div class="p-6 rounded-3xl bg-gradient-to-br from-amber-50 to-orange-50/60 border-2 border-amber-300 flex flex-col justify-between space-y-4 hover:shadow-lg transition-all">
+          <div class="space-y-2">
+            <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center shadow-xs">
+              <i data-lucide="award" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-heading font-bold text-base text-slate-900">Caderno de Patrocínios 26/27</h4>
+            <p class="text-xs text-slate-600">Dossiê oficial para empresas com pacotes de visibilidade em equipamentos e recintos.</p>
+          </div>
+          <a href="https://drive.google.com/file/d/17d_U3W1jgAcoWb3--tZWHUZDmdBLvivS/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-amber-900 underline inline-flex items-center gap-1.5 pt-2 border-t border-amber-200">
+            <span>Descarregar Proposta Oficial (PDF)</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Rodapé & Footer -->
+  <footer class="bg-brand-navyDark text-white pt-16 pb-12 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+        
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-3">
+            <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto bg-white p-1 rounded-lg">
+            <div>
+              <h3 class="font-heading font-bold text-lg text-white">AJAVP</h3>
+              <p class="text-xs text-emerald-300">Vilar do Pinheiro &bull; Época 2026/2027</p>
+            </div>
+          </div>
+          <p class="text-slate-300 text-sm max-w-sm">
+            Associação Jovens e Adultos de Vilar do Pinheiro. Promovemos o desporto, a saúde e os laços comunitários com dedicação a todas as gerações.
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-white">Navegação</h4>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li><a href="index.html" class="hover:text-emerald-300 transition-colors">Página Inicial</a></li>
+            <li><a href="jif.html" class="hover:text-emerald-300 transition-colors">JIF 2026/27</a></li>
+            <li><a href="modalidades.html" class="hover:text-emerald-300 transition-colors">Modalidades &amp; Treinos</a></li>
+            <li><a href="clube.html" class="hover:text-emerald-300 transition-colors text-emerald-300 font-bold">O Clube &amp; Pavilhões</a></li>
+            <li><a href="multimedia.html" class="hover:text-emerald-300 transition-colors">Multimédia &amp; Vídeos</a></li>
+            <li><a href="contactos.html" class="hover:text-emerald-300 transition-colors">Contactos &amp; Inscrições</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-3 lg:col-span-2">
+          <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-white">Canais Oficiais</h4>
+          <div class="flex flex-col space-y-2 text-sm text-slate-300">
+            <a href="https://www.instagram.com/ajavp.javip" target="_blank" rel="noopener noreferrer" class="hover:text-pink-400 transition-colors">Instagram @ajavp.javip</a>
+            <a href="https://www.facebook.com/ajavp.oficial" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition-colors">Facebook ajavp.oficial</a>
+            <a href="https://www.youtube.com/@AJAVP" target="_blank" rel="noopener noreferrer" class="hover:text-red-400 transition-colors">YouTube @AJAVP</a>
+            <a href="https://chat.whatsapp.com/BLxsjBfDw7AEAonDy72187" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition-colors">Comunidade WhatsApp</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+        <p>&copy; 2026 Associação Jovens e Adultos de Vilar do Pinheiro. Todos os direitos reservados.</p>
+        <p class="text-slate-500">Desenvolvido para a comunidade de Vilar do Pinheiro.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Widget -->
+  <div id="whatsappWidget" class="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end">
+    <div id="whatsappPopup" class="hidden mb-4 w-[calc(100vw-2.5rem)] sm:w-88 max-w-sm bg-white rounded-3xl shadow-2xl border border-slate-200/80 overflow-hidden transform transition-all duration-300 origin-bottom-right">
+      <div class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white p-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-white p-1 flex items-center justify-center shadow-md">
+            <img src="assets/images/logo.png" alt="AJAVP" class="w-full h-full object-contain">
+          </div>
+          <div>
+            <h4 class="font-heading font-bold text-sm leading-tight text-white">AJAVP &bull; Apoio</h4>
+            <p class="text-[11px] text-emerald-100 flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse"></span>
+              <span>Disponível no WhatsApp</span>
+            </p>
+          </div>
+        </div>
+        <button id="closeWhatsappBtn" aria-label="Fechar WhatsApp" class="text-white/80 hover:text-white p-1 rounded-lg hover:bg-white/10 transition-colors">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="p-4 bg-slate-50 space-y-3">
+        <div class="bg-white p-3 rounded-2xl border border-slate-200 text-xs text-slate-700">
+          <p class="font-semibold text-slate-900">Olá! 👋</p>
+          <p class="text-slate-600 mt-0.5">Precisas de ajuda sobre localizações, documentos ou patrocínios da AJAVP?</p>
+        </div>
+        <div class="space-y-2">
+          <a href="https://wa.me/351917194933?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20a%20dire%C3%A7%C3%A3o%20da%20AJAVP." target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3 bg-white hover:bg-emerald-50 rounded-2xl border border-slate-200 hover:border-emerald-300 transition-all shadow-xs">
+            <div class="w-8 h-8 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="message-square" class="w-4 h-4"></i>
+            </div>
+            <div class="flex-1 text-left min-w-0">
+              <span class="font-bold text-xs text-slate-800 block">Falar com a Direção</span>
+              <span class="text-[11px] text-slate-500 block">Secretaria da AJAVP</span>
+            </div>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <button id="toggleWhatsappBtn" aria-label="Abrir WhatsApp AJAVP" class="group relative flex items-center gap-2.5 bg-[#25D366] hover:bg-[#20ba59] text-white p-3.5 sm:px-4 sm:py-3.5 rounded-full shadow-2xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer">
+      <svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.01-1.24-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.71 4.3 3.79.6.26 1.07.41 1.44.53.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.28z"/>
+      </svg>
+      <span class="font-heading font-bold text-xs hidden sm:inline-block tracking-wide">Falar no WhatsApp</span>
+    </button>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    const toggleWhatsappBtn = document.getElementById('toggleWhatsappBtn');
+    const closeWhatsappBtn = document.getElementById('closeWhatsappBtn');
+    const whatsappPopup = document.getElementById('whatsappPopup');
+    if (toggleWhatsappBtn && whatsappPopup) {
+      toggleWhatsappBtn.addEventListener('click', () => {
+        whatsappPopup.classList.toggle('hidden');
+      });
+    }
+    if (closeWhatsappBtn && whatsappPopup) {
+      closeWhatsappBtn.addEventListener('click', () => {
+        whatsappPopup.classList.add('hidden');
+      });
+    }
+  </script>
+</body>
+</html>
