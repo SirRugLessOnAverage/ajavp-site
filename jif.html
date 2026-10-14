@@ -201,19 +201,19 @@
           <div class="space-y-2 text-xs text-slate-200" id="jifTopSummary">
             <div class="flex items-center justify-between pb-1 border-b border-white/10">
               <span class="text-slate-300">Corta-Mato (03 Out):</span>
-              <span class="font-bold text-emerald-300 flex items-center gap-1"><i data-lucide="check" class="w-3.5 h-3.5"></i> Concluído</span>
+              <span class="font-bold text-emerald-300 flex items-center gap-1"><i data-lucide="check" class="w-3.5 h-3.5"></i> Concluído (Espaço Agros)</span>
             </div>
             <div class="flex items-center justify-between pb-1 border-b border-white/10">
               <span class="text-slate-300">1ª Jornada Futsal (10 Out):</span>
-              <span class="font-bold text-emerald-300 flex items-center gap-1"><i data-lucide="check" class="w-3.5 h-3.5"></i> Concluída</span>
+              <span class="font-bold text-emerald-300 flex items-center gap-1"><i data-lucide="check" class="w-3.5 h-3.5"></i> Sub-9 Vence 11-1!</span>
             </div>
             <div class="flex items-center justify-between p-2 rounded-xl bg-amber-500/20 border border-amber-400/40">
-              <span class="text-amber-200 font-semibold">Próxima Prova:</span>
-              <span class="font-black text-amber-300">17 Out &bull; 2ª J. Futsal</span>
+              <span class="text-amber-200 font-semibold">Próxima Prova (17 Out):</span>
+              <span class="font-black text-amber-300">1º Torneio Futebol JIF</span>
             </div>
             <div class="flex items-center justify-between pt-1">
-              <span class="text-slate-400">Encerramento Oficial:</span>
-              <span class="font-bold text-slate-300">12 de Junho de 2027</span>
+              <span class="text-slate-400">A Seguir (24 Out):</span>
+              <span class="font-bold text-slate-300">2ª J. Futsal &amp; Sub-7</span>
             </div>
           </div>
           <a href="https://forms.gle/YJdnZyUsMB8aBADj6" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-heading font-black text-xs py-3 rounded-xl shadow-lg transition-all">
@@ -236,7 +236,14 @@
           <button type="button" class="jif-tab-btn px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-amber-500 text-slate-950 shadow-md transition-all cursor-pointer" data-target="jif-pane-calendar">
             <span class="flex items-center gap-2">
               <i data-lucide="calendar" class="w-4 h-4"></i>
-              <span>Calendário das 36 Provas</span>
+              <span>Calendário Oficial</span>
+            </span>
+          </button>
+          <button type="button" class="jif-tab-btn px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all cursor-pointer" data-target="jif-pane-resultados">
+            <span class="flex items-center gap-2">
+              <i data-lucide="trophy" class="w-4 h-4 text-emerald-400"></i>
+              <span>Resultados dos Jogos</span>
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             </span>
           </button>
           <button type="button" class="jif-tab-btn px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all cursor-pointer" data-target="jif-pane-modalidades">
@@ -347,24 +354,29 @@
             </div>
           </div>
 
-          <!-- 3. 17/Out/2026: Futsal 2ª Jornada  -->
-          <div class="jif-event-row ring-2 ring-amber-400/50 border-amber-400/80 bg-amber-500/10 jif-event-active shadow-lg flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal" data-date="2026-10-17">
+          <!-- 3. 17/Out/2026: 1º Torneio de Futebol JIF  -->
+          <div class="jif-event-row ring-2 ring-amber-400/50 border-amber-400/80 bg-amber-500/10 jif-event-active shadow-lg flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futebol" data-date="2026-10-17">
             <div class="flex items-start sm:items-center gap-3.5">
-              <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
-                <span class="text-[10px] uppercase font-extrabold text-amber-400">OUT</span>
+              <div class="w-14 h-14 rounded-2xl bg-green-500/20 border border-green-500/40 flex flex-col items-center justify-center flex-shrink-0 text-center">
+                <span class="text-[10px] uppercase font-extrabold text-green-400">OUT</span>
                 <span class="text-xl font-black leading-none text-white font-heading">17</span>
               </div>
               <div>
                 <div class="flex items-center gap-2 flex-wrap">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-amber-500/20 text-amber-300 border border-amber-500/30">Futsal</span>
-                  <span class="text-xs font-bold text-white">Futsal &bull; 2ª Jornada do Campeonato</span>
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-green-500/20 text-green-300 border border-green-500/30">Futebol</span>
+                  <span class="text-xs font-bold text-white">1º Torneio de Futebol dos XL JIF &bull; 4 Escalões em Prova</span>
                 </div>
                 <div class="text-xs text-slate-300 mt-1 flex items-center gap-2 flex-wrap">
-                  <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3 text-amber-400"></i> Pavilhões Concelhios</span>
+                  <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3 text-amber-400"></i> Campos 2, 4 e 6 (Complexo Desportivo)</span>
                   <span class="text-slate-500">&bull;</span>
-                  <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3 text-teal-400"></i> Manhã 8h45-12h30 | Tarde 14h30-18h00</span>
+                  <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3 text-teal-400"></i> Manhã 09h00–12h30 | Tarde 15h30–17h30</span>
                 </div>
-                <div class="text-[11px] text-slate-400 mt-0.5">Todos os escalões de formação em prova</div>
+                <div class="text-[11px] text-slate-300 mt-1">
+                  <strong>Sub-7 (Campo 6):</strong> 09h30 &amp; 10h30 vs Tougues &bull; 
+                  <strong>Sub-9 (Campo 2):</strong> 09h30 vs Arcos, 10h00 vs Junqueira, 11h30 vs Tougues &bull; 
+                  <strong>Sub-11 (Campo 2):</strong> 09h00 vs Tougues &bull; 
+                  <strong>Sub-13 (Campo 4):</strong> 15h30 vs Junqueira, 16h30 vs Gião &bull; Finais às 12h30 e 17h30.
+                </div>
               </div>
             </div>
             <div class="sm:text-right flex sm:flex-col items-center sm:items-end justify-between gap-1 border-t sm:border-t-0 border-white/5 pt-2 sm:pt-0">
@@ -375,7 +387,7 @@
             </div>
           </div>
 
-          <!-- 4. 24/Out/2026: Futsal 3ª Jornada  -->
+          <!-- 4. 24/Out/2026: Futsal 2ª Jornada & Sub-7 em Caxinas  -->
           <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal" data-date="2026-10-24">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
@@ -385,21 +397,27 @@
               <div>
                 <div class="flex items-center gap-2 flex-wrap">
                   <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-amber-500/20 text-amber-300 border border-amber-500/30">Futsal</span>
-                  <span class="text-xs font-bold text-white">Futsal &bull; 3ª Jornada do Campeonato</span>
+                  <span class="text-xs font-bold text-white">Futsal &bull; 2ª Jornada do Campeonato &bull; Estreia Sub-7 em Caxinas</span>
                 </div>
                 <div class="text-xs text-slate-300 mt-1 flex items-center gap-2 flex-wrap">
-                  <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3 text-amber-400"></i> Pavilhões Concelhios</span>
+                  <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3 text-amber-400"></i> Pavilhões de Caxinas (Campo 2), Modivas e Canidelo</span>
                   <span class="text-slate-500">&bull;</span>
-                  <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3 text-teal-400"></i> Manhã 8h45-12h30 | Tarde 14h30-18h00</span>
+                  <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3 text-teal-400"></i> 09h00 às 12h00</span>
+                </div>
+                <div class="text-[11px] text-slate-300 mt-1">
+                  <strong>Sub-7 (Pav. Caxinas C2):</strong> 09h30 vs Gião (1ª J) &amp; 11h45 vs Aveleda (2ª J) &bull; 
+                  <strong>Sub-9 (Modivas):</strong> 10h00 vs Modivas &bull; 
+                  <strong>Sub-11 (Canidelo):</strong> 10h45 vs Touguinha &bull; 
+                  <strong>Sub-13 (Modivas):</strong> 09h00 vs Arcos.
                 </div>
               </div>
             </div>
             <div class="sm:text-right flex sm:flex-col items-center sm:items-end justify-between gap-1 border-t sm:border-t-0 border-white/5 pt-2 sm:pt-0">
-              <span class="text-xs text-slate-300 font-semibold">3ª Jornada</span>
+              <span class="text-xs text-slate-300 font-semibold">2ª Jornada</span>
             </div>
           </div>
 
-          <!-- 5. 31/Out/2026: Futsal 4ª Jornada  -->
+          <!-- 5. 31/Out/2026: Futsal 3ª Jornada  -->
           <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal" data-date="2026-10-31">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
@@ -409,45 +427,26 @@
               <div>
                 <div class="flex items-center gap-2 flex-wrap">
                   <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-amber-500/20 text-amber-300 border border-amber-500/30">Futsal</span>
-                  <span class="text-xs font-bold text-white">Futsal &bull; 4ª Jornada do Campeonato</span>
+                  <span class="text-xs font-bold text-white">Futsal &bull; 3ª Jornada do Campeonato</span>
                 </div>
                 <div class="text-xs text-slate-300 mt-1 flex items-center gap-2 flex-wrap">
-                  <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3 text-amber-400"></i> Pavilhões Concelhios</span>
+                  <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3 text-amber-400"></i> Pavilhão de Canidelo</span>
                   <span class="text-slate-500">&bull;</span>
-                  <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3 text-teal-400"></i> Manhã 8h45-12h30 | Tarde 14h30-18h00</span>
+                  <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3 text-teal-400"></i> 08h45 às 11h30</span>
+                </div>
+                <div class="text-[11px] text-slate-300 mt-1">
+                  <strong>Sub-13:</strong> 08h45 vs Árvore &bull; 
+                  <strong>Sub-9:</strong> 09h45 vs Canidelo &bull; 
+                  <strong>Sub-11:</strong> 10h45 vs Junqueira.
                 </div>
               </div>
             </div>
             <div class="sm:text-right flex sm:flex-col items-center sm:items-end justify-between gap-1 border-t sm:border-t-0 border-white/5 pt-2 sm:pt-0">
-              <span class="text-xs text-slate-300 font-semibold">4ª Jornada</span>
+              <span class="text-xs text-slate-300 font-semibold">3ª Jornada</span>
             </div>
           </div>
 
-          <!-- 6. 07/Nov/2026: Futsal 5ª Jornada  -->
-          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal" data-date="2026-11-07">
-            <div class="flex items-start sm:items-center gap-3.5">
-              <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
-                <span class="text-[10px] uppercase font-extrabold text-amber-400">NOV</span>
-                <span class="text-xl font-black leading-none text-white font-heading">07</span>
-              </div>
-              <div>
-                <div class="flex items-center gap-2 flex-wrap">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-amber-500/20 text-amber-300 border border-amber-500/30">Futsal</span>
-                  <span class="text-xs font-bold text-white">Futsal &bull; 5ª Jornada do Campeonato</span>
-                </div>
-                <div class="text-xs text-slate-300 mt-1 flex items-center gap-2 flex-wrap">
-                  <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3 text-amber-400"></i> Pavilhões Concelhios</span>
-                  <span class="text-slate-500">&bull;</span>
-                  <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3 text-teal-400"></i> Manhã 8h45-12h30 | Tarde 14h30-18h00</span>
-                </div>
-              </div>
-            </div>
-            <div class="sm:text-right flex sm:flex-col items-center sm:items-end justify-between gap-1 border-t sm:border-t-0 border-white/5 pt-2 sm:pt-0">
-              <span class="text-xs text-slate-300 font-semibold">5ª Jornada</span>
-            </div>
-          </div>
-
-          <!-- 7. 14/Nov/2026: Futsal 6ª Jornada  -->
+          <!-- 6. 14/Nov/2026: Futsal 4ª Jornada  -->
           <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal" data-date="2026-11-14">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
@@ -457,17 +456,51 @@
               <div>
                 <div class="flex items-center gap-2 flex-wrap">
                   <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-amber-500/20 text-amber-300 border border-amber-500/30">Futsal</span>
-                  <span class="text-xs font-bold text-white">Futsal &bull; 6ª Jornada do Campeonato</span>
+                  <span class="text-xs font-bold text-white">Futsal &bull; 4ª Jornada do Campeonato</span>
                 </div>
                 <div class="text-xs text-slate-300 mt-1 flex items-center gap-2 flex-wrap">
-                  <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3 text-amber-400"></i> Pavilhões Concelhios</span>
+                  <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3 text-amber-400"></i> Pavilhão de Fajozes</span>
                   <span class="text-slate-500">&bull;</span>
-                  <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3 text-teal-400"></i> Manhã 8h45-12h30 | Tarde 14h30-18h00</span>
+                  <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3 text-teal-400"></i> 08h45 às 10h45</span>
+                </div>
+                <div class="text-[11px] text-slate-300 mt-1">
+                  <strong>Sub-13:</strong> 08h45 vs Fajozes &bull; 
+                  <strong>Sub-11:</strong> 09h45 vs Árvore.
                 </div>
               </div>
             </div>
             <div class="sm:text-right flex sm:flex-col items-center sm:items-end justify-between gap-1 border-t sm:border-t-0 border-white/5 pt-2 sm:pt-0">
-              <span class="text-xs text-slate-300 font-semibold">6ª Jornada</span>
+              <span class="text-xs text-slate-300 font-semibold">4ª Jornada</span>
+            </div>
+          </div>
+
+          <!-- 7. 21/Nov/2026: Futsal 5ª Jornada & Sub-7 em Caxinas  -->
+          <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal" data-date="2026-11-21">
+            <div class="flex items-start sm:items-center gap-3.5">
+              <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
+                <span class="text-[10px] uppercase font-extrabold text-amber-400">NOV</span>
+                <span class="text-xl font-black leading-none text-white font-heading">21</span>
+              </div>
+              <div>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-amber-500/20 text-amber-300 border border-amber-500/30">Futsal</span>
+                  <span class="text-xs font-bold text-white">Futsal &bull; 5ª Jornada &bull; Sub-7 em Caxinas</span>
+                </div>
+                <div class="text-xs text-slate-300 mt-1 flex items-center gap-2 flex-wrap">
+                  <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3 text-amber-400"></i> Pavilhões de Canidelo, Fajozes e Caxinas</span>
+                  <span class="text-slate-500">&bull;</span>
+                  <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3 text-teal-400"></i> 09h00 às 12h00</span>
+                </div>
+                <div class="text-[11px] text-slate-300 mt-1">
+                  <strong>Sub-13 (Fajozes):</strong> 09h00 vs Mosteiró &bull; 
+                  <strong>Sub-9 (Canidelo):</strong> 10h00 vs Junqueira &bull; 
+                  <strong>Sub-11 (Canidelo):</strong> 11h00 vs Gião &bull; 
+                  <strong>Sub-7 (Caxinas C2):</strong> 11h00 vs Tougues (3ª J).
+                </div>
+              </div>
+            </div>
+            <div class="sm:text-right flex sm:flex-col items-center sm:items-end justify-between gap-1 border-t sm:border-t-0 border-white/5 pt-2 sm:pt-0">
+              <span class="text-xs text-slate-300 font-semibold">5ª Jornada</span>
             </div>
           </div>
 
@@ -486,7 +519,7 @@
                 <div class="text-xs text-slate-300 mt-1 flex items-center gap-2 flex-wrap">
                   <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3 text-amber-400"></i> Pavilhão Municipal de Desportos</span>
                   <span class="text-slate-500">&bull;</span>
-                  <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3 text-teal-400"></i> 14h30 às 18h30</span>
+                  <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3 text-teal-400"></i> 14h30 às 18h30 (Tarde)</span>
                 </div>
                 <div class="text-[11px] text-slate-400 mt-0.5">Escalões: Sub-11, Sub-15 e Seniores/Veteranos</div>
               </div>
@@ -498,7 +531,7 @@
             </div>
           </div>
 
-          <!-- 9. 28/Nov/2026: Futsal 7ª Jornada  -->
+          <!-- 9. 28/Nov/2026: Futsal 1ª Eliminatória da Taça & Sub-11  -->
           <div class="jif-event-row flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-white/10 transition-all gap-3" data-sport="futsal" data-date="2026-11-28">
             <div class="flex items-start sm:items-center gap-3.5">
               <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center flex-shrink-0 text-center">
@@ -508,17 +541,20 @@
               <div>
                 <div class="flex items-center gap-2 flex-wrap">
                   <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-amber-500/20 text-amber-300 border border-amber-500/30">Futsal</span>
-                  <span class="text-xs font-bold text-white">Futsal &bull; 7ª Jornada do Campeonato</span>
+                  <span class="text-xs font-bold text-white">Futsal &bull; 1ª Eliminatória da Taça JIF &amp; Sub-11</span>
                 </div>
                 <div class="text-xs text-slate-300 mt-1 flex items-center gap-2 flex-wrap">
-                  <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3 text-amber-400"></i> Pavilhões Concelhios</span>
+                  <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3 text-amber-400"></i> Pavilhão de Mindelo</span>
                   <span class="text-slate-500">&bull;</span>
-                  <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3 text-teal-400"></i> Manhã 8h45-12h30 | Tarde 14h30-18h00</span>
+                  <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3 text-teal-400"></i> Manhã 09h00</span>
+                </div>
+                <div class="text-[11px] text-slate-300 mt-1">
+                  <strong>Sub-11:</strong> 09h00 vs Tougues &bull; Jogos da 1ª Eliminatória da Taça de Futsal.
                 </div>
               </div>
             </div>
             <div class="sm:text-right flex sm:flex-col items-center sm:items-end justify-between gap-1 border-t sm:border-t-0 border-white/5 pt-2 sm:pt-0">
-              <span class="text-xs text-slate-300 font-semibold">7ª Jornada</span>
+              <span class="text-xs text-slate-300 font-semibold">Taça &bull; 1ª Elim.</span>
             </div>
           </div>
 
@@ -1120,103 +1156,459 @@
         </div>
       </div>
 
-      <!-- TAB 2: REGULAMENTO POR MODALIDADE -->
-      <div id="jif-pane-modalidades" class="jif-tab-pane hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- TAB: RESULTADOS DOS NOSSOS JOGOS & CORTA-MATO -->
+      <div id="jif-pane-resultados" class="jif-tab-pane hidden space-y-10">
         
-        <!-- Futsal -->
-        <div class="p-6 rounded-3xl bg-white/5 border border-white/10 space-y-4 hover:border-amber-400/40 transition-all">
-          <div class="flex items-center justify-between">
-            <span class="text-2xl">🥅</span>
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 uppercase">18 Jornadas</span>
+        <div class="border-b border-white/10 pb-6 space-y-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-500/30">
+            <i data-lucide="trophy" class="w-3.5 h-3.5 text-emerald-400"></i>
+            <span>XL Jogos Inter-Freguesias &bull; Época 2026/2027</span>
           </div>
-          <h3 class="font-heading font-bold text-xl text-white">Futsal Formação</h3>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Disputado em sistema de campeonato concelhio a duas voltas. Manhãs dedicadas aos escalões Sub-7, Sub-9, Sub-11 e Sub-13. Tardes dedicadas a Sub-16.
+          <h2 class="font-heading font-black text-2xl sm:text-3xl text-white tracking-tight">
+            Resultados Oficiais da AJAVP
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-300 max-w-3xl leading-relaxed">
+            Placares oficiais e marcadores dos jogos disputados pelos nossos 4 escalões (<strong>Sub-7, Sub-9, Sub-11 e Sub-13</strong>), homologados pela ADCCVC.
           </p>
-          <div class="pt-3 border-t border-white/10 text-xs text-slate-400 space-y-1">
-            <p><strong>Duração:</strong> 2 partes de 20 min (tempo corrido)</p>
-            <p><strong>Substituições:</strong> Volantes e ilimitadas</p>
-            <p><strong>Equipamento:</strong> Oficial Preto AJAVP</p>
+        </div>
+
+        <!-- Cartões de Destaque dos Jogos da AJAVP na 1ª Jornada -->
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="font-heading font-bold text-lg text-white flex items-center gap-2">
+              <i data-lucide="calendar" class="w-4 h-4 text-amber-400"></i>
+              <span>1ª Jornada de Futsal &bull; 10 de Outubro de 2026</span>
+            </h3>
+            <span class="text-xs text-slate-400">3 Jogos Realizados</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <!-- Sub-9: AJAVP 11 - 1 Fornelo -->
+            <div class="p-6 rounded-3xl bg-gradient-to-b from-emerald-950/80 to-slate-900 border-2 border-emerald-500/80 shadow-2xl space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-500 text-slate-950 shadow-xs">
+                  Vitória Esmagadora 🔥
+                </span>
+                <span class="text-[11px] text-slate-400 font-bold">11h00</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-emerald-300 uppercase tracking-wide">Futsal Sub-9 Masculinos</span>
+                <h4 class="font-heading font-extrabold text-base text-white mt-0.5">Pavilhão de Fajozes</h4>
+              </div>
+
+              <!-- Placar Central -->
+              <div class="p-4 rounded-2xl bg-black/40 border border-white/10 text-center space-y-1">
+                <div class="flex items-center justify-around font-heading font-black text-xl text-white">
+                  <span class="text-emerald-400">AJAVP</span>
+                  <span class="text-3xl text-amber-400 px-3 py-1 rounded-xl bg-black/60 border border-amber-500/40">11 - 1</span>
+                  <span class="text-slate-300">Fornelo</span>
+                </div>
+                <div class="text-[10px] text-emerald-300 font-bold uppercase tracking-wider pt-1">
+                  Estreia Imparável da Mancha Verde
+                </div>
+              </div>
+
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Grande demonstração de talento e espírito de equipa na primeira jornada, com um volume ofensivo avassalador que selou 11 golos!
+              </p>
+            </div>
+
+            <!-- Sub-11: Fajozes 4 - 2 AJAVP -->
+            <div class="p-6 rounded-3xl bg-slate-900 border border-white/10 shadow-lg space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-blue-500/20 text-blue-300 border border-blue-500/30">
+                  1ª Jornada
+                </span>
+                <span class="text-[11px] text-slate-400 font-bold">10h00</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-blue-300 uppercase tracking-wide">Futsal Sub-11 Masculinos</span>
+                <h4 class="font-heading font-extrabold text-base text-white mt-0.5">Pavilhão de Fajozes</h4>
+              </div>
+
+              <!-- Placar Central -->
+              <div class="p-4 rounded-2xl bg-black/40 border border-white/10 text-center space-y-1">
+                <div class="flex items-center justify-around font-heading font-black text-xl text-white">
+                  <span class="text-slate-300">Fajozes</span>
+                  <span class="text-3xl text-white px-3 py-1 rounded-xl bg-black/60 border border-white/20">4 - 2</span>
+                  <span class="text-emerald-400">AJAVP</span>
+                </div>
+                <div class="text-[10px] text-slate-400 font-semibold pt-1">
+                  Equilíbrio e Garra até ao Fim
+                </div>
+              </div>
+
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Jogo disputado com enorme bravura fora de portas. Os nossos atletas mantiveram o resultado incerto até aos instantes finais.
+              </p>
+            </div>
+
+            <!-- Sub-13: Junqueira 5 - 0 AJAVP -->
+            <div class="p-6 rounded-3xl bg-slate-900 border border-white/10 shadow-lg space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-slate-700 text-slate-300 border border-slate-600">
+                  1ª Jornada
+                </span>
+                <span class="text-[11px] text-slate-400 font-bold">08h45</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-slate-300 uppercase tracking-wide">Futsal Sub-13 Masculinos</span>
+                <h4 class="font-heading font-extrabold text-base text-white mt-0.5">Pavilhão de Canidelo</h4>
+              </div>
+
+              <!-- Placar Central -->
+              <div class="p-4 rounded-2xl bg-black/40 border border-white/10 text-center space-y-1">
+                <div class="flex items-center justify-around font-heading font-black text-xl text-white">
+                  <span class="text-slate-300">Junqueira</span>
+                  <span class="text-3xl text-white px-3 py-1 rounded-xl bg-black/60 border border-white/20">5 - 0</span>
+                  <span class="text-emerald-400">AJAVP</span>
+                </div>
+                <div class="text-[10px] text-slate-400 font-semibold pt-1">
+                  Estreia Exigente em Canidelo
+                </div>
+              </div>
+
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Abertura contra uma equipa forte do concelho. O grupo continua focado e a evoluir no trabalho semanal às quartas-feiras.
+              </p>
+            </div>
+
           </div>
         </div>
 
-        <!-- Atletismo -->
-        <div class="p-6 rounded-3xl bg-white/5 border border-white/10 space-y-4 hover:border-emerald-400/40 transition-all">
-          <div class="flex items-center justify-between">
-            <span class="text-2xl">🏃</span>
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 uppercase">3 Provas Oficiais</span>
+        <!-- Corta-Mato & Sub-7 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-6 rounded-3xl bg-white/5 border border-white/10 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-teal-400 uppercase tracking-wider">Abertura Oficial dos JIF</span>
+              <span class="text-xs text-slate-400">03 de Outubro de 2026</span>
+            </div>
+            <h4 class="font-heading font-bold text-lg text-white">Corta-Mato no Espaço Agros</h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Presença da comitiva da AJAVP na relva do Espaço Agros, marcando a abertura formal dos XL Jogos Inter-Freguesias em todas as faixas etárias desde os 600m aos 3000m.
+            </p>
           </div>
-          <h3 class="font-heading font-bold text-xl text-white">Atletismo &amp; Corta-Mato</h3>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Abertura com Corta-Mato no Espaço Agros (03/Out), Milha Urbana na marginal e Provas de Velocidade em pista de tartan. Pontuação individual e por freguesia.
-          </p>
-          <div class="pt-3 border-t border-white/10 text-xs text-slate-400 space-y-1">
-            <p><strong>Distâncias:</strong> 600m (Sub-9) a 3.000m (Seniores)</p>
-            <p><strong>Classificação:</strong> Soma dos 4 melhores por equipa</p>
+
+          <div class="p-6 rounded-3xl bg-white/5 border border-white/10 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">Estreia de Futsal Sub-7</span>
+              <span class="text-xs text-amber-300 font-bold">24 de Outubro de 2026</span>
+            </div>
+            <h4 class="font-heading font-bold text-lg text-white">Pavilhão de Caxinas (Campo 2)</h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Os nossos atletas mais jovens (Sub-7) entram em campo no Pavilhão de Caxinas com jornada dupla: <strong>09h30 vs Gião</strong> (1ª Jornada) e <strong>11h45 vs Aveleda</strong> (2ª Jornada)!
+            </p>
           </div>
         </div>
 
-        <!-- Ténis de Mesa -->
-        <div class="p-6 rounded-3xl bg-white/5 border border-white/10 space-y-4 hover:border-blue-400/40 transition-all">
-          <div class="flex items-center justify-between">
-            <span class="text-2xl">🏓</span>
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-500/20 text-blue-300 uppercase">Individual &amp; Equipas</span>
+        <!-- Tabela Completa de Todos os Resultados da 1ª Jornada (ADCCVC) -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/10 space-y-4">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div>
+              <h4 class="font-heading font-bold text-base text-white">Folha Oficial de Jogos &bull; 1ª Jornada de Futsal (10-10-2026)</h4>
+              <p class="text-xs text-slate-400">Resultados homologados em todos os pavilhões concelhios:</p>
+            </div>
+            <span class="text-[10px] font-bold uppercase px-2.5 py-1 rounded-full bg-white/10 text-slate-300 border border-white/10">ADCCVC Oficial</span>
           </div>
-          <h3 class="font-heading font-bold text-xl text-white">Ténis de Mesa</h3>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Torneio Individual no Pavilhão Municipal (21/Nov) e Torneio Concelhio por Equipas de Freguesia (08/Mai). Sets à melhor de 3 ou 5 partidas até aos 11 pontos.
-          </p>
-          <div class="pt-3 border-t border-white/10 text-xs text-slate-400 space-y-1">
-            <p><strong>Regras:</strong> FPTM oficiais (serviço alternado de 2 em 2)</p>
-            <p><strong>Treinos:</strong> Sábados na Junta de Freguesia</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+            
+            <div class="p-3.5 rounded-2xl bg-black/40 border border-white/10 space-y-2">
+              <div class="font-bold text-amber-400 border-b border-white/10 pb-1">Pavilhão de Fajozes</div>
+              <ul class="space-y-1 text-slate-300 text-[11px]">
+                <li class="flex justify-between"><span>Sub-13: Fajozes X Mosteiró</span><span class="font-bold text-white">6 - 4</span></li>
+                <li class="flex justify-between text-amber-300 font-semibold"><span>Sub-11: Fajozes X AJAVP</span><span class="font-bold">4 - 2</span></li>
+                <li class="flex justify-between text-emerald-300 font-bold"><span>Sub-9: AJAVP X Fornelo</span><span>11 - 1</span></li>
+              </ul>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-black/40 border border-white/10 space-y-2">
+              <div class="font-bold text-emerald-400 border-b border-white/10 pb-1">Pavilhão de Canidelo</div>
+              <ul class="space-y-1 text-slate-300 text-[11px]">
+                <li class="flex justify-between text-slate-300 font-semibold"><span>Sub-13: Junqueira X AJAVP</span><span class="font-bold text-white">5 - 0</span></li>
+                <li class="flex justify-between"><span>Sub-9: Junqueira X Bagunte</span><span class="font-bold text-white">1 - 7</span></li>
+                <li class="flex justify-between"><span>Sub-11: Junqueira X Bagunte</span><span class="font-bold text-white">1 - 8</span></li>
+                <li class="flex justify-between"><span>Sub-13: Bagunte X Touguinha</span><span class="font-bold text-white">9 - 3</span></li>
+              </ul>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-black/40 border border-white/10 space-y-2">
+              <div class="font-bold text-blue-400 border-b border-white/10 pb-1">Pavilhão de Mindelo</div>
+              <ul class="space-y-1 text-slate-300 text-[11px]">
+                <li class="flex justify-between"><span>Sub-13: Arcos X Gião</span><span class="font-bold text-white">0 - 0</span></li>
+                <li class="flex justify-between"><span>Sub-9: Arcos X Gião</span><span class="font-bold text-white">1 - 3</span></li>
+                <li class="flex justify-between"><span>Sub-11: Árvore X Gião</span><span class="font-bold text-white">5 - 2</span></li>
+                <li class="flex justify-between"><span>Sub-13: Árvore X Tougues</span><span class="font-bold text-white">4 - 0</span></li>
+              </ul>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-black/40 border border-white/10 space-y-2">
+              <div class="font-bold text-purple-400 border-b border-white/10 pb-1">Pavilhão de Modivas</div>
+              <ul class="space-y-1 text-slate-300 text-[11px]">
+                <li class="flex justify-between"><span>Sub-9: Árvore X Touguinha</span><span class="font-bold text-white">10 - 0</span></li>
+                <li class="flex justify-between"><span>Sub-11: Touguinha X Tougues</span><span class="font-bold text-white">2 - 12</span></li>
+                <li class="flex justify-between"><span>Sub-9: Modivas X Canidelo</span><span class="font-bold text-white">4 - 9</span></li>
+              </ul>
+            </div>
+
           </div>
         </div>
 
-        <!-- Duatlo -->
-        <div class="p-6 rounded-3xl bg-white/5 border border-white/10 space-y-4 hover:border-emerald-400/40 transition-all">
-          <div class="flex items-center justify-between">
-            <span class="text-2xl">🚴</span>
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 uppercase">Duplas BTT</span>
+      </div>
+
+      <!-- TAB 2: REGULAMENTO POR MODALIDADE -->
+      <div id="jif-pane-modalidades" class="jif-tab-pane hidden space-y-8">
+        
+        <!-- Bloco Principal 1: Regulamento Oficial de Futsal 2026/2027 (ADCCVC) -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-slate-900 border-2 border-amber-500/40 shadow-2xl space-y-6">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-5">
+            <div class="space-y-1">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold uppercase tracking-wider border border-amber-500/30">
+                <i data-lucide="shield" class="w-3.5 h-3.5 text-amber-400"></i>
+                <span>Documento Oficial ADCCVC &bull; Época 2026/2027</span>
+              </div>
+              <h3 class="font-heading font-black text-2xl sm:text-3xl text-white">
+                Regulamento Oficial de Futsal &bull; Normas de Jogo
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300">
+                Resumo normativo para dirigentes, treinadores, atletas e encarregados de educação dos escalões Sub-7, Sub-9, Sub-11 e Sub-13.
+              </p>
+            </div>
+            <span class="px-3.5 py-1.5 rounded-xl bg-amber-500 text-slate-950 font-black text-xs uppercase shadow-md flex items-center gap-1.5 self-start md:self-auto">
+              <i data-lucide="check-circle" class="w-4 h-4"></i>
+              <span>Vigor 2026/27</span>
+            </span>
           </div>
-          <h3 class="font-heading font-bold text-xl text-white">Duatlo em Duplas</h3>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Corrida a pé + Percurso de Bicicleta BTT no Parque de Jogos de Vila do Conde (27/Fev). Transição cronometrada no parque fechado. Duplas masculinas, femininas e mistas.
-          </p>
-          <div class="pt-3 border-t border-white/10 text-xs text-slate-400 space-y-1">
-            <p><strong>Uso Obrigatório:</strong> Capacete homologado no BTT</p>
-            <p><strong>Formato:</strong> Corrida - Transição BTT - Corrida Final</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-xs text-slate-200">
+            
+            <!-- 1. Tempo e Estrutura -->
+            <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+              <div class="flex items-center gap-2 font-bold text-amber-300 text-sm border-b border-white/10 pb-1.5">
+                <i data-lucide="clock" class="w-4 h-4 text-amber-400"></i>
+                <span>Tempo &amp; Estrutura do Jogo</span>
+              </div>
+              <ul class="space-y-1.5 text-slate-300 leading-relaxed text-[11px]">
+                <li><strong class="text-white">Duração:</strong> 2 tempos de 20 minutos com <em>tempo corrido</em> (o relógio não para a cada saída).</li>
+                <li><strong class="text-white">Intervalo:</strong> Duração máxima de 5 minutos.</li>
+                <li><strong class="text-white">Pausa Técnica (Time-out):</strong> 1 minuto por período por equipa (não acumula). Cada equipa recebe um cartão no início do jogo para colocar na mesa ao pedir o tempo.</li>
+                <li><strong class="text-white">Tamanho da Bola:</strong>
+                  <br>&bull; <strong class="text-amber-300">Bola nº 3</strong> (mais pequena e leve): Sub-7, Sub-9 e Sub-11.
+                  <br>&bull; <strong class="text-amber-300">Bola nº 4</strong>: Sub-13 e Sub-16.
+                </li>
+              </ul>
+            </div>
+
+            <!-- 2. Jogadores e Substituições -->
+            <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+              <div class="flex items-center gap-2 font-bold text-emerald-300 text-sm border-b border-white/10 pb-1.5">
+                <i data-lucide="users" class="w-4 h-4 text-emerald-400"></i>
+                <span>Jogadores &amp; Banco de Suplentes</span>
+              </div>
+              <ul class="space-y-1.5 text-slate-300 leading-relaxed text-[11px]">
+                <li><strong class="text-white">Em campo:</strong> 5 jogadores (1 guarda-redes e 4 jogadores de linha).</li>
+                <li><strong class="text-white">Ficha de jogo:</strong> Até 12 atletas inscritos por partida.</li>
+                <li><strong class="text-white">Equipa Técnica:</strong> No banco apenas podem estar no <strong class="text-emerald-300">máximo dois elementos</strong> por equipa.</li>
+                <li><strong class="text-white">Substituições:</strong> Ilimitadas e volantes (bola em jogo ou parada), entrando o suplente apenas após o colega sair completamente pela Zona de Substituição.</li>
+                <li><strong class="text-white">Cartão Vermelho (Expulsão):</strong> O atleta expulso não pode voltar. A equipa joga com menos um elemento durante 2 minutos, a menos que sofra golo antes.</li>
+              </ul>
+            </div>
+
+            <!-- 3. Reposições de Bola -->
+            <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+              <div class="flex items-center gap-2 font-bold text-blue-300 text-sm border-b border-white/10 pb-1.5">
+                <i data-lucide="arrow-right-circle" class="w-4 h-4 text-blue-400"></i>
+                <span>Reposições de Linha &amp; Canto</span>
+              </div>
+              <ul class="space-y-1.5 text-slate-300 leading-relaxed text-[11px]">
+                <li><strong class="text-white">Cobrança com os Pés:</strong> Tanto a linha lateral como o pontapé de canto são obrigatoriamente cobrados com os pés.</li>
+                <li><strong class="text-white">Posição da Bola:</strong> A bola tem de estar completamente parada em cima da linha.</li>
+                <li><strong class="text-white">Regra dos 4 Segundos:</strong> O executante tem 4 segundos para repor a bola assim que estiver em condições de o fazer.</li>
+                <li><strong class="text-white">Distância dos Adversários:</strong> Em todas as reposições, os jogadores adversários têm de estar a uma <strong class="text-blue-300">distância mínima de 5 metros</strong> da bola.</li>
+              </ul>
+            </div>
+
+            <!-- 4. Faltas Acumuladas & 10 Metros -->
+            <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+              <div class="flex items-center gap-2 font-bold text-rose-300 text-sm border-b border-white/10 pb-1.5">
+                <i data-lucide="alert-octagon" class="w-4 h-4 text-rose-400"></i>
+                <span>Faltas Acumuladas &bull; Tiro dos 10 Metros</span>
+              </div>
+              <ul class="space-y-1.5 text-slate-300 leading-relaxed text-[11px]">
+                <li><strong class="text-white">Contagem por Parte:</strong> As faltas que dão origem a livre direto são contabilizadas a cada período.</li>
+                <li><strong class="text-white">6ª Falta Acumulada:</strong> À 6ª falta por período (e subsequentes), o adversário beneficia de um livre direto sem barreira na marca dos 10 metros.</li>
+                <li><strong class="text-white">Local da Falta:</strong> Se a infração ocorrer mais perto da baliza adversária do que os 10m (fora da área), pode ser cobrada no próprio local.</li>
+                <li><strong class="text-white">Atualização 2026:</strong> Infrações que resultem em grande penalidade deixam de contar para o acumulado de faltas da equipa.</li>
+              </ul>
+            </div>
+
+            <!-- 5. Guarda-Redes & Proibição de Bola Aérea em Sub-7/9/11 -->
+            <div class="p-4 rounded-2xl bg-gradient-to-br from-amber-950/60 to-slate-900 border border-amber-400/40 space-y-2 md:col-span-2">
+              <div class="flex items-center gap-2 font-bold text-amber-300 text-sm border-b border-white/10 pb-1.5">
+                <i data-lucide="shield-alert" class="w-4 h-4 text-amber-400"></i>
+                <span>Regras Específicas do Guarda-Redes &bull; Diretriz Formativa</span>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-slate-300 text-[11px] leading-relaxed">
+                <div>
+                  <p><strong class="text-white">Posse Defensiva (4 segundos):</strong> O guarda-redes só pode ter a posse de bola durante o máximo de 4 segundos no seu próprio meio-campo. No meio-campo de ataque não se aplica limite de tempo.</p>
+                  <p class="mt-1.5"><strong class="text-white">Recuo de Bola ao GR:</strong> O guarda-redes só pode receber a bola <strong class="text-amber-300">uma única vez</strong> por cada posse defensiva. Para receber de novo na defesa, a bola tem de tocar primeiro num adversário (infração dá livre indireto).</p>
+                </div>
+                <div class="p-3 rounded-xl bg-amber-500/15 border border-amber-400/30">
+                  <span class="text-amber-300 font-bold block uppercase tracking-wider text-[10px]">⚠️ REGRA OBRIGATÓRIA SUB-7, SUB-9 E SUB-11</span>
+                  <p class="text-slate-200 mt-1">
+                    No lançamento de baliza (com as mãos), nos escalões de <strong>Sub-7, Sub-9 e Sub-11</strong> o guarda-redes <strong>NÃO pode pontapear nem colocar a bola diretamente pelo ar para além do meio-campo</strong> sem que ela toque antes no solo ou num jogador!
+                  </p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
-        <!-- Badminton -->
-        <div class="p-6 rounded-3xl bg-white/5 border border-white/10 space-y-4 hover:border-purple-400/40 transition-all">
-          <div class="flex items-center justify-between">
-            <span class="text-2xl">🏸</span>
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-purple-500/20 text-purple-300 uppercase">Singulares &amp; Pares</span>
+        <!-- Bloco Principal 2: Regulamento do Futebol JIF 2026/2027 -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-slate-900 border-2 border-green-500/40 shadow-2xl space-y-6">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-5">
+            <div class="space-y-1">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/20 text-green-300 text-xs font-bold uppercase tracking-wider border border-green-500/30">
+                <i data-lucide="trophy" class="w-3.5 h-3.5 text-green-400"></i>
+                <span>Torneios Concelhios JIF &bull; 17 de Outubro de 2026</span>
+              </div>
+              <h3 class="font-heading font-black text-2xl sm:text-3xl text-white">
+                Regulamento dos Torneios de Futebol JIF
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300">
+                Estrutura de Séries, apuramento de fases finais e normas de segurança em relvado sintético.
+              </p>
+            </div>
+            <span class="px-3.5 py-1.5 rounded-xl bg-green-500 text-slate-950 font-black text-xs uppercase shadow-md flex items-center gap-1.5 self-start md:self-auto">
+              <i data-lucide="check-circle" class="w-4 h-4"></i>
+              <span>Futebol XL JIF</span>
+            </span>
           </div>
-          <h3 class="font-heading font-bold text-xl text-white">Badminton Concelhio</h3>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Pavilhão de Mindelo com campos oficiais de badminton. Fase de grupos seguida de eliminação direta (23/Jan em singulares e 15/Mai em pares mistos).
-          </p>
-          <div class="pt-3 border-t border-white/10 text-xs text-slate-400 space-y-1">
-            <p><strong>Pontuação:</strong> Sistema rally-point até aos 21 pontos</p>
-            <p><strong>Volantes:</strong> Fornecidos pela organização oficial</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+            
+            <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+              <div class="font-bold text-green-300 text-sm border-b border-white/10 pb-1">Formato por Séries</div>
+              <p class="text-[11px] text-slate-300 leading-relaxed">
+                As freguesias são sorteadas por séries distribuídas pelos Campos 1 a 6. A AJAVP compete na <strong class="text-white">Série D (Sub-7)</strong>, <strong class="text-white">Série B (Sub-9 e Sub-11)</strong> e <strong class="text-white">Série C (Sub-13)</strong>.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+              <div class="font-bold text-amber-300 text-sm border-b border-white/10 pb-1">Meias-Finais &amp; Finais</div>
+              <p class="text-[11px] text-slate-300 leading-relaxed">
+                O 1º classificado de cada série apura-se diretamente para as Meias-finais às 12h00 (manhã) e 17h00 (tarde), seguindo-se a grande final no mesmo dia.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+              <div class="font-bold text-blue-300 text-sm border-b border-white/10 pb-1">Caneleiras Obrigatórias</div>
+              <p class="text-[11px] text-slate-300 leading-relaxed">
+                Por imperativo de segurança e do regulamento ADCCVC, nenhum atleta pode entrar em campo sem <strong class="text-white">caneleiras devidamente colocadas</strong> e meias subidas.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+              <div class="font-bold text-purple-300 text-sm border-b border-white/10 pb-1">Calçado para Sintético</div>
+              <p class="text-[11px] text-slate-300 leading-relaxed">
+                São recomendadas chuteiras com pitons de borracha múltiplos (turf / relva sintética). É estritamente proibido o uso de pitons de alumínio nos campos sintéticos.
+              </p>
+            </div>
+
           </div>
         </div>
 
-        <!-- Futebol Praia -->
-        <div class="p-6 rounded-3xl bg-white/5 border border-white/10 space-y-4 hover:border-amber-400/40 transition-all">
-          <div class="flex items-center justify-between">
-            <span class="text-2xl">🏖️</span>
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 uppercase">Maio / Junho</span>
-          </div>
-          <h3 class="font-heading font-bold text-xl text-white">Futebol de Praia</h3>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Disputado no areal da Praia da Frente Urbana de Vila do Conde em campo regulamentar de areia fina. 3 períodos de 12 minutos com 5 jogadores em campo por equipa.
-          </p>
-          <div class="pt-3 border-t border-white/10 text-xs text-slate-400 space-y-1">
-            <p><strong>Piso:</strong> Descalço ou meias elásticas de areia</p>
-            <p><strong>Finais:</strong> 05 de Junho de 2027</p>
+        <!-- Grelha das Restantes Modalidades -->
+        <div>
+          <h4 class="font-heading font-bold text-lg text-white mb-4 flex items-center gap-2">
+            <i data-lucide="layers" class="w-4 h-4 text-emerald-400"></i>
+            <span>Regulamento das Outras Modalidades dos JIF</span>
+          </h4>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            
+            <!-- Atletismo -->
+            <div class="p-5 rounded-3xl bg-white/5 border border-white/10 space-y-3 hover:border-emerald-400/40 transition-all">
+              <div class="flex items-center justify-between">
+                <span class="text-2xl">🏃</span>
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 uppercase">3 Provas</span>
+              </div>
+              <h4 class="font-heading font-bold text-lg text-white">Atletismo &amp; Corta-Mato</h4>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Corta-Mato no Espaço Agros (03/Out - Concluído), Milha Urbana na marginal e Provas de Pista de Velocidade. Pontuação individual e soma coletiva por freguesia.
+              </p>
+              <div class="pt-2 border-t border-white/10 text-[11px] text-slate-400 space-y-0.5">
+                <p><strong>Distâncias:</strong> 600m a 3.000m conforme o escalão</p>
+                <p><strong>Classificação:</strong> Pontuação somada dos 4 melhores</p>
+              </div>
+            </div>
+
+            <!-- Ténis de Mesa -->
+            <div class="p-5 rounded-3xl bg-white/5 border border-white/10 space-y-3 hover:border-blue-400/40 transition-all">
+              <div class="flex items-center justify-between">
+                <span class="text-2xl">🏓</span>
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-500/20 text-blue-300 uppercase">Individual &amp; Equipas</span>
+              </div>
+              <h4 class="font-heading font-bold text-lg text-white">Ténis de Mesa</h4>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Torneio Individual no Pavilhão Municipal (21/Nov) e Torneio por Equipas de Freguesia (08/Mai). Partidas à melhor de 3 ou 5 sets até aos 11 pontos.
+              </p>
+              <div class="pt-2 border-t border-white/10 text-[11px] text-slate-400 space-y-0.5">
+                <p><strong>Regras:</strong> FPTM oficiais (serviço alternado de 2 em 2)</p>
+                <p><strong>Treinos:</strong> Sábados na Junta de Freguesia</p>
+              </div>
+            </div>
+
+            <!-- Duatlo -->
+            <div class="p-5 rounded-3xl bg-white/5 border border-white/10 space-y-3 hover:border-emerald-400/40 transition-all">
+              <div class="flex items-center justify-between">
+                <span class="text-2xl">🚴</span>
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 uppercase">Duplas BTT</span>
+              </div>
+              <h4 class="font-heading font-bold text-lg text-white">Duatlo em Duplas</h4>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Corrida pedestre + BTT em circuito no Parque de Jogos (27/Fev). Transição cronometrada no parque fechado. Duplas masculinas, femininas e mistas.
+              </p>
+              <div class="pt-2 border-t border-white/10 text-[11px] text-slate-400 space-y-0.5">
+                <p><strong>Segurança:</strong> Capacete homologado obrigatório</p>
+                <p><strong>Formato:</strong> Corrida - Transição BTT - Corrida Final</p>
+              </div>
+            </div>
+
+            <!-- Badminton -->
+            <div class="p-5 rounded-3xl bg-white/5 border border-white/10 space-y-3 hover:border-purple-400/40 transition-all">
+              <div class="flex items-center justify-between">
+                <span class="text-2xl">🏸</span>
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-purple-500/20 text-purple-300 uppercase">Singulares &amp; Pares</span>
+              </div>
+              <h4 class="font-heading font-bold text-lg text-white">Badminton</h4>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Pavilhão de Mindelo. Fase de grupos seguida de eliminação direta (23/Jan em singulares e 15/Mai em pares mistos).
+              </p>
+              <div class="pt-2 border-t border-white/10 text-[11px] text-slate-400 space-y-0.5">
+                <p><strong>Pontuação:</strong> Sistema rally-point aos 21 pontos</p>
+                <p><strong>Volantes:</strong> Fornecidos pela organização oficial</p>
+              </div>
+            </div>
+
+            <!-- Futebol Praia -->
+            <div class="p-5 rounded-3xl bg-white/5 border border-white/10 space-y-3 hover:border-amber-400/40 transition-all">
+              <div class="flex items-center justify-between">
+                <span class="text-2xl">🏖️</span>
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 uppercase">Maio / Junho</span>
+              </div>
+              <h4 class="font-heading font-bold text-lg text-white">Futebol de Praia</h4>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                No areal da Praia da Frente Urbana de Vila do Conde. 3 períodos de 12 minutos com 5 atletas em campo por equipa (29/Mai e 05/Jun).
+              </p>
+              <div class="pt-2 border-t border-white/10 text-[11px] text-slate-400 space-y-0.5">
+                <p><strong>Piso:</strong> Descalço ou meias elásticas de areia</p>
+                <p><strong>Finais:</strong> 05 de Junho de 2027</p>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -1224,6 +1616,29 @@
 
       <!-- TAB 3: ESCALÕES ETÁRIOS OFICIAIS -->
       <div id="jif-pane-escaloes" class="jif-tab-pane hidden space-y-6">
+        
+        <!-- Alerta de Escalões Oficiais da AJAVP -->
+        <div class="p-6 rounded-3xl bg-gradient-to-r from-emerald-950/90 via-slate-900 to-brand-navy border-2 border-emerald-500/50 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="space-y-2 text-center md:text-left">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-500/30">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+              <span>Os Nossos 4 Escalões em Prova</span>
+            </div>
+            <h3 class="font-heading font-black text-xl sm:text-2xl text-white">
+              AJAVP Compete em Sub-7, Sub-9, Sub-11 e Sub-13
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
+              A Associação Jovens e Adultos de Vilar do Pinheiro tem equipas próprias inscritas nos 4 escalões de formação. O escalão de Sub-16 e Seniores dizem respeito exclusivamente ao calendário geral concelhio da ADCCVC.
+            </p>
+          </div>
+          <div class="flex items-center gap-2 flex-wrap justify-center">
+            <span class="px-3 py-1.5 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/40 font-heading font-bold text-xs">Sub-7</span>
+            <span class="px-3 py-1.5 rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-heading font-bold text-xs">Sub-9</span>
+            <span class="px-3 py-1.5 rounded-xl bg-blue-500/20 text-blue-300 border border-blue-500/40 font-heading font-bold text-xs">Sub-11</span>
+            <span class="px-3 py-1.5 rounded-xl bg-purple-500/20 text-purple-300 border border-purple-500/40 font-heading font-bold text-xs">Sub-13</span>
+          </div>
+        </div>
+
         <div class="bg-white/5 border border-white/10 rounded-3xl p-6 sm:p-8 space-y-4">
           <div>
             <h3 class="font-heading font-black text-2xl text-white">Tabela Oficial de Escalões &bull; Época 2026/2027</h3>
@@ -1237,50 +1652,82 @@
                   <th class="py-3 px-4">Escalão Oficial</th>
                   <th class="py-3 px-4">Anos de Nascimento</th>
                   <th class="py-3 px-4">Idade de Referência</th>
+                  <th class="py-3 px-4">Situação AJAVP</th>
                   <th class="py-3 px-4">Modalidades Aplicáveis</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-white/5">
-                <tr class="hover:bg-white/5">
-                  <td class="py-3 px-4 font-bold text-amber-300">Petizes / Sub-7</td>
+                <tr class="hover:bg-white/5 bg-amber-500/5">
+                  <td class="py-3 px-4 font-bold text-amber-300 flex items-center gap-2">
+                    <span>Petizes / Sub-7</span>
+                  </td>
                   <td class="py-3 px-4 font-mono font-bold text-white">2020 e 2021</td>
                   <td class="py-3 px-4 text-slate-300">5 e 6 anos</td>
-                  <td class="py-3 px-4">Futsal Concentrações, Atletismo Lúdico</td>
+                  <td class="py-3 px-4">
+                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold text-[10px] border border-emerald-500/30">
+                      ★ Equipa Ativa AJAVP
+                    </span>
+                  </td>
+                  <td class="py-3 px-4">Futsal Concentrações (Caxinas), Futebol</td>
                 </tr>
-                <tr class="hover:bg-white/5">
-                  <td class="py-3 px-4 font-bold text-emerald-300">Traquinas / Sub-9</td>
+                <tr class="hover:bg-white/5 bg-emerald-500/5">
+                  <td class="py-3 px-4 font-bold text-emerald-300 flex items-center gap-2">
+                    <span>Traquinas / Sub-9</span>
+                  </td>
                   <td class="py-3 px-4 font-mono font-bold text-white">2018 e 2019</td>
                   <td class="py-3 px-4 text-slate-300">7 e 8 anos</td>
-                  <td class="py-3 px-4">Futsal Campeonato, Atletismo, T. Mesa</td>
+                  <td class="py-3 px-4">
+                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold text-[10px] border border-emerald-500/30">
+                      ★ Equipa Ativa AJAVP
+                    </span>
+                  </td>
+                  <td class="py-3 px-4">Futsal Campeonato, Futebol, Atletismo</td>
                 </tr>
-                <tr class="hover:bg-white/5">
-                  <td class="py-3 px-4 font-bold text-blue-300">Benjamins / Sub-11</td>
+                <tr class="hover:bg-white/5 bg-blue-500/5">
+                  <td class="py-3 px-4 font-bold text-blue-300 flex items-center gap-2">
+                    <span>Benjamins / Sub-11</span>
+                  </td>
                   <td class="py-3 px-4 font-mono font-bold text-white">2016 e 2017</td>
                   <td class="py-3 px-4 text-slate-300">9 e 10 anos</td>
-                  <td class="py-3 px-4">Futsal, Atletismo, Badminton, Ténis de Mesa</td>
+                  <td class="py-3 px-4">
+                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold text-[10px] border border-emerald-500/30">
+                      ★ Equipa Ativa AJAVP
+                    </span>
+                  </td>
+                  <td class="py-3 px-4">Futsal, Futebol, Ténis de Mesa, Atletismo</td>
                 </tr>
-                <tr class="hover:bg-white/5">
-                  <td class="py-3 px-4 font-bold text-purple-300">Infantis / Sub-13</td>
+                <tr class="hover:bg-white/5 bg-purple-500/5">
+                  <td class="py-3 px-4 font-bold text-purple-300 flex items-center gap-2">
+                    <span>Infantis / Sub-13</span>
+                  </td>
                   <td class="py-3 px-4 font-mono font-bold text-white">2014 e 2015</td>
                   <td class="py-3 px-4 text-slate-300">11 e 12 anos</td>
-                  <td class="py-3 px-4">Futsal, Futebol de 7, Duatlo, Badminton</td>
+                  <td class="py-3 px-4">
+                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold text-[10px] border border-emerald-500/30">
+                      ★ Equipa Ativa AJAVP
+                    </span>
+                  </td>
+                  <td class="py-3 px-4">Futsal, Futebol, Duatlo, Badminton</td>
                 </tr>
-                <tr class="hover:bg-white/5">
+                <tr class="hover:bg-white/5 opacity-75">
                   <td class="py-3 px-4 font-bold text-teal-300">Iniciados / Sub-15</td>
                   <td class="py-3 px-4 font-mono font-bold text-white">2012 e 2013</td>
                   <td class="py-3 px-4 text-slate-300">13 e 14 anos</td>
+                  <td class="py-3 px-4 text-[10px] text-slate-400">Geral Concelhio</td>
                   <td class="py-3 px-4">Futebol de 7, Atletismo, Ténis de Mesa</td>
                 </tr>
-                <tr class="hover:bg-white/5">
+                <tr class="hover:bg-white/5 opacity-75">
                   <td class="py-3 px-4 font-bold text-rose-300">Juvenis / Sub-17</td>
                   <td class="py-3 px-4 font-mono font-bold text-white">2010 e 2011</td>
                   <td class="py-3 px-4 text-slate-300">15 e 16 anos</td>
-                  <td class="py-3 px-4">Futsal Tarde, Atletismo, Duatlo</td>
+                  <td class="py-3 px-4 text-[10px] text-slate-400">Geral Concelhio</td>
+                  <td class="py-3 px-4">Futsal Geral, Atletismo, Duatlo</td>
                 </tr>
-                <tr class="hover:bg-white/5">
+                <tr class="hover:bg-white/5 opacity-75">
                   <td class="py-3 px-4 font-bold text-amber-400">Seniores &amp; Veteranos</td>
                   <td class="py-3 px-4 font-mono font-bold text-white">2009 e anteriores</td>
                   <td class="py-3 px-4 text-slate-300">18+ anos (Veteranos 35+)</td>
+                  <td class="py-3 px-4 text-[10px] text-slate-400">Geral Concelhio</td>
                   <td class="py-3 px-4">Futebol Praia, Ténis de Mesa, Duatlo, Sueca</td>
                 </tr>
               </tbody>
@@ -1479,6 +1926,18 @@
         });
       });
     });
+
+    // Check URL hash to activate target tab automatically
+    function activateTabFromHash() {
+      const hash = window.location.hash.replace('#', '');
+      if (!hash) return;
+      const targetBtn = document.querySelector(`.jif-tab-btn[data-target="${hash}"]`);
+      if (targetBtn) {
+        targetBtn.click();
+      }
+    }
+    window.addEventListener('DOMContentLoaded', activateTabFromHash);
+    activateTabFromHash();
 
     // Sport Filters
     const filterButtons = document.querySelectorAll('.jif-filter-btn');
