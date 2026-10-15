@@ -667,12 +667,12 @@
             <i data-lucide="arrow-down-narrow-wide" class="w-3.5 h-3.5 text-pink-600 dark:text-pink-400"></i>
             <span>Ordenado por Data &bull; Mais Recentes Primeiro</span>
           </span>
-          <span class="text-xs text-slate-500 dark:text-slate-400 hidden sm:inline">Últimas publicações de Outubro e Setembro de 2026</span>
+          <span class="text-xs text-slate-500 dark:text-slate-400 hidden sm:inline" id="igFeedSubtitle">Últimas publicações de Outubro de 2026</span>
         </div>
       </div>
 
       <!-- Instagram Posts Grid (Interactive Feed) -->
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
+      <div id="igFeedGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5">
 
         <!-- 1. Post: 12 Outubro 2026 -->
         <a href="https://www.instagram.com/p/DeZKE9kF9df/" target="_blank" rel="noopener noreferrer" class="group relative aspect-[4/5] rounded-2xl overflow-hidden bg-slate-900 border-2 border-pink-500/50 block shadow-xl hover:border-pink-400 transition-all duration-300 transform hover:-translate-y-1">
@@ -1083,9 +1083,12 @@
     updateDynamicJifHighlights();
   </script>
 
-  <!-- Live Instagram Stats Sync (Vercel Serverless Function) -->
+  <!-- Live Instagram Feed & Stats Sync (Behold.so & Vercel API) -->
   <script>
     (function () {
+      const BEHOLD_FEED_ID = 'N6YDQgfBrfymHGeoE8hi';
+
+      // 1. Sincronizar contadores numéricos (seguidores e publicações)
       async function syncLiveInstagramStats() {
         const postsEl = document.getElementById('igPostsCount');
         const followersEl = document.getElementById('igFollowersCount');
@@ -1108,10 +1111,95 @@
         }
       }
 
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', syncLiveInstagramStats);
-      } else {
+      // 2. Sincronizar grelha de fotos do Instagram em tempo real via Behold.so
+      async function syncLiveInstagramFeed() {
+        const grid = document.getElementById('igFeedGrid');
+        if (!grid || !BEHOLD_FEED_ID) return;
+
+        try {
+          const res = await fetch('https://feeds.behold.so/' + BEHOLD_FEED_ID);
+          if (!res.ok) return;
+          const data = await res.json();
+          const posts = Array.isArray(data) ? data : (data.posts || []);
+          if (!posts || !posts.length) return;
+
+          const monthNames = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+
+          const html = posts.slice(0, 6).map(function (post) {
+            const dateObj = new Date(post.timestamp);
+            const day = dateObj.getDate().toString().padStart(2, '0');
+            const month = monthNames[dateObj.getMonth()] || '';
+            const dateFormatted = day + ' ' + month;
+
+            const cap = post.caption || '';
+            let tag = 'AJAVP';
+            if (/sub[- ]?7/i.test(cap)) tag = 'Sub-7';
+            else if (/sub[- ]?9/i.test(cap)) tag = 'Sub-9';
+            else if (/sub[- ]?11/i.test(cap)) tag = 'Sub-11';
+            else if (/sub[- ]?13/i.test(cap)) tag = 'Sub-13';
+            else if (/corta[- ]?mato/i.test(cap)) tag = 'Corta-Mato';
+            else if (/jif/i.test(cap)) tag = 'JIF';
+            else if (/futsal/i.test(cap)) tag = 'Futsal';
+            else if (/futebol/i.test(cap)) tag = 'Futebol';
+            else if (/alimenta|ringue/i.test(cap)) tag = 'Comunidade';
+            else if (/capta/i.test(cap)) tag = 'Captações';
+
+            const isVideo = post.mediaType === 'VIDEO';
+            const mediaUrl = (post.sizes && post.sizes.medium && post.sizes.medium.mediaUrl) || post.mediaUrl;
+            const likes = post.likeCount || 0;
+            const cleanCaption = cap.replace(/\r?\n+/g, ' ').replace(/"/g, '&quot;');
+
+            return `
+              <a href="${post.permalink}" target="_blank" rel="noopener noreferrer" class="group relative aspect-[4/5] rounded-2xl overflow-hidden bg-slate-900 border ${isVideo ? 'border-2 border-pink-500/80 shadow-2xl ring-2 ring-pink-500/30' : 'border border-slate-200 dark:border-white/10 shadow-lg'} block hover:border-pink-500 transition-all duration-300 transform hover:-translate-y-1">
+                <img src="${mediaUrl}" alt="Post Instagram AJAVP" loading="lazy" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute top-2.5 inset-x-2.5 flex items-center justify-between pointer-events-none z-10">
+                  <span class="px-2.5 py-1 rounded-full ${isVideo ? 'bg-gradient-to-r from-amber-500 via-rose-500 to-purple-600 text-white' : 'bg-black/75 backdrop-blur-md text-white'} text-[10px] font-bold flex items-center gap-1.5 shadow">
+                    ${isVideo ? '<i data-lucide="play" class="w-2.5 h-2.5 fill-current"></i>' : ''}
+                    <span>${dateFormatted} &bull; ${tag}</span>
+                  </span>
+                </div>
+                ${isVideo ? `
+                  <div class="absolute inset-0 flex items-center justify-center pointer-events-none group-hover:scale-110 transition-transform duration-300 z-10">
+                    <div class="w-12 h-12 rounded-full bg-black/60 border border-white/40 backdrop-blur-xs flex items-center justify-center text-white shadow-xl">
+                      <i data-lucide="play" class="w-5 h-5 ml-0.5 fill-current text-amber-400"></i>
+                    </div>
+                  </div>
+                ` : ''}
+                <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 sm:p-5 flex flex-col justify-end text-left z-20">
+                  <p class="text-xs text-slate-100 line-clamp-3 font-medium mb-3">${cleanCaption}</p>
+                  <div class="flex items-center justify-between text-xs text-white pt-2 border-t border-white/20">
+                    <span class="flex items-center gap-1"><i data-lucide="heart" class="w-3.5 h-3.5 text-rose-400 fill-current"></i> ${likes}</span>
+                    <span class="text-[10px] text-pink-300 font-bold flex items-center gap-0.5">${isVideo ? 'Ver Reel &rarr;' : 'Ver post &rarr;'}</span>
+                  </div>
+                </div>
+              </a>
+            `;
+          }).join('');
+
+          grid.innerHTML = html;
+
+          const subtitle = document.getElementById('igFeedSubtitle');
+          if (subtitle) {
+            subtitle.textContent = 'Sincronizado automaticamente com @ajavp.javip';
+          }
+
+          if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+          }
+        } catch (err) {
+          console.debug('Erro ao carregar feed dinâmico:', err);
+        }
+      }
+
+      function init() {
         syncLiveInstagramStats();
+        syncLiveInstagramFeed();
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
       }
     })();
   </script>
