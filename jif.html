@@ -400,6 +400,8 @@
                   <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3 text-amber-400"></i> Campos 2, 4 e 6 (Complexo Desportivo)</span>
                   <span class="text-slate-500">&bull;</span>
                   <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3 text-teal-400"></i> Manhã 09h00–12h30 | Tarde 15h30–17h30</span>
+                  <span class="text-slate-500">&bull;</span>
+                  <span class="text-[11px] text-amber-300 font-semibold">Duração: 20 min (Sub-9/11/13) &bull; 15 min (Sub-7)</span>
                 </div>
                 <div class="text-[11px] text-slate-300 mt-1">
                   <strong>Sub-7 (Campo 6):</strong> 09h30 &amp; 10h30 vs Tougues &bull; 
@@ -2501,7 +2503,7 @@
       <div id="jif-pane-modalidades" class="jif-tab-pane hidden space-y-8">
         
         <!-- Bloco Principal 1: Regulamento Oficial de Futsal 2026/2027 (ADCCVC) -->
-        <div class="p-6 sm:p-8 rounded-3xl bg-slate-900 border-2 border-amber-500/40 shadow-2xl space-y-6">
+        <div id="regulamento-futsal" class="p-6 sm:p-8 rounded-3xl bg-slate-900 border-2 border-amber-500/40 shadow-2xl space-y-6">
           <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-5">
             <div class="space-y-1">
               <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold uppercase tracking-wider border border-amber-500/30">
@@ -2527,11 +2529,15 @@
             <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
               <div class="flex items-center gap-2 font-bold text-amber-300 text-sm border-b border-white/10 pb-1.5">
                 <i data-lucide="clock" class="w-4 h-4 text-amber-400"></i>
-                <span>Tempo &amp; Estrutura do Jogo</span>
+                <span>Tempo &amp; Duração do Jogo</span>
               </div>
               <ul class="space-y-1.5 text-slate-300 leading-relaxed text-[11px]">
-                <li><strong class="text-white">Duração:</strong> 2 tempos de 20 minutos com <em>tempo corrido</em> (o relógio não para a cada saída).</li>
-                <li><strong class="text-white">Intervalo:</strong> Duração máxima de 5 minutos.</li>
+                <li><strong class="text-white">Duração Oficial dos Jogos:</strong>
+                  <br>&bull; <strong class="text-amber-300">Sub-9, Sub-11, Sub-13 e Sub-16:</strong> <strong>2 tempos de 20 minutos</strong> (tempo corrido).
+                  <br>&bull; <strong class="text-amber-300">Sub-7 (Petizes):</strong> <strong>2 tempos de 15 minutos</strong> (tempo corrido formativo).
+                </li>
+                <li><strong class="text-white">Tempo Corrido:</strong> O cronómetro não para a cada saída de bola.</li>
+                <li><strong class="text-white">Intervalo:</strong> Duração máxima de 5 minutos entre as duas partes.</li>
                 <li><strong class="text-white">Pausa Técnica (Time-out):</strong> 1 minuto por período por equipa (não acumula). Cada equipa recebe um cartão no início do jogo para colocar na mesa ao pedir o tempo.</li>
                 <li><strong class="text-white">Tamanho da Bola:</strong>
                   <br>&bull; <strong class="text-amber-300">Bola nº 3</strong> (mais pequena e leve): Sub-7, Sub-9 e Sub-11.
@@ -2607,7 +2613,7 @@
         </div>
 
         <!-- Bloco Principal 2: Regulamento do Futebol JIF 2026/2027 -->
-        <div class="p-6 sm:p-8 rounded-3xl bg-slate-900 border-2 border-green-500/40 shadow-2xl space-y-6">
+        <div id="regulamento-futebol" class="p-6 sm:p-8 rounded-3xl bg-slate-900 border-2 border-green-500/40 shadow-2xl space-y-6">
           <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-5">
             <div class="space-y-1">
               <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/20 text-green-300 text-xs font-bold uppercase tracking-wider border border-green-500/30">
@@ -2618,7 +2624,7 @@
                 Regulamento dos Torneios de Futebol JIF
               </h3>
               <p class="text-xs sm:text-sm text-slate-300">
-                Estrutura de Séries, apuramento de fases finais e normas de segurança em relvado sintético.
+                Duração dos jogos, estrutura de séries, apuramento de fases finais e normas de segurança em relvado sintético.
               </p>
             </div>
             <span class="px-3.5 py-1.5 rounded-xl bg-green-500 text-slate-950 font-black text-xs uppercase shadow-md flex items-center gap-1.5 self-start md:self-auto">
@@ -2627,33 +2633,62 @@
             </span>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 text-xs">
             
+            <!-- 1. Duração dos Jogos -->
+            <div class="p-4 rounded-2xl bg-gradient-to-br from-green-950/60 to-slate-900 border-2 border-green-400/50 space-y-2 shadow-sm">
+              <div class="font-bold text-green-300 text-sm border-b border-white/10 pb-1 flex items-center gap-1.5">
+                <i data-lucide="clock" class="w-4 h-4 text-green-400"></i>
+                <span>Duração dos Jogos</span>
+              </div>
+              <ul class="space-y-1.5 text-slate-300 leading-relaxed text-[11px]">
+                <li><strong class="text-white">Sub-9, 11, 13 e 16:</strong> <strong>20 minutos</strong> por jogo (tempo corrido).</li>
+                <li><strong class="text-white">Sub-7 (Petizes):</strong> <strong>15 minutos</strong> por jogo (campos no corredor central).</li>
+                <li><strong class="text-white">Pontualidade:</strong> Partidas sequenciais a cada 30 min. Fundamental início pontual para cumprimento do calendário e intervalo de almoço.</li>
+              </ul>
+            </div>
+
+            <!-- 2. Formato por Séries -->
             <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
-              <div class="font-bold text-green-300 text-sm border-b border-white/10 pb-1">Formato por Séries</div>
+              <div class="font-bold text-amber-300 text-sm border-b border-white/10 pb-1 flex items-center gap-1.5">
+                <i data-lucide="layout-grid" class="w-4 h-4 text-amber-400"></i>
+                <span>Formato por Séries</span>
+              </div>
               <p class="text-[11px] text-slate-300 leading-relaxed">
                 As freguesias são sorteadas por séries distribuídas pelos Campos 1 a 6. A AJAVP compete na <strong class="text-white">Série D (Sub-7)</strong>, <strong class="text-white">Série B (Sub-9 e Sub-11)</strong> e <strong class="text-white">Série C (Sub-13)</strong>.
               </p>
             </div>
 
+            <!-- 3. Meias-Finais & Finais -->
             <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
-              <div class="font-bold text-amber-300 text-sm border-b border-white/10 pb-1">Meias-Finais &amp; Finais</div>
+              <div class="font-bold text-teal-300 text-sm border-b border-white/10 pb-1 flex items-center gap-1.5">
+                <i data-lucide="award" class="w-4 h-4 text-teal-400"></i>
+                <span>Meias-Finais &amp; Finais</span>
+              </div>
               <p class="text-[11px] text-slate-300 leading-relaxed">
-                O 1º classificado de cada série apura-se diretamente para as Meias-finais às 12h00 (manhã) e 17h00 (tarde), seguindo-se a grande final no mesmo dia.
+                O 1º classificado de cada série apura-se diretamente para as Meias-finais às 12h00 (manhã) e 17h00 (tarde), seguindo-se a grande final concelhia no mesmo dia.
               </p>
             </div>
 
+            <!-- 4. Caneleiras Obrigatórias -->
             <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
-              <div class="font-bold text-blue-300 text-sm border-b border-white/10 pb-1">Caneleiras Obrigatórias</div>
+              <div class="font-bold text-rose-300 text-sm border-b border-white/10 pb-1 flex items-center gap-1.5">
+                <i data-lucide="shield-alert" class="w-4 h-4 text-rose-400"></i>
+                <span>Caneleiras Obrigatórias</span>
+              </div>
               <p class="text-[11px] text-slate-300 leading-relaxed">
                 Por imperativo de segurança e do regulamento ADCCVC, nenhum atleta pode entrar em campo sem <strong class="text-white">caneleiras devidamente colocadas</strong> e meias subidas.
               </p>
             </div>
 
+            <!-- 5. Calçado & Segurança -->
             <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
-              <div class="font-bold text-purple-300 text-sm border-b border-white/10 pb-1">Calçado para Sintético</div>
+              <div class="font-bold text-purple-300 text-sm border-b border-white/10 pb-1 flex items-center gap-1.5">
+                <i data-lucide="alert-triangle" class="w-4 h-4 text-purple-400"></i>
+                <span>Calçado &amp; Segurança</span>
+              </div>
               <p class="text-[11px] text-slate-300 leading-relaxed">
-                São recomendadas chuteiras com pitons de borracha múltiplos (turf / relva sintética). É estritamente proibido o uso de pitons de alumínio nos campos sintéticos.
+                Recomendadas chuteiras turf (sintético). Proibidos pitons de alumínio. Proibida permanência de pais ou não atletas no relvado ou sentados nos muros.
               </p>
             </div>
 
