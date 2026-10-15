@@ -2,10 +2,21 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Multimédia • Galeria de Fotos &amp; Vídeos Oficiais | AJAVP</title>
   <meta name="description" content="Explora o álbum fotográfico oficial e os vídeos da Associação Jovens e Adultos de Vilar do Pinheiro. Revive momentos de prova, treinos e pódios.">
-  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png">
+
+  <!-- PWA & Mobile Web App Manifest -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1b4557" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="AJAVP">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -199,6 +210,13 @@
             <span class="dark:hidden text-slate-700">🌙 Mudar p/ Escuro</span>
             <span class="hidden dark:inline text-amber-300">☀️ Mudar p/ Claro</span>
           </span>
+        </button>
+        <button id="pwaInstallDrawerBtn" class="w-full flex items-center justify-between py-2.5 px-3 rounded-xl bg-emerald-50/70 text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300 text-xs font-bold border border-emerald-200/60 dark:border-emerald-500/30 transition-all cursor-pointer">
+          <span class="flex items-center gap-2.5">
+            <i data-lucide="download" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+            <span>Instalar App no Telemóvel</span>
+          </span>
+          <span class="text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-emerald-600 text-white">App</span>
         </button>
         <a href="https://forms.gle/YJdnZyUsMB8aBADj6" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 bg-brand-green text-white py-3 rounded-xl font-heading font-bold text-xs shadow-md">
           <i data-lucide="user-plus" class="w-4 h-4"></i>
@@ -841,5 +859,7 @@
   </script>
   <!-- Theme Script -->
   <script src="assets/js/theme.js"></script>
+  <!-- PWA Service Worker & Install Manager -->
+  <script src="assets/js/pwa.js"></script>
 </body>
 </html>
