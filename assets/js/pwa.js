@@ -44,7 +44,6 @@
         el.style.display = 'none';
       });
     });
-    return;
   }
 
   // Ligar botões estáticos no menu drawer ou páginas
@@ -293,7 +292,9 @@
     try {
       const permission = await Notification.requestPermission();
       if (permission !== 'granted') {
-        alert('As notificações foram recusadas ou bloqueadas nas definições do teu navegador.');
+        if (permission === 'denied') {
+          alert('As notificações estão bloqueadas no teu dispositivo. Para receberes os avisos da AJAVP, vai às definições do navegador/telemóvel e permite as Notificações.');
+        }
         return false;
       }
 
@@ -325,11 +326,28 @@
 
       localStorage.setItem('ajavp_push_subscribed', 'true');
       updatePushUI(true);
-      showPushToast('✓ Notificações ativadas! Vais receber alertas de convocatórias e jogos.');
+      showPushToast('✓ Avisos ativados com sucesso!');
+
+      // Enviar notificação de teste/boas-vindas imediata no telemóvel
+      try {
+        if (registration && registration.showNotification) {
+          registration.showNotification('AJAVP • Avisos Ativados! 🔔', {
+            body: 'O teu dispositivo está pronto para receber avisos de treinos e convocatórias.',
+            icon: '/assets/icons/icon-192.png',
+            badge: '/assets/icons/icon-192.png',
+            vibrate: [200, 100, 200],
+            tag: 'ajavp-welcome',
+            data: { url: '/' }
+          });
+        }
+      } catch (e) {
+        console.warn('Erro ao disparar notificação local:', e);
+      }
+
       return true;
     } catch (err) {
       console.error('[PWA Push] Erro ao subscrever:', err);
-      alert('Não foi possível ativar as notificações de momento. Tenta novamente mais tarde.');
+      alert('Não foi possível ativar os avisos: ' + (err.message || 'Erro inesperado') + '. Se estiveres em janela anónima, tenta abrir normalmente.');
       return false;
     }
   }
@@ -350,7 +368,7 @@
 
       localStorage.removeItem('ajavp_push_subscribed');
       updatePushUI(false);
-      showPushToast('Notificações desativadas com sucesso.');
+      showPushToast('Avisos desativados com sucesso.');
       return true;
     } catch (err) {
       console.error('[PWA Push] Erro ao cancelar:', err);
@@ -377,10 +395,10 @@
       const badge = btn.querySelector('.push-btn-badge');
       const icon = btn.querySelector('svg, i');
       if (textSpan) {
-        textSpan.textContent = isSubscribed ? 'Notificações Ativas (🔔)' : 'Ativar Notificações da AJAVP';
+        textSpan.textContent = isSubscribed ? 'Avisos Ativos no Telemóvel (🔔)' : 'Ativar Avisos no Telemóvel';
       }
       if (badge) {
-        badge.textContent = isSubscribed ? 'Ativo' : 'Alertas';
+        badge.textContent = isSubscribed ? 'Ativo' : 'Avisos';
         badge.className = isSubscribed
           ? 'text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-emerald-600 text-white'
           : 'text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-500 text-slate-950';
@@ -394,7 +412,12 @@
           icon.classList.add('text-amber-500');
         }
       }
-      btn.title = isSubscribed ? 'Notificações Ativas (clica para desativar)' : 'Ativar Notificações e Alertas';
+      if (isSubscribed) {
+        btn.classList.add('is-active', '!bg-emerald-600', '!text-white', '!border-emerald-500');
+      } else {
+        btn.classList.remove('is-active', '!bg-emerald-600', '!text-white', '!border-emerald-500');
+      }
+      btn.title = isSubscribed ? 'Avisos Ativos (clica para enviar teste ou desativar)' : 'Ativar Avisos de Treinos e Provas';
     });
   }
 
@@ -413,8 +436,11 @@
     }, 4000);
   }
 
-  // Convite discreto para ativar notificações (surge após 8 segundos em utilizadores que ainda não subscreveram)
+  // Convite discreto para ativar avisos na página inicial
   function showPushInvitationPrompt() {
+    const isHome = window.location.pathname === '/' || window.location.pathname.endsWith('index.html') || window.location.pathname === '';
+    if (!isHome) return;
+
     if (localStorage.getItem('ajavp_push_subscribed') === 'true') return;
     if (Notification.permission === 'denied' || Notification.permission === 'granted') return;
     const dismissedTime = localStorage.getItem('ajavp_push_prompt_dismissed');
@@ -433,8 +459,8 @@
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
           </div>
           <div>
-            <h4 class="font-heading font-black text-sm text-brand-navy dark:text-white leading-tight">Alertas da AJAVP</h4>
-            <p class="text-xs text-slate-500 dark:text-slate-300 leading-tight mt-0.5">Recebe convocatórias de treinos e resultados dos jogos no telemóvel.</p>
+            <h4 class="font-heading font-black text-sm text-brand-navy dark:text-white leading-tight">Avisos da AJAVP</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-300 leading-tight mt-0.5">Recebe avisos oficiais de treinos e convocatórias no telemóvel.</p>
           </div>
         </div>
         <button id="dismissPushInviteBtn" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1 cursor-pointer">
@@ -443,7 +469,7 @@
       </div>
       <div class="flex items-center gap-2 pt-1">
         <button id="acceptPushInviteBtn" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-heading font-bold text-xs py-2.5 px-3 rounded-xl shadow-md transition-all text-center cursor-pointer">
-          Ativar Alertas
+          Ativar Avisos
         </button>
         <button id="laterPushInviteBtn" class="px-3 py-2.5 text-xs text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 font-semibold cursor-pointer">
           Mais Tarde
@@ -476,8 +502,28 @@
         e.preventDefault();
         const isSubscribed = await checkPushSubscription();
         if (isSubscribed) {
-          if (confirm('Desejas desativar as notificações da AJAVP no teu dispositivo?')) {
-            await unsubscribeUserFromPush();
+          const action = confirm('Os avisos da AJAVP já estão ativos no teu dispositivo!\n\n• Clica em [OK] para disparar um aviso de teste agora no teu ecrã.\n• Clica em [Cancelar] se pretendes desativar os avisos.');
+          if (action) {
+            try {
+              const reg = await navigator.serviceWorker.ready;
+              if (reg && reg.showNotification) {
+                reg.showNotification('AJAVP • Teste de Aviso 🔔', {
+                  body: 'O teu telemóvel está a receber avisos oficiais da AJAVP com sucesso!',
+                  icon: '/assets/icons/icon-192.png',
+                  badge: '/assets/icons/icon-192.png',
+                  vibrate: [200, 100, 200],
+                  tag: 'ajavp-test',
+                  data: { url: '/' }
+                });
+                showPushToast('✓ Aviso de teste enviado para o teu ecrã!');
+              }
+            } catch (err) {
+              console.error(err);
+            }
+          } else {
+            if (confirm('Tens a certeza que queres desativar os avisos da AJAVP?')) {
+              await unsubscribeUserFromPush();
+            }
           }
         } else {
           await subscribeUserToPush();
@@ -485,8 +531,8 @@
       });
     });
 
-    // Se o utilizador aceitar as notificações ou já tiver o banner de instalação fechado
-    setTimeout(showPushInvitationPrompt, 8000);
+    // Se o utilizador ainda não subscreveu, convite discreto na homepage após 6 segundos
+    setTimeout(showPushInvitationPrompt, 6000);
   });
 
   // Exportar para controlo global se necessário

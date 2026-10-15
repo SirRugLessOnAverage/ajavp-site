@@ -146,33 +146,59 @@
         <!-- Formulário (7 colunas) -->
         <div class="lg:col-span-7 bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-white/10 shadow-sm space-y-6">
           <div class="space-y-1">
-            <span class="text-xs font-bold uppercase tracking-widest text-brand-green">Disparo Instantâneo</span>
-            <h3 class="font-heading font-black text-xl text-brand-navy dark:text-white">Criar Nova Notificação Push</h3>
+            <span class="text-xs font-bold uppercase tracking-widest text-brand-green">Disparo Oficial</span>
+            <h3 class="font-heading font-black text-xl text-brand-navy dark:text-white">Criar Aviso de Treino ou Prova</h3>
             <p class="text-xs text-slate-500 dark:text-slate-400">
-              Esta notificação será entregue imediatamente no telemóvel de todos os associados que ativaram os alertas.
+              Esta notificação será entregue diretamente no ecrã dos telemóveis de todos os atletas e associados que ativaram os avisos.
             </p>
+          </div>
+
+          <!-- Alerta se não houver subscritores -->
+          <div id="noSubscribersAlert" class="hidden p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-500/30 text-xs text-amber-900 dark:text-amber-300 space-y-1.5">
+            <div class="flex items-center gap-2 font-bold">
+              <i data-lucide="info" class="w-4 h-4 text-amber-500 flex-shrink-0"></i>
+              <span>Ainda não existem telemóveis registados (0 subscritores).</span>
+            </div>
+            <p class="text-[11px] leading-relaxed">
+              Para testares, abre o site oficial no teu telemóvel (<a href="/" target="_blank" class="underline font-bold">Página Inicial</a>) e toca no botão dourado <strong>"Ativar Avisos no Telemóvel"</strong>. Depois volta aqui e verás o teu dispositivo registado!
+            </p>
+          </div>
+
+          <!-- Modelos Rápidos de Mensagem -->
+          <div class="space-y-2">
+            <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wide">Modelos Rápidos:</label>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <button type="button" onclick="fillTemplate('treino')" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold transition-all cursor-pointer">
+                🏀 Alteração de Treino
+              </button>
+              <button type="button" onclick="fillTemplate('jif')" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold transition-all cursor-pointer">
+                ⚽ Convocatória JIF
+              </button>
+              <button type="button" onclick="fillTemplate('urgente')" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold transition-all cursor-pointer">
+                ⚠️ Aviso Urgente
+              </button>
+            </div>
           </div>
 
           <form id="pushForm" onsubmit="handleSendPush(event)" class="space-y-4">
             <div class="space-y-1.5">
-              <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wide">Título do Alerta *</label>
-              <input type="text" id="notifTitle" required placeholder="Ex: Futsal Sub-9 • Jogo de Sábado" oninput="updatePreview()" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 text-xs sm:text-sm text-slate-800 dark:text-white focus:outline-hidden focus:border-brand-green">
+              <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wide">Título do Aviso *</label>
+              <input type="text" id="notifTitle" required placeholder="Ex: Treino de Futsal Sub-9 • Alteração de Horário" oninput="updatePreview()" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 text-xs sm:text-sm text-slate-800 dark:text-white focus:outline-hidden focus:border-brand-green">
             </div>
 
             <div class="space-y-1.5">
-              <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wide">Mensagem / Convocatória *</label>
-              <textarea id="notifBody" rows="3" required placeholder="Ex: Concentração às 14h15 no Pavilhão de Canidelo. Equipamento oficial preto." oninput="updatePreview()" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 text-xs sm:text-sm text-slate-800 dark:text-white focus:outline-hidden focus:border-brand-green"></textarea>
+              <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wide">Mensagem do Aviso / Convocatória *</label>
+              <textarea id="notifBody" rows="3" required placeholder="Ex: O treino de hoje realiza-se às 18h30 no Pavilhão Municipal. Não faltes!" oninput="updatePreview()" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 text-xs sm:text-sm text-slate-800 dark:text-white focus:outline-hidden focus:border-brand-green"></textarea>
             </div>
 
             <div class="space-y-1.5">
               <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wide">Página ao Clicar na Notificação</label>
               <select id="notifUrl" onchange="updatePreview()" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 text-xs sm:text-sm text-slate-800 dark:text-white focus:outline-hidden focus:border-brand-green">
-                <option value="/jif">Página dos Jogos Inter-Freguesias (/jif)</option>
                 <option value="/modalidades">Modalidades &amp; Treinos (/modalidades)</option>
+                <option value="/jif">Página dos Jogos Inter-Freguesias (/jif)</option>
                 <option value="/">Página Inicial (/)</option>
                 <option value="/clube">Quem Somos &amp; Instalações (/clube)</option>
                 <option value="/contactos">Contactos &amp; Inscrições (/contactos)</option>
-                <option value="/multimedia">Galeria &amp; Multimédia (/multimedia)</option>
               </select>
             </div>
 
@@ -181,7 +207,7 @@
             <div class="pt-2 flex items-center gap-3">
               <button type="submit" id="sendPushBtn" class="flex-1 bg-gradient-to-r from-brand-green to-emerald-600 hover:from-brand-greenDark hover:to-emerald-700 text-white font-heading font-bold text-xs uppercase tracking-wider py-3.5 px-6 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer">
                 <i data-lucide="send" class="w-4 h-4"></i>
-                <span id="sendBtnText">Enviar a Todos os Associados</span>
+                <span id="sendBtnText">Enviar Aviso a Todos os Associados</span>
               </button>
             </div>
           </form>
@@ -288,18 +314,50 @@
       document.getElementById('previewUrl').textContent = 'ajavp-site.vercel.app' + url;
     }
 
+    function fillTemplate(type) {
+      const titleEl = document.getElementById('notifTitle');
+      const bodyEl = document.getElementById('notifBody');
+      const urlEl = document.getElementById('notifUrl');
+
+      if (type === 'treino') {
+        titleEl.value = 'Treino de Futsal • Alteração de Horário';
+        bodyEl.value = 'Informamos todos os atletas que o treino de hoje passa para as 18h30 no Pavilhão de Vilar do Pinheiro. Contamos com a vossa presença!';
+        urlEl.value = '/modalidades';
+      } else if (type === 'jif') {
+        titleEl.value = 'Convocatória JIF • Prova de Sábado';
+        bodyEl.value = 'Convocatória oficial para a jornada deste fim de semana. Concentração às 09h00 no local da prova com o equipamento oficial da AJAVP.';
+        urlEl.value = '/jif';
+      } else if (type === 'urgente') {
+        titleEl.value = 'Aviso Importante • Informação da Direção';
+        bodyEl.value = 'Aviso oficial da direção desportiva sobre as atividades e jogos deste fim de semana. Consulta todos os detalhes.';
+        urlEl.value = '/';
+      }
+
+      updatePreview();
+    }
+
     async function loadDashboardStats() {
       try {
         const res = await fetch('/api/push-stats');
         if (!res.ok) throw new Error('Falha ao carregar dados');
         const data = await res.json();
 
-        document.getElementById('statsSubscribersCount').textContent = data.totalSubscribers || 0;
+        const totalSubs = data.totalSubscribers || 0;
+        document.getElementById('statsSubscribersCount').textContent = totalSubs;
         document.getElementById('statsSentCount').textContent = data.notifications ? data.notifications.length : 0;
+
+        const alertBox = document.getElementById('noSubscribersAlert');
+        if (alertBox) {
+          if (totalSubs === 0) {
+            alertBox.classList.remove('hidden');
+          } else {
+            alertBox.classList.add('hidden');
+          }
+        }
 
         const tbody = document.getElementById('notificationsHistoryBody');
         if (!data.notifications || data.notifications.length === 0) {
-          tbody.innerHTML = '<tr><td colspan="5" class="py-6 text-center text-slate-400">Nenhuma notificação enviada ainda.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="5" class="py-6 text-center text-slate-400">Nenhum aviso enviado ainda.</td></tr>';
           return;
         }
 
@@ -332,12 +390,12 @@
       const btnText = document.getElementById('sendBtnText');
       const banner = document.getElementById('sendResultBanner');
 
-      if (!confirm(`Tens a certeza que queres disparar esta notificação para todos os associados subscritos?\n\nTítulo: ${title}`)) {
+      if (!confirm(`Tens a certeza que queres disparar este aviso para todos os associados subscritos?\n\nTítulo: ${title}`)) {
         return;
       }
 
       btn.disabled = true;
-      btnText.textContent = 'A disparar alertas...';
+      btnText.textContent = 'A disparar avisos...';
       banner.className = 'hidden';
 
       try {
@@ -355,8 +413,13 @@
         const data = await res.json();
 
         if (res.ok && data.success) {
-          banner.className = 'p-4 rounded-2xl text-xs font-bold bg-emerald-50 text-emerald-900 border border-emerald-300 block';
-          banner.innerHTML = `✓ Notificação enviada com sucesso para <strong>${data.sent}</strong> associados (${data.failed} falhas).`;
+          if (data.sent === 0) {
+            banner.className = 'p-4 rounded-2xl text-xs font-bold bg-amber-50 text-amber-900 border border-amber-300 block space-y-1';
+            banner.innerHTML = `⚠️ Aviso gravado no histórico, mas <strong>nenhum telemóvel o recebeu</strong> porque existem <strong>0 subscritores registados</strong>.<br><span class="text-[11px] font-normal text-amber-800">💡 <strong>Como testar:</strong> Abre a <a href="/" target="_blank" class="underline font-bold">página inicial</a> no teu telemóvel e clica em <em>"Ativar Avisos no Telemóvel"</em>. Assim que o fizeres, volta aqui e envia novamente para receberes o teste!</span>`;
+          } else {
+            banner.className = 'p-4 rounded-2xl text-xs font-bold bg-emerald-50 text-emerald-900 border border-emerald-300 block';
+            banner.innerHTML = `✓ Notificação enviada com sucesso para <strong>${data.sent}</strong> associado(s) (${data.failed} falhas).`;
+          }
           document.getElementById('notifTitle').value = '';
           document.getElementById('notifBody').value = '';
           updatePreview();
@@ -370,7 +433,7 @@
         banner.textContent = 'Erro de ligação: ' + err.message;
       } finally {
         btn.disabled = false;
-        btnText.textContent = 'Enviar a Todos os Associados';
+        btnText.textContent = 'Enviar Aviso a Todos os Associados';
       }
     }
 
