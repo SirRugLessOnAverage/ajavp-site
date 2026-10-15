@@ -1,6 +1,6 @@
 // AJAVP - Service Worker (PWA)
 // Versão do Cache
-const CACHE_NAME = 'ajavp-pwa-v1';
+const CACHE_NAME = 'ajavp-pwa-v2';
 
 // Recursos essenciais para pré-cache (App Shell)
 const PRECACHE_ASSETS = [
@@ -121,3 +121,52 @@ self.addEventListener('fetch', (event) => {
     })
   );
 });
+
+// =============================================================
+// GESTÃO DE NOTIFICAÇÕES PUSH (WEB PUSH)
+// =============================================================
+self.addEventListener('push', (event) => {
+  let data = {};
+  try {
+    data = event.data ? event.data.json() : {};
+  } catch (e) {
+    data = { title: 'AJAVP', body: event.data ? event.data.text() : 'Nova notificação da AJAVP' };
+  }
+
+  const title = data.title || 'AJAVP • Convocatória / Alerta';
+  const options = {
+    body: data.body || 'Tens uma nova informação oficial da AJAVP.',
+    icon: '/assets/icons/icon-192.png',
+    badge: '/assets/icons/icon-192.png',
+    vibrate: [200, 100, 200],
+    tag: data.tag || 'ajavp-notification',
+    renotify: true,
+    data: {
+      url: data.url || '/'
+    }
+  };
+
+  event.waitUntil(self.registration.showNotification(title, options));
+});
+
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  const targetUrl = event.notification.data?.url || '/';
+
+  event.waitUntil(
+    clients.matchAll({ type: 'window', includeUncontrolled: true }).then((windowClients) => {
+      // Se já houver um separador aberto no site, focar nele e navegar
+      for (const client of windowClients) {
+        if ('focus' in client) {
+          client.navigate(targetUrl);
+          return client.focus();
+        }
+      }
+      // Caso contrário, abrir nova janela
+      if (clients.openWindow) {
+        return clients.openWindow(targetUrl);
+      }
+    })
+  );
+});
+

@@ -1,0 +1,79 @@
+// Vercel Serverless Function: /api/push-subscribe
+// Guarda e atualiza subscrições de Web Push no Supabase
+
+const SUPABASE_URL = process.env.SUPABASE_URL || 'https://mudgnaajtolytggksvvq.supabase.co';
+const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im11ZGduYWFqdG9seXRnZ2tzdnZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIwNjAxODcsImV4cCI6MjEwNzYzNjE4N30.lL5jb84u0PUWH4BjQWdZ4uZLpGKybUuhGISGB9tvdIQ';
+
+export default async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
+  if (req.method === 'DELETE') {
+    try {
+      const { endpoint } = req.body || {};
+      if (!endpoint) {
+        return res.status(400).json({ error: 'Endpoint obrigatório' });
+      }
+
+      await fetch(`${SUPABASE_URL}/rest/v1/push_subscriptions?endpoint=eq.${encodeURIComponent(endpoint)}`, {
+        method: 'DELETE',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+        }
+      });
+
+      return res.status(200).json({ success: true, message: 'Subscrição removida' });
+    } catch (err) {
+      console.error('Erro ao remover subscrição:', err);
+      return res.status(500).json({ error: 'Erro interno ao remover' });
+    }
+  }
+
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Método não permitido' });
+  }
+
+  try {
+    const { endpoint, keys, userAgent } = req.body || {};
+
+    if (!endpoint || !keys || !keys.p256dh || !keys.auth) {
+      return res.status(400).json({ error: 'Dados de subscrição inválidos' });
+    }
+
+    const payload = {
+      endpoint,
+      p256dh: keys.p256dh,
+      auth: keys.auth,
+      user_agent: userAgent || req.headers['user-agent'] || '',
+      updated_at: new Date().toISOString()
+    };
+
+    const supabaseRes = await fetch(`${SUPABASE_URL}/rest/v1/push_subscriptions?on_conflict=endpoint`, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'resolution=merge-duplicates'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (!supabaseRes.ok) {
+      const errText = await supabaseRes.text();
+      console.error('Falha ao gravar no Supabase:', errText);
+      return res.status(502).json({ error: 'Falha ao guardar no Supabase' });
+    }
+
+    return res.status(200).json({ success: true, message: 'Subscrição guardada com sucesso' });
+  } catch (error) {
+    console.error('Erro ao processar subscrição:', error);
+    return res.status(500).json({ error: 'Erro no servidor' });
+  }
+}
