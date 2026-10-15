@@ -1,0 +1,39 @@
+name: Atualizar Métricas do Instagram
+
+on:
+  schedule:
+    # Executa diariamente às 08:00 UTC (09:00 de Lisboa)
+    - cron: '0 8 * * *'
+  workflow_dispatch: # Permite execução manual no GitHub
+
+permissions:
+  contents: write
+
+jobs:
+  update-instagram:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do Repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Executar Script de Atualização
+        run: |
+          python scripts/update_instagram.py
+
+      - name: Fazer Commit e Push se houver alterações
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add index.html data/instagram.json
+            git commit -m "chore(instagram): atualizar métricas de seguidores e publicações [skip ci]"
+            git push
+            echo "Alterações enviadas para o repositório com sucesso!"
+          else
+            echo "Nenhuma alteração detetada no perfil do Instagram."
+          fi
