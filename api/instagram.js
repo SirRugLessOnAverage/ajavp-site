@@ -64,7 +64,11 @@ export default async function handler(req, res) {
     }
 
     if (!followersStr || !postsStr) {
-      throw new Error('Não foi possível extrair métricas do perfil');
+      const titleMatch = html.match(/<title>([^<]*)<\/title>/i);
+      const title = titleMatch ? titleMatch[1] : 'Sem título';
+      const metaDesc = html.match(/<meta[^>]+(?:description|og:description)[^>]+content="([^"]*)"/i);
+      const desc = metaDesc ? metaDesc[1] : 'Sem meta desc';
+      throw new Error(`Extração falhou. Title: [${title}], Desc: [${desc}], HTML preview: ${html.slice(0, 200)}`);
     }
 
     const followers = followersStr.replace(/[,.]/g, '').trim();
