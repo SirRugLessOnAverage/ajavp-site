@@ -1,0 +1,275 @@
+/**
+ * AJAVP - Estilos Globais de Light & Dark Mode
+ * Garante contraste ideal, conformidade com os princípios Emil Kowalski
+ * e preserva as cores oficiais da identidade AJAVP (Verde, Azul Navy e Âmbar).
+ */
+
+/* Transição suave entre temas */
+html,
+body,
+header#mainHeader,
+.bg-white,
+.bg-brand-grayBg,
+.bg-slate-50,
+#mobileMenu {
+  transition: background-color 220ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 220ms cubic-bezier(0.16, 1, 0.3, 1),
+              color 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* -------------------------------------------------------------
+ * MODO ESCURO (html.dark)
+ * ------------------------------------------------------------- */
+
+/* Fundo geral e texto principal */
+html.dark {
+  color-scheme: dark;
+}
+
+html.dark body {
+  background-color: #0b131e !important;
+  color: #e2e8f0 !important;
+}
+
+/* Header & Barra Superior */
+html.dark header#mainHeader {
+  background-color: rgba(11, 19, 30, 0.94) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4) !important;
+}
+
+html.dark header#mainHeader .font-heading.text-brand-navy {
+  color: #f8fafc !important;
+}
+
+html.dark nav a.text-slate-700 {
+  color: #cbd5e1 !important;
+}
+
+html.dark nav a.text-slate-700:hover {
+  color: #34d399 !important;
+  background-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Menu Mobile */
+html.dark #mobileMenu {
+  background-color: #0f172a !important;
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.6) !important;
+}
+
+html.dark #mobileMenu a.text-slate-700 {
+  color: #cbd5e1 !important;
+}
+
+html.dark #mobileMenu a.text-slate-700:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  color: #ffffff !important;
+}
+
+/* Secções de Fundo */
+html.dark .bg-brand-grayBg {
+  background-color: #070d15 !important;
+}
+
+/* Cartões Brancos -> Dark Slate Navy */
+html.dark .bg-white {
+  background-color: #111c2a !important;
+  color: #e2e8f0;
+}
+
+html.dark .bg-slate-50 {
+  background-color: #162436 !important;
+}
+
+html.dark .bg-slate-100 {
+  background-color: #1b2c40 !important;
+}
+
+/* Tipografia em Modo Escuro */
+html.dark .text-slate-900,
+html.dark .text-slate-800,
+html.dark .text-brand-navy,
+html.dark h1.text-brand-navy,
+html.dark h2.text-brand-navy,
+html.dark h3.text-brand-navy,
+html.dark h4.text-brand-navy {
+  color: #f8fafc !important;
+}
+
+html.dark .text-slate-700,
+html.dark .text-slate-600 {
+  color: #cbd5e1 !important;
+}
+
+html.dark .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+html.dark .text-slate-400 {
+  color: #94a3b8 !important;
+}
+
+/* Bordas subtis e translúcidas */
+html.dark .border-slate-100,
+html.dark .border-slate-200,
+html.dark .border-slate-200\/80,
+html.dark .border-slate-200\/60,
+html.dark .border-slate-200\/70,
+html.dark .border-slate-200\/90,
+html.dark .border-slate-300 {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Sombras e destaques em cartões arredondados */
+html.dark .bg-white.rounded-2xl,
+html.dark .bg-white.rounded-3xl,
+html.dark article {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark .bg-white.rounded-2xl:hover,
+html.dark .bg-white.rounded-3xl:hover {
+  box-shadow: 0 16px 32px -4px rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Badges e Contentores Temáticos */
+html.dark .bg-emerald-50,
+html.dark .bg-emerald-50\/80,
+html.dark .bg-emerald-50\/60,
+html.dark .bg-emerald-50\/90 {
+  background-color: rgba(16, 185, 129, 0.12) !important;
+  border-color: rgba(16, 185, 129, 0.25) !important;
+}
+html.dark .text-emerald-900,
+html.dark .text-emerald-800 {
+  color: #6ee7b7 !important;
+}
+
+html.dark .bg-amber-50,
+html.dark .bg-amber-50\/90,
+html.dark .bg-amber-50\/80,
+html.dark .bg-amber-50\/60 {
+  background-color: rgba(245, 158, 11, 0.12) !important;
+  border-color: rgba(245, 158, 11, 0.3) !important;
+}
+html.dark .text-amber-900,
+html.dark .text-amber-950,
+html.dark .text-amber-800 {
+  color: #fde68a !important;
+}
+
+html.dark .bg-blue-50,
+html.dark .bg-blue-50\/80,
+html.dark .bg-blue-50\/60 {
+  background-color: rgba(59, 130, 246, 0.12) !important;
+  border-color: rgba(59, 130, 246, 0.25) !important;
+}
+html.dark .text-blue-900,
+html.dark .text-blue-800 {
+  color: #93c5fd !important;
+}
+
+html.dark .bg-purple-50,
+html.dark .bg-purple-50\/80 {
+  background-color: rgba(168, 85, 247, 0.12) !important;
+  border-color: rgba(168, 85, 247, 0.25) !important;
+}
+html.dark .text-purple-900,
+html.dark .text-purple-800 {
+  color: #d8b4fe !important;
+}
+
+html.dark .bg-teal-50,
+html.dark .bg-teal-50\/80 {
+  background-color: rgba(20, 184, 166, 0.12) !important;
+  border-color: rgba(20, 184, 166, 0.25) !important;
+}
+html.dark .text-teal-900,
+html.dark .text-teal-800 {
+  color: #5eead4 !important;
+}
+
+/* Formulários, Inputs & Textareas */
+html.dark input:not([type="checkbox"]):not([type="radio"]),
+html.dark select,
+html.dark textarea {
+  background-color: #162436 !important;
+  color: #f8fafc !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #64748b !important;
+}
+
+html.dark input:focus,
+html.dark select:focus,
+html.dark textarea:focus {
+  border-color: #10b981 !important;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2) !important;
+}
+
+/* Tabelas (Horários e Classificações) */
+html.dark table thead th {
+  background-color: #162436 !important;
+  color: #f1f5f9 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark table tbody td {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Modais e Popups */
+html.dark #whatsappPopup,
+html.dark #cartaoSocioModal,
+html.dark #imageModal,
+html.dark [role="dialog"] {
+  background-color: #111c2a !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Botão de Alternância de Tema */
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0.5rem 0.625rem;
+  border-radius: 0.75rem;
+  border: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  color: #334155;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.theme-toggle-btn:hover {
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+}
+
+html.dark .theme-toggle-btn {
+  background-color: #162436;
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #fbbf24;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+html.dark .theme-toggle-btn:hover {
+  background-color: #1f3249;
+  border-color: rgba(255, 255, 255, 0.22);
+}
