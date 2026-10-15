@@ -11,12 +11,11 @@
 
   function getPreferredTheme() {
     const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === 'dark' || stored === 'light') {
-      return stored;
+    if (stored === 'dark') {
+      return 'dark';
     }
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : 'light';
+    // Por padrão absoluto, o site apresenta-se em White Mode (tons claros)
+    return 'light';
   }
 
   function applyTheme(theme) {
@@ -76,14 +75,7 @@
       }
     });
 
-    // Escutar alterações do SO caso o utilizador não tenha preferência gravada
-    if (window.matchMedia) {
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
-        if (!localStorage.getItem(STORAGE_KEY)) {
-          applyTheme(e.matches ? 'dark' : 'light');
-        }
-      });
-    }
+    // Inicialização concluída com sucesso
   }
 
   // Executa imediatamente para garantir integridade

@@ -32,8 +32,7 @@
   <link rel="stylesheet" href="assets/css/theme.css">
   <script>
     (function() {
-      const saved = localStorage.getItem('theme');
-      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      if (localStorage.getItem('theme') === 'dark') {
         document.documentElement.classList.add('dark');
       } else {
         document.documentElement.classList.remove('dark');
@@ -108,9 +107,10 @@
   <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-300" id="mainHeader">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-3 group">
-        <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105">
+        <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105 logo-light-only dark:hidden">
+        <img src="assets/images/logo_white.png" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105 logo-dark-only hidden dark:block">
         <div class="flex flex-col">
-          <span class="font-heading font-extrabold text-brand-navy text-lg sm:text-xl tracking-tight leading-tight">AJAVP</span>
+          <span class="font-heading font-extrabold text-brand-navy dark:text-white text-lg sm:text-xl tracking-tight leading-tight">AJAVP</span>
           <span class="text-xs text-brand-green font-semibold tracking-wide hidden sm:block">Associação Jovens e Adultos de Vilar do Pinheiro</span>
         </div>
       </a>
@@ -204,24 +204,23 @@
   </header>
 
   <!-- Hero Header -->
-  <section class="relative text-white py-16 sm:py-20 overflow-hidden bg-slate-950">
-    <!-- Imagem de Fundo com Overlay Gradiente Suave -->
+  <section class="relative py-16 sm:py-20 overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10">
+    <!-- Imagem de Fundo com Overlay Gradiente Luminoso -->
     <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-      <img src="assets/images/galeria/foto_28.jpg" alt="Família e Sócios da AJAVP" class="w-full h-full object-cover object-[center_25%] opacity-75">
-      <div class="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/50 to-slate-950/30"></div>
-      <div class="absolute inset-0 bg-black/20"></div>
+      <img src="assets/images/galeria/foto_28.jpg" alt="Família e Sócios da AJAVP" class="w-full h-full object-cover object-[center_25%] opacity-40 dark:opacity-75">
+      <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/60 dark:from-slate-950/85 dark:via-slate-950/50 dark:to-slate-950/30"></div>
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="max-w-3xl space-y-4">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-500/30">
-          <i data-lucide="shield" class="w-4 h-4 text-emerald-400"></i>
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-200/80 dark:border-emerald-500/30">
+          <i data-lucide="shield" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
           <span>Identidade, Valores &amp; Instalações</span>
         </div>
-        <h1 class="font-heading font-black text-3xl sm:text-5xl text-white tracking-tight leading-tight drop-shadow-md">
+        <h1 class="font-heading font-black text-3xl sm:text-5xl text-brand-navy dark:text-white tracking-tight leading-tight">
           O Clube &bull; AJAVP
         </h1>
-        <p class="text-slate-100 text-sm sm:text-base leading-relaxed drop-shadow-xs">
+        <p class="text-slate-600 dark:text-slate-100 text-sm sm:text-base leading-relaxed font-medium">
           Fundada formalmente em Dezembro de 2025 por associados e dirigentes que integraram a antiga JAVIP, a Associação Jovens e Adultos de Vilar do Pinheiro tem como missão primordial revitalizar a atividade desportiva, o civismo e a união comunitária na nossa terra.
         </p>
       </div>
@@ -266,48 +265,48 @@
           </div>
         </div>
 
-        <div class="p-8 rounded-3xl bg-slate-900 text-white space-y-6 shadow-2xl border border-white/10">
+        <div class="p-8 rounded-3xl bg-white dark:bg-slate-900 text-slate-800 dark:text-white space-y-6 shadow-xl border-2 border-emerald-500/30 dark:border-white/10">
           <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-50 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center border border-emerald-200 dark:border-emerald-500/30">
               <i data-lucide="scale" class="w-6 h-6"></i>
             </div>
             <div>
-              <h3 class="font-heading font-bold text-lg text-white">Dados Oficiais &amp; Constituição</h3>
-              <p class="text-xs text-slate-400">Associação sem fins lucrativos &bull; Ata N.º 1 e Estatutos</p>
+              <h3 class="font-heading font-bold text-lg text-brand-navy dark:text-white">Dados Oficiais &amp; Constituição</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Associação sem fins lucrativos &bull; Ata N.º 1 e Estatutos</p>
             </div>
           </div>
-          <div class="space-y-3 text-xs text-slate-300">
-            <div class="flex justify-between py-2 border-b border-white/10">
-              <span class="text-slate-400">Nome Oficial:</span>
-              <span class="font-bold text-white text-right">AJAVP – Associação Jovens e Adultos de Vilar do Pinheiro</span>
+          <div class="space-y-3 text-xs text-slate-600 dark:text-slate-300">
+            <div class="flex justify-between py-2 border-b border-slate-100 dark:border-white/10">
+              <span class="text-slate-500 dark:text-slate-400">Nome Oficial:</span>
+              <span class="font-bold text-slate-900 dark:text-white text-right">AJAVP – Associação Jovens e Adultos de Vilar do Pinheiro</span>
             </div>
-            <div class="flex justify-between py-2 border-b border-white/10">
-              <span class="text-slate-400">NIPC / Pessoa Coletiva:</span>
-              <span class="font-mono font-bold text-amber-300">519 096 045</span>
+            <div class="flex justify-between py-2 border-b border-slate-100 dark:border-white/10">
+              <span class="text-slate-500 dark:text-slate-400">NIPC / Pessoa Coletiva:</span>
+              <span class="font-mono font-bold text-amber-600 dark:text-amber-300">519 096 045</span>
             </div>
-            <div class="flex justify-between py-2 border-b border-white/10">
-              <span class="text-slate-400">NISS (Segurança Social):</span>
-              <span class="font-mono font-bold text-teal-300">25190960451</span>
+            <div class="flex justify-between py-2 border-b border-slate-100 dark:border-white/10">
+              <span class="text-slate-500 dark:text-slate-400">NISS (Segurança Social):</span>
+              <span class="font-mono font-bold text-teal-600 dark:text-teal-300">25190960451</span>
             </div>
-            <div class="flex justify-between py-2 border-b border-white/10">
-              <span class="text-slate-400">Data dos Estatutos:</span>
-              <span class="font-bold text-white">22 de Dezembro de 2025</span>
+            <div class="flex justify-between py-2 border-b border-slate-100 dark:border-white/10">
+              <span class="text-slate-500 dark:text-slate-400">Data dos Estatutos:</span>
+              <span class="font-bold text-slate-900 dark:text-white">22 de Dezembro de 2025</span>
             </div>
-            <div class="flex justify-between py-2 border-b border-white/10">
-              <span class="text-slate-400">Eleição e Tomada de Posse:</span>
-              <span class="font-bold text-emerald-300">26 de Dezembro de 2025 (Ata N.º 1)</span>
+            <div class="flex justify-between py-2 border-b border-slate-100 dark:border-white/10">
+              <span class="text-slate-500 dark:text-slate-400">Eleição e Tomada de Posse:</span>
+              <span class="font-bold text-emerald-700 dark:text-emerald-300">26 de Dezembro de 2025 (Ata N.º 1)</span>
             </div>
-            <div class="flex justify-between py-2 border-b border-white/10">
-              <span class="text-slate-400">Sede Social Oficial:</span>
-              <span class="font-bold text-white text-right">Rua 103, nº 43, Urbanização de Real, 4485-823 Vilar do Pinheiro</span>
+            <div class="flex justify-between py-2 border-b border-slate-100 dark:border-white/10">
+              <span class="text-slate-500 dark:text-slate-400">Sede Social Oficial:</span>
+              <span class="font-bold text-slate-900 dark:text-white text-right">Rua 103, nº 43, Urbanização de Real, 4485-823 Vilar do Pinheiro</span>
             </div>
             <div class="flex justify-between py-2">
-              <span class="text-slate-400">Filiação Desportiva:</span>
-              <span class="font-bold text-emerald-300">ADCCVC / Jogos Inter-Freguesias</span>
+              <span class="text-slate-500 dark:text-slate-400">Filiação Desportiva:</span>
+              <span class="font-bold text-emerald-700 dark:text-emerald-300">ADCCVC / Jogos Inter-Freguesias</span>
             </div>
           </div>
-          <a href="https://drive.google.com/file/d/1F0DrwMzSioop_dyUVbqdEgmP7I0g24qL/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white py-3 rounded-xl font-bold text-xs transition-colors border border-white/15">
-            <i data-lucide="file-text" class="w-4 h-4"></i>
+          <a href="https://drive.google.com/file/d/1F0DrwMzSioop_dyUVbqdEgmP7I0g24qL/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 bg-slate-50 hover:bg-slate-100 dark:bg-white/10 dark:hover:bg-white/20 text-brand-navy dark:text-white py-3 rounded-xl font-bold text-xs transition-colors border border-slate-200 dark:border-white/15 shadow-xs">
+            <i data-lucide="file-text" class="w-4 h-4 text-brand-green"></i>
             <span>Consultar Estatutos Oficiais (PDF)</span>
           </a>
         </div>
@@ -481,7 +480,7 @@
           <div class="space-y-3">
             <div class="flex items-center justify-between">
               <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 uppercase">Pavilhão Coberto &bull; 5.ªs Feiras</span>
-              <a href="https://maps.google.com/?q=41.248649,-8.658671" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-emerald-600 transition-colors" title="Abrir Google Maps">
+              <a href="https://www.google.com/maps/place/Maia+Sport/@41.2484458,-8.659225,139m/data=!3m1!1e3!4m12!1m5!3m4!2zNDHCsDE0JzU1LjEiTiA4wrAzOSczMS4yIlc!8m2!3d41.248649!4d-8.658671!3m5!1s0xd2467d8f56b23d7:0xb72aea0621b3c13e!8m2!3d41.2483775!4d-8.6588456!16s%2Fg%2F11hwywg7nl?entry=ttu&g_ep=EgoyMDI2MTAxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-emerald-600 transition-colors" title="Abrir Google Maps">
                 <i data-lucide="external-link" class="w-4 h-4"></i>
               </a>
             </div>
@@ -489,9 +488,9 @@
             <p class="text-xs text-slate-600 leading-relaxed">Treinos aos Sub-9 às quintas-feiras (19h00–20h00), podendo ter de partilhar o espaço com os Sub-7 ou Sub-13 (libertando o Ringue na 6.ª feira se os Sub-13 treinarem no pavilhão). Confirmar semanalmente via WhatsApp oficial.</p>
           </div>
           <div class="h-56 rounded-2xl overflow-hidden border border-slate-200">
-            <iframe title="Mapa Pavilhão MaiaSport" src="https://maps.google.com/maps?q=41.248649,-8.658671&z=16&output=embed" class="w-full h-full border-0" loading="lazy"></iframe>
+            <iframe title="Mapa Pavilhão MaiaSport" src="https://maps.google.com/maps?q=41.2483775,-8.6588456&z=17&output=embed" class="w-full h-full border-0" loading="lazy"></iframe>
           </div>
-          <a href="https://maps.google.com/?q=41.248649,-8.658671" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-brand-green hover:underline flex items-center justify-between pt-1">
+          <a href="https://www.google.com/maps/place/Maia+Sport/@41.2484458,-8.659225,139m/data=!3m1!1e3!4m12!1m5!3m4!2zNDHCsDE0JzU1LjEiTiA4wrAzOSczMS4yIlc!8m2!3d41.248649!4d-8.658671!3m5!1s0xd2467d8f56b23d7:0xb72aea0621b3c13e!8m2!3d41.2483775!4d-8.6588456!16s%2Fg%2F11hwywg7nl?entry=ttu&g_ep=EgoyMDI2MTAxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-brand-green hover:underline flex items-center justify-between pt-1">
             <span>Traçar Rota no Google Maps</span>
             <i data-lucide="arrow-right" class="w-4 h-4"></i>
           </a>
@@ -502,7 +501,7 @@
           <div class="space-y-3">
             <div class="flex items-center justify-between">
               <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 uppercase">Ringue Polidesportivo</span>
-              <a href="https://maps.google.com/?q=41.272285,-8.663397" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-amber-600 transition-colors" title="Abrir Google Maps">
+              <a href="https://www.google.com/maps/place/Ringue+%2F+Relvado+Sint%C3%A9tico/@41.2723525,-8.6634737,57m/data=!3m1!1e3!4m12!1m5!3m4!2zNDHCsDE2JzIwLjIiTiA4wrAzOSc0OC4yIlc!8m2!3d41.272285!4d-8.663397!3m5!1s0xd2469000483e1e7:0x1f8cafbb6e9a7922!8m2!3d41.2722915!4d-8.6633585!16s%2Fg%2F11ynb8d_z0?entry=ttu&g_ep=EgoyMDI2MTAxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-amber-600 transition-colors" title="Abrir Google Maps">
                 <i data-lucide="external-link" class="w-4 h-4"></i>
               </a>
             </div>
@@ -511,9 +510,9 @@
             <p class="text-xs text-slate-600">Recinto ao ar livre de treinos regulares de 2.ª a 6.ª (19h00) e sábados de manhã (09h00–11h00).</p>
           </div>
           <div class="h-56 rounded-2xl overflow-hidden border border-slate-200">
-            <iframe title="Mapa Ringue AJAVP" src="https://maps.google.com/maps?q=41.272285,-8.663397&z=17&output=embed" class="w-full h-full border-0" loading="lazy"></iframe>
+            <iframe title="Mapa Ringue AJAVP" src="https://maps.google.com/maps?q=41.2722915,-8.6633585&z=18&output=embed" class="w-full h-full border-0" loading="lazy"></iframe>
           </div>
-          <a href="https://maps.google.com/?q=41.272285,-8.663397" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-brand-green hover:underline flex items-center justify-between pt-1">
+          <a href="https://www.google.com/maps/place/Ringue+%2F+Relvado+Sint%C3%A9tico/@41.2723525,-8.6634737,57m/data=!3m1!1e3!4m12!1m5!3m4!2zNDHCsDE2JzIwLjIiTiA4wrAzOSc0OC4yIlc!8m2!3d41.272285!4d-8.663397!3m5!1s0xd2469000483e1e7:0x1f8cafbb6e9a7922!8m2!3d41.2722915!4d-8.6633585!16s%2Fg%2F11ynb8d_z0?entry=ttu&g_ep=EgoyMDI2MTAxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-brand-green hover:underline flex items-center justify-between pt-1">
             <span>Traçar Rota no Google Maps</span>
             <i data-lucide="arrow-right" class="w-4 h-4"></i>
           </a>
@@ -684,7 +683,8 @@
         
         <div class="lg:col-span-2 space-y-4">
           <div class="flex items-center gap-3">
-            <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto bg-white p-1 rounded-lg">
+            <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto bg-white p-1 rounded-lg logo-light-only dark:hidden">
+            <img src="assets/images/logo_white.png" alt="Logótipo AJAVP" class="h-14 w-auto bg-white/10 p-1 rounded-lg logo-dark-only hidden dark:block">
             <div>
               <h3 class="font-heading font-bold text-lg text-white">AJAVP</h3>
               <p class="text-xs text-emerald-300">Vilar do Pinheiro &bull; Época 2026/2027</p>
@@ -731,8 +731,9 @@
     <div id="whatsappPopup" class="hidden mb-4 w-[calc(100vw-2.5rem)] sm:w-88 max-w-sm bg-white rounded-3xl shadow-2xl border border-slate-200/80 overflow-hidden transform transition-all duration-300 origin-bottom-right">
       <div class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white p-4 flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-white p-1 flex items-center justify-center shadow-md">
-            <img src="assets/images/logo.png" alt="AJAVP" class="w-full h-full object-contain">
+          <div class="w-10 h-10 rounded-full bg-white dark:bg-white/10 p-1 flex items-center justify-center shadow-md">
+            <img src="assets/images/logo.png" alt="AJAVP" class="w-full h-full object-contain logo-light-only dark:hidden">
+            <img src="assets/images/logo_white.png" alt="AJAVP" class="w-full h-full object-contain logo-dark-only hidden dark:block">
           </div>
           <div>
             <h4 class="font-heading font-bold text-sm leading-tight text-white">AJAVP &bull; Apoio</h4>

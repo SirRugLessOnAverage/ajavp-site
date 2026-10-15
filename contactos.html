@@ -32,8 +32,7 @@
   <link rel="stylesheet" href="assets/css/theme.css">
   <script>
     (function() {
-      const saved = localStorage.getItem('theme');
-      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      if (localStorage.getItem('theme') === 'dark') {
         document.documentElement.classList.add('dark');
       } else {
         document.documentElement.classList.remove('dark');
@@ -107,9 +106,10 @@
   <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-300" id="mainHeader">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-3 group">
-        <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105">
+        <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105 logo-light-only dark:hidden">
+        <img src="assets/images/logo_white.png" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105 logo-dark-only hidden dark:block">
         <div class="flex flex-col">
-          <span class="font-heading font-extrabold text-brand-navy text-lg sm:text-xl tracking-tight leading-tight">AJAVP</span>
+          <span class="font-heading font-extrabold text-brand-navy dark:text-white text-lg sm:text-xl tracking-tight leading-tight">AJAVP</span>
           <span class="text-xs text-brand-green font-semibold tracking-wide hidden sm:block">Associação Jovens e Adultos de Vilar do Pinheiro</span>
         </div>
       </a>
@@ -203,24 +203,23 @@
   </header>
 
   <!-- Hero Header -->
-  <section class="relative text-white py-16 sm:py-20 overflow-hidden bg-slate-950">
-    <!-- Imagem de Fundo com Overlay Gradiente Suave -->
+  <section class="relative py-16 sm:py-20 overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10">
+    <!-- Imagem de Fundo com Overlay Gradiente Luminoso -->
     <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-      <img src="assets/images/galeria/contactos_uniao_equipa.jpg" alt="União e Espírito de Equipa AJAVP" class="w-full h-full object-cover object-[center_35%] opacity-80">
-      <div class="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/50 to-slate-950/25"></div>
-      <div class="absolute inset-0 bg-black/20"></div>
+      <img src="assets/images/galeria/contactos_uniao_equipa.jpg" alt="União e Espírito de Equipa AJAVP" class="w-full h-full object-cover object-[center_35%] opacity-40 dark:opacity-75">
+      <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/60 dark:from-slate-950/85 dark:via-slate-950/50 dark:to-slate-950/25"></div>
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="max-w-3xl space-y-4">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/20 text-teal-200 text-xs font-bold uppercase tracking-wider border border-teal-400/30">
-          <i data-lucide="phone" class="w-4 h-4 text-teal-300"></i>
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-50 dark:bg-teal-500/20 text-teal-800 dark:text-teal-200 text-xs font-bold uppercase tracking-wider border border-teal-200/80 dark:border-teal-400/30">
+          <i data-lucide="phone" class="w-4 h-4 text-teal-600 dark:text-teal-300"></i>
           <span>Apoio ao Atleta, Pais &amp; Parceiros</span>
         </div>
-        <h1 class="font-heading font-black text-3xl sm:text-5xl text-white tracking-tight leading-tight drop-shadow-md">
+        <h1 class="font-heading font-black text-3xl sm:text-5xl text-brand-navy dark:text-white tracking-tight leading-tight">
           Fala Connosco &bull; Inscrições &amp; Apoio
         </h1>
-        <p class="text-slate-100 text-sm sm:text-base leading-relaxed drop-shadow-xs">
+        <p class="text-slate-600 dark:text-slate-100 text-sm sm:text-base leading-relaxed font-medium">
           Estamos à tua disposição para esclarecer qualquer dúvida sobre horários de treino, inscrição de atletas, seguro desportivo ou parcerias comerciais.
         </p>
       </div>
@@ -275,7 +274,7 @@
               <p class="text-xs font-medium text-slate-500 mt-0.5">Resposta habitual no próprio dia útil</p>
             </div>
           </div>
-          <a href="mailto:geralajavp@gmail.com" class="w-full inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white py-3 rounded-xl font-heading font-bold text-xs shadow-md transition-all">
+          <a href="mailto:geralajavp@gmail.com" class="w-full inline-flex items-center justify-center gap-2 bg-brand-navy hover:bg-brand-navyDark text-white py-3 rounded-xl font-heading font-bold text-xs shadow-md transition-all">
             <i data-lucide="send" class="w-4 h-4"></i>
             <span>Enviar Email Oficial</span>
           </a>
@@ -414,7 +413,8 @@
         
         <div class="lg:col-span-2 space-y-4">
           <div class="flex items-center gap-3">
-            <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto bg-white p-1 rounded-lg">
+            <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto bg-white p-1 rounded-lg logo-light-only dark:hidden">
+            <img src="assets/images/logo_white.png" alt="Logótipo AJAVP" class="h-14 w-auto bg-white/10 p-1 rounded-lg logo-dark-only hidden dark:block">
             <div>
               <h3 class="font-heading font-bold text-lg text-white">AJAVP</h3>
               <p class="text-xs text-emerald-300">Vilar do Pinheiro &bull; Época 2026/2027</p>

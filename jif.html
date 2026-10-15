@@ -32,8 +32,7 @@
   <link rel="stylesheet" href="assets/css/theme.css">
   <script>
     (function() {
-      const saved = localStorage.getItem('theme');
-      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      if (localStorage.getItem('theme') === 'dark') {
         document.documentElement.classList.add('dark');
       } else {
         document.documentElement.classList.remove('dark');
@@ -110,9 +109,10 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <!-- Logo + Association Name -->
       <a href="index.html" class="flex items-center gap-3 group">
-        <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105">
+        <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105 logo-light-only dark:hidden">
+        <img src="assets/images/logo_white.png" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105 logo-dark-only hidden dark:block">
         <div class="flex flex-col">
-          <span class="font-heading font-extrabold text-brand-navy text-lg sm:text-xl tracking-tight leading-tight">AJAVP</span>
+          <span class="font-heading font-extrabold text-brand-navy dark:text-white text-lg sm:text-xl tracking-tight leading-tight">AJAVP</span>
           <span class="text-xs text-brand-green font-semibold tracking-wide hidden sm:block">Associação Jovens e Adultos de Vilar do Pinheiro</span>
         </div>
       </a>
@@ -209,65 +209,64 @@
   </header>
 
   <!-- Hero Banner do Portal JIF -->
-  <section class="relative text-white py-16 sm:py-20 overflow-hidden border-b border-white/10 bg-slate-950">
-    <!-- Imagem de Fundo com Overlay Gradiente Suave -->
+  <section class="relative py-16 sm:py-20 overflow-hidden border-b border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white">
+    <!-- Imagem de Fundo com Overlay Gradiente Luminoso -->
     <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-      <img src="assets/images/galeria/corta_mato_equipa_2026.jpg" alt="Comitiva AJAVP Corta-Mato" class="w-full h-full object-cover object-[center_35%] opacity-75">
-      <div class="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/50 to-slate-950/30"></div>
-      <div class="absolute inset-0 bg-black/20"></div>
+      <img src="assets/images/galeria/corta_mato_equipa_2026.jpg" alt="Comitiva AJAVP Corta-Mato" class="w-full h-full object-cover object-[center_35%] opacity-40 dark:opacity-75">
+      <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/60 dark:from-slate-950/85 dark:via-slate-950/50 dark:to-slate-950/30"></div>
     </div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       
       <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
         <div class="space-y-4 max-w-3xl">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold uppercase tracking-wider border border-amber-500/30">
-            <i data-lucide="trophy" class="w-4 h-4 text-amber-400"></i>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 dark:bg-amber-500/20 text-amber-900 dark:text-amber-300 text-xs font-bold uppercase tracking-wider border border-amber-300 dark:border-amber-500/30">
+            <i data-lucide="trophy" class="w-4 h-4 text-amber-500 dark:text-amber-400"></i>
             <span>XL Edição Oficial (40.ª) &bull; ADCCVC &amp; CM Vila do Conde</span>
           </div>
-          <h1 class="font-heading font-black text-3xl sm:text-5xl text-white tracking-tight leading-tight drop-shadow-md">
-            Jogos Inter-Freguesias <span class="text-amber-400">2026 / 2027</span>
+          <h1 class="font-heading font-black text-3xl sm:text-5xl text-brand-navy dark:text-white tracking-tight leading-tight">
+            Jogos Inter-Freguesias <span class="text-amber-500 dark:text-amber-400">2026 / 2027</span>
           </h1>
-          <p class="text-slate-100 text-sm sm:text-base leading-relaxed drop-shadow-xs">
+          <p class="text-slate-600 dark:text-slate-100 text-sm sm:text-base leading-relaxed font-medium">
             O portal oficial da AJAVP com o calendário completo de todas as 36 atividades, regulamento oficial de cada modalidade, comunicados homologados da ADCCVC, tabela detalhada de escalões por ano de nascimento e os momentos altos da festa de encerramento.
           </p>
-          <div class="flex items-center gap-3 flex-wrap pt-2 text-xs text-slate-300">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/10"><i data-lucide="calendar" class="w-3.5 h-3.5 text-amber-400"></i> Out 2026 a Jun 2027</span>
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/10"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-emerald-400"></i> Vilar do Pinheiro &amp; Concelho</span>
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/10"><i data-lucide="award" class="w-3.5 h-3.5 text-teal-400"></i> 36 Datas Oficiais</span>
+          <div class="flex items-center gap-3 flex-wrap pt-2 text-xs text-slate-700 dark:text-slate-300">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10"><i data-lucide="calendar" class="w-3.5 h-3.5 text-amber-500 dark:text-amber-400"></i> Out 2026 a Jun 2027</span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400"></i> Vilar do Pinheiro &amp; Concelho</span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10"><i data-lucide="award" class="w-3.5 h-3.5 text-teal-600 dark:text-teal-400"></i> 36 Datas Oficiais</span>
           </div>
         </div>
 
         <!-- Quick Summary Box -->
-        <div class="bg-white/10 backdrop-blur-md border border-white/15 rounded-3xl p-5 sm:p-6 space-y-3.5 max-w-md w-full lg:w-96 shadow-2xl flex-shrink-0">
-          <div class="flex items-center justify-between pb-2.5 border-b border-white/10">
-            <span class="text-xs font-bold text-slate-300 uppercase tracking-wide">Quadro Rápido AJAVP</span>
-            <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-black uppercase">Vilar do Pinheiro</span>
+        <div class="bg-white dark:bg-white/10 backdrop-blur-md border border-slate-200 dark:border-white/15 rounded-3xl p-5 sm:p-6 space-y-3.5 max-w-md w-full lg:w-96 shadow-xl flex-shrink-0">
+          <div class="flex items-center justify-between pb-2.5 border-b border-slate-200 dark:border-white/10">
+            <span class="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wide">Quadro Rápido AJAVP</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 text-[10px] font-black uppercase">Vilar do Pinheiro</span>
           </div>
-          <div class="space-y-2.5 text-xs text-slate-200" id="jifTopSummary">
-            <div class="flex items-center justify-between pb-2 border-b border-white/10">
-              <span class="text-slate-300">Corta-Mato (03 Out):</span>
-              <a href="#corta-mato-oficial" class="font-bold text-amber-300 hover:text-amber-200 flex items-center gap-1 transition-colors">
-                <i data-lucide="trophy" class="w-3.5 h-3.5 text-amber-400"></i>
+          <div class="space-y-2.5 text-xs text-slate-700 dark:text-slate-200" id="jifTopSummary">
+            <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-white/10">
+              <span class="text-slate-600 dark:text-slate-300">Corta-Mato (03 Out):</span>
+              <a href="#corta-mato-oficial" class="font-bold text-amber-700 dark:text-amber-300 hover:text-amber-800 dark:hover:text-amber-200 flex items-center gap-1 transition-colors">
+                <i data-lucide="trophy" class="w-3.5 h-3.5 text-amber-500 dark:text-amber-400"></i>
                 <span>1º Lugar (34 pts) 🏆</span>
               </a>
             </div>
-            <div class="flex items-center justify-between pb-2 border-b border-white/10">
-              <span class="text-slate-300">1ª Jornada Futsal (10 Out):</span>
-              <a href="#futsal-resultados" class="font-bold text-emerald-300 hover:text-emerald-200 flex items-center gap-1 transition-colors">
+            <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-white/10">
+              <span class="text-slate-600 dark:text-slate-300">1ª Jornada Futsal (10 Out):</span>
+              <a href="#futsal-resultados" class="font-bold text-emerald-700 dark:text-emerald-300 hover:text-emerald-800 dark:hover:text-emerald-200 flex items-center gap-1 transition-colors">
                 <i data-lucide="check" class="w-3.5 h-3.5"></i>
                 <span>Sub-9 Vence 11-1!</span>
               </a>
             </div>
-            <div class="flex items-center justify-between p-2 rounded-xl bg-amber-500/20 border border-amber-400/40">
-              <span class="text-amber-200 font-semibold">Próxima Prova (17 Out):</span>
-              <span class="font-black text-amber-300">1º Torneio Futebol JIF</span>
+            <div class="flex items-center justify-between p-2 rounded-xl bg-amber-50 dark:bg-amber-500/20 border border-amber-300 dark:border-amber-400/40">
+              <span class="text-amber-900 dark:text-amber-200 font-semibold">Próxima Prova (17 Out):</span>
+              <span class="font-black text-amber-900 dark:text-amber-300">1º Torneio Futebol JIF</span>
             </div>
-            <a href="#resumo-atividades" class="flex items-center justify-between p-2.5 rounded-xl bg-emerald-500/25 hover:bg-emerald-500/35 border border-emerald-400/40 text-emerald-200 hover:text-white transition-all shadow-sm group">
-              <span class="flex items-center gap-2 font-bold text-white text-xs">
-                <i data-lucide="layout-grid" class="w-4 h-4 text-emerald-400"></i>
+            <a href="#resumo-atividades" class="flex items-center justify-between p-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-500/25 dark:hover:bg-emerald-500/35 border border-emerald-300 dark:border-emerald-400/40 text-emerald-900 dark:text-emerald-200 hover:text-emerald-950 dark:hover:text-white transition-all shadow-xs group">
+              <span class="flex items-center gap-2 font-bold text-slate-900 dark:text-white text-xs">
+                <i data-lucide="layout-grid" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
                 <span>Resumo das Nossas Atividades</span>
               </span>
-              <span class="text-[11px] font-black uppercase text-amber-300 flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+              <span class="text-[11px] font-black uppercase text-amber-700 dark:text-amber-300 flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
                 Ver Tudo &rarr;
               </span>
             </a>
@@ -291,45 +290,45 @@
   </section>
 
   <!-- Secção de Navegação em Abas (Tabs) -->
-  <section class="py-12 bg-slate-950 text-white min-h-[600px]">
+  <section class="py-12 bg-brand-grayBg dark:bg-slate-950 text-slate-800 dark:text-white min-h-[600px] border-b border-slate-200 dark:border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
       
       <!-- Tab Control Bar -->
       <div class="flex items-center justify-center">
-        <div class="inline-flex items-center gap-1.5 p-1.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 flex-wrap justify-center">
+        <div class="inline-flex items-center gap-1.5 p-1.5 rounded-2xl bg-white dark:bg-white/10 backdrop-blur-md border border-slate-200 dark:border-white/10 flex-wrap justify-center shadow-xs">
           <button type="button" class="jif-tab-btn px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-amber-500 text-slate-950 shadow-md transition-all cursor-pointer" data-target="jif-pane-calendar">
             <span class="flex items-center gap-2">
               <i data-lucide="calendar" class="w-4 h-4"></i>
               <span>Calendário Oficial</span>
             </span>
           </button>
-          <button type="button" class="jif-tab-btn px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all cursor-pointer" data-target="jif-pane-resultados">
+          <button type="button" class="jif-tab-btn px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition-all cursor-pointer" data-target="jif-pane-resultados">
             <span class="flex items-center gap-2">
-              <i data-lucide="trophy" class="w-4 h-4 text-emerald-400"></i>
+              <i data-lucide="trophy" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
               <span>Resultados dos Jogos</span>
-              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             </span>
           </button>
-          <button type="button" class="jif-tab-btn px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all cursor-pointer" data-target="jif-pane-comunicados">
+          <button type="button" class="jif-tab-btn px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition-all cursor-pointer" data-target="jif-pane-comunicados">
             <span class="flex items-center gap-2">
-              <i data-lucide="file-text" class="w-4 h-4 text-amber-400"></i>
+              <i data-lucide="file-text" class="w-4 h-4 text-amber-500 dark:text-amber-400"></i>
               <span>Comunicados ADCCVC</span>
-              <span class="px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-extrabold border border-amber-400/40">5 Emitidos</span>
+              <span class="px-1.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 text-[10px] font-extrabold border border-amber-300 dark:border-amber-400/40">5 Emitidos</span>
             </span>
           </button>
-          <button type="button" class="jif-tab-btn px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all cursor-pointer" data-target="jif-pane-modalidades">
+          <button type="button" class="jif-tab-btn px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition-all cursor-pointer" data-target="jif-pane-modalidades">
             <span class="flex items-center gap-2">
               <i data-lucide="shield" class="w-4 h-4"></i>
               <span>Regulamentos</span>
             </span>
           </button>
-          <button type="button" class="jif-tab-btn px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all cursor-pointer" data-target="jif-pane-escaloes">
+          <button type="button" class="jif-tab-btn px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition-all cursor-pointer" data-target="jif-pane-escaloes">
             <span class="flex items-center gap-2">
               <i data-lucide="users" class="w-4 h-4"></i>
               <span>Escalões &amp; Anos</span>
             </span>
           </button>
-          <button type="button" class="jif-tab-btn px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all cursor-pointer" data-target="jif-pane-encerramento">
+          <button type="button" class="jif-tab-btn px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition-all cursor-pointer" data-target="jif-pane-encerramento">
             <span class="flex items-center gap-2">
               <i data-lucide="award" class="w-4 h-4"></i>
               <span>Encerramento &amp; Especiais</span>
@@ -342,9 +341,9 @@
       <div id="jif-pane-calendar" class="jif-tab-pane space-y-6">
         
         <!-- Filter Pills for Sports & Search -->
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-white/10 text-xs">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-white/10 text-xs">
           <div class="flex items-center flex-wrap gap-2">
-            <span class="text-slate-400 font-semibold flex items-center gap-1 mr-1">
+            <span class="text-slate-500 dark:text-slate-400 font-semibold flex items-center gap-1 mr-1">
               <i data-lucide="filter" class="w-3.5 h-3.5 text-emerald-400"></i>
               Filtrar por modalidade:
             </span>
@@ -3041,7 +3040,8 @@
         <!-- Brand Column -->
         <div class="lg:col-span-2 space-y-4">
           <div class="flex items-center gap-3">
-            <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto bg-white p-1 rounded-lg">
+            <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto bg-white p-1 rounded-lg logo-light-only dark:hidden">
+            <img src="assets/images/logo_white.png" alt="Logótipo AJAVP" class="h-14 w-auto bg-white/10 p-1 rounded-lg logo-dark-only hidden dark:block">
             <div>
               <h3 class="font-heading font-bold text-lg text-white">AJAVP</h3>
               <p class="text-xs text-emerald-300">Vilar do Pinheiro &bull; Época 2026/2027</p>
@@ -3094,8 +3094,9 @@
     <div id="whatsappPopup" class="hidden mb-4 w-[calc(100vw-2.5rem)] sm:w-88 max-w-sm bg-white rounded-3xl shadow-2xl border border-slate-200/80 overflow-hidden transform transition-all duration-300 origin-bottom-right">
       <div class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white p-4 flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-white p-1 flex items-center justify-center shadow-md">
-            <img src="assets/images/logo.png" alt="AJAVP" class="w-full h-full object-contain">
+          <div class="w-10 h-10 rounded-full bg-white dark:bg-white/10 p-1 flex items-center justify-center shadow-md">
+            <img src="assets/images/logo.png" alt="AJAVP" class="w-full h-full object-contain logo-light-only dark:hidden">
+            <img src="assets/images/logo_white.png" alt="AJAVP" class="w-full h-full object-contain logo-dark-only hidden dark:block">
           </div>
           <div>
             <h4 class="font-heading font-bold text-sm leading-tight text-white">AJAVP &bull; Apoio JIF</h4>

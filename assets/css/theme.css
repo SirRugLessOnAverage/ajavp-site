@@ -11,17 +11,335 @@ header#mainHeader,
 .bg-white,
 .bg-brand-grayBg,
 .bg-slate-50,
-#mobileMenu {
+#mobileMenu,
+section {
   transition: background-color 220ms cubic-bezier(0.16, 1, 0.3, 1),
               border-color 220ms cubic-bezier(0.16, 1, 0.3, 1),
               color 220ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* -------------------------------------------------------------
- * MODO ESCURO (html.dark)
- * ------------------------------------------------------------- */
+/* =============================================================
+ * MODO CLARO (WHITE MODE) - PADRÃO DO SITE
+ * ============================================================= */
 
-/* Fundo geral e texto principal */
+html:not(.dark) {
+  color-scheme: light;
+}
+
+html:not(.dark) body {
+  background-color: #f8fafc !important;
+  color: #1e293b !important;
+}
+
+/* Header & Barra Superior */
+html:not(.dark) header#mainHeader {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  border-bottom-color: #f1f5f9 !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+html:not(.dark) header#mainHeader .font-heading.text-brand-navy {
+  color: #1b4557 !important;
+}
+
+html:not(.dark) nav a.text-slate-700 {
+  color: #334155 !important;
+}
+
+html:not(.dark) nav a.text-slate-700:hover {
+  color: #387b5b !important;
+  background-color: #f1f5f9 !important;
+}
+
+/* BANNERS DE TOPO & HERO SECTIONS EM MODO CLARO */
+html:not(.dark) section.bg-slate-950 {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+  border-bottom-color: #e2e8f0 !important;
+}
+
+/* Substitui a película preta por um véu luminoso e claro */
+html:not(.dark) section.bg-slate-950 .bg-gradient-to-r.from-slate-950\/85 {
+  background: linear-gradient(90deg, rgba(248, 250, 252, 0.96) 0%, rgba(248, 250, 252, 0.88) 45%, rgba(248, 250, 252, 0.65) 100%) !important;
+}
+
+html:not(.dark) section.bg-slate-950 .bg-black\/20 {
+  background-color: transparent !important;
+}
+
+/* Imagens dos banners com opacidade luminosa */
+html:not(.dark) section.bg-slate-950 img.object-cover {
+  opacity: 0.55 !important;
+}
+
+/* Títulos e textos nos banners de topo */
+html:not(.dark) section.bg-slate-950 h1,
+html:not(.dark) section.bg-slate-950 h2,
+html:not(.dark) section.bg-slate-950 h3 {
+  color: #1b4557 !important;
+  text-shadow: none !important;
+}
+
+html:not(.dark) section.bg-slate-950 p.text-slate-100,
+html:not(.dark) section.bg-slate-950 p.text-slate-200,
+html:not(.dark) section.bg-slate-950 p.text-slate-300 {
+  color: #475569 !important;
+  text-shadow: none !important;
+}
+
+/* Caixas de destaques e cartões dentro dos banners */
+html:not(.dark) section.bg-slate-950 .bg-white\/10,
+html:not(.dark) section.bg-slate-950 .bg-white\/5 {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  color: #1e293b !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02) !important;
+}
+
+html:not(.dark) section.bg-slate-950 .border-white\/10,
+html:not(.dark) section.bg-slate-950 .border-white\/15 {
+  border-color: #e2e8f0 !important;
+}
+
+html:not(.dark) section.bg-slate-950 .text-white {
+  color: #0f172a !important;
+}
+
+html:not(.dark) section.bg-slate-950 .text-slate-200,
+html:not(.dark) section.bg-slate-950 .text-slate-300,
+html:not(.dark) section.bg-slate-950 .text-slate-400 {
+  color: #64748b !important;
+}
+
+html:not(.dark) section.bg-slate-950 span.bg-white\/10 {
+  background-color: #f1f5f9 !important;
+  color: #334155 !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+/* SECÇÃO 2 DE INDEX.HTML (RESULTADOS DOS JOGOS) */
+html:not(.dark) section.bg-slate-900 {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+  border-bottom-color: #e2e8f0 !important;
+}
+
+html:not(.dark) section.bg-slate-900 h2,
+html:not(.dark) section.bg-slate-900 h3 {
+  color: #1b4557 !important;
+}
+
+html:not(.dark) section.bg-slate-900 p.text-slate-300 {
+  color: #64748b !important;
+}
+
+html:not(.dark) section.bg-slate-900 .border-white\/10 {
+  border-color: #e2e8f0 !important;
+}
+
+html:not(.dark) section.bg-slate-900 .bg-slate-800\/80 {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+  color: #1e293b !important;
+}
+
+html:not(.dark) section.bg-slate-900 .bg-white\/5 {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+html:not(.dark) section.bg-slate-900 .text-white {
+  color: #0f172a !important;
+}
+
+html:not(.dark) section.bg-slate-900 .text-slate-300,
+html:not(.dark) section.bg-slate-900 .text-slate-400 {
+  color: #64748b !important;
+}
+
+/* Cartão de Vitória Corta-Mato & Sub-9 em Modo Claro */
+html:not(.dark) .from-emerald-950\/80.to-slate-900 {
+  background: linear-gradient(180deg, #ecfdf5 0%, #f0fdf4 100%) !important;
+  border-color: #6ee7b7 !important;
+}
+
+html:not(.dark) .from-emerald-950\/80 .text-emerald-300 {
+  color: #047857 !important;
+}
+
+html:not(.dark) .from-amber-950\/80.via-slate-900 {
+  background: linear-gradient(180deg, #fffbeb 0%, #fef3c7 40%, #f0fdf4 100%) !important;
+  border-color: #fcd34d !important;
+}
+
+html:not(.dark) .from-amber-950\/80 .text-amber-300 {
+  color: #b45309 !important;
+}
+
+html:not(.dark) .from-amber-950\/80 .bg-black\/40 {
+  background-color: #ffffff !important;
+  border-color: #fde68a !important;
+}
+
+html:not(.dark) .from-amber-950\/80 .text-amber-400 {
+  color: #b45309 !important;
+}
+
+html:not(.dark) .bg-slate-800\/80 .bg-black\/40 {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+/* PORTAL JIF EM MODO CLARO (jif.html) */
+html:not(.dark) section.py-12.bg-slate-950 {
+  background-color: #f8fafc !important;
+  color: #1e293b !important;
+}
+
+html:not(.dark) .jif-tab-btn {
+  color: #475569 !important;
+}
+
+html:not(.dark) .jif-tab-btn:hover {
+  color: #0f172a !important;
+  background-color: #f1f5f9 !important;
+}
+
+html:not(.dark) .jif-tab-btn.bg-amber-500 {
+  background-color: #f59e0b !important;
+  color: #0f172a !important;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25) !important;
+}
+
+html:not(.dark) .jif-filter-btn {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  color: #475569 !important;
+}
+
+html:not(.dark) .jif-filter-btn:hover {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+html:not(.dark) .jif-filter-btn.bg-white {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+  border-color: #0f172a !important;
+}
+
+html:not(.dark) .jif-calendar-row,
+html:not(.dark) .jif-calendar-card {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  color: #1e293b !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+}
+
+html:not(.dark) .jif-calendar-row:hover,
+html:not(.dark) .jif-calendar-card:hover {
+  background-color: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+}
+
+html:not(.dark) .jif-calendar-row .text-white,
+html:not(.dark) .jif-calendar-card .text-white {
+  color: #0f172a !important;
+}
+
+html:not(.dark) .jif-calendar-row .text-slate-300,
+html:not(.dark) .jif-calendar-row .text-slate-400,
+html:not(.dark) .jif-calendar-card .text-slate-300,
+html:not(.dark) .jif-calendar-card .text-slate-400 {
+  color: #64748b !important;
+}
+
+/* WIDGET METEOROLÓGICO EM MODO CLARO (modalidades.html) */
+html:not(.dark) #tempo-semana {
+  background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 50%, #f0fdf4 100%) !important;
+  border-color: #bae6fd !important;
+  color: #0f172a !important;
+  box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.08) !important;
+}
+
+html:not(.dark) #tempo-semana h3 {
+  color: #0369a1 !important;
+}
+
+html:not(.dark) #tempo-semana p.text-slate-300 {
+  color: #475569 !important;
+}
+
+html:not(.dark) #tempo-semana .border-white\/10 {
+  border-color: #e0f2fe !important;
+}
+
+html:not(.dark) #tempo-semana .bg-white\/10,
+html:not(.dark) #tempo-semana .bg-white\/5 {
+  background-color: #ffffff !important;
+  border-color: #e0f2fe !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+}
+
+html:not(.dark) #tempo-semana .text-white {
+  color: #0f172a !important;
+}
+
+html:not(.dark) #tempo-semana .text-slate-200,
+html:not(.dark) #tempo-semana .text-slate-300,
+html:not(.dark) #tempo-semana .text-slate-400 {
+  color: #475569 !important;
+}
+
+/* CARTÃO DADOS OFICIAIS EM MODO CLARO (clube.html) */
+html:not(.dark) .p-8.rounded-3xl.bg-slate-900 {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+  border: 2px solid #a7f3d0 !important;
+  box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.08) !important;
+}
+
+html:not(.dark) .p-8.rounded-3xl.bg-slate-900 h3 {
+  color: #1b4557 !important;
+}
+
+html:not(.dark) .p-8.rounded-3xl.bg-slate-900 .border-white\/10 {
+  border-color: #f1f5f9 !important;
+}
+
+html:not(.dark) .p-8.rounded-3xl.bg-slate-900 .text-slate-400 {
+  color: #64748b !important;
+}
+
+html:not(.dark) .p-8.rounded-3xl.bg-slate-900 .text-white {
+  color: #0f172a !important;
+}
+
+html:not(.dark) .p-8.rounded-3xl.bg-slate-900 a.bg-white\/10 {
+  background-color: #f8fafc !important;
+  color: #1b4557 !important;
+  border-color: #e2e8f0 !important;
+}
+
+html:not(.dark) .p-8.rounded-3xl.bg-slate-900 a.bg-white\/10:hover {
+  background-color: #f1f5f9 !important;
+}
+
+/* BOTÃO DE EMAIL EM CONTACTOS (contactos.html) */
+html:not(.dark) a.bg-slate-900 {
+  background-color: #1b4557 !important;
+  color: #ffffff !important;
+}
+
+html:not(.dark) a.bg-slate-900:hover {
+  background-color: #13323f !important;
+}
+
+/* =============================================================
+ * MODO ESCURO (html.dark)
+ * ============================================================= */
+
 html.dark {
   color-scheme: dark;
 }
@@ -273,3 +591,21 @@ html.dark .theme-toggle-btn:hover {
   background-color: #1f3249;
   border-color: rgba(255, 255, 255, 0.22);
 }
+
+/* Alternância de Logótipos (Modo Claro vs Modo Escuro) */
+html:not(.dark) .logo-dark-only {
+  display: none !important;
+}
+
+html:not(.dark) .logo-light-only {
+  display: block !important;
+}
+
+html.dark .logo-light-only {
+  display: none !important;
+}
+
+html.dark .logo-dark-only {
+  display: block !important;
+}
+

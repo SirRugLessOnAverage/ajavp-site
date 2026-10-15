@@ -32,8 +32,7 @@
   <link rel="stylesheet" href="assets/css/theme.css">
   <script>
     (function() {
-      const saved = localStorage.getItem('theme');
-      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      if (localStorage.getItem('theme') === 'dark') {
         document.documentElement.classList.add('dark');
       } else {
         document.documentElement.classList.remove('dark');
@@ -108,9 +107,10 @@
   <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-300" id="mainHeader">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-3 group">
-        <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105">
+        <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105 logo-light-only dark:hidden">
+        <img src="assets/images/logo_white.png" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105 logo-dark-only hidden dark:block">
         <div class="flex flex-col">
-          <span class="font-heading font-extrabold text-brand-navy text-lg sm:text-xl tracking-tight leading-tight">AJAVP</span>
+          <span class="font-heading font-extrabold text-brand-navy dark:text-white text-lg sm:text-xl tracking-tight leading-tight">AJAVP</span>
           <span class="text-xs text-brand-green font-semibold tracking-wide hidden sm:block">Associação Jovens e Adultos de Vilar do Pinheiro</span>
         </div>
       </a>
@@ -218,12 +218,11 @@
   </header>
 
   <!-- Hero Section Principal -->
-  <section class="relative text-white py-16 sm:py-24 overflow-hidden bg-slate-950">
-    <!-- Imagem de Fundo com Overlay Gradiente Suave -->
+  <section class="relative py-16 sm:py-24 overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10">
+    <!-- Imagem de Fundo com Overlay Gradiente Luminoso -->
     <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-      <img src="assets/images/galeria/prova_25_abril_2025_grupo.jpg" alt="Comitiva AJAVP na Prova do 25 de Abril em Vila do Conde" class="w-full h-full object-cover object-[center_35%] opacity-75">
-      <div class="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/50 to-slate-950/30"></div>
-      <div class="absolute inset-0 bg-black/20"></div>
+      <img src="assets/images/galeria/prova_25_abril_2025_grupo.jpg" alt="Comitiva AJAVP na Prova do 25 de Abril em Vila do Conde" class="w-full h-full object-cover object-[center_35%] opacity-40 dark:opacity-75">
+      <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/60 dark:from-slate-950/85 dark:via-slate-950/50 dark:to-slate-950/30"></div>
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -231,16 +230,16 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
           
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-500/30">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-200/80 dark:border-emerald-500/30">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
             <span>Fundada em Dezembro de 2025 &bull; Raízes na antiga JAVIP</span>
           </div>
 
-          <h1 class="font-heading font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-tight drop-shadow-md">
+          <h1 class="font-heading font-black text-3xl sm:text-5xl lg:text-6xl text-brand-navy dark:text-white tracking-tight leading-tight">
             "A Tua Terra <span class="text-brand-accent">Tem Futuro</span>"
           </h1>
 
-          <p class="text-slate-100 text-sm sm:text-base lg:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed drop-shadow-xs">
+          <p class="text-slate-600 dark:text-slate-100 text-sm sm:text-base lg:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
             Bem-vindo à Associação Jovens e Adultos de Vilar do Pinheiro. Promovemos a formação humana e desportiva através de treinos acessíveis, valores comunitários e a participação ativa nos Jogos Inter-Freguesias.
           </p>
 
@@ -249,73 +248,73 @@
               <i data-lucide="user-plus" class="w-4 h-4"></i>
               <span>Inscrever Atleta</span>
             </a>
-            <a href="jif.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 px-6 py-3.5 rounded-2xl font-heading font-bold text-sm border border-amber-400/40 transition-all">
-              <i data-lucide="medal" class="w-4 h-4 text-amber-400"></i>
+            <a href="jif.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-amber-500/10 hover:bg-amber-500/20 dark:bg-amber-500/20 dark:hover:bg-amber-500/30 text-amber-900 dark:text-amber-300 px-6 py-3.5 rounded-2xl font-heading font-bold text-sm border border-amber-300 dark:border-amber-400/40 transition-all">
+              <i data-lucide="medal" class="w-4 h-4 text-amber-500 dark:text-amber-400"></i>
               <span>Portal JIF 2026/27</span>
             </a>
           </div>
 
-          <div class="pt-6 border-t border-white/10 flex items-center justify-center lg:justify-start gap-6 text-xs text-slate-300">
-            <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> +150 Atletas</span>
-            <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> 6 Modalidades</span>
-            <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> 3 Pavilhões</span>
+          <div class="pt-6 border-t border-slate-200 dark:border-white/10 flex items-center justify-center lg:justify-start gap-6 text-xs text-slate-600 dark:text-slate-300">
+            <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i> +150 Atletas</span>
+            <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i> 6 Modalidades</span>
+            <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i> 3 Pavilhões</span>
           </div>
         </div>
 
         <div class="lg:col-span-5">
-          <div class="bg-white/10 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-white/15 shadow-2xl space-y-6">
-            <div class="flex items-center justify-between pb-4 border-b border-white/10">
+          <div class="bg-white dark:bg-white/10 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-white/15 shadow-xl space-y-6">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-white/10">
               <div>
-                <span class="text-[11px] font-bold uppercase text-amber-400 tracking-wider">Destaque Imediato</span>
-                <h3 class="font-heading font-bold text-lg text-white">XL Jogos Inter-Freguesias</h3>
+                <span class="text-[11px] font-bold uppercase text-amber-600 dark:text-amber-400 tracking-wider">Destaque Imediato</span>
+                <h3 class="font-heading font-bold text-lg text-brand-navy dark:text-white">XL Jogos Inter-Freguesias</h3>
               </div>
               <span class="px-2.5 py-1 rounded-full bg-amber-500 text-slate-950 font-black text-xs">JIF 26/27</span>
             </div>
 
             <!-- Alerta Provas Já Realizadas -->
-            <a href="jif.html#resumo-atividades" id="jifPastEventsPill" class="p-2.5 px-3.5 rounded-2xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-emerald-200 text-xs flex items-center justify-between gap-2 shadow-xs transition-colors">
+            <a href="jif.html#resumo-atividades" id="jifPastEventsPill" class="p-2.5 px-3.5 rounded-2xl bg-emerald-50 dark:bg-emerald-500/15 hover:bg-emerald-100 dark:hover:bg-emerald-500/25 border border-emerald-200 dark:border-emerald-500/30 text-emerald-900 dark:text-emerald-200 text-xs flex items-center justify-between gap-2 shadow-xs transition-colors">
               <span class="flex items-center gap-1.5 font-bold text-[11px]">
-                <i data-lucide="trophy" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                <i data-lucide="trophy" class="w-4 h-4 text-emerald-600 dark:text-emerald-400 flex-shrink-0"></i>
                 <span>Corta-Mato: <strong>1º Lugar (34 pts)!</strong> &bull; Futsal Sub-9: 11-1</span>
               </span>
-              <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 whitespace-nowrap flex items-center gap-1">
+              <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-200 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-500/30 whitespace-nowrap flex items-center gap-1">
                 <span>Ver Resumo</span> &rarr;
               </span>
             </a>
 
             <!-- Próximas Provas (Atualizadas dinamicamente pela data atual) -->
-            <div class="space-y-3 text-xs text-slate-200" id="jifUpcomingContainer">
+            <div class="space-y-3 text-xs text-slate-700 dark:text-slate-200" id="jifUpcomingContainer">
               
               <!-- 1. Próxima Prova Imediata: 17 Outubro (1º Torneio de Futebol) -->
-              <div class="p-3.5 rounded-2xl bg-gradient-to-r from-amber-500/20 via-white/10 to-transparent border border-amber-400/50 flex items-center justify-between gap-3 shadow-md">
+              <div class="p-3.5 rounded-2xl bg-amber-50 dark:bg-gradient-to-r dark:from-amber-500/20 dark:via-white/10 dark:to-transparent border border-amber-300 dark:border-amber-400/50 flex items-center justify-between gap-3 shadow-xs">
                 <div class="flex items-center gap-3">
-                  <div class="w-11 h-11 rounded-xl bg-amber-500 text-slate-950 flex flex-col items-center justify-center flex-shrink-0 font-black leading-none shadow-sm">
+                  <div class="w-11 h-11 rounded-xl bg-amber-500 text-slate-950 flex flex-col items-center justify-center flex-shrink-0 font-black leading-none shadow-xs">
                     <span class="text-[9px] uppercase font-bold">OUT</span>
                     <span class="text-base font-extrabold font-heading">17</span>
                   </div>
                   <div>
-                    <div class="font-bold text-white flex items-center gap-2">
+                    <div class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
                       <span>1º Torneio de Futebol JIF</span>
                       <span class="px-2 py-0.5 rounded-full bg-amber-400 text-slate-950 font-black text-[9px] uppercase animate-pulse">Este Sábado</span>
                     </div>
-                    <div class="text-[11px] text-slate-300">Campos Concelhios &bull; Sub-7, Sub-9, Sub-11 e Sub-13 (09h00–17h30)</div>
+                    <div class="text-[11px] text-slate-600 dark:text-slate-300">Campos Concelhios &bull; Sub-7, Sub-9, Sub-11 e Sub-13 (09h00–17h30)</div>
                   </div>
                 </div>
               </div>
 
               <!-- 2. Prova Seguinte: 24 Outubro (2ª Jornada Futsal) -->
-              <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between gap-3 hover:bg-white/10 transition-colors">
+              <div class="p-3.5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-between gap-3 hover:bg-slate-100 dark:hover:bg-white/10 transition-colors">
                 <div class="flex items-center gap-3">
-                  <div class="w-11 h-11 rounded-xl bg-white/10 text-slate-200 flex flex-col items-center justify-center flex-shrink-0 font-bold leading-none border border-white/10">
-                    <span class="text-[9px] uppercase font-bold text-slate-400">OUT</span>
+                  <div class="w-11 h-11 rounded-xl bg-slate-200 dark:bg-white/10 text-slate-700 dark:text-slate-200 flex flex-col items-center justify-center flex-shrink-0 font-bold leading-none border border-slate-300 dark:border-white/10">
+                    <span class="text-[9px] uppercase font-bold text-slate-500 dark:text-slate-400">OUT</span>
                     <span class="text-base font-extrabold font-heading">24</span>
                   </div>
                   <div>
-                    <div class="font-bold text-white flex items-center gap-2">
+                    <div class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
                       <span>2ª Jornada de Futsal JIF</span>
-                      <span class="text-[10px] text-slate-400 font-semibold">A Seguir</span>
+                      <span class="text-[10px] text-slate-500 dark:text-slate-400 font-semibold">A Seguir</span>
                     </div>
-                    <div class="text-[11px] text-slate-400">Modivas, Canidelo &bull; Sub-7 no Pavilhão de Caxinas</div>
+                    <div class="text-[11px] text-slate-500 dark:text-slate-400">Modivas, Canidelo &bull; Sub-7 no Pavilhão de Caxinas</div>
                   </div>
                 </div>
               </div>
@@ -323,11 +322,11 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
-              <a href="jif.html#resumo-atividades" class="w-full inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-heading font-black text-xs py-3 rounded-xl transition-all shadow-md">
+              <a href="jif.html#resumo-atividades" class="w-full inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-heading font-black text-xs py-3 rounded-xl transition-all shadow-xs">
                 <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
                 <span>Resumo Atividades</span>
               </a>
-              <a href="jif.html" class="w-full inline-flex items-center justify-center gap-2 bg-white text-slate-900 hover:bg-slate-100 font-heading font-bold text-xs py-3 rounded-xl transition-all shadow-md">
+              <a href="jif.html" class="w-full inline-flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 dark:bg-white dark:hover:bg-slate-100 text-slate-900 font-heading font-bold text-xs py-3 rounded-xl transition-all shadow-xs border border-slate-200 dark:border-transparent">
                 <span>Calendário 36 Provas</span>
                 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
               </a>
@@ -340,23 +339,23 @@
   </section>
 
   <!-- Secção: Últimos Resultados dos Nossos Jogos & Corta-Mato -->
-  <section class="py-16 bg-slate-900 text-white border-b border-white/10 relative overflow-hidden">
+  <section class="py-16 bg-white dark:bg-slate-900 text-slate-800 dark:text-white border-b border-slate-200 dark:border-white/10 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 relative z-10">
       
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 dark:border-white/10 pb-6">
         <div class="space-y-2">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-500/30">
-            <i data-lucide="trophy" class="w-3.5 h-3.5 text-emerald-400"></i>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-200 dark:border-emerald-500/30">
+            <i data-lucide="trophy" class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400"></i>
             <span>Resultados Homologados &bull; Época 2026/2027</span>
           </div>
-          <h2 class="font-heading font-black text-2xl sm:text-4xl text-white tracking-tight">
+          <h2 class="font-heading font-black text-2xl sm:text-4xl text-brand-navy dark:text-white tracking-tight">
             Resultados dos Nossos Jogos
           </h2>
-          <p class="text-xs sm:text-sm text-slate-300 max-w-2xl">
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl font-normal">
             Acompanha o desempenho dos atletas da AJAVP na 1ª Jornada de Futsal e no Corta-Mato de abertura dos XL Jogos Inter-Freguesias.
           </p>
         </div>
-        <a href="jif.html" class="inline-flex items-center gap-2 text-xs font-bold text-amber-400 hover:text-amber-300 transition-colors whitespace-nowrap">
+        <a href="jif.html" class="inline-flex items-center gap-2 text-xs font-bold text-emerald-700 dark:text-amber-400 hover:text-emerald-800 dark:hover:text-amber-300 transition-colors whitespace-nowrap">
           <span>Ver todos os calendários e regras JIF</span>
           <i data-lucide="arrow-right" class="w-4 h-4"></i>
         </a>
@@ -366,134 +365,134 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
         <!-- 1. Sub-9: Vitória Esmagadora 11-1 -->
-        <div class="p-6 rounded-3xl bg-gradient-to-b from-emerald-950/80 to-slate-900 border-2 border-emerald-500/60 shadow-xl flex flex-col justify-between space-y-4 hover:border-emerald-400 transition-all">
+        <div class="p-6 rounded-3xl bg-emerald-50/70 dark:bg-gradient-to-b dark:from-emerald-950/80 dark:to-slate-900 border-2 border-emerald-300 dark:border-emerald-500/60 shadow-md flex flex-col justify-between space-y-4 hover:border-emerald-400 transition-all">
           <div class="space-y-3">
             <div class="flex items-center justify-between">
               <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-500 text-slate-950 shadow-xs">
                 Vitória Histórica 🔥
               </span>
-              <span class="text-[11px] text-slate-400 font-bold">10/Out &bull; Fajozes</span>
+              <span class="text-[11px] text-slate-500 dark:text-slate-400 font-bold">10/Out &bull; Fajozes</span>
             </div>
-            <div class="text-xs font-bold text-emerald-300 uppercase tracking-wide">Futsal &bull; Sub-9 Masculinos</div>
+            <div class="text-xs font-bold text-emerald-800 dark:text-emerald-300 uppercase tracking-wide">Futsal &bull; Sub-9 Masculinos</div>
             
             <!-- Placar -->
-            <div class="p-3 rounded-2xl bg-white/5 border border-white/10 text-center space-y-1">
-              <div class="flex items-center justify-around font-heading font-black text-xl text-white">
-                <span class="text-emerald-400">AJAVP</span>
-                <span class="text-2xl text-amber-400 px-2 py-0.5 rounded-lg bg-black/40">11 - 1</span>
-                <span class="text-slate-300">Fornelo</span>
+            <div class="p-3 rounded-2xl bg-white dark:bg-white/5 border border-emerald-200 dark:border-white/10 text-center space-y-1 shadow-xs">
+              <div class="flex items-center justify-around font-heading font-black text-xl text-slate-900 dark:text-white">
+                <span class="text-emerald-700 dark:text-emerald-400">AJAVP</span>
+                <span class="text-2xl text-amber-600 dark:text-amber-400 px-2 py-0.5 rounded-lg bg-amber-50 dark:bg-black/40 border border-amber-200 dark:border-transparent font-heading">11 - 1</span>
+                <span class="text-slate-700 dark:text-slate-300">Fornelo</span>
               </div>
-              <div class="text-[10px] text-emerald-300 font-semibold">1ª Jornada &bull; Pavilhão de Fajozes (11h00)</div>
+              <div class="text-[10px] text-emerald-700 dark:text-emerald-300 font-semibold">1ª Jornada &bull; Pavilhão de Fajozes (11h00)</div>
             </div>
 
-            <p class="text-xs text-slate-300 leading-relaxed">
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
               Exibição soberba da Mancha Verde na estreia do campeonato, com 11 golos marcados e uma intensidade ofensiva de alto nível!
             </p>
           </div>
-          <div class="pt-3 border-t border-white/10 flex items-center justify-between text-[11px]">
-            <span class="text-slate-400">Próximo Jogo:</span>
-            <span class="text-amber-300 font-bold">17/Out &bull; Futebol Série B</span>
+          <div class="pt-3 border-t border-emerald-200/60 dark:border-white/10 flex items-center justify-between text-[11px]">
+            <span class="text-slate-500 dark:text-slate-400">Próximo Jogo:</span>
+            <span class="text-amber-700 dark:text-amber-300 font-bold">17/Out &bull; Futebol Série B</span>
           </div>
         </div>
 
         <!-- 2. Sub-11: Fajozes 4 - 2 AJAVP -->
-        <div class="p-6 rounded-3xl bg-slate-800/80 border border-white/10 shadow-lg flex flex-col justify-between space-y-4 hover:border-white/20 transition-all">
+        <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 shadow-sm flex flex-col justify-between space-y-4 hover:border-slate-300 dark:hover:border-white/20 transition-all">
           <div class="space-y-3">
             <div class="flex items-center justify-between">
-              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-blue-500/20 text-blue-300 border border-blue-500/30">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-blue-100 dark:bg-blue-500/20 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-500/30">
                 1ª Jornada
               </span>
-              <span class="text-[11px] text-slate-400 font-bold">10/Out &bull; Fajozes</span>
+              <span class="text-[11px] text-slate-500 dark:text-slate-400 font-bold">10/Out &bull; Fajozes</span>
             </div>
-            <div class="text-xs font-bold text-blue-300 uppercase tracking-wide">Futsal &bull; Sub-11 Masculinos</div>
+            <div class="text-xs font-bold text-blue-800 dark:text-blue-300 uppercase tracking-wide">Futsal &bull; Sub-11 Masculinos</div>
             
             <!-- Placar -->
-            <div class="p-3 rounded-2xl bg-white/5 border border-white/10 text-center space-y-1">
-              <div class="flex items-center justify-around font-heading font-black text-xl text-white">
-                <span class="text-slate-300">Fajozes</span>
-                <span class="text-2xl text-white px-2 py-0.5 rounded-lg bg-black/40">4 - 2</span>
-                <span class="text-emerald-400">AJAVP</span>
+            <div class="p-3 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-center space-y-1 shadow-xs">
+              <div class="flex items-center justify-around font-heading font-black text-xl text-slate-900 dark:text-white">
+                <span class="text-slate-700 dark:text-slate-300">Fajozes</span>
+                <span class="text-2xl text-slate-900 dark:text-white px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-black/40">4 - 2</span>
+                <span class="text-emerald-700 dark:text-emerald-400">AJAVP</span>
               </div>
-              <div class="text-[10px] text-slate-400 font-semibold">1ª Jornada &bull; Pavilhão de Fajozes (10h00)</div>
+              <div class="text-[10px] text-slate-500 dark:text-slate-400 font-semibold">1ª Jornada &bull; Pavilhão de Fajozes (10h00)</div>
             </div>
 
-            <p class="text-xs text-slate-300 leading-relaxed">
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
               Grande atitude e garra dos nossos atletas Sub-11 fora de portas, mantendo a partida em aberto até aos instantes finais.
             </p>
           </div>
-          <div class="pt-3 border-t border-white/10 flex items-center justify-between text-[11px]">
-            <span class="text-slate-400">Próximo Jogo:</span>
-            <span class="text-amber-300 font-bold">17/Out &bull; Futebol Série B</span>
+          <div class="pt-3 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-[11px]">
+            <span class="text-slate-500 dark:text-slate-400">Próximo Jogo:</span>
+            <span class="text-amber-700 dark:text-amber-300 font-bold">17/Out &bull; Futebol Série B</span>
           </div>
         </div>
 
         <!-- 3. Sub-13: Junqueira 5 - 0 AJAVP -->
-        <div class="p-6 rounded-3xl bg-slate-800/80 border border-white/10 shadow-lg flex flex-col justify-between space-y-4 hover:border-white/20 transition-all">
+        <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 shadow-sm flex flex-col justify-between space-y-4 hover:border-slate-300 dark:hover:border-white/20 transition-all">
           <div class="space-y-3">
             <div class="flex items-center justify-between">
-              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-slate-700 text-slate-300 border border-slate-600">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-300 border border-slate-300 dark:border-slate-600">
                 1ª Jornada
               </span>
-              <span class="text-[11px] text-slate-400 font-bold">10/Out &bull; Canidelo</span>
+              <span class="text-[11px] text-slate-500 dark:text-slate-400 font-bold">10/Out &bull; Canidelo</span>
             </div>
-            <div class="text-xs font-bold text-slate-300 uppercase tracking-wide">Futsal &bull; Sub-13 Masculinos</div>
+            <div class="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wide">Futsal &bull; Sub-13 Masculinos</div>
             
             <!-- Placar -->
-            <div class="p-3 rounded-2xl bg-white/5 border border-white/10 text-center space-y-1">
-              <div class="flex items-center justify-around font-heading font-black text-xl text-white">
-                <span class="text-slate-300">Junqueira</span>
-                <span class="text-2xl text-white px-2 py-0.5 rounded-lg bg-black/40">5 - 0</span>
-                <span class="text-emerald-400">AJAVP</span>
+            <div class="p-3 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-center space-y-1 shadow-xs">
+              <div class="flex items-center justify-around font-heading font-black text-xl text-slate-900 dark:text-white">
+                <span class="text-slate-700 dark:text-slate-300">Junqueira</span>
+                <span class="text-2xl text-slate-900 dark:text-white px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-black/40">5 - 0</span>
+                <span class="text-emerald-700 dark:text-emerald-400">AJAVP</span>
               </div>
-              <div class="text-[10px] text-slate-400 font-semibold">1ª Jornada &bull; Pavilhão de Canidelo (08h45)</div>
+              <div class="text-[10px] text-slate-500 dark:text-slate-400 font-semibold">1ª Jornada &bull; Pavilhão de Canidelo (08h45)</div>
             </div>
 
-            <p class="text-xs text-slate-300 leading-relaxed">
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
               Estreia exigente frente a um dos conjuntos mais fortes da prova. A equipa continua a evoluir nos treinos de quarta-feira em Canidelo.
             </p>
           </div>
-          <div class="pt-3 border-t border-white/10 flex items-center justify-between text-[11px]">
-            <span class="text-slate-400">Próximo Jogo:</span>
-            <span class="text-amber-300 font-bold">17/Out &bull; Futebol Série C</span>
+          <div class="pt-3 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-[11px]">
+            <span class="text-slate-500 dark:text-slate-400">Próximo Jogo:</span>
+            <span class="text-amber-700 dark:text-amber-300 font-bold">17/Out &bull; Futebol Série C</span>
           </div>
         </div>
 
         <!-- 4. Corta-Mato: Vitória Oficial Vilar do Pinheiro (34 pts) -->
-        <div class="p-6 rounded-3xl bg-gradient-to-b from-amber-950/80 via-slate-900 to-emerald-950/80 border-2 border-amber-400/80 shadow-xl flex flex-col justify-between space-y-4 hover:border-amber-300 transition-all">
+        <div class="p-6 rounded-3xl bg-amber-50/70 dark:bg-gradient-to-b dark:from-amber-950/80 dark:via-slate-900 dark:to-emerald-950/80 border-2 border-amber-300 dark:border-amber-400/80 shadow-md flex flex-col justify-between space-y-4 hover:border-amber-400 transition-all">
           <div class="space-y-3">
             <div class="flex items-center justify-between gap-2">
               <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-400 text-slate-950 shadow-xs inline-flex items-center gap-1 flex-shrink-0">
                 <i data-lucide="trophy" class="w-3 h-3 text-slate-950"></i> 1º Lugar
               </span>
-              <span class="text-[11px] text-amber-300 font-bold truncate">03/Out &bull; Espaço Agros</span>
+              <span class="text-[11px] text-amber-800 dark:text-amber-300 font-bold truncate">03/Out &bull; Espaço Agros</span>
             </div>
-            <div class="text-xs font-bold text-amber-300 uppercase tracking-wide">Atletismo &bull; Corta-Mato de Abertura</div>
+            <div class="text-xs font-bold text-amber-800 dark:text-amber-300 uppercase tracking-wide">Atletismo &bull; Corta-Mato de Abertura</div>
             
-            <div class="p-3 rounded-2xl bg-black/40 border border-amber-400/30 text-center space-y-1">
-              <div class="font-heading font-black text-lg text-amber-400 flex items-center justify-center gap-1.5">
-                <i data-lucide="award" class="w-4 h-4 text-amber-400"></i>
+            <div class="p-3 rounded-2xl bg-white dark:bg-black/40 border border-amber-300 dark:border-amber-400/30 text-center space-y-1 shadow-xs">
+              <div class="font-heading font-black text-lg text-amber-700 dark:text-amber-400 flex items-center justify-center gap-1.5">
+                <i data-lucide="award" class="w-4 h-4 text-amber-600 dark:text-amber-400"></i>
                 <span>Campeões Gerais (34 pts)</span>
               </div>
-              <div class="text-[10px] text-slate-300">2º Gião (37 pts) &bull; 3º Bagunte (38 pts)</div>
-              <div class="text-[10px] text-emerald-300 font-bold pt-0.5">5 Pódios &bull; 1º Coletivo Livre Fem</div>
+              <div class="text-[10px] text-slate-600 dark:text-slate-300">2º Gião (37 pts) &bull; 3º Bagunte (38 pts)</div>
+              <div class="text-[10px] text-emerald-700 dark:text-emerald-300 font-bold pt-0.5">5 Pódios &bull; 1º Coletivo Livre Fem</div>
             </div>
 
-            <p class="text-xs text-slate-300 leading-relaxed">
+            <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
               Carminho Pereira 🥇 e Luís Sá 🥇 Campeões; Maria Xavier 🥈 e Diana Barata 🥈 Vice-Campeãs; Rui Vieira 🥉 Bronze!
             </p>
           </div>
-          <div class="pt-3 border-t border-white/10 space-y-2">
+          <div class="pt-3 border-t border-amber-200/80 dark:border-white/10 space-y-2">
             <div class="flex items-center justify-between text-[11px]">
-              <span class="text-slate-400">Homologado:</span>
-              <a href="jif.html#corta-mato-oficial" class="text-amber-300 hover:text-amber-200 font-bold flex items-center gap-0.5">
+              <span class="text-slate-500 dark:text-slate-400">Homologado:</span>
+              <a href="jif.html#corta-mato-oficial" class="text-amber-800 dark:text-amber-300 hover:text-amber-700 dark:hover:text-amber-200 font-bold flex items-center gap-0.5">
                 <span>Pauta Oficial</span>
                 <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
               </a>
             </div>
-            <a href="https://www.instagram.com/reel/DeMxY9Sp9JW/" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-gradient-to-r from-pink-600/30 via-rose-600/30 to-purple-600/30 hover:from-pink-600/50 hover:via-rose-600/50 hover:to-purple-600/50 border border-pink-400/40 text-pink-200 hover:text-white text-xs font-bold transition-all shadow-xs">
-              <i data-lucide="play" class="w-3.5 h-3.5 fill-current text-pink-400"></i>
+            <a href="https://www.instagram.com/reel/DeMxY9Sp9JW/" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-pink-100 hover:bg-pink-200 dark:bg-gradient-to-r dark:from-pink-600/30 dark:via-rose-600/30 dark:to-purple-600/30 dark:hover:from-pink-600/50 dark:hover:via-rose-600/50 dark:hover:to-purple-600/50 border border-pink-300 dark:border-pink-400/40 text-pink-900 dark:text-pink-200 hover:text-pink-950 dark:hover:text-white text-xs font-bold transition-all shadow-xs">
+              <i data-lucide="play" class="w-3.5 h-3.5 fill-current text-pink-600 dark:text-pink-400"></i>
               <span>Ver Reel de Promoção</span>
-              <i data-lucide="external-link" class="w-3 h-3 text-pink-300"></i>
+              <i data-lucide="external-link" class="w-3 h-3 text-pink-700 dark:text-pink-300"></i>
             </a>
           </div>
         </div>
@@ -825,7 +824,8 @@
         
         <div class="lg:col-span-2 space-y-4">
           <div class="flex items-center gap-3">
-            <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto bg-white p-1 rounded-lg">
+            <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto bg-white p-1 rounded-lg logo-light-only dark:hidden">
+            <img src="assets/images/logo_white.png" alt="Logótipo AJAVP" class="h-14 w-auto bg-white/10 p-1 rounded-lg logo-dark-only hidden dark:block">
             <div>
               <h3 class="font-heading font-bold text-lg text-white">AJAVP</h3>
               <p class="text-xs text-emerald-300">Vilar do Pinheiro &bull; Época 2026/2027</p>
@@ -888,8 +888,9 @@
     <div id="whatsappPopup" class="hidden mb-4 w-[calc(100vw-2.5rem)] sm:w-88 max-w-sm bg-white rounded-3xl shadow-2xl border border-slate-200/80 overflow-hidden transform transition-all duration-300 origin-bottom-right">
       <div class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white p-4 flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-white p-1 flex items-center justify-center shadow-md">
-            <img src="assets/images/logo.png" alt="AJAVP" class="w-full h-full object-contain">
+          <div class="w-10 h-10 rounded-full bg-white dark:bg-white/10 p-1 flex items-center justify-center shadow-md">
+            <img src="assets/images/logo.png" alt="AJAVP" class="w-full h-full object-contain logo-light-only dark:hidden">
+            <img src="assets/images/logo_white.png" alt="AJAVP" class="w-full h-full object-contain logo-dark-only hidden dark:block">
           </div>
           <div>
             <h4 class="font-heading font-bold text-sm leading-tight text-white">AJAVP &bull; Apoio Oficial</h4>

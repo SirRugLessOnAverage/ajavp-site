@@ -32,8 +32,7 @@
   <link rel="stylesheet" href="assets/css/theme.css">
   <script>
     (function() {
-      const saved = localStorage.getItem('theme');
-      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      if (localStorage.getItem('theme') === 'dark') {
         document.documentElement.classList.add('dark');
       } else {
         document.documentElement.classList.remove('dark');
@@ -110,9 +109,10 @@
   <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-300" id="mainHeader">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-3 group">
-        <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105">
+        <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105 logo-light-only dark:hidden">
+        <img src="assets/images/logo_white.png" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105 logo-dark-only hidden dark:block">
         <div class="flex flex-col">
-          <span class="font-heading font-extrabold text-brand-navy text-lg sm:text-xl tracking-tight leading-tight">AJAVP</span>
+          <span class="font-heading font-extrabold text-brand-navy dark:text-white text-lg sm:text-xl tracking-tight leading-tight">AJAVP</span>
           <span class="text-xs text-brand-green font-semibold tracking-wide hidden sm:block">Associação Jovens e Adultos de Vilar do Pinheiro</span>
         </div>
       </a>
@@ -206,24 +206,23 @@
   </header>
 
   <!-- Hero Header -->
-  <section class="relative text-white py-16 sm:py-20 overflow-hidden bg-slate-950">
-    <!-- Imagem de Fundo com Overlay Gradiente Suave -->
+  <section class="relative py-16 sm:py-20 overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10">
+    <!-- Imagem de Fundo com Overlay Gradiente Luminoso -->
     <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-      <img src="assets/images/galeria/foto_01.jpg" alt="Atletas em Prova de Corrida" class="w-full h-full object-cover object-[center_25%] opacity-80">
-      <div class="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/50 to-slate-950/25"></div>
-      <div class="absolute inset-0 bg-black/20"></div>
+      <img src="assets/images/galeria/foto_01.jpg" alt="Atletas em Prova de Corrida" class="w-full h-full object-cover object-[center_25%] opacity-40 dark:opacity-75">
+      <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/60 dark:from-slate-950/85 dark:via-slate-950/50 dark:to-slate-950/25"></div>
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="max-w-3xl space-y-4">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 text-purple-200 text-xs font-bold uppercase tracking-wider border border-purple-400/30">
-          <i data-lucide="camera" class="w-4 h-4 text-purple-300"></i>
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50 dark:bg-purple-500/20 text-purple-800 dark:text-purple-200 text-xs font-bold uppercase tracking-wider border border-purple-200/80 dark:border-purple-400/30">
+          <i data-lucide="camera" class="w-4 h-4 text-purple-600 dark:text-purple-300"></i>
           <span>Fotografias &amp; Canal Oficial de Vídeo</span>
         </div>
-        <h1 class="font-heading font-black text-3xl sm:text-5xl text-white tracking-tight leading-tight drop-shadow-md">
+        <h1 class="font-heading font-black text-3xl sm:text-5xl text-brand-navy dark:text-white tracking-tight leading-tight">
           O Álbum da Família AJAVP
         </h1>
-        <p class="text-slate-100 text-sm sm:text-base leading-relaxed drop-shadow-xs">
+        <p class="text-slate-600 dark:text-slate-100 text-sm sm:text-base leading-relaxed font-medium">
           Revive os melhores momentos das provas, pódios, treinos de futsal e celebrações que marcam o desporto em Vilar do Pinheiro. Clica em qualquer fotografia para ampliar com o Lightbox.
         </p>
       </div>
@@ -652,7 +651,8 @@
         
         <div class="lg:col-span-2 space-y-4">
           <div class="flex items-center gap-3">
-            <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto bg-white p-1 rounded-lg">
+            <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto bg-white p-1 rounded-lg logo-light-only dark:hidden">
+            <img src="assets/images/logo_white.png" alt="Logótipo AJAVP" class="h-14 w-auto bg-white/10 p-1 rounded-lg logo-dark-only hidden dark:block">
             <div>
               <h3 class="font-heading font-bold text-lg text-white">AJAVP</h3>
               <p class="text-xs text-emerald-300">Vilar do Pinheiro &bull; Época 2026/2027</p>
