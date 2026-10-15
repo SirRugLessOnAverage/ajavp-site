@@ -169,8 +169,13 @@
   </header>
 
   <!-- Hero Banner do Portal JIF -->
-  <section class="relative bg-gradient-to-b from-slate-950 via-slate-900 to-brand-navy text-white py-16 sm:py-20 overflow-hidden border-b border-white/10">
-    <div class="absolute inset-0 bg-[radial-gradient(#387b5b_1px,transparent_1px)] [background-size:24px_24px] opacity-20"></div>
+  <section class="relative text-white py-16 sm:py-20 overflow-hidden border-b border-white/10 bg-slate-950">
+    <!-- Imagem de Fundo com Overlay Gradiente -->
+    <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+      <img src="assets/images/galeria/corta_mato_equipa_2026.jpg" alt="Comitiva AJAVP Corta-Mato" class="w-full h-full object-cover object-[center_35%] opacity-35 filter brightness-90">
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/65"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+    </div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       
       <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
