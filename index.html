@@ -1082,6 +1082,40 @@
     document.addEventListener('DOMContentLoaded', updateDynamicJifHighlights);
     updateDynamicJifHighlights();
   </script>
+
+  <!-- Live Instagram Stats Sync (Vercel Serverless Function) -->
+  <script>
+    (function () {
+      async function syncLiveInstagramStats() {
+        const postsEl = document.getElementById('igPostsCount');
+        const followersEl = document.getElementById('igFollowersCount');
+        if (!postsEl && !followersEl) return;
+
+        try {
+          const res = await fetch('/api/instagram');
+          if (!res.ok) return;
+          const data = await res.json();
+          if (data && data.posts && postsEl) {
+            const p = parseInt(data.posts, 10);
+            postsEl.textContent = isNaN(p) ? data.posts : p.toLocaleString('pt-PT');
+          }
+          if (data && data.followers && followersEl) {
+            const f = parseInt(data.followers, 10);
+            followersEl.textContent = isNaN(f) ? data.followers : f.toLocaleString('pt-PT');
+          }
+        } catch (e) {
+          // Mantém os valores estáticos de fallback se a API não estiver acessível
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', syncLiveInstagramStats);
+      } else {
+        syncLiveInstagramStats();
+      }
+    })();
+  </script>
+
   <!-- Theme Script -->
   <script src="assets/js/theme.js"></script>
 </body>
