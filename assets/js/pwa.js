@@ -224,4 +224,42 @@
       }, 5000);
     }
   }
+
+  // 8. Indicador Visual de Ligação de Rede (Online / Offline)
+  function showNetworkStatus(isOnline) {
+    let indicator = document.getElementById('pwaNetworkStatus');
+    if (!indicator) {
+      indicator = document.createElement('div');
+      indicator.id = 'pwaNetworkStatus';
+      indicator.className =
+        'fixed top-4 left-1/2 transform -translate-x-1/2 z-50 px-4 py-2 rounded-full text-xs font-bold shadow-lg transition-all duration-300 flex items-center gap-2 pointer-events-none';
+      document.body.appendChild(indicator);
+    }
+
+    if (!isOnline) {
+      indicator.className =
+        'fixed top-4 left-1/2 transform -translate-x-1/2 z-50 px-4 py-2 rounded-full text-xs font-bold shadow-xl transition-all duration-300 flex items-center gap-2 bg-amber-500 text-slate-950 border border-amber-300';
+      indicator.innerHTML = `
+        <span class="w-2 h-2 rounded-full bg-slate-950 animate-ping"></span>
+        <span>Modo Offline &bull; A usar dados guardados em cache</span>
+      `;
+      indicator.style.opacity = '1';
+      indicator.style.transform = 'translate(-50%, 0)';
+    } else {
+      indicator.className =
+        'fixed top-4 left-1/2 transform -translate-x-1/2 z-50 px-4 py-2 rounded-full text-xs font-bold shadow-xl transition-all duration-300 flex items-center gap-2 bg-emerald-600 text-white border border-emerald-400';
+      indicator.innerHTML = `
+        <span>✓ Ligação restabelecida &bull; Online</span>
+      `;
+      indicator.style.opacity = '1';
+      indicator.style.transform = 'translate(-50%, 0)';
+      setTimeout(() => {
+        indicator.style.opacity = '0';
+        indicator.style.transform = 'translate(-50%, -20px)';
+      }, 3500);
+    }
+  }
+
+  window.addEventListener('offline', () => showNetworkStatus(false));
+  window.addEventListener('online', () => showNetworkStatus(true));
 })();

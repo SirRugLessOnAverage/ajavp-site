@@ -4,6 +4,51 @@
  * e preserva as cores oficiais da identidade AJAVP (Verde, Azul Navy e Âmbar).
  */
 
+/* =============================================================
+ * EXPERIÊNCIA MOBILE-NATIVE & PRINCÍPIOS DE DESIGN FÍSICO
+ * ============================================================= */
+html {
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+
+/* Eliminar atraso de 300ms e manipular gestos com precisão */
+button, a, [role="button"], .tappable {
+  touch-action: manipulation;
+}
+
+/* Impedir seleção acidental de texto em controlos interativos */
+button, [role="button"], .tab, .chip {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Prevenir o auto-zoom intrusivo do iOS Safari em campos de formulário */
+@media (pointer: coarse) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Feedback tátil rápido e físico ao pressionar */
+button:active, [role="button"]:active {
+  transform: scale(0.98);
+}
+
+/* Safe Area Insets (iPhone com Notch, Dynamic Island e Barra de Início) */
+header#mainHeader {
+  padding-top: max(0.5rem, env(safe-area-inset-top, 0px));
+}
+
+#whatsappWidget {
+  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px)) !important;
+}
+
+#pwaInstallBanner {
+  bottom: calc(5rem + env(safe-area-inset-bottom, 0px)) !important;
+}
+
 /* Transição suave entre temas */
 html,
 body,

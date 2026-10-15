@@ -8,6 +8,24 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png">
 
+  <link rel="canonical" href="https://ajavp-site.vercel.app/contactos">
+
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ajavp-site.vercel.app/contactos">
+  <meta property="og:title" content="Contactos & Inscrições • AJAVP | Vilar do Pinheiro">
+  <meta property="og:description" content="Entra em contacto com a AJAVP. Formulário de inscrição de atletas, telefone, WhatsApp oficial e localização da sede.">
+  <meta property="og:image" content="https://ajavp-site.vercel.app/assets/icons/icon-512.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:locale" content="pt_PT">
+
+  <!-- Twitter / X Cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Contactos & Inscrições • AJAVP">
+  <meta name="twitter:description" content="Contactos e inscrições de atletas na AJAVP.">
+  <meta name="twitter:image" content="https://ajavp-site.vercel.app/assets/icons/icon-512.png">
+
   <!-- PWA & Mobile Web App Manifest -->
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#1b4557" media="(prefers-color-scheme: light)">
@@ -341,46 +359,59 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div class="space-y-1.5">
               <label class="block text-xs font-bold text-slate-700 uppercase tracking-wide">Nome Completo *</label>
-              <input type="text" required placeholder="O teu nome ou do encarregado" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-hidden focus:border-brand-green transition-colors">
+              <input type="text" id="contactNome" required placeholder="O teu nome ou do encarregado" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-hidden focus:border-brand-green transition-colors">
             </div>
             <div class="space-y-1.5">
               <label class="block text-xs font-bold text-slate-700 uppercase tracking-wide">Contacto Telefónico *</label>
-              <input type="tel" required placeholder="Ex: 912 345 678" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-hidden focus:border-brand-green transition-colors">
+              <input type="tel" id="contactTelefone" required placeholder="Ex: 912 345 678" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-hidden focus:border-brand-green transition-colors">
             </div>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div class="space-y-1.5">
               <label class="block text-xs font-bold text-slate-700 uppercase tracking-wide">Correio Eletrónico (Email) *</label>
-              <input type="email" required placeholder="exemplo@email.com" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-hidden focus:border-brand-green transition-colors">
+              <input type="email" id="contactEmail" required placeholder="exemplo@email.com" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-hidden focus:border-brand-green transition-colors">
             </div>
             <div class="space-y-1.5">
               <label class="block text-xs font-bold text-slate-700 uppercase tracking-wide">Modalidade de Interesse</label>
-              <select class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-hidden focus:border-brand-green transition-colors">
-                <option value="futsal">Futsal / Futebol Formação</option>
-                <option value="atletismo">Atletismo &amp; Corta-Mato</option>
-                <option value="tenis-mesa">Ténis de Mesa</option>
-                <option value="duatlo">Duatlo em Duplas (BTT)</option>
-                <option value="badminton">Badminton</option>
-                <option value="praia">Futebol de Praia</option>
-                <option value="outro">Informações Gerais / Patrocínios</option>
+              <select id="contactModalidade" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-hidden focus:border-brand-green transition-colors">
+                <option value="Futsal / Futebol Formação">Futsal / Futebol Formação</option>
+                <option value="Atletismo & Corta-Mato">Atletismo &amp; Corta-Mato</option>
+                <option value="Ténis de Mesa">Ténis de Mesa</option>
+                <option value="Duatlo em Duplas (BTT)">Duatlo em Duplas (BTT)</option>
+                <option value="Badminton">Badminton</option>
+                <option value="Futebol de Praia">Futebol de Praia</option>
+                <option value="Informações Gerais / Patrocínios">Informações Gerais / Patrocínios</option>
               </select>
             </div>
           </div>
 
           <div class="space-y-1.5">
             <label class="block text-xs font-bold text-slate-700 uppercase tracking-wide">Mensagem / Idade do Atleta</label>
-            <textarea rows="4" placeholder="Indica o ano de nascimento do atleta ou a tua dúvida específica..." class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-hidden focus:border-brand-green transition-colors"></textarea>
+            <textarea id="contactMensagem" rows="4" placeholder="Indica o ano de nascimento do atleta ou a tua dúvida específica..." class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-hidden focus:border-brand-green transition-colors"></textarea>
           </div>
 
-          <div id="formSuccessMessage" class="hidden p-4 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-900 text-xs font-bold flex items-center gap-2">
-            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i>
-            <span>Mensagem enviada com sucesso! A direção entrará em contacto contigo em breve.</span>
+          <div id="formSuccessMessage" class="hidden p-4 rounded-2xl bg-emerald-50 border border-emerald-300 text-emerald-950 text-xs font-medium space-y-3">
+            <div class="flex items-center gap-2 font-bold text-emerald-800 text-sm">
+              <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 flex-shrink-0"></i>
+              <span>Mensagem preparada com sucesso!</span>
+            </div>
+            <p class="leading-relaxed text-slate-700">
+              Para um atendimento mais rápido e imediato com os treinadores da AJAVP, podes abrir diretamente a conversa no WhatsApp com os teus dados:
+            </p>
+            <a id="formWhatsAppLink" href="https://wa.me/351917194933?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20inscri%C3%A7%C3%B5es%20na%20AJAVP." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs shadow-md transition-all">
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+              <span>Abrir Conversa no WhatsApp Oficial</span>
+            </a>
           </div>
 
-          <div class="pt-2">
+          <div class="flex flex-col sm:flex-row items-center gap-3 pt-2">
             <button type="submit" class="w-full sm:w-auto px-8 py-3.5 bg-brand-green hover:bg-brand-greenDark text-white font-heading font-bold text-xs uppercase tracking-wider rounded-xl shadow-md transition-all cursor-pointer">
               Enviar Mensagem
+            </button>
+            <button type="button" onclick="handleWhatsAppDirect()" class="w-full sm:w-auto px-6 py-3.5 bg-[#25D366] hover:bg-[#20ba59] text-white font-heading font-bold text-xs uppercase tracking-wider rounded-xl shadow-md transition-all inline-flex items-center justify-center gap-2 cursor-pointer">
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+              <span>Enviar via WhatsApp</span>
             </button>
           </div>
         </form>
@@ -518,14 +549,51 @@
       });
     }
 
+    function getFormValues() {
+      const nome = document.getElementById('contactNome')?.value.trim() || '';
+      const telefone = document.getElementById('contactTelefone')?.value.trim() || '';
+      const email = document.getElementById('contactEmail')?.value.trim() || '';
+      const modalidade = document.getElementById('contactModalidade')?.value || 'Informações Gerais';
+      const mensagem = document.getElementById('contactMensagem')?.value.trim() || 'Sem observações adicionais.';
+      return { nome, telefone, email, modalidade, mensagem };
+    }
+
+    function buildWhatsAppUrl(values) {
+      const text = `Olá AJAVP! Gostaria de informações sobre inscrições.\n\n*Nome:* ${values.nome || 'Não indicado'}\n*Telefone:* ${values.telefone || 'Não indicado'}\n*Email:* ${values.email || 'Não indicado'}\n*Modalidade:* ${values.modalidade}\n*Mensagem:* ${values.mensagem}`;
+      return `https://wa.me/351917194933?text=${encodeURIComponent(text)}`;
+    }
+
+    function handleWhatsAppDirect() {
+      const values = getFormValues();
+      if (!values.nome || !values.telefone) {
+        alert('Por favor, indica pelo menos o teu Nome e Telefone para enviar a mensagem via WhatsApp.');
+        document.getElementById('contactNome')?.focus();
+        return;
+      }
+      const url = buildWhatsAppUrl(values);
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+
     function handleContactSubmit(e) {
       e.preventDefault();
+      const values = getFormValues();
+      const whatsappUrl = buildWhatsAppUrl(values);
+      
+      const linkEl = document.getElementById('formWhatsAppLink');
+      if (linkEl) {
+        linkEl.href = whatsappUrl;
+      }
+
       const msg = document.getElementById('formSuccessMessage');
       if (msg) {
         msg.classList.remove('hidden');
-        lucide.createIcons();
+        if (window.lucide) lucide.createIcons();
       }
-      e.target.reset();
+
+      // Despacha também cliente de email nativo com os campos preenchidos
+      const mailtoSubject = encodeURIComponent(`Inscrição / Contacto AJAVP - ${values.nome}`);
+      const mailtoBody = encodeURIComponent(`Nome: ${values.nome}\nTelefone: ${values.telefone}\nEmail: ${values.email}\nModalidade: ${values.modalidade}\nMensagem:\n${values.mensagem}`);
+      window.location.href = `mailto:geralajavp@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
     }
   </script>
   <!-- Theme Script -->
