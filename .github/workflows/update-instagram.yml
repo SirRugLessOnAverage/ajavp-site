@@ -5,9 +5,6 @@ on:
     # Executa diariamente às 08:00 UTC (09:00 de Lisboa)
     - cron: '0 8 * * *'
   workflow_dispatch: # Permite execução manual no GitHub
-  push:
-    paths:
-      - 'test-trigger.txt'
 
 permissions:
   contents: write
