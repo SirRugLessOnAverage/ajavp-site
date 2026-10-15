@@ -108,12 +108,12 @@
   <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-300" id="mainHeader">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <!-- Logo + Association Name -->
-      <a href="index.html" class="flex items-center gap-3 group">
+      <a href="index.html" class="flex items-center gap-3 group flex-shrink-0">
         <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105 logo-light-only dark:hidden">
         <img src="assets/images/logo_white.png" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105 logo-dark-only hidden dark:block">
         <div class="flex flex-col">
           <span class="font-heading font-extrabold text-brand-navy dark:text-white text-lg sm:text-xl tracking-tight leading-tight">AJAVP</span>
-          <span class="text-xs text-brand-green font-semibold tracking-wide hidden sm:block">Associação Jovens e Adultos de Vilar do Pinheiro</span>
+          <span class="text-xs text-brand-green font-semibold tracking-wide hidden sm:block whitespace-nowrap">Associação Jovens e Adultos de Vilar do Pinheiro</span>
         </div>
       </a>
 
@@ -126,7 +126,7 @@
           <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-500 text-white">XL</span>
         </a>
         <a href="modalidades.html" class="text-slate-700 hover:text-brand-green font-semibold text-sm px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">Modalidades &amp; Treinos</a>
-        <a href="clube.html" class="text-slate-700 hover:text-brand-green font-semibold text-sm px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">O Clube</a>
+        <a href="clube.html" class="text-slate-700 hover:text-brand-green font-semibold text-sm px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">Quem Somos</a>
         <a href="multimedia.html" class="text-slate-700 hover:text-brand-green font-semibold text-sm px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">Multimédia</a>
         <a href="contactos.html" class="text-slate-700 hover:text-brand-green font-semibold text-sm px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">Contactos</a>
       </nav>
@@ -177,7 +177,7 @@
           <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
         </a>
         <a href="clube.html" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-50">
-          <span class="flex items-center gap-2.5"><i data-lucide="shield" class="w-4 h-4 text-blue-600"></i> O Clube &amp; Pavilhões</span>
+          <span class="flex items-center gap-2.5"><i data-lucide="shield" class="w-4 h-4 text-blue-600"></i> Quem Somos &amp; Instalações</span>
           <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
         </a>
         <a href="multimedia.html" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-50">
@@ -2105,13 +2105,15 @@
               </div>
 
               <!-- Placar Central -->
-              <div class="p-4 rounded-2xl bg-black/40 border border-white/10 text-center space-y-1">
-                <div class="flex items-center justify-around font-heading font-black text-xl text-white">
-                  <span class="text-emerald-400">AJAVP</span>
-                  <span class="text-3xl text-amber-400 px-3 py-1 rounded-xl bg-black/60 border border-amber-500/40">11 - 1</span>
-                  <span class="text-slate-300">Fornelo</span>
+              <div class="p-3.5 rounded-2xl bg-black/40 border border-white/10 text-center space-y-2">
+                <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-2">
+                  <div class="text-right truncate font-heading font-black text-sm sm:text-base text-emerald-400">AJAVP</div>
+                  <div class="px-3 py-1 rounded-xl bg-amber-500/20 border border-amber-400/40 text-amber-300 font-heading font-black text-lg sm:text-xl tracking-wider tabular-nums whitespace-nowrap shadow-xs">
+                    11 &ndash; 1
+                  </div>
+                  <div class="text-left truncate font-heading font-bold text-sm sm:text-base text-slate-300">Fornelo</div>
                 </div>
-                <div class="text-[10px] text-emerald-300 font-bold uppercase tracking-wider pt-1">
+                <div class="text-[10px] text-emerald-300 font-bold uppercase tracking-wider truncate">
                   Estreia Imparável da Mancha Verde
                 </div>
               </div>
@@ -2135,13 +2137,15 @@
               </div>
 
               <!-- Placar Central -->
-              <div class="p-4 rounded-2xl bg-black/40 border border-white/10 text-center space-y-1">
-                <div class="flex items-center justify-around font-heading font-black text-xl text-white">
-                  <span class="text-slate-300">Fajozes</span>
-                  <span class="text-3xl text-white px-3 py-1 rounded-xl bg-black/60 border border-white/20">4 - 2</span>
-                  <span class="text-emerald-400">AJAVP</span>
+              <div class="p-3.5 rounded-2xl bg-black/40 border border-white/10 text-center space-y-2">
+                <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-2">
+                  <div class="text-right truncate font-heading font-bold text-sm sm:text-base text-slate-300">Fajozes</div>
+                  <div class="px-3 py-1 rounded-xl bg-black/60 border border-white/20 text-white font-heading font-black text-lg sm:text-xl tracking-wider tabular-nums whitespace-nowrap shadow-xs">
+                    4 &ndash; 2
+                  </div>
+                  <div class="text-left truncate font-heading font-black text-sm sm:text-base text-emerald-400">AJAVP</div>
                 </div>
-                <div class="text-[10px] text-slate-400 font-semibold pt-1">
+                <div class="text-[10px] text-slate-400 font-semibold truncate">
                   Equilíbrio e Garra até ao Fim
                 </div>
               </div>
@@ -2165,13 +2169,15 @@
               </div>
 
               <!-- Placar Central -->
-              <div class="p-4 rounded-2xl bg-black/40 border border-white/10 text-center space-y-1">
-                <div class="flex items-center justify-around font-heading font-black text-xl text-white">
-                  <span class="text-slate-300">Junqueira</span>
-                  <span class="text-3xl text-white px-3 py-1 rounded-xl bg-black/60 border border-white/20">5 - 0</span>
-                  <span class="text-emerald-400">AJAVP</span>
+              <div class="p-3.5 rounded-2xl bg-black/40 border border-white/10 text-center space-y-2">
+                <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-2">
+                  <div class="text-right truncate font-heading font-bold text-sm sm:text-base text-slate-300">Junqueira</div>
+                  <div class="px-3 py-1 rounded-xl bg-black/60 border border-white/20 text-white font-heading font-black text-lg sm:text-xl tracking-wider tabular-nums whitespace-nowrap shadow-xs">
+                    5 &ndash; 0
+                  </div>
+                  <div class="text-left truncate font-heading font-black text-sm sm:text-base text-emerald-400">AJAVP</div>
                 </div>
-                <div class="text-[10px] text-slate-400 font-semibold pt-1">
+                <div class="text-[10px] text-slate-400 font-semibold truncate">
                   Estreia Exigente em Canidelo
                 </div>
               </div>
@@ -3063,7 +3069,7 @@
             <li><a href="index.html" class="hover:text-emerald-300 transition-colors">Página Inicial</a></li>
             <li><a href="jif.html" class="hover:text-emerald-300 transition-colors font-bold text-amber-300">JIF 2026/27</a></li>
             <li><a href="modalidades.html" class="hover:text-emerald-300 transition-colors">Modalidades &amp; Treinos</a></li>
-            <li><a href="clube.html" class="hover:text-emerald-300 transition-colors">O Clube &amp; Pavilhões</a></li>
+            <li><a href="clube.html" class="hover:text-emerald-300 transition-colors">Quem Somos &amp; Pavilhões</a></li>
             <li><a href="multimedia.html" class="hover:text-emerald-300 transition-colors">Multimédia &amp; Vídeos</a></li>
             <li><a href="contactos.html" class="hover:text-emerald-300 transition-colors">Contactos &amp; Inscrições</a></li>
           </ul>
