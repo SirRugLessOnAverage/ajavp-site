@@ -265,7 +265,7 @@
   // =============================================================
   // 9. GESTÃO DE NOTIFICAÇÕES WEB PUSH (INSCRIÇÃO DE ASSOCIADOS)
   // =============================================================
-  const VAPID_PUBLIC_KEY = 'BPzVDb-o6o1Mia1g4etMbzgrsQHS048pfOThK9QzWpt4dShSzGZzxseqwfX7YSpd2VgwEVZIKbNYEYTMrop93QA';
+  const VAPID_PUBLIC_KEY = 'BKxr7i7_VxixJsNJl982SYLGl8Ri9k5l4IKvzBU_8RL2roE_3Fs6BcHAeR3yOpdNqUEfC7Ek1r3Cx1r-abmZgNA';
 
   function urlB64ToUint8Array(base64String) {
     const padding = '='.repeat((4 - (base64String.length % 4)) % 4);

@@ -6,12 +6,18 @@ import webpush from 'web-push';
 const SUPABASE_URL = process.env.SUPABASE_URL || 'https://mudgnaajtolytggksvvq.supabase.co';
 const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im11ZGduYWFqdG9seXRnZ2tzdnZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIwNjAxODcsImV4cCI6MjEwNzYzNjE4N30.lL5jb84u0PUWH4BjQWdZ4uZLpGKybUuhGISGB9tvdIQ';
 
-// Chaves VAPID oficiais da AJAVP
-const VAPID_PUBLIC_KEY = process.env.VAPID_PUBLIC_KEY || 'BPzVDb-o6o1Mia1g4etMbzgrsQHS048pfOThK9QzWpt4dShSzGZzxseqwfX7YSpd2VgwEVZIKbNYEYTMrop93QA';
-const VAPID_PRIVATE_KEY = process.env.VAPID_PRIVATE_KEY || 'ZZ8uPTA027iFkbUayXY3b-eD_Z5aohLcDBdTiMwwIjg';
-const VAPID_SUBJECT = 'mailto:geralajavp@gmail.com';
+// Chaves VAPID oficiais da AJAVP (lidas com segurança das Variáveis de Ambiente)
+const VAPID_PUBLIC_KEY = process.env.VAPID_PUBLIC_KEY || 'BKxr7i7_VxixJsNJl982SYLGl8Ri9k5l4IKvzBU_8RL2roE_3Fs6BcHAeR3yOpdNqUEfC7Ek1r3Cx1r-abmZgNA';
+const VAPID_PRIVATE_KEY = process.env.VAPID_PRIVATE_KEY;
+const VAPID_SUBJECT = process.env.VAPID_SUBJECT || 'mailto:geralajavp@gmail.com';
 
-webpush.setVapidDetails(VAPID_SUBJECT, VAPID_PUBLIC_KEY, VAPID_PRIVATE_KEY);
+if (VAPID_PUBLIC_KEY && VAPID_PRIVATE_KEY) {
+  try {
+    webpush.setVapidDetails(VAPID_SUBJECT, VAPID_PUBLIC_KEY, VAPID_PRIVATE_KEY);
+  } catch (vapidErr) {
+    console.error('Erro ao configurar chaves VAPID:', vapidErr);
+  }
+}
 
 // Código PIN de autorização da Direção (NIF da associação ou PIN de segurança)
 const VALID_PINS = ['519096045', 'ajavp2026', '2026'];
@@ -31,6 +37,13 @@ export default async function handler(req, res) {
 
   try {
     const { pin, title, body, url } = req.body || {};
+
+    // 0. Validar configuração do servidor
+    if (!VAPID_PRIVATE_KEY) {
+      return res.status(500).json({
+        error: 'Chave VAPID_PRIVATE_KEY não configurada no servidor Vercel. Por favor adiciona a variável de ambiente VAPID_PRIVATE_KEY no painel da Vercel.'
+      });
+    }
 
     // 1. Validar PIN da Direção
     if (!pin || !VALID_PINS.includes(String(pin).trim())) {
