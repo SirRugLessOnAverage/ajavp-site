@@ -338,6 +338,48 @@
       }
     }
 
+    function updatePreview() {
+      const titleEl = document.getElementById('notifTitle');
+      const bodyEl = document.getElementById('notifBody');
+      const urlEl = document.getElementById('notifUrl');
+      if (!titleEl || !bodyEl || !urlEl) return;
+
+      const title = titleEl.value.trim() || 'Título da Notificação';
+      const body = bodyEl.value.trim() || 'O texto do alerta que a direção escrever aparecerá aqui em tempo real.';
+      const url = urlEl.value || '/';
+
+      const previewTitle = document.getElementById('previewTitle');
+      const previewBody = document.getElementById('previewBody');
+      const previewUrl = document.getElementById('previewUrl');
+
+      if (previewTitle) previewTitle.textContent = title;
+      if (previewBody) previewBody.textContent = body;
+      if (previewUrl) previewUrl.textContent = 'ajavp-site.vercel.app' + url;
+    }
+
+    function fillTemplate(type) {
+      const titleEl = document.getElementById('notifTitle');
+      const bodyEl = document.getElementById('notifBody');
+      const urlEl = document.getElementById('notifUrl');
+      if (!titleEl || !bodyEl || !urlEl) return;
+
+      if (type === 'treino') {
+        titleEl.value = 'Treino de Futsal • Alteração de Horário';
+        bodyEl.value = 'Informamos todos os atletas que o treino de hoje passa para as 18h30 no Pavilhão de Vilar do Pinheiro. Contamos com a vossa presença!';
+        urlEl.value = '/modalidades';
+      } else if (type === 'jif') {
+        titleEl.value = 'Convocatória JIF • Prova de Sábado';
+        bodyEl.value = 'Convocatória oficial para a jornada deste fim de semana. Concentração às 09h00 no local da prova com o equipamento oficial da AJAVP.';
+        urlEl.value = '/jif';
+      } else if (type === 'urgente') {
+        titleEl.value = 'Aviso Importante • Informação da Direção';
+        bodyEl.value = 'Aviso oficial da direção desportiva sobre as atividades e jogos deste fim de semana. Consulta todos os detalhes.';
+        urlEl.value = '/';
+      }
+
+      updatePreview();
+    }
+
     function renderDashboardData(data) {
       const totalSubs = data.totalSubscribers || 0;
       document.getElementById('statsSubscribersCount').textContent = totalSubs;
