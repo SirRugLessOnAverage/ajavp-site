@@ -1,5 +1,5 @@
 """
-Script para atualizar os favicons de alto contraste (branco no preto) em todos os ficheiros HTML
+Script para atualizar os favicons de alto contraste (preto no branco) em todos os ficheiros HTML com cache-buster ?v=7
 """
 
 import os
@@ -15,16 +15,11 @@ html_files = [
     'admin-alertas.html'
 ]
 
-old_pattern = re.compile(
-    r'(<link rel="icon"[^>]+>\s*)+(<link rel="apple-touch-icon"[^>]+>)?',
-    re.MULTILINE
-)
-
 new_favicon_tags = (
     '  <link rel="icon" type="image/x-icon" href="/favicon.ico">\n'
-    '  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png?v=6">\n'
-    '  <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png?v=6">\n'
-    '  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png?v=6">'
+    '  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png?v=7">\n'
+    '  <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png?v=7">\n'
+    '  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png?v=7">'
 )
 
 for fn in html_files:
@@ -34,23 +29,30 @@ for fn in html_files:
     with open(fn, 'r', encoding='utf-8') as f:
         c = f.read()
 
-    # Se já tiver link rel="icon", substituir de forma limpa
-    if 'rel="icon"' in c:
-        # Substituir os blocos de favicon
-        c = re.sub(
-            r'  <link rel="icon" type="image/png" sizes="32x32" href="[^"]+">\s*'
-            r'<link rel="icon" type="image/png" sizes="192x192" href="[^"]+">',
-            new_favicon_tags,
-            c
+    # Caso 1: admin-alertas.html ou similar com apenas um favicon-32.png
+    if '  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">\n' in c:
+        c = c.replace(
+            '  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">\n',
+            new_favicon_tags + '\n'
         )
-        # Se houver link apple-touch-icon duplicado, atualizar
-        c = re.sub(
-            r'<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon\.png">',
-            '<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png?v=6">',
-            c
-        )
+
+    # Caso 2: Ficheiros com tags v6 completas
+    old_tags_v6 = (
+        '  <link rel="icon" type="image/x-icon" href="/favicon.ico">\n'
+        '  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png?v=6">\n'
+        '  <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png?v=6">\n'
+        '  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png?v=6">'
+    )
+    if old_tags_v6 in c:
+        c = c.replace(old_tags_v6, new_favicon_tags)
+
+    # Caso 3: Substituir qualquer ?v=6 remanescente nas tags de ícones
+    c = c.replace('favicon-32.png?v=6', 'favicon-32.png?v=7')
+    c = c.replace('icon-192.png?v=6', 'icon-192.png?v=7')
+    c = c.replace('apple-touch-icon.png?v=6', 'apple-touch-icon.png?v=7')
 
     with open(fn, 'w', encoding='utf-8') as f:
         f.write(c)
+    print(f"Atualizado: {fn}")
 
-print('Todos os ficheiros HTML atualizados com o favicon de alto contraste (branco no preto)!')
+print("Todos os ficheiros HTML foram atualizados para os favicons v7 (preto no branco)!")
