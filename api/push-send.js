@@ -1,27 +1,11 @@
 // Vercel Serverless Function: /api/push-send
-// Envia notificações Web Push para todos os associados subscritos
+// Envia notificações Web Push oficiais da AJAVP com validação criptográfica de PIN e chaves seguras
 
 import webpush from 'web-push';
 
 const SUPABASE_URL = process.env.SUPABASE_URL || 'https://mudgnaajtolytggksvvq.supabase.co';
 const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im11ZGduYWFqdG9seXRnZ2tzdnZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIwNjAxODcsImV4cCI6MjEwNzYzNjE4N30.lL5jb84u0PUWH4BjQWdZ4uZLpGKybUuhGISGB9tvdIQ';
-
-// Chaves VAPID oficiais da AJAVP (lidas com segurança das Variáveis de Ambiente)
-const VAPID_PUBLIC_KEY = process.env.VAPID_PUBLIC_KEY || 'BKxr7i7_VxixJsNJl982SYLGl8Ri9k5l4IKvzBU_8RL2roE_3Fs6BcHAeR3yOpdNqUEfC7Ek1r3Cx1r-abmZgNA';
-const DEFAULT_VAPID_PARTS = ['l4os_jJOJaw', '7b9WSZ5UhrI', '6dWp0VtmGCe', 'VHS6Kzc-0Y'];
-const VAPID_PRIVATE_KEY = process.env.VAPID_PRIVATE_KEY || DEFAULT_VAPID_PARTS.join('');
 const VAPID_SUBJECT = process.env.VAPID_SUBJECT || 'mailto:geralajavp@gmail.com';
-
-if (VAPID_PUBLIC_KEY && VAPID_PRIVATE_KEY) {
-  try {
-    webpush.setVapidDetails(VAPID_SUBJECT, VAPID_PUBLIC_KEY, VAPID_PRIVATE_KEY);
-  } catch (vapidErr) {
-    console.error('Erro ao configurar chaves VAPID:', vapidErr);
-  }
-}
-
-// Código PIN de autorização da Direção (NIF da associação ou PIN de segurança)
-const VALID_PINS = ['519096045', 'ajavp2026', '2026'];
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -39,35 +23,47 @@ export default async function handler(req, res) {
   try {
     const { pin, title, body, url } = req.body || {};
 
-    // 0. Validar configuração do servidor
-    if (!VAPID_PRIVATE_KEY) {
-      return res.status(500).json({
-        error: 'Chave VAPID_PRIVATE_KEY não configurada no servidor Vercel. Por favor adiciona a variável de ambiente VAPID_PRIVATE_KEY no painel da Vercel.'
-      });
-    }
-
-    // 1. Validar PIN da Direção
-    if (!pin || !VALID_PINS.includes(String(pin).trim())) {
-      return res.status(401).json({ error: 'PIN de segurança incorreto. Acesso reservado à Direção.' });
+    if (!pin) {
+      return res.status(401).json({ error: 'PIN de segurança obrigatório.' });
     }
 
     if (!title || !body) {
       return res.status(400).json({ error: 'Título e mensagem são obrigatórios.' });
     }
 
-    // 2. Obter todas as subscrições ativas do Supabase
-    const subRes = await fetch(`${SUPABASE_URL}/rest/v1/push_subscriptions?select=endpoint,p256dh,auth`, {
+    const cleanPin = String(pin).trim();
+
+    // 1. Obter contexto seguro da base de dados (só devolve chaves e subscrições se o PIN for válido)
+    const ctxRes = await fetch(`${SUPABASE_URL}/rest/v1/rpc/push_admin_context`, {
+      method: 'POST',
       headers: {
         'apikey': SUPABASE_ANON_KEY,
-        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
-      }
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ p_pin: cleanPin })
     });
 
-    if (!subRes.ok) {
-      throw new Error(`Falha ao obter subscrições: ${await subRes.text()}`);
+    if (!ctxRes.ok) {
+      const errText = await ctxRes.text();
+      return res.status(400).json({ error: errText });
     }
 
-    const subscriptions = await subRes.json();
+    const ctx = await ctxRes.json();
+
+    if (!ctx || !ctx.ok) {
+      return res.status(401).json({
+        error: 'PIN de segurança incorreto ou bloqueado. Acesso reservado à Direção da AJAVP.'
+      });
+    }
+
+    const { vapidPublic, vapidPrivate, subscriptions } = ctx;
+
+    if (!vapidPublic || !vapidPrivate) {
+      return res.status(500).json({ error: 'Chaves de envio não configuradas no sistema seguro.' });
+    }
+
+    webpush.setVapidDetails(VAPID_SUBJECT, vapidPublic, vapidPrivate);
 
     if (!subscriptions || subscriptions.length === 0) {
       return res.status(200).json({
@@ -78,7 +74,7 @@ export default async function handler(req, res) {
       });
     }
 
-    // 3. Montar o payload da notificação
+    // 2. Montar payload do aviso
     const notificationPayload = JSON.stringify({
       title: title.trim(),
       body: body.trim(),
@@ -88,7 +84,7 @@ export default async function handler(req, res) {
       timestamp: Date.now()
     });
 
-    // 4. Disparar notificações em paralelo
+    // 3. Disparar notificações em paralelo
     const deadEndpoints = [];
     let sentCount = 0;
     let failedCount = 0;
@@ -108,7 +104,6 @@ export default async function handler(req, res) {
           sentCount++;
         } catch (err) {
           failedCount++;
-          // Se o endpoint expirou ou foi cancelado (410 Gone ou 404 Not Found)
           if (err.statusCode === 410 || err.statusCode === 404) {
             deadEndpoints.push(sub.endpoint);
           }
@@ -116,21 +111,8 @@ export default async function handler(req, res) {
       })
     );
 
-    // 5. Limpar subscrições expiradas no Supabase
-    if (deadEndpoints.length > 0) {
-      for (const endpoint of deadEndpoints) {
-        fetch(`${SUPABASE_URL}/rest/v1/push_subscriptions?endpoint=eq.${encodeURIComponent(endpoint)}`, {
-          method: 'DELETE',
-          headers: {
-            'apikey': SUPABASE_ANON_KEY,
-            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
-          }
-        }).catch(() => {});
-      }
-    }
-
-    // 6. Registar envio no histórico de notificações
-    await fetch(`${SUPABASE_URL}/rest/v1/push_notifications`, {
+    // 4. Registar envio e limpar endpoints expirados de forma segura
+    await fetch(`${SUPABASE_URL}/rest/v1/rpc/push_admin_log`, {
       method: 'POST',
       headers: {
         'apikey': SUPABASE_ANON_KEY,
@@ -138,10 +120,12 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        title: title.trim(),
-        body: body.trim(),
-        url: url || '/',
-        sent_count: sentCount
+        p_pin: cleanPin,
+        p_title: title.trim(),
+        p_body: body.trim(),
+        p_url: url || '/',
+        p_sent: sentCount,
+        p_dead_endpoints: deadEndpoints
       })
     }).catch((e) => console.warn('Erro ao registar histórico:', e));
 

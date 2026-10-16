@@ -1,5 +1,5 @@
 // Vercel Serverless Function: /api/push-subscribe
-// Guarda e atualiza subscrições de Web Push no Supabase
+// Guarda e atualiza subscrições de Web Push através da função RPC segura no Supabase
 
 const SUPABASE_URL = process.env.SUPABASE_URL || 'https://mudgnaajtolytggksvvq.supabase.co';
 const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im11ZGduYWFqdG9seXRnZ2tzdnZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIwNjAxODcsImV4cCI6MjEwNzYzNjE4N30.lL5jb84u0PUWH4BjQWdZ4uZLpGKybUuhGISGB9tvdIQ';
@@ -20,12 +20,14 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: 'Endpoint obrigatório' });
       }
 
-      await fetch(`${SUPABASE_URL}/rest/v1/push_subscriptions?endpoint=eq.${encodeURIComponent(endpoint)}`, {
-        method: 'DELETE',
+      await fetch(`${SUPABASE_URL}/rest/v1/rpc/push_unsubscribe`, {
+        method: 'POST',
         headers: {
           'apikey': SUPABASE_ANON_KEY,
-          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
-        }
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ p_endpoint: endpoint })
       });
 
       return res.status(200).json({ success: true, message: 'Subscrição removida' });
@@ -46,29 +48,25 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Dados de subscrição inválidos' });
     }
 
-    const payload = {
-      endpoint,
-      p256dh: keys.p256dh,
-      auth: keys.auth,
-      user_agent: userAgent || req.headers['user-agent'] || '',
-      updated_at: new Date().toISOString()
-    };
-
-    const supabaseRes = await fetch(`${SUPABASE_URL}/rest/v1/push_subscriptions?on_conflict=endpoint`, {
+    const rpcRes = await fetch(`${SUPABASE_URL}/rest/v1/rpc/push_subscribe`, {
       method: 'POST',
       headers: {
         'apikey': SUPABASE_ANON_KEY,
         'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-        'Content-Type': 'application/json',
-        'Prefer': 'resolution=merge-duplicates'
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(payload)
+      body: JSON.stringify({
+        p_endpoint: endpoint,
+        p_p256dh: keys.p256dh,
+        p_auth: keys.auth,
+        p_user_agent: userAgent || req.headers['user-agent'] || ''
+      })
     });
 
-    if (!supabaseRes.ok) {
-      const errText = await supabaseRes.text();
-      console.error('Falha ao gravar no Supabase:', errText);
-      return res.status(502).json({ error: 'Falha ao guardar no Supabase' });
+    if (!rpcRes.ok) {
+      const errText = await rpcRes.text();
+      console.error('Falha ao registar subscrição via RPC:', errText);
+      return res.status(502).json({ error: 'Falha ao guardar no servidor' });
     }
 
     return res.status(200).json({ success: true, message: 'Subscrição guardada com sucesso' });

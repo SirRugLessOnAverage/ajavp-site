@@ -83,26 +83,39 @@
         </div>
         <h2 class="font-heading font-black text-2xl text-brand-navy dark:text-white">Acesso à Direção</h2>
         <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-          Insere o código PIN ou o NIF da associação (519096045) para aceder ao disparo de notificações.
+          Insere o código PIN secreto da Direção da AJAVP para aceder ao disparo de notificações.
         </p>
       </div>
 
       <form id="pinForm" onsubmit="handlePinSubmit(event)" class="space-y-4">
         <div>
-          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wide mb-1.5">Código PIN / NIF</label>
-          <input type="password" id="pinInput" autofocus required placeholder="Digita o código de acesso" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 text-center text-lg tracking-widest font-mono text-slate-900 dark:text-white focus:outline-hidden focus:border-brand-green">
+          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wide mb-1.5">Código PIN de Acesso</label>
+          <input type="password" id="pinInput" autofocus required placeholder="Digita o código PIN" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 text-center text-lg tracking-widest font-mono text-slate-900 dark:text-white focus:outline-hidden focus:border-brand-green">
         </div>
         <div id="pinError" class="hidden text-xs text-rose-600 dark:text-rose-400 font-bold text-center">
           Código incorreto. Tenta novamente.
         </div>
-        <button type="submit" class="w-full bg-brand-green hover:bg-brand-greenDark text-white font-heading font-bold text-xs uppercase tracking-wider py-3.5 rounded-xl shadow-md transition-all cursor-pointer">
-          Entrar no Painel
+        <button id="pinSubmitBtn" type="submit" class="w-full bg-brand-green hover:bg-brand-greenDark text-white font-heading font-bold text-xs uppercase tracking-wider py-3.5 rounded-xl shadow-md transition-all cursor-pointer">
+          <span id="pinSubmitText">Entrar no Painel</span>
         </button>
       </form>
     </div>
 
     <!-- Painel de Controlo de Notificações (Oculto até validação do PIN) -->
     <div id="adminPanel" class="hidden space-y-8">
+
+      <!-- Topo do Painel com Botão de Sair -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200 dark:border-white/10">
+        <div class="flex items-center gap-2.5">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="text-xs font-bold text-slate-700 dark:text-slate-200">Sessão Segura da Direção</span>
+          <span class="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-bold">Autenticado</span>
+        </div>
+        <button onclick="handleLogout()" class="self-start sm:self-auto text-xs font-bold text-rose-600 dark:text-rose-400 hover:text-rose-700 flex items-center gap-1.5 py-1.5 px-3 rounded-xl hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors cursor-pointer">
+          <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
+          <span>Bloquear Painel / Sair</span>
+        </button>
+      </div>
 
       <!-- Barra de Resumo e Estatísticas -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
@@ -287,98 +300,107 @@
   <script>
     let activePin = '';
 
-    function handlePinSubmit(e) {
-      e.preventDefault();
+    async function handlePinSubmit(e) {
+      if (e) e.preventDefault();
       const pin = document.getElementById('pinInput').value.trim();
-      const validPins = ['519096045', 'ajavp2026', '2026'];
+      if (!pin) return;
 
-      if (validPins.includes(pin)) {
-        activePin = pin;
-        document.getElementById('pinScreen').classList.add('hidden');
-        document.getElementById('adminPanel').classList.remove('hidden');
-        loadDashboardStats();
-        if (window.lucide) lucide.createIcons();
-      } else {
-        document.getElementById('pinError').classList.remove('hidden');
-        document.getElementById('pinInput').select();
+      const btn = document.getElementById('pinSubmitBtn');
+      const btnText = document.getElementById('pinSubmitText');
+      const errBox = document.getElementById('pinError');
+
+      btn.disabled = true;
+      btnText.textContent = 'A validar acesso...';
+      errBox.classList.add('hidden');
+
+      try {
+        const res = await fetch(`/api/push-stats?pin=${encodeURIComponent(pin)}`);
+        const data = await res.json().catch(() => ({}));
+
+        if (res.ok) {
+          activePin = pin;
+          sessionStorage.setItem('ajavp_admin_pin', pin);
+          document.getElementById('pinScreen').classList.add('hidden');
+          document.getElementById('adminPanel').classList.remove('hidden');
+          renderDashboardData(data);
+          if (window.lucide) lucide.createIcons();
+        } else {
+          errBox.textContent = data.error || 'Código PIN incorreto ou acesso bloqueado.';
+          errBox.classList.remove('hidden');
+          document.getElementById('pinInput').select();
+        }
+      } catch (err) {
+        errBox.textContent = 'Erro ao contactar o servidor: ' + err.message;
+        errBox.classList.remove('hidden');
+      } finally {
+        btn.disabled = false;
+        btnText.textContent = 'Entrar no Painel';
       }
     }
 
-    function updatePreview() {
-      const title = document.getElementById('notifTitle').value.trim() || 'Título da Notificação';
-      const body = document.getElementById('notifBody').value.trim() || 'O texto do alerta aparecerá aqui em tempo real.';
-      const url = document.getElementById('notifUrl').value;
+    function renderDashboardData(data) {
+      const totalSubs = data.totalSubscribers || 0;
+      document.getElementById('statsSubscribersCount').textContent = totalSubs;
+      document.getElementById('statsSentCount').textContent = data.notifications ? data.notifications.length : 0;
 
-      document.getElementById('previewTitle').textContent = title;
-      document.getElementById('previewBody').textContent = body;
-      document.getElementById('previewUrl').textContent = 'ajavp-site.vercel.app' + url;
-    }
-
-    function fillTemplate(type) {
-      const titleEl = document.getElementById('notifTitle');
-      const bodyEl = document.getElementById('notifBody');
-      const urlEl = document.getElementById('notifUrl');
-
-      if (type === 'treino') {
-        titleEl.value = 'Treino de Futsal • Alteração de Horário';
-        bodyEl.value = 'Informamos todos os atletas que o treino de hoje passa para as 18h30 no Pavilhão de Vilar do Pinheiro. Contamos com a vossa presença!';
-        urlEl.value = '/modalidades';
-      } else if (type === 'jif') {
-        titleEl.value = 'Convocatória JIF • Prova de Sábado';
-        bodyEl.value = 'Convocatória oficial para a jornada deste fim de semana. Concentração às 09h00 no local da prova com o equipamento oficial da AJAVP.';
-        urlEl.value = '/jif';
-      } else if (type === 'urgente') {
-        titleEl.value = 'Aviso Importante • Informação da Direção';
-        bodyEl.value = 'Aviso oficial da direção desportiva sobre as atividades e jogos deste fim de semana. Consulta todos os detalhes.';
-        urlEl.value = '/';
+      const alertBox = document.getElementById('noSubscribersAlert');
+      if (alertBox) {
+        if (totalSubs === 0) {
+          alertBox.classList.remove('hidden');
+        } else {
+          alertBox.classList.add('hidden');
+        }
       }
 
-      updatePreview();
+      const tbody = document.getElementById('notificationsHistoryBody');
+      if (tbody) {
+        if (!data.notifications || data.notifications.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="5" class="py-6 text-center text-slate-400">Nenhum aviso enviado ainda.</td></tr>';
+        } else {
+          tbody.innerHTML = data.notifications.map((n) => {
+            const date = new Date(n.created_at);
+            const dateStr = date.toLocaleDateString('pt-PT', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+            return `
+              <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+                <td class="py-3 px-3 font-mono text-slate-500 whitespace-nowrap">${dateStr}</td>
+                <td class="py-3 px-3 font-bold text-slate-900 dark:text-white">${n.title}</td>
+                <td class="py-3 px-3 text-slate-600 dark:text-slate-300 max-w-xs truncate">${n.body}</td>
+                <td class="py-3 px-3 font-mono text-emerald-600 dark:text-emerald-400">${n.url || '/'}</td>
+                <td class="py-3 px-3 text-right font-bold text-emerald-600">${n.sent_count || 0}</td>
+              </tr>
+            `;
+          }).join('');
+        }
+      }
+
+      if (window.lucide) lucide.createIcons();
     }
 
     async function loadDashboardStats() {
+      if (!activePin) return;
       try {
-        const res = await fetch('/api/push-stats');
-        if (!res.ok) throw new Error('Falha ao carregar dados');
+        const res = await fetch(`/api/push-stats?pin=${encodeURIComponent(activePin)}`);
+        if (!res.ok) throw new Error('Falha ao atualizar dados');
         const data = await res.json();
-
-        const totalSubs = data.totalSubscribers || 0;
-        document.getElementById('statsSubscribersCount').textContent = totalSubs;
-        document.getElementById('statsSentCount').textContent = data.notifications ? data.notifications.length : 0;
-
-        const alertBox = document.getElementById('noSubscribersAlert');
-        if (alertBox) {
-          if (totalSubs === 0) {
-            alertBox.classList.remove('hidden');
-          } else {
-            alertBox.classList.add('hidden');
-          }
-        }
-
-        const tbody = document.getElementById('notificationsHistoryBody');
-        if (!data.notifications || data.notifications.length === 0) {
-          tbody.innerHTML = '<tr><td colspan="5" class="py-6 text-center text-slate-400">Nenhum aviso enviado ainda.</td></tr>';
-          return;
-        }
-
-        tbody.innerHTML = data.notifications.map(n => {
-          const date = new Date(n.created_at);
-          const dateStr = date.toLocaleDateString('pt-PT', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
-          return `
-            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
-              <td class="py-3 px-3 font-mono text-slate-500 whitespace-nowrap">${dateStr}</td>
-              <td class="py-3 px-3 font-bold text-slate-900 dark:text-white">${n.title}</td>
-              <td class="py-3 px-3 text-slate-600 dark:text-slate-300 max-w-xs truncate">${n.body}</td>
-              <td class="py-3 px-3 font-mono text-emerald-600 dark:text-emerald-400">${n.url || '/'}</td>
-              <td class="py-3 px-3 text-right font-bold text-emerald-600">${n.sent_count || 0}</td>
-            </tr>
-          `;
-        }).join('');
-
-        if (window.lucide) lucide.createIcons();
-      } catch (err) {
-        console.error('Erro:', err);
+        renderDashboardData(data);
+      } catch (e) {
+        console.warn('Erro ao atualizar painel:', e);
       }
+    }
+
+    // Restaurar sessão se já autenticado na mesma aba
+    (function checkStoredSession() {
+      const savedPin = sessionStorage.getItem('ajavp_admin_pin');
+      if (savedPin) {
+        document.getElementById('pinInput').value = savedPin;
+        handlePinSubmit();
+      }
+    })();
+
+    function handleLogout() {
+      sessionStorage.removeItem('ajavp_admin_pin');
+      activePin = '';
+      location.reload();
     }
 
     async function handleSendPush(e) {

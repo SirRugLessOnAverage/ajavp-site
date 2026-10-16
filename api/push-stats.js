@@ -1,45 +1,49 @@
 // Vercel Serverless Function: /api/push-stats
-// Devolve estatísticas de subscritores e histórico de notificações
+// Devolve estatísticas de subscritores e histórico de notificações apenas com PIN válido da Direção
 
 const SUPABASE_URL = process.env.SUPABASE_URL || 'https://mudgnaajtolytggksvvq.supabase.co';
 const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im11ZGduYWFqdG9seXRnZ2tzdnZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIwNjAxODcsImV4cCI6MjEwNzYzNjE4N30.lL5jb84u0PUWH4BjQWdZ4uZLpGKybUuhGISGB9tvdIQ';
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Admin-Pin');
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
 
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
 
+  const pin = req.headers['x-admin-pin'] || req.query.pin || (req.body && req.body.pin);
+
+  if (!pin) {
+    return res.status(401).json({ error: 'PIN de acesso obrigatório.' });
+  }
+
   try {
-    // 1. Contagem de subscritores
-    const countRes = await fetch(`${SUPABASE_URL}/rest/v1/push_subscriptions?select=id`, {
+    const rpcRes = await fetch(`${SUPABASE_URL}/rest/v1/rpc/push_admin_stats`, {
+      method: 'POST',
       headers: {
         'apikey': SUPABASE_ANON_KEY,
         'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-        'Range': '0-0',
-        'Prefer': 'count=exact'
-      }
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ p_pin: String(pin).trim() })
     });
 
-    const contentRange = countRes.headers.get('content-range') || '';
-    const totalSubscribers = contentRange.includes('/') ? parseInt(contentRange.split('/')[1], 10) || 0 : 0;
+    if (!rpcRes.ok) {
+      const errText = await rpcRes.text();
+      return res.status(400).json({ error: errText });
+    }
 
-    // 2. Histórico recente de notificações
-    const historyRes = await fetch(`${SUPABASE_URL}/rest/v1/push_notifications?order=created_at.desc&limit=10`, {
-      headers: {
-        'apikey': SUPABASE_ANON_KEY,
-        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
-      }
-    });
-
-    const notifications = historyRes.ok ? await historyRes.json() : [];
+    const data = await rpcRes.json();
+    if (!data || !data.ok) {
+      return res.status(401).json({ error: 'PIN incorreto. Acesso reservado à Direção da AJAVP.' });
+    }
 
     return res.status(200).json({
-      totalSubscribers,
-      notifications
+      totalSubscribers: data.totalSubscribers || 0,
+      notifications: data.notifications || []
     });
   } catch (err) {
     console.error('Erro ao ler estatísticas:', err);
