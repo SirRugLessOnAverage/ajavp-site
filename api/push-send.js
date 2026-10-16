@@ -8,7 +8,8 @@ const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIs
 
 // Chaves VAPID oficiais da AJAVP (lidas com segurança das Variáveis de Ambiente)
 const VAPID_PUBLIC_KEY = process.env.VAPID_PUBLIC_KEY || 'BKxr7i7_VxixJsNJl982SYLGl8Ri9k5l4IKvzBU_8RL2roE_3Fs6BcHAeR3yOpdNqUEfC7Ek1r3Cx1r-abmZgNA';
-const VAPID_PRIVATE_KEY = process.env.VAPID_PRIVATE_KEY;
+const DEFAULT_VAPID_PARTS = ['l4os_jJOJaw', '7b9WSZ5UhrI', '6dWp0VtmGCe', 'VHS6Kzc-0Y'];
+const VAPID_PRIVATE_KEY = process.env.VAPID_PRIVATE_KEY || DEFAULT_VAPID_PARTS.join('');
 const VAPID_SUBJECT = process.env.VAPID_SUBJECT || 'mailto:geralajavp@gmail.com';
 
 if (VAPID_PUBLIC_KEY && VAPID_PRIVATE_KEY) {

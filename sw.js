@@ -1,6 +1,6 @@
 // AJAVP - Service Worker (PWA)
 // Versão do Cache
-const CACHE_NAME = 'ajavp-pwa-v2';
+const CACHE_NAME = 'ajavp-pwa-v4';
 
 // Recursos essenciais para pré-cache (App Shell)
 const PRECACHE_ASSETS = [
@@ -24,15 +24,15 @@ const PRECACHE_ASSETS = [
 
 // Instalação do Service Worker & Pre-cache
 self.addEventListener('install', (event) => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      // Adiciona ficheiros essenciais (com tolerância a falhas individuais)
       return Promise.allSettled(
         PRECACHE_ASSETS.map((url) =>
           cache.add(url).catch((err) => console.warn(`[SW] Falha ao pre-carregar ${url}:`, err))
         )
       );
-    }).then(() => self.skipWaiting())
+    })
   );
 });
 
@@ -62,10 +62,14 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // 1. Pedidos de Navegação (Páginas HTML): Estratégia Network First com Fallback para Cache
-  if (request.mode === 'navigate') {
+  // 1. Pedidos de Navegação (Páginas HTML) e Scripts/CSS locais: Estratégia Network First
+  if (
+    request.mode === 'navigate' ||
+    url.pathname.startsWith('/assets/js/') ||
+    url.pathname.startsWith('/assets/css/')
+  ) {
     event.respondWith(
-      fetch(request)
+      fetch(request, { cache: 'no-cache' })
         .then((networkResponse) => {
           if (networkResponse && networkResponse.status === 200) {
             const responseClone = networkResponse.clone();
@@ -74,13 +78,13 @@ self.addEventListener('fetch', (event) => {
           return networkResponse;
         })
         .catch(async () => {
-          // Se estiver offline ou sem rede no pavilhão, procurar na cache
-          const cachedResponse = await caches.match(request);
+          const cachedResponse = await caches.match(request, { ignoreSearch: true });
           if (cachedResponse) {
             return cachedResponse;
           }
-          // Fallback para a página inicial
-          return caches.match('/');
+          if (request.mode === 'navigate') {
+            return caches.match('/');
+          }
         })
     );
     return;
@@ -102,7 +106,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // 3. Recursos Estáticos (Imagens, Ícones, Scripts, CDNs externos): Stale-While-Revalidate
+  // 3. Recursos Estáticos (Imagens, Ícones, Fontes): Stale-While-Revalidate
   event.respondWith(
     caches.match(request).then((cachedResponse) => {
       const fetchPromise = fetch(request)
@@ -113,9 +117,7 @@ self.addEventListener('fetch', (event) => {
           }
           return networkResponse;
         })
-        .catch(() => {
-          // Se falhar e não houver cache, não faz nada
-        });
+        .catch(() => {});
 
       return cachedResponse || fetchPromise;
     })
