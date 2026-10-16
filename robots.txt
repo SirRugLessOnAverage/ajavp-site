@@ -1,4 +1,5 @@
+# AJAVP • Site Oficial de Produção
 User-agent: *
 Allow: /
 
-Sitemap: https://ajavp-site.vercel.app/sitemap.xml
+Sitemap: https://ajavp.vercel.app/sitemap.xml

@@ -94,4 +94,39 @@
     },
     toggle: toggleTheme,
   };
+
+  // Detetar e Proteger Ambiente de Testes / Preview (Develop)
+  function setupPreviewEnvironment() {
+    const host = window.location.hostname;
+    const isProduction = host === 'ajavp.vercel.app' || host === 'ajavp.pt' || host === 'www.ajavp.pt';
+
+    if (!isProduction) {
+      // 1. Garantir que robôs e aranhas nunca indexam o preview
+      let metaRobots = document.querySelector('meta[name="robots"]');
+      if (!metaRobots) {
+        metaRobots = document.createElement('meta');
+        metaRobots.name = 'robots';
+        document.head.appendChild(metaRobots);
+      }
+      metaRobots.content = 'noindex, nofollow, noarchive, nosnippet';
+
+      // 2. Apresentar badge discreto de Ambiente de Testes no canto inferior
+      if (!document.getElementById('ajavpDevBadge')) {
+        const badge = document.createElement('div');
+        badge.id = 'ajavpDevBadge';
+        badge.className = 'fixed bottom-3 left-3 z-50 px-3 py-1.5 rounded-full bg-amber-500/95 text-slate-950 font-bold text-[10px] shadow-2xl backdrop-blur-md border border-amber-300 flex items-center gap-1.5 select-none pointer-events-none tracking-wide';
+        badge.innerHTML = `
+          <span class="w-2 h-2 rounded-full bg-slate-950 animate-ping"></span>
+          <span>🛠️ Modo Teste (Develop)</span>
+        `;
+        document.body.appendChild(badge);
+      }
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupPreviewEnvironment);
+  } else {
+    setupPreviewEnvironment();
+  }
 })();
