@@ -1,6 +1,6 @@
 // AJAVP - Service Worker (PWA)
 // Versão do Cache
-const CACHE_NAME = 'ajavp-pwa-v17';
+const CACHE_NAME = 'ajavp-pwa-v18';
 
 // Recursos essenciais para pré-cache (App Shell)
 const PRECACHE_ASSETS = [

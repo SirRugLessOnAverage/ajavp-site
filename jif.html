@@ -61,7 +61,7 @@
   </style>
 
   <!-- Sistema de Temas & Acessibilidade -->
-  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/theme.css?v=3">
   <link rel="stylesheet" href="assets/css/a11y.css?v=2">
   <script>
     (function() {
@@ -83,6 +83,36 @@
     }
     h1, h2, h3, h4, h5, h6, .font-heading {
       font-family: 'Montserrat', sans-serif;
+    }
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    html:not(.dark) .hero-bg-img {
+      opacity: 0.88 !important;
+      filter: contrast(1.05) saturate(1.1) !important;
+    }
+    html.dark .hero-bg-img {
+      opacity: 0.70 !important;
+      filter: brightness(0.9) contrast(1.1) !important;
+    }
+    .hero-gradient-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+    html:not(.dark) .hero-gradient-overlay {
+      background: linear-gradient(90deg, rgba(248, 250, 252, 0.90) 0%, rgba(248, 250, 252, 0.68) 42%, rgba(248, 250, 252, 0.12) 100%) !important;
+      background-color: transparent !important;
+    }
+    html.dark .hero-gradient-overlay {
+      background: linear-gradient(90deg, rgba(11, 19, 30, 0.92) 0%, rgba(11, 19, 30, 0.65) 45%, rgba(11, 19, 30, 0.22) 100%) !important;
+      background-color: transparent !important;
     }
     .hero-pattern {
       background-color: #1b4557;
@@ -162,7 +192,7 @@
         <a href="jif.html" class="text-amber-600 bg-amber-50/80 font-bold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl transition-colors flex items-center gap-1.5 border border-amber-200/60">
           <i data-lucide="medal" class="w-4 h-4 text-amber-500"></i>
           <span>JIF 2026/27</span>
-          <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-500 text-white">XL</span>
+          <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-500 text-slate-950">XL</span>
         </a>
         <a href="modalidades.html" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">Modalidades &amp; Treinos</a>
         <a href="clube.html" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">Quem Somos</a>
@@ -218,7 +248,7 @@
         </a>
         <a href="jif.html" class="flex items-center justify-between py-2.5 px-3 rounded-xl bg-amber-50 text-amber-900 border border-amber-200/70 font-bold">
           <span class="flex items-center gap-2.5"><i data-lucide="medal" class="w-4 h-4 text-amber-500"></i> Jogos Inter-Freguesias (JIF)</span>
-          <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-500 text-white">XL</span>
+          <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-500 text-slate-950">XL</span>
         </a>
         <a href="modalidades.html" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-50">
           <span class="flex items-center gap-2.5 font-bold"><i data-lucide="trophy" class="w-4 h-4 text-emerald-600"></i> Modalidades &amp; Treinos</span>
@@ -290,8 +320,8 @@
   <section class="relative py-16 sm:py-20 overflow-hidden border-b border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white">
     <!-- Imagem de Fundo com Overlay Gradiente Luminoso -->
     <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-      <img fetchpriority="high" decoding="async" src="assets/images/galeria/corta_mato_equipa_2026.jpg" alt="Comitiva AJAVP Corta-Mato" class="w-full h-full object-cover object-[center_35%] opacity-40 dark:opacity-75">
-      <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/60 dark:from-slate-950/85 dark:via-slate-950/50 dark:to-slate-950/30"></div>
+      <img fetchpriority="high" decoding="async" src="assets/images/galeria/corta_mato_equipa_2026.jpg" alt="Comitiva AJAVP Corta-Mato" class="hero-bg-img object-[center_35%]">
+      <div class="hero-gradient-overlay"></div>
     </div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       
