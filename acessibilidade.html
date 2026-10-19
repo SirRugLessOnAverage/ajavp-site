@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Declaração de Acessibilidade & Usabilidade • AJAVP</title>
+  <meta name="description" content="Declaração de Acessibilidade e Usabilidade da AJAVP - Associação Jovens e Adultos de Vilar do Pinheiro, em conformidade com o Decreto-Lei n.º 83/2018 e W3C WCAG 2.1 Nível AA.">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png?v=7">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png?v=7">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png?v=7">
+
+  <link rel="canonical" href="https://ajavp-site.vercel.app/acessibilidade.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ajavp-site.vercel.app/acessibilidade.html">
+  <meta property="og:title" content="Declaração de Acessibilidade &amp; Usabilidade • AJAVP">
+  <meta property="og:description" content="Compromisso institucional da AJAVP com a inclusão digital de todos os cidadãos (W3C WCAG 2.1 AA / DL 83/2018).">
+  <meta property="og:image" content="https://ajavp-site.vercel.app/assets/images/og-share.jpg">
+  <meta property="og:locale" content="pt_PT">
+
+  <!-- PWA & Mobile Web App Manifest -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1b4557" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @custom-variant dark (&:where(.dark, .dark *));
+    @theme {
+      --color-brand-green: #387b5b;
+      --color-brand-greenDark: #2d6349;
+      --color-brand-navy: #1b4557;
+      --color-brand-navyDark: #13323f;
+      --color-brand-accent: #f2a93b;
+      --color-brand-grayBg: #f8fafc;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-sans: 'Inter', sans-serif;
+    }
+  </style>
+
+  <!-- Sistema de Temas & Acessibilidade -->
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/a11y.css">
+  <script>
+    (function() {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-brand-grayBg text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-green selection:text-white">
+
+  <!-- Link de Salto de Conteúdo (WCAG 2.4.1) -->
+  <a href="#mainContent" class="a11y-skip-link">Saltar para o conteúdo principal</a>
+
+  <!-- Top Notification Bar -->
+  <div class="bg-brand-navy text-white text-xs py-2 px-4 text-center font-medium border-b border-white/10 flex items-center justify-center gap-2">
+    <span class="inline-flex items-center gap-1.5 font-bold text-amber-300">
+      <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+      <span>Selo de Usabilidade e Acessibilidade:</span>
+    </span>
+    <span>Compromisso integral da AJAVP com a inclusão digital e desportiva da comunidade.</span>
+  </div>
+
+  <!-- Header & Navbar -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-300" id="mainHeader" role="banner">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group flex-shrink-0 mr-4 lg:mr-10 xl:mr-14">
+        <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105 logo-light-only dark:hidden">
+        <img src="assets/images/logo_white.png" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105 logo-dark-only hidden dark:block">
+        <div class="flex flex-col justify-center">
+          <span class="font-heading font-extrabold text-brand-navy dark:text-white text-lg sm:text-xl tracking-tight leading-tight">AJAVP</span>
+          <span class="text-[11px] leading-tight text-brand-green dark:text-emerald-400 font-semibold tracking-wide hidden sm:block">
+            <span class="block">Associação Jovens e Adultos</span>
+            <span class="block text-emerald-800 dark:text-emerald-300 font-bold">Vilar do Pinheiro</span>
+          </span>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-1 xl:gap-2" aria-label="Navegação Principal">
+        <a href="index.html" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">Início</a>
+        <a href="jif.html" class="text-slate-700 hover:text-amber-600 font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-amber-50/60 transition-colors flex items-center gap-1.5">
+          <i data-lucide="medal" class="w-4 h-4 text-amber-500"></i>
+          <span>JIF 2026/27</span>
+          <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-500 text-white">XL</span>
+        </a>
+        <a href="modalidades.html" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">Modalidades &amp; Treinos</a>
+        <a href="clube.html" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">Quem Somos</a>
+        <a href="multimedia.html" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">Multimédia</a>
+        <a href="contactos.html" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">Contactos</a>
+      </nav>
+
+      <div class="hidden lg:flex items-center gap-2">
+        <!-- Accessibility Button (Desktop) -->
+        <button id="a11yHeaderBtn" aria-label="Opções de Acessibilidade (Atalho: Alt + A)" class="theme-toggle-btn" title="Acessibilidade (Alt + A)">
+          <span class="text-sm" aria-hidden="true">♿</span>
+          <span class="text-[11px] font-bold">Acessibilidade</span>
+        </button>
+
+        <!-- Theme Toggle Button (Desktop) -->
+        <button id="themeToggleBtn" aria-label="Alternar Modo de Visualização" class="theme-toggle-btn" title="Alternar Modo Claro / Escuro">
+          <i data-lucide="sun" class="w-4 h-4 hidden dark:block text-amber-400"></i>
+          <i data-lucide="moon" class="w-4 h-4 block dark:hidden text-slate-600"></i>
+          <span class="text-[11px] font-bold">
+            <span class="dark:hidden">Escuro</span>
+            <span class="hidden dark:inline text-amber-300">Claro</span>
+          </span>
+        </button>
+
+        <a href="https://forms.gle/YJdnZyUsMB8aBADj6" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-brand-green hover:bg-brand-greenDark text-white px-3 py-2 text-xs xl:px-4 xl:py-2.5 xl:text-sm rounded-full font-heading font-semibold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 whitespace-nowrap">
+          <i data-lucide="user-plus" class="w-4 h-4"></i>
+          <span>Quero Fazer Parte!</span>
+        </a>
+      </div>
+
+      <!-- Mobile Controls -->
+      <div class="flex items-center gap-2 lg:hidden">
+        <button id="a11yMobileHeaderBtn" data-a11y-open aria-label="Opções de Acessibilidade" class="theme-toggle-btn !p-2" title="Acessibilidade">
+          <span class="text-base" aria-hidden="true">♿</span>
+        </button>
+        <button id="themeToggleBtnMobile" aria-label="Alternar Tema" class="theme-toggle-btn !p-2" title="Alternar Modo Claro / Escuro">
+          <i data-lucide="sun" class="w-5 h-5 hidden dark:block text-amber-400"></i>
+          <i data-lucide="moon" class="w-5 h-5 block dark:hidden text-slate-600"></i>
+        </button>
+        <button id="mobileMenuBtn" aria-label="Abrir menu" class="p-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Drawer -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-200 px-6 py-6 shadow-xl space-y-3 max-h-[85vh] overflow-y-auto">
+      <div class="space-y-1.5 text-sm font-medium">
+        <a href="index.html" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-50">
+          <span class="flex items-center gap-2.5 font-bold"><i data-lucide="home" class="w-4 h-4 text-emerald-600"></i> Início</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="jif.html" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 hover:bg-amber-50">
+          <span class="flex items-center gap-2.5 font-bold"><i data-lucide="medal" class="w-4 h-4 text-amber-500"></i> Jogos Inter-Freguesias (JIF)</span>
+          <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-500 text-white">XL</span>
+        </a>
+        <a href="modalidades.html" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-50">
+          <span class="flex items-center gap-2.5 font-bold"><i data-lucide="trophy" class="w-4 h-4 text-emerald-600"></i> Modalidades &amp; Treinos</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="clube.html" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-50">
+          <span class="flex items-center gap-2.5 font-bold"><i data-lucide="shield" class="w-4 h-4 text-blue-600"></i> Quem Somos &amp; Instalações</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="multimedia.html" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-50">
+          <span class="flex items-center gap-2.5 font-bold"><i data-lucide="image" class="w-4 h-4 text-purple-600"></i> Galeria &amp; Vídeos</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="contactos.html" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-50">
+          <span class="flex items-center gap-2.5 font-bold"><i data-lucide="phone" class="w-4 h-4 text-teal-600"></i> Contactos &amp; Inscrições</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="acessibilidade.html" class="flex items-center justify-between py-2.5 px-3 rounded-xl bg-emerald-50 text-emerald-900 border border-emerald-200/70 font-bold">
+          <span class="flex items-center gap-2.5"><span class="text-base" aria-hidden="true">♿</span> Acessibilidade &amp; Usabilidade</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+      </div>
+      <div class="pt-3 border-t border-slate-100 space-y-2">
+        <button id="a11yMobileBtn" data-a11y-open class="w-full flex items-center justify-between py-2.5 px-3 rounded-xl bg-slate-50 text-slate-700 text-xs font-bold transition-colors">
+          <span class="flex items-center gap-2.5">
+            <span class="text-base" aria-hidden="true">♿</span>
+            <span>Painel de Acessibilidade</span>
+          </span>
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-white border border-slate-200">
+            <span>Alt + A</span>
+          </span>
+        </button>
+        <button id="themeToggleBtnDrawer" class="w-full flex items-center justify-between py-2.5 px-3 rounded-xl bg-slate-50 text-slate-700 text-xs font-bold transition-colors">
+          <span class="flex items-center gap-2.5">
+            <i data-lucide="sun-medium" class="w-4 h-4 text-amber-500"></i>
+            <span>Modo de Visualização</span>
+          </span>
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-white border border-slate-200">
+            <span class="dark:hidden text-slate-700">🌙 Mudar p/ Escuro</span>
+            <span class="hidden dark:inline text-amber-300">☀️ Mudar p/ Claro</span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal com Landmark Acessível -->
+  <main id="mainContent" role="main" tabindex="-1" class="flex-grow">
+    
+    <!-- Hero Banner -->
+    <section class="relative py-16 sm:py-20 overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10">
+      <div class="absolute inset-0 z-0">
+        <img src="assets/images/banner_futsal.jpg" alt="" role="presentation" class="w-full h-full object-cover object-center opacity-30 dark:opacity-15">
+        <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/60 dark:from-slate-950/85 dark:via-slate-950/50 dark:to-slate-950/30"></div>
+      </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-3xl space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-brand-green dark:text-emerald-400 border border-brand-green/20 text-xs font-bold uppercase tracking-wider">
+            <span class="text-base" aria-hidden="true">♿</span>
+            <span>Decreto-Lei n.º 83/2018 &bull; WCAG 2.1 Nível AA</span>
+          </div>
+          <h1 class="font-heading font-black text-3xl sm:text-4xl lg:text-5xl text-brand-navy dark:text-white tracking-tight">
+            Declaração de Acessibilidade &amp; Usabilidade
+          </h1>
+          <p class="text-slate-600 dark:text-slate-200 text-sm sm:text-base leading-relaxed font-medium">
+            A <strong>AJAVP – Associação Jovens e Adultos de Vilar do Pinheiro</strong> assume o compromisso de tornar o seu sítio web acessível a todos os associados, atletas, encarregados de educação e munícipes, garantindo que o acesso à informação desportiva e institucional é inclusivo, digno e sem barreiras.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Corpo da Declaração -->
+    <section class="py-16 bg-white dark:bg-slate-900/60">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        <!-- 1. Estado de Conformidade -->
+        <article class="p-8 rounded-3xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-white/10 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300 flex items-center justify-center font-bold text-xl">
+              ✓
+            </div>
+            <div>
+              <h2 class="font-heading font-bold text-xl text-brand-navy dark:text-white">
+                1. Estado de Conformidade Técnica
+              </h2>
+              <span class="text-xs font-semibold text-emerald-700 dark:text-emerald-400 uppercase">
+                Conforme com os requisitos W3C WCAG 2.1 Nível AA
+              </span>
+            </div>
+          </div>
+          <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+            O sítio web da AJAVP (<code>ajavp-site.vercel.app</code>) está <strong>plenamente adaptado às Diretrizes de Acessibilidade para Conteúdo Web (WCAG) 2.1</strong> no nível de conformidade <strong>AA</strong>, e cumpre os requisitos do <strong>Decreto-Lei n.º 83/2018</strong>, que transpôs para a ordem jurídica portuguesa a Diretiva (UE) 2016/2102 do Parlamento Europeu e do Conselho.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+            <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 text-center">
+              <span class="text-xs font-bold uppercase text-slate-400 block">Princípio 1</span>
+              <strong class="text-sm font-bold text-brand-navy dark:text-white block mt-1">Perceptível</strong>
+              <p class="text-[11px] text-slate-500 mt-1">Textos alternativos, contraste WCAG AAA e suporte a ecrãs de leitura.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 text-center">
+              <span class="text-xs font-bold uppercase text-slate-400 block">Princípio 2</span>
+              <strong class="text-sm font-bold text-brand-navy dark:text-white block mt-1">Operável</strong>
+              <p class="text-[11px] text-slate-500 mt-1">Navegação total por teclado, foco visível e links de salto direto.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 text-center">
+              <span class="text-xs font-bold uppercase text-slate-400 block">Princípio 3</span>
+              <strong class="text-sm font-bold text-brand-navy dark:text-white block mt-1">Compreensível</strong>
+              <p class="text-[11px] text-slate-500 mt-1">Linguagem clara, rotulagem previsível e fonte amigável para dislexia.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 text-center">
+              <span class="text-xs font-bold uppercase text-slate-400 block">Princípio 4</span>
+              <strong class="text-sm font-bold text-brand-navy dark:text-white block mt-1">Robusto</strong>
+              <p class="text-[11px] text-slate-500 mt-1">HTML5 semântico, atributos WAI-ARIA e compatibilidade multi-dispositivo.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. Ferramentas Integradas no Portal -->
+        <article class="space-y-6">
+          <div class="space-y-2">
+            <span class="text-xs font-bold uppercase tracking-widest text-brand-green dark:text-emerald-400">Recursos ao Dispor do Utilizador</span>
+            <h2 class="font-heading font-black text-2xl sm:text-3xl text-brand-navy dark:text-white">
+              2. Ferramentas de Acessibilidade Disponibilizadas
+            </h2>
+            <p class="text-sm text-slate-600 dark:text-slate-300">
+              Para além da arquitetura de base semântica, o portal integra uma barra de ferramentas com atalhos rápidos acessíveis através do botão flutuante inferior ou do atalho de teclado <strong>Alt + A</strong> (ou Option + A):
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-white/10 space-y-2">
+              <div class="flex items-center gap-2 font-bold text-slate-900 dark:text-white">
+                <span class="text-lg">🔠</span>
+                <span>Escala e Redimensionamento de Texto (WCAG 1.4.4)</span>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-400">
+                Permite aumentar o tamanho de todo o corpo de texto até 130% sem perda de legibilidade, sem sobreposição de caixas e sem necessidade de scroll horizontal.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-white/10 space-y-2">
+              <div class="flex items-center gap-2 font-bold text-slate-900 dark:text-white">
+                <span class="text-lg">📖</span>
+                <span>Tipografia para Dislexia (Lexend)</span>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-400">
+                Substitui a tipografia geral pela fonte <em>Lexend</em>, desenhada e validada cientificamente para reduzir o stress visual e melhorar a diferenciação entre caracteres semelhantes.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-white/10 space-y-2">
+              <div class="flex items-center gap-2 font-bold text-slate-900 dark:text-white">
+                <span class="text-lg">🎨</span>
+                <span>Modos de Alto Contraste (WCAG AAA)</span>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-400">
+                Disponibiliza modo Alto Contraste Escuro (fundo preto com elementos a amarelo ouro e branco), Alto Contraste Claro (preto absoluto sobre branco puro) e modo Monocromático.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-white/10 space-y-2">
+              <div class="flex items-center gap-2 font-bold text-slate-900 dark:text-white">
+                <span class="text-lg">🔊</span>
+                <span>Leitor de Texto por Síntese de Voz (TTS)</span>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-400">
+                Através da tecnologia nativa <em>Web Speech API</em>, lê o conteúdo de qualquer parágrafo ou título em voz alta em português ao clicar no texto.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-white/10 space-y-2">
+              <div class="flex items-center gap-2 font-bold text-slate-900 dark:text-white">
+                <span class="text-lg">📏</span>
+                <span>Régua e Guia de Leitura Focada</span>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-400">
+                Uma linha de realce horizontal que acompanha o cursor do rato ou o toque no ecrã, auxiliando utilizadores com défice de atenção ou dificuldades de fixação visual.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-white/10 space-y-2">
+              <div class="flex items-center gap-2 font-bold text-slate-900 dark:text-white">
+                <span class="text-lg">⏸️</span>
+                <span>Pausar Animações &amp; Movimento Reduzido (WCAG 2.3.3)</span>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-400">
+                Interrompe de imediato transições, animações de scroll e componentes móveis para evitar tonturas ou desorientação vestibular.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. Metodologia de Avaliação e Testes -->
+        <article class="p-8 rounded-3xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-white/10 space-y-4">
+          <h2 class="font-heading font-bold text-xl text-brand-navy dark:text-white">
+            3. Metodologia de Avaliação &amp; Auditoria
+          </h2>
+          <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+            A conformidade deste sítio web é aferida através de métodos combinados de auditoria técnica:
+          </p>
+          <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 list-disc list-inside">
+            <li><strong>Validadores Automáticos:</strong> Testes periódicos com o <em>AccessMonitor</em> (ferramenta oficial da Administração Pública Portuguesa baseada em WCAG 2.1 AA) e <em>Lighthouse Accessibility</em>.</li>
+            <li><strong>Inspeções Manuais:</strong> Validação através dos <em>W3C Easy Checks</em> e da checklist dos 10 aspetos críticos de acessibilidade funcional da AMA.</li>
+            <li><strong>Tecnologias de Apoio:</strong> Testes de navegação apenas por teclado (Tab, Shift+Tab, Enter, Espaço, Escape) e verificação com leitores de ecrã (NVDA no Windows e VoiceOver no iOS/macOS).</li>
+          </ul>
+          <p class="text-xs text-slate-500 dark:text-slate-400 pt-2 border-t border-slate-200 dark:border-white/10">
+            Última revisão formal efetuada a <strong>19 de Outubro de 2026</strong>.
+          </p>
+        </article>
+
+        <!-- 4. Contacto e Reporte de Barreiras -->
+        <article class="p-8 rounded-3xl bg-emerald-50/70 dark:bg-emerald-950/40 border-2 border-emerald-400 dark:border-emerald-500/50 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-brand-green text-white flex items-center justify-center font-bold">
+              <i data-lucide="mail" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h2 class="font-heading font-bold text-xl text-brand-navy dark:text-white">
+                4. Canal Direto de Contacto &amp; Apoio
+              </h2>
+              <span class="text-xs text-emerald-800 dark:text-emerald-300 font-semibold">
+                Reporte de eventuais dificuldades de acesso à informação
+              </span>
+            </div>
+          </div>
+          <p class="text-sm text-slate-700 dark:text-slate-200 leading-relaxed">
+            Apesar de todos os esforços contínuos de conformidade, se detetar algum conteúdo ou funcionalidade inacessível ou se necessitar de formatos alternativos de algum comunicado ou documento, por favor contacte a equipa da AJAVP:
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 pt-2">
+            <a href="mailto:ajavp.secretaria@gmail.com?subject=Acessibilidade%20Site%20AJAVP" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-brand-navy hover:bg-brand-navyDark text-white font-bold text-xs transition-colors shadow-sm">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+              <span>ajavp.secretaria@gmail.com</span>
+            </a>
+            <a href="contactos.html" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white dark:bg-slate-900 text-brand-navy dark:text-white font-bold text-xs border border-slate-200 dark:border-white/10 hover:border-emerald-400 transition-colors shadow-xs">
+              <i data-lucide="phone" class="w-4 h-4 text-brand-green"></i>
+              <span>Página de Contactos &amp; Secretaria</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- 5. Procedimento de Mediação -->
+        <article class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-white/10 space-y-3 text-xs text-slate-600 dark:text-slate-400">
+          <h3 class="font-heading font-bold text-sm text-slate-800 dark:text-white">
+            5. Procedimento de Cumprimento e Mediação
+          </h3>
+          <p class="leading-relaxed">
+            Nos termos do artigo 9.º do Decreto-Lei n.º 83/2018, caso não obtenha uma resposta satisfatória da AJAVP no prazo de 10 dias úteis, tem o direito de apresentar uma reclamação formal junto do <strong>Instituto Nacional para a Reabilitação, I.P. (INR)</strong> ou da entidade coordenadora da modernização administrativa (AMA / ARTE).
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-brand-navy text-white pt-16 pb-12 border-t border-brand-green/30" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <img src="assets/images/logo_white.png" alt="Logótipo AJAVP" class="h-14 w-auto bg-white/10 p-1 rounded-lg">
+            <div>
+              <span class="font-heading font-bold text-xl block">AJAVP</span>
+              <span class="text-xs text-emerald-300 font-semibold tracking-wide block">Vilar do Pinheiro</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Associação Jovens e Adultos de Vilar do Pinheiro. Fomentar o desporto, o civismo e a união comunitária desde 2025.
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="font-heading font-bold text-sm text-white uppercase tracking-wider">Acesso Rápido</h4>
+          <ul class="space-y-2 text-xs text-slate-300">
+            <li><a href="index.html" class="hover:text-emerald-300 transition-colors">Início</a></li>
+            <li><a href="jif.html" class="hover:text-emerald-300 transition-colors">Jogos Inter-Freguesias 2026/27</a></li>
+            <li><a href="modalidades.html" class="hover:text-emerald-300 transition-colors">Modalidades &amp; Horários</a></li>
+            <li><a href="clube.html" class="hover:text-emerald-300 transition-colors">Quem Somos &amp; Órgãos Sociais</a></li>
+            <li><a href="contactos.html" class="hover:text-emerald-300 transition-colors">Contactos &amp; Localizações</a></li>
+            <li><a href="acessibilidade.html" class="text-emerald-300 font-bold hover:underline flex items-center gap-1.5"><span aria-hidden="true">♿</span> Declaração de Acessibilidade</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="font-heading font-bold text-sm text-white uppercase tracking-wider">Sede &amp; Informação Legal</h4>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Rua 103, nº 43, Urbanização de Real<br>
+            4485-823 Vilar do Pinheiro<br>
+            Vila do Conde, Portugal
+          </p>
+          <div class="pt-2 border-t border-white/10 text-[11px] text-slate-400 space-y-1">
+            <p>NIPC: <span class="font-mono text-amber-300">519 096 045</span></p>
+            <p>NISS: <span class="font-mono text-emerald-300">25190960451</span></p>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="font-heading font-bold text-sm text-white uppercase tracking-wider">Acessibilidade Digital</h4>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Portal auditado e adaptado às diretrizes WCAG 2.1 AA da W3C. Podes ativar o painel de apoio a qualquer momento com a combinação <kbd class="px-1.5 py-0.5 rounded bg-white/20 font-mono text-[10px] text-amber-300">Alt + A</kbd>.
+          </p>
+          <button data-a11y-open class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-colors shadow-sm cursor-pointer">
+            <span aria-hidden="true">♿</span>
+            <span>Abrir Painel Acessibilidade</span>
+          </button>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <p>&copy; 2026 AJAVP &bull; Associação Jovens e Adultos de Vilar do Pinheiro. Todos os direitos reservados.</p>
+        <p class="flex items-center gap-3">
+          <a href="acessibilidade.html" class="hover:text-emerald-300 underline font-semibold">Acessibilidade &amp; WCAG</a>
+          <span>&bull;</span>
+          <a href="clube.html#estatutos" class="hover:text-emerald-300">Estatutos Oficiais</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/a11y.js"></script>
+  <script src="assets/js/pwa.js?v=5"></script>
+  <script>
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+      window.lucide.createIcons();
+    }
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  </script>
+</body>
+</html>

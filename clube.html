@@ -60,8 +60,9 @@
     }
   </style>
 
-  <!-- Sistema de Temas (Anti-FOUC & CSS) -->
+  <!-- Sistema de Temas & Acessibilidade -->
   <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/a11y.css">
   <script>
     (function() {
       if (localStorage.getItem('theme') === 'dark') {
@@ -128,6 +129,9 @@
 </head>
 <body class="bg-brand-grayBg text-slate-800 antialiased selection:bg-brand-green selection:text-white">
 
+  <!-- Link de Salto de Conteúdo (WCAG 2.4.1) -->
+  <a href="#mainContent" class="a11y-skip-link">Saltar para o conteúdo principal</a>
+
   <!-- Top Announcement Bar -->
   <div class="bg-brand-green text-white py-2 px-4 text-center text-xs sm:text-sm font-medium flex items-center justify-center gap-2 shadow-inner">
     <span class="inline-flex items-center justify-center px-2 py-0.5 rounded-full text-xs font-bold bg-white text-brand-green uppercase tracking-wider">Fundada em Dezembro de 2025</span>
@@ -136,7 +140,7 @@
   </div>
 
   <!-- Header & Navbar -->
-  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-300" id="mainHeader">
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-300" id="mainHeader" role="banner">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-3 group flex-shrink-0 mr-4 lg:mr-10 xl:mr-14">
         <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105 logo-light-only dark:hidden">
@@ -150,7 +154,7 @@
         </div>
       </a>
 
-      <nav class="hidden lg:flex items-center gap-1 xl:gap-2">
+      <nav class="hidden lg:flex items-center gap-1 xl:gap-2" aria-label="Navegação Principal">
         <a href="index.html" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">Início</a>
         <a href="jif.html" class="text-slate-700 hover:text-amber-600 font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-amber-50/60 transition-colors flex items-center gap-1.5">
           <i data-lucide="medal" class="w-4 h-4 text-amber-500"></i>
@@ -164,6 +168,12 @@
       </nav>
 
       <div class="hidden lg:flex items-center gap-3">
+        <!-- Accessibility Button (Desktop) -->
+        <button id="a11yHeaderBtn" aria-label="Opções de Acessibilidade (Atalho: Alt + A)" class="theme-toggle-btn" title="Acessibilidade (Alt + A)">
+          <span class="text-sm" aria-hidden="true">♿</span>
+          <span class="text-[11px] font-bold">A11y</span>
+        </button>
+
         <!-- Theme Toggle Button (Desktop) -->
         <button id="themeToggleBtn" aria-label="Alternar Modo de Visualização" class="theme-toggle-btn" title="Alternar Modo Claro / Escuro">
           <i data-lucide="sun" class="w-4 h-4 hidden dark:block text-amber-400"></i>
@@ -182,6 +192,9 @@
 
       <!-- Mobile Controls (Theme Toggle & Menu) -->
       <div class="flex items-center gap-2 lg:hidden">
+        <button id="a11yMobileHeaderBtn" data-a11y-open aria-label="Opções de Acessibilidade" class="theme-toggle-btn !p-2" title="Acessibilidade">
+          <span class="text-base" aria-hidden="true">♿</span>
+        </button>
         <button id="themeToggleBtnMobile" aria-label="Alternar Tema" class="theme-toggle-btn !p-2" title="Alternar Modo Claro / Escuro">
           <i data-lucide="sun" class="w-5 h-5 hidden dark:block text-amber-400"></i>
           <i data-lucide="moon" class="w-5 h-5 block dark:hidden text-slate-600"></i>
@@ -218,8 +231,21 @@
           <span class="flex items-center gap-2.5 font-bold"><i data-lucide="phone" class="w-4 h-4 text-teal-600"></i> Contactos &amp; Inscrições</span>
           <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
         </a>
+        <a href="acessibilidade.html" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 hover:bg-emerald-50">
+          <span class="flex items-center gap-2.5 font-bold"><span class="text-base" aria-hidden="true">♿</span> Acessibilidade &amp; Usabilidade</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
       </div>
       <div class="pt-3 border-t border-slate-100 space-y-2">
+        <button id="a11yMobileBtn" data-a11y-open class="w-full flex items-center justify-between py-2.5 px-3 rounded-xl bg-slate-50 text-slate-700 text-xs font-bold transition-colors">
+          <span class="flex items-center gap-2.5">
+            <span class="text-base" aria-hidden="true">♿</span>
+            <span>Painel de Acessibilidade</span>
+          </span>
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-white border border-slate-200">
+            <span>Alt + A</span>
+          </span>
+        </button>
         <button id="themeToggleBtnDrawer" class="w-full flex items-center justify-between py-2.5 px-3 rounded-xl bg-slate-50 text-slate-700 text-xs font-bold transition-colors">
           <span class="flex items-center gap-2.5">
             <i data-lucide="sun-medium" class="w-4 h-4 text-amber-500"></i>
@@ -251,6 +277,9 @@
       </div>
     </div>
   </header>
+
+  <!-- Conteúdo Principal (Landmark HTML5) -->
+  <main id="mainContent" role="main" tabindex="-1" class="flex-grow">
 
   <!-- Hero Header -->
   <section class="relative py-16 sm:py-20 overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10">
@@ -725,8 +754,10 @@
     </div>
   </section>
 
+  </main>
+
   <!-- Rodapé & Footer -->
-  <footer class="bg-brand-navyDark text-white pt-16 pb-12 border-t border-white/10">
+  <footer class="bg-brand-navyDark text-white pt-16 pb-12 border-t border-white/10" role="contentinfo">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
         
@@ -757,6 +788,7 @@
             <li><a href="clube.html" class="hover:text-emerald-300 transition-colors text-emerald-300 font-bold">Quem Somos &amp; Pavilhões</a></li>
             <li><a href="multimedia.html" class="hover:text-emerald-300 transition-colors">Multimédia &amp; Vídeos</a></li>
             <li><a href="contactos.html" class="hover:text-emerald-300 transition-colors">Contactos &amp; Inscrições</a></li>
+            <li><a href="acessibilidade.html" class="hover:text-emerald-300 transition-colors flex items-center gap-1.5"><span aria-hidden="true">♿</span> Acessibilidade &amp; Usabilidade</a></li>
           </ul>
         </div>
 
@@ -875,6 +907,8 @@
   </script>
   <!-- Theme Script -->
   <script src="assets/js/theme.js"></script>
+  <!-- Sistema de Acessibilidade & Usabilidade (WCAG 2.1 AA) -->
+  <script src="assets/js/a11y.js"></script>
   <!-- PWA Service Worker & Install Manager -->
   <script src="assets/js/pwa.js?v=5"></script>
 </body>
