@@ -298,12 +298,14 @@ html.dark #a11yTriggerBtn:hover {
   padding: 1rem !important;
   box-sizing: border-box !important;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s;
 }
 
 #a11yModalBackdrop.a11y-active {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
 }
 

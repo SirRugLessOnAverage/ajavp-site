@@ -295,6 +295,7 @@
       const backdrop = document.createElement('div');
       backdrop.id = 'a11yModalBackdrop';
       backdrop.setAttribute('aria-hidden', 'true');
+      backdrop.setAttribute('inert', '');
 
       backdrop.innerHTML = `
         <div id="a11yModal" role="dialog" aria-modal="true" aria-labelledby="a11yModalTitle" aria-describedby="a11yModalDesc">
@@ -523,6 +524,7 @@
 
     backdrop.classList.add('a11y-active');
     backdrop.setAttribute('aria-hidden', 'false');
+    backdrop.removeAttribute('inert');
     if (triggerBtn) {
       triggerBtn.setAttribute('aria-expanded', 'true');
     }
@@ -544,6 +546,7 @@
 
     backdrop.classList.remove('a11y-active');
     backdrop.setAttribute('aria-hidden', 'true');
+    backdrop.setAttribute('inert', '');
     if (triggerBtn) {
       triggerBtn.setAttribute('aria-expanded', 'false');
     }
