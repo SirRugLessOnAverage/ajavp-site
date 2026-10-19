@@ -96,21 +96,19 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   font-weight: 700;
 }
 
-/* Proteção universal de contraste em botões e badges âmbar / amarelos */
-.bg-amber-400,
-.bg-amber-500,
-[class*="bg-amber-400"],
-[class*="bg-amber-500"],
-.bg-brand-accent {
-  color: var(--ajavp-accent-text) !important;
+/* Proteção de contraste em botões e badges de fundo âmbar SÓLIDO (excluindo containers translúcidos com opacidade /10, /20, etc.) */
+.bg-amber-400:not([class*="/"]),
+.bg-amber-500:not([class*="/"]),
+.bg-brand-accent:not([class*="/"]),
+.jif-tab-btn.bg-amber-500,
+.jif-next-badge {
+  color: #0f172a !important;
 }
 
-.bg-amber-400 *,
-.bg-amber-500 *,
-[class*="bg-amber-400"] *,
-[class*="bg-amber-500"] *,
-.bg-brand-accent * {
-  color: var(--ajavp-accent-text) !important;
+.bg-amber-400:not([class*="/"]) > *:not(svg):not(i),
+.bg-amber-500:not([class*="/"]) > *:not(svg):not(i),
+.bg-brand-accent:not([class*="/"]) > *:not(svg):not(i) {
+  color: #0f172a !important;
 }
 
 /* =============================================================
@@ -1170,6 +1168,37 @@ html.dark table tbody td {
 
 html.dark table tbody tr:hover {
   background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Linhas de Eventos do Calendário JIF em Modo Escuro */
+html.dark .jif-event-row {
+  color: #e2e8f0 !important;
+}
+
+html.dark .jif-event-row .text-white,
+html.dark .jif-event-active .text-white {
+  color: #ffffff !important;
+}
+
+html.dark .jif-event-row .text-slate-300,
+html.dark .jif-event-active .text-slate-300 {
+  color: #cbd5e1 !important;
+}
+
+html.dark .jif-event-row .text-slate-400,
+html.dark .jif-event-active .text-slate-400,
+html.dark .jif-event-row .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+html.dark .jif-event-row strong,
+html.dark .jif-event-active strong {
+  color: #ffffff !important;
+}
+
+html.dark .jif-event-active {
+  background-color: rgba(245, 158, 11, 0.12) !important;
+  border-color: rgba(251, 191, 36, 0.7) !important;
 }
 
 /* Modais e Popups */
