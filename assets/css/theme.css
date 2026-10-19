@@ -339,6 +339,7 @@ html:not(.dark) .jif-tab-pane .bg-slate-900\/90,
 html:not(.dark) .jif-tab-pane .bg-slate-900\/80,
 html:not(.dark) .jif-tab-pane .bg-white\/5,
 html:not(.dark) .jif-tab-pane .bg-white\/10 {
+  background-image: none !important;
   background-color: #ffffff !important;
   border-color: #e2e8f0 !important;
   color: #1e293b !important;
@@ -361,20 +362,25 @@ html:not(.dark) .jif-tab-pane .hover\:bg-white\/5:hover {
 }
 
 /* 6. Títulos, Cabeçalhos e Nomes */
+html:not(.dark) .jif-tab-pane h1.text-white,
 html:not(.dark) .jif-tab-pane h2.text-white,
 html:not(.dark) .jif-tab-pane h3.text-white,
 html:not(.dark) .jif-tab-pane h4.text-white,
-html:not(.dark) .jif-tab-pane .text-white:not(.bg-brand-green *):not(.bg-amber-500 *):not(.bg-rose-600 *):not(.bg-emerald-600 *):not(.bg-blue-600 *):not(.bg-purple-600 *) {
+html:not(.dark) .jif-tab-pane .font-heading.text-white,
+html:not(.dark) .jif-tab-pane .text-white:not(.bg-brand-green *):not(.bg-amber-500 *):not(.bg-rose-600 *):not(.bg-emerald-600 *):not(.bg-emerald-500 *):not(.bg-blue-600 *):not(.bg-purple-600 *):not(.bg-amber-600 *) {
   color: #0f172a !important;
 }
 
 /* 7. Parágrafos, Legendas e Metadados (Alta Legibilidade e Contraste) */
+html:not(.dark) .jif-tab-pane p.text-slate-100,
 html:not(.dark) .jif-tab-pane p.text-slate-200,
 html:not(.dark) .jif-tab-pane p.text-slate-300,
 html:not(.dark) .jif-tab-pane p.text-slate-400,
+html:not(.dark) .jif-tab-pane div.text-slate-100,
 html:not(.dark) .jif-tab-pane div.text-slate-200,
 html:not(.dark) .jif-tab-pane div.text-slate-300,
 html:not(.dark) .jif-tab-pane div.text-slate-400,
+html:not(.dark) .jif-tab-pane span.text-slate-200,
 html:not(.dark) .jif-tab-pane span.text-slate-300,
 html:not(.dark) .jif-tab-pane span.text-slate-400,
 html:not(.dark) .jif-tab-pane ul.text-slate-300,
@@ -387,41 +393,40 @@ html:not(.dark) .jif-tab-pane strong.text-white {
   font-weight: 700 !important;
 }
 
-/* 8. Cores de Ênfase e Modalidades Adaptadas a Fundo Claro */
-html:not(.dark) .jif-tab-pane .text-emerald-300 {
+/* 8. Cores de Ênfase e Modalidades Adaptadas a Fundo Claro (WCAG AAA) */
+html:not(.dark) .jif-tab-pane .text-emerald-200,
+html:not(.dark) .jif-tab-pane .text-emerald-300,
+html:not(.dark) .jif-tab-pane .text-emerald-400 {
   color: #047857 !important;
   font-weight: 700 !important;
 }
-html:not(.dark) .jif-tab-pane .text-emerald-400 {
-  color: #059669 !important;
-  font-weight: 700 !important;
-}
 html:not(.dark) .jif-tab-pane .text-amber-200,
-html:not(.dark) .jif-tab-pane .text-amber-300 {
+html:not(.dark) .jif-tab-pane .text-amber-300,
+html:not(.dark) .jif-tab-pane .text-amber-400 {
   color: #b45309 !important;
   font-weight: 700 !important;
 }
-html:not(.dark) .jif-tab-pane .text-amber-400 {
-  color: #d97706 !important;
-  font-weight: 700 !important;
-}
-html:not(.dark) .jif-tab-pane .text-blue-300 {
+html:not(.dark) .jif-tab-pane .text-blue-200,
+html:not(.dark) .jif-tab-pane .text-blue-300,
+html:not(.dark) .jif-tab-pane .text-blue-400 {
   color: #1d4ed8 !important;
   font-weight: 700 !important;
 }
-html:not(.dark) .jif-tab-pane .text-blue-400 {
-  color: #2563eb !important;
-  font-weight: 700 !important;
-}
-html:not(.dark) .jif-tab-pane .text-purple-300 {
+html:not(.dark) .jif-tab-pane .text-purple-200,
+html:not(.dark) .jif-tab-pane .text-purple-300,
+html:not(.dark) .jif-tab-pane .text-purple-400 {
   color: #7e22ce !important;
   font-weight: 700 !important;
 }
-html:not(.dark) .jif-tab-pane .text-teal-300 {
+html:not(.dark) .jif-tab-pane .text-teal-200,
+html:not(.dark) .jif-tab-pane .text-teal-300,
+html:not(.dark) .jif-tab-pane .text-teal-400 {
   color: #0f766e !important;
   font-weight: 700 !important;
 }
-html:not(.dark) .jif-tab-pane .text-rose-300 {
+html:not(.dark) .jif-tab-pane .text-rose-200,
+html:not(.dark) .jif-tab-pane .text-rose-300,
+html:not(.dark) .jif-tab-pane .text-rose-400 {
   color: #be123c !important;
   font-weight: 700 !important;
 }
@@ -541,6 +546,45 @@ html:not(.dark) [class*="from-pink-900"] h4 {
 html:not(.dark) [class*="from-brand-navy"] p,
 html:not(.dark) [class*="from-amber-950"] p,
 html:not(.dark) [class*="from-pink-900"] p {
+  color: #334155 !important;
+}
+
+/* Fallback universal para qualquer gradiente com paradas escuras em modo claro */
+html:not(.dark) [class*="to-slate-9"]:not([class*="from-amber-50"]):not([class*="from-emerald-50"]):not([class*="from-sky-50"]):not([class*="from-pink-50"]):not([class*="from-blue-50"]):not([class*="from-slate-50"]):not([class*="from-teal-50"]),
+html:not(.dark) [class*="to-slate-950"]:not([class*="from-amber-50"]):not([class*="from-emerald-50"]):not([class*="from-sky-50"]):not([class*="from-pink-50"]):not([class*="from-blue-50"]):not([class*="from-slate-50"]):not([class*="from-teal-50"]),
+html:not(.dark) [class*="from-slate-800"]:not([class*="from-amber-50"]):not([class*="from-emerald-50"]):not([class*="from-sky-50"]):not([class*="from-pink-50"]):not([class*="from-blue-50"]):not([class*="from-slate-50"]):not([class*="from-teal-50"]),
+html:not(.dark) [class*="from-slate-900"]:not([class*="from-amber-50"]):not([class*="from-emerald-50"]):not([class*="from-sky-50"]):not([class*="from-pink-50"]):not([class*="from-blue-50"]):not([class*="from-slate-50"]):not([class*="from-teal-50"]),
+html:not(.dark) [class*="from-amber-900"]:not([class*="from-amber-50"]):not([class*="from-emerald-50"]):not([class*="from-sky-50"]):not([class*="from-pink-50"]):not([class*="from-blue-50"]):not([class*="from-slate-50"]):not([class*="from-teal-50"]),
+html:not(.dark) [class*="from-green-950"]:not([class*="from-amber-50"]):not([class*="from-emerald-50"]):not([class*="from-sky-50"]):not([class*="from-pink-50"]):not([class*="from-blue-50"]):not([class*="from-slate-50"]):not([class*="from-teal-50"]) {
+  background-image: none !important;
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+}
+
+html:not(.dark) [class*="to-slate-9"] .font-heading,
+html:not(.dark) [class*="to-slate-9"] h1,
+html:not(.dark) [class*="to-slate-9"] h2,
+html:not(.dark) [class*="to-slate-9"] h3,
+html:not(.dark) [class*="to-slate-9"] h4,
+html:not(.dark) [class*="to-slate-950"] .font-heading,
+html:not(.dark) [class*="to-slate-950"] h1,
+html:not(.dark) [class*="to-slate-950"] h2,
+html:not(.dark) [class*="to-slate-950"] h3,
+html:not(.dark) [class*="to-slate-950"] h4,
+html:not(.dark) [class*="from-slate-800"] .font-heading,
+html:not(.dark) [class*="from-slate-800"] h1,
+html:not(.dark) [class*="from-slate-800"] h2,
+html:not(.dark) [class*="from-slate-800"] h3,
+html:not(.dark) [class*="from-slate-800"] h4 {
+  color: #1b4557 !important;
+}
+
+html:not(.dark) [class*="to-slate-9"] p,
+html:not(.dark) [class*="to-slate-950"] p,
+html:not(.dark) [class*="from-slate-800"] p,
+html:not(.dark) [class*="to-slate-9"] span:not([class*="bg-"]):not([class*="text-"]):not([class*="rounded-"]),
+html:not(.dark) [class*="to-slate-950"] span:not([class*="bg-"]):not([class*="text-"]):not([class*="rounded-"]),
+html:not(.dark) [class*="from-slate-800"] span:not([class*="bg-"]):not([class*="text-"]):not([class*="rounded-"]) {
   color: #334155 !important;
 }
 
