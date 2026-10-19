@@ -749,9 +749,18 @@ html.dark .bg-brand-grayBg {
 }
 
 /* Cartões Brancos -> Dark Slate Navy */
-html.dark .bg-white {
+html.dark .bg-white,
+html.dark .bg-white\/95,
+html.dark .bg-white\/90,
+html.dark .bg-white\/85,
+html.dark .bg-white\/80 {
   background-color: #111c2a !important;
   color: #e2e8f0;
+}
+
+/* Previne que gradientes de luz terminem em branco opaco no Dark Mode */
+html.dark .to-white {
+  --tw-gradient-to: #0f172a !important;
 }
 
 html.dark .bg-slate-50 {
@@ -813,13 +822,22 @@ html.dark .bg-white.rounded-3xl:hover {
 /* Badges e Contentores Temáticos */
 html.dark .bg-emerald-50,
 html.dark .bg-emerald-50\/80,
+html.dark .bg-emerald-50\/70,
 html.dark .bg-emerald-50\/60,
 html.dark .bg-emerald-50\/90 {
   background-color: rgba(16, 185, 129, 0.12) !important;
   border-color: rgba(16, 185, 129, 0.25) !important;
 }
+html.dark .border-emerald-100,
+html.dark .border-emerald-200,
+html.dark .border-emerald-200\/80,
+html.dark .border-emerald-300,
+html.dark .border-emerald-400 {
+  border-color: rgba(16, 185, 129, 0.35) !important;
+}
 html.dark .text-emerald-900,
-html.dark .text-emerald-800 {
+html.dark .text-emerald-800,
+html.dark .text-emerald-700 {
   color: #6ee7b7 !important;
 }
 
@@ -832,7 +850,8 @@ html.dark .bg-amber-50\/60 {
 }
 html.dark .text-amber-900,
 html.dark .text-amber-950,
-html.dark .text-amber-800 {
+html.dark .text-amber-800,
+html.dark .text-amber-700 {
   color: #fde68a !important;
 }
 
@@ -843,7 +862,8 @@ html.dark .bg-blue-50\/60 {
   border-color: rgba(59, 130, 246, 0.25) !important;
 }
 html.dark .text-blue-900,
-html.dark .text-blue-800 {
+html.dark .text-blue-800,
+html.dark .text-blue-700 {
   color: #93c5fd !important;
 }
 
