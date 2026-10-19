@@ -824,17 +824,25 @@ html.dark .bg-emerald-50,
 html.dark .bg-emerald-50\/80,
 html.dark .bg-emerald-50\/70,
 html.dark .bg-emerald-50\/60,
-html.dark .bg-emerald-50\/90 {
-  background-color: rgba(16, 185, 129, 0.12) !important;
-  border-color: rgba(16, 185, 129, 0.25) !important;
+html.dark .bg-emerald-50\/90,
+html.dark .bg-emerald-100,
+html.dark .bg-emerald-200,
+html.dark .bg-emerald-200\/80,
+html.dark .bg-emerald-200\/70,
+html.dark .bg-emerald-200\/60 {
+  background-color: rgba(16, 185, 129, 0.18) !important;
+  border-color: rgba(16, 185, 129, 0.35) !important;
 }
 html.dark .border-emerald-100,
 html.dark .border-emerald-200,
 html.dark .border-emerald-200\/80,
+html.dark .border-emerald-200\/70,
+html.dark .border-emerald-200\/60,
 html.dark .border-emerald-300,
 html.dark .border-emerald-400 {
   border-color: rgba(16, 185, 129, 0.35) !important;
 }
+html.dark .text-emerald-950,
 html.dark .text-emerald-900,
 html.dark .text-emerald-800,
 html.dark .text-emerald-700 {
@@ -844,9 +852,20 @@ html.dark .text-emerald-700 {
 html.dark .bg-amber-50,
 html.dark .bg-amber-50\/90,
 html.dark .bg-amber-50\/80,
-html.dark .bg-amber-50\/60 {
-  background-color: rgba(245, 158, 11, 0.12) !important;
-  border-color: rgba(245, 158, 11, 0.3) !important;
+html.dark .bg-amber-50\/60,
+html.dark .bg-amber-100,
+html.dark .bg-amber-200,
+html.dark .bg-amber-200\/90,
+html.dark .bg-amber-200\/80,
+html.dark .bg-amber-200\/60 {
+  background-color: rgba(245, 158, 11, 0.18) !important;
+  border-color: rgba(245, 158, 11, 0.35) !important;
+}
+html.dark .border-amber-100,
+html.dark .border-amber-200,
+html.dark .border-amber-200\/80,
+html.dark .border-amber-300 {
+  border-color: rgba(245, 158, 11, 0.35) !important;
 }
 html.dark .text-amber-900,
 html.dark .text-amber-950,
@@ -857,10 +876,25 @@ html.dark .text-amber-700 {
 
 html.dark .bg-blue-50,
 html.dark .bg-blue-50\/80,
-html.dark .bg-blue-50\/60 {
-  background-color: rgba(59, 130, 246, 0.12) !important;
-  border-color: rgba(59, 130, 246, 0.25) !important;
+html.dark .bg-blue-50\/60,
+html.dark .bg-blue-100,
+html.dark .bg-blue-200,
+html.dark .bg-blue-200\/80,
+html.dark .bg-blue-200\/70,
+html.dark .bg-blue-200\/60 {
+  background-color: rgba(59, 130, 246, 0.18) !important;
+  border-color: rgba(59, 130, 246, 0.35) !important;
 }
+html.dark .border-blue-100,
+html.dark .border-blue-200,
+html.dark .border-blue-200\/80,
+html.dark .border-blue-200\/70,
+html.dark .border-blue-200\/60,
+html.dark .border-blue-200\/50,
+html.dark .border-blue-300 {
+  border-color: rgba(59, 130, 246, 0.35) !important;
+}
+html.dark .text-blue-950,
 html.dark .text-blue-900,
 html.dark .text-blue-800,
 html.dark .text-blue-700 {
@@ -868,13 +902,28 @@ html.dark .text-blue-700 {
 }
 
 html.dark .bg-purple-50,
-html.dark .bg-purple-50\/80 {
-  background-color: rgba(168, 85, 247, 0.12) !important;
-  border-color: rgba(168, 85, 247, 0.25) !important;
+html.dark .bg-purple-50\/80,
+html.dark .bg-purple-100,
+html.dark .bg-purple-200,
+html.dark .bg-purple-200\/80 {
+  background-color: rgba(168, 85, 247, 0.18) !important;
+  border-color: rgba(168, 85, 247, 0.35) !important;
 }
+html.dark .border-purple-100,
+html.dark .border-purple-200,
+html.dark .border-purple-200\/80,
+html.dark .border-purple-200\/50 {
+  border-color: rgba(168, 85, 247, 0.35) !important;
+}
+html.dark .text-purple-950,
 html.dark .text-purple-900,
 html.dark .text-purple-800 {
   color: #d8b4fe !important;
+}
+
+html.dark .bg-slate-200 {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
 }
 
 html.dark .bg-teal-50,
