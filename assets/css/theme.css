@@ -498,6 +498,52 @@ html:not(.dark) .jif-tab-pane .bg-black\/40 {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
 }
 
+/* Fallbacks globais para cartões e faixas com gradientes escuros em modo claro */
+html:not(.dark) [class*="from-brand-navy"][class*="to-emerald-950"],
+html:not(.dark) [class*="from-emerald-950"][class*="to-brand-navy"] {
+  background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 50%, #f0fdf4 100%) !important;
+  border-color: #6ee7b7 !important;
+}
+
+html:not(.dark) [class*="from-amber-950"][class*="to-blue-950"],
+html:not(.dark) [class*="from-blue-950"][class*="to-amber-950"] {
+  background: linear-gradient(135deg, #fffbeb 0%, #ffffff 50%, #eff6ff 100%) !important;
+  border-color: #fcd34d !important;
+}
+
+html:not(.dark) [class*="from-emerald-950"][class*="to-amber-950"],
+html:not(.dark) [class*="from-amber-950"][class*="to-emerald-950"] {
+  background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 50%, #fffbeb 100%) !important;
+  border-color: #6ee7b7 !important;
+}
+
+html:not(.dark) [class*="from-pink-900"][class*="to-slate-900"],
+html:not(.dark) [class*="from-pink-950"][class*="to-purple-950"] {
+  background: linear-gradient(135deg, #fdf2f8 0%, #ffffff 50%, #faf5ff 100%) !important;
+  border-color: #f472b6 !important;
+}
+
+html:not(.dark) [class*="from-brand-navy"] h1,
+html:not(.dark) [class*="from-brand-navy"] h2,
+html:not(.dark) [class*="from-brand-navy"] h3,
+html:not(.dark) [class*="from-brand-navy"] h4,
+html:not(.dark) [class*="from-amber-950"] h1,
+html:not(.dark) [class*="from-amber-950"] h2,
+html:not(.dark) [class*="from-amber-950"] h3,
+html:not(.dark) [class*="from-amber-950"] h4,
+html:not(.dark) [class*="from-pink-900"] h1,
+html:not(.dark) [class*="from-pink-900"] h2,
+html:not(.dark) [class*="from-pink-900"] h3,
+html:not(.dark) [class*="from-pink-900"] h4 {
+  color: #0f172a !important;
+}
+
+html:not(.dark) [class*="from-brand-navy"] p,
+html:not(.dark) [class*="from-amber-950"] p,
+html:not(.dark) [class*="from-pink-900"] p {
+  color: #334155 !important;
+}
+
 /* 12. Tabelas Oficiais de Escalões & Comunicados */
 html:not(.dark) .jif-tab-pane table {
   color: #334155 !important;
