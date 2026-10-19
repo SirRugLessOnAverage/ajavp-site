@@ -351,6 +351,13 @@
               <span>Calendário Oficial</span>
             </span>
           </button>
+          <button type="button" class="jif-tab-btn px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition-all cursor-pointer" data-target="jif-pane-pavilhoes">
+            <span class="flex items-center gap-2">
+              <i data-lucide="map-pin" class="w-4 h-4 text-emerald-500"></i>
+              <span>Pavilhões &amp; GPS</span>
+              <span class="px-1.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 text-[10px] font-extrabold border border-emerald-300 dark:border-emerald-400/40">Maps / Waze</span>
+            </span>
+          </button>
           <button type="button" class="jif-tab-btn px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition-all cursor-pointer" data-target="jif-pane-resultados">
             <span class="flex items-center gap-2">
               <i data-lucide="trophy" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
@@ -1293,7 +1300,78 @@
         </div>
       </div>
 
-      <!-- TAB: RESULTADOS DOS NOSSOS JOGOS & CORTA-MATO -->
+      <!-- TAB: PAVILHÕES & RECINTOS JIF COM GPS -->
+      <div id="jif-pane-pavilhoes" class="jif-tab-pane hidden space-y-8">
+        
+        <!-- Header & Banner Informativo -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-brand-navy via-slate-900 to-emerald-950 text-white border border-emerald-500/30 shadow-xl relative overflow-hidden">
+          <div class="absolute -right-8 -bottom-8 opacity-10 pointer-events-none">
+            <i data-lucide="navigation" class="w-56 h-56 text-emerald-400"></i>
+          </div>
+          <div class="relative z-10 max-w-3xl space-y-3">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30">
+              <i data-lucide="compass" class="w-3.5 h-3.5 text-emerald-400"></i>
+              <span>Guia de Navegação para Famílias &amp; Atletas AJAVP</span>
+            </div>
+            <h2 class="font-heading font-black text-2xl sm:text-3xl text-white tracking-tight">
+              Recintos Desportivos &amp; Pavilhões Concelhios
+            </h2>
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+              Encontra facilmente todos os pavilhões, complexos sintéticos, pistas e recintos onde a AJAVP joga ao longo dos XL Jogos Inter-Freguesias. Clica em <strong>Google Maps</strong> ou <strong>Waze</strong> para iniciar a rota direta no telemóvel em 1 toque.
+            </p>
+            <div class="flex items-center gap-4 pt-2 text-xs text-slate-300 flex-wrap">
+              <span class="inline-flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> 12 Recintos Mapeados</span>
+              <span class="inline-flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Distâncias a partir da Sede</span>
+              <span class="inline-flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Dicas de Estacionamento</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Barra de Filtros e Pesquisa -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2 border-b border-slate-200 dark:border-white/10">
+          <div class="flex items-center gap-1.5 flex-wrap" id="venueFilterButtons">
+            <button type="button" data-venue-filter="all" class="venue-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-amber-500 text-slate-950 shadow-xs cursor-pointer transition-all">
+              Todos os Recintos (12)
+            </button>
+            <button type="button" data-venue-filter="futsal" class="venue-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-white/10 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/20 border border-slate-200 dark:border-white/10 cursor-pointer transition-all">
+              Pavilhões Futsal (Modivas, Canidelo, etc.)
+            </button>
+            <button type="button" data-venue-filter="futebol" class="venue-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-white/10 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/20 border border-slate-200 dark:border-white/10 cursor-pointer transition-all">
+              Campos de Futebol (Complexo)
+            </button>
+            <button type="button" data-venue-filter="atletismo" class="venue-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-white/10 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/20 border border-slate-200 dark:border-white/10 cursor-pointer transition-all">
+              Atletismo &amp; Estrada (Agros / Pista)
+            </button>
+            <button type="button" data-venue-filter="praia" class="venue-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-white/10 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/20 border border-slate-200 dark:border-white/10 cursor-pointer transition-all">
+              Praia da Olinda
+            </button>
+          </div>
+
+          <!-- Pesquisa de Pavilhão -->
+          <div class="relative w-full md:w-64">
+            <input type="text" id="venueSearchInput" placeholder="Procurar pavilhão ou terra..." class="w-full pl-8 pr-3 py-1.5 rounded-xl bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 text-xs text-slate-800 dark:text-white placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-emerald-500">
+            <i data-lucide="search" class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2"></i>
+          </div>
+        </div>
+
+        <!-- Grelha Dinâmica de Pavilhões -->
+        <div id="jifVenuesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Renderizado dinamicamente por jif-gps.js -->
+        </div>
+
+        <!-- Dica de Boas Práticas ao Fim de Semana -->
+        <div class="p-4 rounded-2xl bg-amber-50 dark:bg-amber-500/10 border border-amber-300 dark:border-amber-500/20 text-xs text-amber-950 dark:text-amber-200 flex items-start gap-3 shadow-xs">
+          <i data-lucide="car" class="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5"></i>
+          <div class="space-y-1">
+            <p class="font-bold">Dica Útil da AJAVP para Dias de Jogo:</p>
+            <p class="text-slate-600 dark:text-slate-300">
+              Recomenda-se a chegada aos pavilhões com <strong>30 minutos de antecedência</strong> em relação à hora oficial do jogo para o aquecimento dos atletas e estacionamento tranquilo. Em caso de imprevisto na estrada, avisa de imediato o diretor ou treinador do escalão.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
       <!-- TAB: RESULTADOS DOS NOSSOS JOGOS & CORTA-MATO -->
       <div id="jif-pane-resultados" class="jif-tab-pane hidden space-y-12">
         
@@ -3296,6 +3374,10 @@
         switchToTab('jif-pane-resultados', hash);
         return;
       }
+      if (hash === 'pavilhoes' || hash === 'pavilhoes-gps' || hash === 'recintos' || hash === 'gps') {
+        switchToTab('jif-pane-pavilhoes', 'jif-pane-pavilhoes');
+        return;
+      }
       const targetBtn = document.querySelector(`.jif-tab-btn[data-target="${hash}"]`);
       if (targetBtn) {
         targetBtn.click();
@@ -3419,6 +3501,8 @@
     document.addEventListener('DOMContentLoaded', updateJifCalendarByDate);
     updateJifCalendarByDate();
   </script>
+  <!-- Guia de Pavilhões & GPS JIF -->
+  <script src="assets/js/jif-gps.js"></script>
   <!-- Theme Script -->
   <script src="assets/js/theme.js"></script>
   <!-- PWA Service Worker & Install Manager -->

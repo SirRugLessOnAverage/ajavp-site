@@ -1,6 +1,6 @@
 // AJAVP - Service Worker (PWA)
 // Versão do Cache
-const CACHE_NAME = 'ajavp-pwa-v7';
+const CACHE_NAME = 'ajavp-pwa-v8';
 
 // Recursos essenciais para pré-cache (App Shell)
 const PRECACHE_ASSETS = [
@@ -14,6 +14,7 @@ const PRECACHE_ASSETS = [
   '/contactos.html',
   '/manifest.webmanifest',
   '/manifest.json',
+  '/assets/js/jif-gps.js',
   '/assets/images/logo.png',
   '/assets/images/logo_white.png',
   '/assets/icons/icon-192.png',
