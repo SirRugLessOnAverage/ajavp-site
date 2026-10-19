@@ -223,6 +223,39 @@ html:not(.dark) .text-slate-900 {
   color: var(--ajavp-text-heading) !important;
 }
 
+/* =============================================================
+ * VISIBILIDADE DAS FOTOS DE BACKGROUND EM MODO CLARO & ESCURO
+ * Garante fotografias nítidas, contrastadas e vivas em ambos os temas
+ * ============================================================= */
+
+/* 1. Imagem de Fundo no Modo Claro */
+html:not(.dark) section.overflow-hidden .absolute img.object-cover,
+html:not(.dark) main > section:first-of-type .absolute img.object-cover,
+html:not(.dark) section.bg-slate-950 img.object-cover {
+  opacity: 0.85 !important;
+  filter: contrast(1.05) saturate(1.1) !important;
+}
+
+/* 2. Véu / Overlay de Gradiente no Modo Claro */
+/* Lado esquerdo (texto) suave (88% a 68%), mas lado direito (imagem) ultra-transparente (18%) */
+html:not(.dark) section.overflow-hidden .absolute .bg-gradient-to-r,
+html:not(.dark) main > section:first-of-type .absolute .bg-gradient-to-r,
+html:not(.dark) section.bg-slate-950 .bg-gradient-to-r {
+  background: linear-gradient(90deg, rgba(248, 250, 252, 0.88) 0%, rgba(248, 250, 252, 0.68) 42%, rgba(248, 250, 252, 0.18) 100%) !important;
+}
+
+/* 3. Imagem e Overlay no Modo Escuro */
+html.dark section.overflow-hidden .absolute img.object-cover,
+html.dark main > section:first-of-type .absolute img.object-cover {
+  opacity: 0.72 !important;
+  filter: brightness(0.92) contrast(1.1) !important;
+}
+
+html.dark section.overflow-hidden .absolute .bg-gradient-to-r,
+html.dark main > section:first-of-type .absolute .bg-gradient-to-r {
+  background: linear-gradient(90deg, rgba(11, 19, 30, 0.90) 0%, rgba(11, 19, 30, 0.60) 45%, rgba(11, 19, 30, 0.22) 100%) !important;
+}
+
 /* BANNERS DE TOPO & HERO SECTIONS EM MODO CLARO */
 html:not(.dark) section.bg-slate-950 {
   background-color: #f8fafc !important;
@@ -230,18 +263,8 @@ html:not(.dark) section.bg-slate-950 {
   border-bottom-color: #e2e8f0 !important;
 }
 
-/* Substitui a película preta por um véu luminoso e claro */
-html:not(.dark) section.bg-slate-950 .bg-gradient-to-r.from-slate-950\/85 {
-  background: linear-gradient(90deg, rgba(248, 250, 252, 0.96) 0%, rgba(248, 250, 252, 0.88) 45%, rgba(248, 250, 252, 0.65) 100%) !important;
-}
-
 html:not(.dark) section.bg-slate-950 .bg-black\/20 {
   background-color: transparent !important;
-}
-
-/* Imagens dos banners com opacidade luminosa */
-html:not(.dark) section.bg-slate-950 img.object-cover {
-  opacity: 0.55 !important;
 }
 
 /* Títulos e textos nos banners de topo */
@@ -898,15 +921,30 @@ html.dark .bg-slate-100 {
   background-color: #1b2c40 !important;
 }
 
-/* Tipografia em Modo Escuro */
+/* Tipografia em Modo Escuro - Contraste Perfeito */
 html.dark .text-slate-900,
 html.dark .text-slate-800,
 html.dark .text-brand-navy,
+html.dark .text-brand-navyDark,
 html.dark h1.text-brand-navy,
 html.dark h2.text-brand-navy,
 html.dark h3.text-brand-navy,
 html.dark h4.text-brand-navy {
   color: #f8fafc !important;
+}
+
+/* Verde institucional adaptado para Modo Escuro (Passa de #387b5b escuro para #34d399 luminoso) */
+html.dark .text-brand-green,
+html.dark .text-brand-greenDark {
+  color: #34d399 !important;
+}
+
+/* Negritos e enfases fortes em Dark Mode devem ser sempre claros e nítidos */
+html.dark strong:not(.text-slate-950):not(.bg-amber-500 *):not(.bg-amber-400 *):not(.bg-brand-accent *),
+html.dark b:not(.text-slate-950):not(.bg-amber-500 *):not(.bg-amber-400 *):not(.bg-brand-accent *),
+html.dark .font-black.text-slate-900,
+html.dark .font-bold.text-slate-900 {
+  color: #ffffff !important;
 }
 
 html.dark .text-slate-700,
@@ -919,6 +957,18 @@ html.dark .text-slate-500 {
 }
 
 html.dark .text-slate-400 {
+  color: #94a3b8 !important;
+}
+
+/* Tabelas e horários de treinos no Dark Mode */
+html.dark table tbody td strong {
+  color: #f8fafc !important;
+}
+html.dark table tbody td .text-slate-700 {
+  color: #cbd5e1 !important;
+}
+html.dark table tbody td .text-slate-500,
+html.dark table tbody td .text-slate-400 {
   color: #94a3b8 !important;
 }
 
