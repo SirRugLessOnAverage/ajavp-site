@@ -110,11 +110,11 @@
       }
       metaRobots.content = 'noindex, nofollow, noarchive, nosnippet';
 
-      // 2. Apresentar badge discreto de Ambiente de Testes no canto inferior
+      // 2. Apresentar badge discreto de Ambiente de Testes no topo esquerdo (desimpedido do botão de acessibilidade)
       if (!document.getElementById('ajavpDevBadge')) {
         const badge = document.createElement('div');
         badge.id = 'ajavpDevBadge';
-        badge.className = 'fixed bottom-3 left-3 z-50 px-3 py-1.5 rounded-full bg-amber-500/95 text-slate-950 font-bold text-[10px] shadow-2xl backdrop-blur-md border border-amber-300 flex items-center gap-1.5 select-none pointer-events-none tracking-wide';
+        badge.className = 'fixed top-3 left-3 z-[9990] px-2.5 py-1 rounded-full bg-amber-500/95 text-slate-950 font-bold text-[10px] shadow-lg backdrop-blur-md border border-amber-300 flex items-center gap-1.5 select-none pointer-events-none tracking-wide';
         badge.innerHTML = `
           <span class="w-2 h-2 rounded-full bg-slate-950 animate-ping"></span>
           <span>🛠️ Modo Teste (Develop)</span>
