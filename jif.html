@@ -62,7 +62,7 @@
 
   <!-- Sistema de Temas & Acessibilidade -->
   <link rel="stylesheet" href="assets/css/theme.css?v=4">
-  <link rel="stylesheet" href="assets/css/a11y.css?v=2">
+  <link rel="stylesheet" href="assets/css/a11y.css?v=3">
   <script>
     (function() {
       if (localStorage.getItem('theme') === 'dark') {
@@ -203,13 +203,13 @@
       <!-- Action Button & Quick Socials -->
       <div class="hidden lg:flex items-center gap-3">
         <!-- Accessibility Button (Desktop) -->
-        <button id="a11yHeaderBtn" aria-label="Opções de Acessibilidade (Atalho: Alt + A)" class="theme-toggle-btn" title="Acessibilidade (Alt + A)">
+        <button id="a11yHeaderBtn" aria-label="A11y - Opções de Acessibilidade" class="theme-toggle-btn" title="Acessibilidade (Alt + A)">
           <span class="text-sm" aria-hidden="true">♿</span>
           <span class="text-[11px] font-bold">A11y</span>
         </button>
 
         <!-- Theme Toggle Button (Desktop) -->
-        <button id="themeToggleBtn" aria-label="Alternar Modo de Visualização" class="theme-toggle-btn" title="Alternar Modo Claro / Escuro">
+        <button id="themeToggleBtn" class="theme-toggle-btn" title="Alternar Modo Claro / Escuro">
           <i data-lucide="sun" class="w-4 h-4 hidden dark:block text-amber-400"></i>
           <i data-lucide="moon" class="w-4 h-4 block dark:hidden text-slate-600"></i>
           <span class="text-[11px] font-bold">
@@ -4669,7 +4669,7 @@
       </div>
     </div>
 
-    <button id="toggleWhatsappBtn" aria-label="Abrir WhatsApp AJAVP" class="group relative flex items-center gap-2.5 bg-[#25D366] hover:bg-[#20ba59] text-white p-3.5 sm:px-4 sm:py-3.5 rounded-full shadow-2xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer">
+    <button id="toggleWhatsappBtn" aria-label="Falar no WhatsApp (AJAVP)" class="group relative flex items-center gap-2.5 bg-[#25D366] hover:bg-[#20ba59] text-white p-3.5 sm:px-4 sm:py-3.5 rounded-full shadow-2xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer">
       <svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
         <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.01-1.24-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.71 4.3 3.79.6.26 1.07.41 1.44.53.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.28z"/>
       </svg>
@@ -4904,7 +4904,7 @@
   <!-- Theme Script -->
   <script src="assets/js/theme.js"></script>
   <!-- Sistema de Acessibilidade & Usabilidade (WCAG 2.1 AA) -->
-  <script src="assets/js/a11y.js?v=2"></script>
+  <script src="assets/js/a11y.js?v=3"></script>
   <!-- PWA Service Worker & Install Manager -->
   <script src="assets/js/pwa.js?v=5"></script>
 </body>
