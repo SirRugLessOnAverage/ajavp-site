@@ -61,7 +61,7 @@
   </style>
 
   <!-- Sistema de Temas & Acessibilidade -->
-  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/theme.css?v=3">
   <link rel="stylesheet" href="assets/css/a11y.css?v=2">
   <script>
     (function() {
@@ -83,6 +83,36 @@
     }
     h1, h2, h3, h4, h5, h6, .font-heading {
       font-family: 'Montserrat', sans-serif;
+    }
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    html:not(.dark) .hero-bg-img {
+      opacity: 0.88 !important;
+      filter: contrast(1.05) saturate(1.1) !important;
+    }
+    html.dark .hero-bg-img {
+      opacity: 0.70 !important;
+      filter: brightness(0.9) contrast(1.1) !important;
+    }
+    .hero-gradient-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+    html:not(.dark) .hero-gradient-overlay {
+      background: linear-gradient(90deg, rgba(248, 250, 252, 0.90) 0%, rgba(248, 250, 252, 0.68) 42%, rgba(248, 250, 252, 0.12) 100%) !important;
+      background-color: transparent !important;
+    }
+    html.dark .hero-gradient-overlay {
+      background: linear-gradient(90deg, rgba(11, 19, 30, 0.92) 0%, rgba(11, 19, 30, 0.65) 45%, rgba(11, 19, 30, 0.22) 100%) !important;
+      background-color: transparent !important;
     }
     .hero-pattern {
       background-color: #1b4557;
@@ -285,8 +315,8 @@
   <section class="relative py-16 sm:py-20 overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10">
     <!-- Imagem de Fundo com Overlay Gradiente Luminoso -->
     <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-      <img src="assets/images/galeria/foto_28.jpg" alt="Família e Sócios da AJAVP" class="w-full h-full object-cover object-[center_25%] opacity-85 dark:opacity-70">
-      <div class="absolute inset-0 bg-gradient-to-r from-white/90 via-white/70 to-white/20 dark:from-slate-950/85 dark:via-slate-950/50 dark:to-slate-950/30"></div>
+      <img src="assets/images/galeria/foto_28.jpg" alt="Família e Sócios da AJAVP" class="hero-bg-img object-[center_25%]">
+      <div class="hero-gradient-overlay"></div>
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

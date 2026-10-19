@@ -224,36 +224,58 @@ html:not(.dark) .text-slate-900 {
 }
 
 /* =============================================================
- * VISIBILIDADE DAS FOTOS DE BACKGROUND EM MODO CLARO & ESCURO
- * Garante fotografias nítidas, contrastadas e vivas em ambos os temas
+ * IMAGEM E VÉU DOS HERO BANNERS (LIGHT & DARK MODE)
  * ============================================================= */
 
-/* 1. Imagem de Fundo no Modo Claro */
+/* 1. Imagem de Fundo no Hero Banner */
+.hero-bg-img,
+section.overflow-hidden .absolute img.object-cover,
+main > section:first-of-type .absolute img.object-cover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+html:not(.dark) .hero-bg-img,
 html:not(.dark) section.overflow-hidden .absolute img.object-cover,
-html:not(.dark) main > section:first-of-type .absolute img.object-cover,
-html:not(.dark) section.bg-slate-950 img.object-cover {
-  opacity: 0.85 !important;
+html:not(.dark) main > section:first-of-type .absolute img.object-cover {
+  opacity: 0.88 !important;
   filter: contrast(1.05) saturate(1.1) !important;
 }
 
-/* 2. Véu / Overlay de Gradiente no Modo Claro */
-/* Lado esquerdo (texto) suave (88% a 68%), mas lado direito (imagem) ultra-transparente (18%) */
-html:not(.dark) section.overflow-hidden .absolute .bg-gradient-to-r,
-html:not(.dark) main > section:first-of-type .absolute .bg-gradient-to-r,
-html:not(.dark) section.bg-slate-950 .bg-gradient-to-r {
-  background: linear-gradient(90deg, rgba(248, 250, 252, 0.88) 0%, rgba(248, 250, 252, 0.68) 42%, rgba(248, 250, 252, 0.18) 100%) !important;
-}
-
-/* 3. Imagem e Overlay no Modo Escuro */
+html.dark .hero-bg-img,
 html.dark section.overflow-hidden .absolute img.object-cover,
 html.dark main > section:first-of-type .absolute img.object-cover {
-  opacity: 0.72 !important;
-  filter: brightness(0.92) contrast(1.1) !important;
+  opacity: 0.70 !important;
+  filter: brightness(0.9) contrast(1.1) !important;
 }
 
-html.dark section.overflow-hidden .absolute .bg-gradient-to-r,
-html.dark main > section:first-of-type .absolute .bg-gradient-to-r {
-  background: linear-gradient(90deg, rgba(11, 19, 30, 0.90) 0%, rgba(11, 19, 30, 0.60) 45%, rgba(11, 19, 30, 0.22) 100%) !important;
+/* 2. Véu / Overlay de Gradiente do Hero */
+.hero-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+html:not(.dark) .hero-gradient-overlay {
+  background: linear-gradient(90deg, rgba(248, 250, 252, 0.90) 0%, rgba(248, 250, 252, 0.68) 42%, rgba(248, 250, 252, 0.12) 100%) !important;
+  background-color: transparent !important;
+}
+
+html.dark .hero-gradient-overlay {
+  background: linear-gradient(90deg, rgba(11, 19, 30, 0.92) 0%, rgba(11, 19, 30, 0.65) 45%, rgba(11, 19, 30, 0.22) 100%) !important;
+  background-color: transparent !important;
+}
+
+/* Garantia absoluta de que overlays de hero NUNCA fiquem com cor de fundo branca sólida */
+html:not(.dark) .hero-gradient-overlay,
+html:not(.dark) section.overflow-hidden .absolute .bg-gradient-to-r,
+html:not(.dark) main > section:first-of-type .absolute .bg-gradient-to-r {
+  background-color: transparent !important;
 }
 
 /* BANNERS DE TOPO & HERO SECTIONS EM MODO CLARO */
@@ -699,13 +721,13 @@ html:not(.dark) [class*="from-pink-900"] p {
   color: #334155 !important;
 }
 
-/* Fallback universal para qualquer gradiente com paradas escuras em modo claro */
-html:not(.dark) [class*="to-slate-9"]:not([class*="from-amber-50"]):not([class*="from-emerald-50"]):not([class*="from-sky-50"]):not([class*="from-pink-50"]):not([class*="from-blue-50"]):not([class*="from-slate-50"]):not([class*="from-teal-50"]),
-html:not(.dark) [class*="to-slate-950"]:not([class*="from-amber-50"]):not([class*="from-emerald-50"]):not([class*="from-sky-50"]):not([class*="from-pink-50"]):not([class*="from-blue-50"]):not([class*="from-slate-50"]):not([class*="from-teal-50"]),
-html:not(.dark) [class*="from-slate-800"]:not([class*="from-amber-50"]):not([class*="from-emerald-50"]):not([class*="from-sky-50"]):not([class*="from-pink-50"]):not([class*="from-blue-50"]):not([class*="from-slate-50"]):not([class*="from-teal-50"]),
-html:not(.dark) [class*="from-slate-900"]:not([class*="from-amber-50"]):not([class*="from-emerald-50"]):not([class*="from-sky-50"]):not([class*="from-pink-50"]):not([class*="from-blue-50"]):not([class*="from-slate-50"]):not([class*="from-teal-50"]),
-html:not(.dark) [class*="from-amber-900"]:not([class*="from-amber-50"]):not([class*="from-emerald-50"]):not([class*="from-sky-50"]):not([class*="from-pink-50"]):not([class*="from-blue-50"]):not([class*="from-slate-50"]):not([class*="from-teal-50"]),
-html:not(.dark) [class*="from-green-950"]:not([class*="from-amber-50"]):not([class*="from-emerald-50"]):not([class*="from-sky-50"]):not([class*="from-pink-50"]):not([class*="from-blue-50"]):not([class*="from-slate-50"]):not([class*="from-teal-50"]) {
+/* Fallback universal para qualquer gradiente com paradas escuras em modo claro (excluindo explicitamente overlays de imagem de fundo) */
+html:not(.dark) [class*="to-slate-9"]:not(.hero-gradient-overlay):not(.hero-bg-img):not(.absolute):not([class*="inset-0"]):not([class*="from-amber-50"]):not([class*="from-emerald-50"]):not([class*="from-sky-50"]):not([class*="from-pink-50"]):not([class*="from-blue-50"]):not([class*="from-slate-50"]):not([class*="from-teal-50"]),
+html:not(.dark) [class*="to-slate-950"]:not(.hero-gradient-overlay):not(.hero-bg-img):not(.absolute):not([class*="inset-0"]):not([class*="from-amber-50"]):not([class*="from-emerald-50"]):not([class*="from-sky-50"]):not([class*="from-pink-50"]):not([class*="from-blue-50"]):not([class*="from-slate-50"]):not([class*="from-teal-50"]),
+html:not(.dark) [class*="from-slate-800"]:not(.hero-gradient-overlay):not(.hero-bg-img):not(.absolute):not([class*="inset-0"]):not([class*="from-amber-50"]):not([class*="from-emerald-50"]):not([class*="from-sky-50"]):not([class*="from-pink-50"]):not([class*="from-blue-50"]):not([class*="from-slate-50"]):not([class*="from-teal-50"]),
+html:not(.dark) [class*="from-slate-900"]:not(.hero-gradient-overlay):not(.hero-bg-img):not(.absolute):not([class*="inset-0"]):not([class*="from-amber-50"]):not([class*="from-emerald-50"]):not([class*="from-sky-50"]):not([class*="from-pink-50"]):not([class*="from-blue-50"]):not([class*="from-slate-50"]):not([class*="from-teal-50"]),
+html:not(.dark) [class*="from-amber-900"]:not(.hero-gradient-overlay):not(.hero-bg-img):not(.absolute):not([class*="inset-0"]):not([class*="from-amber-50"]):not([class*="from-emerald-50"]):not([class*="from-sky-50"]):not([class*="from-pink-50"]):not([class*="from-blue-50"]):not([class*="from-slate-50"]):not([class*="from-teal-50"]),
+html:not(.dark) [class*="from-green-950"]:not(.hero-gradient-overlay):not(.hero-bg-img):not(.absolute):not([class*="inset-0"]):not([class*="from-amber-50"]):not([class*="from-emerald-50"]):not([class*="from-sky-50"]):not([class*="from-pink-50"]):not([class*="from-blue-50"]):not([class*="from-slate-50"]):not([class*="from-teal-50"]) {
   background-image: none !important;
   background-color: #ffffff !important;
   border-color: #cbd5e1 !important;
