@@ -299,52 +299,52 @@
       backdrop.innerHTML = `
         <div id="a11yModal" role="dialog" aria-modal="true" aria-labelledby="a11yModalTitle" aria-describedby="a11yModalDesc">
           <!-- Cabeçalho -->
-          <div class="p-5 border-b border-slate-200 dark:border-white/10 flex items-center justify-between bg-slate-50 dark:bg-slate-900/60">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-xl bg-brand-navy text-white flex items-center justify-center font-bold text-lg shadow-sm">
+          <div class="a11y-modal-header">
+            <div class="a11y-modal-header-info">
+              <div class="a11y-modal-icon">
                 ♿
               </div>
               <div>
-                <h2 id="a11yModalTitle" class="font-heading font-bold text-base sm:text-lg text-brand-navy dark:text-white leading-tight">
+                <h2 id="a11yModalTitle" class="a11y-modal-title">
                   Acessibilidade &amp; Usabilidade
                 </h2>
-                <p id="a11yModalDesc" class="text-[11px] text-slate-500 dark:text-slate-400">
+                <p id="a11yModalDesc" class="a11y-modal-subtitle">
                   Normas W3C WCAG 2.1 AA &bull; DL n.º 83/2018
                 </p>
               </div>
             </div>
-            <button id="a11yCloseBtn" type="button" class="p-2 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-white/10 transition-colors" aria-label="Fechar painel de acessibilidade">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            <button id="a11yCloseBtn" type="button" class="a11y-modal-close" aria-label="Fechar painel de acessibilidade">
+              <svg style="width:20px;height:20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
           </div>
 
           <!-- Corpo com opções -->
-          <div class="p-5 overflow-y-auto space-y-6 max-h-[70vh]">
+          <div class="a11y-modal-body">
             
             <!-- 1. Tamanho do Texto -->
-            <div class="space-y-2">
-              <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 block">
+            <div class="a11y-section">
+              <span class="a11y-section-title">
                 Tamanho do Texto (WCAG 1.4.4)
               </span>
-              <div class="grid grid-cols-3 gap-2">
+              <div class="a11y-grid-3">
                 <button type="button" class="a11y-btn-toggle" data-a11y-set-font="normal" aria-pressed="true">
                   <span>Padrão (100%)</span>
                 </button>
                 <button type="button" class="a11y-btn-toggle" data-a11y-set-font="medium">
-                  <span class="text-base font-bold">A+</span> <span>Médio</span>
+                  <span style="font-weight:800;font-size:1.05rem;">A+</span> <span>Médio</span>
                 </button>
                 <button type="button" class="a11y-btn-toggle" data-a11y-set-font="large">
-                  <span class="text-lg font-bold">A++</span> <span>Grande</span>
+                  <span style="font-weight:900;font-size:1.15rem;">A++</span> <span>Grande</span>
                 </button>
               </div>
             </div>
 
             <!-- 2. Contraste & Cores -->
-            <div class="space-y-2">
-              <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 block">
+            <div class="a11y-section">
+              <span class="a11y-section-title">
                 Contraste &amp; Cores (WCAG AAA)
               </span>
-              <div class="grid grid-cols-2 gap-2">
+              <div class="a11y-grid-2">
                 <button type="button" class="a11y-btn-toggle" data-a11y-set-contrast="normal">
                   <span>🎨 Cores Oficiais</span>
                 </button>
@@ -361,11 +361,11 @@
             </div>
 
             <!-- 3. Apoio à Leitura & Dislexia -->
-            <div class="space-y-2">
-              <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 block">
+            <div class="a11y-section">
+              <span class="a11y-section-title">
                 Leitura &amp; Tipografia
               </span>
-              <div class="grid grid-cols-2 gap-2">
+              <div class="a11y-grid-2">
                 <button type="button" id="a11yBtnDyslexic" class="a11y-btn-toggle">
                   <span>📖 Fonte Dislexia</span>
                 </button>
@@ -382,11 +382,11 @@
             </div>
 
             <!-- 4. Cognição & Multimédia -->
-            <div class="space-y-2">
-              <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 block">
+            <div class="a11y-section">
+              <span class="a11y-section-title">
                 Movimento &amp; Voz
               </span>
-              <div class="grid grid-cols-2 gap-2">
+              <div class="a11y-grid-2">
                 <button type="button" id="a11yBtnMotion" class="a11y-btn-toggle">
                   <span>⏸️ Parar Animações</span>
                 </button>
@@ -394,7 +394,7 @@
                   <span>🔊 Leitor de Voz (TTS)</span>
                 </button>
               </div>
-              <p class="text-[11px] text-slate-500 dark:text-slate-400 italic">
+              <p class="a11y-section-hint">
                 * Com o leitor ativado, clica em qualquer texto para ouvir a leitura em voz alta.
               </p>
             </div>
@@ -402,11 +402,11 @@
           </div>
 
           <!-- Rodapé com Ações & Link para Declaração -->
-          <div class="p-4 bg-slate-50 dark:bg-slate-900/80 border-t border-slate-200 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
-            <button id="a11yResetBtn" type="button" class="w-full sm:w-auto px-4 py-2 rounded-xl text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 font-bold transition-colors">
+          <div class="a11y-modal-footer">
+            <button id="a11yResetBtn" type="button" class="a11y-reset-btn">
               Repor Predefinições
             </button>
-            <a href="acessibilidade.html" class="w-full sm:w-auto text-center px-4 py-2 rounded-xl bg-slate-200 dark:bg-white/10 hover:bg-slate-300 dark:hover:bg-white/20 text-slate-800 dark:text-white font-bold transition-colors">
+            <a href="acessibilidade.html" class="a11y-decl-link">
               Declaração de Acessibilidade &rarr;
             </a>
           </div>
