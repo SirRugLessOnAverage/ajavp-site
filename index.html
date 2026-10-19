@@ -795,8 +795,9 @@
           
           <div class="relative group cursor-pointer flex-shrink-0">
             <div class="p-[3px] rounded-full bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 transition-transform group-hover:scale-105">
-              <div class="p-1 bg-slate-100 dark:bg-slate-900 rounded-full">
-                <img loading="lazy" decoding="async" src="assets/images/logo.png" alt="AJAVP Instagram Avatar" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover bg-white">
+              <div class="p-1 bg-white dark:bg-slate-900 rounded-full flex items-center justify-center overflow-hidden">
+                <img loading="lazy" decoding="async" src="assets/images/logo.png" alt="AJAVP Instagram Avatar" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-contain p-2 bg-white logo-light-only dark:hidden">
+                <img loading="lazy" decoding="async" src="assets/images/logo_white.png" alt="AJAVP Instagram Avatar" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-contain p-2 bg-slate-900 logo-dark-only hidden dark:block">
               </div>
             </div>
           </div>
