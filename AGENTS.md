@@ -12,3 +12,10 @@
 ## 🌿 Política de Git e Branches (Regra Oficial Atualizada pelo Utilizador)
 - **Ramo Principal (main):** Todos os desenvolvimentos, alterações, commits e respetivos git push devem ser efetuados **única e exclusivamente** no ramo main (produção direta).
 - **Sem Ramo Develop/Preview:** **NÃO** usar o ramo develop nem ambientes preview nesta área, por determinação expressa do utilizador. Todo o trabalho deve ser feito e enviado diretamente no ramo main.
+
+## 📊 Sistema de Pontuação e Classificação Virtual dos JIF (Regra Oficial)
+- **Simulador Virtual Excel:** O documento Excel de suporte (`GERAL 26_27` / simulador virtual) é a referência para a pontuação e simulação da classificação geral dos Jogos Inter-Freguesias.
+- **Workflow Obrigatório:**
+  1. Extrair e validar toda a informação do simulador e dos vários comunicados com a explicação do sistema de pontuação no geral.
+  2. Fazer perguntas claras para os pontos que não encontrem resposta no Excel ou nos comunicados.
+  3. Demonstrar o que percebeu e obter alinhamento do utilizador ANTES de alterar a página oficial de classificação/JIF no site.
