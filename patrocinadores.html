@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Os Nossos Patrocinadores &bull; Agradecimento Oficial • AJAVP</title>
+  <meta name="description" content="Agradecimento oficial da AJAVP aos nossos patrocinadores e parceiros: Alma Barbearia, Carlos Mota Seguros, SALIMPA Facility Services e J. Seabra & Vieira. O desporto comunitário em Vilar do Pinheiro só é possível com vocês!">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png?v=7">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png?v=7">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png?v=7">
+
+  <link rel="canonical" href="https://ajavp-site.vercel.app/patrocinadores">
+
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ajavp-site.vercel.app/patrocinadores">
+  <meta property="og:title" content="Os Nossos Patrocinadores • AJAVP | Vilar do Pinheiro">
+  <meta property="og:description" content="Agradecimento da AJAVP às empresas e comércios amigos que apoiam os nossos atletas e o desporto comunitário. Conheça os nossos parceiros oficiais!">
+  <meta property="og:image" content="https://ajavp-site.vercel.app/assets/images/og-share.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Patrocinadores Oficiais AJAVP">
+  <meta property="og:locale" content="pt_PT">
+
+  <!-- Twitter / X Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Patrocinadores Oficiais • AJAVP">
+  <meta name="twitter:description" content="Agradecimento aos parceiros oficiais da Associação Jovens e Adultos de Vilar do Pinheiro.">
+  <meta name="twitter:image" content="https://ajavp-site.vercel.app/assets/images/og-share.webp">
+
+  <!-- PWA & Mobile Web App Manifest -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1b4557" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="AJAVP">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @custom-variant dark (&:where(.dark, .dark *));
+    @theme {
+      --color-brand-green: #387b5b;
+      --color-brand-greenDark: #2d6349;
+      --color-brand-navy: #1b4557;
+      --color-brand-navyDark: #13323f;
+      --color-brand-accent: #f2a93b;
+      --color-brand-grayBg: #f8fafc;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-sans: 'Inter', sans-serif;
+    }
+  </style>
+
+  <!-- Sistema de Temas & Acessibilidade -->
+  <link rel="stylesheet" href="assets/css/theme.css?v=4">
+  <link rel="stylesheet" href="assets/css/a11y.css?v=3">
+  <script>
+    (function() {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+    }
+    h1, h2, h3, h4, h5, h6, .font-heading {
+      font-family: 'Montserrat', sans-serif;
+    }
+    .hero-pattern {
+      background-color: #1b4557;
+      background-image: radial-gradient(rgba(56, 123, 91, 0.45) 1.5px, transparent 1.5px), radial-gradient(rgba(242, 169, 59, 0.25) 1.5px, #1b4557 1.5px);
+      background-size: 60px 60px;
+      background-position: 0 0, 30px 30px;
+    }
+
+    /* Emil Kowalski Craft & Motion System */
+    :root {
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    html, body {
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      scroll-behavior: smooth;
+    }
+    button:active,
+    a[href]:active,
+    .cursor-pointer:active {
+      transform: scale(0.97) !important;
+      transition: transform 120ms var(--ease-out) !important;
+    }
+    .sponsor-card {
+      transition: transform 250ms var(--ease-out), box-shadow 250ms var(--ease-out), border-color 250ms var(--ease-out);
+    }
+    .sponsor-card:hover {
+      transform: translateY(-6px);
+    }
+  </style>
+
+  <!-- Schema.org JSON-LD para Patrocinadores & SportsClub -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsClub",
+    "name": "Associação Jovens e Adultos de Vilar do Pinheiro",
+    "alternateName": "AJAVP",
+    "url": "https://ajavp-site.vercel.app/patrocinadores",
+    "logo": "https://ajavp-site.vercel.app/assets/images/logo.webp",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua da Igreja",
+      "addressLocality": "Vilar do Pinheiro",
+      "addressRegion": "Porto",
+      "postalCode": "4485-870",
+      "addressCountry": "PT"
+    },
+    "sponsor": [
+      {
+        "@type": "Organization",
+        "name": "Alma Barbearia",
+        "description": "Barbearia e cuidados masculinos desde 2021 em Vilar do Pinheiro."
+      },
+      {
+        "@type": "Organization",
+        "name": "Carlos Mota Seguros",
+        "description": "Mediação de seguros e consultoria de proteção pessoal e empresarial."
+      },
+      {
+        "@type": "Organization",
+        "name": "SALIMPA Facility Services",
+        "description": "Serviços integrados de limpeza profissional, higienização e manutenção de instalações."
+      },
+      {
+        "@type": "Organization",
+        "name": "J. Seabra & Vieira, Lda.",
+        "description": "Oficina automóvel, mecânica rápida, pneus e manutenção geral.",
+        "telephone": "+351933778739"
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="bg-brand-grayBg text-slate-800 antialiased selection:bg-brand-green selection:text-white">
+
+  <!-- Link de Salto de Conteúdo (WCAG 2.4.1) -->
+  <a href="#mainContent" class="a11y-skip-link">Saltar para o conteúdo principal</a>
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-brand-green text-white py-2 px-4 text-center text-xs sm:text-sm font-medium flex items-center justify-center gap-2 shadow-inner">
+    <span class="inline-flex items-center justify-center px-2 py-0.5 rounded-full text-xs font-bold bg-white text-brand-green uppercase tracking-wider">Gratidão</span>
+    <span>Obrigado aos nossos patrocinadores pelo apoio contínuo ao desporto em Vilar do Pinheiro! 💚</span>
+    <a href="#ser-patrocinador" class="underline hover:text-amber-200 font-semibold ml-1 hidden sm:inline">Apoia a AJAVP &rarr;</a>
+  </div>
+
+  <!-- Header & Navbar -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-300" id="mainHeader" role="banner">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group flex-shrink-0 mr-4 lg:mr-8 xl:mr-12">
+        <picture>
+          <source srcset="assets/images/logo.webp" type="image/webp">
+          <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105 logo-light-only dark:hidden" fetchpriority="high">
+        </picture>
+        <picture>
+          <source srcset="assets/images/logo_white.webp" type="image/webp">
+          <img src="assets/images/logo_white.png" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105 logo-dark-only hidden dark:block" fetchpriority="high">
+        </picture>
+        <div class="flex flex-col justify-center">
+          <span class="font-heading font-extrabold text-brand-navy dark:text-white text-lg sm:text-xl tracking-tight leading-tight">AJAVP</span>
+          <span class="text-[11px] leading-tight text-brand-green dark:text-emerald-400 font-semibold tracking-wide hidden sm:block">
+            <span class="block">Associação Jovens e Adultos</span>
+            <span class="block text-emerald-800 dark:text-emerald-300 font-bold">Vilar do Pinheiro</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center gap-1 xl:gap-2" aria-label="Navegação Principal">
+        <a href="index.html" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors">Início</a>
+        <a href="jif.html" class="text-slate-700 hover:text-amber-600 font-semibold text-xs xl:text-sm px-2.5 xl:px-3 py-2 rounded-xl hover:bg-amber-50/60 transition-colors flex items-center gap-1.5">
+          <i data-lucide="medal" class="w-4 h-4 text-amber-500"></i>
+          <span>JIF 2026/27</span>
+          <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-500 text-slate-950">XL</span>
+        </a>
+        <a href="modalidades.html" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors">Modalidades &amp; Treinos</a>
+        <a href="clube.html" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors">Quem Somos</a>
+        <a href="patrocinadores.html" class="text-brand-green bg-emerald-50/80 font-bold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl transition-colors border border-emerald-200/60 flex items-center gap-1.5" aria-current="page">
+          <i data-lucide="heart-handshake" class="w-4 h-4 text-emerald-600"></i>
+          <span>Patrocinadores</span>
+        </a>
+        <a href="multimedia.html" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors">Multimédia</a>
+        <a href="contactos.html" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors">Contactos</a>
+      </nav>
+
+      <!-- Action Button & Theme Toggle -->
+      <div class="hidden lg:flex items-center gap-2.5">
+        <!-- Accessibility Button (Desktop) -->
+        <button id="a11yHeaderBtn" aria-label="A11y - Opções de Acessibilidade" class="theme-toggle-btn" title="Acessibilidade (Alt + A)">
+          <span class="text-sm" aria-hidden="true">♿</span>
+          <span class="text-[11px] font-bold">A11y</span>
+        </button>
+
+        <!-- Theme Toggle Button (Desktop) -->
+        <button id="themeToggleBtn" class="theme-toggle-btn" title="Alternar Modo Claro / Escuro">
+          <i data-lucide="sun" class="w-4 h-4 hidden dark:block text-amber-400"></i>
+          <i data-lucide="moon" class="w-4 h-4 block dark:hidden text-slate-600"></i>
+          <span class="text-[11px] font-bold">
+            <span class="dark:hidden">Escuro</span>
+            <span class="hidden dark:inline text-amber-300">Claro</span>
+          </span>
+        </button>
+
+        <a href="#ser-patrocinador" class="bg-brand-accent hover:bg-amber-500 text-slate-950 font-heading font-extrabold text-xs px-3.5 py-2.5 rounded-xl shadow-sm hover:shadow-md transition-all flex items-center gap-1.5 transform hover:-translate-y-0.5">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-slate-950"></i>
+          <span>Apoiar Clube</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="flex items-center gap-2 lg:hidden">
+        <button id="a11yHeaderBtnMobile" aria-label="A11y - Acessibilidade" class="p-2 text-slate-600 dark:text-slate-300 hover:text-brand-green focus:outline-hidden" title="Acessibilidade">
+          <span class="text-lg" aria-hidden="true">♿</span>
+        </button>
+
+        <button id="themeToggleBtnMobile" aria-label="Modo Noturno" class="p-2 text-slate-600 dark:text-slate-300 hover:text-brand-green focus:outline-hidden">
+          <i data-lucide="sun" class="w-5 h-5 hidden dark:block text-amber-400"></i>
+          <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+        </button>
+
+        <button id="mobileMenuBtn" aria-label="Abrir Menu de Navegação" aria-expanded="false" class="p-2 text-slate-600 dark:text-slate-300 hover:text-brand-green focus:outline-hidden">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu" class="hidden lg:hidden border-b border-slate-200 bg-white/95 dark:bg-slate-900/95 dark:border-white/10 px-4 pt-3 pb-6 space-y-2 backdrop-blur-md">
+      <a href="index.html" class="block px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-white/5">Início</a>
+      <a href="jif.html" class="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-white/5">
+        <span class="flex items-center gap-2">
+          <i data-lucide="medal" class="w-4 h-4 text-amber-500"></i>
+          <span>JIF 2026/27</span>
+        </span>
+        <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-500 text-slate-950">XL</span>
+      </a>
+      <a href="modalidades.html" class="block px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-white/5">Modalidades &amp; Treinos</a>
+      <a href="clube.html" class="block px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-white/5">Quem Somos</a>
+      <a href="patrocinadores.html" class="flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-bold text-brand-green bg-emerald-50 dark:bg-emerald-950/40 dark:text-emerald-300">
+        <i data-lucide="heart-handshake" class="w-4 h-4"></i>
+        <span>Patrocinadores Oficiais</span>
+      </a>
+      <a href="multimedia.html" class="block px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-white/5">Multimédia</a>
+      <a href="contactos.html" class="block px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-white/5">Contactos</a>
+      
+      <div class="pt-2">
+        <a href="#ser-patrocinador" class="w-full bg-brand-accent hover:bg-amber-500 text-slate-950 font-heading font-extrabold text-sm py-3 rounded-xl shadow-xs text-center flex items-center justify-center gap-2">
+          <i data-lucide="sparkles" class="w-4 h-4"></i>
+          <span>Quero Ser Patrocinador</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="mainContent">
+
+    <!-- Hero Section -->
+    <section class="hero-pattern text-white py-16 sm:py-20 relative overflow-hidden">
+      <!-- Glow ambient background -->
+      <div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-emerald-500/20 blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-amber-500/15 blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-semibold text-amber-300 mb-6 shadow-xs">
+          <i data-lucide="heart-handshake" class="w-4 h-4 text-amber-400"></i>
+          <span>Gratidão &bull; Temporada 2026 / 2027</span>
+        </div>
+
+        <h1 class="font-heading font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight max-w-4xl mx-auto leading-tight sm:leading-tight">
+          Os Nossos <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-200 to-emerald-300">Patrocinadores Oficiais</span>
+        </h1>
+
+        <p class="mt-6 text-base sm:text-xl text-slate-200 max-w-3xl mx-auto font-light leading-relaxed">
+          O desporto, a formação dos nossos jovens atletas e a união comunitária de <strong class="font-semibold text-white">Vilar do Pinheiro</strong> só são possíveis graças à confiança, apoio e generosidade destas empresas exemplares.
+        </p>
+
+        <!-- Stat Pill Strip -->
+        <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto text-left">
+          <div class="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15">
+            <div class="text-amber-300 font-black text-xl sm:text-2xl font-heading">100%</div>
+            <div class="text-xs text-slate-200 mt-0.5">Apoio Local &amp; Amigo</div>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15">
+            <div class="text-emerald-300 font-black text-xl sm:text-2xl font-heading">+100 Atletas</div>
+            <div class="text-xs text-slate-200 mt-0.5">Equipados e Treinados</div>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15">
+            <div class="text-amber-300 font-black text-xl sm:text-2xl font-heading">36 Provas</div>
+            <div class="text-xs text-slate-200 mt-0.5">Nos XL JIF Vila do Conde</div>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15">
+            <div class="text-emerald-300 font-black text-xl sm:text-2xl font-heading">Gratuito</div>
+            <div class="text-xs text-slate-200 mt-0.5">Para Escalões Jovens</div>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <a href="#patrocinadores-grelha" class="px-6 py-3 rounded-xl bg-brand-green hover:bg-emerald-600 text-white font-heading font-bold text-sm shadow-lg hover:shadow-xl transition-all flex items-center gap-2 transform hover:-translate-y-0.5">
+            <i data-lucide="award" class="w-4 h-4"></i>
+            <span>Conhecer os Patrocinadores</span>
+          </a>
+          <a href="#ser-patrocinador" class="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/30 font-heading font-semibold text-sm backdrop-blur-md transition-all flex items-center gap-2">
+            <i data-lucide="sparkles" class="w-4 h-4 text-amber-300"></i>
+            <span>Junte-se à Nossa Causa</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mensagem de Gratidão da Direção -->
+    <section class="py-12 bg-white dark:bg-slate-900 border-b border-slate-200/80 dark:border-white/10">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="relative p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-emerald-50 via-teal-50/50 to-amber-50/30 dark:from-emerald-950/30 dark:via-slate-800 dark:to-slate-900 border border-emerald-200/80 dark:border-emerald-500/30 shadow-md">
+          <div class="flex flex-col sm:flex-row items-center sm:items-start gap-5">
+            <div class="w-14 h-14 rounded-2xl bg-brand-green text-white flex items-center justify-center flex-shrink-0 shadow-lg">
+              <i data-lucide="quote" class="w-7 h-7"></i>
+            </div>
+            <div class="text-center sm:text-left space-y-2">
+              <h2 class="font-heading font-bold text-xl sm:text-2xl text-slate-900 dark:text-white">
+                "Um Agradecimento com Alma e Coração"
+              </h2>
+              <p class="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+                Em nome de toda a Direção da AJAVP, dos nossos jovens atletas, treinadores, pais e comunidade de Vilar do Pinheiro, deixamos o nosso mais sincero obrigado à <strong class="text-slate-950 dark:text-white">Alma Barbearia</strong>, à <strong class="text-slate-950 dark:text-white">Carlos Mota Seguros</strong>, à <strong class="text-slate-950 dark:text-white">SALIMPA Facility Services</strong> e à <strong class="text-slate-950 dark:text-white">J. Seabra &amp; Vieira, Lda.</strong>.
+              </p>
+              <p class="text-sm text-slate-600 dark:text-slate-400 italic pt-1">
+                Ao escolherem apoiar a AJAVP, estão a investir diretamente na saúde, no espírito de equipa e no futuro dos jovens da nossa terra.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grelha de Patrocinadores Oficiais -->
+    <section id="patrocinadores-grelha" class="py-16 sm:py-24 bg-slate-50 dark:bg-slate-950">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-900 dark:bg-amber-900/40 dark:text-amber-300 uppercase tracking-wider">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+            <span>Parceiros Oficiais 2026 / 2027</span>
+          </span>
+          <h2 class="font-heading font-extrabold text-2xl sm:text-4xl text-slate-900 dark:text-white mt-3">
+            Conheça as Empresas que Fazem o Desporto Acontecer
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 mt-3 text-sm sm:text-base">
+            Empresas com valor e responsabilidade social que vestem e acompanham as cores da nossa freguesia.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+
+          <!-- 1. Alma Barbearia -->
+          <article class="sponsor-card bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/90 dark:border-white/10 shadow-lg overflow-hidden flex flex-col justify-between">
+            <div>
+              <!-- Header Visual / Logo Container -->
+              <div class="h-60 sm:h-64 bg-[#0a0a0a] flex items-center justify-center p-6 relative overflow-hidden group">
+                <div class="absolute inset-0 bg-radial from-white/5 to-transparent pointer-events-none"></div>
+                <picture>
+                  <source srcset="assets/images/patrocinadores/alma_barbearia.webp" type="image/webp">
+                  <img src="assets/images/patrocinadores/alma_barbearia.png" alt="Logótipo Alma Barbearia" loading="lazy" decoding="async" class="max-h-52 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                </picture>
+                <div class="absolute top-4 right-4">
+                  <span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-amber-300 text-[11px] font-bold border border-white/20">Since 2021</span>
+                </div>
+              </div>
+
+              <!-- Body -->
+              <div class="p-6 sm:p-8 space-y-4">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 text-xs font-bold">Barbearia &amp; Estilo Masculino</span>
+                  <span class="px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 dark:bg-white/10 dark:text-slate-300 text-xs font-medium">Vilar do Pinheiro</span>
+                </div>
+
+                <h3 class="font-heading font-extrabold text-2xl text-slate-900 dark:text-white">
+                  Alma Barbearia
+                </h3>
+
+                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Espaço de referência em corte de cabelo, cuidados de barba e barbearia tradicional e contemporânea. Fundada em 2021, a <strong class="text-slate-900 dark:text-white">Alma Barbearia</strong> prima pelo atendimento de excelência, profissionalismo e uma ligação estreita à comunidade local.
+                </p>
+
+                <div class="bg-slate-50 dark:bg-white/5 p-4 rounded-2xl border border-slate-100 dark:border-white/5 space-y-2 text-xs">
+                  <div class="flex items-center gap-2 text-slate-700 dark:text-slate-300 font-medium">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 flex-shrink-0"></i>
+                    <span>Cortes modernos, clássicos e design de barba</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-slate-700 dark:text-slate-300 font-medium">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 flex-shrink-0"></i>
+                    <span>Apoio direto aos escalões de Futsal &amp; Formação AJAVP</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6 sm:p-8 pt-0">
+              <div class="pt-4 border-t border-slate-100 dark:border-white/10 flex items-center justify-between">
+                <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Patrocinador Oficial AJAVP</span>
+                <span class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-green dark:text-emerald-400">
+                  <span>Agradecemos o vosso apoio</span>
+                  <i data-lucide="heart" class="w-3.5 h-3.5 fill-current text-rose-500"></i>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. Carlos Mota Seguros -->
+          <article class="sponsor-card bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/90 dark:border-white/10 shadow-lg overflow-hidden flex flex-col justify-between">
+            <div>
+              <!-- Header Visual / Logo Container -->
+              <div class="h-60 sm:h-64 bg-slate-900 flex items-center justify-center p-6 relative overflow-hidden group">
+                <div class="absolute inset-0 bg-radial from-red-500/10 to-transparent pointer-events-none"></div>
+                <!-- Light and dark logo switch -->
+                <picture class="block dark:hidden">
+                  <source srcset="assets/images/patrocinadores/carlos_mota_seguros.webp" type="image/webp">
+                  <img src="assets/images/patrocinadores/carlos_mota_seguros.png" alt="Logótipo Carlos Mota Seguros" loading="lazy" decoding="async" class="max-h-52 w-auto object-contain transition-transform duration-300 group-hover:scale-105 rounded-xl bg-white p-3 shadow-md">
+                </picture>
+                <picture class="hidden dark:block">
+                  <source srcset="assets/images/patrocinadores/carlos_mota_seguros_dark.webp" type="image/webp">
+                  <img src="assets/images/patrocinadores/carlos_mota_seguros_dark.png" alt="Logótipo Carlos Mota Seguros" loading="lazy" decoding="async" class="max-h-44 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                </picture>
+                <div class="absolute top-4 right-4">
+                  <span class="px-3 py-1 rounded-full bg-red-600/90 text-white text-[11px] font-bold shadow-xs">Proteção &amp; Confiança</span>
+                </div>
+              </div>
+
+              <!-- Body -->
+              <div class="p-6 sm:p-8 space-y-4">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="px-2.5 py-0.5 rounded-full bg-red-100 text-red-800 dark:bg-red-950/60 dark:text-red-300 text-xs font-bold">Mediação de Seguros &amp; Consultoria</span>
+                  <span class="px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 dark:bg-white/10 dark:text-slate-300 text-xs font-medium">Proteção Familiar &amp; Pessoal</span>
+                </div>
+
+                <h3 class="font-heading font-extrabold text-2xl text-slate-900 dark:text-white">
+                  Carlos Mota Seguros
+                </h3>
+
+                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Com sólida experiência em consultoria e mediação, a <strong class="text-slate-900 dark:text-white">Carlos Mota Seguros</strong> oferece soluções abrangentes em seguros automóvel, habitação, vida, saúde e acidentes pessoais, garantindo tranquilidade às famílias e empresas.
+                </p>
+
+                <div class="bg-slate-50 dark:bg-white/5 p-4 rounded-2xl border border-slate-100 dark:border-white/5 space-y-2 text-xs">
+                  <div class="flex items-center gap-2 text-slate-700 dark:text-slate-300 font-medium">
+                    <i data-lucide="shield" class="w-4 h-4 text-red-500 flex-shrink-0"></i>
+                    <span>Soluções personalizadas para particulares e empresas</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-slate-700 dark:text-slate-300 font-medium">
+                    <i data-lucide="shield" class="w-4 h-4 text-red-500 flex-shrink-0"></i>
+                    <span>Parceiro oficial na segurança das atividades desportivas AJAVP</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6 sm:p-8 pt-0">
+              <div class="pt-4 border-t border-slate-100 dark:border-white/10 flex items-center justify-between">
+                <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Patrocinador Oficial AJAVP</span>
+                <span class="inline-flex items-center gap-1.5 text-xs font-bold text-red-600 dark:text-red-400">
+                  <span>Proteção a cada passo</span>
+                  <i data-lucide="heart" class="w-3.5 h-3.5 fill-current text-rose-500"></i>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. SALIMPA Facility Services -->
+          <article class="sponsor-card bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/90 dark:border-white/10 shadow-lg overflow-hidden flex flex-col justify-between">
+            <div>
+              <!-- Header Visual / Logo Container -->
+              <div class="h-60 sm:h-64 bg-slate-900 flex items-center justify-center p-6 relative overflow-hidden group">
+                <div class="absolute inset-0 bg-radial from-emerald-500/10 to-transparent pointer-events-none"></div>
+                <!-- Light/Dark Logo -->
+                <picture>
+                  <source srcset="assets/images/patrocinadores/salimpa_white.webp" type="image/webp">
+                  <img src="assets/images/patrocinadores/salimpa_white.png" alt="Logótipo SALIMPA Facility Services" loading="lazy" decoding="async" class="max-h-24 sm:max-h-28 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                </picture>
+                <div class="absolute top-4 right-4">
+                  <span class="px-3 py-1 rounded-full bg-emerald-600/90 text-white text-[11px] font-bold shadow-xs">Qualidade Certificada</span>
+                </div>
+              </div>
+
+              <!-- Body -->
+              <div class="p-6 sm:p-8 space-y-4">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="px-2.5 py-0.5 rounded-full bg-teal-100 text-teal-800 dark:bg-teal-950/60 dark:text-teal-300 text-xs font-bold">Facility Services &amp; Limpeza</span>
+                  <span class="px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 dark:bg-white/10 dark:text-slate-300 text-xs font-medium">Serviços Especializados</span>
+                </div>
+
+                <h3 class="font-heading font-extrabold text-2xl text-slate-900 dark:text-white">
+                  SALIMPA Facility Services
+                </h3>
+
+                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Líderes de confiança em gestão integrada de instalações e higienização profissional. A <strong class="text-slate-900 dark:text-white">SALIMPA Facility Services</strong> atua com métodos rigorosos e sustentáveis em edifícios corporativos, condomínios e complexos industriais.
+                </p>
+
+                <div class="bg-slate-50 dark:bg-white/5 p-4 rounded-2xl border border-slate-100 dark:border-white/5 space-y-2 text-xs">
+                  <div class="flex items-center gap-2 text-slate-700 dark:text-slate-300 font-medium">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-teal-500 flex-shrink-0"></i>
+                    <span>Higienização profissional, manutenção técnica e facility management</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-slate-700 dark:text-slate-300 font-medium">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-teal-500 flex-shrink-0"></i>
+                    <span>Compromisso contínuo com os eventos e equipamentos da AJAVP</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6 sm:p-8 pt-0">
+              <div class="pt-4 border-t border-slate-100 dark:border-white/10 flex items-center justify-between">
+                <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Patrocinador Oficial AJAVP</span>
+                <span class="inline-flex items-center gap-1.5 text-xs font-bold text-teal-600 dark:text-teal-400">
+                  <span>Excelência em cada detalhe</span>
+                  <i data-lucide="heart" class="w-3.5 h-3.5 fill-current text-rose-500"></i>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4. J. Seabra & Vieira, Lda. -->
+          <article class="sponsor-card bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/90 dark:border-white/10 shadow-lg overflow-hidden flex flex-col justify-between">
+            <div>
+              <!-- Header Visual / Logo Container -->
+              <div class="h-60 sm:h-64 bg-slate-950 flex items-center justify-center p-6 relative overflow-hidden group">
+                <div class="absolute inset-0 bg-radial from-amber-500/10 to-transparent pointer-events-none"></div>
+                <div class="bg-white rounded-2xl p-4 shadow-xl max-w-xs w-full flex items-center justify-center">
+                  <picture>
+                    <source srcset="assets/images/patrocinadores/seabra_vieira.webp" type="image/webp">
+                    <img src="assets/images/patrocinadores/seabra_vieira.png" alt="Logótipo J. Seabra & Vieira, Lda." loading="lazy" decoding="async" class="max-h-36 sm:max-h-40 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                  </picture>
+                </div>
+                <div class="absolute top-4 right-4">
+                  <a href="tel:933778739" class="px-3 py-1 rounded-full bg-amber-500 text-slate-950 text-[11px] font-black shadow-xs flex items-center gap-1.5 hover:bg-amber-400 transition-colors">
+                    <i data-lucide="phone" class="w-3 h-3"></i>
+                    <span>933 778 739</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Body -->
+              <div class="p-6 sm:p-8 space-y-4">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 dark:bg-amber-950/60 dark:text-amber-300 text-xs font-bold">Oficina Automóvel &amp; Pneus</span>
+                  <span class="px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 dark:bg-white/10 dark:text-slate-300 text-xs font-medium">Manutenção e Mecânica</span>
+                </div>
+
+                <h3 class="font-heading font-extrabold text-2xl text-slate-900 dark:text-white">
+                  J. Seabra &amp; Vieira, Lda.
+                </h3>
+
+                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Oficina de referência em serviços de pneus, alinhamento de direção, mecânica rápida e assistência automóvel completa. A <strong class="text-slate-900 dark:text-white">J. Seabra &amp; Vieira</strong> distingue-se pela confiança, rapidez e atenção personalizada.
+                </p>
+
+                <div class="bg-slate-50 dark:bg-white/5 p-4 rounded-2xl border border-slate-100 dark:border-white/5 space-y-2 text-xs">
+                  <div class="flex items-center gap-2 text-slate-700 dark:text-slate-300 font-medium">
+                    <i data-lucide="wrench" class="w-4 h-4 text-amber-500 flex-shrink-0"></i>
+                    <span>Montagem, calibragem e alinhamento de pneus multimarca</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-slate-700 dark:text-slate-300 font-medium">
+                    <i data-lucide="wrench" class="w-4 h-4 text-amber-500 flex-shrink-0"></i>
+                    <span>Contacto direto para marcação: <strong>933 778 739</strong></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6 sm:p-8 pt-0">
+              <div class="pt-4 border-t border-slate-100 dark:border-white/10 flex items-center justify-between">
+                <a href="tel:933778739" class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 dark:text-amber-400 hover:underline">
+                  <i data-lucide="phone-call" class="w-3.5 h-3.5"></i>
+                  <span>Ligar: 933 778 739</span>
+                </a>
+                <span class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 dark:text-slate-300">
+                  <span>Obrigado pelo apoio</span>
+                  <i data-lucide="heart" class="w-3.5 h-3.5 fill-current text-rose-500"></i>
+                </span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Mural de Impacto: O que o Apoio Torna Possível -->
+    <section class="py-16 sm:py-20 bg-white dark:bg-slate-900 border-t border-b border-slate-200/80 dark:border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 uppercase tracking-wider">
+            <i data-lucide="target" class="w-3.5 h-3.5"></i>
+            <span>Transparência &bull; O Impacto Real</span>
+          </span>
+          <h2 class="font-heading font-extrabold text-2xl sm:text-4xl text-slate-900 dark:text-white mt-3">
+            Onde o Teu Patrocínio Faz a Diferença
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 mt-3 text-sm sm:text-base">
+            Cada cêntimo de patrocínio é investido diretamente no bem-estar e no desenvolvimento dos nossos atletas.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-white/10 space-y-3">
+            <div class="w-12 h-12 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center font-black shadow-md">
+              <i data-lucide="shirt" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white">Equipamentos Oficiais</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Camisolas de jogo, calções, fatos de treino e meias oficiais para que todas as nossas crianças e jovens compitam com orgulho e identidade.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-white/10 space-y-3">
+            <div class="w-12 h-12 rounded-2xl bg-brand-green text-white flex items-center justify-center font-black shadow-md">
+              <i data-lucide="trophy" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white">Inscrições nos JIF</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Viabiliza a inscrição e participação ativa em 36 atividades e modalidades dos Jogos Inter-Freguesias de Vila do Conde.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-white/10 space-y-3">
+            <div class="w-12 h-12 rounded-2xl bg-teal-600 text-white flex items-center justify-center font-black shadow-md">
+              <i data-lucide="heart-pulse" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white">Material e Segurança</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Bolas oficiais homologadas, cones, coletes, kits de primeiros socorros e manutenção dos espaços de treino no ringue de Vilar do Pinheiro.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-white/10 space-y-3">
+            <div class="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center font-black shadow-md">
+              <i data-lucide="users" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white">Desporto Inclusivo</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Garante que nenhuma criança da freguesia fica privada de praticar desporto federado ou recreativo por motivos socioeconómicos.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Parceiros Institucionais -->
+    <section class="py-14 bg-slate-100 dark:bg-slate-950/80 border-b border-slate-200/80 dark:border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <span class="text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">Apoio Institucional Contínuo</span>
+        
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-white/10 shadow-xs flex items-center justify-center text-center">
+            <div>
+              <div class="font-heading font-bold text-sm text-slate-900 dark:text-white">Junta de Freguesia de Vilar do Pinheiro</div>
+              <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Apoio comunitário e cedência de instalações</p>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-white/10 shadow-xs flex items-center justify-center text-center">
+            <div>
+              <div class="font-heading font-bold text-sm text-slate-900 dark:text-white">Câmara Municipal de Vila do Conde</div>
+              <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Promoção do desporto concelhio e infraestruturas</p>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-white/10 shadow-xs flex items-center justify-center text-center">
+            <div>
+              <div class="font-heading font-bold text-sm text-slate-900 dark:text-white">ADCCVC</div>
+              <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Assoc. Coletividades Concelho Vila do Conde (JIF)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Secção: Quero Ser Patrocinador / Seja Parceiro AJAVP -->
+    <section id="ser-patrocinador" class="py-16 sm:py-24 bg-gradient-to-b from-white to-slate-50 dark:from-slate-900 dark:to-slate-950">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="bg-gradient-to-br from-brand-navy via-slate-900 to-emerald-950 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden border border-white/10">
+          <!-- Ambient decor -->
+          <div class="absolute top-0 right-0 w-80 h-80 bg-amber-400/10 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div class="relative z-10 text-center max-w-3xl mx-auto space-y-6">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-400 text-slate-950 uppercase tracking-wider">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-slate-950"></i>
+              <span>Junte-se à Família AJAVP</span>
+            </span>
+
+            <h2 class="font-heading font-black text-2xl sm:text-4xl lg:text-5xl tracking-tight leading-tight">
+              A Sua Empresa Também Pode Apoiar o Desporto em Vilar do Pinheiro
+            </h2>
+
+            <p class="text-sm sm:text-base text-slate-200 font-light leading-relaxed">
+              Seja patrocinador oficial de equipamento, apoie uma modalidade ou torne-se empresa amiga do clube. Ganhe visibilidade para a sua marca perante milhares de pessoas no concelho de Vila do Conde e faça a diferença na formação dos nossos jovens.
+            </p>
+
+            <!-- Vantagens -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left pt-4">
+              <div class="p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10">
+                <div class="text-amber-300 font-bold text-xs uppercase mb-1">Visibilidade</div>
+                <div class="text-xs text-slate-200">Presença nas camisolas de jogo, lonas do ringue e site oficial.</div>
+              </div>
+              <div class="p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10">
+                <div class="text-emerald-300 font-bold text-xs uppercase mb-1">Redes Sociais</div>
+                <div class="text-xs text-slate-200">Destaque nas publicações do Instagram (@ajavp.javip) e Facebook.</div>
+              </div>
+              <div class="p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10">
+                <div class="text-amber-300 font-bold text-xs uppercase mb-1">Impacto Social</div>
+                <div class="text-xs text-slate-200">Reconhecimento como agente ativo do desporto jovem e inclusivo.</div>
+              </div>
+            </div>
+
+            <!-- Call to Actions -->
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <a href="https://wa.me/351917194933?text=Ol%C3%A1!%20Gostaria%20de%20saber%20como%20a%20minha%20empresa%20pode%20apoiar%20a%20AJAVP%20como%20patrocinador%20oficial." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-heading font-extrabold text-sm shadow-xl flex items-center justify-center gap-2 transform hover:-translate-y-0.5 transition-all">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.01-1.24-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.71 4.3 3.79.6.26 1.07.41 1.44.53.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
+                <span>Falar no WhatsApp sobre Patrocínios</span>
+              </a>
+
+              <a href="mailto:ajavilarpinheiro@gmail.com?subject=Proposta%20de%20Patroc%C3%ADnio%20AJAVP" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-heading font-semibold text-sm border border-white/20 transition-all flex items-center justify-center gap-2">
+                <i data-lucide="mail" class="w-4 h-4"></i>
+                <span>Enviar Email à Direção</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Rodapé & Footer -->
+  <footer class="bg-brand-navyDark text-white pt-16 pb-12 border-t border-white/10" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+        
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-3">
+            <picture>
+              <source srcset="assets/images/logo.webp" type="image/webp">
+              <img src="assets/images/logo.png" alt="Logótipo AJAVP" class="h-14 w-auto bg-white p-1 rounded-lg logo-light-only dark:hidden" loading="lazy">
+            </picture>
+            <picture>
+              <source srcset="assets/images/logo_white.webp" type="image/webp">
+              <img src="assets/images/logo_white.png" alt="Logótipo AJAVP" class="h-14 w-auto bg-white/10 p-1 rounded-lg logo-dark-only hidden dark:block" loading="lazy">
+            </picture>
+            <div>
+              <h3 class="font-heading font-bold text-lg text-white">AJAVP</h3>
+              <p class="text-xs text-emerald-300">Vilar do Pinheiro &bull; Época 2026/2027</p>
+            </div>
+          </div>
+          <p class="text-slate-300 text-sm max-w-sm">
+            Associação Jovens e Adultos de Vilar do Pinheiro. Promovemos o desporto, a saúde e os laços comunitários de todas as gerações.
+          </p>
+          <div class="space-y-1 text-xs text-slate-300">
+            <p><strong class="text-white">NIPC / NIF:</strong> 519096045</p>
+            <p class="text-amber-300 font-semibold italic">"A Tua Terra Tem Futuro"</p>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-white">Navegação</h4>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li><a href="index.html" class="hover:text-emerald-300 transition-colors">Início</a></li>
+            <li><a href="jif.html" class="hover:text-emerald-300 transition-colors">JIF 2026/27</a></li>
+            <li><a href="modalidades.html" class="hover:text-emerald-300 transition-colors">Modalidades &amp; Treinos</a></li>
+            <li><a href="clube.html" class="hover:text-emerald-300 transition-colors">Quem Somos</a></li>
+            <li><a href="patrocinadores.html" class="hover:text-emerald-300 transition-colors font-bold text-emerald-300">Patrocinadores</a></li>
+            <li><a href="multimedia.html" class="hover:text-emerald-300 transition-colors">Multimédia &amp; Vídeos</a></li>
+            <li><a href="contactos.html" class="hover:text-emerald-300 transition-colors">Contactos &amp; Inscrições</a></li>
+            <li><a href="acessibilidade.html" class="hover:text-emerald-300 transition-colors flex items-center gap-1.5"><span aria-hidden="true">♿</span> Acessibilidade</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-white">Modalidades</h4>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li><a href="modalidades.html" class="hover:text-emerald-300 transition-colors">Futsal &amp; Futebol</a></li>
+            <li><a href="modalidades.html" class="hover:text-emerald-300 transition-colors">Atletismo &amp; Corta-Mato</a></li>
+            <li><a href="modalidades.html" class="hover:text-emerald-300 transition-colors">Ténis de Mesa</a></li>
+            <li><a href="modalidades.html" class="hover:text-emerald-300 transition-colors">Duatlo em Duplas</a></li>
+            <li><a href="modalidades.html" class="hover:text-emerald-300 transition-colors">Badminton</a></li>
+            <li><a href="modalidades.html" class="hover:text-emerald-300 transition-colors">Futebol de Praia</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-white">Canais Oficiais</h4>
+          <div class="flex flex-col space-y-2.5 text-sm text-slate-300">
+            <a href="https://www.instagram.com/ajavp.javip" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 hover:text-pink-400 transition-colors group">
+              <span class="w-7 h-7 rounded-lg bg-pink-500/10 text-pink-400 flex items-center justify-center group-hover:bg-gradient-to-tr group-hover:from-amber-500 group-hover:via-pink-500 group-hover:to-purple-600 group-hover:text-white transition-all flex-shrink-0">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </span>
+              <span class="font-medium">@ajavp.javip</span>
+            </a>
+            <a href="https://www.facebook.com/ajavp.oficial" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 hover:text-blue-400 transition-colors group">
+              <span class="w-7 h-7 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center group-hover:bg-[#1877F2] group-hover:text-white transition-all flex-shrink-0">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </span>
+              <span class="font-medium">ajavp.oficial</span>
+            </a>
+            <a href="https://chat.whatsapp.com/BLxsjBfDw7AEAonDy72187" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 hover:text-emerald-400 transition-colors group">
+              <span class="w-7 h-7 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center group-hover:bg-[#25D366] group-hover:text-white transition-all flex-shrink-0">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.01-1.24-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.71 4.3 3.79.6.26 1.07.41 1.44.53.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
+              </span>
+              <span class="font-medium">Comunidade WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-300 gap-4">
+        <p>&copy; 2026 Associação Jovens e Adultos de Vilar do Pinheiro &bull; NIF 519096045 &bull; <a href="admin-alertas.html" class="text-amber-300 hover:text-amber-200 underline font-semibold transition-colors">Área da Direção</a></p>
+        <p class="text-slate-300">Desenvolvido com dedicação para a comunidade de Vilar do Pinheiro.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Widget -->
+  <div id="whatsappWidget" class="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end">
+    <div id="whatsappPopup" class="hidden mb-4 w-[calc(100vw-2.5rem)] sm:w-88 max-w-sm bg-white rounded-3xl shadow-2xl border border-slate-200/80 overflow-hidden transform transition-all duration-300 origin-bottom-right">
+      <div class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white p-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-white dark:bg-white/10 p-1 flex items-center justify-center shadow-md">
+            <picture>
+              <source srcset="assets/images/logo.webp" type="image/webp">
+              <img src="assets/images/logo.png" alt="AJAVP" class="w-full h-full object-contain logo-light-only dark:hidden">
+            </picture>
+            <picture>
+              <source srcset="assets/images/logo_white.webp" type="image/webp">
+              <img src="assets/images/logo_white.png" alt="AJAVP" class="w-full h-full object-contain logo-dark-only hidden dark:block">
+            </picture>
+          </div>
+          <div>
+            <div class="font-heading font-bold text-sm leading-tight text-white">AJAVP &bull; Apoio Oficial</div>
+            <p class="text-[11px] text-emerald-100 flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse"></span>
+              <span>Disponível no WhatsApp</span>
+            </p>
+          </div>
+        </div>
+        <button id="closeWhatsappBtn" aria-label="Fechar WhatsApp" class="text-white/80 hover:text-white p-1 rounded-lg hover:bg-white/10 transition-colors">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="p-4 bg-slate-50 space-y-3">
+        <div class="bg-white p-3.5 rounded-2xl border border-slate-200/80 shadow-xs text-xs text-slate-700 space-y-1">
+          <p class="font-semibold text-slate-900">Olá! 👋 Bem-vindo à AJAVP.</p>
+          <p class="text-slate-600 leading-relaxed">Como te podemos ajudar hoje? Escolhe uma das opções para falar diretamente connosco:</p>
+        </div>
+
+        <div class="space-y-2">
+          <a href="https://wa.me/351917194933?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20patroc%C3%ADnios%20e%20apoio%20%C3%A0%20AJAVP." target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3 bg-white hover:bg-emerald-50 rounded-2xl border border-slate-200 hover:border-emerald-300 transition-all shadow-xs">
+            <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="sparkles" class="w-4 h-4"></i>
+            </div>
+            <div class="flex-1 text-left min-w-0">
+              <span class="font-heading font-bold text-xs text-slate-800 block">Ser Patrocinador</span>
+              <span class="text-[11px] text-slate-500 block truncate">Apoiar a formação e as equipas da AJAVP</span>
+            </div>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+          </a>
+
+          <a href="https://wa.me/351917194933?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20a%20dire%C3%A7%C3%A3o%20da%20AJAVP." target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3 bg-white hover:bg-emerald-50 rounded-2xl border border-slate-200 hover:border-emerald-300 transition-all shadow-xs">
+            <div class="w-9 h-9 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="message-square" class="w-4 h-4"></i>
+            </div>
+            <div class="flex-1 text-left min-w-0">
+              <span class="font-heading font-bold text-xs text-slate-800 block">Secretaria &amp; Direção</span>
+              <span class="text-[11px] text-slate-500 block truncate">Dúvidas gerais, inscrições e parcerias</span>
+            </div>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <button id="toggleWhatsappBtn" aria-label="Falar no WhatsApp (AJAVP)" class="group relative flex items-center gap-2.5 bg-[#25D366] hover:bg-[#20ba59] text-white p-3.5 sm:px-4 sm:py-3.5 rounded-full shadow-2xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer">
+      <svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.01-1.24-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.71 4.3 3.79.6.26 1.07.41 1.44.53.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.28z"/>
+      </svg>
+      <span class="font-heading font-bold text-xs hidden sm:inline-block tracking-wide">Falar no WhatsApp</span>
+    </button>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    // Menu Mobile
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener('click', () => {
+        const isExpanded = mobileBtn.getAttribute('aria-expanded') === 'true';
+        mobileBtn.setAttribute('aria-expanded', !isExpanded);
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // WhatsApp Popup
+    const toggleWhatsappBtn = document.getElementById('toggleWhatsappBtn');
+    const closeWhatsappBtn = document.getElementById('closeWhatsappBtn');
+    const whatsappPopup = document.getElementById('whatsappPopup');
+    if (toggleWhatsappBtn && whatsappPopup) {
+      toggleWhatsappBtn.addEventListener('click', () => {
+        whatsappPopup.classList.toggle('hidden');
+      });
+    }
+    if (closeWhatsappBtn && whatsappPopup) {
+      closeWhatsappBtn.addEventListener('click', () => {
+        whatsappPopup.classList.add('hidden');
+      });
+    }
+  </script>
+
+  <!-- Theme Script -->
+  <script src="assets/js/theme.js"></script>
+  <!-- Sistema de Acessibilidade & Usabilidade (WCAG 2.1 AA) -->
+  <script src="assets/js/a11y.js?v=3"></script>
+  <!-- PWA Service Worker & Install Manager -->
+  <script src="assets/js/pwa.js?v=5"></script>
+</body>
+</html>
