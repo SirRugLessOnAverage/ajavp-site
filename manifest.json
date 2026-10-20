@@ -46,10 +46,10 @@
       "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }]
     },
     {
-      "name": "Quem Somos",
+      "name": "A Associação",
       "short_name": "Associação",
-      "description": "Instalações e projeto associativo",
-      "url": "/clube",
+      "description": "Órgãos sociais, eleições e instalações",
+      "url": "/associacao",
       "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }]
     },
     {
