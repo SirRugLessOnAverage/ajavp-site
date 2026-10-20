@@ -4,7 +4,6 @@
   "description": "Website oficial moderno da **AJAVP**, baseado na informação e documentos da associação.",
   "main": "sw.js",
   "scripts": {
-    "build": "echo 'Site estatico AJAVP pronto para producao'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
