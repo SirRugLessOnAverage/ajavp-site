@@ -1,6 +1,6 @@
 // AJAVP - Service Worker (PWA)
 // Versão do Cache
-const CACHE_NAME = 'ajavp-pwa-v24';
+const CACHE_NAME = 'ajavp-pwa-v25';
 
 // Recursos essenciais para pré-cache (App Shell)
 const PRECACHE_ASSETS = [
@@ -33,6 +33,7 @@ const PRECACHE_ASSETS = [
   '/assets/images/patrocinadores/seabra_vieira.webp',
   '/assets/images/patrocinadores/esplendido_destemido.webp',
   '/assets/images/patrocinadores/brasao_junta_vilar_pinheiro.webp',
+  '/assets/images/patrocinadores/equipa_sub9_sub11_oficial.webp',
   '/assets/icons/icon-192.png',
   '/assets/icons/icon-512.png',
   '/assets/icons/apple-touch-icon.png',
