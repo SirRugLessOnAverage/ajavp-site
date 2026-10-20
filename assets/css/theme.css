@@ -49,6 +49,10 @@ header#mainHeader {
   bottom: calc(5rem + env(safe-area-inset-bottom, 0px)) !important;
 }
 
+#whatsappPopup {
+  bottom: calc(5rem + env(safe-area-inset-bottom, 0px)) !important;
+}
+
 /* =============================================================
  * TOKENS SEMÂNTICOS & 3 NÍVEIS DE CONTRASTE (WCAG AA/AAA)
  * ============================================================= */
