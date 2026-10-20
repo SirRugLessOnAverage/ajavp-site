@@ -9,6 +9,6 @@
   - O projeto irmão (`AJAVP-Gestao`) gere: os dados protegidos de sócios, quotas, pessoas, equipamentos, inscrições com assinatura digital e backoffice da direção.
   - O Site Público NUNCA deve tentar aceder diretamente ou alterar as tabelas de pessoas/sócios sem passar pelos contratos ou RPCs autorizados pela secretaria.
 
-## 🌿 Política de Git e Branches (Regra Obrigatória)
-- **Ramo de Trabalho (`develop`):** Todos os desenvolvimentos, alterações, commits e respetivos `git push` devem ser efetuados **única e exclusivamente** no ramo `develop`.
-- **Ramo Principal (`main`):** **NUNCA** fazer merge, commit ou push para o ramo `main` de forma automática. O ramo `main` só pode ser tocado mediante **ordem expressa e inequívoca** do utilizador.
+## 🌿 Política de Git e Branches (Regra Oficial Atualizada pelo Utilizador)
+- **Ramo Principal (main):** Todos os desenvolvimentos, alterações, commits e respetivos git push devem ser efetuados **única e exclusivamente** no ramo main (produção direta).
+- **Sem Ramo Develop/Preview:** **NÃO** usar o ramo develop nem ambientes preview nesta área, por determinação expressa do utilizador. Todo o trabalho deve ser feito e enviado diretamente no ramo main.
