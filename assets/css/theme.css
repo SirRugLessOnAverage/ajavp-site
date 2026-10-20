@@ -932,6 +932,15 @@ html.dark .bg-white\/80 {
   color: #e2e8f0;
 }
 
+/* Preservar fundo branco puro e expansivo em contentores de logótipos de patrocinadores */
+.sponsor-logo-stage,
+html.dark .sponsor-logo-stage,
+[data-sponsor-bg="white"],
+html.dark [data-sponsor-bg="white"] {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
 /* Previne que gradientes de luz terminem em branco opaco no Dark Mode */
 html.dark .to-white {
   --tw-gradient-to: #0f172a !important;
