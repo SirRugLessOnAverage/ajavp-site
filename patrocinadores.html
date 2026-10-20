@@ -287,15 +287,16 @@
   <main id="mainContent">
 
     <!-- Hero Section -->
-    <section class="text-white py-16 sm:py-24 relative overflow-hidden bg-brand-navy">
+    <section class="text-white py-20 sm:py-32 relative overflow-hidden bg-brand-navy min-h-[580px] flex items-center">
       <!-- Background Image: Foto Oficial Sub-9 e Sub-11 com Equipamento Oficial e Patrocínios -->
       <picture class="absolute inset-0 w-full h-full pointer-events-none">
-        <source srcset="assets/images/patrocinadores/equipa_sub9_sub11_oficial.webp" type="image/webp">
-        <img src="assets/images/patrocinadores/equipa_sub9_sub11_oficial.webp" alt="Equipa Sub-9 e Sub-11 da AJAVP com Equipamento Oficial de Jogo" class="w-full h-full object-cover object-[center_35%] filter contrast-105 saturate-110">
+        <source srcset="assets/images/patrocinadores/equipa_sub9_sub11_hero.webp" type="image/webp">
+        <img src="assets/images/patrocinadores/equipa_sub9_sub11_hero.webp" alt="Equipa Sub-9 e Sub-11 da AJAVP com Equipamento Oficial de Jogo" class="w-full h-full object-cover object-[center_52%] filter contrast-110 saturate-115">
       </picture>
 
-      <!-- Camada de Overlay Gradiente Profissional para Garantir Leitura Perfeita -->
-      <div class="absolute inset-0 bg-gradient-to-b from-brand-navyDark/90 via-slate-950/80 to-brand-navyDark/95 backdrop-blur-[1.5px] pointer-events-none"></div>
+      <!-- Camada de Overlay Leve que ilumina os atletas e equipamentos verdes e garante legibilidade sem escurecer a foto -->
+      <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-brand-navyDark/75 pointer-events-none"></div>
+      <div class="absolute inset-0 bg-radial-[at_center_center] from-transparent via-slate-950/20 to-slate-950/70 pointer-events-none"></div>
 
       <!-- Glow ambient background -->
       <div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-emerald-500/20 blur-3xl pointer-events-none"></div>
@@ -303,55 +304,57 @@
 
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         <!-- Badge -->
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-semibold text-amber-300 mb-6 shadow-xs">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-950/60 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-semibold text-amber-300 mb-6 shadow-md">
           <i data-lucide="heart-handshake" class="w-4 h-4 text-amber-400"></i>
           <span>Gratidão &bull; Temporada 2026 / 2027</span>
         </div>
 
-        <h1 class="font-heading font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight max-w-4xl mx-auto leading-tight sm:leading-tight">
+        <h1 class="font-heading font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight max-w-4xl mx-auto leading-tight sm:leading-tight drop-shadow-md">
           Os Nossos <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-200 to-emerald-300">Patrocinadores &amp; Parceiros</span>
         </h1>
 
-        <p class="mt-6 text-base sm:text-xl text-slate-100 max-w-3xl mx-auto font-light leading-relaxed drop-shadow-sm">
-          O desporto comunitário, o investimento nas nossas crianças e o sucesso de <strong class="font-semibold text-white">Vilar do Pinheiro</strong> dependem da dedicação destas empresas amigas e do apoio institucional fundamental da nossa terra.
+        <p class="mt-5 text-base sm:text-xl text-white max-w-3xl mx-auto font-medium leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+          O desporto comunitário, o investimento nas nossas crianças e o sucesso de <strong class="font-bold text-amber-300">Vilar do Pinheiro</strong> dependem da dedicação destas empresas amigas e do apoio institucional fundamental da nossa terra.
         </p>
 
-        <!-- Subtítulo / Legenda da Foto -->
-        <div class="mt-3 inline-flex items-center gap-2 text-xs sm:text-sm text-emerald-300/90 font-medium">
+        <!-- Subtítulo / Legenda da Foto com destaque e fundo translúcido -->
+        <div class="mt-4 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-950/70 backdrop-blur-md border border-emerald-400/30 text-xs sm:text-sm text-emerald-300 font-semibold shadow-sm">
           <i data-lucide="camera" class="w-4 h-4 text-emerald-400"></i>
           <span>Sub-9 e Sub-11 da AJAVP no primeiro jogo com o equipamento oficial</span>
         </div>
 
-        <!-- Stat Pill Strip -->
-        <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto text-left">
-          <div class="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15">
+        <!-- Stat Pill Strip com cartões translúcidos que não cobrem o centro da foto -->
+        <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto text-left">
+          <div class="p-3.5 rounded-2xl bg-slate-950/60 backdrop-blur-md border border-white/20 shadow-md">
             <div class="text-amber-300 font-black text-xl sm:text-2xl font-heading">3 Pilares</div>
-            <div class="text-xs text-slate-200 mt-0.5">Patrocinadores Principais</div>
+            <div class="text-xs text-slate-100 mt-0.5">Patrocinadores Principais</div>
           </div>
-          <div class="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15">
+          <div class="p-3.5 rounded-2xl bg-slate-950/60 backdrop-blur-md border border-white/20 shadow-md">
             <div class="text-emerald-300 font-black text-xl sm:text-2xl font-heading">+100 Atletas</div>
-            <div class="text-xs text-slate-200 mt-0.5">Equipados e em Treino</div>
+            <div class="text-xs text-slate-100 mt-0.5">Equipados e em Treino</div>
           </div>
-          <div class="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15">
+          <div class="p-3.5 rounded-2xl bg-slate-950/60 backdrop-blur-md border border-white/20 shadow-md">
             <div class="text-amber-300 font-black text-xl sm:text-2xl font-heading">36 Provas</div>
-            <div class="text-xs text-slate-200 mt-0.5">Nos XL JIF Vila do Conde</div>
+            <div class="text-xs text-slate-100 mt-0.5">Nos XL JIF Vila do Conde</div>
           </div>
-          <div class="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15">
+          <div class="p-3.5 rounded-2xl bg-slate-950/60 backdrop-blur-md border border-white/20 shadow-md">
             <div class="text-emerald-300 font-black text-xl sm:text-2xl font-heading">Gratuito</div>
-            <div class="text-xs text-slate-200 mt-0.5">Para Escalões Jovens</div>
+            <div class="text-xs text-slate-100 mt-0.5">Para Escalões Jovens</div>
           </div>
         </div>
 
         <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <a href="#patrocinadores-principais" class="px-6 py-3 rounded-xl bg-brand-green hover:bg-emerald-600 text-white font-heading font-bold text-sm shadow-lg hover:shadow-xl transition-all flex items-center gap-2 transform hover:-translate-y-0.5">
+          <a href="#patrocinadores-principais" class="px-6 py-3 rounded-xl bg-brand-green hover:bg-emerald-600 text-white font-heading font-bold text-sm shadow-xl hover:shadow-2xl transition-all flex items-center gap-2 transform hover:-translate-y-0.5">
             <i data-lucide="award" class="w-4 h-4"></i>
             <span>Ver Patrocinadores</span>
           </a>
-          <a href="#apoio-junta" class="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/30 font-heading font-semibold text-sm backdrop-blur-md transition-all flex items-center gap-2">
+          <a href="#apoio-junta" class="px-6 py-3 rounded-xl bg-slate-950/60 hover:bg-slate-900/80 text-white border border-white/30 font-heading font-semibold text-sm backdrop-blur-md transition-all flex items-center gap-2">
             <i data-lucide="landmark" class="w-4 h-4 text-emerald-300"></i>
             <span>Apoio da Junta de Freguesia</span>
           </a>
         </div>
+      </div>
+    </section>
       </div>
     </section>
 

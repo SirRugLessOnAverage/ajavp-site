@@ -33,6 +33,7 @@ const PRECACHE_ASSETS = [
   '/assets/images/patrocinadores/seabra_vieira.webp',
   '/assets/images/patrocinadores/esplendido_destemido.webp',
   '/assets/images/patrocinadores/brasao_junta_vilar_pinheiro.webp',
+  '/assets/images/patrocinadores/equipa_sub9_sub11_hero.webp',
   '/assets/images/patrocinadores/equipa_sub9_sub11_oficial.webp',
   '/assets/icons/icon-192.png',
   '/assets/icons/icon-512.png',
