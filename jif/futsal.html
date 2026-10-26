@@ -75,6 +75,9 @@
 </head>
 <body class="bg-brand-grayBg text-slate-800 antialiased selection:bg-brand-green selection:text-white">
 
+  <!-- Link de Salto de Conteúdo (WCAG 2.4.1) -->
+  <a href="#mainContent" class="a11y-skip-link">Saltar para o conteúdo principal</a>
+
   <!-- Top Announcement Bar -->
   <div class="bg-brand-green text-white py-2 px-4 text-center text-xs sm:text-sm font-medium flex items-center justify-center gap-2 shadow-inner">
     <span class="inline-flex items-center justify-center px-2 py-0.5 rounded-full text-xs font-bold bg-amber-400 text-slate-950 uppercase tracking-wider">Futsal JIF</span>
@@ -82,39 +85,131 @@
     <a href="/jif-classificacao" class="underline hover:text-amber-200 font-semibold ml-1 hidden sm:inline">Ver Classificação Virtual &rarr;</a>
   </div>
 
-  <!-- Header & Navbar -->
-  <header class="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-100 dark:border-white/10 shadow-sm transition-all duration-300" id="mainHeader" role="banner">
+  <!-- Header & Navbar Oficial AJAVP -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-300" id="mainHeader" role="banner">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      <!-- Logo -->
-      <a href="/" class="flex items-center gap-3 group flex-shrink-0">
-        <img src="../assets/images/logo.webp" alt="Logótipo AJAVP" class="h-12 w-auto object-contain transition-transform group-hover:scale-105 dark:hidden">
-        <img src="../assets/images/logo_white.webp" alt="Logótipo AJAVP" class="h-12 w-auto object-contain transition-transform group-hover:scale-105 hidden dark:block">
+      <!-- Logo + Association Name -->
+      <a href="/" class="flex items-center gap-3 group flex-shrink-0 mr-4 lg:mr-10 xl:mr-14">
+        <img src="../assets/images/logo.webp" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105 logo-light-only dark:hidden">
+        <img src="../assets/images/logo_white.webp" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105 logo-dark-only hidden dark:block">
         <div class="flex flex-col justify-center">
-          <span class="font-heading font-black text-lg tracking-wider text-brand-navy dark:text-white uppercase leading-none">AJAVP</span>
-          <span class="text-[9px] text-slate-500 dark:text-slate-400 font-medium tracking-tight">Vilar do Pinheiro</span>
+          <span class="font-heading font-extrabold text-brand-navy dark:text-white text-lg sm:text-xl tracking-tight leading-tight">AJAVP</span>
+          <span class="text-[11px] leading-tight text-brand-green dark:text-emerald-400 font-semibold tracking-wide hidden sm:block">
+            <span class="block">Associação Jovens e Adultos</span>
+            <span class="block text-emerald-800 dark:text-emerald-300 font-bold">Vilar do Pinheiro</span>
+          </span>
         </div>
       </a>
 
-      <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center gap-6 text-xs font-bold" aria-label="Navegação Principal">
-        <a href="/" class="text-slate-600 dark:text-slate-300 hover:text-brand-green dark:hover:text-emerald-400 transition-colors">Início</a>
-        <a href="/jif" class="text-slate-600 dark:text-slate-300 hover:text-brand-green dark:hover:text-emerald-400 transition-colors">Portal JIF</a>
-        <a href="/jif/futsal" class="text-brand-green dark:text-emerald-400 font-black border-b-2 border-brand-green pb-1" aria-current="page">Futsal Semanal</a>
-        <a href="/jif-classificacao" class="text-slate-600 dark:text-slate-300 hover:text-brand-green dark:hover:text-emerald-400 transition-colors">Classificação Virtual</a>
-        <a href="/modalidades" class="text-slate-600 dark:text-slate-300 hover:text-brand-green dark:hover:text-emerald-400 transition-colors">Modalidades</a>
-        <a href="/contactos" class="text-slate-600 dark:text-slate-300 hover:text-brand-green dark:hover:text-emerald-400 transition-colors">Contactos</a>
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center gap-1 xl:gap-2">
+        <a href="/" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">Início</a>
+        <a href="/jif" class="text-amber-600 bg-amber-50/80 font-bold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl transition-colors flex items-center gap-1.5 border border-amber-200/60" aria-current="page">
+          <i data-lucide="medal" class="w-4 h-4 text-amber-500"></i>
+          <span>JIF 2026/27</span>
+          <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-500 text-slate-950">XL</span>
+        </a>
+        <a href="/modalidades" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">Modalidades &amp; Treinos</a>
+        <a href="/associacao" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">A Associação</a>
+        <a href="/patrocinadores" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors flex items-center gap-1.5">
+          <i data-lucide="heart-handshake" class="w-4 h-4 text-emerald-600"></i>
+          <span>Patrocinadores</span>
+        </a>
+        <a href="/multimedia" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">Multimédia</a>
+        <a href="/contactos" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">Contactos</a>
       </nav>
 
-      <!-- Theme & Action -->
-      <div class="flex items-center gap-3">
-        <button id="themeToggleBtn" type="button" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/10 transition-colors" aria-label="Alternar modo escuro">
-          <i data-lucide="moon" class="w-4 h-4 dark:hidden"></i>
-          <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+      <!-- Action Button & Quick Socials -->
+      <div class="hidden lg:flex items-center gap-3">
+        <!-- Accessibility Button (Desktop) -->
+        <button id="a11yHeaderBtn" aria-label="A11y - Opções de Acessibilidade" class="theme-toggle-btn" title="Acessibilidade (Alt + A)">
+          <span class="text-sm" aria-hidden="true">♿</span>
+          <span class="text-[11px] font-bold">A11y</span>
         </button>
-        <a href="/jif-classificacao" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-navy dark:bg-white text-white dark:text-slate-900 font-black text-xs shadow-xs hover:opacity-90 transition-opacity">
-          <i data-lucide="trophy" class="w-3.5 h-3.5 text-amber-400"></i>
-          <span>Classificação Geral</span>
+
+        <!-- Theme Toggle Button (Desktop) -->
+        <button id="themeToggleBtn" class="theme-toggle-btn" title="Alternar Modo Claro / Escuro">
+          <i data-lucide="sun" class="w-4 h-4 hidden dark:block text-amber-400"></i>
+          <i data-lucide="moon" class="w-4 h-4 block dark:hidden text-slate-600"></i>
+          <span class="text-[11px] font-bold">
+            <span class="dark:hidden">Escuro</span>
+            <span class="hidden dark:inline text-amber-300">Claro</span>
+          </span>
+        </button>
+
+        <a href="https://forms.gle/YJdnZyUsMB8aBADj6" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-brand-green hover:bg-brand-greenDark text-white px-3 py-2 text-xs xl:px-4 xl:py-2.5 xl:text-sm rounded-full font-heading font-semibold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 whitespace-nowrap">
+          <i data-lucide="user-plus" class="w-4 h-4"></i>
+          <span>Quero Fazer Parte!</span>
         </a>
+      </div>
+
+      <!-- Mobile Controls (Theme Toggle & Menu) -->
+      <div class="flex items-center gap-2 lg:hidden">
+        <button id="a11yMobileHeaderBtn" data-a11y-open aria-label="Opções de Acessibilidade" class="theme-toggle-btn !p-2" title="Acessibilidade">
+          <span class="text-base" aria-hidden="true">♿</span>
+        </button>
+        <button id="themeToggleBtnMobile" aria-label="Alternar Tema" class="theme-toggle-btn !p-2" title="Alternar Modo Claro / Escuro">
+          <i data-lucide="sun" class="w-5 h-5 hidden dark:block text-amber-400"></i>
+          <i data-lucide="moon" class="w-5 h-5 block dark:hidden text-slate-600"></i>
+        </button>
+        <button id="mobileMenuBtn" aria-label="Abrir menu" class="p-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-white/10 px-6 py-6 shadow-xl space-y-3 max-h-[85vh] overflow-y-auto">
+      <div class="space-y-1.5 text-sm font-medium">
+        <a href="/" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-white/5">
+          <span class="flex items-center gap-2.5 font-bold"><i data-lucide="home" class="w-4 h-4 text-emerald-600"></i> Início</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="/jif" class="flex items-center justify-between py-2.5 px-3 rounded-xl bg-amber-50 dark:bg-amber-500/20 text-amber-900 dark:text-amber-300 border border-amber-200/70 dark:border-amber-400/30 font-bold">
+          <span class="flex items-center gap-2.5"><i data-lucide="medal" class="w-4 h-4 text-amber-500"></i> Jogos Inter-Freguesias (JIF)</span>
+          <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-500 text-slate-950">XL</span>
+        </a>
+        <a href="/modalidades" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-white/5">
+          <span class="flex items-center gap-2.5 font-bold"><i data-lucide="trophy" class="w-4 h-4 text-emerald-600"></i> Modalidades &amp; Treinos</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="/associacao" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-white/5">
+          <span class="flex items-center gap-2.5 font-bold"><i data-lucide="shield" class="w-4 h-4 text-blue-600"></i> Quem Somos &amp; Instalações</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="/multimedia" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-white/5">
+          <span class="flex items-center gap-2.5 font-bold"><i data-lucide="image" class="w-4 h-4 text-purple-600"></i> Galeria &amp; Vídeos</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="/contactos" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-white/5">
+          <span class="flex items-center gap-2.5 font-bold"><i data-lucide="phone" class="w-4 h-4 text-teal-600"></i> Contactos &amp; Inscrições</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="/acessibilidade" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-emerald-50 dark:hover:bg-emerald-500/10">
+          <span class="flex items-center gap-2.5 font-bold"><span class="text-base" aria-hidden="true">♿</span> Acessibilidade &amp; Usabilidade</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+      </div>
+      <div class="pt-3 border-t border-slate-100 dark:border-white/10 space-y-2">
+        <button id="a11yMobileBtn" data-a11y-open class="w-full flex items-center justify-between py-2.5 px-3 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-bold transition-colors">
+          <span class="flex items-center gap-2.5">
+            <span class="text-base" aria-hidden="true">♿</span>
+            <span>Painel de Acessibilidade</span>
+          </span>
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-white dark:bg-slate-700 border border-slate-200 dark:border-white/10">
+            <span>Alt + A</span>
+          </span>
+        </button>
+        <button id="themeToggleBtnDrawer" class="w-full flex items-center justify-between py-2.5 px-3 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-bold transition-colors">
+          <span class="flex items-center gap-2.5">
+            <i data-lucide="sun-medium" class="w-4 h-4 text-amber-500"></i>
+            <span>Modo de Visualização</span>
+          </span>
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-white dark:bg-slate-700 border border-slate-200 dark:border-white/10">
+            <span class="dark:hidden text-slate-700">🌙 Mudar p/ Escuro</span>
+            <span class="hidden dark:inline text-amber-300">☀️ Mudar p/ Claro</span>
+          </span>
+        </button>
       </div>
     </div>
   </header>
@@ -126,6 +221,67 @@
     <a href="/jif" class="hover:text-brand-green">Jogos Inter-Freguesias</a>
     <span>&rsaquo;</span>
     <span class="text-slate-900 dark:text-white font-bold">Futsal Semanal</span>
+  </nav>
+
+  <!-- Submenu JIF Ecossistema (Tabs Rápidas) -->
+  <nav aria-label="Navegação Secundária JIF" class="bg-slate-900 border-b border-white/10 py-3 sticky top-20 z-40 backdrop-blur-md shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-start lg:justify-center overflow-x-auto no-scrollbar py-1">
+        <div class="inline-flex items-center gap-1.5 p-1.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 flex-nowrap shadow-xs">
+          <!-- 1. Futsal Semanal [HUB] (Ativo) -->
+          <a href="/jif/futsal" class="px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 shadow-md ring-2 ring-amber-400/50 flex items-center gap-2 flex-shrink-0" aria-current="page">
+            <span class="w-2 h-2 rounded-full bg-slate-950 animate-ping"></span>
+            <i data-lucide="play" class="w-4 h-4 text-slate-950"></i>
+            <span>Futsal Semanal</span>
+            <span class="text-[9px] uppercase px-1.5 py-0.5 rounded bg-slate-950 font-black tracking-wider text-white">Hub</span>
+          </a>
+          <!-- 2. Classificação Virtual [ESTIMATIVA] -->
+          <a href="/jif-classificacao" class="px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold bg-gradient-to-r from-emerald-600 via-teal-600 to-brand-green text-white shadow-md hover:from-emerald-500 hover:to-teal-500 transition-all flex items-center gap-2 flex-shrink-0 ring-1 ring-emerald-400/30">
+            <i data-lucide="bar-chart-3" class="w-4 h-4 text-amber-300"></i>
+            <span>Classificação Virtual</span>
+            <span class="text-[9px] uppercase px-1.5 py-0.5 rounded bg-black/40 font-bold tracking-wider text-amber-200 border border-white/20">Estimativa</span>
+          </a>
+          <!-- 3. Calendário Oficial -->
+          <a href="/jif#calendario" class="px-3.5 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all flex items-center gap-2 flex-shrink-0">
+            <i data-lucide="calendar" class="w-4 h-4 text-amber-400"></i>
+            <span>Calendário Oficial</span>
+          </a>
+          <!-- 4. Pavilhões & GPS [Maps / Waze] -->
+          <a href="/jif#pavilhoes" class="px-3.5 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all flex items-center gap-2 flex-shrink-0">
+            <i data-lucide="map-pin" class="w-4 h-4 text-emerald-400"></i>
+            <span>Pavilhões &amp; GPS</span>
+            <span class="px-1.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-extrabold border border-emerald-400/40">Maps / Waze</span>
+          </a>
+          <!-- 5. Resultados dos Jogos -->
+          <a href="/jif#resultados" class="px-3.5 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all flex items-center gap-2 flex-shrink-0">
+            <i data-lucide="trophy" class="w-4 h-4 text-emerald-400"></i>
+            <span>Resultados dos Jogos</span>
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          </a>
+          <!-- 6. Comunicados ADCCVC [6 Emitidos] -->
+          <a href="/jif#comunicados" class="px-3.5 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all flex items-center gap-2 flex-shrink-0">
+            <i data-lucide="file-text" class="w-4 h-4 text-amber-400"></i>
+            <span>Comunicados ADCCVC</span>
+            <span class="px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-extrabold border border-amber-400/40">6 Emitidos</span>
+          </a>
+          <!-- 7. Regulamentos -->
+          <a href="/jif#modalidades" class="px-3.5 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all flex items-center gap-2 flex-shrink-0">
+            <i data-lucide="shield" class="w-4 h-4 text-slate-400"></i>
+            <span>Regulamentos</span>
+          </a>
+          <!-- 8. Escalões & Anos -->
+          <a href="/jif#escaloes" class="px-3.5 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all flex items-center gap-2 flex-shrink-0">
+            <i data-lucide="users" class="w-4 h-4 text-slate-400"></i>
+            <span>Escalões &amp; Anos</span>
+          </a>
+          <!-- 9. Encerramento & Especiais -->
+          <a href="/jif#encerramento" class="px-3.5 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all flex items-center gap-2 flex-shrink-0">
+            <i data-lucide="award" class="w-4 h-4 text-slate-400"></i>
+            <span>Encerramento &amp; Especiais</span>
+          </a>
+        </div>
+      </div>
+    </div>
   </nav>
 
   <!-- HERO SECTION -->
@@ -318,22 +474,99 @@
 
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-brand-navyDark text-white pt-12 pb-8 border-t border-white/10 mt-16" role="contentinfo">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-      <div class="flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
-        <p>&copy; 2026 Associação Jovens e Adultos de Vilar do Pinheiro &bull; XL JIF Vila do Conde.</p>
-        <div class="flex items-center gap-4">
-          <a href="/jif" class="hover:text-emerald-400 transition-colors">Portal JIF</a>
-          <a href="/jif-classificacao" class="hover:text-emerald-400 transition-colors">Classificação Virtual</a>
-          <a href="/contactos" class="hover:text-emerald-400 transition-colors">Contactos</a>
+  <!-- Footer Oficial AJAVP -->
+  <footer class="bg-brand-navyDark text-white pt-16 pb-12 border-t border-white/10 mt-16" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+        
+        <!-- Brand Column -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-3">
+            <img src="../assets/images/logo.webp" alt="Logótipo AJAVP" class="h-14 w-auto bg-white p-1 rounded-lg logo-light-only dark:hidden">
+            <img src="../assets/images/logo_white.webp" alt="Logótipo AJAVP" class="h-14 w-auto bg-white/10 p-1 rounded-lg logo-dark-only hidden dark:block">
+            <div>
+              <h3 class="font-heading font-bold text-lg text-white">AJAVP</h3>
+              <p class="text-xs text-emerald-300">Vilar do Pinheiro &bull; Época 2026/2027</p>
+            </div>
+          </div>
+          <p class="text-slate-300 text-sm max-w-sm">
+            Associação Jovens e Adultos de Vilar do Pinheiro. Promovemos o desporto, a saúde e os laços comunitários com dedicação a todas as gerações.
+          </p>
+          <div class="space-y-1 text-xs text-slate-400">
+            <p><strong class="text-slate-300">NIPC / NIF:</strong> 519096045</p>
+            <p class="text-amber-300 font-semibold italic">"A Tua Terra Tem Futuro"</p>
+          </div>
         </div>
+
+        <!-- Links Rápidos -->
+        <div class="space-y-3">
+          <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-white">Navegação</h4>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li><a href="/" class="hover:text-emerald-300 transition-colors">Página Inicial</a></li>
+            <li><a href="/jif" class="hover:text-emerald-300 transition-colors font-bold text-amber-300">JIF 2026/27</a></li>
+            <li><a href="/modalidades" class="hover:text-emerald-300 transition-colors">Modalidades &amp; Treinos</a></li>
+            <li><a href="/associacao" class="hover:text-emerald-300 transition-colors">A Associação &amp; Pavilhões</a></li>
+            <li><a href="/patrocinadores" class="hover:text-emerald-300 transition-colors">Patrocinadores &amp; Parceiros</a></li>
+            <li><a href="/multimedia" class="hover:text-emerald-300 transition-colors">Multimédia &amp; Vídeos</a></li>
+            <li><a href="/contactos" class="hover:text-emerald-300 transition-colors">Contactos &amp; Inscrições</a></li>
+            <li><a href="/acessibilidade" class="hover:text-emerald-300 transition-colors flex items-center gap-1.5"><span aria-hidden="true">♿</span> Acessibilidade &amp; Usabilidade</a></li>
+          </ul>
+        </div>
+
+        <!-- Redes Sociais -->
+        <div class="space-y-3 lg:col-span-2">
+          <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-white">Canais Oficiais</h4>
+          <div class="flex flex-col space-y-2.5 text-sm text-slate-300">
+            <a href="https://www.instagram.com/ajavp.javip" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 hover:text-pink-400 transition-colors group">
+              <span class="w-7 h-7 rounded-lg bg-pink-500/10 text-pink-400 flex items-center justify-center group-hover:bg-gradient-to-tr group-hover:from-amber-500 group-hover:via-pink-500 group-hover:to-purple-600 group-hover:text-white transition-all flex-shrink-0">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </span>
+              <span class="font-medium">@ajavp.javip</span>
+            </a>
+            <a href="https://www.facebook.com/ajavp.oficial" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 hover:text-blue-400 transition-colors group">
+              <span class="w-7 h-7 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center group-hover:bg-[#1877F2] group-hover:text-white transition-all flex-shrink-0">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </span>
+              <span class="font-medium">ajavp.oficial</span>
+            </a>
+            <a href="https://www.youtube.com/@AJAVP" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 hover:text-red-400 transition-colors group">
+              <span class="w-7 h-7 rounded-lg bg-red-500/10 text-red-400 flex items-center justify-center group-hover:bg-[#FF0000] group-hover:text-white transition-all flex-shrink-0">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </span>
+              <span class="font-medium">@AJAVP</span>
+            </a>
+            <a href="https://chat.whatsapp.com/BLxsjBfDw7AEAonDy72187" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 hover:text-emerald-400 transition-colors group">
+              <span class="w-7 h-7 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center group-hover:bg-[#25D366] group-hover:text-white transition-all flex-shrink-0">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.01-1.24-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.71 4.3 3.79.6.26 1.07.41 1.44.53.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
+              </span>
+              <span class="font-medium">Comunidade WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+        <p>&copy; 2026 Associação Jovens e Adultos de Vilar do Pinheiro &bull; NIF 519096045 &bull; <a href="../admin-alertas.html" class="hover:text-amber-400 transition-colors opacity-70 hover:opacity-100">Área da Direção</a></p>
+        <p class="text-slate-500">Desenvolvido para a comunidade de Vilar do Pinheiro.</p>
       </div>
     </div>
   </footer>
 
   <!-- Theme Script -->
   <script src="../assets/js/theme.js"></script>
+  <!-- Sistema de Acessibilidade & Usabilidade (WCAG 2.1 AA) -->
+  <script src="../assets/js/a11y.js?v=3"></script>
+  <!-- Mobile Drawer Script -->
+  <script>
+    const mBtn = document.getElementById('mobileMenuBtn');
+    const mMenu = document.getElementById('mobileMenu');
+    if (mBtn && mMenu) {
+      mBtn.addEventListener('click', () => {
+        mMenu.classList.toggle('hidden');
+      });
+    }
+  </script>
   <!-- Futsal Engine Script -->
   <script src="../assets/js/jif-futsal-engine.js"></script>
 
