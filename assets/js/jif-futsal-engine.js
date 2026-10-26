@@ -138,6 +138,63 @@
     },
 
     /**
+     * Renderiza os Resultados de Maior Impacto Multidesportivo (index.html)
+     */
+    renderTopResultados(containerId) {
+      const container = document.getElementById(containerId);
+      if (!container || !this.data) return;
+
+      const items = this.data.destaquesMultidesportivos || [];
+      if (!items.length) return;
+
+      let html = '';
+      items.forEach(item => {
+        html += `
+          <div class="p-6 rounded-3xl bg-white dark:bg-slate-900/90 border-2 border-slate-200 dark:border-white/10 shadow-md flex flex-col justify-between space-y-4 hover:border-brand-green/60 dark:hover:border-emerald-500/60 transition-all group">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between gap-2">
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider border ${item.badgeClass} shadow-xs flex items-center gap-1">
+                  ${item.badge}
+                </span>
+                <span class="text-[11px] text-slate-500 dark:text-slate-400 font-semibold">${item.categoria}</span>
+              </div>
+              <div class="text-xs font-bold text-brand-navy dark:text-emerald-400 uppercase tracking-wide flex items-center gap-1.5">
+                <i class="fa-solid ${item.icone} text-slate-400 group-hover:text-brand-green transition-colors"></i>
+                <span>${item.modalidade}</span>
+              </div>
+
+              <!-- Placar / Destaque -->
+              <div class="py-3 px-4 rounded-2xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-white/10 text-center space-y-1.5 shadow-xs">
+                <div class="font-heading font-black text-sm sm:text-base text-slate-900 dark:text-white">
+                  ${item.titulo}
+                </div>
+                <div>
+                  <span class="inline-block px-3 py-1 rounded-xl bg-brand-green/10 dark:bg-emerald-500/20 border border-brand-green/30 dark:border-emerald-500/40 text-brand-green dark:text-emerald-300 font-heading font-black text-sm sm:text-base tracking-wide tabular-nums shadow-xs">
+                    ${item.resultado}
+                  </span>
+                </div>
+              </div>
+
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+                ${item.detalhe}
+              </p>
+            </div>
+
+            <div class="pt-3 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-[11px]">
+              <a href="${item.link}" class="text-brand-green dark:text-emerald-400 font-bold hover:underline inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                <span>${item.linkTexto}</span>
+                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+      if (window.lucide) lucide.createIcons();
+    },
+
+    /**
      * Renderiza o Hub Completo de Futsal (jif/futsal.html)
      */
     renderFutsalHub() {

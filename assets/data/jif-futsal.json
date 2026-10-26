@@ -15,6 +15,60 @@
       { "label": "Melhores Marcadores", "valor": "3 Atletas", "sub": "No Top 5 concelhio dos Sub-9" }
     ]
   },
+  "destaquesMultidesportivos": [
+    {
+      "id": "corta-mato",
+      "modalidade": "Corta-Mato",
+      "categoria": "Geral Concelhia",
+      "icone": "fa-running",
+      "badge": "Campeões Concelhios 🏆",
+      "badgeClass": "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
+      "titulo": "1.º Lugar Geral Concelhio",
+      "resultado": "57 Pontos Homologados",
+      "detalhe": "Vitórias e pódios em Benjamins, Infantis, Iniciados e Juvenis. Domínio absoluto de Vilar do Pinheiro nas provas de fundo.",
+      "link": "jif-classificacao.html#eventPaneCortaMato",
+      "linkTexto": "Ver Classificação e Provas"
+    },
+    {
+      "id": "futsal-sub9",
+      "modalidade": "Futsal Masculino",
+      "categoria": "Sub-9 (Benjamins)",
+      "icone": "fa-futbol",
+      "badge": "Líder Isolado 🥇",
+      "badgeClass": "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
+      "titulo": "Modivas 1 – 19 AJAVP",
+      "resultado": "30 Golos Marcados (Melhor Ataque)",
+      "detalhe": "Maior goleada dos XL JIF. 6 pontos em 2 jogos (+28 saldo). Cid Ferreira lidera marcadores com 10 golos.",
+      "link": "jif/futsal.html#escalao-sub-9",
+      "linkTexto": "Ver Ficha de Jogo e Tabela"
+    },
+    {
+      "id": "futebol-infantil",
+      "modalidade": "Futebol Infantil",
+      "categoria": "Sub-11",
+      "icone": "fa-trophy",
+      "badge": "Pódio de Bronze 🥉",
+      "badgeClass": "bg-amber-500/20 text-amber-400 border-amber-500/30",
+      "titulo": "AJAVP 2 – 2 Bagunte (Retorta)",
+      "resultado": "3.º Lugar Geral Concelhio",
+      "detalhe": "Grande prestação em Retorta com empate frente aos líderes do torneio e exibição sólida defensiva.",
+      "link": "jif-classificacao.html#eventPaneFutebol",
+      "linkTexto": "Ver Pauta de Futebol"
+    },
+    {
+      "id": "futsal-sub11-sub7",
+      "modalidade": "Futsal Masculino",
+      "categoria": "Sub-11 & Sub-7",
+      "icone": "fa-fire",
+      "badge": "Pódio & Vitória Histórica 🚀",
+      "badgeClass": "bg-blue-500/20 text-blue-400 border-blue-500/30",
+      "titulo": "Sub-11: 9-1 Touguinha • Sub-7: 3-1 Aveleda",
+      "resultado": "Sub-11 no Pódio (3.º) & Estreia a Vencer Sub-7",
+      "detalhe": "Goleada de autoridade em Canidelo sobe Sub-11 ao 3.º posto concelhio. Sub-7 conquistam primeiros 3 pontos no Pavilhão de Caxinas.",
+      "link": "jif/futsal.html",
+      "linkTexto": "Ver Hub de Futsal"
+    }
+  ],
   "proximaJornada": {
     "numero": 3,
     "dataPrevisao": "Novembro 2026",
