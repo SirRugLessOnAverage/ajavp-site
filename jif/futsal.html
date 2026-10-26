@@ -104,11 +104,107 @@
       <!-- Desktop Navigation -->
       <nav class="hidden lg:flex items-center gap-1 xl:gap-2">
         <a href="/" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">Início</a>
-        <a href="/jif" class="text-amber-600 bg-amber-50/80 font-bold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl transition-colors flex items-center gap-1.5 border border-amber-200/60" aria-current="page">
-          <i data-lucide="medal" class="w-4 h-4 text-amber-500"></i>
-          <span>JIF 2026/27</span>
-          <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-500 text-slate-950">XL</span>
-        </a>
+        <!-- Dropdown JIF 2026/2027 -->
+        <div class="relative group">
+          <a href="/jif" class="text-amber-600 bg-amber-50/80 dark:bg-amber-500/10 dark:text-amber-300 font-bold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5 border border-amber-200/60 dark:border-amber-400/30 hover:bg-amber-100/70" id="jifNavDropdownBtn" aria-haspopup="true" aria-expanded="false" aria-current="page">
+            <i data-lucide="medal" class="w-4 h-4 text-amber-500"></i>
+            <span>JIF 2026/27</span>
+            <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-500 text-slate-950">XL</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-amber-500 group-hover:rotate-180 transition-transform duration-200"></i>
+          </a>
+
+          <!-- Dropdown Menu Flutuante -->
+          <div class="absolute left-0 top-full pt-2 w-72 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 transform origin-top-left -translate-y-2 group-hover:translate-y-0 z-50 pointer-events-none group-hover:pointer-events-auto" role="menu" aria-orientation="vertical" aria-labelledby="jifNavDropdownBtn">
+            <div class="p-2 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-2xl space-y-1">
+              
+              <!-- Link Principal: Portal JIF -->
+              <a href="/jif" class="flex items-center justify-between p-2.5 rounded-xl hover:bg-amber-50 dark:hover:bg-amber-500/10 transition-colors group/item" role="menuitem">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-amber-500/20 text-amber-600 dark:text-amber-300 flex items-center justify-center font-bold text-xs">
+                    🏆
+                  </div>
+                  <div>
+                    <strong class="text-xs font-black text-slate-900 dark:text-white block group-hover/item:text-amber-600 dark:group-hover/item:text-amber-300">Portal dos JIF 2026/27</strong>
+                    <span class="text-[10px] text-slate-500 dark:text-slate-400">Página principal e visão global</span>
+                  </div>
+                </div>
+                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400 group-hover/item:translate-x-0.5 transition-transform"></i>
+              </a>
+
+              <div class="h-px bg-slate-100 dark:bg-white/10 my-1"></div>
+
+              <!-- Link Futsal Semanal Hub -->
+              <a href="/jif/futsal" class="flex items-center justify-between p-2 rounded-xl bg-amber-50/70 dark:bg-amber-500/15 border border-amber-300/60 dark:border-amber-400/30 transition-colors group/item" role="menuitem">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center font-bold">
+                    <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+                  </div>
+                  <div>
+                    <div class="flex items-center gap-1.5">
+                      <strong class="text-xs font-black text-amber-900 dark:text-amber-300 block">Futsal Semanal</strong>
+                      <span class="text-[8px] uppercase px-1 py-0.2 rounded bg-slate-950 text-white font-black">Hub</span>
+                    </div>
+                    <span class="text-[10px] text-slate-500 dark:text-slate-400">Sub-7 a Sub-16 e marcadores</span>
+                  </div>
+                </div>
+                <span class="w-2 h-2 rounded-full bg-amber-500 animate-ping mr-1"></span>
+              </a>
+
+              <!-- Link Classificação Virtual -->
+              <a href="/jif-classificacao" class="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group/item" role="menuitem">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-300 flex items-center justify-center">
+                    <i data-lucide="bar-chart-3" class="w-3.5 h-3.5"></i>
+                  </div>
+                  <div>
+                    <div class="flex items-center gap-1.5">
+                      <strong class="text-xs font-bold text-slate-800 dark:text-slate-100 block group-hover/item:text-brand-green">Classificação Virtual</strong>
+                      <span class="text-[8px] uppercase px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 text-slate-600 dark:text-slate-300 font-bold">Estimativa</span>
+                    </div>
+                    <span class="text-[10px] text-slate-500 dark:text-slate-400">19 Freguesias e pautas</span>
+                  </div>
+                </div>
+              </a>
+
+              <!-- Link Calendário Oficial -->
+              <a href="/jif#calendario" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors text-xs font-medium text-slate-700 dark:text-slate-300" role="menuitem">
+                <i data-lucide="calendar" class="w-4 h-4 text-amber-500 ml-1"></i>
+                <span>Calendário Oficial de Provas</span>
+              </a>
+
+              <!-- Link Pavilhões & GPS -->
+              <a href="/jif#pavilhoes" class="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors text-xs font-medium text-slate-700 dark:text-slate-300" role="menuitem">
+                <div class="flex items-center gap-2.5">
+                  <i data-lucide="map-pin" class="w-4 h-4 text-emerald-500 ml-1"></i>
+                  <span>Pavilhões &amp; GPS</span>
+                </div>
+                <span class="text-[9px] px-1.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 font-bold">Waze / Maps</span>
+              </a>
+
+              <!-- Link Resultados dos Jogos -->
+              <a href="/jif#resultados" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors text-xs font-medium text-slate-700 dark:text-slate-300" role="menuitem">
+                <i data-lucide="trophy" class="w-4 h-4 text-emerald-600 ml-1"></i>
+                <span>Resultados dos Nossos Jogos</span>
+              </a>
+
+              <!-- Link Comunicados ADCCVC -->
+              <a href="/jif#comunicados" class="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors text-xs font-medium text-slate-700 dark:text-slate-300" role="menuitem">
+                <div class="flex items-center gap-2.5">
+                  <i data-lucide="file-text" class="w-4 h-4 text-amber-500 ml-1"></i>
+                  <span>Comunicados Oficiais</span>
+                </div>
+                <span class="text-[9px] px-1.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-300 font-bold">6 Emitidos</span>
+              </a>
+
+              <!-- Link Regulamentos & Escalões -->
+              <a href="/jif#modalidades" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors text-xs font-medium text-slate-700 dark:text-slate-300" role="menuitem">
+                <i data-lucide="shield" class="w-4 h-4 text-slate-400 ml-1"></i>
+                <span>Regulamentos &amp; Escalões</span>
+              </a>
+
+            </div>
+          </div>
+        </div>
         <a href="/modalidades" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">Modalidades &amp; Treinos</a>
         <a href="/associacao" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">A Associação</a>
         <a href="/patrocinadores" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors flex items-center gap-1.5">
@@ -165,10 +261,37 @@
           <span class="flex items-center gap-2.5 font-bold"><i data-lucide="home" class="w-4 h-4 text-emerald-600"></i> Início</span>
           <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
         </a>
-        <a href="/jif" class="flex items-center justify-between py-2.5 px-3 rounded-xl bg-amber-50 dark:bg-amber-500/20 text-amber-900 dark:text-amber-300 border border-amber-200/70 dark:border-amber-400/30 font-bold">
-          <span class="flex items-center gap-2.5"><i data-lucide="medal" class="w-4 h-4 text-amber-500"></i> Jogos Inter-Freguesias (JIF)</span>
-          <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-500 text-slate-950">XL</span>
-        </a>
+        
+        <!-- Bloco JIF no Mobile com Submenu -->
+        <div class="rounded-2xl border border-amber-200/80 dark:border-amber-400/20 bg-amber-50/50 dark:bg-amber-500/5 p-2 space-y-1">
+          <a href="/jif" class="flex items-center justify-between py-2 px-2.5 rounded-xl text-amber-900 dark:text-amber-300 font-bold text-xs">
+            <span class="flex items-center gap-2"><i data-lucide="medal" class="w-4 h-4 text-amber-500"></i> Jogos Inter-Freguesias (JIF)</span>
+            <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-500 text-slate-950">XL</span>
+          </a>
+          <div class="pl-4 space-y-1 text-xs pt-1 border-t border-amber-200/40 dark:border-white/5">
+            <a href="/jif/futsal" class="flex items-center justify-between py-1.5 px-2 rounded-lg text-brand-green dark:text-emerald-300 font-bold bg-amber-100/50 dark:bg-amber-500/10">
+              <span class="flex items-center gap-2"><i data-lucide="play" class="w-3 h-3 text-emerald-500"></i> Futsal Semanal (Hub)</span>
+              <span class="text-[8px] uppercase px-1 py-0.2 rounded bg-amber-400 text-slate-950 font-black">Ativo</span>
+            </a>
+            <a href="/jif-classificacao" class="flex items-center gap-2 py-1.5 px-2 rounded-lg text-slate-700 dark:text-slate-300 hover:text-blue-600 font-semibold">
+              <i data-lucide="bar-chart-3" class="w-3 h-3 text-blue-500"></i>
+              <span>Classificação Virtual</span>
+            </a>
+            <a href="/jif#calendario" class="flex items-center gap-2 py-1.5 px-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 font-medium">
+              <i data-lucide="calendar" class="w-3 h-3 text-amber-500"></i>
+              <span>Calendário Oficial</span>
+            </a>
+            <a href="/jif#pavilhoes" class="flex items-center gap-2 py-1.5 px-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 font-medium">
+              <i data-lucide="map-pin" class="w-3 h-3 text-emerald-500"></i>
+              <span>Pavilhões &amp; GPS</span>
+            </a>
+            <a href="/jif#resultados" class="flex items-center gap-2 py-1.5 px-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 font-medium">
+              <i data-lucide="trophy" class="w-3 h-3 text-emerald-500"></i>
+              <span>Resultados dos Nossos Jogos</span>
+            </a>
+          </div>
+        </div>
+
         <a href="/modalidades" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-white/5">
           <span class="flex items-center gap-2.5 font-bold"><i data-lucide="trophy" class="w-4 h-4 text-emerald-600"></i> Modalidades &amp; Treinos</span>
           <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
@@ -221,67 +344,6 @@
     <a href="/jif" class="hover:text-brand-green">Jogos Inter-Freguesias</a>
     <span>&rsaquo;</span>
     <span class="text-slate-900 dark:text-white font-bold">Futsal Semanal</span>
-  </nav>
-
-  <!-- Submenu JIF Ecossistema (Tabs Rápidas) -->
-  <nav aria-label="Navegação Secundária JIF" class="bg-slate-900 border-b border-white/10 py-3 sticky top-20 z-40 backdrop-blur-md shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-start lg:justify-center overflow-x-auto no-scrollbar py-1">
-        <div class="inline-flex items-center gap-1.5 p-1.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 flex-nowrap shadow-xs">
-          <!-- 1. Futsal Semanal [HUB] (Ativo) -->
-          <a href="/jif/futsal" class="px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 shadow-md ring-2 ring-amber-400/50 flex items-center gap-2 flex-shrink-0" aria-current="page">
-            <span class="w-2 h-2 rounded-full bg-slate-950 animate-ping"></span>
-            <i data-lucide="play" class="w-4 h-4 text-slate-950"></i>
-            <span>Futsal Semanal</span>
-            <span class="text-[9px] uppercase px-1.5 py-0.5 rounded bg-slate-950 font-black tracking-wider text-white">Hub</span>
-          </a>
-          <!-- 2. Classificação Virtual [ESTIMATIVA] -->
-          <a href="/jif-classificacao" class="px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold bg-gradient-to-r from-emerald-600 via-teal-600 to-brand-green text-white shadow-md hover:from-emerald-500 hover:to-teal-500 transition-all flex items-center gap-2 flex-shrink-0 ring-1 ring-emerald-400/30">
-            <i data-lucide="bar-chart-3" class="w-4 h-4 text-amber-300"></i>
-            <span>Classificação Virtual</span>
-            <span class="text-[9px] uppercase px-1.5 py-0.5 rounded bg-black/40 font-bold tracking-wider text-amber-200 border border-white/20">Estimativa</span>
-          </a>
-          <!-- 3. Calendário Oficial -->
-          <a href="/jif#calendario" class="px-3.5 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all flex items-center gap-2 flex-shrink-0">
-            <i data-lucide="calendar" class="w-4 h-4 text-amber-400"></i>
-            <span>Calendário Oficial</span>
-          </a>
-          <!-- 4. Pavilhões & GPS [Maps / Waze] -->
-          <a href="/jif#pavilhoes" class="px-3.5 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all flex items-center gap-2 flex-shrink-0">
-            <i data-lucide="map-pin" class="w-4 h-4 text-emerald-400"></i>
-            <span>Pavilhões &amp; GPS</span>
-            <span class="px-1.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-extrabold border border-emerald-400/40">Maps / Waze</span>
-          </a>
-          <!-- 5. Resultados dos Jogos -->
-          <a href="/jif#resultados" class="px-3.5 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all flex items-center gap-2 flex-shrink-0">
-            <i data-lucide="trophy" class="w-4 h-4 text-emerald-400"></i>
-            <span>Resultados dos Jogos</span>
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          </a>
-          <!-- 6. Comunicados ADCCVC [6 Emitidos] -->
-          <a href="/jif#comunicados" class="px-3.5 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all flex items-center gap-2 flex-shrink-0">
-            <i data-lucide="file-text" class="w-4 h-4 text-amber-400"></i>
-            <span>Comunicados ADCCVC</span>
-            <span class="px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-extrabold border border-amber-400/40">6 Emitidos</span>
-          </a>
-          <!-- 7. Regulamentos -->
-          <a href="/jif#modalidades" class="px-3.5 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all flex items-center gap-2 flex-shrink-0">
-            <i data-lucide="shield" class="w-4 h-4 text-slate-400"></i>
-            <span>Regulamentos</span>
-          </a>
-          <!-- 8. Escalões & Anos -->
-          <a href="/jif#escaloes" class="px-3.5 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all flex items-center gap-2 flex-shrink-0">
-            <i data-lucide="users" class="w-4 h-4 text-slate-400"></i>
-            <span>Escalões &amp; Anos</span>
-          </a>
-          <!-- 9. Encerramento & Especiais -->
-          <a href="/jif#encerramento" class="px-3.5 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white hover:bg-white/10 transition-all flex items-center gap-2 flex-shrink-0">
-            <i data-lucide="award" class="w-4 h-4 text-slate-400"></i>
-            <span>Encerramento &amp; Especiais</span>
-          </a>
-        </div>
-      </div>
-    </div>
   </nav>
 
   <!-- HERO SECTION -->
