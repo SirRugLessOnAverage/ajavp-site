@@ -290,6 +290,10 @@
           <span class="flex items-center gap-2.5 font-bold"><i data-lucide="medal" class="w-4 h-4 text-amber-500"></i> Jogos Inter-Freguesias (JIF)</span>
           <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-500 text-slate-950">XL</span>
         </a>
+        <a href="/jif/futsal" class="flex items-center justify-between py-2.5 px-3 rounded-xl bg-emerald-50/60 text-emerald-900 border border-emerald-200/50 hover:bg-emerald-100 transition-colors">
+          <span class="flex items-center gap-2.5 font-bold"><i data-lucide="play" class="w-4 h-4 text-emerald-600"></i> Futsal Semanal (Hub)</span>
+          <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-emerald-600 text-white">Novo</span>
+        </a>
         <a href="/modalidades" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-50">
           <span class="flex items-center gap-2.5 font-bold"><i data-lucide="trophy" class="w-4 h-4 text-emerald-600"></i> Modalidades &amp; Treinos</span>
           <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
@@ -479,6 +483,16 @@
               </a>
             </div>
           </div>
+        </div>
+  </section>
+
+  <!-- Secção: Match Center Dinâmico JIF (Resultados Mais Recentes & Próximos Jogos) -->
+  <section class="py-8 bg-slate-50 dark:bg-slate-950/60 border-b border-slate-200 dark:border-white/10" id="matchCenterSection" aria-label="Match Center JIF">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div id="matchCenterContainer">
+        <!-- Renderizado dinamicamente via assets/js/jif-futsal-engine.js -->
+        <div class="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 text-center text-slate-400">
+          A carregar Match Center dos XL JIF...
         </div>
       </div>
     </div>
@@ -1484,6 +1498,16 @@
 
   <!-- Guia de Pavilhões & GPS JIF -->
   <script src="assets/js/jif-gps.js"></script>
+  <!-- Futsal Engine & Match Center JIF -->
+  <script src="assets/js/jif-futsal-engine.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      if (window.JifFutsalEngine) {
+        await JifFutsalEngine.loadData('assets/data/jif-futsal.json');
+        JifFutsalEngine.renderMatchCenter('matchCenterContainer');
+      }
+    });
+  </script>
   <!-- Theme Script -->
   <script src="assets/js/theme.js"></script>
   <!-- Sistema de Acessibilidade & Usabilidade (WCAG 2.1 AA) -->
