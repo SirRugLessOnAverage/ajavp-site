@@ -4,7 +4,7 @@
 import webpush from 'web-push';
 
 const SUPABASE_URL = process.env.SUPABASE_URL || 'https://mudgnaajtolytggksvvq.supabase.co';
-const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im11ZGduYWFqdG9seXRnZ2tzdnZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIwNjAxODcsImV4cCI6MjEwNzYzNjE4N30.lL5jb84u0PUWH4BjQWdZ4uZLpGKybUuhGISGB9tvdIQ';
+const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
 const VAPID_SUBJECT = process.env.VAPID_SUBJECT || 'mailto:geralajavp@gmail.com';
 
 export default async function handler(req, res) {
