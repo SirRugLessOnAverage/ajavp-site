@@ -353,6 +353,12 @@
           <i data-lucide="bell" class="w-4 h-4 text-amber-500"></i>
         </button>
 
+        <!-- Link Área de Sócio -->
+        <a href="https://gestao.ajavp.pt/socio" target="_blank" rel="noopener noreferrer" class="hidden xl:inline-flex items-center gap-1.5 text-xs font-bold text-slate-700 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-emerald-400 py-2 px-3 rounded-xl border border-slate-200 dark:border-white/10 hover:border-emerald-300 dark:hover:border-emerald-500/30 transition-colors" title="Aceder ao Portal do Associado da AJAVP">
+          <i data-lucide="user" class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400"></i>
+          <span>Área de Sócio</span>
+        </a>
+
         <a href="https://forms.gle/YJdnZyUsMB8aBADj6" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-brand-green hover:bg-brand-greenDark text-white px-3 py-2 text-xs xl:px-4 xl:py-2.5 xl:text-sm rounded-full font-heading font-semibold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 whitespace-nowrap">
           <i data-lucide="user-plus" class="w-4 h-4"></i>
           <span>Quero Fazer Parte!</span>
@@ -360,8 +366,8 @@
       </div>
 
       <!-- Mobile Controls (Theme Toggle & Menu) -->
-      <div class="flex items-center gap-2 lg:hidden">
-        <button id="a11yMobileHeaderBtn" data-a11y-open aria-label="Opções de Acessibilidade" class="theme-toggle-btn !p-2" title="Acessibilidade">
+      <div class="flex items-center gap-1.5 sm:gap-2 lg:hidden">
+        <button id="a11yMobileHeaderBtn" data-a11y-open aria-label="Opções de Acessibilidade" class="theme-toggle-btn !p-2 hidden sm:flex" title="Acessibilidade">
           <span class="text-base" aria-hidden="true">♿</span>
         </button>
         <button id="themeToggleBtnMobile" aria-label="Alternar Tema" class="theme-toggle-btn !p-2" title="Alternar Modo Claro / Escuro">
@@ -377,6 +383,12 @@
     <!-- Mobile Navigation Drawer -->
     <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-200 px-6 py-6 shadow-xl space-y-3 max-h-[85vh] overflow-y-auto">
       <div class="space-y-1.5 text-sm font-medium">
+        <!-- Portal do Sócio Mobile -->
+        <a href="https://gestao.ajavp.pt/socio" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between py-2.5 px-3 rounded-xl bg-slate-900 text-white font-bold text-xs shadow-sm hover:bg-slate-800 transition-colors mb-2">
+          <span class="flex items-center gap-2.5"><i data-lucide="user-check" class="w-4 h-4 text-emerald-400"></i> Portal do Sócio (Quotas &amp; Cartão)</span>
+          <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-400"></i>
+        </a>
+
         <a href="/" class="flex items-center justify-between py-2.5 px-3 rounded-xl bg-emerald-50 text-emerald-900 border border-emerald-200/70 font-bold">
           <span class="flex items-center gap-2.5"><i data-lucide="home" class="w-4 h-4 text-emerald-600"></i> Início</span>
           <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
@@ -601,6 +613,9 @@
           </div>
         </div>
   </section>
+
+  <!-- Container de Notícias e Comunicados Oficiais Dinâmicos (Supabase) -->
+  <section id="supabaseNewsNotice" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2" aria-label="Comunicado Oficial"></section>
 
   <!-- Secção: Match Center Dinâmico JIF (Resultados Mais Recentes & Próximos Jogos) -->
   <section class="py-8 bg-slate-50 dark:bg-slate-950/60 border-b border-slate-200 dark:border-white/10" id="matchCenterSection" aria-label="Match Center JIF">
@@ -1238,7 +1253,7 @@
       </div>
 
       <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-300 gap-4">
-        <p>&copy; 2026 Associação Jovens e Adultos de Vilar do Pinheiro &bull; NIF 519096045 &bull; <a href="admin-alertas.html" class="text-amber-300 hover:text-amber-200 underline font-semibold transition-colors">Área da Direção</a></p>
+        <p>&copy; 2026 Associação Jovens e Adultos de Vilar do Pinheiro &bull; NIF 519096045 &bull; <a href="/admin-alertas" class="text-amber-300 hover:text-amber-200 underline font-semibold transition-colors">Área da Direção</a></p>
         <p class="text-slate-300">Desenvolvido com dedicação para a comunidade de Vilar do Pinheiro.</p>
       </div>
     </div>
@@ -1472,6 +1487,8 @@
   <script src="assets/js/theme.js"></script>
   <!-- Sistema de Acessibilidade & Usabilidade (WCAG 2.1 AA) -->
   <script src="assets/js/a11y.js?v=3"></script>
+  <!-- Dados Dinâmicos Oficiais (Supabase) -->
+  <script src="assets/js/site-data.js"></script>
   <!-- PWA Service Worker & Install Manager -->
   <script src="assets/js/pwa.js?v=5"></script>
 </body>
