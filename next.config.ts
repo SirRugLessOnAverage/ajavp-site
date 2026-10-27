@@ -10,10 +10,17 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/jif-classificacao",
+        destination: "/jif/classificacao",
+        permanent: true,
+      },
+    ];
+  },
   async rewrites() {
     return [
-      { source: "/jif", destination: "/jif.html" },
-      { source: "/jif-classificacao", destination: "/jif-classificacao.html" },
       { source: "/jif/futsal", destination: "/jif/futsal.html" },
       { source: "/modalidades", destination: "/modalidades.html" },
       { source: "/patrocinadores", destination: "/patrocinadores.html" },
