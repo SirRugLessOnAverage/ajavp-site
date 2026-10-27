@@ -407,7 +407,7 @@
             <button id="a11yResetBtn" type="button" class="a11y-reset-btn">
               Repor Predefinições
             </button>
-            <a href="acessibilidade.html" class="a11y-decl-link">
+            <a href="/acessibilidade" class="a11y-decl-link">
               Declaração de Acessibilidade &rarr;
             </a>
           </div>
