@@ -12,7 +12,6 @@ const nextConfig: NextConfig = {
   },
   async rewrites() {
     return [
-      { source: "/associacao", destination: "/associacao.html" },
       { source: "/jif", destination: "/jif.html" },
       { source: "/jif-classificacao", destination: "/jif-classificacao.html" },
       { source: "/jif/futsal", destination: "/jif/futsal.html" },
