@@ -1,0 +1,4 @@
+# AJAVP • Ambiente de Testes / Preview (Develop)
+# Bloqueio total a todos os robôs, spiders e motores de busca (Google, Bing, etc.)
+User-agent: *
+Disallow: /

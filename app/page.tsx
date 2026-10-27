@@ -1,0 +1,327 @@
+import React from "react";
+import Link from "next/link";
+import {
+  Trophy,
+  Users,
+  ChevronRight,
+  ArrowRight,
+  Sparkles,
+  MapPin,
+  Calendar,
+  Shield,
+  HeartHandshake,
+} from "lucide-react";
+import { createClient } from "@/lib/supabase/server";
+import { NoticiasSection } from "@/components/home/NoticiasSection";
+import { EventosSection } from "@/components/home/EventosSection";
+import type { SiteNoticia, SiteEvento } from "@/lib/types/database";
+
+export const revalidate = 60;
+
+export default async function HomePage() {
+  const supabase = await createClient();
+
+  // Fetch das notícias publicadas
+  let noticias: SiteNoticia[] = [];
+  try {
+    const { data, error } = await supabase
+      .from("site_noticias")
+      .select("*")
+      .eq("publicado", true)
+      .order("publicado_em", { ascending: false })
+      .limit(6);
+
+    if (!error && data) {
+      noticias = data as SiteNoticia[];
+    }
+  } catch (err) {
+    console.error("Erro ao carregar notícias:", err);
+  }
+
+  // Fetch dos eventos agendados
+  let eventos: SiteEvento[] = [];
+  try {
+    const { data, error } = await supabase
+      .from("site_eventos")
+      .select("*")
+      .order("data_hora", { ascending: true })
+      .limit(6);
+
+    if (!error && data) {
+      eventos = data as SiteEvento[];
+    }
+  } catch (err) {
+    console.error("Erro ao carregar eventos:", err);
+  }
+
+  return (
+    <>
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-brand-navy text-white pt-16 pb-24 lg:pt-28 lg:pb-32">
+        {/* Decorative background grid and gradients */}
+        <div className="absolute inset-0 opacity-15 pointer-events-none bg-[radial-gradient(#387b5b_1px,transparent_1px)] [background-size:24px_24px]" />
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-brand-green/30 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Content */}
+            <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-bold tracking-wide">
+                <Sparkles className="w-4 h-4 text-amber-400" />
+                <span>Associação Jovens e Adultos &bull; Época 2026/27</span>
+              </div>
+
+              <h1 className="font-heading font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.1]">
+                A Tua Terra <br className="hidden sm:inline" />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300">
+                  Tem Futuro.
+                </span>
+              </h1>
+
+              <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+                Promovemos o desporto, a formação de jovens e o convívio comunitário em Vilar do Pinheiro. Da formação ao escalão sénior, todos têm lugar na nossa equipa.
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                <a
+                  href="https://forms.gle/YJdnZyUsMB8aBADj6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-brand-green hover:bg-brand-greenDark text-white font-heading font-bold px-7 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-0.5 text-sm sm:text-base cursor-pointer"
+                >
+                  <Users className="w-5 h-5" />
+                  <span>Inscreve-te &bull; Treino Gratuito</span>
+                </a>
+
+                <Link
+                  href="/jif"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-heading font-bold px-7 py-4 rounded-2xl transition-all text-sm sm:text-base backdrop-blur-md"
+                >
+                  <Trophy className="w-5 h-5 text-amber-400" />
+                  <span>XL Jogos Inter-Freguesias</span>
+                </Link>
+              </div>
+
+              {/* Badges / Metrics */}
+              <div className="grid grid-cols-3 gap-4 pt-8 border-t border-white/10 max-w-lg mx-auto lg:mx-0">
+                <div className="text-center lg:text-left">
+                  <div className="font-heading font-black text-2xl sm:text-3xl text-emerald-400">
+                    6+
+                  </div>
+                  <div className="text-[11px] sm:text-xs text-slate-400 font-medium">
+                    Modalidades Ativas
+                  </div>
+                </div>
+                <div className="text-center lg:text-left">
+                  <div className="font-heading font-black text-2xl sm:text-3xl text-amber-400">
+                    100+
+                  </div>
+                  <div className="text-[11px] sm:text-xs text-slate-400 font-medium">
+                    Atletas e Jovens
+                  </div>
+                </div>
+                <div className="text-center lg:text-left">
+                  <div className="font-heading font-black text-2xl sm:text-3xl text-white">
+                    19
+                  </div>
+                  <div className="text-[11px] sm:text-xs text-slate-400 font-medium">
+                    Freguesias nos JIF
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Card / Visual */}
+            <div className="lg:col-span-5">
+              <div className="relative rounded-3xl p-6 sm:p-8 bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl space-y-6">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold uppercase tracking-wider text-amber-300 flex items-center gap-2">
+                    <Trophy className="w-4 h-4" />
+                    Destaque Competitivo
+                  </span>
+                  <span className="text-[10px] uppercase font-black px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
+                    Futsal JIF
+                  </span>
+                </div>
+
+                <div>
+                  <h3 className="font-heading font-bold text-xl sm:text-2xl text-white">
+                    Hub Semanal de Futsal
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
+                    Acompanha marcadores, calendários e resultados dos escalões Sub-7, Sub-9, Sub-11, Sub-13, Sub-16 e Seniores nos XL Jogos Inter-Freguesias.
+                  </p>
+                </div>
+
+                <div className="space-y-2.5">
+                  <Link
+                    href="/jif/futsal"
+                    className="flex items-center justify-between p-3.5 rounded-2xl bg-white/10 hover:bg-white/15 transition-colors border border-white/10 group"
+                  >
+                    <span className="text-xs sm:text-sm font-semibold text-white">
+                      Resultados e Marcadores Semanais
+                    </span>
+                    <ChevronRight className="w-4 h-4 text-emerald-400 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+
+                  <Link
+                    href="/jif-classificacao"
+                    className="flex items-center justify-between p-3.5 rounded-2xl bg-white/10 hover:bg-white/15 transition-colors border border-white/10 group"
+                  >
+                    <span className="text-xs sm:text-sm font-semibold text-white">
+                      Classificação Geral Virtual (19 Freguesias)
+                    </span>
+                    <ChevronRight className="w-4 h-4 text-amber-400 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
+
+                <div className="pt-2 text-center">
+                  <Link
+                    href="/jif"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-300 hover:text-white transition-colors"
+                  >
+                    <span>Explorar regulamentos e pavilhões</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Supabase Dynamic News Section */}
+      <NoticiasSection noticias={noticias} />
+
+      {/* Supabase Dynamic Events Section */}
+      <EventosSection eventos={eventos} />
+
+      {/* Modalidades Grid Section */}
+      <section className="py-20 bg-white dark:bg-slate-900 transition-colors">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+            <span className="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider">
+              As Nossas Modalidades
+            </span>
+            <h2 className="font-heading font-black text-2xl sm:text-4xl text-slate-900 dark:text-white tracking-tight">
+              Desporto para Todas as Idades
+            </h2>
+            <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
+              Treinos semanais com treinadores dedicados no Pavilhão de Vilar do Pinheiro e recintos desportivos da freguesia.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                title: "Futsal Masculino & Feminino",
+                desc: "Escalões de formação (Sub-7 a Sub-16) e seniores. Treinos no Pavilhão Municipal de Vilar do Pinheiro.",
+                icon: "⚽",
+                tag: "Formação & Seniores",
+              },
+              {
+                title: "Atletismo & Corta-Mato",
+                desc: "Participação nas provas oficiais dos JIF e eventos municipais de corta-mato e corrida de estrada.",
+                icon: "🏃‍♂️",
+                tag: "Todas as Idades",
+              },
+              {
+                title: "Ténis de Mesa",
+                desc: "Treinos técnicos e torneios de preparação para as jornadas competitivas inter-freguesias.",
+                icon: "🏓",
+                tag: "Individual & Equipas",
+              },
+              {
+                title: "Duatlo em Duplas",
+                desc: "Modalidade de resistência combinando corrida e ciclismo com espírito de entreajuda.",
+                icon: "🚴",
+                tag: "Duplas",
+              },
+              {
+                title: "Badminton",
+                desc: "Agilidade, reflexos e convívio desportivo em recintos cobertos para jovens e adultos.",
+                icon: "🏸",
+                tag: "Recreativo & JIF",
+              },
+              {
+                title: "Futebol de Praia",
+                desc: "Competição de verão nas praias de Vila do Conde com o entusiasmo da nossa terra.",
+                icon: "🏖️",
+                tag: "Verão",
+              },
+            ].map((m, idx) => (
+              <div
+                key={idx}
+                className="p-6 rounded-3xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-white/10 hover:border-emerald-300 dark:hover:border-emerald-500/30 transition-all hover:shadow-lg flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-3xl">{m.icon}</span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-white/10">
+                      {m.tag}
+                    </span>
+                  </div>
+                  <h3 className="font-heading font-bold text-lg text-slate-900 dark:text-white mb-2">
+                    {m.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    {m.desc}
+                  </p>
+                </div>
+                <div className="pt-6 mt-4 border-t border-slate-200/60 dark:border-white/5">
+                  <Link
+                    href="/modalidades"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-green dark:text-emerald-400 hover:text-brand-greenDark transition-colors"
+                  >
+                    <span>Horários e Inscrições</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Community Banner / CTA */}
+      <section className="py-16 bg-gradient-to-r from-brand-navy to-emerald-950 text-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 text-emerald-300 text-xs font-bold uppercase tracking-wider">
+            <HeartHandshake className="w-4 h-4" />
+            <span>Faz Parte da Família AJAVP</span>
+          </div>
+
+          <h2 className="font-heading font-black text-2xl sm:text-4xl max-w-2xl mx-auto leading-tight">
+            Torna-te Sócio ou Inscreve o Teu Educando
+          </h2>
+
+          <p className="text-slate-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+            Apoia o desporto em Vilar do Pinheiro. Ficha digital de sócio, quotas simplificadas e seguro desportivo incluído nos treinos oficiais.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+            <a
+              href="https://gestao.ajavp.pt/socio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-heading font-bold px-8 py-3.5 rounded-full shadow-lg transition-all text-sm"
+            >
+              <span>Aceder ao Portal do Sócio</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
+
+            <a
+              href="https://forms.gle/YJdnZyUsMB8aBADj6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-heading font-semibold px-8 py-3.5 rounded-full border border-white/20 transition-all text-sm"
+            >
+              <span>Formulário de Inscrição</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

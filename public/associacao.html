@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>A Associação • História, Órgãos Sociais &amp; Regime Eleitoral • AJAVP</title>
+  <meta name="description" content="Conhece a história da AJAVP, a composição dos Órgãos Sociais (Mesa, Direção e Conselho Fiscal), o regime eleitoral e de votação, instalações e balcão documental oficial.">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png?v=7">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png?v=7">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png?v=7">
+
+  <link rel="canonical" href="https://ajavp.vercel.app/associacao">
+
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ajavp.vercel.app/associacao">
+  <meta property="og:title" content="A Associação • História, Órgãos Sociais & Regime Eleitoral • AJAVP">
+  <meta property="og:description" content="Conhece a história da AJAVP, a composição dos Órgãos Sociais, o regime de votação e eleições, instalações e documentos oficiais.">
+  <meta property="og:image" content="https://ajavp.vercel.app/assets/images/og-share.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AJAVP • Associação Jovens e Adultos de Vilar do Pinheiro">
+  <meta property="og:locale" content="pt_PT">
+
+  <!-- Twitter / X Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="A Associação • AJAVP | Vilar do Pinheiro">
+  <meta name="twitter:description" content="História, Órgãos Sociais, regime eleitoral e de votação, instalações e projeto associativo da AJAVP.">
+  <meta name="twitter:image" content="https://ajavp.vercel.app/assets/images/og-share.jpg">
+
+  <!-- PWA & Mobile Web App Manifest -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1b4557" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="AJAVP">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png?v=7">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @custom-variant dark (&:where(.dark, .dark *));
+    @theme {
+      --color-brand-green: #387b5b;
+      --color-brand-greenDark: #2d6349;
+      --color-brand-navy: #1b4557;
+      --color-brand-navyDark: #13323f;
+      --color-brand-accent: #f2a93b;
+      --color-brand-grayBg: #f8fafc;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-sans: 'Inter', sans-serif;
+    }
+  </style>
+
+  <!-- Sistema de Temas & Acessibilidade -->
+  <link rel="stylesheet" href="assets/css/theme.css?v=5">
+  <link rel="stylesheet" href="assets/css/a11y.css?v=3">
+  <script>
+    (function() {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+    }
+    h1, h2, h3, h4, h5, h6, .font-heading {
+      font-family: 'Montserrat', sans-serif;
+    }
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    html:not(.dark) .hero-bg-img {
+      opacity: 0.88 !important;
+      filter: contrast(1.05) saturate(1.1) !important;
+    }
+    html.dark .hero-bg-img {
+      opacity: 0.70 !important;
+      filter: brightness(0.9) contrast(1.1) !important;
+    }
+    .hero-gradient-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+    html:not(.dark) .hero-gradient-overlay {
+      background: linear-gradient(90deg, rgba(248, 250, 252, 0.90) 0%, rgba(248, 250, 252, 0.68) 42%, rgba(248, 250, 252, 0.12) 100%) !important;
+      background-color: transparent !important;
+    }
+    html.dark .hero-gradient-overlay {
+      background: linear-gradient(90deg, rgba(11, 19, 30, 0.92) 0%, rgba(11, 19, 30, 0.65) 45%, rgba(11, 19, 30, 0.22) 100%) !important;
+      background-color: transparent !important;
+    }
+    .hero-pattern {
+      background-color: #1b4557;
+      background-image: radial-gradient(rgba(56, 123, 91, 0.45) 1.5px, transparent 1.5px), radial-gradient(rgba(242, 169, 59, 0.25) 1.5px, #1b4557 1.5px);
+      background-size: 60px 60px;
+      background-position: 0 0, 30px 30px;
+    }
+
+    /* Emil Kowalski Craft & Motion System */
+    :root {
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    html, body {
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      scroll-behavior: smooth;
+    }
+    button:active,
+    a[href]:active,
+    .cursor-pointer:active {
+      transform: scale(0.965) !important;
+      transition: transform 120ms var(--ease-out) !important;
+    }
+    .bg-white.rounded-2xl,
+    .bg-white.rounded-3xl,
+    article {
+      box-shadow: 0 1px 2px rgba(15,23,42,0.03), 0 12px 28px -6px rgba(15,23,42,0.07), inset 0 1px 0 0 rgba(255,255,255,0.95) !important;
+      transition: transform 240ms var(--ease-spring), box-shadow 240ms var(--ease-spring) !important;
+    }
+    .bg-white.rounded-2xl:hover,
+    .bg-white.rounded-3xl:hover {
+      transform: translateY(-4px) scale(1.008) !important;
+      box-shadow: 0 24px 38px -10px rgba(15,23,42,0.12), 0 8px 16px -4px rgba(15,23,42,0.05), inset 0 1px 0 0 rgba(255,255,255,1) !important;
+    }
+    #whatsappPopup:not(.hidden) {
+      animation: craftModalEnter 220ms var(--ease-spring) forwards !important;
+    }
+    @keyframes craftModalEnter {
+      from { opacity: 0; transform: scale(0.95) translateY(10px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-brand-grayBg text-slate-800 antialiased selection:bg-brand-green selection:text-white">
+
+  <!-- Link de Salto de Conteúdo (WCAG 2.4.1) -->
+  <a href="#mainContent" class="a11y-skip-link">Saltar para o conteúdo principal</a>
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-brand-green text-white py-2 px-4 text-center text-xs sm:text-sm font-medium flex items-center justify-center gap-2 shadow-inner">
+    <span class="inline-flex items-center justify-center px-2 py-0.5 rounded-full text-xs font-bold bg-white text-brand-green uppercase tracking-wider">Fundada em Dezembro de 2025</span>
+    <span>AJAVP &bull; Associação jovem fundada por membros da antiga JAVIP &bull; Vilar do Pinheiro 🌲</span>
+    <a href="/contactos" class="underline hover:text-amber-200 font-semibold ml-1 hidden sm:inline">Visita a nossa sede &rarr;</a>
+  </div>
+
+  <!-- Header & Navbar -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-300" id="mainHeader" role="banner">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 group flex-shrink-0 mr-4 lg:mr-10 xl:mr-14">
+        <img src="assets/images/logo.webp" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105 logo-light-only dark:hidden">
+        <img src="assets/images/logo_white.webp" alt="Logótipo AJAVP" class="h-14 w-auto object-contain transition-transform group-hover:scale-105 logo-dark-only hidden dark:block">
+        <div class="flex flex-col justify-center">
+          <span class="font-heading font-extrabold text-brand-navy dark:text-white text-lg sm:text-xl tracking-tight leading-tight">AJAVP</span>
+          <span class="text-[11px] leading-tight text-brand-green dark:text-emerald-400 font-semibold tracking-wide hidden sm:block">
+            <span class="block">Associação Jovens e Adultos</span>
+            <span class="block text-emerald-800 dark:text-emerald-300 font-bold">Vilar do Pinheiro</span>
+          </span>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-1 xl:gap-2" aria-label="Navegação Principal">
+        <a href="/" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">Início</a>
+        <a href="/jif" class="text-slate-700 hover:text-amber-600 font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-amber-50/60 transition-colors flex items-center gap-1.5">
+          <i data-lucide="medal" class="w-4 h-4 text-amber-500"></i>
+          <span>JIF 2026/27</span>
+          <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-500 text-slate-950">XL</span>
+        </a>
+        <a href="/modalidades" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">Modalidades &amp; Treinos</a>
+        <a href="/associacao" class="text-brand-green bg-emerald-50/80 font-bold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl transition-colors border border-emerald-200/60" aria-current="page">A Associação</a>
+        <a href="/patrocinadores" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors flex items-center gap-1.5">
+          <i data-lucide="heart-handshake" class="w-4 h-4 text-emerald-600"></i>
+          <span>Patrocinadores</span>
+        </a>
+        <a href="/multimedia" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">Multimédia</a>
+        <a href="/contactos" class="text-slate-700 hover:text-brand-green font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors">Contactos</a>
+      </nav>
+
+      <div class="hidden lg:flex items-center gap-3">
+        <!-- Accessibility Button (Desktop) -->
+        <button id="a11yHeaderBtn" aria-label="A11y - Opções de Acessibilidade" class="theme-toggle-btn" title="Acessibilidade (Alt + A)">
+          <span class="text-sm" aria-hidden="true">♿</span>
+          <span class="text-[11px] font-bold">A11y</span>
+        </button>
+
+        <!-- Theme Toggle Button (Desktop) -->
+        <button id="themeToggleBtn" class="theme-toggle-btn" title="Alternar Modo Claro / Escuro">
+          <i data-lucide="sun" class="w-4 h-4 hidden dark:block text-amber-400"></i>
+          <i data-lucide="moon" class="w-4 h-4 block dark:hidden text-slate-600"></i>
+          <span class="text-[11px] font-bold">
+            <span class="dark:hidden">Escuro</span>
+            <span class="hidden dark:inline text-amber-300">Claro</span>
+          </span>
+        </button>
+
+        <a href="https://forms.gle/YJdnZyUsMB8aBADj6" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-brand-green hover:bg-brand-greenDark text-white px-3 py-2 text-xs xl:px-4 xl:py-2.5 xl:text-sm rounded-full font-heading font-semibold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 whitespace-nowrap">
+          <i data-lucide="user-plus" class="w-4 h-4"></i>
+          <span>Quero Fazer Parte!</span>
+        </a>
+      </div>
+
+      <!-- Mobile Controls (Theme Toggle & Menu) -->
+      <div class="flex items-center gap-2 lg:hidden">
+        <button id="a11yMobileHeaderBtn" data-a11y-open aria-label="Opções de Acessibilidade" class="theme-toggle-btn !p-2" title="Acessibilidade">
+          <span class="text-base" aria-hidden="true">♿</span>
+        </button>
+        <button id="themeToggleBtnMobile" aria-label="Alternar Tema" class="theme-toggle-btn !p-2" title="Alternar Modo Claro / Escuro">
+          <i data-lucide="sun" class="w-5 h-5 hidden dark:block text-amber-400"></i>
+          <i data-lucide="moon" class="w-5 h-5 block dark:hidden text-slate-600"></i>
+        </button>
+        <button id="mobileMenuBtn" aria-label="Abrir menu" class="p-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-200 px-6 py-6 shadow-xl space-y-3 max-h-[85vh] overflow-y-auto">
+      <div class="space-y-1.5 text-sm font-medium">
+        <a href="/" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-50">
+          <span class="flex items-center gap-2.5 font-bold"><i data-lucide="home" class="w-4 h-4 text-emerald-600"></i> Início</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="/jif" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 hover:bg-amber-50">
+          <span class="flex items-center gap-2.5 font-bold"><i data-lucide="medal" class="w-4 h-4 text-amber-500"></i> Jogos Inter-Freguesias (JIF)</span>
+          <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-500 text-slate-950">XL</span>
+        </a>
+        <a href="/modalidades" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-50">
+          <span class="flex items-center gap-2.5 font-bold"><i data-lucide="trophy" class="w-4 h-4 text-emerald-600"></i> Modalidades &amp; Treinos</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="/associacao" class="flex items-center justify-between py-2.5 px-3 rounded-xl bg-emerald-50 text-emerald-900 border border-emerald-200/70 font-bold" aria-current="page">
+          <span class="flex items-center gap-2.5"><i data-lucide="shield" class="w-4 h-4 text-emerald-700"></i> A Associação &amp; Órgãos Sociais</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="/patrocinadores" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 hover:bg-emerald-50">
+          <span class="flex items-center gap-2.5 font-bold"><i data-lucide="heart-handshake" class="w-4 h-4 text-emerald-600"></i> Patrocinadores Oficiais</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="/multimedia" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-50">
+          <span class="flex items-center gap-2.5 font-bold"><i data-lucide="image" class="w-4 h-4 text-purple-600"></i> Galeria &amp; Vídeos</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="/contactos" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-50">
+          <span class="flex items-center gap-2.5 font-bold"><i data-lucide="phone" class="w-4 h-4 text-teal-600"></i> Contactos &amp; Inscrições</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="/acessibilidade" class="flex items-center justify-between py-2.5 px-3 rounded-xl text-slate-700 hover:bg-emerald-50">
+          <span class="flex items-center gap-2.5 font-bold"><span class="text-base" aria-hidden="true">♿</span> Acessibilidade &amp; Usabilidade</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+      </div>
+      <div class="pt-3 border-t border-slate-100 space-y-2">
+        <button id="a11yMobileBtn" data-a11y-open class="w-full flex items-center justify-between py-2.5 px-3 rounded-xl bg-slate-50 text-slate-700 text-xs font-bold transition-colors">
+          <span class="flex items-center gap-2.5">
+            <span class="text-base" aria-hidden="true">♿</span>
+            <span>Painel de Acessibilidade</span>
+          </span>
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-white border border-slate-200">
+            <span>Alt + A</span>
+          </span>
+        </button>
+        <button id="themeToggleBtnDrawer" class="w-full flex items-center justify-between py-2.5 px-3 rounded-xl bg-slate-50 text-slate-700 text-xs font-bold transition-colors">
+          <span class="flex items-center gap-2.5">
+            <i data-lucide="sun-medium" class="w-4 h-4 text-amber-500"></i>
+            <span>Modo de Visualização</span>
+          </span>
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-white border border-slate-200">
+            <span class="dark:hidden text-slate-700">🌙 Mudar p/ Escuro</span>
+            <span class="hidden dark:inline text-amber-300">☀️ Mudar p/ Claro</span>
+          </span>
+        </button>
+        <button id="pwaInstallDrawerBtn" class="w-full flex items-center justify-between py-2.5 px-3 rounded-xl bg-emerald-50/70 text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300 text-xs font-bold border border-emerald-200/60 dark:border-emerald-500/30 transition-all cursor-pointer">
+          <span class="flex items-center gap-2.5">
+            <i data-lucide="download" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+            <span>Instalar App no Telemóvel</span>
+          </span>
+          <span class="text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-emerald-600 text-white">App</span>
+        </button>
+        <button data-push-toggle class="w-full flex items-center justify-between py-2.5 px-3 rounded-xl bg-amber-50/70 text-amber-900 dark:bg-amber-950/40 dark:text-amber-300 text-xs font-bold border border-amber-200/60 dark:border-amber-500/30 transition-all cursor-pointer">
+          <span class="flex items-center gap-2.5">
+            <i data-lucide="bell" class="w-4 h-4 text-amber-500"></i>
+            <span class="push-btn-text">Ativar Notificações da AJAVP</span>
+          </span>
+          <span class="push-btn-badge text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-500 text-slate-950">Alertas</span>
+        </button>
+        <a href="https://forms.gle/YJdnZyUsMB8aBADj6" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 bg-brand-green text-white py-3 rounded-xl font-heading font-bold text-xs shadow-md">
+          <i data-lucide="user-plus" class="w-4 h-4"></i>
+          <span>Inscrever Atleta na AJAVP</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal (Landmark HTML5) -->
+  <main id="mainContent" role="main" tabindex="-1" class="flex-grow">
+
+  <!-- Hero Header -->
+  <section class="relative py-16 sm:py-20 overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10">
+    <!-- Imagem de Fundo com Overlay Gradiente Luminoso -->
+    <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+      <img src="assets/images/galeria/foto_28.webp" alt="Família e Sócios da AJAVP" class="hero-bg-img object-[center_25%]">
+      <div class="hero-gradient-overlay"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-200/80 dark:border-emerald-500/30">
+          <i data-lucide="shield" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+          <span>Identidade, Valores &amp; Instalações</span>
+        </div>
+        <h1 class="font-heading font-black text-3xl sm:text-5xl text-brand-navy dark:text-white tracking-tight leading-tight">
+          Quem Somos &bull; AJAVP
+        </h1>
+        <p class="text-slate-600 dark:text-slate-100 text-sm sm:text-base leading-relaxed font-medium">
+          Fundada formalmente em Dezembro de 2025 por associados e dirigentes que integraram a antiga JAVIP, a Associação Jovens e Adultos de Vilar do Pinheiro tem como missão primordial revitalizar a atividade desportiva, o civismo e a união comunitária na nossa terra.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre a Associação & Órgãos Sociais -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+          <div class="space-y-2">
+            <span class="text-xs font-bold uppercase tracking-widest text-brand-green">A Nossa História &amp; Identidade</span>
+            <h2 class="font-heading font-black text-3xl sm:text-4xl text-brand-navy">
+              Uma Associação Jovem com Raízes Profundas
+            </h2>
+          </div>
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+            A <strong>AJAVP</strong> é uma associação jovem, formal e legalmente constituída a <strong>22 de Dezembro de 2025</strong> (Estatutos outorgados e registados), tendo os seus primeiros órgãos sociais tomado posse a <strong>26 de Dezembro de 2025</strong> (Ata N.º 1).
+          </p>
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+            O clube nasce do compromisso e dedicação de um grupo de jovens e adultos de Vilar do Pinheiro, impulsionado por pessoas que fizeram parte ativa da <strong>antiga e emblemática JAVIP</strong>. Trazendo a experiência acumulada, o respeito pelas tradições e a inconfundível mística da <strong>Mancha Verde</strong>, refundámos o movimento desportivo sob uma estrutura associativa transparente, moderna e pronta para servir as próximas gerações.
+          </p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-100 text-center">
+            <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
+              <div class="font-heading font-black text-xl text-brand-navy">Dez 2025</div>
+              <div class="text-[10px] font-semibold text-slate-500 uppercase mt-0.5">Fundação Formal</div>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
+              <div class="font-heading font-black text-xl text-brand-green">Legado</div>
+              <div class="text-[10px] font-semibold text-slate-500 uppercase mt-0.5">Membros da Antiga JAVIP</div>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
+              <div class="font-heading font-black text-xl text-amber-600">1 € / mês</div>
+              <div class="text-[10px] font-semibold text-slate-500 uppercase mt-0.5">Quota (Menores Isentos)</div>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
+              <div class="font-heading font-black text-xl text-teal-600">3 Anos</div>
+              <div class="text-[10px] font-semibold text-slate-500 uppercase mt-0.5">Mandato (2026–2028)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-white dark:bg-slate-900 text-slate-800 dark:text-white space-y-6 shadow-xl border-2 border-emerald-500/30 dark:border-white/10">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-50 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center border border-emerald-200 dark:border-emerald-500/30">
+              <i data-lucide="scale" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="font-heading font-bold text-lg text-brand-navy dark:text-white">Dados Oficiais &amp; Constituição</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Associação sem fins lucrativos &bull; Ata N.º 1 e Estatutos</p>
+            </div>
+          </div>
+          <div class="space-y-3 text-xs text-slate-600 dark:text-slate-300">
+            <div class="flex justify-between py-2 border-b border-slate-100 dark:border-white/10">
+              <span class="text-slate-500 dark:text-slate-400">Nome Oficial:</span>
+              <span class="font-bold text-slate-900 dark:text-white text-right">AJAVP – Associação Jovens e Adultos de Vilar do Pinheiro</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-slate-100 dark:border-white/10">
+              <span class="text-slate-500 dark:text-slate-400">NIPC / Pessoa Coletiva:</span>
+              <span class="font-mono font-bold text-amber-600 dark:text-amber-300">519 096 045</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-slate-100 dark:border-white/10">
+              <span class="text-slate-500 dark:text-slate-400">NISS (Segurança Social):</span>
+              <span class="font-mono font-bold text-teal-600 dark:text-teal-300">25190960451</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-slate-100 dark:border-white/10">
+              <span class="text-slate-500 dark:text-slate-400">Data dos Estatutos:</span>
+              <span class="font-bold text-slate-900 dark:text-white">22 de Dezembro de 2025</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-slate-100 dark:border-white/10">
+              <span class="text-slate-500 dark:text-slate-400">Eleição e Tomada de Posse:</span>
+              <span class="font-bold text-emerald-700 dark:text-emerald-300">26 de Dezembro de 2025 (Ata N.º 1)</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-slate-100 dark:border-white/10">
+              <span class="text-slate-500 dark:text-slate-400">Sede Social Oficial:</span>
+              <span class="font-bold text-slate-900 dark:text-white text-right">Rua 103, nº 43, Urbanização de Real, 4485-823 Vilar do Pinheiro</span>
+            </div>
+            <div class="flex justify-between py-2">
+              <span class="text-slate-500 dark:text-slate-400">Filiação Desportiva:</span>
+              <span class="font-bold text-emerald-700 dark:text-emerald-300">ADCCVC / Jogos Inter-Freguesias</span>
+            </div>
+          </div>
+          <a href="https://drive.google.com/file/d/1F0DrwMzSioop_dyUVbqdEgmP7I0g24qL/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 bg-slate-50 hover:bg-slate-100 dark:bg-white/10 dark:hover:bg-white/20 text-brand-navy dark:text-white py-3 rounded-xl font-bold text-xs transition-colors border border-slate-200 dark:border-white/15 shadow-xs">
+            <i data-lucide="file-text" class="w-4 h-4 text-brand-green"></i>
+            <span>Consultar Estatutos Oficiais (PDF)</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Órgãos Sociais Oficiais (Ata N.º 1) -->
+      <div class="pt-12 border-t border-slate-100 dark:border-white/10 space-y-8">
+        <div class="max-w-2xl space-y-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-200 dark:border-emerald-800/60">
+            <i data-lucide="users" class="w-3.5 h-3.5 text-brand-green"></i>
+            <span>Triénio 2026–2028 &bull; Ata N.º 1</span>
+          </div>
+          <h3 class="font-heading font-black text-2xl sm:text-3xl text-brand-navy dark:text-white">
+            Órgãos Sociais da AJAVP
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Eleitos por unanimidade dos associados fundadores na Assembleia Geral Ordinária de <strong>26 de Dezembro de 2025</strong> para um mandato estatutário de 3 anos.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Mesa da Assembleia Geral -->
+          <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200/80 dark:border-white/10 space-y-4 hover:border-blue-300 dark:hover:border-blue-400/50 hover:shadow-md transition-all flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="flex items-center gap-3 pb-3 border-b border-slate-200 dark:border-white/10">
+                <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 flex items-center justify-center">
+                  <i data-lucide="landmark" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="font-heading font-bold text-base text-brand-navy dark:text-white">Mesa da Assembleia</h4>
+                  <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400 uppercase">3 Membros &bull; Convocatórias</span>
+                </div>
+              </div>
+              <ul class="space-y-2.5 text-xs">
+                <li class="p-3 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200/70 dark:border-white/10 shadow-2xs">
+                  <span class="text-[10px] font-bold text-blue-600 dark:text-blue-400 uppercase block tracking-wider">Presidente</span>
+                  <span class="font-bold text-slate-900 dark:text-white text-sm">Francisco José Moreira de Azevedo</span>
+                </li>
+                <li class="p-2.5 rounded-2xl bg-white dark:bg-slate-800/70 border border-slate-100 dark:border-white/10 shadow-2xs">
+                  <span class="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase block tracking-wider">Secretária</span>
+                  <span class="font-semibold text-slate-800 dark:text-slate-200">Eva Cristina Vieira Alves</span>
+                </li>
+                <li class="p-2.5 rounded-2xl bg-white dark:bg-slate-800/70 border border-slate-100 dark:border-white/10 shadow-2xs">
+                  <span class="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase block tracking-wider">Secretária</span>
+                  <span class="font-semibold text-slate-800 dark:text-slate-200">Sónia Patrícia Santos Nogueira</span>
+                </li>
+              </ul>
+            </div>
+            <div class="text-[11px] text-slate-500 dark:text-slate-400 pt-3 border-t border-slate-200 dark:border-white/10">
+              Presidência das sessões e lavratura das atas da Assembleia Geral.
+            </div>
+          </div>
+
+          <!-- Direção -->
+          <div class="p-6 rounded-3xl bg-gradient-to-b from-emerald-50/70 to-white dark:from-emerald-950/40 dark:to-slate-900 border-2 border-emerald-400 dark:border-emerald-500/70 space-y-4 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="flex items-center gap-3 pb-3 border-b border-emerald-200/80 dark:border-emerald-800/40">
+                <div class="w-10 h-10 rounded-xl bg-emerald-500 text-white flex items-center justify-center shadow-xs">
+                  <i data-lucide="shield" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="font-heading font-bold text-base text-brand-navy dark:text-white">Direção do Clube</h4>
+                  <span class="text-[10px] font-semibold text-emerald-700 dark:text-emerald-400 uppercase">5 Membros &bull; Gerência</span>
+                </div>
+              </div>
+              <ul class="space-y-2 text-xs">
+                <li class="p-3 rounded-2xl bg-white dark:bg-slate-800/90 border-2 border-emerald-300 dark:border-emerald-500/60 shadow-2xs">
+                  <span class="text-[10px] font-bold text-brand-green dark:text-emerald-400 uppercase block tracking-wider">Presidente da Direção</span>
+                  <span class="font-bold text-slate-900 dark:text-white text-sm">Pedro Miguel da Silva Cruz</span>
+                </li>
+                <li class="p-2.5 rounded-xl bg-white dark:bg-slate-800/70 border border-emerald-100 dark:border-emerald-900/50 shadow-2xs">
+                  <span class="text-[10px] font-bold text-slate-500 dark:text-emerald-400/80 uppercase block tracking-wider">Vice-Presidente</span>
+                  <span class="font-semibold text-slate-800 dark:text-slate-200">Ana Carina Lopes Pereira</span>
+                </li>
+                <li class="p-2.5 rounded-xl bg-white dark:bg-slate-800/70 border border-emerald-100 dark:border-emerald-900/50 shadow-2xs">
+                  <span class="text-[10px] font-bold text-slate-500 dark:text-emerald-400/80 uppercase block tracking-wider">Vice-Presidente</span>
+                  <span class="font-semibold text-slate-800 dark:text-slate-200">Miguel Ângelo Gomes da Silveira</span>
+                </li>
+                <li class="p-2.5 rounded-xl bg-white dark:bg-slate-800/70 border border-emerald-100 dark:border-emerald-900/50 shadow-2xs">
+                  <span class="text-[10px] font-bold text-slate-500 dark:text-emerald-400/80 uppercase block tracking-wider">Secretária</span>
+                  <span class="font-semibold text-slate-800 dark:text-slate-200">Beatriz Pinto Ribeiro</span>
+                </li>
+                <li class="p-2.5 rounded-xl bg-white dark:bg-slate-800/70 border border-emerald-100 dark:border-emerald-900/50 shadow-2xs">
+                  <span class="text-[10px] font-bold text-slate-500 dark:text-emerald-400/80 uppercase block tracking-wider">Tesoureiro</span>
+                  <span class="font-semibold text-slate-800 dark:text-slate-200">Maurício António Ferreira Xavier</span>
+                </li>
+              </ul>
+            </div>
+            <div class="text-[11px] text-emerald-800 dark:text-emerald-300 pt-3 border-t border-emerald-200 dark:border-emerald-800/40 font-medium">
+              A associação obriga-se com a intervenção do Presidente ou do Tesoureiro.
+            </div>
+          </div>
+
+          <!-- Conselho Fiscal -->
+          <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200/80 dark:border-white/10 space-y-4 hover:border-amber-300 dark:hover:border-amber-400/50 hover:shadow-md transition-all flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="flex items-center gap-3 pb-3 border-b border-slate-200 dark:border-white/10">
+                <div class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300 flex items-center justify-center">
+                  <i data-lucide="scale" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="font-heading font-bold text-base text-brand-navy dark:text-white">Conselho Fiscal</h4>
+                  <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400 uppercase">3 Membros &bull; Fiscalização</span>
+                </div>
+              </div>
+              <ul class="space-y-2.5 text-xs">
+                <li class="p-3 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200/70 dark:border-white/10 shadow-2xs">
+                  <span class="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase block tracking-wider">Presidente</span>
+                  <span class="font-bold text-slate-900 dark:text-white text-sm">Pedro de Oliveira Moreira</span>
+                </li>
+                <li class="p-2.5 rounded-2xl bg-white dark:bg-slate-800/70 border border-slate-100 dark:border-white/10 shadow-2xs">
+                  <span class="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase block tracking-wider">Vogal</span>
+                  <span class="font-semibold text-slate-800 dark:text-slate-200">Paulo Sérgio Lopes de Azevedo</span>
+                </li>
+                <li class="p-2.5 rounded-2xl bg-white dark:bg-slate-800/70 border border-slate-100 dark:border-white/10 shadow-2xs">
+                  <span class="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase block tracking-wider">Vogal</span>
+                  <span class="font-semibold text-slate-800 dark:text-slate-200">Susana Isabel Vidal Duarte</span>
+                </li>
+              </ul>
+            </div>
+            <div class="text-[11px] text-slate-500 dark:text-slate-400 pt-3 border-t border-slate-200 dark:border-white/10">
+              Fiscalização de atos administrativos e emissão de parecer sobre as contas do clube.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Como Funcionam as Eleições & Regime de Votação da AJAVP -->
+  <section id="eleicoes" class="py-20 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-200/70 dark:border-white/10 scroll-mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-6 border-b border-slate-200 dark:border-white/10">
+        <div class="max-w-3xl space-y-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-brand-green dark:text-emerald-400 text-xs font-bold uppercase tracking-wider">
+            <i data-lucide="vote" class="w-4 h-4"></i>
+            <span>Democracia Associativa &bull; Estatutos AJAVP</span>
+          </div>
+          <h2 class="font-heading font-black text-3xl sm:text-4xl text-brand-navy dark:text-white">
+            Como Funcionam as Eleições &amp; Regime de Votação
+          </h2>
+          <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+            A direção e a fiscalização da Associação Jovens e Adultos de Vilar do Pinheiro assentam na participação democrática e transparente de todos os seus sócios, nos termos dos Estatutos Oficiais e dos Artigos 6.º e 12.º do <strong>Regulamento Interno</strong>, que consagra o <strong>Regime de Votação Diferenciado</strong> por antiguidade e categoria associativa.
+          </p>
+        </div>
+        <div class="shrink-0 flex items-center flex-wrap gap-3">
+          <a href="https://drive.google.com/file/d/1ZNM66sC4utRexz40rBJzbF7MJm6CtXFf/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold transition-all shadow-sm">
+            <i data-lucide="file-check" class="w-4 h-4 text-white"></i>
+            <span>Regulamento Interno (PDF)</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5 text-white/80"></i>
+          </a>
+          <a href="https://drive.google.com/file/d/1F0DrwMzSioop_dyUVbqdEgmP7I0g24qL/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-300 dark:border-white/10 text-xs font-bold text-slate-700 dark:text-slate-200 hover:border-brand-green hover:text-brand-green transition-all shadow-2xs">
+            <i data-lucide="file-text" class="w-4 h-4 text-emerald-600"></i>
+            <span>Estatutos (PDF)</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-400"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Tabela Oficial: Regime de Votação Diferenciado (Art. 6.º do Regulamento Interno) -->
+      <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border-2 border-emerald-400/80 dark:border-emerald-500/60 shadow-md space-y-6">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pb-4 border-b border-slate-200/80 dark:border-white/10">
+          <div class="space-y-1">
+            <span class="text-[11px] font-extrabold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">Artigo 6.º &bull; Regulamento Interno AJAVP</span>
+            <h3 class="font-heading font-black text-2xl text-brand-navy dark:text-white">
+              Tabela de Votos: Regime de Votação Diferenciado
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+              O número de votos de cada associado em Assembleia Geral e eleições é atribuído em função da categoria de associado e dos anos completos de antiguidade (contados a partir da data de admissão aprovada pela Direção):
+            </p>
+          </div>
+          <div class="shrink-0 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/80 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs font-bold">
+            <i data-lucide="award" class="w-4 h-4 text-emerald-600"></i>
+            <span>Valorização da Fidelidade Associativa</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <!-- Cartão: Sócios Efetivos -->
+          <div class="p-6 rounded-2xl bg-gradient-to-br from-slate-50 to-emerald-50/40 dark:from-slate-800/80 dark:to-emerald-950/20 border border-emerald-200/80 dark:border-emerald-900/60 space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <span class="w-8 h-8 rounded-xl bg-emerald-500 text-white flex items-center justify-center font-bold text-xs shadow-xs">
+                  <i data-lucide="user-check" class="w-4 h-4"></i>
+                </span>
+                <div>
+                  <h4 class="font-heading font-bold text-base text-slate-900 dark:text-white">Sócios Efetivos</h4>
+                  <span class="text-[10px] font-semibold text-emerald-700 dark:text-emerald-400 uppercase">Art. 6.º, n.º 1, al. b)</span>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 text-xs font-extrabold">1 a 5 Votos</span>
+            </div>
+
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Têm direito a <strong>1 voto base</strong>, com o acréscimo de <strong>1 voto adicional por cada 5 anos completos de antiguidade</strong>, até ao limite máximo de <strong>5 votos</strong>:
+            </p>
+
+            <div class="space-y-2 pt-1 text-xs font-medium">
+              <div class="flex items-center justify-between p-2.5 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200/70 dark:border-white/10 shadow-2xs">
+                <span class="text-slate-700 dark:text-slate-300">Menos de 5 anos de associado (Base)</span>
+                <span class="font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-0.5 rounded-lg border border-emerald-200/60">1 Voto</span>
+              </div>
+              <div class="flex items-center justify-between p-2.5 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200/70 dark:border-white/10 shadow-2xs">
+                <span class="text-slate-700 dark:text-slate-300">De 5 a 9 anos completos (+1 voto)</span>
+                <span class="font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-0.5 rounded-lg border border-emerald-200/60">2 Votos</span>
+              </div>
+              <div class="flex items-center justify-between p-2.5 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200/70 dark:border-white/10 shadow-2xs">
+                <span class="text-slate-700 dark:text-slate-300">De 10 a 14 anos completos (+2 votos)</span>
+                <span class="font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-0.5 rounded-lg border border-emerald-200/60">3 Votos</span>
+              </div>
+              <div class="flex items-center justify-between p-2.5 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200/70 dark:border-white/10 shadow-2xs">
+                <span class="text-slate-700 dark:text-slate-300">De 15 a 19 anos completos (+3 votos)</span>
+                <span class="font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-0.5 rounded-lg border border-emerald-200/60">4 Votos</span>
+              </div>
+              <div class="flex items-center justify-between p-2.5 rounded-xl bg-emerald-100/70 dark:bg-emerald-950/80 border border-emerald-300 dark:border-emerald-700 shadow-2xs">
+                <span class="font-bold text-emerald-950 dark:text-emerald-200">20 ou mais anos completos (Teto Máximo Efetivo)</span>
+                <span class="font-black text-white bg-emerald-600 px-2.5 py-0.5 rounded-lg shadow-xs">5 Votos</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cartão: Sócios Fundadores -->
+          <div class="p-6 rounded-2xl bg-gradient-to-br from-slate-50 to-amber-50/50 dark:from-slate-800/80 dark:to-amber-950/20 border border-amber-300/80 dark:border-amber-800/60 space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <span class="w-8 h-8 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center font-bold text-xs shadow-xs">
+                  <i data-lucide="crown" class="w-4 h-4"></i>
+                </span>
+                <div>
+                  <h4 class="font-heading font-bold text-base text-slate-900 dark:text-white">Sócios Fundadores</h4>
+                  <span class="text-[10px] font-semibold text-amber-700 dark:text-amber-400 uppercase">Art. 6.º, n.º 1, al. a) e c)</span>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/60 text-amber-900 dark:text-amber-300 text-xs font-extrabold">3 a 7 Votos</span>
+            </div>
+
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Têm direito a <strong>3 votos base de honra</strong>, aplicando-se cumulativamente o acréscimo de <strong>1 voto adicional por cada 5 anos completos</strong>, até ao teto estatutário de <strong>7 votos</strong> na totalidade:
+            </p>
+
+            <div class="space-y-2 pt-1 text-xs font-medium">
+              <div class="flex items-center justify-between p-2.5 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200/70 dark:border-white/10 shadow-2xs">
+                <span class="text-slate-700 dark:text-slate-300">Base Estatutária de Fundador</span>
+                <span class="font-bold text-amber-800 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2.5 py-0.5 rounded-lg border border-amber-200/60">3 Votos</span>
+              </div>
+              <div class="flex items-center justify-between p-2.5 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200/70 dark:border-white/10 shadow-2xs">
+                <span class="text-slate-700 dark:text-slate-300">Com 5 anos completos de antiguidade</span>
+                <span class="font-bold text-amber-800 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2.5 py-0.5 rounded-lg border border-amber-200/60">4 Votos</span>
+              </div>
+              <div class="flex items-center justify-between p-2.5 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200/70 dark:border-white/10 shadow-2xs">
+                <span class="text-slate-700 dark:text-slate-300">Com 10 anos completos de antiguidade</span>
+                <span class="font-bold text-amber-800 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2.5 py-0.5 rounded-lg border border-amber-200/60">5 Votos</span>
+              </div>
+              <div class="flex items-center justify-between p-2.5 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200/70 dark:border-white/10 shadow-2xs">
+                <span class="text-slate-700 dark:text-slate-300">Com 15 anos completos de antiguidade</span>
+                <span class="font-bold text-amber-800 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2.5 py-0.5 rounded-lg border border-amber-200/60">6 Votos</span>
+              </div>
+              <div class="flex items-center justify-between p-2.5 rounded-xl bg-amber-100/70 dark:bg-amber-950/80 border border-amber-300 dark:border-amber-700 shadow-2xs">
+                <span class="font-bold text-amber-950 dark:text-amber-200">Com 20 ou mais anos (Teto Soberano Máximo)</span>
+                <span class="font-black text-slate-950 bg-amber-400 px-2.5 py-0.5 rounded-lg shadow-xs">7 Votos</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-slate-600 dark:text-slate-300">
+          <div class="flex items-center gap-2">
+            <i data-lucide="info" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+            <span><strong>Regra de Contagem:</strong> A antiguidade é calculada estritamente com base na data de admissão aprovada pela Direção (Art. 6.º, n.º 2).</span>
+          </div>
+          <span class="text-[11px] font-bold text-emerald-700 dark:text-emerald-400">Regulamento Interno &bull; Artigo 6.º</span>
+        </div>
+      </div>
+
+      <!-- 4 Pilares do Regime Eleitoral -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Pilar 1: Quem Vota -->
+        <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-white/10 shadow-sm flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow">
+          <div class="space-y-3">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-100 dark:bg-emerald-900/50 text-brand-green dark:text-emerald-300 flex items-center justify-center">
+              <i data-lucide="users" class="w-6 h-6"></i>
+            </div>
+            <span class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest block">Eleitores</span>
+            <h3 class="font-heading font-bold text-lg text-brand-navy dark:text-white">Quem Tem Direito a Voto?</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Têm capacidade eleitoral ativa todos os <strong class="text-slate-900 dark:text-white">associados maiores de idade</strong> no pleno gozo dos seus direitos estatutários e com a sua <strong class="text-slate-900 dark:text-white">quota associativa em dia</strong>.
+            </p>
+          </div>
+          <div class="text-[11px] text-slate-500 dark:text-slate-400 pt-3 border-t border-slate-100 dark:border-white/10 flex items-center gap-1.5">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0"></i>
+            <span>Caderno eleitoral conferido à entrada</span>
+          </div>
+        </div>
+
+        <!-- Pilar 2: Princípio do Voto -->
+        <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-white/10 shadow-sm flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow">
+          <div class="space-y-3">
+            <div class="w-12 h-12 rounded-2xl bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 flex items-center justify-center">
+              <i data-lucide="vote" class="w-6 h-6"></i>
+            </div>
+            <span class="text-[10px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest block">Exercício do Voto</span>
+            <h3 class="font-heading font-bold text-lg text-brand-navy dark:text-white">Voto Secreto &amp; Diferenciado</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              O voto é <strong class="text-slate-900 dark:text-white">pessoal e secreto</strong> em urna durante a Assembleia Geral Eleitoral. O peso do voto de cada associado segue a tabela de antiguidade (de 1 a 5 votos para efetivos e de 3 a 7 para fundadores).
+            </p>
+          </div>
+          <div class="text-[11px] text-slate-500 dark:text-slate-400 pt-3 border-t border-slate-100 dark:border-white/10 flex items-center gap-1.5">
+            <i data-lucide="lock" class="w-4 h-4 text-blue-500 shrink-0"></i>
+            <span>Votação presencial em boletim oficial</span>
+          </div>
+        </div>
+
+        <!-- Pilar 3: Apresentação de Listas -->
+        <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-white/10 shadow-sm flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow">
+          <div class="space-y-3">
+            <div class="w-12 h-12 rounded-2xl bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300 flex items-center justify-center">
+              <i data-lucide="clipboard-list" class="w-6 h-6"></i>
+            </div>
+            <span class="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-widest block">Candidaturas</span>
+            <h3 class="font-heading font-bold text-lg text-brand-navy dark:text-white">Listas Completas (11 Elementos)</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              As candidaturas são formalizadas em lista fechada para todos os Órgãos Sociais: <strong class="text-slate-900 dark:text-white">Mesa da AG (3)</strong>, <strong class="text-slate-900 dark:text-white">Direção (5)</strong> e <strong class="text-slate-900 dark:text-white">Conselho Fiscal (3)</strong>, submetidas ao Presidente da Mesa da AG.
+            </p>
+          </div>
+          <div class="text-[11px] text-slate-500 dark:text-slate-400 pt-3 border-t border-slate-100 dark:border-white/10 flex items-center gap-1.5">
+            <i data-lucide="check" class="w-4 h-4 text-amber-500 shrink-0"></i>
+            <span>Maioria simples dos votos expressos</span>
+          </div>
+        </div>
+
+        <!-- Pilar 4: Duração do Mandato -->
+        <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-white/10 shadow-sm flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow">
+          <div class="space-y-3">
+            <div class="w-12 h-12 rounded-2xl bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 flex items-center justify-center">
+              <i data-lucide="calendar" class="w-6 h-6"></i>
+            </div>
+            <span class="text-[10px] font-bold text-purple-600 dark:text-purple-400 uppercase tracking-widest block">Periodicidade</span>
+            <h3 class="font-heading font-bold text-lg text-brand-navy dark:text-white">Mandato de 3 Anos</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Nos termos do Artigo 4.º dos Estatutos, os mandatos têm a duração de <strong class="text-slate-900 dark:text-white">3 anos civis</strong> (triénio). Os atuais Órgãos Sociais foram investidos em dezembro de 2025 para o <strong class="text-slate-900 dark:text-white">triénio 2026–2028</strong>.
+            </p>
+          </div>
+          <div class="text-[11px] text-slate-500 dark:text-slate-400 pt-3 border-t border-slate-100 dark:border-white/10 flex items-center gap-1.5">
+            <i data-lucide="clock" class="w-4 h-4 text-purple-500 shrink-0"></i>
+            <span>Próximas eleições ordinárias em 2028</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Passo a Passo do Ato Eleitoral -->
+      <div class="p-8 rounded-3xl bg-gradient-to-br from-brand-navyDark to-slate-900 text-white relative overflow-hidden shadow-lg">
+        <div class="relative z-10 space-y-6">
+          <div class="max-w-2xl space-y-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Processo Passo a Passo</span>
+            <h3 class="font-heading font-black text-2xl sm:text-3xl text-white">Como Decorre o Dia da Eleição</h3>
+            <p class="text-slate-300 text-xs sm:text-sm">
+              Convocatória oficial, credenciação dos associados e contagem pública de votos:
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 pt-2">
+            
+            <div class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs space-y-2">
+              <div class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center font-bold text-sm">1</div>
+              <h4 class="font-heading font-bold text-sm text-white">Convocatória Oficial</h4>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                A Mesa da Assembleia Geral publica a convocatória com dia, hora e local na sede, redes sociais e site com a antecedência mínima estatutária.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs space-y-2">
+              <div class="w-8 h-8 rounded-xl bg-blue-500/20 text-blue-300 flex items-center justify-center font-bold text-sm">2</div>
+              <h4 class="font-heading font-bold text-sm text-white">Credenciação do Sócio</h4>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                À chegada à Assembleia Geral, o associado identifica-se com documento de identificação civil e confirmação do pagamento de quotas.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs space-y-2">
+              <div class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-300 flex items-center justify-center font-bold text-sm">3</div>
+              <h4 class="font-heading font-bold text-sm text-white">Voto Secreto em Urna</h4>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                O sócio recebe o boletim com as listas concorrentes, vota em cabine reservada e deposita pessoalmente o boletim na urna selada.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs space-y-2">
+              <div class="w-8 h-8 rounded-xl bg-purple-500/20 text-purple-300 flex items-center justify-center font-bold text-sm">4</div>
+              <h4 class="font-heading font-bold text-sm text-white">Escrutínio e Posse</h4>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Após o fecho das urnas, procede-se à contagem pública dos votos, leitura dos resultados em ata e conferência da tomada de posse dos eleitos.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- As Nossas Instalações & 3 Pavilhões (Com Google Maps) -->
+  <section id="locais" class="py-20 bg-brand-grayBg border-y border-slate-200/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <div class="max-w-3xl space-y-3">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-green">Instalações Desportivas</span>
+        <h2 class="font-heading font-black text-3xl sm:text-4xl text-brand-navy">Onde Treinamos e Jogamos</h2>
+        <p class="text-slate-600 text-sm sm:text-base">
+          Conhece a localização exata de cada um dos recintos com mapas interativos e rotas GPS diretas para o telemóvel.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- 1. Pavilhão de Canidelo -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800 uppercase">Pavilhão Coberto &bull; 4.ªs Feiras</span>
+              <a href="https://www.google.com/maps/place/Pavilh%C3%A3o+Desportivo+Municipal+de+Canidelo+-+Vila+do+Conde/@41.3097411,-8.6434142,17z/data=!3m1!4b1!4m6!3m5!1s0xd245d6c0b94b30d:0x2ab0fc8bdb467fb6!8m2!3d41.3097411!4d-8.6434142!16s%2Fg%2F11p17h5_gf" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-blue-600 transition-colors" title="Abrir no Google Maps">
+                <i data-lucide="external-link" class="w-4 h-4"></i>
+              </a>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-brand-navy">Pavilhão Desportivo Municipal de Canidelo</h3>
+            <p class="text-xs text-slate-500">Canidelo, Vila do Conde</p>
+            <p class="text-xs text-slate-600">Treinos conjuntos de Futsal Sub-11 e Sub-13 (18h30–20h00) todas as quartas-feiras.</p>
+          </div>
+          <div class="h-56 rounded-2xl overflow-hidden border border-slate-200">
+            <iframe title="Mapa Pavilhão Desportivo Municipal de Canidelo" src="https://maps.google.com/maps?q=41.3097411,-8.6434142&z=16&output=embed" class="w-full h-full border-0" loading="lazy"></iframe>
+          </div>
+          <a href="https://www.google.com/maps/place/Pavilh%C3%A3o+Desportivo+Municipal+de+Canidelo+-+Vila+do+Conde/@41.3097411,-8.6434142,17z/data=!3m1!4b1!4m6!3m5!1s0xd245d6c0b94b30d:0x2ab0fc8bdb467fb6!8m2!3d41.3097411!4d-8.6434142!16s%2Fg%2F11p17h5_gf" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-brand-green hover:underline flex items-center justify-between pt-1">
+            <span>Traçar Rota no Google Maps</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <!-- 2. Pavilhão MaiaSport -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 uppercase">Pavilhão Coberto &bull; 5.ªs Feiras</span>
+              <a href="https://www.google.com/maps/place/Maia+Sport/@41.2484458,-8.659225,139m/data=!3m1!1e3!4m12!1m5!3m4!2zNDHCsDE0JzU1LjEiTiA4wrAzOSczMS4yIlc!8m2!3d41.248649!4d-8.658671!3m5!1s0xd2467d8f56b23d7:0xb72aea0621b3c13e!8m2!3d41.2483775!4d-8.6588456!16s%2Fg%2F11hwywg7nl?entry=ttu&g_ep=EgoyMDI2MTAxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-emerald-600 transition-colors" title="Abrir Google Maps">
+                <i data-lucide="external-link" class="w-4 h-4"></i>
+              </a>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-brand-navy">Pavilhão MaiaSport (Pedras Rubras)</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">Treinos aos Sub-9 às quintas-feiras (19h00–20h00), podendo ter de partilhar o espaço com os Sub-7 ou Sub-13 (libertando o Ringue na 6.ª feira se os Sub-13 treinarem no pavilhão). Confirmar semanalmente via WhatsApp oficial.</p>
+          </div>
+          <div class="h-56 rounded-2xl overflow-hidden border border-slate-200">
+            <iframe title="Mapa Pavilhão MaiaSport" src="https://maps.google.com/maps?q=41.2483775,-8.6588456&z=17&output=embed" class="w-full h-full border-0" loading="lazy"></iframe>
+          </div>
+          <a href="https://www.google.com/maps/place/Maia+Sport/@41.2484458,-8.659225,139m/data=!3m1!1e3!4m12!1m5!3m4!2zNDHCsDE0JzU1LjEiTiA4wrAzOSczMS4yIlc!8m2!3d41.248649!4d-8.658671!3m5!1s0xd2467d8f56b23d7:0xb72aea0621b3c13e!8m2!3d41.2483775!4d-8.6588456!16s%2Fg%2F11hwywg7nl?entry=ttu&g_ep=EgoyMDI2MTAxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-brand-green hover:underline flex items-center justify-between pt-1">
+            <span>Traçar Rota no Google Maps</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <!-- 3. Ringue de Vilar do Pinheiro -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 uppercase">Ringue Polidesportivo</span>
+              <a href="https://www.google.com/maps/place/Ringue+%2F+Relvado+Sint%C3%A9tico/@41.2723525,-8.6634737,57m/data=!3m1!1e3!4m12!1m5!3m4!2zNDHCsDE2JzIwLjIiTiA4wrAzOSc0OC4yIlc!8m2!3d41.272285!4d-8.663397!3m5!1s0xd2469000483e1e7:0x1f8cafbb6e9a7922!8m2!3d41.2722915!4d-8.6633585!16s%2Fg%2F11ynb8d_z0?entry=ttu&g_ep=EgoyMDI2MTAxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-amber-600 transition-colors" title="Abrir Google Maps">
+                <i data-lucide="external-link" class="w-4 h-4"></i>
+              </a>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-brand-navy">Ringue de Vilar do Pinheiro</h3>
+            <p class="text-xs text-slate-500">Vilar do Pinheiro, Vila do Conde</p>
+            <p class="text-xs text-slate-600">Recinto ao ar livre de treinos regulares de 2.ª a 6.ª (19h00) e sábados de manhã (09h00–11h00).</p>
+          </div>
+          <div class="h-56 rounded-2xl overflow-hidden border border-slate-200">
+            <iframe title="Mapa Ringue AJAVP" src="https://maps.google.com/maps?q=41.2722915,-8.6633585&z=18&output=embed" class="w-full h-full border-0" loading="lazy"></iframe>
+          </div>
+          <a href="https://www.google.com/maps/place/Ringue+%2F+Relvado+Sint%C3%A9tico/@41.2723525,-8.6634737,57m/data=!3m1!1e3!4m12!1m5!3m4!2zNDHCsDE2JzIwLjIiTiA4wrAzOSc0OC4yIlc!8m2!3d41.272285!4d-8.663397!3m5!1s0xd2469000483e1e7:0x1f8cafbb6e9a7922!8m2!3d41.2722915!4d-8.6633585!16s%2Fg%2F11ynb8d_z0?entry=ttu&g_ep=EgoyMDI2MTAxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-brand-green hover:underline flex items-center justify-between pt-1">
+            <span>Traçar Rota no Google Maps</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <!-- 4. Sede da Associação AJAVP -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-800 uppercase">Sede &bull; Secretaria</span>
+              <a href="https://maps.google.com/?q=41.265929,-8.673955" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-slate-700 transition-colors" title="Abrir Google Maps">
+                <i data-lucide="external-link" class="w-4 h-4"></i>
+              </a>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-brand-navy">Sede Social da AJAVP</h3>
+            <p class="text-xs text-slate-500">Rua 103, nº 43, Urbanização de Real, 4485-823 Vilar do Pinheiro</p>
+            <p class="text-xs text-slate-600">Sede oficial da associação e reuniões estatutárias. Atendimento presencial mediante marcação prévia ou durante as atividades e treinos.</p>
+          </div>
+          <div class="h-56 rounded-2xl overflow-hidden border border-slate-200">
+            <iframe title="Mapa Sede AJAVP" src="https://maps.google.com/maps?q=41.265929,-8.673955&z=17&output=embed" class="w-full h-full border-0" loading="lazy"></iframe>
+          </div>
+          <a href="https://maps.google.com/?q=41.265929,-8.673955" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-brand-green hover:underline flex items-center justify-between pt-1">
+            <span>Traçar Rota no Google Maps</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <!-- 5. Junta de Freguesia (Salão Nobre) -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between space-y-4 md:col-span-2">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 uppercase">Salão Nobre &bull; Ténis de Mesa &amp; Atletismo</span>
+              <a href="https://maps.google.com/?q=Junta+de+Freguesia+de+Vilar+do+Pinheiro" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-amber-600 transition-colors" title="Abrir Google Maps">
+                <i data-lucide="external-link" class="w-4 h-4"></i>
+              </a>
+            </div>
+            <div class="flex items-center gap-3">
+              <img src="assets/images/patrocinadores/brasao_junta_vilar_pinheiro.webp" alt="Brasão Junta de Freguesia" class="w-9 h-11 object-contain flex-shrink-0" loading="lazy">
+              <h3 class="font-heading font-bold text-xl text-brand-navy">Junta de Freguesia de Vilar do Pinheiro</h3>
+            </div>
+            <p class="text-xs text-slate-500">Rua da Igreja, Vilar do Pinheiro</p>
+            <p class="text-xs text-slate-600">Local oficial dos treinos de Ténis de Mesa aos sábados (16h00 e 17h00) e ponto de encontro dominical do Atletismo (09h00).</p>
+          </div>
+          <div class="h-56 rounded-2xl overflow-hidden border border-slate-200">
+            <iframe title="Mapa Junta de Freguesia" src="https://maps.google.com/maps?q=Junta+de+Freguesia+de+Vilar+do+Pinheiro&z=17&output=embed" class="w-full h-full border-0" loading="lazy"></iframe>
+          </div>
+          <div class="pt-1 flex items-center justify-between flex-wrap gap-2 text-xs font-bold">
+            <a href="https://vilardopinheiro.pt" target="_blank" rel="noopener noreferrer" class="text-emerald-700 dark:text-emerald-400 hover:underline flex items-center gap-1.5">
+              <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+              <span>Site Oficial: vilardopinheiro.pt</span>
+              <i data-lucide="external-link" class="w-3 h-3 text-slate-400"></i>
+            </a>
+            <a href="https://maps.google.com/?q=Junta+de+Freguesia+de+Vilar+do+Pinheiro" target="_blank" rel="noopener noreferrer" class="text-brand-green hover:underline flex items-center gap-1">
+              <span>Google Maps</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Documentação Oficial & Fichas de Inscrição em PDF -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <div class="max-w-3xl space-y-3">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-green">Transparência &amp; Atendimento</span>
+        <h2 class="font-heading font-black text-3xl sm:text-4xl text-brand-navy">Balcão Documental da AJAVP</h2>
+        <p class="text-slate-600 text-sm sm:text-base">
+          Descarrega e consulta os regulamentos internos, autorizações de treino experimental e o caderno oficial de patrocínios.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Doc 1: Estatutos -->
+        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow">
+          <div class="space-y-2">
+            <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center">
+              <i data-lucide="file-check" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-heading font-bold text-base text-brand-navy">Estatutos &amp; Constituição</h4>
+            <p class="text-xs text-slate-500">Documento legal de fundação da associação e constituição dos órgãos sociais.</p>
+          </div>
+          <a href="https://drive.google.com/file/d/1F0DrwMzSioop_dyUVbqdEgmP7I0g24qL/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-brand-green hover:underline inline-flex items-center gap-1.5 pt-2 border-t border-slate-200">
+            <span>Abrir no Google Drive (PDF)</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Doc 2: Regulamento Interno -->
+        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow">
+          <div class="space-y-2">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-brand-green flex items-center justify-center">
+              <i data-lucide="scale" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-heading font-bold text-base text-brand-navy">Regulamento Interno</h4>
+            <p class="text-xs text-slate-500">Normas disciplinares, direitos e deveres dos atletas, encarregados e equipas técnicas.</p>
+          </div>
+          <a href="https://drive.google.com/file/d/1ZNM66sC4utRexz40rBJzbF7MJm6CtXFf/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-brand-green hover:underline inline-flex items-center gap-1.5 pt-2 border-t border-slate-200">
+            <span>Abrir no Google Drive (PDF)</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Doc 3: Manual de Assiduidade -->
+        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow">
+          <div class="space-y-2">
+            <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center">
+              <i data-lucide="calendar-check" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-heading font-bold text-base text-brand-navy">Manual de Assiduidade</h4>
+            <p class="text-xs text-slate-500">Regras de assiduidade aos treinos para convocatórias aos jogos oficiais JIF.</p>
+          </div>
+          <a href="https://drive.google.com/file/d/1B3VBHHsfP3yC0T0u9-nv15TFklk6T6RI/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-brand-green hover:underline inline-flex items-center gap-1.5 pt-2 border-t border-slate-200">
+            <span>Abrir no Google Drive (PDF)</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Doc 4: Treino Experimental -->
+        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow">
+          <div class="space-y-2">
+            <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center">
+              <i data-lucide="user-check" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-heading font-bold text-base text-brand-navy">Treino Experimental</h4>
+            <p class="text-xs text-slate-500">Autorização prévia obrigatória dos pais para a primeira sessão de treino de atletas menores.</p>
+          </div>
+          <a href="https://drive.google.com/file/d/18FvwM6ge-8DQrFbSaeHmLjOtq2AbDPOD/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-brand-green hover:underline inline-flex items-center gap-1.5 pt-2 border-t border-slate-200">
+            <span>Abrir no Google Drive (PDF)</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Doc 5: Declaração de Imagem -->
+        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow">
+          <div class="space-y-2">
+            <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center">
+              <i data-lucide="camera" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-heading font-bold text-base text-brand-navy">Recolha de Imagem</h4>
+            <p class="text-xs text-slate-500">Autorização para registo fotográfico institucional, Jogos Inter-Freguesias e redes sociais.</p>
+          </div>
+          <a href="https://drive.google.com/file/d/1H_pJp6fOknpFQXDx_ZLuxGAFOu1MA_qc/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-brand-green hover:underline inline-flex items-center gap-1.5 pt-2 border-t border-slate-200">
+            <span>Abrir no Google Drive (PDF)</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Doc 6: Caderno de Patrocínios -->
+        <div class="p-6 rounded-3xl bg-gradient-to-br from-amber-50 to-orange-50/60 border-2 border-amber-300 flex flex-col justify-between space-y-4 hover:shadow-lg transition-all">
+          <div class="space-y-2">
+            <div class="w-10 h-10 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center shadow-xs">
+              <i data-lucide="award" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-heading font-bold text-base text-slate-900">Caderno de Patrocínios 26/27</h4>
+            <p class="text-xs text-slate-600">Dossiê oficial para empresas com pacotes de visibilidade em equipamentos e recintos.</p>
+          </div>
+          <a href="https://drive.google.com/file/d/17d_U3W1jgAcoWb3--tZWHUZDmdBLvivS/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-amber-900 underline inline-flex items-center gap-1.5 pt-2 border-t border-amber-200">
+            <span>Descarregar Proposta Oficial (PDF)</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  </main>
+
+  <!-- Rodapé & Footer -->
+  <footer class="bg-brand-navyDark text-white pt-16 pb-12 border-t border-white/10" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+        
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-3">
+            <img src="assets/images/logo.webp" alt="Logótipo AJAVP" class="h-14 w-auto bg-white p-1 rounded-lg logo-light-only dark:hidden">
+            <img src="assets/images/logo_white.webp" alt="Logótipo AJAVP" class="h-14 w-auto bg-white/10 p-1 rounded-lg logo-dark-only hidden dark:block">
+            <div>
+              <h3 class="font-heading font-bold text-lg text-white">AJAVP</h3>
+              <p class="text-xs text-emerald-300">Vilar do Pinheiro &bull; Época 2026/2027</p>
+            </div>
+          </div>
+          <p class="text-slate-300 text-sm max-w-sm">
+            Associação Jovens e Adultos de Vilar do Pinheiro. Promovemos o desporto, a saúde e os laços comunitários com dedicação a todas as gerações.
+          </p>
+          <div class="space-y-1 text-xs text-slate-400">
+            <p><strong class="text-slate-300">NIPC / NIF:</strong> 519096045</p>
+            <p class="text-amber-300 font-semibold italic">"A Tua Terra Tem Futuro"</p>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-white">Navegação</h4>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li><a href="/" class="hover:text-emerald-300 transition-colors">Página Inicial</a></li>
+            <li><a href="/jif" class="hover:text-emerald-300 transition-colors">JIF 2026/27</a></li>
+            <li><a href="/modalidades" class="hover:text-emerald-300 transition-colors">Modalidades &amp; Treinos</a></li>
+            <li><a href="/associacao" class="hover:text-emerald-300 transition-colors text-emerald-300 font-bold" aria-current="page">A Associação &amp; Pavilhões</a></li>
+            <li><a href="/multimedia" class="hover:text-emerald-300 transition-colors">Multimédia &amp; Vídeos</a></li>
+            <li><a href="/contactos" class="hover:text-emerald-300 transition-colors">Contactos &amp; Inscrições</a></li>
+            <li><a href="/acessibilidade" class="hover:text-emerald-300 transition-colors flex items-center gap-1.5"><span aria-hidden="true">♿</span> Acessibilidade &amp; Usabilidade</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-3 lg:col-span-2">
+          <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-white">Canais Oficiais</h4>
+          <div class="flex flex-col space-y-2.5 text-sm text-slate-300">
+            <a href="https://www.instagram.com/ajavp.javip" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 hover:text-pink-400 transition-colors group">
+              <span class="w-7 h-7 rounded-lg bg-pink-500/10 text-pink-400 flex items-center justify-center group-hover:bg-gradient-to-tr group-hover:from-amber-500 group-hover:via-pink-500 group-hover:to-purple-600 group-hover:text-white transition-all flex-shrink-0">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </span>
+              <span class="font-medium">@ajavp.javip</span>
+            </a>
+            <a href="https://www.facebook.com/ajavp.oficial" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 hover:text-blue-400 transition-colors group">
+              <span class="w-7 h-7 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center group-hover:bg-[#1877F2] group-hover:text-white transition-all flex-shrink-0">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </span>
+              <span class="font-medium">ajavp.oficial</span>
+            </a>
+            <a href="https://www.youtube.com/@AJAVP" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 hover:text-red-400 transition-colors group">
+              <span class="w-7 h-7 rounded-lg bg-red-500/10 text-red-400 flex items-center justify-center group-hover:bg-[#FF0000] group-hover:text-white transition-all flex-shrink-0">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </span>
+              <span class="font-medium">@AJAVP</span>
+            </a>
+            <a href="https://chat.whatsapp.com/BLxsjBfDw7AEAonDy72187" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 hover:text-emerald-400 transition-colors group">
+              <span class="w-7 h-7 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center group-hover:bg-[#25D366] group-hover:text-white transition-all flex-shrink-0">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.01-1.24-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.71 4.3 3.79.6.26 1.07.41 1.44.53.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
+              </span>
+              <span class="font-medium">Comunidade WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+        <p>&copy; 2026 Associação Jovens e Adultos de Vilar do Pinheiro &bull; NIF 519096045 &bull; <a href="/admin-alertas" class="hover:text-amber-400 transition-colors opacity-70 hover:opacity-100">Área da Direção</a></p>
+        <p class="text-slate-500">Desenvolvido para a comunidade de Vilar do Pinheiro.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Widget -->
+  <div id="whatsappWidget" class="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end">
+    <div id="whatsappPopup" class="hidden mb-4 w-[calc(100vw-2.5rem)] sm:w-88 max-w-sm bg-white rounded-3xl shadow-2xl border border-slate-200/80 overflow-hidden transform transition-all duration-300 origin-bottom-right">
+      <div class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white p-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-white dark:bg-white/10 p-1 flex items-center justify-center shadow-md">
+            <img src="assets/images/logo.webp" alt="AJAVP" class="w-full h-full object-contain logo-light-only dark:hidden">
+            <img src="assets/images/logo_white.webp" alt="AJAVP" class="w-full h-full object-contain logo-dark-only hidden dark:block">
+          </div>
+          <div>
+            <h4 class="font-heading font-bold text-sm leading-tight text-white">AJAVP &bull; Apoio</h4>
+            <p class="text-[11px] text-emerald-100 flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse"></span>
+              <span>Disponível no WhatsApp</span>
+            </p>
+          </div>
+        </div>
+        <button id="closeWhatsappBtn" aria-label="Fechar WhatsApp" class="text-white/80 hover:text-white p-1 rounded-lg hover:bg-white/10 transition-colors">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="p-4 bg-slate-50 space-y-3">
+        <div class="bg-white p-3 rounded-2xl border border-slate-200 text-xs text-slate-700">
+          <p class="font-semibold text-slate-900">Olá! 👋</p>
+          <p class="text-slate-600 mt-0.5">Precisas de ajuda sobre localizações, documentos ou patrocínios da AJAVP?</p>
+        </div>
+        <div class="space-y-2">
+          <a href="https://wa.me/351917194933?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20a%20dire%C3%A7%C3%A3o%20da%20AJAVP." target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3 bg-white hover:bg-emerald-50 rounded-2xl border border-slate-200 hover:border-emerald-300 transition-all shadow-xs">
+            <div class="w-8 h-8 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="message-square" class="w-4 h-4"></i>
+            </div>
+            <div class="flex-1 text-left min-w-0">
+              <span class="font-bold text-xs text-slate-800 block">Falar com a Direção</span>
+              <span class="text-[11px] text-slate-500 block">Secretaria da AJAVP</span>
+            </div>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <button id="toggleWhatsappBtn" aria-label="Falar no WhatsApp (AJAVP)" class="group relative flex items-center gap-2.5 bg-[#25D366] hover:bg-[#20ba59] text-white p-3.5 sm:px-4 sm:py-3.5 rounded-full shadow-2xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer">
+      <svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.01-1.24-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.71 4.3 3.79.6.26 1.07.41 1.44.53.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.28z"/>
+      </svg>
+      <span class="font-heading font-bold text-xs hidden sm:inline-block tracking-wide">Falar no WhatsApp</span>
+    </button>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    const toggleWhatsappBtn = document.getElementById('toggleWhatsappBtn');
+    const closeWhatsappBtn = document.getElementById('closeWhatsappBtn');
+    const whatsappPopup = document.getElementById('whatsappPopup');
+    if (toggleWhatsappBtn && whatsappPopup) {
+      toggleWhatsappBtn.addEventListener('click', () => {
+        whatsappPopup.classList.toggle('hidden');
+      });
+    }
+    if (closeWhatsappBtn && whatsappPopup) {
+      closeWhatsappBtn.addEventListener('click', () => {
+        whatsappPopup.classList.add('hidden');
+      });
+    }
+  </script>
+  <!-- Theme Script -->
+  <script src="assets/js/theme.js"></script>
+  <!-- Sistema de Acessibilidade & Usabilidade (WCAG 2.1 AA) -->
+  <script src="assets/js/a11y.js?v=3"></script>
+  <!-- PWA Service Worker & Install Manager -->
+  <script src="assets/js/pwa.js?v=5"></script>
+</body>
+</html>

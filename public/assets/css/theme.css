@@ -1,0 +1,1279 @@
+/**
+ * AJAVP - Estilos Globais de Light & Dark Mode
+ * Garante contraste ideal, conformidade com os princípios Emil Kowalski
+ * e preserva as cores oficiais da identidade AJAVP (Verde, Azul Navy e Âmbar).
+ */
+
+/* =============================================================
+ * EXPERIÊNCIA MOBILE-NATIVE & PRINCÍPIOS DE DESIGN FÍSICO
+ * ============================================================= */
+html {
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+
+/* Eliminar atraso de 300ms e manipular gestos com precisão */
+button, a, [role="button"], .tappable {
+  touch-action: manipulation;
+}
+
+/* Impedir seleção acidental de texto em controlos interativos */
+button, [role="button"], .tab, .chip {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Prevenir o auto-zoom intrusivo do iOS Safari em campos de formulário */
+@media (pointer: coarse) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Feedback tátil rápido e físico ao pressionar */
+button:active, [role="button"]:active {
+  transform: scale(0.98);
+}
+
+/* Safe Area Insets (iPhone com Notch, Dynamic Island e Barra de Início) */
+header#mainHeader {
+  padding-top: max(0.5rem, env(safe-area-inset-top, 0px));
+}
+
+#whatsappWidget {
+  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px)) !important;
+}
+
+#pwaInstallBanner {
+  bottom: calc(5rem + env(safe-area-inset-bottom, 0px)) !important;
+}
+
+#whatsappPopup {
+  bottom: calc(5rem + env(safe-area-inset-bottom, 0px)) !important;
+}
+
+/* =============================================================
+ * TOKENS SEMÂNTICOS & 3 NÍVEIS DE CONTRASTE (WCAG AA/AAA)
+ * ============================================================= */
+:root {
+  /* Modo Claro - Relação de Contraste Otimizada */
+  --ajavp-text-heading: #0f172a;       /* Nível 1: Títulos e Destaques (> 15:1 em fundo branco) */
+  --ajavp-text-body: #1e293b;          /* Nível 2: Texto de Leitura e Parágrafos (> 11:1) */
+  --ajavp-text-muted: #475569;         /* Nível 3: Texto de Apoio e Metadados (> 5.7:1, acima do min. 4.5:1) */
+  --ajavp-link: #1b4557;               /* Ligações padrão */
+  --ajavp-link-hover: #047857;         /* Verde esmeralda escuro ao pairar */
+  --ajavp-accent-text: #0f172a;        /* Texto escuro de alto contraste para fundos âmbar */
+  --ajavp-reading-line-height: 1.72;   /* Ritmo vertical confortável para leitura */
+}
+
+html.dark {
+  /* Modo Escuro - Relação de Contraste Otimizada */
+  --ajavp-text-heading: #f8fafc;       /* Nível 1: Títulos e Destaques (> 16:1 em fundo escuro) */
+  --ajavp-text-body: #e2e8f0;          /* Nível 2: Texto de Leitura e Parágrafos (> 12:1) */
+  --ajavp-text-muted: #94a3b8;         /* Nível 3: Texto de Apoio e Metadados (> 5.8:1) */
+  --ajavp-link: #34d399;               /* Esmeralda luminoso */
+  --ajavp-link-hover: #6ee7b7;         /* Esmeralda suave */
+  --ajavp-accent-text: #020617;        /* Texto escuro legível sobre âmbar/amarelo */
+}
+
+/* =============================================================
+ * PADRONIZAÇÃO TIPOGRÁFICA & RITMO DE LEITURA
+ * ============================================================= */
+body {
+  font-family: var(--font-sans, 'Inter', -apple-system, BlinkMacSystemFont, sans-serif);
+  line-height: var(--ajavp-reading-line-height);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Evitar textos microscópicos e apertados */
+p, li, dd {
+  line-height: var(--ajavp-reading-line-height);
+}
+
+/* Títulos Nível 1: Forte, nítido e sem ambiguidades de cor */
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
+  letter-spacing: -0.015em;
+  font-weight: 700;
+}
+
+/* Proteção de contraste em botões e badges de fundo âmbar SÓLIDO (excluindo containers translúcidos com opacidade /10, /20, etc.) */
+.bg-amber-400:not([class*="/"]),
+.bg-amber-500:not([class*="/"]),
+.bg-brand-accent:not([class*="/"]),
+.jif-tab-btn.bg-amber-500,
+.jif-next-badge {
+  color: #0f172a !important;
+}
+
+.bg-amber-400:not([class*="/"]) > *:not(svg):not(i),
+.bg-amber-500:not([class*="/"]) > *:not(svg):not(i),
+.bg-brand-accent:not([class*="/"]) > *:not(svg):not(i) {
+  color: #0f172a !important;
+}
+
+/* =============================================================
+ * CLASSE .prose-ajavp (PADRÃO EDITORIAL PARA ARTIGOS & NOTÍCIAS)
+ * ============================================================= */
+.prose-ajavp {
+  max-width: 68ch;
+  line-height: 1.75;
+  color: var(--ajavp-text-body);
+}
+
+.prose-ajavp p {
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+}
+
+.prose-ajavp h2 {
+  color: var(--ajavp-text-heading);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+  line-height: 1.3;
+}
+
+.prose-ajavp h3 {
+  color: var(--ajavp-text-heading);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1.35;
+}
+
+.prose-ajavp ul, .prose-ajavp ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.prose-ajavp li {
+  margin-bottom: 0.5rem;
+}
+
+.prose-ajavp blockquote {
+  border-left: 4px solid #387b5b;
+  padding-left: 1rem;
+  font-style: italic;
+  margin: 1.5rem 0;
+  color: var(--ajavp-text-muted);
+}
+
+/* Transição suave entre temas */
+html,
+body,
+header#mainHeader,
+.bg-white,
+.bg-brand-grayBg,
+.bg-slate-50,
+#mobileMenu,
+section {
+  transition: background-color 220ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 220ms cubic-bezier(0.16, 1, 0.3, 1),
+              color 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* =============================================================
+ * MODO CLARO (WHITE MODE) - PADRÃO DO SITE
+ * ============================================================= */
+
+html:not(.dark) {
+  color-scheme: light;
+}
+
+html:not(.dark) body {
+  background-color: #f8fafc !important;
+  color: var(--ajavp-text-body) !important;
+}
+
+/* Header & Barra Superior */
+html:not(.dark) header#mainHeader {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  border-bottom-color: #f1f5f9 !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+html:not(.dark) header#mainHeader .font-heading.text-brand-navy {
+  color: #1b4557 !important;
+}
+
+html:not(.dark) nav a.text-slate-700 {
+  color: #334155 !important;
+}
+
+html:not(.dark) nav a.text-slate-700:hover {
+  color: #387b5b !important;
+  background-color: #f1f5f9 !important;
+}
+
+/* Consolidação de 3 Níveis no Modo Claro (Garante que nunca haja cinzentos apagados) */
+html:not(.dark) .text-slate-400,
+html:not(.dark) .text-slate-500 {
+  color: var(--ajavp-text-muted) !important;
+}
+
+html:not(.dark) .text-slate-600,
+html:not(.dark) .text-slate-700 {
+  color: #334155 !important;
+}
+
+html:not(.dark) .text-slate-800,
+html:not(.dark) .text-slate-900 {
+  color: var(--ajavp-text-heading) !important;
+}
+
+/* =============================================================
+ * IMAGEM E VÉU DOS HERO BANNERS (LIGHT & DARK MODE)
+ * ============================================================= */
+
+/* 1. Imagem de Fundo no Hero Banner */
+.hero-bg-img,
+section.overflow-hidden .absolute img.object-cover,
+main > section:first-of-type .absolute img.object-cover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+html:not(.dark) .hero-bg-img,
+html:not(.dark) section.overflow-hidden .absolute img.object-cover,
+html:not(.dark) main > section:first-of-type .absolute img.object-cover {
+  opacity: 0.88 !important;
+  filter: contrast(1.05) saturate(1.1) !important;
+}
+
+html.dark .hero-bg-img,
+html.dark section.overflow-hidden .absolute img.object-cover,
+html.dark main > section:first-of-type .absolute img.object-cover {
+  opacity: 0.70 !important;
+  filter: brightness(0.9) contrast(1.1) !important;
+}
+
+/* 2. Véu / Overlay de Gradiente do Hero */
+.hero-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+html:not(.dark) .hero-gradient-overlay {
+  background: linear-gradient(90deg, rgba(248, 250, 252, 0.90) 0%, rgba(248, 250, 252, 0.68) 42%, rgba(248, 250, 252, 0.12) 100%) !important;
+  background-color: transparent !important;
+}
+
+html.dark .hero-gradient-overlay {
+  background: linear-gradient(90deg, rgba(11, 19, 30, 0.92) 0%, rgba(11, 19, 30, 0.65) 45%, rgba(11, 19, 30, 0.22) 100%) !important;
+  background-color: transparent !important;
+}
+
+/* Garantia absoluta de que overlays de hero NUNCA fiquem com cor de fundo branca sólida */
+html:not(.dark) .hero-gradient-overlay,
+html:not(.dark) section.overflow-hidden .absolute .bg-gradient-to-r,
+html:not(.dark) main > section:first-of-type .absolute .bg-gradient-to-r {
+  background-color: transparent !important;
+}
+
+/* BANNERS DE TOPO & HERO SECTIONS EM MODO CLARO */
+html:not(.dark) section.bg-slate-950 {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+  border-bottom-color: #e2e8f0 !important;
+}
+
+html:not(.dark) section.bg-slate-950 .bg-black\/20 {
+  background-color: transparent !important;
+}
+
+/* Títulos e textos nos banners de topo */
+html:not(.dark) section.bg-slate-950 h1,
+html:not(.dark) section.bg-slate-950 h2,
+html:not(.dark) section.bg-slate-950 h3 {
+  color: #1b4557 !important;
+  text-shadow: none !important;
+}
+
+html:not(.dark) section.bg-slate-950 p.text-slate-100,
+html:not(.dark) section.bg-slate-950 p.text-slate-200,
+html:not(.dark) section.bg-slate-950 p.text-slate-300 {
+  color: #475569 !important;
+  text-shadow: none !important;
+}
+
+/* Caixas de destaques e cartões dentro dos banners */
+html:not(.dark) section.bg-slate-950 .bg-white\/10,
+html:not(.dark) section.bg-slate-950 .bg-white\/5 {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  color: #1e293b !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02) !important;
+}
+
+html:not(.dark) section.bg-slate-950 .border-white\/10,
+html:not(.dark) section.bg-slate-950 .border-white\/15 {
+  border-color: #e2e8f0 !important;
+}
+
+html:not(.dark) section.bg-slate-950 .text-white {
+  color: #0f172a !important;
+}
+
+html:not(.dark) section.bg-slate-950 .text-slate-200,
+html:not(.dark) section.bg-slate-950 .text-slate-300,
+html:not(.dark) section.bg-slate-950 .text-slate-400 {
+  color: #64748b !important;
+}
+
+html:not(.dark) section.bg-slate-950 span.bg-white\/10 {
+  background-color: #f1f5f9 !important;
+  color: #334155 !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+/* SECÇÃO 2 DE INDEX.HTML (RESULTADOS DOS JOGOS) */
+html:not(.dark) section.bg-slate-900 {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+  border-bottom-color: #e2e8f0 !important;
+}
+
+html:not(.dark) section.bg-slate-900 h2,
+html:not(.dark) section.bg-slate-900 h3 {
+  color: #1b4557 !important;
+}
+
+html:not(.dark) section.bg-slate-900 p.text-slate-300 {
+  color: #64748b !important;
+}
+
+html:not(.dark) section.bg-slate-900 .border-white\/10 {
+  border-color: #e2e8f0 !important;
+}
+
+html:not(.dark) section.bg-slate-900 .bg-slate-800\/80 {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+  color: #1e293b !important;
+}
+
+html:not(.dark) section.bg-slate-900 .bg-white\/5 {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+html:not(.dark) section.bg-slate-900 .text-white {
+  color: #0f172a !important;
+}
+
+html:not(.dark) section.bg-slate-900 .text-slate-300,
+html:not(.dark) section.bg-slate-900 .text-slate-400 {
+  color: #64748b !important;
+}
+
+/* Cartão de Vitória Corta-Mato & Sub-9 em Modo Claro */
+html:not(.dark) .from-emerald-950\/80.to-slate-900 {
+  background: linear-gradient(180deg, #ecfdf5 0%, #f0fdf4 100%) !important;
+  border-color: #6ee7b7 !important;
+}
+
+html:not(.dark) .from-emerald-950\/80 .text-emerald-300 {
+  color: #047857 !important;
+}
+
+html:not(.dark) .from-amber-950\/80.via-slate-900 {
+  background: linear-gradient(180deg, #fffbeb 0%, #fef3c7 40%, #f0fdf4 100%) !important;
+  border-color: #fcd34d !important;
+}
+
+html:not(.dark) .from-amber-950\/80 .text-amber-300 {
+  color: #b45309 !important;
+}
+
+html:not(.dark) .from-amber-950\/80 .bg-black\/40 {
+  background-color: #ffffff !important;
+  border-color: #fde68a !important;
+}
+
+html:not(.dark) .from-amber-950\/80 .text-amber-400 {
+  color: #b45309 !important;
+}
+
+html:not(.dark) .bg-slate-800\/80 .bg-black\/40 {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+/* =============================================================
+ * PORTAL JIF EM MODO CLARO (jif.html)
+ * Harmonização completa de contraste, legibilidade e elegância
+ * ============================================================= */
+
+/* 1. Secção Principal e Contentores de Abas */
+html:not(.dark) section.py-12.bg-brand-grayBg,
+html:not(.dark) .jif-tab-pane {
+  color: #1e293b !important;
+}
+
+/* 2. Barra de Abas (Tabs) */
+html:not(.dark) .jif-tab-btn {
+  color: #475569 !important;
+  background-color: transparent !important;
+}
+
+html:not(.dark) .jif-tab-btn:hover {
+  color: #0f172a !important;
+  background-color: #f1f5f9 !important;
+}
+
+html:not(.dark) .jif-tab-btn.bg-amber-500,
+html:not(.dark) .jif-tab-btn[class*="bg-amber-500"] {
+  background-color: #f59e0b !important;
+  color: #0f172a !important;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3) !important;
+}
+
+/* 3. Botões de Filtro e Caixa de Pesquisa */
+html:not(.dark) #jifSportFilters .jif-filter-btn {
+  background-color: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #475569 !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+}
+
+html:not(.dark) #jifSportFilters .jif-filter-btn:hover {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+html:not(.dark) #jifSportFilters .jif-filter-btn.bg-brand-navy,
+html:not(.dark) #jifSportFilters .jif-filter-btn.bg-white {
+  background-color: #1b4557 !important;
+  color: #ffffff !important;
+  border-color: #1b4557 !important;
+}
+
+html:not(.dark) #jifSearchInput {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+html:not(.dark) #jifSearchInput::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* 4. Linhas de Eventos no Calendário (jif-event-row) */
+html:not(.dark) .jif-event-row {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  color: #1e293b !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+}
+
+html:not(.dark) .jif-event-row:hover {
+  background-color: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+}
+
+html:not(.dark) .jif-event-row.ring-2.ring-amber-400\/50,
+html:not(.dark) .jif-event-row.jif-event-active {
+  background-color: #fffbeb !important;
+  border-color: #f59e0b !important;
+}
+
+html:not(.dark) .jif-event-row .w-14.h-14 {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+html:not(.dark) .jif-event-row .w-14.h-14 .text-white {
+  color: #0f172a !important;
+}
+
+html:not(.dark) .jif-event-row .bg-slate-800,
+html:not(.dark) .jif-done-badge {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #475569 !important;
+}
+
+/* 5. Todos os Cartões e Painéis nas Abas JIF (Resultados, Comunicados, Modalidades, Escalões) */
+html:not(.dark) .jif-tab-pane .bg-slate-900,
+html:not(.dark) .jif-tab-pane .bg-slate-950,
+html:not(.dark) .jif-tab-pane .bg-slate-900\/90,
+html:not(.dark) .jif-tab-pane .bg-slate-900\/80,
+html:not(.dark) .jif-tab-pane .bg-white\/5,
+html:not(.dark) .jif-tab-pane .bg-white\/10 {
+  background-image: none !important;
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  color: #1e293b !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+html:not(.dark) .jif-tab-pane .bg-slate-700 {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+html:not(.dark) .jif-tab-pane .bg-slate-700 * {
+  color: #0f172a !important;
+}
+
+html:not(.dark) .jif-tab-pane .hover\:bg-white\/10:hover,
+html:not(.dark) .jif-tab-pane .hover\:bg-white\/5:hover {
+  background-color: #f8fafc !important;
+}
+
+/* 6. Títulos, Cabeçalhos e Nomes */
+html:not(.dark) .jif-tab-pane h1.text-white,
+html:not(.dark) .jif-tab-pane h2.text-white,
+html:not(.dark) .jif-tab-pane h3.text-white,
+html:not(.dark) .jif-tab-pane h4.text-white,
+html:not(.dark) .jif-tab-pane .font-heading.text-white,
+html:not(.dark) .jif-tab-pane .text-white:not(.bg-brand-green *):not(.bg-amber-500 *):not(.bg-rose-600 *):not(.bg-emerald-600 *):not(.bg-emerald-500 *):not(.bg-blue-600 *):not(.bg-purple-600 *):not(.bg-amber-600 *) {
+  color: #0f172a !important;
+}
+
+/* 7. Parágrafos, Legendas e Metadados (Alta Legibilidade e Contraste) */
+html:not(.dark) .jif-tab-pane p.text-slate-100,
+html:not(.dark) .jif-tab-pane p.text-slate-200,
+html:not(.dark) .jif-tab-pane p.text-slate-300,
+html:not(.dark) .jif-tab-pane p.text-slate-400,
+html:not(.dark) .jif-tab-pane div.text-slate-100,
+html:not(.dark) .jif-tab-pane div.text-slate-200,
+html:not(.dark) .jif-tab-pane div.text-slate-300,
+html:not(.dark) .jif-tab-pane div.text-slate-400,
+html:not(.dark) .jif-tab-pane span.text-slate-200,
+html:not(.dark) .jif-tab-pane span.text-slate-300,
+html:not(.dark) .jif-tab-pane span.text-slate-400,
+html:not(.dark) .jif-tab-pane ul.text-slate-300,
+html:not(.dark) .jif-tab-pane li {
+  color: #334155 !important;
+}
+
+html:not(.dark) .jif-tab-pane strong.text-white {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+/* 8. Cores de Ênfase e Modalidades Adaptadas a Fundo Claro (WCAG AAA) */
+html:not(.dark) .jif-tab-pane .text-emerald-200,
+html:not(.dark) .jif-tab-pane .text-emerald-300,
+html:not(.dark) .jif-tab-pane .text-emerald-400 {
+  color: #047857 !important;
+  font-weight: 700 !important;
+}
+html:not(.dark) .jif-tab-pane .text-amber-200,
+html:not(.dark) .jif-tab-pane .text-amber-300,
+html:not(.dark) .jif-tab-pane .text-amber-400 {
+  color: #b45309 !important;
+  font-weight: 700 !important;
+}
+html:not(.dark) .jif-tab-pane .text-blue-200,
+html:not(.dark) .jif-tab-pane .text-blue-300,
+html:not(.dark) .jif-tab-pane .text-blue-400 {
+  color: #1d4ed8 !important;
+  font-weight: 700 !important;
+}
+html:not(.dark) .jif-tab-pane .text-purple-200,
+html:not(.dark) .jif-tab-pane .text-purple-300,
+html:not(.dark) .jif-tab-pane .text-purple-400 {
+  color: #7e22ce !important;
+  font-weight: 700 !important;
+}
+html:not(.dark) .jif-tab-pane .text-teal-200,
+html:not(.dark) .jif-tab-pane .text-teal-300,
+html:not(.dark) .jif-tab-pane .text-teal-400 {
+  color: #0f766e !important;
+  font-weight: 700 !important;
+}
+html:not(.dark) .jif-tab-pane .text-rose-200,
+html:not(.dark) .jif-tab-pane .text-rose-300,
+html:not(.dark) .jif-tab-pane .text-rose-400 {
+  color: #be123c !important;
+  font-weight: 700 !important;
+}
+
+/* 9. Badges com Fundo Claro e Bordas Nítidas */
+html:not(.dark) .jif-tab-pane .bg-emerald-500\/20,
+html:not(.dark) .jif-tab-pane .bg-emerald-500\/15 {
+  background-color: #ecfdf5 !important;
+  border-color: #a7f3d0 !important;
+  color: #065f46 !important;
+}
+html:not(.dark) .jif-tab-pane .bg-amber-500\/20,
+html:not(.dark) .jif-tab-pane .bg-amber-500\/15 {
+  background-color: #fffbeb !important;
+  border-color: #fde68a !important;
+  color: #92400e !important;
+}
+html:not(.dark) .jif-tab-pane .bg-blue-500\/20,
+html:not(.dark) .jif-tab-pane .bg-blue-500\/15 {
+  background-color: #eff6ff !important;
+  border-color: #bfdbfe !important;
+  color: #1e40af !important;
+}
+html:not(.dark) .jif-tab-pane .bg-purple-500\/20 {
+  background-color: #faf5ff !important;
+  border-color: #e9d5ff !important;
+  color: #6b21a8 !important;
+}
+
+/* 10. Divisores e Linhas de Separação */
+html:not(.dark) .jif-tab-pane .border-white\/10,
+html:not(.dark) .jif-tab-pane .border-white\/15,
+html:not(.dark) .jif-tab-pane .border-white\/20,
+html:not(.dark) .jif-tab-pane .border-white\/5,
+html:not(.dark) .jif-tab-pane .divide-white\/5 > * + *,
+html:not(.dark) .jif-tab-pane .divide-white\/10 > * + * {
+  border-color: #e2e8f0 !important;
+}
+
+/* 11. Cartões Gradientes (KPIs Dashboard, Corta-Mato Destaque) */
+html:not(.dark) .jif-tab-pane .from-amber-500\/20.via-slate-900 {
+  background: linear-gradient(135deg, #fffbeb 0%, #ffffff 60%, #fff7ed 100%) !important;
+  border-color: #fcd34d !important;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.08) !important;
+}
+html:not(.dark) .jif-tab-pane .from-emerald-500\/20.via-slate-900 {
+  background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 60%, #f0fdf4 100%) !important;
+  border-color: #6ee7b7 !important;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.08) !important;
+}
+html:not(.dark) .jif-tab-pane .from-blue-500\/20.via-slate-900 {
+  background: linear-gradient(135deg, #eff6ff 0%, #ffffff 60%, #f0f9ff 100%) !important;
+  border-color: #93c5fd !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.08) !important;
+}
+html:not(.dark) .jif-tab-pane .from-teal-500\/20.via-slate-900 {
+  background: linear-gradient(135deg, #f0fdfa 0%, #ffffff 60%, #ccfbf1 100%) !important;
+  border-color: #5eead4 !important;
+  box-shadow: 0 4px 12px rgba(20, 184, 166, 0.08) !important;
+}
+html:not(.dark) .jif-tab-pane .from-amber-950\/80.via-slate-900.to-emerald-950\/80 {
+  background: linear-gradient(135deg, #fffbeb 0%, #ffffff 50%, #ecfdf5 100%) !important;
+  border-color: #fcd34d !important;
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.12) !important;
+}
+html:not(.dark) .jif-tab-pane .from-emerald-950\/90.via-slate-900.to-brand-navy {
+  background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 50%, #f0fdf4 100%) !important;
+  border-color: #6ee7b7 !important;
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.1) !important;
+}
+html:not(.dark) .jif-tab-pane .bg-black\/40 {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Fallbacks globais para cartões e faixas com gradientes escuros em modo claro */
+html:not(.dark) [class*="from-brand-navy"][class*="to-emerald-950"],
+html:not(.dark) [class*="from-emerald-950"][class*="to-brand-navy"] {
+  background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 50%, #f0fdf4 100%) !important;
+  border-color: #6ee7b7 !important;
+}
+
+html:not(.dark) [class*="from-amber-950"][class*="to-blue-950"],
+html:not(.dark) [class*="from-blue-950"][class*="to-amber-950"] {
+  background: linear-gradient(135deg, #fffbeb 0%, #ffffff 50%, #eff6ff 100%) !important;
+  border-color: #fcd34d !important;
+}
+
+html:not(.dark) [class*="from-emerald-950"][class*="to-amber-950"],
+html:not(.dark) [class*="from-amber-950"][class*="to-emerald-950"] {
+  background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 50%, #fffbeb 100%) !important;
+  border-color: #6ee7b7 !important;
+}
+
+html:not(.dark) [class*="from-pink-900"][class*="to-slate-900"],
+html:not(.dark) [class*="from-pink-950"][class*="to-purple-950"] {
+  background: linear-gradient(135deg, #fdf2f8 0%, #ffffff 50%, #faf5ff 100%) !important;
+  border-color: #f472b6 !important;
+}
+
+html:not(.dark) [class*="from-brand-navy"] h1,
+html:not(.dark) [class*="from-brand-navy"] h2,
+html:not(.dark) [class*="from-brand-navy"] h3,
+html:not(.dark) [class*="from-brand-navy"] h4,
+html:not(.dark) [class*="from-amber-950"] h1,
+html:not(.dark) [class*="from-amber-950"] h2,
+html:not(.dark) [class*="from-amber-950"] h3,
+html:not(.dark) [class*="from-amber-950"] h4,
+html:not(.dark) [class*="from-pink-900"] h1,
+html:not(.dark) [class*="from-pink-900"] h2,
+html:not(.dark) [class*="from-pink-900"] h3,
+html:not(.dark) [class*="from-pink-900"] h4 {
+  color: #0f172a !important;
+}
+
+html:not(.dark) [class*="from-brand-navy"] p,
+html:not(.dark) [class*="from-amber-950"] p,
+html:not(.dark) [class*="from-pink-900"] p {
+  color: #334155 !important;
+}
+
+/* Fallback universal para qualquer gradiente com paradas escuras em modo claro (excluindo explicitamente overlays de imagem de fundo) */
+html:not(.dark) [class*="to-slate-9"]:not(.hero-gradient-overlay):not(.hero-bg-img):not(.absolute):not([class*="inset-0"]):not([class*="from-amber-50"]):not([class*="from-emerald-50"]):not([class*="from-sky-50"]):not([class*="from-pink-50"]):not([class*="from-blue-50"]):not([class*="from-slate-50"]):not([class*="from-teal-50"]),
+html:not(.dark) [class*="to-slate-950"]:not(.hero-gradient-overlay):not(.hero-bg-img):not(.absolute):not([class*="inset-0"]):not([class*="from-amber-50"]):not([class*="from-emerald-50"]):not([class*="from-sky-50"]):not([class*="from-pink-50"]):not([class*="from-blue-50"]):not([class*="from-slate-50"]):not([class*="from-teal-50"]),
+html:not(.dark) [class*="from-slate-800"]:not(.hero-gradient-overlay):not(.hero-bg-img):not(.absolute):not([class*="inset-0"]):not([class*="from-amber-50"]):not([class*="from-emerald-50"]):not([class*="from-sky-50"]):not([class*="from-pink-50"]):not([class*="from-blue-50"]):not([class*="from-slate-50"]):not([class*="from-teal-50"]),
+html:not(.dark) [class*="from-slate-900"]:not(.hero-gradient-overlay):not(.hero-bg-img):not(.absolute):not([class*="inset-0"]):not([class*="from-amber-50"]):not([class*="from-emerald-50"]):not([class*="from-sky-50"]):not([class*="from-pink-50"]):not([class*="from-blue-50"]):not([class*="from-slate-50"]):not([class*="from-teal-50"]),
+html:not(.dark) [class*="from-amber-900"]:not(.hero-gradient-overlay):not(.hero-bg-img):not(.absolute):not([class*="inset-0"]):not([class*="from-amber-50"]):not([class*="from-emerald-50"]):not([class*="from-sky-50"]):not([class*="from-pink-50"]):not([class*="from-blue-50"]):not([class*="from-slate-50"]):not([class*="from-teal-50"]),
+html:not(.dark) [class*="from-green-950"]:not(.hero-gradient-overlay):not(.hero-bg-img):not(.absolute):not([class*="inset-0"]):not([class*="from-amber-50"]):not([class*="from-emerald-50"]):not([class*="from-sky-50"]):not([class*="from-pink-50"]):not([class*="from-blue-50"]):not([class*="from-slate-50"]):not([class*="from-teal-50"]) {
+  background-image: none !important;
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+}
+
+html:not(.dark) [class*="to-slate-9"] .font-heading,
+html:not(.dark) [class*="to-slate-9"] h1,
+html:not(.dark) [class*="to-slate-9"] h2,
+html:not(.dark) [class*="to-slate-9"] h3,
+html:not(.dark) [class*="to-slate-9"] h4,
+html:not(.dark) [class*="to-slate-950"] .font-heading,
+html:not(.dark) [class*="to-slate-950"] h1,
+html:not(.dark) [class*="to-slate-950"] h2,
+html:not(.dark) [class*="to-slate-950"] h3,
+html:not(.dark) [class*="to-slate-950"] h4,
+html:not(.dark) [class*="from-slate-800"] .font-heading,
+html:not(.dark) [class*="from-slate-800"] h1,
+html:not(.dark) [class*="from-slate-800"] h2,
+html:not(.dark) [class*="from-slate-800"] h3,
+html:not(.dark) [class*="from-slate-800"] h4 {
+  color: #1b4557 !important;
+}
+
+html:not(.dark) [class*="to-slate-9"] p,
+html:not(.dark) [class*="to-slate-950"] p,
+html:not(.dark) [class*="from-slate-800"] p,
+html:not(.dark) [class*="to-slate-9"] span:not([class*="bg-"]):not([class*="text-"]):not([class*="rounded-"]),
+html:not(.dark) [class*="to-slate-950"] span:not([class*="bg-"]):not([class*="text-"]):not([class*="rounded-"]),
+html:not(.dark) [class*="from-slate-800"] span:not([class*="bg-"]):not([class*="text-"]):not([class*="rounded-"]) {
+  color: #334155 !important;
+}
+
+/* 12. Tabelas Oficiais de Escalões & Comunicados */
+html:not(.dark) .jif-tab-pane table {
+  color: #334155 !important;
+}
+html:not(.dark) .jif-tab-pane table thead tr {
+  background-color: #f1f5f9 !important;
+  border-bottom: 2px solid #cbd5e1 !important;
+}
+html:not(.dark) .jif-tab-pane table thead th {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+html:not(.dark) .jif-tab-pane table tbody tr {
+  border-bottom: 1px solid #f1f5f9 !important;
+}
+html:not(.dark) .jif-tab-pane table tbody tr:hover {
+  background-color: #f8fafc !important;
+}
+html:not(.dark) .jif-tab-pane table tbody td {
+  color: #334155 !important;
+}
+html:not(.dark) .jif-tab-pane table tbody td .text-white {
+  color: #0f172a !important;
+}
+
+/* WIDGET METEOROLÓGICO EM MODO CLARO (modalidades.html) */
+html:not(.dark) #tempo-semana {
+  background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 50%, #f0fdf4 100%) !important;
+  border-color: #bae6fd !important;
+  color: #0f172a !important;
+  box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.08) !important;
+}
+
+html:not(.dark) #tempo-semana h3 {
+  color: #0369a1 !important;
+}
+
+html:not(.dark) #tempo-semana p.text-slate-300 {
+  color: #475569 !important;
+}
+
+html:not(.dark) #tempo-semana .border-white\/10 {
+  border-color: #e0f2fe !important;
+}
+
+html:not(.dark) #tempo-semana .bg-white\/10,
+html:not(.dark) #tempo-semana .bg-white\/5 {
+  background-color: #ffffff !important;
+  border-color: #e0f2fe !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+}
+
+html:not(.dark) #tempo-semana .text-white {
+  color: #0f172a !important;
+}
+
+html:not(.dark) #tempo-semana .text-slate-200,
+html:not(.dark) #tempo-semana .text-slate-300,
+html:not(.dark) #tempo-semana .text-slate-400 {
+  color: #475569 !important;
+}
+
+/* CARTÃO DADOS OFICIAIS EM MODO CLARO (clube.html) */
+html:not(.dark) .p-8.rounded-3xl.bg-slate-900 {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+  border: 2px solid #a7f3d0 !important;
+  box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.08) !important;
+}
+
+html:not(.dark) .p-8.rounded-3xl.bg-slate-900 h3 {
+  color: #1b4557 !important;
+}
+
+html:not(.dark) .p-8.rounded-3xl.bg-slate-900 .border-white\/10 {
+  border-color: #f1f5f9 !important;
+}
+
+html:not(.dark) .p-8.rounded-3xl.bg-slate-900 .text-slate-400 {
+  color: #64748b !important;
+}
+
+html:not(.dark) .p-8.rounded-3xl.bg-slate-900 .text-white {
+  color: #0f172a !important;
+}
+
+html:not(.dark) .p-8.rounded-3xl.bg-slate-900 a.bg-white\/10 {
+  background-color: #f8fafc !important;
+  color: #1b4557 !important;
+  border-color: #e2e8f0 !important;
+}
+
+html:not(.dark) .p-8.rounded-3xl.bg-slate-900 a.bg-white\/10:hover {
+  background-color: #f1f5f9 !important;
+}
+
+/* BOTÃO DE EMAIL EM CONTACTOS (contactos.html) */
+html:not(.dark) a.bg-slate-900 {
+  background-color: #1b4557 !important;
+  color: #ffffff !important;
+}
+
+html:not(.dark) a.bg-slate-900:hover {
+  background-color: #13323f !important;
+}
+
+/* =============================================================
+ * MODO ESCURO (html.dark)
+ * ============================================================= */
+
+html.dark {
+  color-scheme: dark;
+}
+
+html.dark body {
+  background-color: #0b131e !important;
+  color: #e2e8f0 !important;
+}
+
+/* Header & Barra Superior */
+html.dark header#mainHeader {
+  background-color: rgba(11, 19, 30, 0.94) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4) !important;
+}
+
+html.dark header#mainHeader .font-heading.text-brand-navy {
+  color: #f8fafc !important;
+}
+
+html.dark nav a.text-slate-700 {
+  color: #cbd5e1 !important;
+}
+
+html.dark nav a.text-slate-700:hover {
+  color: #34d399 !important;
+  background-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Menu Mobile */
+html.dark #mobileMenu {
+  background-color: #0f172a !important;
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.6) !important;
+}
+
+html.dark #mobileMenu a.text-slate-700 {
+  color: #cbd5e1 !important;
+}
+
+html.dark #mobileMenu a.text-slate-700:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  color: #ffffff !important;
+}
+
+/* Secções de Fundo */
+html.dark .bg-brand-grayBg {
+  background-color: #070d15 !important;
+}
+
+/* Cartões Brancos -> Dark Slate Navy */
+html.dark .bg-white,
+html.dark .bg-white\/95,
+html.dark .bg-white\/90,
+html.dark .bg-white\/85,
+html.dark .bg-white\/80 {
+  background-color: #111c2a !important;
+  color: #e2e8f0;
+}
+
+/* Preservar fundo branco puro e expansivo em contentores de logótipos de patrocinadores */
+.sponsor-logo-stage,
+html.dark .sponsor-logo-stage,
+[data-sponsor-bg="white"],
+html.dark [data-sponsor-bg="white"] {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+/* Previne que gradientes de luz terminem em branco opaco no Dark Mode */
+html.dark .to-white {
+  --tw-gradient-to: #0f172a !important;
+}
+
+html.dark .bg-slate-50 {
+  background-color: #162436 !important;
+}
+
+html.dark .bg-slate-100 {
+  background-color: #1b2c40 !important;
+}
+
+/* Tipografia em Modo Escuro - Contraste Perfeito */
+html.dark .text-slate-900,
+html.dark .text-slate-800,
+html.dark .text-brand-navy,
+html.dark .text-brand-navyDark,
+html.dark h1.text-brand-navy,
+html.dark h2.text-brand-navy,
+html.dark h3.text-brand-navy,
+html.dark h4.text-brand-navy {
+  color: #f8fafc !important;
+}
+
+/* Verde institucional adaptado para Modo Escuro (Passa de #387b5b escuro para #34d399 luminoso) */
+html.dark .text-brand-green,
+html.dark .text-brand-greenDark {
+  color: #34d399 !important;
+}
+
+/* Negritos e enfases fortes em Dark Mode devem ser sempre claros e nítidos */
+html.dark strong:not(.text-slate-950):not(.bg-amber-500 *):not(.bg-amber-400 *):not(.bg-brand-accent *),
+html.dark b:not(.text-slate-950):not(.bg-amber-500 *):not(.bg-amber-400 *):not(.bg-brand-accent *),
+html.dark .font-black.text-slate-900,
+html.dark .font-bold.text-slate-900 {
+  color: #ffffff !important;
+}
+
+html.dark .text-slate-700,
+html.dark .text-slate-600 {
+  color: #cbd5e1 !important;
+}
+
+html.dark .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+html.dark .text-slate-400 {
+  color: #94a3b8 !important;
+}
+
+/* Tabelas e horários de treinos no Dark Mode */
+html.dark table tbody td strong {
+  color: #f8fafc !important;
+}
+html.dark table tbody td .text-slate-700 {
+  color: #cbd5e1 !important;
+}
+html.dark table tbody td .text-slate-500,
+html.dark table tbody td .text-slate-400 {
+  color: #94a3b8 !important;
+}
+
+/* Bordas subtis e translúcidas */
+html.dark .border-slate-100,
+html.dark .border-slate-200,
+html.dark .border-slate-200\/80,
+html.dark .border-slate-200\/60,
+html.dark .border-slate-200\/70,
+html.dark .border-slate-200\/90,
+html.dark .border-slate-300 {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Sombras e destaques em cartões arredondados */
+html.dark .bg-white.rounded-2xl,
+html.dark .bg-white.rounded-3xl,
+html.dark article {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark .bg-white.rounded-2xl:hover,
+html.dark .bg-white.rounded-3xl:hover {
+  box-shadow: 0 16px 32px -4px rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Badges e Contentores Temáticos */
+html.dark .bg-emerald-50,
+html.dark .bg-emerald-50\/80,
+html.dark .bg-emerald-50\/70,
+html.dark .bg-emerald-50\/60,
+html.dark .bg-emerald-50\/90,
+html.dark .bg-emerald-100,
+html.dark .bg-emerald-200,
+html.dark .bg-emerald-200\/80,
+html.dark .bg-emerald-200\/70,
+html.dark .bg-emerald-200\/60 {
+  background-color: rgba(16, 185, 129, 0.18) !important;
+  border-color: rgba(16, 185, 129, 0.35) !important;
+}
+html.dark .border-emerald-100,
+html.dark .border-emerald-200,
+html.dark .border-emerald-200\/80,
+html.dark .border-emerald-200\/70,
+html.dark .border-emerald-200\/60,
+html.dark .border-emerald-300,
+html.dark .border-emerald-400 {
+  border-color: rgba(16, 185, 129, 0.35) !important;
+}
+html.dark .text-emerald-950,
+html.dark .text-emerald-900,
+html.dark .text-emerald-800,
+html.dark .text-emerald-700 {
+  color: #6ee7b7 !important;
+}
+
+html.dark .bg-amber-50,
+html.dark .bg-amber-50\/90,
+html.dark .bg-amber-50\/80,
+html.dark .bg-amber-50\/60,
+html.dark .bg-amber-100,
+html.dark .bg-amber-200,
+html.dark .bg-amber-200\/90,
+html.dark .bg-amber-200\/80,
+html.dark .bg-amber-200\/60 {
+  background-color: rgba(245, 158, 11, 0.18) !important;
+  border-color: rgba(245, 158, 11, 0.35) !important;
+}
+html.dark .border-amber-100,
+html.dark .border-amber-200,
+html.dark .border-amber-200\/80,
+html.dark .border-amber-300 {
+  border-color: rgba(245, 158, 11, 0.35) !important;
+}
+html.dark .text-amber-900,
+html.dark .text-amber-950,
+html.dark .text-amber-800,
+html.dark .text-amber-700 {
+  color: #fde68a !important;
+}
+
+html.dark .bg-blue-50,
+html.dark .bg-blue-50\/80,
+html.dark .bg-blue-50\/60,
+html.dark .bg-blue-100,
+html.dark .bg-blue-200,
+html.dark .bg-blue-200\/80,
+html.dark .bg-blue-200\/70,
+html.dark .bg-blue-200\/60 {
+  background-color: rgba(59, 130, 246, 0.18) !important;
+  border-color: rgba(59, 130, 246, 0.35) !important;
+}
+html.dark .border-blue-100,
+html.dark .border-blue-200,
+html.dark .border-blue-200\/80,
+html.dark .border-blue-200\/70,
+html.dark .border-blue-200\/60,
+html.dark .border-blue-200\/50,
+html.dark .border-blue-300 {
+  border-color: rgba(59, 130, 246, 0.35) !important;
+}
+html.dark .text-blue-950,
+html.dark .text-blue-900,
+html.dark .text-blue-800,
+html.dark .text-blue-700 {
+  color: #93c5fd !important;
+}
+
+html.dark .bg-purple-50,
+html.dark .bg-purple-50\/80,
+html.dark .bg-purple-100,
+html.dark .bg-purple-200,
+html.dark .bg-purple-200\/80 {
+  background-color: rgba(168, 85, 247, 0.18) !important;
+  border-color: rgba(168, 85, 247, 0.35) !important;
+}
+html.dark .border-purple-100,
+html.dark .border-purple-200,
+html.dark .border-purple-200\/80,
+html.dark .border-purple-200\/50 {
+  border-color: rgba(168, 85, 247, 0.35) !important;
+}
+html.dark .text-purple-950,
+html.dark .text-purple-900,
+html.dark .text-purple-800 {
+  color: #d8b4fe !important;
+}
+
+html.dark .bg-slate-200 {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+}
+
+html.dark .bg-teal-50,
+html.dark .bg-teal-50\/80 {
+  background-color: rgba(20, 184, 166, 0.12) !important;
+  border-color: rgba(20, 184, 166, 0.25) !important;
+}
+html.dark .text-teal-900,
+html.dark .text-teal-800 {
+  color: #5eead4 !important;
+}
+
+/* Formulários, Inputs & Textareas */
+html.dark input:not([type="checkbox"]):not([type="radio"]),
+html.dark select,
+html.dark textarea {
+  background-color: #162436 !important;
+  color: #f8fafc !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #64748b !important;
+}
+
+html.dark input:focus,
+html.dark select:focus,
+html.dark textarea:focus {
+  border-color: #10b981 !important;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2) !important;
+}
+
+/* Tabelas (Horários e Classificações) */
+html.dark table thead th {
+  background-color: #162436 !important;
+  color: #f1f5f9 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark table tbody td {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Linhas de Eventos do Calendário JIF em Modo Escuro */
+html.dark .jif-event-row {
+  color: #e2e8f0 !important;
+}
+
+html.dark .jif-event-row .text-white,
+html.dark .jif-event-active .text-white {
+  color: #ffffff !important;
+}
+
+html.dark .jif-event-row .text-slate-300,
+html.dark .jif-event-active .text-slate-300 {
+  color: #cbd5e1 !important;
+}
+
+html.dark .jif-event-row .text-slate-400,
+html.dark .jif-event-active .text-slate-400,
+html.dark .jif-event-row .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+html.dark .jif-event-row strong,
+html.dark .jif-event-active strong {
+  color: #ffffff !important;
+}
+
+html.dark .jif-event-active {
+  background-color: rgba(245, 158, 11, 0.12) !important;
+  border-color: rgba(251, 191, 36, 0.7) !important;
+}
+
+/* Modais e Popups */
+html.dark #whatsappPopup,
+html.dark #cartaoSocioModal,
+html.dark #imageModal,
+html.dark [role="dialog"] {
+  background-color: #111c2a !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Botão de Alternância de Tema */
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0.5rem 0.625rem;
+  border-radius: 0.75rem;
+  border: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  color: #334155;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.theme-toggle-btn:hover {
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+}
+
+html.dark .theme-toggle-btn {
+  background-color: #162436;
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #fbbf24;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+html.dark .theme-toggle-btn:hover {
+  background-color: #1f3249;
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+/* Alternância de Logótipos (Modo Claro vs Modo Escuro) */
+html:not(.dark) .logo-dark-only {
+  display: none !important;
+}
+
+html:not(.dark) .logo-light-only {
+  display: block !important;
+}
+
+html.dark .logo-light-only {
+  display: none !important;
+}
+
+html.dark .logo-dark-only {
+  display: block !important;
+}
+

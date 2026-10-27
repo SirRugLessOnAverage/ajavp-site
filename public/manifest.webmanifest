@@ -1,0 +1,63 @@
+{
+  "name": "AJAVP - Associação Jovens e Adultos de Vilar do Pinheiro",
+  "short_name": "AJAVP",
+  "description": "Plataforma oficial da Associação Jovens e Adultos de Vilar do Pinheiro. Resultados JIF, modalidades, horários de treinos e novidades.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#1b4557",
+  "lang": "pt-PT",
+  "categories": ["sports", "community", "lifestyle"],
+  "icons": [
+    {
+      "src": "/assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "JIF 2026/27",
+      "short_name": "JIF",
+      "description": "Resultados, Calendário e Classificações",
+      "url": "/jif",
+      "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Modalidades & Treinos",
+      "short_name": "Modalidades",
+      "description": "Horários e modalidades ativas da AJAVP",
+      "url": "/modalidades",
+      "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "A Associação",
+      "short_name": "Associação",
+      "description": "Órgãos sociais, eleições e instalações",
+      "url": "/associacao",
+      "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Contactos & Inscrições",
+      "short_name": "Contactos",
+      "description": "Secretaria e inscrições online",
+      "url": "/contactos",
+      "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

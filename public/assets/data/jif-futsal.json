@@ -1,0 +1,353 @@
+{
+  "temporada": "2026/2027",
+  "edicao": "XL Jogos Inter-Freguesias de Vila do Conde",
+  "modalidade": "Futsal Masculino",
+  "ultimaAtualizacao": "2026-10-24",
+  "jornadaAtiva": 2,
+  "destaqueSemana": {
+    "titulo": "Sub-9 da AJAVP Líderes Concelhios Isolados e Melhor Ataque!",
+    "subtitulo": "Goleada por 19-1 ao Modivas consolida 30 golos marcados em 2 jogos. Cid Ferreira lidera a lista de marcadores com 10 golos.",
+    "badge": "Líder Concelhio 🥇",
+    "kpis": [
+      { "label": "Golos Marcados (Sub-9)", "valor": "30", "sub": "15.0 golos / jogo" },
+      { "label": "Saldo de Golos", "valor": "+28", "sub": "30 marcados • 2 sofridos" },
+      { "label": "Pódio Sub-11", "valor": "3.º Lugar", "sub": "Vitória 9-1 vs Touguinha" },
+      { "label": "Melhores Marcadores", "valor": "3 Atletas", "sub": "No Top 5 concelhio dos Sub-9" }
+    ]
+  },
+  "destaquesMultidesportivos": [
+    {
+      "id": "corta-mato",
+      "modalidade": "Corta-Mato",
+      "categoria": "Geral Concelhia",
+      "icone": "fa-running",
+      "badge": "Campeões Concelhios 🏆",
+      "badgeClass": "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
+      "titulo": "1.º Lugar Geral Concelhio",
+      "resultado": "57 Pontos Homologados",
+      "detalhe": "Vitórias e pódios em Benjamins, Infantis, Iniciados e Juvenis. Domínio absoluto de Vilar do Pinheiro nas provas de fundo.",
+      "link": "/jif-classificacao#eventPaneCortaMato",
+      "linkTexto": "Ver Classificação e Provas"
+    },
+    {
+      "id": "futsal-sub9",
+      "modalidade": "Futsal Masculino",
+      "categoria": "Sub-9 (Benjamins)",
+      "icone": "fa-futbol",
+      "badge": "Líder Isolado 🥇",
+      "badgeClass": "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
+      "titulo": "Modivas 1 – 19 AJAVP",
+      "resultado": "30 Golos Marcados (Melhor Ataque)",
+      "detalhe": "Maior goleada dos XL JIF. 6 pontos em 2 jogos (+28 saldo). Cid Ferreira lidera marcadores com 10 golos.",
+      "link": "/jif/futsal#escalao-sub-9",
+      "linkTexto": "Ver Ficha de Jogo e Tabela"
+    },
+    {
+      "id": "futebol-infantil",
+      "modalidade": "Futebol Infantil",
+      "categoria": "Sub-11",
+      "icone": "fa-trophy",
+      "badge": "Pódio de Bronze 🥉",
+      "badgeClass": "bg-amber-500/20 text-amber-400 border-amber-500/30",
+      "titulo": "AJAVP 2 – 2 Bagunte (Retorta)",
+      "resultado": "3.º Lugar Geral Concelhio",
+      "detalhe": "Grande prestação em Retorta com empate frente aos líderes do torneio e exibição sólida defensiva.",
+      "link": "/jif-classificacao#eventPaneFutebol",
+      "linkTexto": "Ver Pauta de Futebol"
+    },
+    {
+      "id": "futsal-sub11-sub7",
+      "modalidade": "Futsal Masculino",
+      "categoria": "Sub-11 & Sub-7",
+      "icone": "fa-fire",
+      "badge": "Pódio & Vitória Histórica 🚀",
+      "badgeClass": "bg-blue-500/20 text-blue-400 border-blue-500/30",
+      "titulo": "Sub-11: 9-1 Touguinha • Sub-7: 3-1 Aveleda",
+      "resultado": "Sub-11 no Pódio (3.º) & Estreia a Vencer Sub-7",
+      "detalhe": "Goleada de autoridade em Canidelo sobe Sub-11 ao 3.º posto concelhio. Sub-7 conquistam primeiros 3 pontos no Pavilhão de Caxinas.",
+      "link": "/jif/futsal",
+      "linkTexto": "Ver Hub de Futsal"
+    }
+  ],
+  "proximaJornada": {
+    "numero": 3,
+    "dataPrevisao": "Novembro 2026",
+    "estado": "A aguardar marcação oficial da ADCCVC",
+    "jogosAjavp": [
+      { "escalao": "Sub-7", "adversario": "A definir pela ADCCVC", "pavilhao": "A designar", "hora": "Manhã" },
+      { "escalao": "Sub-9", "adversario": "A definir pela ADCCVC", "pavilhao": "A designar", "hora": "Manhã" },
+      { "escalao": "Sub-11", "adversario": "A definir pela ADCCVC", "pavilhao": "A designar", "hora": "Manhã" },
+      { "escalao": "Sub-13", "adversario": "A definir pela ADCCVC", "pavilhao": "A designar", "hora": "Manhã" }
+    ]
+  },
+  "destaquesAjavp": [
+    {
+      "escalao": "Sub-9",
+      "pavilhao": "Pavilhão de Modivas",
+      "resultado": "Modivas 1 – 19 AJAVP",
+      "data": "24/Out/2026",
+      "posicao": "1.º Lugar Isolado 🥇",
+      "resumo": "Melhor ataque de todo o concelho com 30 golos em 2 jogos (+28 saldo). Exibição categórica.",
+      "destaque": true
+    },
+    {
+      "escalao": "Sub-11",
+      "pavilhao": "Pavilhão de Canidelo",
+      "resultado": "AJAVP 9 – 1 Touguinha",
+      "data": "24/Out/2026",
+      "posicao": "3.º Lugar Concelhio 🥉",
+      "resumo": "Goleada de autoridade, conquista dos primeiros 3 pontos e subida ao pódio do escalão.",
+      "destaque": true
+    },
+    {
+      "escalao": "Sub-7",
+      "pavilhao": "Pavilhão de Caxinas (Campo 2)",
+      "resultado": "AJAVP 3 – 1 Aveleda",
+      "data": "24/Out/2026",
+      "posicao": "6.º Lugar Concelhio",
+      "resumo": "Primeira vitória histórica da AJAVP no escalão Sub-7, após duelo competitivo frente ao Gião (1-3).",
+      "destaque": true
+    },
+    {
+      "escalao": "Sub-13",
+      "pavilhao": "Pavilhão de Modivas",
+      "resultado": "AJAVP 3 – 10 Arcos",
+      "data": "24/Out/2026",
+      "posicao": "10.º Lugar Concelhio",
+      "resumo": "Muita determinação e 3 golos apontados frente a uma das equipas candidatas ao título.",
+      "destaque": false
+    }
+  ],
+  "melhoresMarcadores": [
+    {
+      "escalao": "Sub-9",
+      "atletas": [
+        { "pos": 1, "nome": "Cid Ferreira", "equipa": "Vilar do Pinheiro (AJAVP)", "golos": 10, "isAjavp": true, "coroa": true },
+        { "pos": 2, "nome": "André Silva", "equipa": "Canidelo", "golos": 7, "isAjavp": false },
+        { "pos": 3, "nome": "Miguel Magalhães", "equipa": "Vilar do Pinheiro (AJAVP)", "golos": 7, "isAjavp": true },
+        { "pos": 4, "nome": "Rodrigo Silva", "equipa": "Árvore", "golos": 6, "isAjavp": false },
+        { "pos": 5, "nome": "Kevin Ferreira", "equipa": "Vilar do Pinheiro (AJAVP)", "golos": 6, "isAjavp": true }
+      ]
+    },
+    {
+      "escalao": "Sub-11",
+      "atletas": [
+        { "pos": 1, "nome": "Rafael Campos", "equipa": "Tougues", "golos": 8, "isAjavp": false },
+        { "pos": 2, "nome": "Lourenço Duarte", "equipa": "Vilar do Pinheiro (AJAVP)", "golos": 6, "isAjavp": true, "medalha": "🥈" },
+        { "pos": 3, "nome": "Daniel Cruz", "equipa": "Bagunte", "golos": 5, "isAjavp": false },
+        { "pos": 4, "nome": "Octávio Rosa", "equipa": "Junqueira", "golos": 3, "isAjavp": false },
+        { "pos": 5, "nome": "Leandro Costa", "equipa": "Vilar do Pinheiro (AJAVP)", "golos": 3, "isAjavp": true }
+      ]
+    },
+    {
+      "escalao": "Sub-13",
+      "atletas": [
+        { "pos": 1, "nome": "Duarte Fernandes", "equipa": "Bagunte", "golos": 7, "isAjavp": false },
+        { "pos": 2, "nome": "Diogo Moreira", "equipa": "Arcos", "golos": 6, "isAjavp": false },
+        { "pos": 3, "nome": "Rafael Costa", "equipa": "Mosteiró", "golos": 4, "isAjavp": false },
+        { "pos": 4, "nome": "Afonso Sá", "equipa": "Bagunte", "golos": 4, "isAjavp": false },
+        { "pos": 5, "nome": "Saulo Silva", "equipa": "Mosteiró", "golos": 3, "isAjavp": false }
+      ]
+    },
+    {
+      "escalao": "Sub-16",
+      "atletas": [
+        { "pos": 1, "nome": "Luís Maia", "equipa": "Bagunte", "golos": 5, "isAjavp": false },
+        { "pos": 2, "nome": "Afonso Costa", "equipa": "Outeiro Maior", "golos": 4, "isAjavp": false },
+        { "pos": 3, "nome": "Martim Marques", "equipa": "Bagunte", "golos": 4, "isAjavp": false },
+        { "pos": 4, "nome": "Rafael Barbosa", "equipa": "Bagunte", "golos": 3, "isAjavp": false },
+        { "pos": 5, "nome": "Francisco Ramos", "equipa": "Bagunte", "golos": 3, "isAjavp": false }
+      ]
+    }
+  ],
+  "classificacoes": {
+    "sub7": {
+      "titulo": "Sub-7 Masculinos",
+      "totalEquipas": 11,
+      "tabela": [
+        { "pos": 1, "equipa": "Junqueira", "pontos": 6, "jogos": 2, "v": 2, "e": 0, "d": 0, "gm": 14, "gs": 3, "saldo": 11 },
+        { "pos": 2, "equipa": "Árvore", "pontos": 3, "jogos": 1, "v": 1, "e": 0, "d": 0, "gm": 8, "gs": 0, "saldo": 8 },
+        { "pos": 2, "equipa": "Tougues", "pontos": 3, "jogos": 1, "v": 1, "e": 0, "d": 0, "gm": 8, "gs": 0, "saldo": 8 },
+        { "pos": 4, "equipa": "Bagunte", "pontos": 3, "jogos": 1, "v": 1, "e": 0, "d": 0, "gm": 7, "gs": 0, "saldo": 7 },
+        { "pos": 5, "equipa": "Fornelo", "pontos": 3, "jogos": 1, "v": 1, "e": 0, "d": 0, "gm": 5, "gs": 1, "saldo": 4 },
+        { "pos": 6, "equipa": "Vilar do Pinheiro (AJAVP)", "pontos": 3, "jogos": 2, "v": 1, "e": 0, "d": 1, "gm": 4, "gs": 4, "saldo": 0, "isAjavp": true },
+        { "pos": 7, "equipa": "Gião", "pontos": 3, "jogos": 2, "v": 1, "e": 0, "d": 1, "gm": 3, "gs": 8, "saldo": -5 },
+        { "pos": 8, "equipa": "Canidelo", "pontos": 0, "jogos": 1, "v": 0, "e": 0, "d": 1, "gm": 2, "gs": 6, "saldo": -4 },
+        { "pos": 9, "equipa": "Aveleda", "pontos": 0, "jogos": 2, "v": 0, "e": 0, "d": 2, "gm": 2, "gs": 8, "saldo": -6 },
+        { "pos": 10, "equipa": "Mosteiró", "pontos": 0, "jogos": 1, "v": 0, "e": 0, "d": 1, "gm": 0, "gs": 8, "saldo": -8 },
+        { "pos": 11, "equipa": "Modivas", "pontos": 0, "jogos": 2, "v": 0, "e": 0, "d": 2, "gm": 1, "gs": 16, "saldo": -15 }
+      ]
+    },
+    "sub9": {
+      "titulo": "Sub-9 Masculinos",
+      "totalEquipas": 11,
+      "tabela": [
+        { "pos": 1, "equipa": "Vilar do Pinheiro (AJAVP)", "pontos": 6, "jogos": 2, "v": 2, "e": 0, "d": 0, "gm": 30, "gs": 2, "saldo": 28, "isAjavp": true, "lider": true },
+        { "pos": 2, "equipa": "Canidelo", "pontos": 6, "jogos": 2, "v": 2, "e": 0, "d": 0, "gm": 16, "gs": 4, "saldo": 12 },
+        { "pos": 3, "equipa": "Bagunte", "pontos": 6, "jogos": 2, "v": 2, "e": 0, "d": 0, "gm": 11, "gs": 3, "saldo": 8 },
+        { "pos": 4, "equipa": "Árvore", "pontos": 3, "jogos": 2, "v": 1, "e": 0, "d": 1, "gm": 12, "gs": 4, "saldo": 8 },
+        { "pos": 5, "equipa": "Gião", "pontos": 3, "jogos": 2, "v": 1, "e": 0, "d": 1, "gm": 3, "gs": 8, "saldo": -5 },
+        { "pos": 6, "equipa": "Touguinha Touguinhó", "pontos": 3, "jogos": 2, "v": 1, "e": 0, "d": 1, "gm": 1, "gs": 10, "saldo": -9 },
+        { "pos": 7, "equipa": "Tougues", "pontos": 3, "jogos": 1, "v": 1, "e": 0, "d": 0, "gm": 5, "gs": 0, "saldo": 5 },
+        { "pos": 8, "equipa": "Arcos", "pontos": 0, "jogos": 2, "v": 0, "e": 0, "d": 2, "gm": 1, "gs": 4, "saldo": -3 },
+        { "pos": 9, "equipa": "Fornelo", "pontos": 0, "jogos": 1, "v": 0, "e": 0, "d": 1, "gm": 1, "gs": 11, "saldo": -10 },
+        { "pos": 10, "equipa": "Junqueira", "pontos": 0, "jogos": 2, "v": 0, "e": 0, "d": 2, "gm": 1, "gs": 12, "saldo": -11 },
+        { "pos": 11, "equipa": "Modivas", "pontos": 0, "jogos": 2, "v": 0, "e": 0, "d": 2, "gm": 5, "gs": 28, "saldo": -23 }
+      ]
+    },
+    "sub11": {
+      "titulo": "Sub-11 Masculinos",
+      "totalEquipas": 9,
+      "tabela": [
+        { "pos": 1, "equipa": "Bagunte", "pontos": 6, "jogos": 2, "v": 2, "e": 0, "d": 0, "gm": 12, "gs": 3, "saldo": 9 },
+        { "pos": 2, "equipa": "Tougues", "pontos": 3, "jogos": 2, "v": 1, "e": 0, "d": 1, "gm": 14, "gs": 6, "saldo": 8 },
+        { "pos": 3, "equipa": "Vilar do Pinheiro (AJAVP)", "pontos": 3, "jogos": 2, "v": 1, "e": 0, "d": 1, "gm": 11, "gs": 5, "saldo": 6, "isAjavp": true, "podio": true },
+        { "pos": 4, "equipa": "Árvore", "pontos": 3, "jogos": 2, "v": 1, "e": 0, "d": 1, "gm": 7, "gs": 6, "saldo": 1 },
+        { "pos": 5, "equipa": "Fornelo", "pontos": 3, "jogos": 1, "v": 1, "e": 0, "d": 0, "gm": 4, "gs": 2, "saldo": 2 },
+        { "pos": 6, "equipa": "Fajozes", "pontos": 3, "jogos": 2, "v": 1, "e": 0, "d": 1, "gm": 6, "gs": 6, "saldo": 0 },
+        { "pos": 7, "equipa": "Junqueira", "pontos": 3, "jogos": 2, "v": 1, "e": 0, "d": 1, "gm": 5, "gs": 10, "saldo": -5 },
+        { "pos": 8, "equipa": "Gião", "pontos": 0, "jogos": 1, "v": 0, "e": 0, "d": 1, "gm": 2, "gs": 5, "saldo": -3 },
+        { "pos": 9, "equipa": "Touguinha Touguinhó", "pontos": 0, "jogos": 2, "v": 0, "e": 0, "d": 2, "gm": 3, "gs": 21, "saldo": -18 }
+      ]
+    },
+    "sub13": {
+      "titulo": "Sub-13 Masculinos",
+      "totalEquipas": 10,
+      "tabela": [
+        { "pos": 1, "equipa": "Bagunte", "pontos": 6, "jogos": 2, "v": 2, "e": 0, "d": 0, "gm": 17, "gs": 3, "saldo": 14 },
+        { "pos": 2, "equipa": "Árvore", "pontos": 6, "jogos": 2, "v": 2, "e": 0, "d": 0, "gm": 6, "gs": 1, "saldo": 5 },
+        { "pos": 3, "equipa": "Arcos", "pontos": 4, "jogos": 2, "v": 1, "e": 1, "d": 0, "gm": 10, "gs": 3, "saldo": 7 },
+        { "pos": 4, "equipa": "Fajozes", "pontos": 3, "jogos": 2, "v": 1, "e": 0, "d": 1, "gm": 7, "gs": 6, "saldo": 1 },
+        { "pos": 5, "equipa": "Mosteiró", "pontos": 3, "jogos": 2, "v": 1, "e": 0, "d": 1, "gm": 9, "gs": 10, "saldo": -1 },
+        { "pos": 6, "equipa": "Junqueira", "pontos": 3, "jogos": 2, "v": 1, "e": 0, "d": 1, "gm": 5, "gs": 8, "saldo": -3 },
+        { "pos": 7, "equipa": "Tougues", "pontos": 3, "jogos": 2, "v": 1, "e": 0, "d": 1, "gm": 2, "gs": 5, "saldo": -3 },
+        { "pos": 8, "equipa": "Gião", "pontos": 1, "jogos": 2, "v": 0, "e": 1, "d": 1, "gm": 1, "gs": 2, "saldo": -1 },
+        { "pos": 9, "equipa": "Touguinha Touguinhó", "pontos": 0, "jogos": 2, "v": 0, "e": 0, "d": 2, "gm": 7, "gs": 14, "saldo": -7 },
+        { "pos": 10, "equipa": "Vilar do Pinheiro (AJAVP)", "pontos": 0, "jogos": 2, "v": 0, "e": 0, "d": 2, "gm": 3, "gs": 15, "saldo": -12, "isAjavp": true }
+      ]
+    },
+    "sub16": {
+      "titulo": "Sub-16 Masculinos",
+      "totalEquipas": 6,
+      "tabela": [
+        { "pos": 1, "equipa": "Bagunte", "pontos": 6, "jogos": 2, "v": 2, "e": 0, "d": 0, "gm": 19, "gs": 1, "saldo": 18 },
+        { "pos": 2, "equipa": "Junqueira", "pontos": 3, "jogos": 1, "v": 1, "e": 0, "d": 0, "gm": 1, "gs": 0, "saldo": 1 },
+        { "pos": 3, "equipa": "Outeiro Maior", "pontos": 3, "jogos": 2, "v": 1, "e": 0, "d": 1, "gm": 6, "gs": 16, "saldo": -10 },
+        { "pos": 4, "equipa": "Gião", "pontos": 0, "jogos": 1, "v": 0, "e": 0, "d": 1, "gm": 0, "gs": 1, "saldo": -1 },
+        { "pos": 5, "equipa": "Árvore", "pontos": 0, "jogos": 1, "v": 0, "e": 0, "d": 1, "gm": 1, "gs": 5, "saldo": -4 },
+        { "pos": 6, "equipa": "Arcos", "pontos": 0, "jogos": 1, "v": 0, "e": 0, "d": 1, "gm": 0, "gs": 4, "saldo": -4 }
+      ]
+    }
+  },
+  "jornadas": [
+    {
+      "numero": 2,
+      "data": "24 de Outubro de 2026",
+      "estado": "Concluída",
+      "pavilhoes": [
+        {
+          "nome": "Pavilhão de Mindelo",
+          "cor": "blue",
+          "jogos": [
+            { "escalao": "Sub-13", "hora": "08h45", "casa": "Gião", "fora": "Árvore", "golosCasa": 1, "golosFora": 2 },
+            { "escalao": "Sub-11", "hora": "09h45", "casa": "Bagunte", "fora": "Árvore", "golosCasa": 4, "golosFora": 2 },
+            { "escalao": "Sub-9", "hora": "10h45", "casa": "Bagunte", "fora": "Árvore", "golosCasa": 4, "golosFora": 2 },
+            { "escalao": "Sub-13", "hora": "11h45", "casa": "Bagunte", "fora": "Junqueira", "golosCasa": 8, "golosFora": 0 },
+            { "escalao": "Sub-16", "hora": "14h30", "casa": "Outeiro Maior", "fora": "Árvore", "golosCasa": 5, "golosFora": 1 },
+            { "escalao": "Sub-16", "hora": "15h30", "casa": "Bagunte", "fora": "Arcos", "golosCasa": 4, "golosFora": 0 }
+          ]
+        },
+        {
+          "nome": "Pavilhão de Canidelo",
+          "cor": "blue",
+          "jogos": [
+            { "escalao": "Sub-13", "hora": "08h45", "casa": "Touguinha", "fora": "Mosteiró", "golosCasa": 4, "golosFora": 5 },
+            { "escalao": "Sub-9", "hora": "09h45", "casa": "Touguinha", "fora": "Arcos", "golosCasa": 1, "golosFora": 0 },
+            { "escalao": "Sub-11", "hora": "10h45", "casa": "Vilar do Pinheiro (AJAVP)", "fora": "Touguinha", "golosCasa": 9, "golosFora": 1, "isAjavp": true },
+            { "escalao": "Sub-9", "hora": "11h45", "casa": "Canidelo", "fora": "Gião", "golosCasa": 7, "golosFora": 0 }
+          ]
+        },
+        {
+          "nome": "Pavilhão de Fajozes",
+          "cor": "emerald",
+          "jogos": [
+            { "escalao": "Sub-13", "hora": "08h45", "casa": "Tougues", "fora": "Fajozes", "golosCasa": 2, "golosFora": 1 },
+            { "escalao": "Sub-11", "hora": "09h45", "casa": "Tougues", "fora": "Junqueira", "golosCasa": 2, "golosFora": 4 },
+            { "escalao": "Sub-9", "hora": "10h45", "casa": "Tougues", "fora": "Junqueira", "golosCasa": 5, "golosFora": 0 }
+          ]
+        },
+        {
+          "nome": "Pavilhão de Modivas",
+          "cor": "purple",
+          "jogos": [
+            { "escalao": "Sub-13", "hora": "09h00", "casa": "Vilar do Pinheiro (AJAVP)", "fora": "Arcos", "golosCasa": 3, "golosFora": 10, "isAjavp": true },
+            { "escalao": "Sub-9", "hora": "10h00", "casa": "Modivas", "fora": "Vilar do Pinheiro (AJAVP)", "golosCasa": 1, "golosFora": 19, "isAjavp": true },
+            { "escalao": "Sub-11", "hora": "11h00", "casa": "Fornelo", "fora": "Fajozes", "golosCasa": 4, "golosFora": 2 }
+          ]
+        },
+        {
+          "nome": "Pavilhão de Caxinas (Sub-7)",
+          "cor": "amber",
+          "jogos": [
+            { "campo": "Campo 1", "hora": "09h30", "casa": "Modivas", "fora": "Árvore", "golosCasa": 0, "golosFora": 8 },
+            { "campo": "Campo 1", "hora": "10h15", "casa": "Canidelo", "fora": "Junqueira", "golosCasa": 2, "golosFora": 6 },
+            { "campo": "Campo 1", "hora": "11h00", "casa": "Tougues", "fora": "Mosteiró", "golosCasa": 8, "golosFora": 0 },
+            { "campo": "Campo 1", "hora": "11h45", "casa": "Junqueira", "fora": "Modivas", "golosCasa": 8, "golosFora": 1 },
+            { "campo": "Campo 2", "hora": "09h30", "casa": "Gião", "fora": "Vilar do Pinheiro (AJAVP)", "golosCasa": 3, "golosFora": 1, "isAjavp": true },
+            { "campo": "Campo 2", "hora": "10h15", "casa": "Aveleda", "fora": "Fornelo", "golosCasa": 1, "golosFora": 5 },
+            { "campo": "Campo 2", "hora": "11h00", "casa": "Bagunte", "fora": "Gião", "golosCasa": 6, "golosFora": 0 },
+            { "campo": "Campo 2", "hora": "11h45", "casa": "Vilar do Pinheiro (AJAVP)", "fora": "Aveleda", "golosCasa": 3, "golosFora": 1, "isAjavp": true }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": 1,
+      "data": "10 de Outubro de 2026",
+      "estado": "Concluída",
+      "pavilhoes": [
+        {
+          "nome": "Pavilhão de Mindelo",
+          "cor": "blue",
+          "jogos": [
+            { "escalao": "Sub-13", "hora": "08h45", "casa": "Arcos", "fora": "Gião", "golosCasa": 0, "golosFora": 0 },
+            { "escalao": "Sub-9", "hora": "09h45", "casa": "Arcos", "fora": "Gião", "golosCasa": 1, "golosFora": 3 },
+            { "escalao": "Sub-11", "hora": "10h45", "casa": "Árvore", "fora": "Gião", "golosCasa": 5, "golosFora": 2 },
+            { "escalao": "Sub-13", "hora": "11h45", "casa": "Árvore", "fora": "Tougues", "golosCasa": 4, "golosFora": 0 },
+            { "escalao": "Sub-16", "hora": "14h30", "casa": "Vairão", "fora": "Árvore", "golosCasa": 0, "golosFora": 6 },
+            { "escalao": "Sub-16", "hora": "15h30", "casa": "Bagunte", "fora": "Outeiro Maior", "golosCasa": 15, "golosFora": 1 },
+            { "escalao": "Sub-16", "hora": "16h30", "casa": "Junqueira", "fora": "Gião", "golosCasa": 1, "golosFora": 0 }
+          ]
+        },
+        {
+          "nome": "Pavilhão de Canidelo",
+          "cor": "blue",
+          "jogos": [
+            { "escalao": "Sub-13", "hora": "08h45", "casa": "Junqueira", "fora": "Vilar do Pinheiro (AJAVP)", "golosCasa": 5, "golosFora": 0, "isAjavp": true },
+            { "escalao": "Sub-9", "hora": "09h45", "casa": "Junqueira", "fora": "Bagunte", "golosCasa": 1, "golosFora": 7 },
+            { "escalao": "Sub-11", "hora": "10h45", "casa": "Junqueira", "fora": "Bagunte", "golosCasa": 1, "golosFora": 8 },
+            { "escalao": "Sub-13", "hora": "11h45", "casa": "Bagunte", "fora": "Touguinha", "golosCasa": 9, "golosFora": 3 }
+          ]
+        },
+        {
+          "nome": "Pavilhão de Fajozes",
+          "cor": "emerald",
+          "jogos": [
+            { "escalao": "Sub-13", "hora": "09h00", "casa": "Fajozes", "fora": "Mosteiró", "golosCasa": 6, "golosFora": 4 },
+            { "escalao": "Sub-11", "hora": "10h00", "casa": "Fajozes", "fora": "Vilar do Pinheiro (AJAVP)", "golosCasa": 4, "golosFora": 2, "isAjavp": true },
+            { "escalao": "Sub-9", "hora": "11h00", "casa": "Vilar do Pinheiro (AJAVP)", "fora": "Fornelo", "golosCasa": 11, "golosFora": 1, "isAjavp": true }
+          ]
+        },
+        {
+          "nome": "Pavilhão de Modivas",
+          "cor": "purple",
+          "jogos": [
+            { "escalao": "Sub-9", "hora": "09h00", "casa": "Árvore", "fora": "Touguinha", "golosCasa": 10, "golosFora": 0 },
+            { "escalao": "Sub-11", "hora": "10h00", "casa": "Touguinha", "fora": "Tougues", "golosCasa": 2, "golosFora": 12 },
+            { "escalao": "Sub-9", "hora": "11h00", "casa": "Modivas", "fora": "Canidelo", "golosCasa": 4, "golosFora": 9 }
+          ]
+        }
+      ]
+    }
+  ]
+}

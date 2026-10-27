@@ -1,0 +1,670 @@
+/**
+ * AJAVP - Folha de Estilos de Acessibilidade e Usabilidade (A11y)
+ * Desenvolvido em conformidade com W3C WCAG 2.1 / 2.2 Nível AA / AAA
+ * e Decreto-Lei n.º 83/2018 (Selo de Usabilidade e Acessibilidade AMA).
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&display=swap');
+
+/* =============================================================
+ * 1. LINK DE SALTO DE CONTEÚDO (SKIP TO MAIN CONTENT)
+ * WCAG 2.4.1 (Bypass Blocks)
+ * ============================================================= */
+.a11y-skip-link {
+  position: fixed;
+  top: -120px;
+  left: 1rem;
+  z-index: 100000;
+  background-color: #1b4557 !important;
+  color: #ffffff !important;
+  font-family: system-ui, -apple-system, sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 0.875rem !important;
+  padding: 0.75rem 1.25rem !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 0 0 3px #387b5b !important;
+  text-decoration: none !important;
+  transition: top 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.a11y-skip-link:focus,
+.a11y-skip-link:focus-visible {
+  top: 1rem !important;
+  outline: 3px solid #f2a93b !important;
+  outline-offset: 3px !important;
+}
+
+/* =============================================================
+ * 2. INDICADORES DE FOCO VISÍVEL REFORÇADOS
+ * WCAG 2.4.7 (Focus Visible) & WCAG 2.4.11 (Focus Appearance)
+ * ============================================================= */
+:focus-visible {
+  outline: 3px solid #387b5b !important;
+  outline-offset: 3px !important;
+}
+
+html.dark :focus-visible {
+  outline: 3px solid #6ee7b7 !important;
+  outline-offset: 3px !important;
+}
+
+/* =============================================================
+ * 3. ESCALA E REDIMENSIONAMENTO DE TEXTO
+ * WCAG 1.4.4 (Resize Text)
+ * ============================================================= */
+html[data-a11y-font="medium"] {
+  font-size: 115% !important;
+}
+
+html[data-a11y-font="large"] {
+  font-size: 130% !important;
+}
+
+/* =============================================================
+ * 4. FONTE PARA DISLEXIA (LEXEND)
+ * WCAG 1.4.12 (Legibilidade e Diferenciação de Caracteres)
+ * ============================================================= */
+html[data-a11y-dyslexic="true"],
+html[data-a11y-dyslexic="true"] body,
+html[data-a11y-dyslexic="true"] h1,
+html[data-a11y-dyslexic="true"] h2,
+html[data-a11y-dyslexic="true"] h3,
+html[data-a11y-dyslexic="true"] h4,
+html[data-a11y-dyslexic="true"] h5,
+html[data-a11y-dyslexic="true"] h6,
+html[data-a11y-dyslexic="true"] p,
+html[data-a11y-dyslexic="true"] span,
+html[data-a11y-dyslexic="true"] a,
+html[data-a11y-dyslexic="true"] button,
+html[data-a11y-dyslexic="true"] input,
+html[data-a11y-dyslexic="true"] textarea,
+html[data-a11y-dyslexic="true"] select {
+  font-family: 'Lexend', system-ui, -apple-system, sans-serif !important;
+  letter-spacing: 0.03em !important;
+  word-spacing: 0.08em !important;
+}
+
+/* =============================================================
+ * 5. ESPAÇAMENTO DE TEXTO REFORÇADO
+ * WCAG 1.4.12 (Text Spacing)
+ * ============================================================= */
+html[data-a11y-spacing="true"] p,
+html[data-a11y-spacing="true"] span,
+html[data-a11y-spacing="true"] li,
+html[data-a11y-spacing="true"] a {
+  line-height: 1.85 !important;
+  letter-spacing: 0.12em !important;
+  word-spacing: 0.16em !important;
+}
+
+/* =============================================================
+ * 6. SUBLINHAR TODAS AS HIPERLIGAÇÕES
+ * WCAG 1.4.1 (Use of Color)
+ * ============================================================= */
+html[data-a11y-links="true"] a {
+  text-decoration: underline 2px solid #387b5b !important;
+  text-underline-offset: 4px !important;
+  font-weight: 700 !important;
+}
+
+html[data-a11y-links="true"].dark a {
+  text-decoration: underline 2px solid #6ee7b7 !important;
+}
+
+/* =============================================================
+ * 7. MODOS DE ALTO CONTRASTE (WCAG AAA)
+ * WCAG 1.4.3 & 1.4.6 (Contrast Minimum & Enhanced)
+ * ============================================================= */
+
+/* 7.1 Alto Contraste Preto e Amarelo (Dark High-Contrast) */
+html[data-a11y-contrast="high-dark"] {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+html[data-a11y-contrast="high-dark"] body,
+html[data-a11y-contrast="high-dark"] section,
+html[data-a11y-contrast="high-dark"] header,
+html[data-a11y-contrast="high-dark"] footer,
+html[data-a11y-contrast="high-dark"] nav,
+html[data-a11y-contrast="high-dark"] div:not(#a11yModal):not(#a11yModal *),
+html[data-a11y-contrast="high-dark"] article,
+html[data-a11y-contrast="high-dark"] aside {
+  background-color: #000000 !important;
+  background-image: none !important;
+  color: #ffffff !important;
+  border-color: #ffd700 !important;
+}
+
+html[data-a11y-contrast="high-dark"] h1,
+html[data-a11y-contrast="high-dark"] h2,
+html[data-a11y-contrast="high-dark"] h3,
+html[data-a11y-contrast="high-dark"] h4,
+html[data-a11y-contrast="high-dark"] h5,
+html[data-a11y-contrast="high-dark"] strong,
+html[data-a11y-contrast="high-dark"] b {
+  color: #ffd700 !important;
+}
+
+html[data-a11y-contrast="high-dark"] a {
+  color: #00ffff !important;
+  text-decoration: underline !important;
+}
+
+html[data-a11y-contrast="high-dark"] button:not(#a11yModal *):not(#a11yTriggerBtn) {
+  background-color: #000000 !important;
+  color: #ffd700 !important;
+  border: 2px solid #ffd700 !important;
+}
+
+/* 7.2 Alto Contraste Preto no Branco (Light High-Contrast) */
+html[data-a11y-contrast="high-light"] {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+html[data-a11y-contrast="high-light"] body,
+html[data-a11y-contrast="high-light"] section,
+html[data-a11y-contrast="high-light"] header,
+html[data-a11y-contrast="high-light"] footer,
+html[data-a11y-contrast="high-light"] nav,
+html[data-a11y-contrast="high-light"] div:not(#a11yModal):not(#a11yModal *),
+html[data-a11y-contrast="high-light"] article,
+html[data-a11y-contrast="high-light"] aside {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+html[data-a11y-contrast="high-light"] h1,
+html[data-a11y-contrast="high-light"] h2,
+html[data-a11y-contrast="high-light"] h3,
+html[data-a11y-contrast="high-light"] h4,
+html[data-a11y-contrast="high-light"] strong,
+html[data-a11y-contrast="high-light"] b {
+  color: #000000 !important;
+}
+
+html[data-a11y-contrast="high-light"] a {
+  color: #0000ee !important;
+  text-decoration: underline !important;
+}
+
+/* 7.3 Monocromático (Escala de Cinzentos) */
+html[data-a11y-contrast="mono"] {
+  filter: grayscale(100%) !important;
+}
+
+/* =============================================================
+ * 8. MOVIMENTO REDUZIDO & PARAR ANIMAÇÕES
+ * WCAG 2.3.3 (Animation from Interactions)
+ * ============================================================= */
+html[data-a11y-motion="reduced"] *,
+html[data-a11y-motion="reduced"] *::before,
+html[data-a11y-motion="reduced"] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* =============================================================
+ * 9. GUIA / RÉGUA DE LEITURA
+ * Apoio a Dislexia e Dificuldades de Concentração
+ * ============================================================= */
+#a11yReadingGuide {
+  position: fixed;
+  left: 0;
+  width: 100vw;
+  height: 40px;
+  pointer-events: none;
+  background-color: rgba(254, 240, 138, 0.28);
+  border-top: 2px solid #eab308;
+  border-bottom: 2px solid #eab308;
+  z-index: 99998;
+  display: none;
+  transform: translateY(-50%);
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.15);
+}
+
+html[data-a11y-guide="true"] #a11yReadingGuide {
+  display: block;
+}
+
+/* =============================================================
+ * 10. BOTÃO FLUTUANTE DE ACESSIBILIDADE
+ * ============================================================= */
+#a11yTriggerBtn {
+  position: fixed;
+  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  left: 1.25rem;
+  z-index: 9990;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  border-radius: 9999px;
+  background-color: #1b4557;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 25px -5px rgba(27, 69, 87, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#a11yTriggerBtn:hover {
+  background-color: #13323f;
+  transform: scale(1.04);
+  box-shadow: 0 14px 28px -4px rgba(27, 69, 87, 0.5);
+}
+
+#a11yTriggerBtn:active {
+  transform: scale(0.96);
+}
+
+#a11yTriggerBtn:focus-visible {
+  outline: 3px solid #387b5b;
+  outline-offset: 3px;
+}
+
+html.dark #a11yTriggerBtn {
+  background-color: #0f172a;
+  border-color: rgba(56, 123, 91, 0.5);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
+}
+
+html.dark #a11yTriggerBtn:hover {
+  background-color: #1e293b;
+  border-color: #387b5b;
+}
+
+/* =============================================================
+ * 11. PAINEL MODAL DE ACESSIBILIDADE
+ * ============================================================= */
+#a11yModalBackdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 100001;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 1rem !important;
+  box-sizing: border-box !important;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s;
+}
+
+#a11yModalBackdrop.a11y-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#a11yModal {
+  width: 100% !important;
+  max-width: 34rem !important;
+  max-height: calc(100vh - 2rem) !important;
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-radius: 1.5rem !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  transform: scale(0.95) translateY(10px);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#a11yModalBackdrop.a11y-active #a11yModal {
+  transform: scale(1) translateY(0);
+}
+
+html.dark #a11yModal {
+  background-color: #0b1320 !important;
+  color: #f8fafc !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* 11.1 Cabeçalho do Modal */
+.a11y-modal-header {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 1.125rem 1.25rem !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  background-color: #f8fafc !important;
+  flex-shrink: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+html.dark .a11y-modal-header {
+  background-color: #0d1829 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.a11y-modal-header-info {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+}
+
+.a11y-modal-icon {
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  border-radius: 0.75rem !important;
+  background-color: #1b4557 !important;
+  color: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 1.25rem !important;
+  flex-shrink: 0 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+html.dark .a11y-modal-icon {
+  background-color: #387b5b !important;
+}
+
+.a11y-modal-title {
+  font-family: 'Montserrat', system-ui, sans-serif !important;
+  font-size: 1.0625rem !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+  margin: 0 !important;
+  color: #1b4557 !important;
+}
+
+html.dark .a11y-modal-title {
+  color: #ffffff !important;
+}
+
+.a11y-modal-subtitle {
+  font-size: 0.75rem !important;
+  color: #64748b !important;
+  margin: 0.125rem 0 0 0 !important;
+  line-height: 1.2 !important;
+}
+
+html.dark .a11y-modal-subtitle {
+  color: #94a3b8 !important;
+}
+
+.a11y-modal-close {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 2.25rem !important;
+  height: 2.25rem !important;
+  border-radius: 0.75rem !important;
+  border: none !important;
+  background-color: transparent !important;
+  color: #64748b !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  transition: all 0.15s ease !important;
+}
+
+.a11y-modal-close:hover {
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+html.dark .a11y-modal-close {
+  color: #94a3b8 !important;
+}
+
+html.dark .a11y-modal-close:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+/* 11.2 Corpo do Modal */
+.a11y-modal-body {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.25rem !important;
+  padding: 1.25rem !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.a11y-modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+.a11y-modal-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+.a11y-modal-body::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.25);
+  border-radius: 9999px;
+}
+.a11y-modal-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.45);
+}
+
+.a11y-section {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.5rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.a11y-section-title {
+  display: block !important;
+  font-size: 0.75rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  color: #64748b !important;
+  margin: 0 !important;
+}
+
+html.dark .a11y-section-title {
+  color: #94a3b8 !important;
+}
+
+.a11y-section-hint {
+  font-size: 0.6875rem !important;
+  color: #64748b !important;
+  font-style: italic !important;
+  margin: 0.25rem 0 0 0 !important;
+}
+
+html.dark .a11y-section-hint {
+  color: #94a3b8 !important;
+}
+
+/* 11.3 Grelhas de Opções */
+.a11y-grid-3 {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 0.5rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.a11y-grid-2 {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 0.5rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 480px) {
+  .a11y-grid-3 {
+    grid-template-columns: 1fr !important;
+  }
+  .a11y-grid-2 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* 11.4 Botões de Opção (Toggle Buttons) */
+.a11y-btn-toggle {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.375rem !important;
+  padding: 0.625rem 0.625rem !important;
+  min-height: 44px !important;
+  border-radius: 0.75rem !important;
+  font-size: 0.8125rem !important;
+  font-weight: 600 !important;
+  line-height: 1.25 !important;
+  border: 1.5px solid #e2e8f0 !important;
+  background-color: #f8fafc !important;
+  color: #1e293b !important;
+  cursor: pointer !important;
+  text-align: center !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  transition: all 0.15s ease !important;
+}
+
+.a11y-btn-toggle:hover {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  transform: translateY(-1px) !important;
+}
+
+.a11y-btn-toggle[aria-pressed="true"],
+.a11y-btn-toggle.active {
+  background-color: #1b4557 !important;
+  color: #ffffff !important;
+  border-color: #1b4557 !important;
+  box-shadow: 0 4px 10px rgba(27, 69, 87, 0.35) !important;
+}
+
+html.dark .a11y-btn-toggle {
+  background-color: #162436 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: #cbd5e1 !important;
+}
+
+html.dark .a11y-btn-toggle:hover {
+  background-color: #1e324a !important;
+  border-color: rgba(255, 255, 255, 0.16) !important;
+  color: #ffffff !important;
+}
+
+html.dark .a11y-btn-toggle[aria-pressed="true"],
+html.dark .a11y-btn-toggle.active {
+  background-color: #387b5b !important;
+  color: #ffffff !important;
+  border-color: #387b5b !important;
+  box-shadow: 0 4px 10px rgba(56, 123, 91, 0.4) !important;
+}
+
+/* 11.5 Rodapé do Modal */
+.a11y-modal-footer {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0.875rem 1.25rem !important;
+  border-top: 1px solid #e2e8f0 !important;
+  background-color: #f8fafc !important;
+  flex-shrink: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  gap: 0.75rem !important;
+}
+
+html.dark .a11y-modal-footer {
+  background-color: #0d1829 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.a11y-reset-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0.5rem 0.875rem !important;
+  min-height: 40px !important;
+  border-radius: 0.625rem !important;
+  border: 1px solid transparent !important;
+  background-color: transparent !important;
+  color: #e11d48 !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+
+.a11y-reset-btn:hover {
+  background-color: #ffe4e6 !important;
+}
+
+html.dark .a11y-reset-btn {
+  color: #fb7185 !important;
+}
+
+html.dark .a11y-reset-btn:hover {
+  background-color: rgba(225, 29, 72, 0.15) !important;
+}
+
+.a11y-decl-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0.5rem 0.875rem !important;
+  min-height: 40px !important;
+  border-radius: 0.625rem !important;
+  background-color: #e2e8f0 !important;
+  color: #1e293b !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  transition: all 0.15s ease !important;
+  white-space: nowrap !important;
+}
+
+.a11y-decl-link:hover {
+  background-color: #cbd5e1 !important;
+}
+
+html.dark .a11y-decl-link {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #f8fafc !important;
+}
+
+html.dark .a11y-decl-link:hover {
+  background-color: rgba(255, 255, 255, 0.18) !important;
+}
+
+@media (max-width: 480px) {
+  .a11y-modal-footer {
+    flex-direction: column !important;
+  }
+  .a11y-reset-btn,
+  .a11y-decl-link {
+    width: 100% !important;
+    text-align: center !important;
+  }
+}
+
+/* Sintetizador de voz ativo */
+.a11y-speaking {
+  outline: 3px solid #eab308 !important;
+  background-color: rgba(254, 240, 138, 0.25) !important;
+}
