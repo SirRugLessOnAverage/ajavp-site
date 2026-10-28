@@ -133,11 +133,11 @@ export default function PatrocinadoresPage() {
                 <div className="lg:col-span-4 flex flex-col items-center justify-center bg-white rounded-2xl p-6 shadow-inner">
                   <picture>
                     <source
-                      srcSet="/assets/images/patrocinadores/junta_vilar_pinheiro.webp"
+                      srcSet="/assets/images/patrocinadores/brasao_junta_vilar_pinheiro.webp"
                       type="image/webp"
                     />
                     <img
-                      src="/assets/images/patrocinadores/junta_vilar_pinheiro.png"
+                      src="/assets/images/patrocinadores/brasao_junta_vilar_pinheiro.png"
                       alt="Brasão e Logótipo da Junta de Freguesia de Vilar do Pinheiro"
                       className="max-h-32 w-auto object-contain"
                     />
