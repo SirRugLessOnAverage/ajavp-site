@@ -58,7 +58,7 @@ export function KitShowcase({ hotspots, teamPreviews }: KitShowcaseProps) {
     teamPreviews.find((t) => t.id === selectedTeamId) ?? teamPreviews[0];
 
   return (
-    <div className="rounded-3xl bg-gradient-to-br from-zinc-900 via-zinc-950 to-ajavp-green-dark/25 border border-white/15 p-6 sm:p-8 lg:p-10 shadow-2xl">
+    <div className="rounded-3xl bg-linear-to-br from-zinc-900 via-zinc-950 to-ajavp-green-dark/25 border border-white/15 p-6 sm:p-8 lg:p-10 shadow-2xl">
       {/* Cabeçalho da Vitrine */}
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 pb-6 border-b border-white/10">
         <div>
@@ -201,7 +201,7 @@ export function KitShowcase({ hotspots, teamPreviews }: KitShowcaseProps) {
           {/* Moldura da Fotografia Real do Escalão */}
           {activeTeam && (
             <div className="rounded-2xl overflow-hidden border-2 border-ajavp-green-light/40 bg-zinc-900 shadow-2xl">
-              <div className="relative aspect-[4/3] overflow-hidden bg-zinc-950">
+              <div className="relative aspect-4/3 overflow-hidden bg-zinc-950">
                 <img
                   key={activeTeam.src}
                   src={activeTeam.src}
@@ -209,7 +209,7 @@ export function KitShowcase({ hotspots, teamPreviews }: KitShowcaseProps) {
                   style={{ objectPosition: activeTeam.objectPosition ?? "center" }}
                   className="w-full h-full object-cover transition-opacity duration-200"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/15 to-transparent" />
                 <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
                   <span className="px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/15 text-xs font-bold text-white">
                     {activeTeam.label}

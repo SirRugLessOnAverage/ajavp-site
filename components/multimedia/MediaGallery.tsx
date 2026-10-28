@@ -85,7 +85,7 @@ export function MediaGallery({ photos, videos }: MediaGalleryProps) {
     <div className="space-y-20">
       {/* SECÇÃO 1: DESTAQUE ESPECIAL - ESTREIA NOVO EQUIPAMENTO 26/27 */}
       <section aria-labelledby="destaque-equipamento-heading">
-        <div className="rounded-3xl bg-gradient-to-br from-ajavp-green-dark/40 via-zinc-900 to-zinc-950 border border-ajavp-gold/30 p-6 sm:p-8 lg:p-10 shadow-2xl">
+        <div className="rounded-3xl bg-linear-to-br from-ajavp-green-dark/40 via-zinc-900 to-zinc-950 border border-ajavp-gold/30 p-6 sm:p-8 lg:p-10 shadow-2xl">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
             <div>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-ajavp-gold/20 border border-ajavp-gold/40 text-ajavp-gold text-xs font-extrabold uppercase tracking-wider mb-3">
@@ -109,7 +109,7 @@ export function MediaGallery({ photos, videos }: MediaGalleryProps) {
                 key={photo.id}
                 type="button"
                 onClick={() => openPhotoInLightbox(photo.id)}
-                className="motion-card group text-left relative rounded-2xl overflow-hidden border border-white/15 bg-zinc-950 aspect-[4/3] focus:outline-none focus:ring-2 focus:ring-ajavp-gold"
+                className="motion-card group text-left relative rounded-2xl overflow-hidden border border-white/15 bg-zinc-950 aspect-4/3 focus:outline-none focus:ring-2 focus:ring-ajavp-gold"
               >
                 <img
                   src={photo.src}
@@ -118,7 +118,7 @@ export function MediaGallery({ photos, videos }: MediaGalleryProps) {
                   style={{ objectPosition: photo.objectPosition ?? "center" }}
                   className="motion-photo-zoom w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/25 to-transparent" />
                 <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
                   <span className="px-2.5 py-1 rounded-full bg-ajavp-gold text-black text-[10px] font-black uppercase tracking-wider">
                     Novo 26/27
@@ -203,7 +203,7 @@ export function MediaGallery({ photos, videos }: MediaGalleryProps) {
               key={photo.id}
               type="button"
               onClick={() => setLightboxIndex(index)}
-              className="motion-card group text-left relative rounded-2xl overflow-hidden border border-white/10 bg-zinc-900 aspect-[4/3] focus:outline-none focus:ring-2 focus:ring-ajavp-green-light"
+              className="motion-card group text-left relative rounded-2xl overflow-hidden border border-white/10 bg-zinc-900 aspect-4/3 focus:outline-none focus:ring-2 focus:ring-ajavp-green-light"
             >
               <img
                 src={photo.src}
@@ -212,7 +212,7 @@ export function MediaGallery({ photos, videos }: MediaGalleryProps) {
                 style={{ objectPosition: photo.objectPosition ?? "center" }}
                 className="motion-photo-zoom w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-90 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent opacity-90 group-hover:opacity-100 transition-opacity" />
 
               <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
                 <span className="px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-[10px] font-bold text-white">
@@ -279,7 +279,7 @@ export function MediaGallery({ photos, videos }: MediaGalleryProps) {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`Ver Reel no Instagram: ${video.title}`}
-                        className="motion-press px-4 py-2.5 rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white font-bold text-xs shadow-xl flex items-center gap-2"
+                        className="motion-press px-4 py-2.5 rounded-full bg-linear-to-r from-pink-500 via-red-500 to-yellow-500 text-white font-bold text-xs shadow-xl flex items-center gap-2"
                       >
                         <span>📱</span> Ver Reel no Instagram ↗
                       </a>

@@ -43,7 +43,7 @@ export default function ModalidadesPage() {
                 </div>
                 <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.08] mb-6">
                   As Nossas <br />
-                  <span className="text-transparent bg-clip-text bg-linear-to-rrom-ajavp-green-light via-emerald-400 to-ajavp-gold">
+                  <span className="text-transparent bg-clip-text bg-linear-to-r from-ajavp-green-light via-emerald-400 to-ajavp-gold">
                     Modalidades
                   </span>
                 </h1>
@@ -83,7 +83,7 @@ export default function ModalidadesPage() {
                       alt="Sub-7 AJAVP no banco de suplentes com o novo equipamento 26/27"
                       className="motion-photo-zoom w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-linear-to-trom-black/80 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
                     <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
                       <span className="text-xs font-bold text-white">Sub-7 • Nova Pele 26/27</span>
                       <span className="px-2 py-0.5 rounded-full bg-ajavp-gold text-black text-[10px] font-black uppercase">
@@ -109,7 +109,7 @@ export default function ModalidadesPage() {
                 </div>
 
                 <div className="space-y-4 sm:space-y-5 pt-6 sm:pt-8">
-                  <div className="polaroid-right motion-photo relative rounded-2xl overflow-hidden border-2 border-white/15 bg-zinc-900 shadow-2xl aspect-[4/3]">
+                  <div className="polaroid-right motion-photo relative rounded-2xl overflow-hidden border-2 border-white/15 bg-zinc-900 shadow-2xl aspect-4/3">
                     <img
                       src="/assets/images/galeria/Sub-9e11.webp"
                       alt="União dos escalões Sub-9 e Sub-11 da AJAVP"
