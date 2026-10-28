@@ -29,6 +29,43 @@ export const JIF_VICTORY_SPOTLIGHT = {
 
 export const JIF_CIRCULARS: JifCircular[] = [
   {
+    id: 7,
+    numberFormatted: '07',
+    date: '2026-10-27',
+    formattedDate: '27 de Outubro de 2026',
+    badge: 'Goleada Sub-9 (1-19) & Desistência Vairão',
+    badgeColor: 'emerald',
+    title: 'Resultados da 2ª Jornada de Futsal, Desistência de Vairão (Sub-16) e Sanções Disciplinares',
+    summaryQuote:
+      '"Foi disputada a 2ª Jornada de futsal... A equipa do Vairão, no escalão de Sub-16, desistiu da sua participação nas modalidades de futsal, futebol e futebol de praia. A desistência de uma equipa depois de iniciada a competição provoca necessariamente constrangimentos na organização... entendemos que devem ser aplicadas penalizações."',
+    highlights: [
+      {
+        title: 'Resultados da 2ª Jornada de Futsal',
+        badge: 'Goleada 1-19 💥',
+        description:
+          'Sub-9: Modivas 1 - 19 Vilar do Pinheiro (exibição de gala dos campeões). Sub-11: V. Pinheiro 9 - 1 Touguinha/Touguinhó. Sub-7: Gião 3 - 1 V. Pinheiro (1ª Jorn.) e V. Pinheiro 3 - 1 Aveleda (2ª Jorn. - 1ª vitória concelhia dos Sub-7). Sub-13: V. Pinheiro 3 - 10 Arcos.'
+      },
+      {
+        title: 'Desistência Oficial de Vairão',
+        badge: 'Sub-16',
+        description:
+          'A equipa do Vairão desistiu oficialmente de participar no escalão de Sub-16 nas modalidades de Futsal, Futebol e Futebol de Praia. A organização deliberou aplicar penalizações regulamentares para salvaguardar o normal funcionamento dos jogos e o compromisso das restantes equipas.'
+      },
+      {
+        title: 'Sanção Disciplinar à Junqueira',
+        badge: 'Multa 50€',
+        description:
+          'Aplicação de uma multa no valor de 50 euros à UDCR Junqueira na sequência de insultos e ameaças registados por parte do público afeto ao clube contra membros da organização (Artigo XIII, ponto 4 das Regras Gerais dos JIF).'
+      },
+      {
+        title: 'Candidaturas, Ténis de Mesa & Agenda',
+        badge: '07 Nov',
+        description:
+          'Malta e Arcos apresentaram candidatura para receber a Milha Urbana; Bagunte para o Duatlo. 1º Encontro de Ténis de Mesa a 07/Nov em Guilhabreu (Aveleda, Fornelo e Vairão devem regularizar atletas). Inscrições abertas até 31/Out. Próxima reunião da ADCCVC a 09/Nov (21h30).'
+      }
+    ]
+  },
+  {
     id: 6,
     numberFormatted: '06',
     date: '2026-10-19',
