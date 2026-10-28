@@ -134,7 +134,7 @@ export async function RingueWeatherSection() {
   return (
     <div
       id="tempo-semana"
-      className="bg-gradient-to-br from-sky-50 via-white to-blue-50 dark:from-slate-900 dark:via-sky-950 dark:to-slate-950 text-slate-800 dark:text-white rounded-3xl p-6 sm:p-8 border-2 border-sky-200 dark:border-sky-400/30 shadow-2xl relative overflow-hidden"
+      className="bg-linear-to-br from-sky-50 via-white to-blue-50 dark:from-slate-900 dark:via-sky-950 dark:to-slate-950 text-slate-800 dark:text-white rounded-3xl p-6 sm:p-8 border-2 border-sky-200 dark:border-sky-400/30 shadow-2xl relative overflow-hidden"
     >
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-sky-200/60 dark:border-white/10 relative z-10">
         <div className="space-y-2">

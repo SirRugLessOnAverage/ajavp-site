@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import type { SiteDocumento } from "@/lib/types/database";
 import {
   Shield,
   Scale,
@@ -23,6 +24,7 @@ import {
   CalendarCheck,
   Landmark,
   Check,
+  type LucideIcon,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -31,7 +33,169 @@ export const metadata: Metadata = {
     "Conhece a história da AJAVP, fundada formalmente em dezembro de 2025. Órgãos sociais eleitos, estatutos, regime de votação e localização dos nossos pavilhões desportivos.",
 };
 
-export default function AssociacaoPage() {
+const SUPABASE_PUBLIC_DOCS_BASE =
+  "https://mudgnaajtolytggksvvq.supabase.co/storage/v1/object/public/documentos_publicos";
+
+const FALLBACK_DOCUMENTOS: SiteDocumento[] = [
+  {
+    id: "fallback-1",
+    slug: "estatutos-constituicao",
+    titulo: "Estatutos & Constituição",
+    descricao:
+      "Documento legal de fundação da associação e constituição dos órgãos sociais.",
+    categoria: "institucional",
+    icone: "FileCheck",
+    cor_tema: "blue",
+    ficheiro_path: "estatutos-constituicao.pdf",
+    ficheiro_url: `${SUPABASE_PUBLIC_DOCS_BASE}/estatutos-constituicao.pdf`,
+    ordem: 1,
+    ativo: true,
+    updated_at: "2026-10-28T00:00:00Z",
+    created_at: "2026-10-28T00:00:00Z",
+  },
+  {
+    id: "fallback-2",
+    slug: "regulamento-interno",
+    titulo: "Regulamento Interno",
+    descricao:
+      "Normas disciplinares, direitos e deveres dos atletas, encarregados e equipas técnicas.",
+    categoria: "institucional",
+    icone: "Scale",
+    cor_tema: "emerald",
+    ficheiro_path: "regulamento-interno.pdf",
+    ficheiro_url: `${SUPABASE_PUBLIC_DOCS_BASE}/regulamento-interno.pdf`,
+    ordem: 2,
+    ativo: true,
+    updated_at: "2026-10-28T00:00:00Z",
+    created_at: "2026-10-28T00:00:00Z",
+  },
+  {
+    id: "fallback-3",
+    slug: "manual-assiduidade",
+    titulo: "Manual de Assiduidade",
+    descricao:
+      "Regras de assiduidade aos treinos para convocatórias aos jogos oficiais JIF.",
+    categoria: "desportivo",
+    icone: "CalendarCheck",
+    cor_tema: "amber",
+    ficheiro_path: "manual-assiduidade.pdf",
+    ficheiro_url: `${SUPABASE_PUBLIC_DOCS_BASE}/manual-assiduidade.pdf`,
+    ordem: 3,
+    ativo: true,
+    updated_at: "2026-10-28T00:00:00Z",
+    created_at: "2026-10-28T00:00:00Z",
+  },
+  {
+    id: "fallback-4",
+    slug: "treino-experimental",
+    titulo: "Treino Experimental",
+    descricao:
+      "Autorização prévia obrigatória dos pais para a primeira sessão de treino de menores.",
+    categoria: "desportivo",
+    icone: "UserCheck",
+    cor_tema: "rose",
+    ficheiro_path: "treino-experimental.pdf",
+    ficheiro_url: `${SUPABASE_PUBLIC_DOCS_BASE}/treino-experimental.pdf`,
+    ordem: 4,
+    ativo: true,
+    updated_at: "2026-10-28T00:00:00Z",
+    created_at: "2026-10-28T00:00:00Z",
+  },
+  {
+    id: "fallback-5",
+    slug: "recolha-imagem",
+    titulo: "Recolha de Imagem",
+    descricao:
+      "Autorização para registo fotográfico institucional, Jogos Inter-Freguesias e redes sociais.",
+    categoria: "institucional",
+    icone: "Camera",
+    cor_tema: "purple",
+    ficheiro_path: "recolha-imagem.pdf",
+    ficheiro_url: `${SUPABASE_PUBLIC_DOCS_BASE}/recolha-imagem.pdf`,
+    ordem: 5,
+    ativo: true,
+    updated_at: "2026-10-28T00:00:00Z",
+    created_at: "2026-10-28T00:00:00Z",
+  },
+  {
+    id: "fallback-6",
+    slug: "caderno-patrocinios-26-27",
+    titulo: "Caderno de Patrocínios 26/27",
+    descricao:
+      "Dossiê oficial para empresas com pacotes de visibilidade em equipamentos e recintos.",
+    categoria: "patrocinios",
+    icone: "Award",
+    cor_tema: "gold",
+    ficheiro_path: "caderno-patrocinios-26-27.pdf",
+    ficheiro_url: `${SUPABASE_PUBLIC_DOCS_BASE}/caderno-patrocinios-26-27.pdf`,
+    ordem: 6,
+    ativo: true,
+    updated_at: "2026-10-28T00:00:00Z",
+    created_at: "2026-10-28T00:00:00Z",
+  },
+];
+
+const DOC_ICON_MAP: Record<string, LucideIcon> = {
+  FileCheck,
+  Scale,
+  CalendarCheck,
+  UserCheck,
+  Camera,
+  Award,
+  FileText,
+};
+
+const DOC_COLOR_MAP: Record<string, string> = {
+  blue: "bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300",
+  emerald:
+    "bg-emerald-100 text-brand-green dark:bg-emerald-900/50 dark:text-emerald-300",
+  amber:
+    "bg-amber-100 text-amber-700 dark:bg-amber-900/50 dark:text-amber-300",
+  rose: "bg-rose-100 text-rose-700 dark:bg-rose-900/50 dark:text-rose-300",
+  purple:
+    "bg-purple-100 text-purple-700 dark:bg-purple-900/50 dark:text-purple-300",
+  gold: "bg-amber-500 text-slate-950",
+};
+
+async function getSiteDocumentos(): Promise<SiteDocumento[]> {
+  const supabaseUrl =
+    process.env.NEXT_PUBLIC_SUPABASE_URL ||
+    process.env.SUPABASE_URL ||
+    "https://mudgnaajtolytggksvvq.supabase.co";
+  const supabaseAnonKey =
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+    process.env.SUPABASE_ANON_KEY ||
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im11ZGduYWFqdG9seXRnZ2tzdnZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIwNjAxODcsImV4cCI6MjEwNzYzNjE4N30.lL5jb84u0PUWH4BjQWdZ4uZLpGKybUuhGISGB9tvdIQ";
+
+  try {
+    const res = await fetch(
+      `${supabaseUrl}/rest/v1/site_documentos?ativo=eq.true&order=ordem.asc`,
+      {
+        headers: {
+          apikey: supabaseAnonKey,
+          Authorization: `Bearer ${supabaseAnonKey}`,
+        },
+        next: { revalidate: 300 },
+      }
+    );
+
+    if (!res.ok) return FALLBACK_DOCUMENTOS;
+    const data = (await res.json()) as SiteDocumento[];
+    return Array.isArray(data) && data.length > 0 ? data : FALLBACK_DOCUMENTOS;
+  } catch {
+    return FALLBACK_DOCUMENTOS;
+  }
+}
+
+export default async function AssociacaoPage() {
+  const documentos = await getSiteDocumentos();
+  const estatutosDocUrl =
+    documentos.find((d) => d.slug === "estatutos-constituicao")?.ficheiro_url ??
+    `${SUPABASE_PUBLIC_DOCS_BASE}/estatutos-constituicao.pdf`;
+  const regulamentoDocUrl =
+    documentos.find((d) => d.slug === "regulamento-interno")?.ficheiro_url ??
+    `${SUPABASE_PUBLIC_DOCS_BASE}/regulamento-interno.pdf`;
+
   return (
     <>
       {/* Hero Header */}
@@ -138,7 +302,7 @@ export default function AssociacaoPage() {
                 </div>
               </div>
               <a
-                href="https://drive.google.com/file/d/1F0DrwMzSioop_dyUVbqdEgmP7I0g24qL/view?usp=drive_link"
+                href={estatutosDocUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full inline-flex items-center justify-center gap-2 bg-slate-50 hover:bg-slate-100 dark:bg-white/10 dark:hover:bg-white/20 text-brand-navy dark:text-white py-3 rounded-xl font-bold text-xs transition-colors border border-slate-200 dark:border-white/15 shadow-xs"
@@ -291,7 +455,7 @@ export default function AssociacaoPage() {
             </div>
             <div className="shrink-0 flex items-center flex-wrap gap-3">
               <a
-                href="https://drive.google.com/file/d/1ZNM66sC4utRexz40rBJzbF7MJm6CtXFf/view?usp=drive_link"
+                href={regulamentoDocUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold transition-all shadow-sm"
@@ -301,7 +465,7 @@ export default function AssociacaoPage() {
                 <ExternalLink className="w-3.5 h-3.5 text-white/80" />
               </a>
               <a
-                href="https://drive.google.com/file/d/1F0DrwMzSioop_dyUVbqdEgmP7I0g24qL/view?usp=drive_link"
+                href={estatutosDocUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-300 dark:border-white/10 text-xs font-bold text-slate-700 dark:text-slate-200 hover:border-brand-green hover:text-brand-green transition-all shadow-2xs"
@@ -715,74 +879,35 @@ export default function AssociacaoPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Estatutos & Constituição",
-                desc: "Documento legal de fundação da associação e constituição dos órgãos sociais.",
-                icon: FileCheck,
-                color: "bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300",
-                link: "https://drive.google.com/file/d/1F0DrwMzSioop_dyUVbqdEgmP7I0g24qL/view?usp=drive_link",
-              },
-              {
-                title: "Regulamento Interno",
-                desc: "Normas disciplinares, direitos e deveres dos atletas, encarregados e equipas técnicas.",
-                icon: Scale,
-                color: "bg-emerald-100 text-brand-green dark:bg-emerald-900/50 dark:text-emerald-300",
-                link: "https://drive.google.com/file/d/1ZNM66sC4utRexz40rBJzbF7MJm6CtXFf/view?usp=drive_link",
-              },
-              {
-                title: "Manual de Assiduidade",
-                desc: "Regras de assiduidade aos treinos para convocatórias aos jogos oficiais JIF.",
-                icon: CalendarCheck,
-                color: "bg-amber-100 text-amber-700 dark:bg-amber-900/50 dark:text-amber-300",
-                link: "https://drive.google.com/file/d/1B3VBHHsfP3yC0T0u9-nv15TFklk6T6RI/view?usp=drive_link",
-              },
-              {
-                title: "Treino Experimental",
-                desc: "Autorização prévia obrigatória dos pais para a primeira sessão de treino de menores.",
-                icon: UserCheck,
-                color: "bg-rose-100 text-rose-700 dark:bg-rose-900/50 dark:text-rose-300",
-                link: "https://drive.google.com/file/d/18FvwM6ge-8DQrFbSaeHmLjOtq2AbDPOD/view?usp=drive_link",
-              },
-              {
-                title: "Recolha de Imagem",
-                desc: "Autorização para registo fotográfico institucional, Jogos Inter-Freguesias e redes sociais.",
-                icon: Camera,
-                color: "bg-purple-100 text-purple-700 dark:bg-purple-900/50 dark:text-purple-300",
-                link: "https://drive.google.com/file/d/1H_pJp6fOknpFQXDx_ZLuxGAFOu1MA_qc/view?usp=drive_link",
-              },
-              {
-                title: "Caderno de Patrocínios 26/27",
-                desc: "Dossiê oficial para empresas com pacotes de visibilidade em equipamentos e recintos.",
-                icon: Award,
-                color: "bg-amber-500 text-slate-950",
-                link: "https://drive.google.com/file/d/17d_U3W1jgAcoWb3--tZWHUZDmdBLvivS/view?usp=sharing",
-              },
-            ].map((doc, idx) => {
-              const IconComp = doc.icon;
+            {documentos.map((doc) => {
+              const IconComp = DOC_ICON_MAP[doc.icone] ?? FileCheck;
+              const colorClass =
+                DOC_COLOR_MAP[doc.cor_tema] ?? DOC_COLOR_MAP.blue;
               return (
                 <div
-                  key={idx}
+                  key={doc.slug}
                   className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-white/10 flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow"
                 >
                   <div className="space-y-2">
-                    <div className={`w-10 h-10 rounded-xl ${doc.color} flex items-center justify-center`}>
+                    <div
+                      className={`w-10 h-10 rounded-xl ${colorClass} flex items-center justify-center`}
+                    >
                       <IconComp className="w-5 h-5" />
                     </div>
                     <h4 className="font-heading font-bold text-base text-brand-navy dark:text-white">
-                      {doc.title}
+                      {doc.titulo}
                     </h4>
                     <p className="text-xs text-slate-500 dark:text-slate-400">
-                      {doc.desc}
+                      {doc.descricao}
                     </p>
                   </div>
                   <a
-                    href={doc.link}
+                    href={doc.ficheiro_url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-bold text-brand-green dark:text-emerald-400 hover:underline inline-flex items-center gap-1.5 pt-2 border-t border-slate-100 dark:border-white/10"
                   >
-                    <span>Abrir no Google Drive (PDF)</span>
+                    <span>Consultar Documento Oficial (PDF)</span>
                     <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 </div>

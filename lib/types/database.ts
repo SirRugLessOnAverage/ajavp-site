@@ -27,3 +27,28 @@ export interface SiteEvento {
   resultado: string | null;
   created_at: string | null;
 }
+
+export interface SiteDocumento {
+  id: string;
+  slug: string;
+  titulo: string;
+  descricao: string;
+  categoria: "institucional" | "desportivo" | "patrocinios" | string;
+  icone:
+    | "FileCheck"
+    | "Scale"
+    | "CalendarCheck"
+    | "UserCheck"
+    | "Camera"
+    | "Award"
+    | "FileText"
+    | string;
+  cor_tema: "blue" | "emerald" | "amber" | "rose" | "purple" | "gold" | string;
+  ficheiro_path: string;
+  ficheiro_url: string;
+  ordem: number;
+  ativo: boolean;
+  updated_at: string;
+  created_at: string;
+}
+

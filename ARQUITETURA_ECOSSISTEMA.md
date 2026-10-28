@@ -70,6 +70,7 @@ Para evitar conflitos entre as migrações dos dois projetos, as tabelas e permi
 | **Equipamentos e Plantel** | `AJAVP-Gestao` | `equipamentos_plantel`, `tamanhos_equipamento` | Gestão interna da secretaria |
 | **Modalidades e Escalões** | Partilhado | `modalidades`, `escaloes`, `epocas` | Leitura pública no Site; Edição na Gestão |
 | **Participantes JIF** | `AJAVP-Gestao` | `participantes_jif`, `modalidades_jif` | Gestão técnica na Secretaria; Resultados públicos no Site |
+| **Balcão Documental & Site CMS** | Partilhado | `site_documentos`, `site_noticias`, `site_eventos`, `site_treinadores`, `site_horarios_treino` + Storage Bucket `documentos_publicos` | Upload/Edição autenticada na Gestão (`AJAVP-Gestao`); Leitura pública automática no Site (`radiant-salk` via ISR 5m) |
 
 ---
 

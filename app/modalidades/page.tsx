@@ -43,7 +43,7 @@ export default function ModalidadesPage() {
                 </div>
                 <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.08] mb-6">
                   As Nossas <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-ajavp-green-light via-emerald-400 to-ajavp-gold">
+                  <span className="text-transparent bg-clip-text bg-linear-to-rrom-ajavp-green-light via-emerald-400 to-ajavp-gold">
                     Modalidades
                   </span>
                 </h1>
@@ -77,13 +77,13 @@ export default function ModalidadesPage() {
               {/* Coluna Direita: Bento Grid Polaroid com Fotos Reais */}
               <div className="lg:col-span-6 grid grid-cols-2 gap-4 sm:gap-5">
                 <div className="space-y-4 sm:space-y-5">
-                  <div className="polaroid-left motion-photo relative rounded-2xl overflow-hidden border-2 border-white/15 bg-zinc-900 shadow-2xl aspect-[4/3]">
+                  <div className="polaroid-left motion-photo relative rounded-2xl overflow-hidden border-2 border-white/15 bg-zinc-900 shadow-2xl aspect-4/3">
                     <img
                       src="/assets/images/galeria/sub7banco.webp"
                       alt="Sub-7 AJAVP no banco de suplentes com o novo equipamento 26/27"
                       className="motion-photo-zoom w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-trom-black/80 via-transparent to-transparent" />
                     <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
                       <span className="text-xs font-bold text-white">Sub-7 • Nova Pele 26/27</span>
                       <span className="px-2 py-0.5 rounded-full bg-ajavp-gold text-black text-[10px] font-black uppercase">
@@ -92,13 +92,13 @@ export default function ModalidadesPage() {
                     </div>
                   </div>
 
-                  <div className="polaroid-right motion-photo relative rounded-2xl overflow-hidden border-2 border-white/15 bg-zinc-900 shadow-2xl aspect-[4/3]">
+                  <div className="polaroid-right motion-photo relative rounded-2xl overflow-hidden border-2 border-white/15 bg-zinc-900 shadow-2xl aspect-4/3">
                     <img
                       src="/assets/images/galeria/corta_mato_equipa_2026.webp"
                       alt="Comitiva de Corta-Mato e Atletismo da AJAVP"
                       className="motion-photo-zoom w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
                     <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
                       <span className="text-xs font-bold text-white">Atletismo & Corta-Mato</span>
                       <span className="px-2 py-0.5 rounded-full bg-ajavp-green text-white text-[10px] font-bold uppercase">
@@ -124,7 +124,7 @@ export default function ModalidadesPage() {
                     </div>
                   </div>
 
-                  <div className="polaroid-left motion-photo relative rounded-2xl overflow-hidden border-2 border-white/15 bg-zinc-900 shadow-2xl aspect-[4/3]">
+                  <div className="polaroid-left motion-photo relative rounded-2xl overflow-hidden border-2 border-white/15 bg-zinc-900 shadow-2xl aspect-4/3">
                     <img
                       src="/assets/images/galeria/foto_17.webp"
                       alt="Duplas de Duatlo BTT da AJAVP"
@@ -185,7 +185,7 @@ export default function ModalidadesPage() {
             </div>
 
             {/* DESTAQUE: EQUIPAMENTO OFICIAL DE TREINO (PRETO) - SUB-9 */}
-            <div className="mb-12 rounded-3xl overflow-hidden border border-white/15 bg-gradient-to-r from-zinc-900 via-zinc-900/95 to-ajavp-green-dark/30 shadow-2xl">
+            <div className="mb-12 rounded-3xl overflow-hidden border border-white/15 bg-linear-to-r from-zinc-900 via-zinc-900/95 to-ajavp-green-dark/30 shadow-2xl">
               <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
                 <div className="lg:col-span-5 relative aspect-[4/3] lg:aspect-auto lg:h-full min-h-[280px] overflow-hidden bg-zinc-950">
                   <img
