@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   Medal,
   ChevronDown,
@@ -25,8 +26,19 @@ import {
 } from "lucide-react";
 
 export function Header() {
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
+
+  const navLinkClass = (href: string, extra = "") => {
+    const isActive =
+      href === "/" ? pathname === "/" : pathname?.startsWith(href);
+    return `${
+      isActive
+        ? "text-brand-green bg-emerald-50/80 dark:bg-emerald-500/10 font-bold border border-emerald-200/60 dark:border-emerald-500/20"
+        : "text-slate-700 dark:text-slate-200 hover:text-brand-green dark:hover:text-emerald-400 font-semibold hover:bg-slate-50 dark:hover:bg-white/5"
+    } text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl transition-colors ${extra}`;
+  };
 
   useEffect(() => {
     const isDarkMode =
@@ -115,10 +127,7 @@ export function Header() {
             className="hidden lg:flex items-center gap-1 xl:gap-2"
             aria-label="Navegação Principal"
           >
-            <Link
-              href="/"
-              className="text-brand-green bg-emerald-50/80 dark:bg-emerald-500/10 font-bold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl transition-colors border border-emerald-200/60 dark:border-emerald-500/20"
-            >
+            <Link href="/" className={navLinkClass("/")}>
               Início
             </Link>
 
@@ -138,7 +147,7 @@ export function Header() {
 
               {/* Floating Dropdown */}
               <div className="absolute left-0 top-full pt-2 w-72 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 transform origin-top-left -translate-y-2 group-hover:translate-y-0 z-50 pointer-events-none group-hover:pointer-events-auto">
-                <div className="p-2 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-2xl space-y-1">
+                <div className="p-2 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/15 shadow-2xl space-y-1">
                   <Link
                     href="/jif"
                     className="flex items-center justify-between p-2.5 rounded-xl hover:bg-amber-50/80 dark:hover:bg-amber-500/15 border border-transparent hover:border-amber-300/60 dark:hover:border-amber-400/30 transition-colors group/item"
@@ -262,35 +271,23 @@ export function Header() {
               </div>
             </div>
 
-            <Link
-              href="/modalidades"
-              className="text-slate-700 dark:text-slate-200 hover:text-brand-green dark:hover:text-emerald-400 font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors"
-            >
+            <Link href="/modalidades" className={navLinkClass("/modalidades")}>
               Modalidades &amp; Treinos
             </Link>
-            <Link
-              href="/associacao"
-              className="text-slate-700 dark:text-slate-200 hover:text-brand-green dark:hover:text-emerald-400 font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors"
-            >
+            <Link href="/associacao" className={navLinkClass("/associacao")}>
               A Associação
             </Link>
             <Link
               href="/patrocinadores"
-              className="text-slate-700 dark:text-slate-200 hover:text-brand-green dark:hover:text-emerald-400 font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors flex items-center gap-1.5"
+              className={navLinkClass("/patrocinadores", "flex items-center gap-1.5")}
             >
               <HeartHandshake className="w-4 h-4 text-emerald-600" />
               <span>Patrocinadores</span>
             </Link>
-            <Link
-              href="/multimedia"
-              className="text-slate-700 dark:text-slate-200 hover:text-brand-green dark:hover:text-emerald-400 font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors"
-            >
+            <Link href="/multimedia" className={navLinkClass("/multimedia")}>
               Multimédia
             </Link>
-            <Link
-              href="/contactos"
-              className="text-slate-700 dark:text-slate-200 hover:text-brand-green dark:hover:text-emerald-400 font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors"
-            >
+            <Link href="/contactos" className={navLinkClass("/contactos")}>
               Contactos
             </Link>
           </nav>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import {
   Shield,
   Scale,
@@ -37,6 +38,11 @@ export default function AssociacaoPage() {
       <section className="relative py-16 sm:py-20 overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-4">
+            <Breadcrumbs
+              variant="adaptive"
+              items={[{ label: "A Associação" }]}
+              className="mb-2"
+            />
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-200/80 dark:border-emerald-500/30">
               <Shield className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               <span>Identidade, Valores &amp; Instalações</span>

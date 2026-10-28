@@ -22,12 +22,7 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       { source: "/jif/futsal", destination: "/jif/futsal.html" },
-      { source: "/modalidades", destination: "/modalidades.html" },
-      { source: "/patrocinadores", destination: "/patrocinadores.html" },
-      { source: "/multimedia", destination: "/multimedia.html" },
-      { source: "/contactos", destination: "/contactos.html" },
       { source: "/admin-alertas", destination: "/admin-alertas.html" },
-      { source: "/acessibilidade", destination: "/acessibilidade.html" },
     ];
   },
 };
