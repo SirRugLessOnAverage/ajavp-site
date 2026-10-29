@@ -35,9 +35,9 @@ export function Header() {
       href === "/" ? pathname === "/" : pathname?.startsWith(href);
     return `${
       isActive
-        ? "text-brand-green bg-emerald-50/80 dark:bg-emerald-500/10 font-bold border border-emerald-200/60 dark:border-emerald-500/20"
+        ? "text-brand-green dark:text-emerald-300 bg-emerald-50/80 dark:bg-emerald-500/10 font-bold border border-emerald-200/60 dark:border-emerald-500/20"
         : "text-slate-700 dark:text-slate-200 hover:text-brand-green dark:hover:text-emerald-400 font-semibold hover:bg-slate-50 dark:hover:bg-white/5"
-    } text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl transition-colors ${extra}`;
+    } text-xs xl:text-[13px] px-2.5 xl:px-3 py-2 rounded-xl transition-colors whitespace-nowrap shrink-0 ${extra}`;
   };
 
   useEffect(() => {
@@ -91,29 +91,29 @@ export function Header() {
         className="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-100 dark:border-white/10 shadow-xs transition-colors duration-200"
         role="banner"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-2">
           {/* Logo & Brand */}
           <Link
             href="/"
-            className="flex items-center gap-3 group shrink-0 mr-4 lg:mr-10 xl:mr-14"
+            className="flex items-center gap-2.5 sm:gap-3 group shrink-0 mr-2 lg:mr-4 xl:mr-6"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/assets/images/logo.webp"
               alt="Logótipo AJAVP"
-              className="h-12 sm:h-14 w-auto object-contain transition-transform group-hover:scale-105 dark:hidden"
+              className="h-11 sm:h-13 w-auto object-contain transition-transform group-hover:scale-105 dark:hidden"
             />
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/assets/images/logo_white.webp"
               alt="Logótipo AJAVP"
-              className="h-12 sm:h-14 w-auto object-contain transition-transform group-hover:scale-105 hidden dark:block"
+              className="h-11 sm:h-13 w-auto object-contain transition-transform group-hover:scale-105 hidden dark:block"
             />
-            <div className="flex flex-col justify-center">
+            <div className="flex flex-col justify-center whitespace-nowrap">
               <span className="font-heading font-extrabold text-brand-navy dark:text-white text-lg sm:text-xl tracking-tight leading-tight">
                 AJAVP
               </span>
-              <span className="text-[11px] leading-tight text-brand-green dark:text-emerald-400 font-semibold tracking-wide hidden sm:block">
+              <span className="text-[10px] xl:text-[11px] leading-tight text-brand-green dark:text-emerald-400 font-semibold tracking-wide hidden sm:block">
                 <span className="block">Associação Jovens e Adultos</span>
                 <span className="block text-emerald-800 dark:text-emerald-300 font-bold">
                   Vilar do Pinheiro
@@ -124,7 +124,7 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav
-            className="hidden lg:flex items-center gap-1 xl:gap-2"
+            className="hidden lg:flex items-center gap-0.5 xl:gap-1"
             aria-label="Navegação Principal"
           >
             <Link href="/" className={navLinkClass("/")}>
@@ -132,17 +132,17 @@ export function Header() {
             </Link>
 
             {/* Dropdown JIF 2026/2027 */}
-            <div className="relative group">
+            <div className="relative group shrink-0">
               <Link
                 href="/jif"
-                className="text-slate-700 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400 font-semibold text-xs xl:text-sm px-2.5 xl:px-3.5 py-2 rounded-xl hover:bg-amber-50/60 dark:hover:bg-amber-500/10 transition-colors flex items-center gap-1.5"
+                className="text-slate-700 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400 font-semibold text-xs xl:text-[13px] px-2.5 xl:px-3 py-2 rounded-xl hover:bg-amber-50/60 dark:hover:bg-amber-500/10 transition-colors flex items-center gap-1.5 whitespace-nowrap"
               >
-                <Medal className="w-4 h-4 text-amber-500" />
+                <Medal className="w-3.5 h-3.5 text-amber-500 shrink-0" />
                 <span>JIF 2026/27</span>
                 <span className="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-500 text-slate-950">
                   XL
                 </span>
-                <ChevronDown className="w-3.5 h-3.5 text-amber-500 group-hover:rotate-180 transition-transform duration-200" />
+                <ChevronDown className="w-3.5 h-3.5 text-amber-500 group-hover:rotate-180 transition-transform duration-200 shrink-0" />
               </Link>
 
               {/* Floating Dropdown */}
@@ -275,13 +275,13 @@ export function Header() {
               Modalidades &amp; Treinos
             </Link>
             <Link href="/associacao" className={navLinkClass("/associacao")}>
-              A Associação
+              Quem Somos
             </Link>
             <Link
               href="/patrocinadores"
               className={navLinkClass("/patrocinadores", "flex items-center gap-1.5")}
             >
-              <HeartHandshake className="w-4 h-4 text-emerald-600" />
+              <HeartHandshake className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
               <span>Patrocinadores</span>
             </Link>
             <Link href="/multimedia" className={navLinkClass("/multimedia")}>
@@ -293,24 +293,24 @@ export function Header() {
           </nav>
 
           {/* Action Buttons & Theme Toggle */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-2 shrink-0">
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-xl border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors cursor-pointer flex items-center gap-1.5"
+              className="p-2 rounded-xl border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors cursor-pointer flex items-center gap-1.5 whitespace-nowrap shrink-0"
               title="Alternar Modo Claro / Escuro"
               aria-label="Alternar Modo Claro / Escuro"
             >
               {isDark ? (
                 <>
-                  <Sun className="w-4 h-4 text-amber-400" />
+                  <Sun className="w-4 h-4 text-amber-400 shrink-0" />
                   <span className="text-[11px] font-bold text-amber-300">
                     Claro
                   </span>
                 </>
               ) : (
                 <>
-                  <Moon className="w-4 h-4 text-slate-600" />
+                  <Moon className="w-4 h-4 text-slate-600 shrink-0" />
                   <span className="text-[11px] font-bold text-slate-700">
                     Escuro
                   </span>
@@ -323,10 +323,10 @@ export function Header() {
               href="https://gestao.ajavp.pt/socio"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden xl:inline-flex items-center gap-1.5 text-xs font-bold text-slate-700 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-emerald-400 py-2 px-3 rounded-xl border border-slate-200 dark:border-white/10 hover:border-emerald-300 dark:hover:border-emerald-500/30 transition-colors"
+              className="hidden xl:inline-flex items-center gap-1.5 text-xs font-bold text-slate-700 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-emerald-400 py-2 px-3 rounded-xl border border-slate-200 dark:border-white/10 hover:border-emerald-300 dark:hover:border-emerald-500/30 transition-colors whitespace-nowrap shrink-0"
               title="Aceder ao Portal do Associado da AJAVP"
             >
-              <User className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+              <User className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
               <span>Área de Sócio</span>
             </a>
 
@@ -335,9 +335,9 @@ export function Header() {
               href="https://forms.gle/YJdnZyUsMB8aBADj6"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-brand-green hover:bg-brand-greenDark text-white px-3 py-2 text-xs xl:px-4 xl:py-2.5 xl:text-sm rounded-full font-heading font-semibold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 whitespace-nowrap"
+              className="inline-flex items-center gap-1.5 bg-brand-green hover:bg-brand-greenDark text-white px-3 py-2 text-xs xl:px-3.5 xl:py-2 xl:text-[13px] rounded-full font-heading font-semibold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 whitespace-nowrap shrink-0"
             >
-              <UserPlus className="w-4 h-4" />
+              <UserPlus className="w-3.5 h-3.5 shrink-0" />
               <span>Quero Fazer Parte!</span>
             </a>
           </div>
@@ -446,7 +446,7 @@ export function Header() {
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center justify-between py-2 px-3 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5"
               >
-                <span>A Associação</span>
+                <span>Quem Somos</span>
                 <ChevronRight className="w-4 h-4 text-slate-400" />
               </Link>
               <Link

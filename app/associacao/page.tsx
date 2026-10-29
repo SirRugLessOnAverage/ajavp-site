@@ -199,19 +199,19 @@ export default async function AssociacaoPage() {
   return (
     <>
       {/* Hero Header */}
-      <section className="relative py-16 sm:py-20 overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10">
+      <section className="relative pt-12 pb-16 lg:pt-14 lg:pb-20 overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl space-y-4">
-            <Breadcrumbs
-              variant="adaptive"
-              items={[{ label: "A Associação" }]}
-              className="mb-2"
-            />
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-200/80 dark:border-emerald-500/30">
+          <Breadcrumbs
+            variant="adaptive"
+            items={[{ label: "Quem Somos" }]}
+            className="mb-5"
+          />
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-200/80 dark:border-emerald-500/30 mb-6">
               <Shield className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               <span>Identidade, Valores &amp; Instalações</span>
             </div>
-            <h1 className="font-heading font-black text-3xl sm:text-5xl text-brand-navy dark:text-white tracking-tight leading-tight">
+            <h1 className="font-heading font-black text-3xl sm:text-5xl text-brand-navy dark:text-white tracking-tight leading-tight mb-6">
               Quem Somos &bull; AJAVP
             </h1>
             <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed font-medium">

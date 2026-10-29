@@ -15,13 +15,13 @@ export default function MultimediaPage() {
     <div className="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white transition-colors">
       <div>
         {/* HERO DA PÁGINA MULTIMÉDIA */}
-        <section className="relative pt-12 pb-16 lg:pt-16 lg:pb-20 overflow-hidden bg-linear-to-b from-emerald-50/70 via-white to-slate-50 dark:from-ajavp-green-dark/45 dark:via-slate-950 dark:to-slate-950 border-b border-slate-200 dark:border-white/10 transition-colors">
+        <section className="relative pt-12 pb-16 lg:pt-14 lg:pb-20 overflow-hidden bg-linear-to-b from-emerald-50/70 via-white to-slate-50 dark:from-ajavp-green-dark/45 dark:via-slate-950 dark:to-slate-950 border-b border-slate-200 dark:border-white/10 transition-colors">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <Breadcrumbs
               items={[{ label: "Galeria & Multimédia" }]}
-              className="mb-6"
+              className="mb-5"
             />
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
               <div className="lg:col-span-7">
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-500/20 border border-emerald-300 dark:border-emerald-400/30 text-emerald-900 dark:text-emerald-300 text-xs font-bold uppercase tracking-widest mb-6">
                   <span>📸</span> Memória Viva da Mancha Verde

@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Medal, Calendar, MapPin, Users, Award, ChevronRight, UserPlus, Flame } from 'lucide-react';
+import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import JifHubTabs from '@/components/jif/JifHubTabs';
 
 export const metadata: Metadata = {
@@ -48,18 +49,16 @@ export default function JifPage() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative bg-slate-950 text-white py-12 lg:py-16 overflow-hidden hero-pattern border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
+      <section className="relative bg-slate-950 text-white pt-12 pb-16 lg:pt-14 lg:pb-20 overflow-hidden hero-pattern border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-xs text-slate-400 font-medium" aria-label="Caminho de navegação">
-            <Link href="/" className="hover:text-white transition-colors">
-              Início
-            </Link>
-            <span className="text-slate-600">&gt;</span>
-            <span className="text-amber-400 font-bold">JIF 2026/2027</span>
-          </nav>
+          <Breadcrumbs
+            variant="dark"
+            items={[{ label: "JIF 2026/2027" }]}
+            className="mb-5"
+          />
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             <div className="lg:col-span-8 space-y-4">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-400/30 text-amber-300 text-xs font-bold uppercase tracking-wider">
                 <Medal className="w-4 h-4 text-amber-400" />

@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Award, Trophy, ChevronRight, Scale, AlertTriangle, ArrowLeft, Info, HelpCircle } from 'lucide-react';
+import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import JifPodioRanking from '@/components/jif/JifPodioRanking';
 import JifRankingTable from '@/components/jif/JifRankingTable';
 import { JIF_CLASSIFICACAO, JIF_PONTUACAO_RULES } from '@/data/jif/classificacao';
@@ -46,20 +47,17 @@ export default function JifClassificacaoPage() {
       </div>
 
       {/* Hero Header */}
-      <section className="relative bg-slate-950 text-white py-10 lg:py-14 overflow-hidden hero-pattern border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4">
+      <section className="relative bg-slate-950 text-white pt-12 pb-14 lg:pt-14 lg:pb-16 overflow-hidden hero-pattern border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-xs text-slate-400 font-medium" aria-label="Caminho de navegação">
-            <Link href="/" className="hover:text-white transition-colors">
-              Início
-            </Link>
-            <span className="text-slate-600">&gt;</span>
-            <Link href="/jif" className="hover:text-white transition-colors">
-              JIF 2026/2027
-            </Link>
-            <span className="text-slate-600">&gt;</span>
-            <span className="text-amber-400 font-bold">Classificação Virtual</span>
-          </nav>
+          <Breadcrumbs
+            variant="dark"
+            items={[
+              { label: "JIF 2026/2027", href: "/jif" },
+              { label: "Classificação Virtual" },
+            ]}
+            className="mb-5"
+          />
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div className="space-y-2">

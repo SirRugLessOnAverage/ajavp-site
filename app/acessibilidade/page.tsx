@@ -79,11 +79,11 @@ export default function AcessibilidadePage() {
     <div className="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white transition-colors">
       <div id="conteudo-principal">
         {/* HERO BANNER */}
-        <section className="relative pt-12 pb-16 lg:pt-16 lg:pb-20 overflow-hidden bg-linear-to-b from-emerald-50/80 via-white to-slate-50 dark:from-ajavp-green-dark/45 dark:via-slate-950 dark:to-slate-950 border-b border-slate-200 dark:border-white/10">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <section className="relative pt-12 pb-16 lg:pt-14 lg:pb-20 overflow-hidden bg-linear-to-b from-emerald-50/80 via-white to-slate-50 dark:from-ajavp-green-dark/45 dark:via-slate-950 dark:to-slate-950 border-b border-slate-200 dark:border-white/10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <Breadcrumbs
               items={[{ label: "Acessibilidade & Usabilidade" }]}
-              className="mb-6"
+              className="mb-5"
             />
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-green/10 dark:bg-ajavp-green/20 border border-brand-green/30 dark:border-ajavp-green-light/30 text-brand-green dark:text-ajavp-green-light text-xs font-bold uppercase tracking-widest mb-6">
               <span aria-hidden="true">♿</span>

@@ -27,14 +27,14 @@ export default function ModalidadesPage() {
     <div className="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white transition-colors">
       <div>
         {/* HERO COM MURAL POLAROID BENTO GRID DOS ATLETAS */}
-        <section className="relative pt-12 pb-20 lg:pt-16 lg:pb-24 overflow-hidden bg-linear-to-b from-emerald-50/70 via-white to-slate-50 dark:from-ajavp-green-dark/40 dark:via-slate-950 dark:to-slate-950 border-b border-slate-200 dark:border-white/10 transition-colors">
+        <section className="relative pt-12 pb-20 lg:pt-14 lg:pb-24 overflow-hidden bg-linear-to-b from-emerald-50/70 via-white to-slate-50 dark:from-ajavp-green-dark/40 dark:via-slate-950 dark:to-slate-950 border-b border-slate-200 dark:border-white/10 transition-colors">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,var(--tw-gradient-stops))] from-emerald-500/10 dark:from-ajavp-green/20 via-transparent to-transparent pointer-events-none" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <Breadcrumbs
               items={[{ label: "Modalidades & Treinos" }]}
-              className="mb-6"
+              className="mb-5"
             />
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
               {/* Coluna Esquerda: Texto e CTAs */}
               <div className="lg:col-span-6">
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-500/20 border border-emerald-300 dark:border-emerald-400/30 text-emerald-900 dark:text-emerald-300 text-xs font-bold uppercase tracking-widest mb-6">
