@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppWidget } from "@/components/layout/WhatsAppWidget";
+import Script from "next/script";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -82,6 +83,9 @@ export default function RootLayout({
   return (
     <html lang="pt" suppressHydrationWarning className={`${montserrat.variable} ${inter.variable}`}>
       <head>
+        {/* Folha de Estilos de Acessibilidade & Usabilidade (WCAG 2.1 AA) */}
+        <link rel="stylesheet" href="/assets/css/a11y.css" />
+
         {/* Anti-FOUC script for instant theme rendering */}
         <script
           dangerouslySetInnerHTML={{

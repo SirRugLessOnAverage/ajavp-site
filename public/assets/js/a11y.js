@@ -241,7 +241,7 @@
   // 8. Injetar componentes HTML se não existirem
   function injectComponents() {
     // 8.1 Skip Link (Saltar para o Conteúdo)
-    if (!document.querySelector('.a11y-skip-link')) {
+    if (!document.querySelector('.a11y-skip-link') && !document.querySelector('a[href="#conteudo-principal"]')) {
       const skipLink = document.createElement('a');
       skipLink.href = '#mainContent';
       skipLink.className = 'a11y-skip-link';

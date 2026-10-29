@@ -319,6 +319,28 @@ export function Header() {
 
           {/* Action Buttons & Theme Toggle */}
           <div className="hidden lg:flex items-center gap-2 shrink-0">
+            {/* A11y Accessibility Modal Trigger */}
+            <button
+              type="button"
+              onClick={() => {
+                if (typeof window !== "undefined") {
+                  const ajavpA11y = (window as unknown as { ajavpA11y?: { toggle: () => void } }).ajavpA11y;
+                  if (ajavpA11y?.toggle) {
+                    ajavpA11y.toggle();
+                  } else {
+                    document.getElementById("a11yTriggerBtn")?.click();
+                  }
+                }
+              }}
+              className="p-2 rounded-xl border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 text-slate-700 dark:text-slate-200 transition-colors cursor-pointer flex items-center justify-center shrink-0"
+              title="Acessibilidade &amp; Usabilidade (Atalho: Alt + A)"
+              aria-label="Abrir Painel de Acessibilidade"
+            >
+              <span className="text-xs font-bold flex items-center gap-1" aria-hidden="true">
+                ♿ <span className="text-[11px] font-heading hidden xl:inline">A11y</span>
+              </span>
+            </button>
+
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
@@ -362,6 +384,26 @@ export function Header() {
 
           {/* Mobile Controls */}
           <div className="flex items-center gap-1.5 sm:gap-2 lg:hidden">
+            {/* A11y Accessibility Mobile Trigger */}
+            <button
+              type="button"
+              onClick={() => {
+                if (typeof window !== "undefined") {
+                  const ajavpA11y = (window as unknown as { ajavpA11y?: { toggle: () => void } }).ajavpA11y;
+                  if (ajavpA11y?.toggle) {
+                    ajavpA11y.toggle();
+                  } else {
+                    document.getElementById("a11yTriggerBtn")?.click();
+                  }
+                }
+              }}
+              aria-label="Abrir Painel de Acessibilidade"
+              title="Acessibilidade (Alt + A)"
+              className="p-2 rounded-lg border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition-colors cursor-pointer"
+            >
+              <span className="text-base" aria-hidden="true">♿</span>
+            </button>
+
             <button
               onClick={toggleTheme}
               aria-label="Alternar Tema"
