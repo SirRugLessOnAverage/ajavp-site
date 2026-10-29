@@ -17,11 +17,15 @@ const nextConfig: NextConfig = {
         destination: "/jif/classificacao",
         permanent: true,
       },
+      {
+        source: "/clube",
+        destination: "/associacao",
+        permanent: true,
+      },
     ];
   },
   async rewrites() {
     return [
-      { source: "/jif/futsal", destination: "/jif/futsal.html" },
       { source: "/admin-alertas", destination: "/admin-alertas.html" },
     ];
   },
