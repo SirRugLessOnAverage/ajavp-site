@@ -384,3 +384,51 @@ export function getRelativeDateLabel(eventDateStr: string, todayStr: string): { 
 
   return { text: 'Próxima Prova', pulse: false, color: 'bg-amber-400 text-slate-950' };
 }
+
+
+export interface ProximoEventoInfo {
+  evento: JifEvent;
+  labelRelativo: { text: string; pulse: boolean; color: string };
+  diasRestantes: number;
+  ehHoje: boolean;
+}
+
+export function getProximoEventoJif(
+  filtroSport?: string,
+  dataReferencia: Date = new Date()
+): ProximoEventoInfo | null {
+  const ano = dataReferencia.getFullYear();
+  const mes = String(dataReferencia.getMonth() + 1).padStart(2, '0');
+  const dia = String(dataReferencia.getDate()).padStart(2, '0');
+  const todayStr = `${ano}-${mes}-${dia}`;
+
+  const eventosFuturos = JIF_MASTER_EVENTS.filter((e) => {
+    if (filtroSport && filtroSport !== 'all' && e.sport !== filtroSport) {
+      return false;
+    }
+    return e.date >= todayStr;
+  });
+
+  if (eventosFuturos.length === 0) {
+    const ultimo = JIF_MASTER_EVENTS[JIF_MASTER_EVENTS.length - 1];
+    return {
+      evento: ultimo,
+      labelRelativo: { text: 'Concluído', pulse: false, color: 'bg-slate-200 text-slate-800' },
+      diasRestantes: 0,
+      ehHoje: false,
+    };
+  }
+
+  const proximo = eventosFuturos[0];
+  const label = getRelativeDateLabel(proximo.date, todayStr);
+  const eventDate = new Date(proximo.date + 'T00:00:00');
+  const todayDate = new Date(todayStr + 'T00:00:00');
+  const diffDays = Math.round((eventDate.getTime() - todayDate.getTime()) / (1000 * 60 * 60 * 24));
+
+  return {
+    evento: proximo,
+    labelRelativo: label,
+    diasRestantes: diffDays,
+    ehHoje: proximo.date === todayStr,
+  };
+}

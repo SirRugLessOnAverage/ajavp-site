@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Medal, Trophy, Calendar, Sparkles, ArrowRight } from "lucide-react";
+import { Medal, Trophy, Calendar, Sparkles, ArrowRight, MapPin, Clock } from "lucide-react";
 import type { FutsalMarcadoresEscalao, ProximaJornada } from "@/data/jif/futsal";
+import { getProximoEventoJif, type ProximoEventoInfo } from "@/data/jif/calendario";
 
 interface FutsalMarcadoresProps {
   marcadores: FutsalMarcadoresEscalao[];
@@ -17,9 +18,18 @@ export function FutsalMarcadores({
   const [escalaoMarcador, setEscalaoMarcador] = useState<string>(
     marcadores[0]?.escalao || "Sub-9"
   );
+  const [proximoEventoFutsal, setProximoEventoFutsal] = useState<ProximoEventoInfo | null>(null);
+
+  useEffect(() => {
+    const proximo = getProximoEventoJif("futsal");
+    setProximoEventoFutsal(proximo);
+  }, []);
 
   const listaAtual =
     marcadores.find((m) => m.escalao === escalaoMarcador) || marcadores[0];
+
+  const eventoCalendario = proximoEventoFutsal?.evento;
+  const labelRelativo = proximoEventoFutsal?.labelRelativo;
 
   return (
     <div className="space-y-12">
@@ -117,7 +127,7 @@ export function FutsalMarcadores({
         </div>
       </section>
 
-      {/* SECÇÃO: PRÓXIMA JORNADA & CONVOCATÓRIAS */}
+      {/* SECÇÃO: PRÓXIMA JORNADA DINÂMICA (LIGADA AO CALENDÁRIO OFICIAL) */}
       <section className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-white/10 shadow-xs space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-200 dark:border-white/10">
           <div className="flex items-center gap-3">
@@ -125,42 +135,76 @@ export function FutsalMarcadores({
               <Calendar className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="font-heading font-black text-lg text-slate-900 dark:text-white">
-                Próxima Jornada • {proximaJornada.dataPrevisao}
-              </h3>
+              <div className="flex items-center gap-2">
+                <h3 className="font-heading font-black text-lg text-slate-900 dark:text-white">
+                  Próxima Jornada &bull; {eventoCalendario ? `${eventoCalendario.day}/${eventoCalendario.month}` : proximaJornada.dataPrevisao}
+                </h3>
+                {labelRelativo && (
+                  <span className={`text-[10px] uppercase font-black px-2 py-0.5 rounded-full ${labelRelativo.color}`}>
+                    {labelRelativo.text}
+                  </span>
+                )}
+              </div>
               <p className="text-xs text-slate-500 dark:text-slate-400">
-                {proximaJornada.estado}
+                {eventoCalendario ? eventoCalendario.title : proximaJornada.estado}
               </p>
             </div>
           </div>
-          <span className="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 self-start sm:self-auto">
-            Jornada {proximaJornada.numero}
-          </span>
+          <Link
+            href="/jif#calendario"
+            className="text-xs font-bold text-brand-green dark:text-emerald-400 hover:underline flex items-center gap-1 self-start sm:self-auto"
+          >
+            <span>Ver Calendário Geral</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {proximaJornada.jogosAjavp.map((jogo, idx) => (
-            <div
-              key={idx}
-              className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-white/10 space-y-2"
-            >
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-black uppercase px-2 py-0.5 rounded bg-brand-navy text-white">
-                  {jogo.escalao}
-                </span>
-                <span className="text-[10px] text-slate-400 font-mono">
-                  {jogo.hora}
+        {/* Card Destaque da Próxima Jornada Oficial */}
+        {eventoCalendario ? (
+          <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-500/10 dark:to-teal-500/10 border border-emerald-200/80 dark:border-emerald-500/20 space-y-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="font-heading font-black text-sm text-slate-900 dark:text-white">
+                  {eventoCalendario.title}
                 </span>
               </div>
-              <p className="text-xs font-bold text-slate-800 dark:text-slate-100">
-                vs {jogo.adversario}
-              </p>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400">
-                📍 {jogo.pavilhao}
-              </p>
+              <span className="text-xs font-mono font-bold text-slate-600 dark:text-slate-300 flex items-center gap-1">
+                <Clock className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                {eventoCalendario.time}
+              </span>
             </div>
-          ))}
-        </div>
+
+            <div className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-300">
+              <MapPin className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+              <span><strong>Local:</strong> {eventoCalendario.location}</span>
+            </div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {proximaJornada.jogosAjavp.map((jogo, idx) => (
+              <div
+                key={idx}
+                className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-white/10 space-y-2"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-black uppercase px-2 py-0.5 rounded bg-brand-navy text-white">
+                    {jogo.escalao}
+                  </span>
+                  <span className="text-[10px] text-slate-400 font-mono">
+                    {jogo.hora}
+                  </span>
+                </div>
+                <p className="text-xs font-bold text-slate-800 dark:text-slate-100">
+                  vs {jogo.adversario}
+                </p>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                  📍 {jogo.pavilhao}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* BANNER DE CALL TO ACTION: CLASSIFICAÇÃO GERAL VIRTUAL */}
@@ -190,4 +234,3 @@ export function FutsalMarcadores({
     </div>
   );
 }
-

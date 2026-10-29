@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { DynamicTopBanner } from "./DynamicTopBanner";
 import {
   Medal,
   ChevronDown,
@@ -101,24 +102,8 @@ export function Header() {
 
   return (
     <>
-      {/* Top Banner */}
-      <div className="bg-brand-green text-white text-[11px] sm:text-xs py-1.5 px-4 text-center font-medium shadow-inner flex items-center justify-center gap-2">
-        <span className="inline-flex items-center justify-center px-2 py-0.5 rounded-full text-xs font-bold bg-white text-brand-green uppercase tracking-wider">
-          Inscrições Abertas
-        </span>
-        <span>
-          &quot;Vem e Traz um Amigo&quot; &bull; Treinos e atividades para todas
-          as idades na AJAVP! 🤩
-        </span>
-        <a
-          href="https://ajavp-gestao.vercel.app/inscricao"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline hover:text-amber-200 font-semibold ml-1 hidden sm:inline"
-        >
-          Inscreve-te &rarr;
-        </a>
-      </div>
+      {/* Top Banner Dinâmico baseado no Calendário Oficial */}
+      <DynamicTopBanner />
 
       {/* Main Navbar */}
       <header

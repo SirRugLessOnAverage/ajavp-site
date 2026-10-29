@@ -34,16 +34,6 @@ export const metadata: Metadata = {
 export default function JifFutsalPage() {
   return (
     <div className="bg-slate-50 dark:bg-slate-950 min-h-screen text-slate-800 dark:text-slate-100 transition-colors">
-      {/* Top Banner de Destaque */}
-      <div className="bg-brand-green text-white py-2 px-4 text-center text-xs sm:text-sm font-medium flex items-center justify-center gap-2 shadow-inner">
-        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-black uppercase bg-amber-400 text-slate-950">
-          Futsal JIF
-        </span>
-        <span>
-          XL Jogos Inter-Freguesias 2026/2027 &bull; Acompanhamento Semanal da AJAVP! ⚽
-        </span>
-      </div>
-
       {/* Hero Oficial com Breadcrumbs e KPIs */}
       <FutsalHero destaqueSemana={FUTSAL_DATA.destaqueSemana} />
 
