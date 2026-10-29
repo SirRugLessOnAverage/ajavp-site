@@ -432,3 +432,69 @@ export function getProximoEventoJif(
     ehHoje: proximo.date === todayStr,
   };
 }
+
+
+export interface MesCalendarioInfo {
+  chave: string; // "2026-10"
+  label: string; // "Outubro 2026"
+  mesAbrev: string; // "Out"
+  ano: string; // "2026"
+  totalEventos: number;
+}
+
+const NOMES_MESES: Record<string, { nome: string; abrev: string }> = {
+  '01': { nome: 'Janeiro', abrev: 'Jan' },
+  '02': { nome: 'Fevereiro', abrev: 'Fev' },
+  '03': { nome: 'Março', abrev: 'Mar' },
+  '04': { nome: 'Abril', abrev: 'Abr' },
+  '05': { nome: 'Maio', abrev: 'Mai' },
+  '06': { nome: 'Junho', abrev: 'Jun' },
+  '07': { nome: 'Julho', abrev: 'Jul' },
+  '08': { nome: 'Agosto', abrev: 'Ago' },
+  '09': { nome: 'Setembro', abrev: 'Set' },
+  '10': { nome: 'Outubro', abrev: 'Out' },
+  '11': { nome: 'Novembro', abrev: 'Nov' },
+  '12': { nome: 'Dezembro', abrev: 'Dez' },
+};
+
+export function getListaMesesCalendario(events: JifEvent[] = JIF_MASTER_EVENTS): MesCalendarioInfo[] {
+  const mapa = new Map<string, number>();
+
+  events.forEach((e) => {
+    const chave = e.date.substring(0, 7); // "YYYY-MM"
+    mapa.set(chave, (mapa.get(chave) || 0) + 1);
+  });
+
+  const chavesOrdenadas = Array.from(mapa.keys()).sort();
+
+  return chavesOrdenadas.map((chave) => {
+    const [ano, mes] = chave.split('-');
+    const infoMes = NOMES_MESES[mes] || { nome: mes, abrev: mes };
+    return {
+      chave,
+      label: `${infoMes.nome} ${ano}`,
+      mesAbrev: infoMes.abrev,
+      ano,
+      totalEventos: mapa.get(chave) || 0,
+    };
+  });
+}
+
+export function getEventosProximasDuasSemanas(
+  events: JifEvent[] = JIF_MASTER_EVENTS,
+  dataReferencia: Date = new Date()
+): JifEvent[] {
+  const ano = dataReferencia.getFullYear();
+  const mes = String(dataReferencia.getMonth() + 1).padStart(2, '0');
+  const dia = String(dataReferencia.getDate()).padStart(2, '0');
+  const todayStr = `${ano}-${mes}-${dia}`;
+
+  // 14 dias para a frente
+  const limiteDate = new Date(dataReferencia.getTime() + 14 * 24 * 60 * 60 * 1000);
+  const limAno = limiteDate.getFullYear();
+  const limMes = String(limiteDate.getMonth() + 1).padStart(2, '0');
+  const limDia = String(limiteDate.getDate()).padStart(2, '0');
+  const limiteStr = `${limAno}-${limMes}-${limDia}`;
+
+  return events.filter((e) => e.date >= todayStr && e.date <= limiteStr);
+}
