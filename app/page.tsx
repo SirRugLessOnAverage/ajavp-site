@@ -56,30 +56,39 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-brand-navy text-white pt-16 pb-24 lg:pt-28 lg:pb-32">
-        {/* Decorative background grid and gradients */}
-        <div className="absolute inset-0 opacity-15 pointer-events-none bg-[radial-gradient(#387b5b_1px,transparent_1px)] [background-size:24px_24px]" />
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-brand-green/30 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl pointer-events-none" />
+      {/* Hero Section com Imagem Amálgama das Modalidades */}
+      <section className="relative overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white pt-16 pb-20 lg:pt-24 lg:pb-28 border-b border-slate-200 dark:border-white/10 transition-colors">
+        {/* Imagem de Fundo Amálgama com Overlay Gradiente Adaptativo */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/assets/images/hero-amalgama.webp"
+            alt="Amálgama desportiva da AJAVP: Futsal Formação, Corta-Mato, 25 de Abril, Duatlo BTT e Futebol de Praia"
+            fetchPriority="high"
+            decoding="async"
+            className="w-full h-full object-cover object-center opacity-90 dark:opacity-75 contrast-105 saturate-110"
+          />
+          <div className="absolute inset-0 bg-linear-to-r from-white/95 via-white/82 to-white/20 dark:from-slate-950/95 dark:via-slate-950/80 dark:to-slate-950/25" />
+          <div className="absolute inset-0 bg-linear-to-t from-slate-50/90 via-transparent to-white/30 dark:from-slate-950/90 dark:via-transparent dark:to-slate-950/30" />
+        </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Content */}
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-bold tracking-wide">
-                <Sparkles className="w-4 h-4 text-amber-400" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/95 dark:bg-emerald-500/20 border border-emerald-300 dark:border-emerald-400/30 text-emerald-900 dark:text-emerald-300 text-xs font-bold tracking-wide shadow-2xs backdrop-blur-xs">
+                <Sparkles className="w-4 h-4 text-amber-600 dark:text-amber-400" />
                 <span>Associação Jovens e Adultos &bull; Época 2026/27</span>
               </div>
 
-              <h1 className="font-heading font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.1]">
+              <h1 className="font-heading font-black text-3xl sm:text-5xl lg:text-6xl text-brand-navy dark:text-white tracking-tight leading-[1.1] drop-shadow-2xs">
                 A Tua Terra <br className="hidden sm:inline" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-green via-emerald-600 to-amber-600 dark:from-emerald-400 dark:via-teal-300 dark:to-amber-300">
                   Tem Futuro.
                 </span>
               </h1>
 
-              <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+              <p className="text-base sm:text-lg text-slate-800 dark:text-slate-200 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-medium">
                 Promovemos o desporto, a formação de jovens e o convívio comunitário em Vilar do Pinheiro. Da formação ao escalão sénior, todos têm lugar na nossa equipa.
               </p>
 
@@ -96,36 +105,36 @@ export default async function HomePage() {
 
                 <Link
                   href="/jif"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-heading font-bold px-7 py-4 rounded-2xl transition-all text-sm sm:text-base backdrop-blur-md"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white/90 hover:bg-white dark:bg-slate-900/80 dark:hover:bg-slate-900 border border-slate-300 dark:border-white/20 text-brand-navy dark:text-white font-heading font-bold px-7 py-4 rounded-2xl transition-all text-sm sm:text-base backdrop-blur-md shadow-md"
                 >
-                  <Trophy className="w-5 h-5 text-amber-400" />
+                  <Trophy className="w-5 h-5 text-amber-500 dark:text-amber-400" />
                   <span>XL Jogos Inter-Freguesias</span>
                 </Link>
               </div>
 
               {/* Badges / Metrics */}
-              <div className="grid grid-cols-3 gap-4 pt-8 border-t border-white/10 max-w-lg mx-auto lg:mx-0">
+              <div className="grid grid-cols-3 gap-4 pt-8 border-t border-slate-300/80 dark:border-white/15 max-w-lg mx-auto lg:mx-0">
                 <div className="text-center lg:text-left">
-                  <div className="font-heading font-black text-2xl sm:text-3xl text-emerald-400">
+                  <div className="font-heading font-black text-2xl sm:text-3xl text-brand-green dark:text-emerald-400">
                     6+
                   </div>
-                  <div className="text-[11px] sm:text-xs text-slate-400 font-medium">
+                  <div className="text-[11px] sm:text-xs text-slate-700 dark:text-slate-300 font-semibold">
                     Modalidades Ativas
                   </div>
                 </div>
                 <div className="text-center lg:text-left">
-                  <div className="font-heading font-black text-2xl sm:text-3xl text-amber-400">
-                    100+
+                  <div className="font-heading font-black text-2xl sm:text-3xl text-amber-700 dark:text-amber-400">
+                    150+
                   </div>
-                  <div className="text-[11px] sm:text-xs text-slate-400 font-medium">
+                  <div className="text-[11px] sm:text-xs text-slate-700 dark:text-slate-300 font-semibold">
                     Atletas e Jovens
                   </div>
                 </div>
                 <div className="text-center lg:text-left">
-                  <div className="font-heading font-black text-2xl sm:text-3xl text-white">
+                  <div className="font-heading font-black text-2xl sm:text-3xl text-brand-navy dark:text-white">
                     19
                   </div>
-                  <div className="text-[11px] sm:text-xs text-slate-400 font-medium">
+                  <div className="text-[11px] sm:text-xs text-slate-700 dark:text-slate-300 font-semibold">
                     Freguesias nos JIF
                   </div>
                 </div>
@@ -134,22 +143,22 @@ export default async function HomePage() {
 
             {/* Right Card / Visual */}
             <div className="lg:col-span-5">
-              <div className="relative rounded-3xl p-6 sm:p-8 bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl space-y-6">
+              <div className="relative rounded-3xl p-6 sm:p-8 bg-white/88 dark:bg-slate-950/82 backdrop-blur-xl border border-slate-200/90 dark:border-white/20 shadow-2xl space-y-6">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider text-amber-300 flex items-center gap-2">
+                  <span className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300 flex items-center gap-2">
                     <Trophy className="w-4 h-4" />
                     Destaque Competitivo
                   </span>
-                  <span className="text-[10px] uppercase font-black px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
+                  <span className="text-[10px] uppercase font-black px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-900 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-400/30">
                     Futsal JIF
                   </span>
                 </div>
 
                 <div>
-                  <h3 className="font-heading font-bold text-xl sm:text-2xl text-white">
+                  <h3 className="font-heading font-bold text-xl sm:text-2xl text-brand-navy dark:text-white">
                     Hub Semanal de Futsal
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 mt-1 leading-relaxed">
                     Acompanha marcadores, calendários e resultados dos escalões Sub-7, Sub-9, Sub-11, Sub-13, Sub-16 e Seniores nos XL Jogos Inter-Freguesias.
                   </p>
                 </div>
@@ -157,29 +166,29 @@ export default async function HomePage() {
                 <div className="space-y-2.5">
                   <Link
                     href="/jif/futsal"
-                    className="flex items-center justify-between p-3.5 rounded-2xl bg-white/10 hover:bg-white/15 transition-colors border border-white/10 group"
+                    className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 hover:bg-emerald-50/70 dark:bg-white/10 dark:hover:bg-white/15 transition-colors border border-slate-200 dark:border-white/10 group"
                   >
-                    <span className="text-xs sm:text-sm font-semibold text-white">
+                    <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">
                       Resultados e Marcadores Semanais
                     </span>
-                    <ChevronRight className="w-4 h-4 text-emerald-400 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="w-4 h-4 text-brand-green dark:text-emerald-400 group-hover:translate-x-1 transition-transform" />
                   </Link>
 
                   <Link
                     href="/jif-classificacao"
-                    className="flex items-center justify-between p-3.5 rounded-2xl bg-white/10 hover:bg-white/15 transition-colors border border-white/10 group"
+                    className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 hover:bg-amber-50/70 dark:bg-white/10 dark:hover:bg-white/15 transition-colors border border-slate-200 dark:border-white/10 group"
                   >
-                    <span className="text-xs sm:text-sm font-semibold text-white">
+                    <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">
                       Classificação Geral Virtual (19 Freguesias)
                     </span>
-                    <ChevronRight className="w-4 h-4 text-amber-400 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="w-4 h-4 text-amber-600 dark:text-amber-400 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
 
                 <div className="pt-2 text-center">
                   <Link
                     href="/jif"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-300 hover:text-white transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-green dark:text-emerald-300 hover:underline transition-colors"
                   >
                     <span>Explorar regulamentos e pavilhões</span>
                     <ArrowRight className="w-3.5 h-3.5" />
