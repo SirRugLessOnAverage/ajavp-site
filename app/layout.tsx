@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppWidget } from "@/components/layout/WhatsAppWidget";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -112,6 +113,7 @@ export default function RootLayout({
         <main id="conteudo-principal" className="flex-1">{children}</main>
         <Footer />
         <WhatsAppWidget />
+        <SpeedInsights />
       </body>
     </html>
   );
