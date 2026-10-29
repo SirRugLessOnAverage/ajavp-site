@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -24,13 +24,14 @@ import {
   Home,
   ExternalLink,
   IdCard,
-  LayoutDashboard,
 } from "lucide-react";
 
 export function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const [isJifDropdownOpen, setIsJifDropdownOpen] = useState(false);
+  const jifDropdownRef = useRef<HTMLDivElement>(null);
 
   const navLinkClass = (href: string, extra = "") => {
     const isActive =
@@ -39,8 +40,39 @@ export function Header() {
       isActive
         ? "text-brand-green dark:text-emerald-300 bg-emerald-50/80 dark:bg-emerald-500/10 font-bold border border-emerald-200/60 dark:border-emerald-500/20"
         : "text-slate-700 dark:text-slate-200 hover:text-brand-green dark:hover:text-emerald-400 font-semibold hover:bg-slate-50 dark:hover:bg-white/5"
-    } text-xs xl:text-[13px] px-2.5 xl:px-3 py-2 rounded-xl transition-colors whitespace-nowrap shrink-0 ${extra}`;
+    } text-xs xl:text-[13px] px-2 xl:px-2.5 py-1.5 xl:py-2 rounded-xl transition-colors whitespace-nowrap shrink-0 ${extra}`;
   };
+
+  // Fechar dropdowns ao mudar de página
+  useEffect(() => {
+    setIsJifDropdownOpen(false);
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
+  // Fecho com clique fora e tecla Escape
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (
+        jifDropdownRef.current &&
+        !jifDropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsJifDropdownOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsJifDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handleClickOutside);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   useEffect(() => {
     const isDarkMode =
@@ -134,24 +166,48 @@ export function Header() {
             </Link>
 
             {/* Dropdown JIF 2026/2027 */}
-            <div className="relative group shrink-0">
-              <Link
-                href="/jif"
-                className="text-slate-700 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400 font-semibold text-xs xl:text-[13px] px-2.5 xl:px-3 py-2 rounded-xl hover:bg-amber-50/60 dark:hover:bg-amber-500/10 transition-colors flex items-center gap-1.5 whitespace-nowrap"
+            <div ref={jifDropdownRef} className="relative group shrink-0">
+              <button
+                type="button"
+                onClick={() => setIsJifDropdownOpen((prev) => !prev)}
+                onKeyDown={(e) => {
+                  if (e.key === "ArrowDown" || e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setIsJifDropdownOpen(true);
+                  }
+                }}
+                aria-expanded={isJifDropdownOpen}
+                aria-haspopup="menu"
+                aria-controls="jif-desktop-menu"
+                className="text-slate-700 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400 font-semibold text-xs xl:text-[13px] px-2 xl:px-2.5 py-1.5 xl:py-2 rounded-xl hover:bg-amber-50/60 dark:hover:bg-amber-500/10 transition-colors flex items-center gap-1.5 whitespace-nowrap cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-amber-500/50"
               >
                 <Medal className="w-3.5 h-3.5 text-amber-500 shrink-0" />
                 <span>JIF 2026/27</span>
                 <span className="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-500 text-slate-950">
                   XL
                 </span>
-                <ChevronDown className="w-3.5 h-3.5 text-amber-500 group-hover:rotate-180 transition-transform duration-200 shrink-0" />
-              </Link>
+                <ChevronDown
+                  className={`w-3.5 h-3.5 text-amber-500 transition-transform duration-200 shrink-0 ${
+                    isJifDropdownOpen ? "rotate-180" : "group-hover:rotate-180"
+                  }`}
+                />
+              </button>
 
               {/* Floating Dropdown */}
-              <div className="absolute left-0 top-full pt-2 w-72 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 transform origin-top-left -translate-y-2 group-hover:translate-y-0 z-50 pointer-events-none group-hover:pointer-events-auto">
+              <div
+                id="jif-desktop-menu"
+                role="menu"
+                className={`absolute left-0 top-full pt-2 w-72 transition-all duration-200 transform origin-top-left z-50 ${
+                  isJifDropdownOpen
+                    ? "visible opacity-100 translate-y-0 pointer-events-auto"
+                    : "invisible opacity-0 -translate-y-2 pointer-events-none group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pointer-events-auto"
+                }`}
+              >
                 <div className="p-2 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/15 shadow-2xl space-y-1">
                   <Link
                     href="/jif"
+                    role="menuitem"
+                    onClick={() => setIsJifDropdownOpen(false)}
                     className="flex items-center justify-between p-2.5 rounded-xl hover:bg-amber-50/80 dark:hover:bg-amber-500/15 border border-transparent hover:border-amber-300/60 dark:hover:border-amber-400/30 transition-colors group/item"
                   >
                     <div className="flex items-center gap-2.5">
@@ -174,6 +230,8 @@ export function Header() {
 
                   <Link
                     href="/jif/futsal"
+                    role="menuitem"
+                    onClick={() => setIsJifDropdownOpen(false)}
                     className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group/item"
                   >
                     <div className="flex items-center gap-2.5">
@@ -198,6 +256,8 @@ export function Header() {
 
                   <Link
                     href="/jif-classificacao"
+                    role="menuitem"
+                    onClick={() => setIsJifDropdownOpen(false)}
                     className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group/item"
                   >
                     <div className="flex items-center gap-2.5">
@@ -222,6 +282,8 @@ export function Header() {
 
                   <Link
                     href="/jif#calendario"
+                    role="menuitem"
+                    onClick={() => setIsJifDropdownOpen(false)}
                     className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors text-xs font-medium text-slate-700 dark:text-slate-300"
                   >
                     <Calendar className="w-4 h-4 text-amber-500 ml-1" />
@@ -230,6 +292,8 @@ export function Header() {
 
                   <Link
                     href="/jif#pavilhoes"
+                    role="menuitem"
+                    onClick={() => setIsJifDropdownOpen(false)}
                     className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors text-xs font-medium text-slate-700 dark:text-slate-300"
                   >
                     <div className="flex items-center gap-2.5">
@@ -243,6 +307,8 @@ export function Header() {
 
                   <Link
                     href="/jif#resultados"
+                    role="menuitem"
+                    onClick={() => setIsJifDropdownOpen(false)}
                     className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors text-xs font-medium text-slate-700 dark:text-slate-300"
                   >
                     <Trophy className="w-4 h-4 text-emerald-600 ml-1" />
@@ -251,6 +317,8 @@ export function Header() {
 
                   <Link
                     href="/jif#comunicados"
+                    role="menuitem"
+                    onClick={() => setIsJifDropdownOpen(false)}
                     className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors text-xs font-medium text-slate-700 dark:text-slate-300"
                   >
                     <div className="flex items-center gap-2.5">
@@ -264,6 +332,8 @@ export function Header() {
 
                   <Link
                     href="/jif#modalidades"
+                    role="menuitem"
+                    onClick={() => setIsJifDropdownOpen(false)}
                     className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors text-xs font-medium text-slate-700 dark:text-slate-300"
                   >
                     <Shield className="w-4 h-4 text-slate-400 ml-1" />
@@ -368,46 +438,26 @@ export function Header() {
         {mobileMenuOpen && (
           <div className="lg:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-white/10 px-6 py-6 shadow-xl space-y-3 max-h-[85vh] overflow-y-auto">
             <div className="space-y-1.5 text-sm font-medium">
-              {/* Portais AJAVP no Mobile */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-2">
+              {/* Portal do Sócio no Mobile */}
+              <div className="mb-2">
                 <a
                   href="https://ajavp-gestao.vercel.app/socio"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between py-2.5 px-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs shadow-md transition-all group"
+                  className="flex items-center justify-between py-2.5 px-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs shadow-md transition-all group"
                 >
-                  <span className="flex items-center gap-2">
-                    <span className="flex items-center justify-center w-6 h-6 rounded-lg bg-white/20 text-white">
-                      <IdCard className="w-3.5 h-3.5" />
+                  <span className="flex items-center gap-2.5">
+                    <span className="flex items-center justify-center w-7 h-7 rounded-lg bg-white/20 text-white">
+                      <IdCard className="w-4 h-4" />
                     </span>
                     <span>
                       Área de Sócio
                       <span className="text-[10px] font-normal text-emerald-100 block">
-                        Cartão Digital &amp; Quotas
+                        Cartão Digital, Quotas &amp; Inscrições
                       </span>
                     </span>
                   </span>
-                  <ExternalLink className="w-3.5 h-3.5 text-white/80 group-hover:text-white" />
-                </a>
-
-                <a
-                  href="https://ajavp-gestao.vercel.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between py-2.5 px-3 rounded-xl bg-slate-900 dark:bg-slate-800 text-white font-bold text-xs shadow-sm hover:bg-slate-800 border border-slate-700/80 transition-all group"
-                >
-                  <span className="flex items-center gap-2">
-                    <span className="flex items-center justify-center w-6 h-6 rounded-lg bg-white/10 text-slate-300">
-                      <LayoutDashboard className="w-3.5 h-3.5 text-emerald-400" />
-                    </span>
-                    <span>
-                      Portal Gestão
-                      <span className="text-[10px] font-normal text-slate-400 block">
-                        Secretaria &amp; Serviços
-                      </span>
-                    </span>
-                  </span>
-                  <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-white" />
+                  <ExternalLink className="w-4 h-4 text-white/80 group-hover:text-white" />
                 </a>
               </div>
 
