@@ -123,32 +123,87 @@ export default function JifPage() {
               </div>
             </div>
 
-            {/* Coluna Direita: Imagem Oficial com Moldura e Badge */}
+            {/* Coluna Direita: Mosaico Real com Fotografias Autênticas da AJAVP */}
             <div className="lg:col-span-5 flex justify-center">
-              <figure className="relative w-full max-w-sm sm:max-w-md rounded-3xl overflow-hidden shadow-2xl border-2 border-white/20 bg-slate-900/60 backdrop-blur-md group transform hover:scale-[1.01] transition-transform duration-300">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/assets/images/jif/hero-portal-jif.webp"
-                  alt="Delegação Oficial da AJAVP nos XL Jogos Inter-Freguesias"
-                  className="w-full h-auto object-cover max-h-[440px] sm:max-h-[480px]"
-                  loading="eager"
-                />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent p-4 pt-12">
-                  <div className="flex items-center justify-between">
+              <div className="w-full max-w-md rounded-3xl p-3 bg-slate-900/70 border-2 border-white/20 shadow-2xl backdrop-blur-md space-y-2.5">
+                {/* Foto Superior Grande: Fair-play e Comitiva */}
+                <div className="relative rounded-2xl overflow-hidden aspect-[16/9] border border-white/10 group shadow-md">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/assets/images/jif/jif-fairplay-equipa.webp"
+                    alt="Atletas da AJAVP nos JIF com faixas de Fair-play: Dá-me o exemplo, Não só os resultados contam"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="eager"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent p-2.5 pt-6 flex items-end justify-between">
                     <div>
-                      <span className="text-[11px] font-black uppercase tracking-wider text-amber-400 block">
-                        Delegação Oficial &bull; AJAVP
+                      <span className="text-[9px] font-black uppercase tracking-wider text-amber-400 block">
+                        Fair-Play &bull; Ética Desportiva
                       </span>
-                      <p className="text-xs font-bold text-white">
-                        Vilar do Pinheiro nos XL Jogos Concelhios
-                      </p>
+                      <span className="text-[11px] font-bold text-white leading-tight block">
+                        &quot;Não só os resultados contam&quot;
+                      </span>
                     </div>
-                    <span className="px-2.5 py-1 rounded-full bg-emerald-500 text-slate-950 font-black text-[10px] uppercase shadow-xs">
-                      Oficial
+                    <span className="px-2 py-0.5 rounded bg-emerald-500 text-slate-950 text-[9px] font-black uppercase">
+                      JIF
                     </span>
                   </div>
                 </div>
-              </figure>
+
+                {/* Grelha Inferior: 2 Modalidades Reais lado a lado */}
+                <div className="grid grid-cols-2 gap-2">
+                  {/* Corta-Mato */}
+                  <div className="relative rounded-xl overflow-hidden aspect-[4/3] border border-white/10 group shadow-xs">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/assets/images/galeria/corta_mato_equipa_2026.webp"
+                      alt="Comitiva de Corta-Mato da AJAVP"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/90 to-transparent p-2">
+                      <span className="text-[10px] font-bold text-emerald-300 block">
+                        Corta-Mato 2026
+                      </span>
+                      <span className="text-[8px] text-slate-300 block">
+                        Pista e Resistência
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Futsal */}
+                  <div className="relative rounded-xl overflow-hidden aspect-[4/3] border border-white/10 group shadow-xs">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/assets/images/futsal/hero-futsal-ajavp.webp"
+                      alt="Formação de Futsal da AJAVP"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/90 to-transparent p-2">
+                      <span className="text-[10px] font-bold text-amber-300 block">
+                        Futsal Pavilhões
+                      </span>
+                      <span className="text-[8px] text-slate-300 block">
+                        Sub-7 a Sub-13
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Rodapé da Moldura com Selo Oficial */}
+                <div className="flex items-center justify-between px-2 pt-1 border-t border-white/10">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="text-[10px] font-bold text-slate-200">
+                      Comitiva de Vilar do Pinheiro
+                    </span>
+                  </div>
+                  <span className="px-2 py-0.5 rounded-full bg-white/10 text-amber-300 font-black text-[9px] uppercase tracking-wide border border-white/10">
+                    Mosaico Real
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

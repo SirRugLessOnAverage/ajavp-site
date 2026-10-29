@@ -122,28 +122,47 @@ export default function JifClassificacaoPage() {
               </div>
             </div>
 
-            {/* Coluna Direita: Imagem de Pódio e Troféu com Moldura */}
+            {/* Coluna Direita: Fotografia Real dos Atletas Medalhados nos JIF */}
             <div className="lg:col-span-5 flex justify-center">
               <figure className="relative w-full max-w-sm sm:max-w-md rounded-3xl overflow-hidden shadow-2xl border-2 border-white/20 bg-slate-900/60 backdrop-blur-md group transform hover:scale-[1.01] transition-transform duration-300">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/assets/images/jif/hero-classificacao-jif.webp"
-                  alt="Troféu Concelhio e Pódio Oficial dos XL Jogos Inter-Freguesias"
-                  className="w-full h-auto object-cover max-h-[440px] sm:max-h-[480px]"
+                  src="/assets/images/jif/jif-atletas-medalhas.webp"
+                  alt="Atletas da AJAVP com medalhas conquistadas nos Jogos Inter-Freguesias"
+                  className="w-full h-auto object-cover max-h-[440px] sm:max-h-[490px]"
                   loading="eager"
                 />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent p-4 pt-12">
+
+                {/* Mini-badge flutuante com o jovem atleta medalhado */}
+                <div className="absolute top-3.5 right-3.5 flex items-center gap-2 p-1.5 pr-3 rounded-2xl bg-slate-950/85 backdrop-blur-md border border-white/20 shadow-lg">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/assets/images/jif/jif-medalha-individual.webp"
+                    alt="Atleta da AJAVP com medalha ao peito"
+                    className="w-8 h-8 rounded-xl object-cover border border-amber-400/80"
+                  />
+                  <div>
+                    <span className="text-[8px] uppercase font-black text-amber-400 block tracking-wider">
+                      Medalha AJAVP
+                    </span>
+                    <span className="text-[10px] font-bold text-white block">
+                      Orgulho Concelhio
+                    </span>
+                  </div>
+                </div>
+
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent p-4 pt-12">
                   <div className="flex items-center justify-between">
                     <div>
                       <span className="text-[11px] font-black uppercase tracking-wider text-amber-400 block">
-                        Top Concelhio &bull; ADCCVC
+                        Medalheiro &bull; Atletas AJAVP
                       </span>
                       <p className="text-xs font-bold text-white">
-                        Medalheiro e Classificação Geral
+                        Conquistas Reais nos XL JIF de Vila do Conde
                       </p>
                     </div>
                     <span className="px-2.5 py-1 rounded-full bg-amber-400 text-slate-950 font-black text-[10px] uppercase shadow-xs">
-                      Pódio
+                      Pódio Real
                     </span>
                   </div>
                 </div>
