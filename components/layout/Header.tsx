@@ -10,11 +10,7 @@ import {
   ChevronRight,
   Play,
   BarChart3,
-  Calendar,
   MapPin,
-  Trophy,
-  FileText,
-  Shield,
   HeartHandshake,
   Sun,
   Moon,
@@ -240,7 +236,7 @@ export function Header() {
                   </Link>
 
                   <Link
-                    href="/jif-classificacao"
+                    href="/jif/classificacao"
                     role="menuitem"
                     onClick={() => setIsJifDropdownOpen(false)}
                     className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group/item"
@@ -266,63 +262,35 @@ export function Header() {
                   </Link>
 
                   <Link
-                    href="/jif#calendario"
-                    role="menuitem"
-                    onClick={() => setIsJifDropdownOpen(false)}
-                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors text-xs font-medium text-slate-700 dark:text-slate-300"
-                  >
-                    <Calendar className="w-4 h-4 text-amber-500 ml-1" />
-                    <span>Calendário Oficial de Provas</span>
-                  </Link>
-
-                  <Link
                     href="/jif#pavilhoes"
                     role="menuitem"
-                    onClick={() => setIsJifDropdownOpen(false)}
-                    className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors text-xs font-medium text-slate-700 dark:text-slate-300"
+                    onClick={(e) => {
+                      setIsJifDropdownOpen(false);
+                      if (typeof window !== 'undefined' && window.location.pathname === '/jif') {
+                        e.preventDefault();
+                        window.history.pushState(null, '', '/jif#pavilhoes');
+                        window.dispatchEvent(new CustomEvent('jif-tab-change', { detail: 'pavilhoes' }));
+                        document.getElementById('hub-tabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }
+                    }}
+                    className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group/item"
                   >
                     <div className="flex items-center gap-2.5">
-                      <MapPin className="w-4 h-4 text-emerald-500 ml-1" />
-                      <span>Pavilhões &amp; GPS</span>
+                      <div className="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-300 flex items-center justify-center">
+                        <MapPin className="w-3.5 h-3.5" />
+                      </div>
+                      <div>
+                        <strong className="text-xs font-bold text-slate-800 dark:text-slate-100 block group-hover/item:text-emerald-600">
+                          Pavilhões &amp; GPS
+                        </strong>
+                        <span className="text-[10px] text-slate-500 dark:text-slate-400">
+                          Rotas em 1 toque
+                        </span>
+                      </div>
                     </div>
                     <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 font-bold">
                       Waze / Maps
                     </span>
-                  </Link>
-
-                  <Link
-                    href="/jif#resultados"
-                    role="menuitem"
-                    onClick={() => setIsJifDropdownOpen(false)}
-                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors text-xs font-medium text-slate-700 dark:text-slate-300"
-                  >
-                    <Trophy className="w-4 h-4 text-emerald-600 ml-1" />
-                    <span>Resultados dos Nossos Jogos</span>
-                  </Link>
-
-                  <Link
-                    href="/jif#comunicados"
-                    role="menuitem"
-                    onClick={() => setIsJifDropdownOpen(false)}
-                    className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors text-xs font-medium text-slate-700 dark:text-slate-300"
-                  >
-                    <div className="flex items-center gap-2.5">
-                      <FileText className="w-4 h-4 text-amber-500 ml-1" />
-                      <span>Comunicados Oficiais</span>
-                    </div>
-                    <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-300 font-bold">
-                      6 Emitidos
-                    </span>
-                  </Link>
-
-                  <Link
-                    href="/jif#modalidades"
-                    role="menuitem"
-                    onClick={() => setIsJifDropdownOpen(false)}
-                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors text-xs font-medium text-slate-700 dark:text-slate-300"
-                  >
-                    <Shield className="w-4 h-4 text-slate-400 ml-1" />
-                    <span>Regulamentos &amp; Escalões</span>
                   </Link>
                 </div>
               </div>
@@ -482,12 +450,33 @@ export function Header() {
                     <span>Futsal Semanal (Hub)</span>
                   </Link>
                   <Link
-                    href="/jif-classificacao"
+                    href="/jif/classificacao"
                     onClick={() => setMobileMenuOpen(false)}
                     className="flex items-center gap-2 py-1.5 px-2 rounded-lg text-slate-700 dark:text-slate-300 hover:text-blue-600 font-semibold"
                   >
                     <BarChart3 className="w-3 h-3 text-blue-500" />
                     <span>Classificação Virtual</span>
+                  </Link>
+                  <Link
+                    href="/jif#pavilhoes"
+                    onClick={(e) => {
+                      setMobileMenuOpen(false);
+                      if (typeof window !== 'undefined' && window.location.pathname === '/jif') {
+                        e.preventDefault();
+                        window.history.pushState(null, '', '/jif#pavilhoes');
+                        window.dispatchEvent(new CustomEvent('jif-tab-change', { detail: 'pavilhoes' }));
+                        document.getElementById('hub-tabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }
+                    }}
+                    className="flex items-center justify-between py-1.5 px-2 rounded-lg text-slate-700 dark:text-slate-300 hover:text-emerald-600 font-semibold"
+                  >
+                    <span className="flex items-center gap-2">
+                      <MapPin className="w-3 h-3 text-emerald-500" />
+                      <span>Pavilhões &amp; GPS</span>
+                    </span>
+                    <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 font-bold">
+                      Waze / Maps
+                    </span>
                   </Link>
                 </div>
               </div>

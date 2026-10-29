@@ -18,18 +18,43 @@ interface JifHubTabsProps {
 export default function JifHubTabs({ initialTab = 'geral' }: JifHubTabsProps) {
   const [activeTab, setActiveTab] = useState<JifTabType>(initialTab);
 
-  // Sync hash on mount and hashchange
+  // Sync hash on mount, hashchange and custom events
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash.replace('#', '');
       if (['geral', 'calendario', 'pavilhoes', 'comunicados'].includes(hash)) {
         setActiveTab(hash as JifTabType);
+        setTimeout(() => {
+          const el = document.getElementById('hub-tabs');
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 50);
+      }
+    };
+
+    const handleCustomTab = (e: Event) => {
+      const customEvent = e as CustomEvent<JifTabType>;
+      if (customEvent.detail && ['geral', 'calendario', 'pavilhoes', 'comunicados'].includes(customEvent.detail)) {
+        setActiveTab(customEvent.detail);
+        setTimeout(() => {
+          const el = document.getElementById('hub-tabs');
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 50);
       }
     };
 
     handleHash();
     window.addEventListener('hashchange', handleHash);
-    return () => window.removeEventListener('hashchange', handleHash);
+    window.addEventListener('popstate', handleHash);
+    window.addEventListener('jif-tab-change', handleCustomTab);
+    return () => {
+      window.removeEventListener('hashchange', handleHash);
+      window.removeEventListener('popstate', handleHash);
+      window.removeEventListener('jif-tab-change', handleCustomTab);
+    };
   }, []);
 
   const changeTab = (tab: JifTabType) => {
@@ -49,7 +74,11 @@ export default function JifHubTabs({ initialTab = 'geral' }: JifHubTabsProps) {
   const upcomingEvents = JIF_MASTER_EVENTS.filter((e) => e.date >= todayStr).slice(0, 2);
 
   return (
-    <div className="space-y-8">
+    <div id="hub-tabs" className="space-y-8 scroll-mt-28 relative">
+      {/* Anchors for browser jumping */}
+      <div id="pavilhoes" className="absolute -top-28 left-0 pointer-events-none" />
+      <div id="calendario" className="absolute -top-28 left-0 pointer-events-none" />
+      <div id="comunicados" className="absolute -top-28 left-0 pointer-events-none" />
       {/* Tab Navigation Buttons */}
       <div className="flex items-center justify-start md:justify-center gap-2 overflow-x-auto pb-2 scrollbar-none">
         <div className="inline-flex items-center gap-1.5 p-1.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-xs">
