@@ -65,9 +65,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
+  colorScheme: "light dark",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#1b4557" },
-    { media: "(prefers-color-scheme: dark)", color: "#0b131e" },
+    { media: "(prefers-color-scheme: light)", color: "#f8fafc" },
+    { media: "(prefers-color-scheme: dark)", color: "#090d16" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -100,9 +101,15 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen flex flex-col font-sans">
+      <body className="min-h-screen flex flex-col font-sans bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors">
+        <a
+          href="#conteudo-principal"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-100 focus:px-4 focus:py-2.5 focus:rounded-xl focus:bg-brand-navy focus:text-white dark:focus:bg-amber-400 dark:focus:text-slate-950 focus:font-heading focus:font-bold focus:text-xs focus:shadow-xl"
+        >
+          Saltar para o conteúdo principal
+        </a>
         <Header />
-        <main className="flex-1">{children}</main>
+        <main id="conteudo-principal" className="flex-1">{children}</main>
         <Footer />
         <WhatsAppWidget />
       </body>

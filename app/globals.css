@@ -3,12 +3,20 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-brand-green: #387b5b;
-  --color-brand-greenDark: #2d6349;
-  --color-brand-navy: #1b4557;
-  --color-brand-navyDark: #13323f;
+  --color-brand-green: #2d6a4f;
+  --color-brand-greenDark: #1b4332;
+  --color-brand-navy: #143646;
+  --color-brand-navyDark: #0d2530;
   --color-brand-accent: #f2a93b;
   --color-brand-grayBg: #f8fafc;
+
+  /* Tokens Institucionais AJAVP (Suporte Completo Tailwind v4) */
+  --color-ajavp-black: #090d16;
+  --color-ajavp-green: #2d6a4f;
+  --color-ajavp-green-light: #34d399;
+  --color-ajavp-green-dark: #143628;
+  --color-ajavp-gold: #f59e0b;
+
   --font-heading: 'Montserrat', sans-serif;
   --font-sans: 'Inter', sans-serif;
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -18,16 +26,36 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    color-scheme: light;
+    accent-color: var(--color-brand-green);
   }
+
+  html.dark {
+    color-scheme: dark;
+    accent-color: var(--color-ajavp-green-light);
+  }
+
   body {
     background-color: var(--color-brand-grayBg);
-    color: #1e293b;
+    color: #0f172a;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
+
   .dark body {
-    background-color: #0b131e;
-    color: #f1f5f9;
+    background-color: #090d16;
+    color: #f8fafc;
+  }
+
+  /* Indicador de foco universal acessível (WCAG 2.4.7 / 2.4.11) */
+  :focus-visible {
+    outline: 2px solid #047857;
+    outline-offset: 2px;
+  }
+
+  .dark :focus-visible {
+    outline: 2px solid #fbbf24;
+    outline-offset: 2px;
   }
 }
 

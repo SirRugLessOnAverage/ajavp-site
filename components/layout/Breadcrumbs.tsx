@@ -14,25 +14,25 @@ interface BreadcrumbsProps {
 
 export function Breadcrumbs({
   items,
-  variant = "dark",
+  variant = "adaptive",
   className = "",
 }: BreadcrumbsProps) {
   const baseText =
-    variant === "adaptive"
-      ? "text-slate-500 dark:text-slate-400"
-      : "text-gray-400";
+    variant === "dark"
+      ? "text-slate-300"
+      : "text-slate-600 dark:text-slate-300";
   const linkHover =
-    variant === "adaptive"
-      ? "hover:text-brand-green dark:hover:text-white"
-      : "hover:text-white";
+    variant === "dark"
+      ? "hover:text-white"
+      : "hover:text-brand-green dark:hover:text-emerald-400";
   const separatorColor =
-    variant === "adaptive"
-      ? "text-slate-400 dark:text-slate-600"
-      : "text-gray-600";
+    variant === "dark"
+      ? "text-slate-500"
+      : "text-slate-400 dark:text-slate-500";
   const activeColor =
-    variant === "adaptive"
-      ? "text-brand-green dark:text-amber-400 font-bold"
-      : "text-ajavp-gold font-bold";
+    variant === "dark"
+      ? "text-amber-300 font-bold"
+      : "text-brand-green dark:text-amber-300 font-bold";
 
   return (
     <nav
@@ -76,4 +76,3 @@ export function Breadcrumbs({
     </nav>
   );
 }
-
