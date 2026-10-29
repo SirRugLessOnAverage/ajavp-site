@@ -10,7 +10,7 @@ import {
 } from "@/data/institucional";
 
 export const metadata: Metadata = {
-  title: "Modalidades e Horários 2026/2027 • AJAVP — São Pedro de Avioso",
+  title: "Modalidades e Horários 2026/2027 • AJAVP — Vilar do Pinheiro",
   description:
     "Futsal e Futebol, Atletismo, Ténis de Mesa, Duatlo BTT, Badminton e Futebol de Praia. Consulta os Cromos Oficiais 26/27, o Horário de Treinos e a meteorologia do Ringue.",
 };
@@ -335,15 +335,15 @@ export default function ModalidadesPage() {
               </div>
             </div>
 
-            {/* GRELHA SEMANAL COMPLETA (TERÇA A SÁBADO) */}
-            <div className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 overflow-hidden mb-10 shadow-lg">
+            {/* GRELHA SEMANAL COMPLETA (2.ª FEIRA A DOMINGO - MATRIZ OFICIAL AJAVP) */}
+            <div className="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 overflow-hidden mb-10 shadow-lg">
               <div className="p-5 sm:p-6 border-b border-slate-200 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
                   <h3 className="font-heading text-xl font-bold text-brand-navy dark:text-white">
-                    Grelha Semanal Completa (3.ª Feira a Sábado)
+                    Grelha Semanal Completa (2.ª Feira a Domingo)
                   </h3>
                   <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">
-                    Visão global de todos os treinos semanais de Futsal Formação e Outras Modalidades.
+                    Matriz oficial de todos os treinos semanais de Futsal Formação e Outras Modalidades.
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-2 text-[11px]">
@@ -351,7 +351,7 @@ export default function ModalidadesPage() {
                     R = Ringue AJAVP
                   </span>
                   <span className={`px-2.5 py-1 rounded-md border font-bold ${VENUE_BADGE_STYLE.C}`}>
-                    C = Castêlo da Maia
+                    C = Pavilhão Canidelo
                   </span>
                   <span className={`px-2.5 py-1 rounded-md border font-bold ${VENUE_BADGE_STYLE.P}`}>
                     P = MaiaSport
@@ -363,119 +363,189 @@ export default function ModalidadesPage() {
               </div>
 
               <div className="overflow-x-auto">
-                <table className="w-full text-left border-collapse min-w-[760px]">
+                <table className="w-full text-xs text-left text-slate-700 dark:text-slate-200 border-collapse min-w-[980px]">
                   <thead>
-                    <tr className="bg-slate-100 dark:bg-black/50 border-b border-slate-200 dark:border-white/10 text-[11px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
-                      <th className="py-3.5 px-4 w-44">Categoria</th>
-                      <th className="py-3.5 px-4">3.ª Feira</th>
-                      <th className="py-3.5 px-4">4.ª Feira</th>
-                      <th className="py-3.5 px-4">5.ª Feira</th>
-                      <th className="py-3.5 px-4">6.ª Feira</th>
-                      <th className="py-3.5 px-4">Sábado</th>
+                    <tr className="bg-brand-navy dark:bg-slate-950 text-white font-bold uppercase text-[11px] tracking-wider border-b border-slate-200 dark:border-white/10">
+                      <th className="py-3.5 px-4 min-w-[160px]">Modalidade</th>
+                      <th className="py-3.5 px-3 text-center min-w-[130px]">2.ª Feira</th>
+                      <th className="py-3.5 px-3 text-center min-w-[130px]">3.ª Feira</th>
+                      <th className="py-3.5 px-3 text-center min-w-[155px]">4.ª Feira</th>
+                      <th className="py-3.5 px-3 text-center min-w-[175px]">5.ª Feira</th>
+                      <th className="py-3.5 px-3 text-center min-w-[150px]">6.ª Feira</th>
+                      <th className="py-3.5 px-3 text-center min-w-[175px]">Sábado</th>
+                      <th className="py-3.5 px-3 text-center min-w-[120px]">Domingo</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-200 dark:divide-white/10 text-xs">
+                  <tbody className="divide-y divide-slate-200 dark:divide-white/10">
                     {/* Linha 1: Futsal Formação */}
-                    <tr className="align-top">
-                      <td className="py-4 px-4 font-bold text-slate-900 dark:text-white bg-slate-50/70 dark:bg-white/2">
-                        <div className="flex items-center gap-2">
+                    <tr className="hover:bg-slate-50/50 dark:hover:bg-white/2 transition-colors align-top">
+                      <td className="py-4 px-4 bg-slate-50/70 dark:bg-white/2">
+                        <div className="font-heading font-black text-slate-900 dark:text-white text-sm flex items-center gap-1.5">
                           <span>⚽</span>
                           <span>Futsal Formação</span>
                         </div>
-                        <span className="text-[11px] text-slate-600 dark:text-slate-300 font-normal block mt-1">
-                          Sub-7, Sub-9, Sub-11 e Sub-13
-                        </span>
-                      </td>
-                      <td className="py-4 px-4 space-y-2">
-                        <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10">
-                          <span className="font-bold text-slate-900 dark:text-white block">Sub-7</span>
-                          <span className="text-amber-700 dark:text-amber-300 font-semibold">18h45 – 19h45</span>
-                          <span className="block text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">
-                            [R] Ringue AJAVP
-                          </span>
+                        <div className="text-[11px] text-slate-600 dark:text-slate-300 font-medium mt-0.5">
+                          (Ringue e Pavilhões)
                         </div>
                       </td>
-                      <td className="py-4 px-4 space-y-2">
-                        <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10">
-                          <span className="font-bold text-slate-900 dark:text-white block">Sub-9 & Sub-11</span>
-                          <span className="text-amber-700 dark:text-amber-300 font-semibold">19h00 – 20h00</span>
-                          <span className="block text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">
-                            [C] Castêlo da Maia
-                          </span>
-                        </div>
-                        <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10">
-                          <span className="font-bold text-slate-900 dark:text-white block">Sub-13</span>
-                          <span className="text-amber-700 dark:text-amber-300 font-semibold">20h00 – 21h00</span>
-                          <span className="block text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">
-                            [C] Castêlo da Maia
-                          </span>
+
+                      {/* 2.ª Feira */}
+                      <td className="py-4 px-3 text-center">
+                        <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10">
+                          <div className="font-bold text-blue-900 dark:text-blue-300 text-xs">Sub-11</div>
+                          <div className="text-[11px] text-slate-700 dark:text-slate-300 font-medium mt-0.5">
+                            19h00 – 20h30{" "}
+                            <span className="font-bold text-slate-900 dark:text-white">(R)</span>
+                          </div>
                         </div>
                       </td>
-                      <td className="py-4 px-4 space-y-2">
-                        <div className="p-2.5 rounded-lg bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-400/25">
-                          <span className="font-bold text-slate-900 dark:text-white block">
-                            Sub-7 & Sub-9*
-                          </span>
-                          <span className="text-blue-700 dark:text-blue-300 font-semibold">19h00 – 20h00</span>
-                          <span className="block text-[11px] text-slate-700 dark:text-slate-300 mt-0.5">
-                            [P] Pavilhão MaiaSport
-                          </span>
+
+                      {/* 3.ª Feira */}
+                      <td className="py-4 px-3 text-center">
+                        <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10">
+                          <div className="font-bold text-emerald-900 dark:text-emerald-300 text-xs">Sub-9</div>
+                          <div className="text-[11px] text-slate-700 dark:text-slate-300 font-medium mt-0.5">
+                            19h00 – 20h30{" "}
+                            <span className="font-bold text-slate-900 dark:text-white">(R)</span>
+                          </div>
                         </div>
                       </td>
-                      <td className="py-4 px-4 space-y-2">
-                        <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10">
-                          <span className="font-bold text-slate-900 dark:text-white block">Sub-9</span>
-                          <span className="text-amber-700 dark:text-amber-300 font-semibold">19h00 – 20h00</span>
-                          <span className="block text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">
-                            [R] Ringue AJAVP
-                          </span>
+
+                      {/* 4.ª Feira */}
+                      <td className="py-4 px-3 text-center">
+                        <div className="p-2.5 rounded-xl bg-blue-50/90 dark:bg-blue-500/15 border border-blue-200 dark:border-blue-400/30 mb-1.5 shadow-2xs">
+                          <div className="font-bold text-blue-950 dark:text-blue-200 text-xs">
+                            Sub-11 + Sub-13
+                          </div>
+                          <div className="text-[11px] text-blue-900 dark:text-blue-300 font-semibold mt-0.5">
+                            18h30 – 20h00{" "}
+                            <span className="font-black text-blue-950 dark:text-white">(C)</span>
+                          </div>
                         </div>
-                        <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10">
-                          <span className="font-bold text-slate-900 dark:text-white block">Sub-11 & Sub-13</span>
-                          <span className="text-amber-700 dark:text-amber-300 font-semibold">20h00 – 21h00</span>
-                          <span className="block text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">
-                            [R] Ringue AJAVP
-                          </span>
+                        <div className="text-[10px] text-slate-600 dark:text-slate-400 font-medium italic">
+                          Ringue livre p/ GR (19h – 20h30)
                         </div>
                       </td>
-                      <td className="py-4 px-4">
-                        <div className="p-2.5 rounded-lg bg-emerald-50 dark:bg-emerald-500/15 border border-emerald-200 dark:border-emerald-400/25 text-slate-700 dark:text-slate-200">
-                          <span className="font-bold text-emerald-800 dark:text-emerald-300 block">
-                            Jogos Oficiais JIF
-                          </span>
-                          <span className="text-[11px]">
-                            Convocatórias semanais (Sábado / Domingo)
+
+                      {/* 5.ª Feira */}
+                      <td className="py-4 px-3 text-center">
+                        <div className="font-bold text-slate-800 dark:text-slate-200 text-[11px] mb-1">
+                          19h00 – 20h00:
+                        </div>
+                        <div className="p-2 rounded-lg bg-emerald-50 dark:bg-emerald-500/15 border border-emerald-200 dark:border-emerald-400/30 mb-1 shadow-2xs">
+                          <div className="font-bold text-emerald-950 dark:text-emerald-200 text-xs">
+                            Sub-9{" "}
+                            <span className="text-[10px] font-semibold text-emerald-800 dark:text-emerald-300">
+                              (P - MaiaSport)*
+                            </span>
+                          </div>
+                        </div>
+                        <div className="text-xs font-bold text-slate-900 dark:text-white">
+                          Sub-7{" "}
+                          <span className="text-[11px] text-slate-600 dark:text-slate-300 font-normal">
+                            (R - Ringue)
                           </span>
                         </div>
+                        <div className="text-[10px] text-amber-800 dark:text-amber-300 font-semibold italic mt-1 leading-tight">
+                          *Partilha pontual c/ Sub-7 ou Sub-13 (ver nota)
+                        </div>
+                      </td>
+
+                      {/* 6.ª Feira */}
+                      <td className="py-4 px-3 text-center">
+                        <div className="p-2 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10">
+                          <div className="font-bold text-purple-900 dark:text-purple-300 text-xs">Sub-13</div>
+                          <div className="text-[11px] text-slate-700 dark:text-slate-300 font-medium mt-0.5">
+                            19h00 – 20h00{" "}
+                            <span className="font-bold text-slate-900 dark:text-white">(R)**</span>
+                          </div>
+                        </div>
+                        <div className="mt-1.5 inline-flex items-center gap-1 text-[10px] font-bold text-amber-900 dark:text-amber-300 bg-amber-100/80 dark:bg-amber-500/15 px-2 py-0.5 rounded-full border border-amber-300 dark:border-amber-400/30 leading-tight">
+                          <span>Atenção: &lt; 24h descanso</span>
+                        </div>
+                        <div className="text-[10px] text-slate-600 dark:text-slate-400 italic mt-1 leading-tight">
+                          **Ringue livre se treinarem 5.ª no MaiaSport
+                        </div>
+                      </td>
+
+                      {/* Sábado */}
+                      <td className="py-4 px-3 text-center space-y-1.5">
+                        <div className="p-2 rounded-xl bg-emerald-50/80 dark:bg-emerald-500/15 border border-emerald-200 dark:border-emerald-400/30 text-left">
+                          <div className="font-bold text-emerald-950 dark:text-emerald-300 text-[11px]">
+                            09h00 – 10h00:
+                          </div>
+                          <div className="text-[11px] text-slate-800 dark:text-slate-200 font-medium">
+                            Sub-9 + Sub-13{" "}
+                            <span className="font-bold text-slate-950 dark:text-white">(R)</span>
+                          </div>
+                        </div>
+                        <div className="p-2 rounded-xl bg-blue-50/80 dark:bg-blue-500/15 border border-blue-200 dark:border-blue-400/30 text-left">
+                          <div className="font-bold text-blue-950 dark:text-blue-300 text-[11px]">
+                            10h00 – 11h00:
+                          </div>
+                          <div className="text-[11px] text-slate-800 dark:text-slate-200 font-medium">
+                            Sub-7 + Sub-11{" "}
+                            <span className="font-bold text-slate-950 dark:text-white">(R)</span>
+                          </div>
+                        </div>
+                      </td>
+
+                      {/* Domingo */}
+                      <td className="py-4 px-3 text-center align-middle font-bold text-slate-400 dark:text-slate-500">
+                        -
                       </td>
                     </tr>
 
                     {/* Linha 2: Outras Modalidades */}
-                    <tr className="align-top">
-                      <td className="py-4 px-4 font-bold text-slate-900 dark:text-white bg-slate-50/70 dark:bg-white/2">
-                        <div className="flex items-center gap-2">
+                    <tr className="hover:bg-slate-50/50 dark:hover:bg-white/2 transition-colors align-top">
+                      <td className="py-4 px-4 bg-slate-50/70 dark:bg-white/2">
+                        <div className="font-heading font-black text-slate-900 dark:text-white text-sm flex items-center gap-1.5">
                           <span>🏓</span>
                           <span>Outras Modalidades</span>
                         </div>
-                        <span className="text-[11px] text-slate-600 dark:text-slate-300 font-normal block mt-1">
-                          Ténis de Mesa, Atletismo, BTT, Badminton
-                        </span>
+                        <div className="text-[11px] text-slate-600 dark:text-slate-300 font-medium mt-0.5">
+                          (Junta Freguesia)
+                        </div>
                       </td>
-                      <td className="py-4 px-4 text-slate-600 dark:text-slate-400 italic">Sem treino fixo</td>
-                      <td className="py-4 px-4 text-slate-600 dark:text-slate-400 italic">Sem treino fixo</td>
-                      <td className="py-4 px-4 text-slate-600 dark:text-slate-400 italic">Sem treino fixo</td>
-                      <td className="py-4 px-4 text-slate-600 dark:text-slate-400 italic">Sem treino fixo</td>
-                      <td className="py-4 px-4">
-                        <div className="p-2.5 rounded-lg bg-purple-50 dark:bg-purple-500/15 border border-purple-200 dark:border-purple-400/30">
-                          <span className="font-bold text-slate-900 dark:text-white block">
-                            🏓 Ténis de Mesa
-                          </span>
-                          <span className="text-purple-800 dark:text-purple-300 font-semibold">
-                            10h00 – 12h00
-                          </span>
-                          <span className="block text-[11px] text-slate-700 dark:text-slate-300 mt-0.5">
-                            [JF] Salão da Junta de Freguesia
-                          </span>
+                      <td className="py-4 px-3 text-center align-middle font-semibold text-slate-400 dark:text-slate-500">
+                        -
+                      </td>
+                      <td className="py-4 px-3 text-center align-middle font-semibold text-slate-400 dark:text-slate-500">
+                        -
+                      </td>
+                      <td className="py-4 px-3 text-center align-middle font-semibold text-slate-400 dark:text-slate-500">
+                        -
+                      </td>
+                      <td className="py-4 px-3 text-center align-middle font-semibold text-slate-400 dark:text-slate-500">
+                        -
+                      </td>
+                      <td className="py-4 px-3 text-center align-middle font-semibold text-slate-400 dark:text-slate-500">
+                        -
+                      </td>
+                      <td className="py-4 px-3 text-center">
+                        <div className="p-2.5 rounded-xl bg-purple-50/80 dark:bg-purple-500/15 border border-purple-200 dark:border-purple-400/30 text-left space-y-0.5">
+                          <div className="font-bold text-slate-900 dark:text-white text-xs">
+                            🏓 Ténis de Mesa:
+                          </div>
+                          <div className="text-[11px] text-slate-700 dark:text-slate-200">
+                            <span className="font-semibold text-slate-900 dark:text-white">Sub-15:</span> 16h00{" "}
+                            <span className="font-bold text-purple-900 dark:text-purple-300">(JF)</span>
+                          </div>
+                          <div className="text-[11px] text-slate-700 dark:text-slate-200">
+                            <span className="font-semibold text-slate-900 dark:text-white">Adultos:</span> 17h00{" "}
+                            <span className="font-bold text-purple-900 dark:text-purple-300">(JF)</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="py-4 px-3 text-center">
+                        <div className="p-2.5 rounded-xl bg-emerald-50/80 dark:bg-emerald-500/15 border border-emerald-200 dark:border-emerald-400/30 text-left shadow-2xs">
+                          <div className="font-bold text-emerald-950 dark:text-emerald-300 text-xs">
+                            🏃 Atletismo:
+                          </div>
+                          <div className="text-[11px] text-slate-700 dark:text-slate-200 font-medium mt-0.5">
+                            09h00{" "}
+                            <span className="font-bold text-emerald-800 dark:text-emerald-300">(JF)</span>
+                          </div>
                         </div>
                       </td>
                     </tr>
@@ -484,34 +554,84 @@ export default function ModalidadesPage() {
               </div>
             </div>
 
-            {/* AVISO OFICIAL MAIASPORT ÀS QUINTAS-FEIRAS */}
-            <div className="rounded-2xl bg-amber-50 dark:bg-amber-500/10 border border-amber-300 dark:border-amber-400/30 p-5 sm:p-6 mb-12 flex flex-col sm:flex-row items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-400/20 border border-amber-300 dark:border-amber-400/40 flex items-center justify-center text-xl shrink-0">
-                ⚠️
-              </div>
-              <div>
-                <h4 className="font-heading text-base font-bold text-amber-900 dark:text-amber-300 mb-1">
-                  *Aviso Oficial • Pavilhão MaiaSport às 5.ªs Feiras (Sub-7 e Sub-9)
-                </h4>
-                <p className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed">
-                  Nas quintas-feiras das <strong>19h00 às 20h00</strong> no{" "}
-                  <strong>Pavilhão MaiaSport [P]</strong>, o campo coberto é partilhado entre os escalões{" "}
-                  <strong>Sub-7 e Sub-9</strong>. Quando as condições meteorológicas no{" "}
-                  <strong>Ringue Descoberto da AJAVP [R]</strong> forem favoráveis na sexta-feira, os atletas Sub-9 realizam o seu segundo treino semanal na sexta-feira (19h00–20h00 no Ringue); em semanas de chuva na sexta-feira, os encarregados de educação são avisados pela equipa técnica para reforçar a presença na quinta-feira em recinto coberto.
-                </p>
+            {/* NOTA ASSERTIVA DE TREINOS: MAIASPORT (5.ªS FEIRAS) */}
+            <div className="bg-amber-50/90 dark:bg-amber-950/40 border-2 border-amber-300 dark:border-amber-400/50 rounded-3xl p-5 md:p-6 mb-12 shadow-sm">
+              <div className="flex flex-col sm:flex-row items-start gap-4">
+                <div className="w-11 h-11 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center shrink-0 shadow-md text-xl font-bold">
+                  ⚠️
+                </div>
+                <div className="space-y-2.5 flex-1">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h4 className="font-heading font-black text-sm uppercase tracking-wider text-amber-950 dark:text-amber-300">
+                      Aviso Oficial • Pavilhão MaiaSport às 5.ªs Feiras
+                    </h4>
+                    <span className="px-2.5 py-0.5 rounded-full bg-amber-200/90 dark:bg-amber-500/20 text-amber-950 dark:text-amber-200 text-[10px] font-extrabold uppercase border border-amber-300 dark:border-amber-400/40">
+                      Regime de Partilha
+                    </span>
+                  </div>
+                  <p className="text-xs sm:text-sm leading-relaxed text-slate-800 dark:text-slate-200 font-medium">
+                    Refere-se de{" "}
+                    <strong className="text-slate-950 dark:text-white">forma assertiva</strong> que, às{" "}
+                    <strong className="text-slate-950 dark:text-white">quintas-feiras no Pavilhão MaiaSport</strong>, os{" "}
+                    <strong className="text-slate-950 dark:text-white">
+                      Sub-9 podem ter de partilhar o espaço de treino com os Sub-7 ou com os Sub-13
+                    </strong>
+                    . Caso isso aconteça com o escalão{" "}
+                    <strong className="text-slate-950 dark:text-white">Sub-13</strong>, estes{" "}
+                    <strong className="text-slate-950 dark:text-white">
+                      deixarão o Ringue de Vilar do Pinheiro totalmente livre na sexta-feira
+                    </strong>{" "}
+                    seguinte.
+                  </p>
+                  <div className="pt-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs border-t border-amber-200 dark:border-white/10">
+                    <div className="flex items-center gap-2 font-bold text-slate-900 dark:text-emerald-200">
+                      <span aria-hidden="true">🔔</span>
+                      <span>
+                        Estar atento ao WhatsApp oficial para saber em que semana(s) isso acontece!
+                      </span>
+                    </div>
+                    <a
+                      href="https://chat.whatsapp.com/BLxsjBfDw7AEAonDy72187"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-green hover:bg-brand-greenDark text-white font-bold text-xs shadow-xs transition-colors self-start sm:self-auto shrink-0"
+                    >
+                      <span>💬</span>
+                      <span>Avisos no WhatsApp</span>
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* LEGENDA DETALHADA DOS 4 RECINTOS COM GOOGLE MAPS */}
-            <div>
-              <h3 className="font-heading text-xl font-bold text-brand-navy dark:text-white mb-5">
-                📍 Localização dos Recintos de Treino
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {/* LEGENDA DETALHADA DAS INSTALAÇÕES E RECINTOS DESPORTIVOS */}
+            <div className="bg-white dark:bg-slate-900/90 rounded-3xl border border-slate-200/90 dark:border-white/10 p-6 sm:p-8 shadow-sm space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 dark:border-white/10 pb-4">
+                <div className="space-y-1">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-200/60 dark:border-emerald-500/30">
+                    <span>📍</span>
+                    <span>Guia Oficial dos Locais de Treino • AJAVP</span>
+                  </div>
+                  <h3 className="font-heading font-black text-xl sm:text-2xl text-brand-navy dark:text-white">
+                    Legenda das Instalações &amp; Recintos Desportivos
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                    Consulta abaixo a localização, tipo de piso, modalidades e horários de treino associados a cada sigla do mapa semanal.
+                  </p>
+                </div>
+                <Link
+                  href="/associacao#locais"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-white/10 dark:hover:bg-white/20 text-slate-700 dark:text-white font-bold text-xs border border-slate-200 dark:border-white/10 transition-colors self-start sm:self-auto shrink-0"
+                >
+                  <span>🗺️</span>
+                  <span>Ver Mapas Interativos no Clube →</span>
+                </Link>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {TRAINING_VENUES.map((venue) => (
                   <div
                     key={venue.code}
-                    className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 p-5 flex flex-col justify-between hover:border-emerald-400 dark:hover:border-white/25 transition-colors shadow-sm"
+                    className="rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-white/10 p-5 flex flex-col justify-between hover:border-emerald-400 dark:hover:border-white/25 transition-colors shadow-2xs"
                   >
                     <div>
                       <div className="flex items-center justify-between gap-2 mb-3">
@@ -532,7 +652,7 @@ export default function ModalidadesPage() {
                       <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
                         {venue.location}
                       </p>
-                      <div className="text-[11px] text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-black/40 rounded-lg p-2.5 border border-slate-200 dark:border-white/5 mb-4 space-y-1">
+                      <div className="text-[11px] text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-900/80 rounded-xl p-3 border border-slate-200/80 dark:border-white/10 mb-4 space-y-1">
                         <span className="font-bold text-slate-900 dark:text-white block mb-1">
                           {venue.scheduleTitle}
                         </span>
