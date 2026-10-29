@@ -45,7 +45,7 @@ export default function ContactosPage() {
                     💬 WhatsApp Direto (+351 917 194 933)
                   </a>
                   <a
-                    href="https://forms.gle/YJdnZyUsMB8aBADj6"
+                    href="https://ajavp-gestao.vercel.app/inscricao"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="motion-press inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-amber-400 text-slate-950 hover:bg-amber-300 font-black text-sm transition-colors shadow-xs"

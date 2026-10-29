@@ -23,6 +23,8 @@ import {
   X,
   Home,
   ExternalLink,
+  IdCard,
+  LayoutDashboard,
 } from "lucide-react";
 
 export function Header() {
@@ -77,7 +79,7 @@ export function Header() {
           as idades na AJAVP! 🤩
         </span>
         <a
-          href="https://forms.gle/YJdnZyUsMB8aBADj6"
+          href="https://ajavp-gestao.vercel.app/inscricao"
           target="_blank"
           rel="noopener noreferrer"
           className="underline hover:text-amber-200 font-semibold ml-1 hidden sm:inline"
@@ -318,21 +320,36 @@ export function Header() {
               )}
             </button>
 
-            {/* Link Área de Sócio */}
+            {/* Link Portal Gestão */}
             <a
-              href="https://gestao.ajavp.pt/socio"
+              href="https://ajavp-gestao.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden xl:inline-flex items-center gap-1.5 text-xs font-bold text-slate-700 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-emerald-400 py-2 px-3 rounded-xl border border-slate-200 dark:border-white/10 hover:border-emerald-300 dark:hover:border-emerald-500/30 transition-colors whitespace-nowrap shrink-0"
-              title="Aceder ao Portal do Associado da AJAVP"
+              className="hidden 2xl:inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 py-2 px-2.5 rounded-xl border border-transparent hover:border-slate-200 dark:hover:border-white/10 hover:bg-slate-50 dark:hover:bg-white/5 transition-all whitespace-nowrap shrink-0 group"
+              title="Portal AJAVP Gestão (Secretaria & Administração)"
             >
-              <User className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+              <LayoutDashboard className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors shrink-0" />
+              <span>Portal Gestão</span>
+            </a>
+
+            {/* Link Área de Sócio */}
+            <a
+              href="https://ajavp-gestao.vercel.app/socio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden xl:inline-flex items-center gap-2 text-xs font-bold text-slate-800 dark:text-slate-100 hover:text-emerald-600 dark:hover:text-emerald-300 py-1.5 px-3 rounded-xl border border-emerald-500/30 bg-emerald-50/50 dark:bg-emerald-500/10 hover:border-emerald-500 hover:bg-emerald-100/60 dark:hover:bg-emerald-500/20 shadow-xs transition-all whitespace-nowrap shrink-0 group"
+              title="Aceder à Área de Sócio da AJAVP (Quotas, Cartão Digital & Dados)"
+            >
+              <span className="relative flex items-center justify-center w-5 h-5 rounded-md bg-emerald-600 text-white shadow-xs group-hover:scale-105 transition-transform shrink-0">
+                <IdCard className="w-3.5 h-3.5" />
+                <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse" />
+              </span>
               <span>Área de Sócio</span>
             </a>
 
             {/* Quero Fazer Parte */}
             <a
-              href="https://forms.gle/YJdnZyUsMB8aBADj6"
+              href="https://ajavp-gestao.vercel.app/inscricao"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 bg-brand-green hover:bg-brand-greenDark text-white px-3 py-2 text-xs xl:px-3.5 xl:py-2 xl:text-[13px] rounded-full font-heading font-semibold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 whitespace-nowrap shrink-0"
@@ -373,19 +390,48 @@ export function Header() {
         {mobileMenuOpen && (
           <div className="lg:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-white/10 px-6 py-6 shadow-xl space-y-3 max-h-[85vh] overflow-y-auto">
             <div className="space-y-1.5 text-sm font-medium">
-              {/* Portal do Sócio Mobile */}
-              <a
-                href="https://gestao.ajavp.pt/socio"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between py-2.5 px-3 rounded-xl bg-slate-900 text-white font-bold text-xs shadow-sm hover:bg-slate-800 transition-colors mb-2"
-              >
-                <span className="flex items-center gap-2.5">
-                  <User className="w-4 h-4 text-emerald-400" />
-                  Portal do Sócio (Quotas &amp; Cartão)
-                </span>
-                <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
-              </a>
+              {/* Portais AJAVP no Mobile */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-2">
+                <a
+                  href="https://ajavp-gestao.vercel.app/socio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between py-2.5 px-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs shadow-md transition-all group"
+                >
+                  <span className="flex items-center gap-2">
+                    <span className="flex items-center justify-center w-6 h-6 rounded-lg bg-white/20 text-white">
+                      <IdCard className="w-3.5 h-3.5" />
+                    </span>
+                    <span>
+                      Área de Sócio
+                      <span className="text-[10px] font-normal text-emerald-100 block">
+                        Cartão Digital &amp; Quotas
+                      </span>
+                    </span>
+                  </span>
+                  <ExternalLink className="w-3.5 h-3.5 text-white/80 group-hover:text-white" />
+                </a>
+
+                <a
+                  href="https://ajavp-gestao.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between py-2.5 px-3 rounded-xl bg-slate-900 dark:bg-slate-800 text-white font-bold text-xs shadow-sm hover:bg-slate-800 border border-slate-700/80 transition-all group"
+                >
+                  <span className="flex items-center gap-2">
+                    <span className="flex items-center justify-center w-6 h-6 rounded-lg bg-white/10 text-slate-300">
+                      <LayoutDashboard className="w-3.5 h-3.5 text-emerald-400" />
+                    </span>
+                    <span>
+                      Portal Gestão
+                      <span className="text-[10px] font-normal text-slate-400 block">
+                        Secretaria &amp; Serviços
+                      </span>
+                    </span>
+                  </span>
+                  <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-white" />
+                </a>
+              </div>
 
               <Link
                 href="/"

@@ -66,7 +66,7 @@ export default function ModalidadesPage() {
                     🌤️ Meteorologia no Ringue
                   </a>
                   <a
-                    href="https://forms.gle/YJdnZyUsMB8aBADj6"
+                    href="https://ajavp-gestao.vercel.app/inscricao"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="motion-press inline-flex items-center gap-2 px-5 py-3.5 rounded-full bg-amber-100 hover:bg-amber-200 dark:bg-amber-500/20 dark:hover:bg-amber-500/30 border border-amber-300 dark:border-amber-400/40 text-amber-900 dark:text-amber-300 font-bold text-sm transition-colors"
@@ -221,7 +221,7 @@ export default function ModalidadesPage() {
                       ✨ Ver Novo Equipamento Oficial 26/27 →
                     </Link>
                     <a
-                      href="https://forms.gle/YJdnZyUsMB8aBADj6"
+                      href="https://ajavp-gestao.vercel.app/inscricao"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="motion-press inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-white/10 dark:hover:bg-white/15 border border-slate-300 dark:border-white/15 text-slate-800 dark:text-white font-semibold text-xs uppercase tracking-wider transition-colors"

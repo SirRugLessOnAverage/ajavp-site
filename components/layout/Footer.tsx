@@ -79,7 +79,7 @@ export function Footer() {
                   href="/associacao"
                   className="hover:text-emerald-300 transition-colors"
                 >
-                  A Associação &amp; Pavilhões
+                  Quem Somos &amp; Pavilhões
                 </Link>
               </li>
               <li>
@@ -105,6 +105,26 @@ export function Footer() {
                 >
                   Contactos &amp; Inscrições
                 </Link>
+              </li>
+              <li>
+                <a
+                  href="https://ajavp-gestao.vercel.app/socio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-emerald-300 transition-colors text-emerald-400 font-semibold flex items-center gap-1.5"
+                >
+                  <span>💳</span> Área de Sócio
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://ajavp-gestao.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-emerald-300 transition-colors text-slate-300 flex items-center gap-1.5"
+                >
+                  <span>🏛️</span> Portal AJAVP Gestão
+                </a>
               </li>
               <li>
                 <Link
@@ -239,17 +259,37 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-300 gap-4">
-          <p>
-            &copy; 2026 Associação Jovens e Adultos de Vilar do Pinheiro &bull;
-            NIF 519096045 &bull;{" "}
+          <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1">
+            <span>
+              &copy; 2026 Associação Jovens e Adultos de Vilar do Pinheiro &bull; NIF 519096045
+            </span>
+            <span className="text-slate-600 hidden sm:inline">&bull;</span>
+            <a
+              href="https://ajavp-gestao.vercel.app/socio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-emerald-400 hover:text-emerald-300 underline font-semibold transition-colors"
+            >
+              Área de Sócio
+            </a>
+            <span className="text-slate-600">&bull;</span>
+            <a
+              href="https://ajavp-gestao.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-300 hover:text-white underline font-semibold transition-colors"
+            >
+              Portal Gestão
+            </a>
+            <span className="text-slate-600">&bull;</span>
             <Link
               href="/admin-alertas"
               className="text-amber-300 hover:text-amber-200 underline font-semibold transition-colors"
             >
               Área da Direção
             </Link>
-          </p>
-          <p className="text-slate-300">
+          </div>
+          <p className="text-slate-400">
             Desenvolvido com dedicação para a comunidade de Vilar do Pinheiro.
           </p>
         </div>

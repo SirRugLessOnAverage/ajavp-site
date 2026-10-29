@@ -87,7 +87,7 @@ export default function JifPage() {
                 </Link>
 
                 <Link
-                  href="https://forms.gle/YJdnZyUsMB8aBADj6"
+                  href="https://ajavp-gestao.vercel.app/inscricao"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white font-heading font-bold text-xs sm:text-sm border border-white/20 transition-colors"
@@ -144,7 +144,7 @@ export default function JifPage() {
           </div>
 
           <Link
-            href="https://forms.gle/YJdnZyUsMB8aBADj6"
+            href="https://ajavp-gestao.vercel.app/inscricao"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-brand-green hover:from-emerald-400 hover:to-emerald-600 text-white font-heading font-bold text-sm shadow-lg hover:shadow-xl hover:scale-105 transition-all shrink-0 cursor-pointer"
