@@ -40,6 +40,40 @@ export function Header() {
     } text-xs xl:text-[13px] px-2 xl:px-2.5 py-1.5 xl:py-2 rounded-xl transition-colors whitespace-nowrap shrink-0 ${extra}`;
   };
 
+  const handleA11yClick = () => {
+    if (typeof window === "undefined") return;
+    const win = window as unknown as { ajavpA11y?: { toggle: () => void } };
+    if (win.ajavpA11y?.toggle) {
+      win.ajavpA11y.toggle();
+      return;
+    }
+
+    const triggerBtn = document.getElementById("a11yTriggerBtn");
+    if (triggerBtn) {
+      triggerBtn.click();
+      return;
+    }
+
+    // Dynamic fallback
+    let script = document.getElementById("a11y-core-script") as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement("script");
+      script.id = "a11y-core-script";
+      script.src = "/assets/js/a11y.js";
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    script.addEventListener("load", () => {
+      setTimeout(() => {
+        if (win.ajavpA11y?.toggle) {
+          win.ajavpA11y.toggle();
+        } else {
+          document.getElementById("a11yTriggerBtn")?.click();
+        }
+      }, 50);
+    }, { once: true });
+  };
+
   // Fechar dropdowns ao mudar de página
   useEffect(() => {
     setIsJifDropdownOpen(false);
@@ -322,16 +356,7 @@ export function Header() {
             {/* A11y Accessibility Modal Trigger */}
             <button
               type="button"
-              onClick={() => {
-                if (typeof window !== "undefined") {
-                  const ajavpA11y = (window as unknown as { ajavpA11y?: { toggle: () => void } }).ajavpA11y;
-                  if (ajavpA11y?.toggle) {
-                    ajavpA11y.toggle();
-                  } else {
-                    document.getElementById("a11yTriggerBtn")?.click();
-                  }
-                }
-              }}
+              onClick={handleA11yClick}
               className="p-2 rounded-xl border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 text-slate-700 dark:text-slate-200 transition-colors cursor-pointer flex items-center justify-center shrink-0"
               title="Acessibilidade &amp; Usabilidade (Atalho: Alt + A)"
               aria-label="Abrir Painel de Acessibilidade"
@@ -387,16 +412,7 @@ export function Header() {
             {/* A11y Accessibility Mobile Trigger */}
             <button
               type="button"
-              onClick={() => {
-                if (typeof window !== "undefined") {
-                  const ajavpA11y = (window as unknown as { ajavpA11y?: { toggle: () => void } }).ajavpA11y;
-                  if (ajavpA11y?.toggle) {
-                    ajavpA11y.toggle();
-                  } else {
-                    document.getElementById("a11yTriggerBtn")?.click();
-                  }
-                }
-              }}
+              onClick={handleA11yClick}
               aria-label="Abrir Painel de Acessibilidade"
               title="Acessibilidade (Alt + A)"
               className="p-2 rounded-lg border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition-colors cursor-pointer"
