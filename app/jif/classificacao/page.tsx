@@ -59,36 +59,102 @@ export default function JifClassificacaoPage() {
             className="mb-5"
           />
 
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <div className="space-y-2">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Coluna Esquerda: Textos, Ações e KPIs de Pódio */}
+            <div className="lg:col-span-7 space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-400/30 text-amber-300 text-xs font-bold uppercase tracking-wider">
                 <Award className="w-3.5 h-3.5 text-amber-400" />
                 <span>Simulador Virtual Concelhio • Época 2026/2027</span>
               </div>
-              <h1 className="font-heading font-black text-2xl sm:text-4xl text-white tracking-tight">
+
+              <h1 className="font-heading font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight">
                 Classificação Virtual dos <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-emerald-300 to-white">
                   XL Jogos Inter-Freguesias
                 </span>
               </h1>
-              <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
-                Tabela concelhia das 19 freguesias nos XL JIF de Vila do Conde em conformidade com o simulador oficial da ADCCVC (Artigo XV).
+
+              <p className="text-sm sm:text-base text-slate-300 max-w-2xl leading-relaxed">
+                Tabela concelhia das 19 freguesias nos XL JIF de Vila do Conde em estrita conformidade com o simulador oficial da ADCCVC (Artigo XV). Consulta o medalheiro e a pontuação estimada em tempo real.
               </p>
+
+              {/* Botões de Ação */}
+              <div className="flex items-center gap-3 pt-1 flex-wrap">
+                <a
+                  href="#tabela-classificacao"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 text-slate-950 font-heading font-bold text-xs sm:text-sm shadow-md hover:shadow-lg hover:scale-105 transition-all cursor-pointer"
+                >
+                  <Trophy className="w-4 h-4" />
+                  <span>Ver Pódio &amp; Pautas</span>
+                </a>
+
+                <Link
+                  href="/jif"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white font-heading font-bold text-xs sm:text-sm border border-white/20 transition-colors cursor-pointer"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                  <span>Voltar ao Portal JIF</span>
+                </Link>
+              </div>
+
+              {/* Mini-KPIs no rodapé do Hero */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-3">
+                <div className="p-3 rounded-2xl bg-white/10 dark:bg-slate-900/60 backdrop-blur-md text-center space-y-0.5 border border-white/15">
+                  <span className="text-[10px] text-slate-300 uppercase block font-semibold truncate">Posição AJAVP</span>
+                  <div className="text-lg sm:text-xl font-black text-amber-400">4.º Lugar</div>
+                  <span className="text-[10px] text-emerald-200 block truncate">19 Freguesias</span>
+                </div>
+                <div className="p-3 rounded-2xl bg-white/10 dark:bg-slate-900/60 backdrop-blur-md text-center space-y-0.5 border border-white/15">
+                  <span className="text-[10px] text-slate-300 uppercase block font-semibold truncate">Pontos Virtuais</span>
+                  <div className="text-lg sm:text-xl font-black text-emerald-400">76 Pts</div>
+                  <span className="text-[10px] text-emerald-200 block truncate">Estimativa Geral</span>
+                </div>
+                <div className="p-3 rounded-2xl bg-white/10 dark:bg-slate-900/60 backdrop-blur-md text-center space-y-0.5 border border-white/15">
+                  <span className="text-[10px] text-slate-300 uppercase block font-semibold truncate">Pódios Modalidade</span>
+                  <div className="text-lg sm:text-xl font-black text-cyan-400">2 Pódios</div>
+                  <span className="text-[10px] text-cyan-200 block truncate">Corta-Mato &amp; Futsal</span>
+                </div>
+                <div className="p-3 rounded-2xl bg-white/10 dark:bg-slate-900/60 backdrop-blur-md text-center space-y-0.5 border border-white/15">
+                  <span className="text-[10px] text-slate-300 uppercase block font-semibold truncate">Regulamento</span>
+                  <div className="text-lg sm:text-xl font-black text-amber-300">Art. XV</div>
+                  <span className="text-[10px] text-amber-200 block truncate">Simulador ADCCVC</span>
+                </div>
+              </div>
             </div>
 
-            <Link
-              href="/jif"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-white font-heading font-bold text-xs border border-white/15 transition-colors self-start md:self-auto cursor-pointer"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>Voltar ao Portal JIF</span>
-            </Link>
+            {/* Coluna Direita: Imagem de Pódio e Troféu com Moldura */}
+            <div className="lg:col-span-5 flex justify-center">
+              <figure className="relative w-full max-w-sm sm:max-w-md rounded-3xl overflow-hidden shadow-2xl border-2 border-white/20 bg-slate-900/60 backdrop-blur-md group transform hover:scale-[1.01] transition-transform duration-300">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/assets/images/jif/hero-classificacao-jif.webp"
+                  alt="Troféu Concelhio e Pódio Oficial dos XL Jogos Inter-Freguesias"
+                  className="w-full h-auto object-cover max-h-[440px] sm:max-h-[480px]"
+                  loading="eager"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent p-4 pt-12">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="text-[11px] font-black uppercase tracking-wider text-amber-400 block">
+                        Top Concelhio &bull; ADCCVC
+                      </span>
+                      <p className="text-xs font-bold text-white">
+                        Medalheiro e Classificação Geral
+                      </p>
+                    </div>
+                    <span className="px-2.5 py-1 rounded-full bg-amber-400 text-slate-950 font-black text-[10px] uppercase shadow-xs">
+                      Pódio
+                    </span>
+                  </div>
+                </div>
+              </figure>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Main Container */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+      <main id="tabela-classificacao" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10 scroll-mt-24">
         {/* Notice of Virtual Projection */}
         <div className="p-4 sm:p-5 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border-2 border-amber-300 dark:border-amber-500/40 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-start gap-3">

@@ -58,8 +58,9 @@ export default function JifPage() {
             className="mb-5"
           />
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            <div className="lg:col-span-8 space-y-4">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Coluna Esquerda: Textos, Ações e KPIs */}
+            <div className="lg:col-span-7 space-y-4">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-400/30 text-amber-300 text-xs font-bold uppercase tracking-wider">
                 <Medal className="w-4 h-4 text-amber-400" />
                 <span>XL Jogos Inter-Freguesias de Vila do Conde • 2026/2027</span>
@@ -96,33 +97,58 @@ export default function JifPage() {
                   <span>Inscrever Atleta na AJAVP</span>
                 </Link>
               </div>
+
+              {/* Mini-KPIs no rodapé do Hero */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-3">
+                <div className="p-3 rounded-2xl bg-white/10 dark:bg-slate-900/60 backdrop-blur-md text-center space-y-0.5 border border-white/15">
+                  <span className="text-[10px] text-slate-300 uppercase block font-semibold truncate">Provas</span>
+                  <div className="text-lg sm:text-xl font-black text-amber-400">36</div>
+                  <span className="text-[10px] text-emerald-200 block truncate">Atletismo &amp; Pavilhão</span>
+                </div>
+                <div className="p-3 rounded-2xl bg-white/10 dark:bg-slate-900/60 backdrop-blur-md text-center space-y-0.5 border border-white/15">
+                  <span className="text-[10px] text-slate-300 uppercase block font-semibold truncate">Freguesias</span>
+                  <div className="text-lg sm:text-xl font-black text-emerald-400">19</div>
+                  <span className="text-[10px] text-emerald-200 block truncate">Concelho em Prova</span>
+                </div>
+                <div className="p-3 rounded-2xl bg-white/10 dark:bg-slate-900/60 backdrop-blur-md text-center space-y-0.5 border border-white/15">
+                  <span className="text-[10px] text-slate-300 uppercase block font-semibold truncate">Recintos GPS</span>
+                  <div className="text-lg sm:text-xl font-black text-cyan-400">12</div>
+                  <span className="text-[10px] text-cyan-200 block truncate">Waze &amp; Maps</span>
+                </div>
+                <div className="p-3 rounded-2xl bg-white/10 dark:bg-slate-900/60 backdrop-blur-md text-center space-y-0.5 border border-white/15">
+                  <span className="text-[10px] text-slate-300 uppercase block font-semibold truncate">Escalões</span>
+                  <div className="text-lg sm:text-xl font-black text-amber-300">4</div>
+                  <span className="text-[10px] text-amber-200 block truncate">Sub-7 ao Sub-13</span>
+                </div>
+              </div>
             </div>
 
-            {/* Key Metrics Stats */}
-            <div className="lg:col-span-4 grid grid-cols-2 gap-3">
-              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md space-y-1">
-                <div className="text-2xl sm:text-3xl font-heading font-black text-amber-400">36</div>
-                <div className="text-xs font-bold text-slate-200">Provas Oficiais</div>
-                <div className="text-[10px] text-slate-400">Atletismo a Futsal</div>
-              </div>
-
-              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md space-y-1">
-                <div className="text-2xl sm:text-3xl font-heading font-black text-emerald-400">19</div>
-                <div className="text-xs font-bold text-slate-200">Freguesias</div>
-                <div className="text-[10px] text-slate-400">Concelho em Prova</div>
-              </div>
-
-              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md space-y-1">
-                <div className="text-2xl sm:text-3xl font-heading font-black text-cyan-400">12</div>
-                <div className="text-xs font-bold text-slate-200">Recintos com GPS</div>
-                <div className="text-[10px] text-slate-400">Google Maps &amp; Waze</div>
-              </div>
-
-              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md space-y-1">
-                <div className="text-2xl sm:text-3xl font-heading font-black text-amber-300">4</div>
-                <div className="text-xs font-bold text-slate-200">Escalões AJAVP</div>
-                <div className="text-[10px] text-slate-400">Sub-7, 9, 11 e 13</div>
-              </div>
+            {/* Coluna Direita: Imagem Oficial com Moldura e Badge */}
+            <div className="lg:col-span-5 flex justify-center">
+              <figure className="relative w-full max-w-sm sm:max-w-md rounded-3xl overflow-hidden shadow-2xl border-2 border-white/20 bg-slate-900/60 backdrop-blur-md group transform hover:scale-[1.01] transition-transform duration-300">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/assets/images/jif/hero-portal-jif.webp"
+                  alt="Delegação Oficial da AJAVP nos XL Jogos Inter-Freguesias"
+                  className="w-full h-auto object-cover max-h-[440px] sm:max-h-[480px]"
+                  loading="eager"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent p-4 pt-12">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="text-[11px] font-black uppercase tracking-wider text-amber-400 block">
+                        Delegação Oficial &bull; AJAVP
+                      </span>
+                      <p className="text-xs font-bold text-white">
+                        Vilar do Pinheiro nos XL Jogos Concelhios
+                      </p>
+                    </div>
+                    <span className="px-2.5 py-1 rounded-full bg-emerald-500 text-slate-950 font-black text-[10px] uppercase shadow-xs">
+                      Oficial
+                    </span>
+                  </div>
+                </div>
+              </figure>
             </div>
           </div>
         </div>
