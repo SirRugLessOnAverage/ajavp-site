@@ -12,6 +12,7 @@ import {
   HeartHandshake,
   IdCard,
   LayoutDashboard,
+  Bell,
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { NoticiasSection } from "@/components/home/NoticiasSection";
@@ -197,6 +198,43 @@ export default async function HomePage() {
                   </Link>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Banner Oficial de Notificações Web Push & Avisos no Telemóvel */}
+      <section className="bg-linear-to-r from-amber-500 via-amber-400 to-amber-500 text-slate-950 py-5 sm:py-6 shadow-md border-y border-amber-400">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3.5 text-center md:text-left">
+              <div className="w-12 h-12 rounded-2xl bg-slate-950 text-amber-400 flex items-center justify-center shrink-0 shadow-md">
+                <Bell className="w-6 h-6 animate-bounce" />
+              </div>
+              <div>
+                <div className="flex items-center justify-center md:justify-start gap-2">
+                  <h3 className="font-heading font-black text-base sm:text-lg text-slate-950 leading-tight">
+                    Avisos de Treinos &amp; Convocatórias no Telemóvel
+                  </h3>
+                  <span className="hidden sm:inline-block text-[10px] font-black uppercase px-2 py-0.5 rounded-full bg-slate-950 text-amber-300">
+                    Oficial PWA
+                  </span>
+                </div>
+                <p className="text-xs sm:text-sm text-slate-900 font-medium leading-relaxed mt-0.5">
+                  Recebe alertas instantâneos de alterações de pavilhões, horários de jogos dos JIF e avisos urgentes.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3 w-full sm:w-auto shrink-0 justify-center">
+              <button
+                data-push-toggle
+                type="button"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-slate-950 hover:bg-slate-900 active:bg-black text-white font-heading font-black text-xs uppercase tracking-wider shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 cursor-pointer border border-slate-800"
+              >
+                <Bell className="w-4 h-4 text-amber-400 shrink-0" />
+                <span className="push-btn-text">Ativar Avisos no Telemóvel</span>
+              </button>
             </div>
           </div>
         </div>

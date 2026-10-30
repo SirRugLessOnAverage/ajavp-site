@@ -22,6 +22,7 @@ import {
   ExternalLink,
   IdCard,
   Smartphone,
+  Bell,
 } from "lucide-react";
 
 export function Header() {
@@ -367,6 +368,17 @@ export function Header() {
               </span>
             </button>
 
+            {/* Web Push Notifications Trigger */}
+            <button
+              data-push-toggle
+              type="button"
+              className="p-2 rounded-xl border border-amber-300/60 dark:border-amber-500/30 bg-amber-50/50 dark:bg-amber-500/10 hover:bg-amber-100 dark:hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 transition-colors cursor-pointer flex items-center justify-center shrink-0"
+              title="Ativar Avisos e Convocatórias no Telemóvel"
+              aria-label="Ativar Notificações da AJAVP"
+            >
+              <Bell className="w-4 h-4 shrink-0" />
+            </button>
+
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
@@ -419,6 +431,17 @@ export function Header() {
               className="p-2 rounded-lg border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition-colors cursor-pointer"
             >
               <span className="text-base" aria-hidden="true">♿</span>
+            </button>
+
+            {/* Notificações no Mobile Top */}
+            <button
+              data-push-toggle
+              type="button"
+              aria-label="Ativar Notificações da AJAVP"
+              title="Ativar Avisos no Telemóvel"
+              className="p-2 rounded-lg border border-amber-300/60 dark:border-amber-500/30 bg-amber-50/50 dark:bg-amber-500/10 hover:bg-amber-100 dark:hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 transition-colors cursor-pointer"
+            >
+              <Bell className="w-5 h-5 shrink-0" />
             </button>
 
             <button
@@ -581,8 +604,24 @@ export function Header() {
                 <ChevronRight className="w-4 h-4 text-slate-400" />
               </Link>
 
-              {/* Botão de Instalação PWA no Mobile */}
-              <div className="pt-2.5 mt-1 border-t border-slate-200/80 dark:border-white/10">
+              {/* Botões PWA & Notificações Push no Mobile */}
+              <div className="pt-2.5 mt-1 border-t border-slate-200/80 dark:border-white/10 space-y-2">
+                <button
+                  data-push-toggle
+                  type="button"
+                  className="w-full flex items-center justify-between py-2.5 px-3 rounded-xl bg-amber-500 hover:bg-amber-400 active:bg-amber-600 text-slate-950 font-bold text-xs shadow-md transition-all cursor-pointer"
+                >
+                  <span className="flex items-center gap-2.5">
+                    <span className="flex items-center justify-center w-7 h-7 rounded-lg bg-slate-950/15 text-slate-950">
+                      <Bell className="w-4 h-4 shrink-0" />
+                    </span>
+                    <span className="push-btn-text">Ativar Avisos no Telemóvel</span>
+                  </span>
+                  <span className="push-btn-badge text-[10px] px-2 py-0.5 rounded-md bg-slate-950 text-amber-300 font-black uppercase tracking-wider">
+                    Alertas
+                  </span>
+                </button>
+
                 <button
                   id="pwaInstallDrawerBtn"
                   data-pwa-install
