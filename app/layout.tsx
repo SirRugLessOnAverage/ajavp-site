@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppWidget } from "@/components/layout/WhatsAppWidget";
 import { A11yScript } from "@/components/layout/A11yScript";
+import { PwaManager } from "@/components/layout/PwaManager";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -86,6 +87,8 @@ export default function RootLayout({
         {/* Folha de Estilos de Acessibilidade & Usabilidade (WCAG 2.1 AA) */}
         <link rel="stylesheet" href="/assets/css/a11y.css" />
         <script src="/assets/js/a11y.js" defer></script>
+        {/* Motor PWA & Service Worker */}
+        <script src="/assets/js/pwa.js" defer></script>
 
         {/* Anti-FOUC script for instant theme rendering */}
         <script
@@ -118,6 +121,7 @@ export default function RootLayout({
         <Footer />
         <WhatsAppWidget />
         <A11yScript />
+        <PwaManager />
       </body>
     </html>
   );

@@ -34,8 +34,22 @@
     {
       "name": "JIF 2026/27",
       "short_name": "JIF",
-      "description": "Resultados, Calendário e Classificações",
+      "description": "Resultados, Calendário e Pavilhões",
       "url": "/jif",
+      "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Futsal Semanal",
+      "short_name": "Futsal",
+      "description": "Hub de Jogos, Marcadores e Escalões",
+      "url": "/jif/futsal",
+      "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Classificação Virtual",
+      "short_name": "Classificação",
+      "description": "Tabela concelhia das 19 freguesias",
+      "url": "/jif/classificacao",
       "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }]
     },
     {
@@ -43,20 +57,6 @@
       "short_name": "Modalidades",
       "description": "Horários e modalidades ativas da AJAVP",
       "url": "/modalidades",
-      "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }]
-    },
-    {
-      "name": "A Associação",
-      "short_name": "Associação",
-      "description": "Órgãos sociais, eleições e instalações",
-      "url": "/associacao",
-      "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }]
-    },
-    {
-      "name": "Contactos & Inscrições",
-      "short_name": "Contactos",
-      "description": "Secretaria e inscrições online",
-      "url": "/contactos",
       "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }]
     }
   ]

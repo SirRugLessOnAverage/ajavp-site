@@ -21,6 +21,7 @@ import {
   Home,
   ExternalLink,
   IdCard,
+  Smartphone,
 } from "lucide-react";
 
 export function Header() {
@@ -579,6 +580,27 @@ export function Header() {
                 <span>Contactos</span>
                 <ChevronRight className="w-4 h-4 text-slate-400" />
               </Link>
+
+              {/* Botão de Instalação PWA no Mobile */}
+              <div className="pt-2.5 mt-1 border-t border-slate-200/80 dark:border-white/10">
+                <button
+                  id="pwaInstallDrawerBtn"
+                  data-pwa-install
+                  type="button"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="w-full flex items-center justify-between py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-800 dark:text-slate-100 font-bold text-xs transition-colors cursor-pointer"
+                >
+                  <span className="flex items-center gap-2.5">
+                    <span className="flex items-center justify-center w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-600 dark:text-emerald-400">
+                      <Smartphone className="w-4 h-4" />
+                    </span>
+                    <span>Instalar Aplicação AJAVP</span>
+                  </span>
+                  <span className="text-[10px] px-2 py-0.5 rounded-md bg-emerald-500 text-white font-bold uppercase tracking-wider">
+                    App
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         )}

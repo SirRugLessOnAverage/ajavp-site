@@ -1,40 +1,36 @@
 // AJAVP - Service Worker (PWA)
 // Versão do Cache
-const CACHE_NAME = 'ajavp-pwa-v26';
+const CACHE_NAME = 'ajavp-pwa-v27';
 
-// Recursos essenciais para pré-cache (App Shell)
+// Recursos essenciais para pré-cache (App Shell - Next.js App Router)
 const PRECACHE_ASSETS = [
   '/',
   '/favicon.ico',
-  '/index.html',
-  '/jif.html',
-  '/jif-classificacao.html',
-  '/associacao.html',
-  '/clube.html',
-  '/modalidades.html',
-  '/multimedia.html',
-  '/contactos.html',
-  '/acessibilidade.html',
-  '/patrocinadores.html',
-  '/assets/css/theme.css',
-  '/assets/css/a11y.css',
-  '/assets/js/a11y.js',
+  '/jif',
+  '/jif/futsal',
+  '/jif/classificacao',
+  '/modalidades',
+  '/associacao',
+  '/patrocinadores',
+  '/multimedia',
+  '/contactos',
+  '/acessibilidade',
   '/manifest.webmanifest',
   '/manifest.json',
-  '/assets/js/jif-gps.js',
+  '/assets/css/a11y.css',
+  '/assets/js/a11y.js',
+  '/assets/js/pwa.js',
   '/assets/images/logo.png',
   '/assets/images/logo.webp',
   '/assets/images/logo_white.png',
   '/assets/images/logo_white.webp',
-  '/assets/images/patrocinadores/alma_barbearia.webp',
-  '/assets/images/patrocinadores/carlos_mota_seguros.webp',
-  '/assets/images/patrocinadores/salimpa_white.webp',
-  '/assets/images/patrocinadores/salimpa.webp',
-  '/assets/images/patrocinadores/seabra_vieira.webp',
-  '/assets/images/patrocinadores/esplendido_destemido.webp',
-  '/assets/images/patrocinadores/brasao_junta_vilar_pinheiro.webp',
-  '/assets/images/patrocinadores/equipa_sub9_sub11_hero.webp',
-  '/assets/images/patrocinadores/equipa_sub9_sub11_oficial.webp',
+  '/assets/images/hero-amalgama.webp',
+  '/assets/images/jif/hero-portal-jif.webp',
+  '/assets/images/jif/hero-classificacao-jif.webp',
+  '/assets/images/jif/jif-atletas-medalhas.webp',
+  '/assets/images/jif/jif-fairplay-equipa.webp',
+  '/assets/images/jif/jif-medalha-individual.webp',
+  '/assets/images/futsal/hero-futsal-ajavp.webp',
   '/assets/icons/icon-192.png',
   '/assets/icons/icon-512.png',
   '/assets/icons/apple-touch-icon.png',
@@ -177,18 +173,15 @@ self.addEventListener('notificationclick', (event) => {
 
   event.waitUntil(
     clients.matchAll({ type: 'window', includeUncontrolled: true }).then((windowClients) => {
-      // Se já houver um separador aberto no site, focar nele e navegar
       for (const client of windowClients) {
         if ('focus' in client) {
           client.navigate(targetUrl);
           return client.focus();
         }
       }
-      // Caso contrário, abrir nova janela
       if (clients.openWindow) {
         return clients.openWindow(targetUrl);
       }
     })
   );
 });
-

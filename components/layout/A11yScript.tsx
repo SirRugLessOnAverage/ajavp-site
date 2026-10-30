@@ -19,3 +19,4 @@ export function A11yScript() {
 
   return null;
 }
+
