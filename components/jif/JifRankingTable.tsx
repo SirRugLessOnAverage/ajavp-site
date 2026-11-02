@@ -10,15 +10,24 @@ interface JifRankingTableProps {
 
 export default function JifRankingTable({ rankings = JIF_CLASSIFICACAO }: JifRankingTableProps) {
   const [viewMode, setViewMode] = useState<'total' | 'breakdown' | 'medals'>('total');
+  const [modalidadeFiltro, setModalidadeFiltro] = useState<'atletismo' | 'futebol' | 'futsal'>('futsal');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   let items = [...rankings];
 
   // Sorting
-  if (viewMode === 'total' || viewMode === 'breakdown') {
+  if (viewMode === 'total') {
     items.sort((a, b) => b.pontos - a.pontos);
   } else if (viewMode === 'medals') {
     items.sort((a, b) => b.gold - a.gold || b.silver - a.silver || b.bronze - a.bronze || b.pontos - a.pontos);
+  } else if (viewMode === 'breakdown') {
+    if (modalidadeFiltro === 'atletismo') {
+      items.sort((a, b) => b.cmPts - a.cmPts);
+    } else if (modalidadeFiltro === 'futebol') {
+      items.sort((a, b) => b.fbPts - a.fbPts);
+    } else if (modalidadeFiltro === 'futsal') {
+      items.sort((a, b) => b.fsPts - a.fsPts);
+    }
   }
 
   // Filter by search
@@ -86,6 +95,57 @@ export default function JifRankingTable({ rankings = JIF_CLASSIFICACAO }: JifRan
         </div>
       </div>
 
+      {/* Sub-toolbar Contextual quando em Modo 'Por Modalidade' */}
+      {viewMode === 'breakdown' && (
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/40 dark:to-indigo-950/40 p-4 rounded-2xl border border-blue-200 dark:border-blue-800/60 shadow-xs">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-xs font-bold text-blue-950 dark:text-blue-200 flex items-center gap-1.5 mr-1">
+              <Layers className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+              <span>Ordenar por Prova:</span>
+            </span>
+            <button
+              type="button"
+              onClick={() => setModalidadeFiltro('atletismo')}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                modalidadeFiltro === 'atletismo'
+                  ? 'bg-blue-600 text-white shadow-xs scale-105'
+                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-blue-100 dark:hover:bg-slate-700'
+              }`}
+            >
+              <span>🏃 Atletismo (Corta-Mato)</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setModalidadeFiltro('futebol')}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                modalidadeFiltro === 'futebol'
+                  ? 'bg-blue-600 text-white shadow-xs scale-105'
+                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-blue-100 dark:hover:bg-slate-700'
+              }`}
+            >
+              <span>⚽ Futebol</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setModalidadeFiltro('futsal')}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                modalidadeFiltro === 'futsal'
+                  ? 'bg-blue-600 text-white shadow-xs scale-105'
+                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-blue-100 dark:hover:bg-slate-700'
+              }`}
+            >
+              <span>🥅 Futsal (Jornada 3)</span>
+            </button>
+          </div>
+
+          <div className="text-[11px] font-bold text-blue-800 dark:text-blue-300 bg-white/70 dark:bg-slate-900/60 px-3 py-1.5 rounded-xl border border-blue-200/60 dark:border-blue-800/40">
+            {modalidadeFiltro === 'atletismo' && '🥇 Vilar do Pinheiro em 1º Lugar (57 pts • Campeã Concelhia)'}
+            {modalidadeFiltro === 'futebol' && '🥇 Bagunte em 1º Lugar (48 pts • Campeã Torneio Futebol)'}
+            {modalidadeFiltro === 'futsal' && '🥇 Bagunte em 1º Lugar (80 pts) • Vilar do Pinheiro em 5º (60 pts)'}
+          </div>
+        </div>
+      )}
+
       {/* Responsive Table */}
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-white/10 shadow-xs overflow-hidden">
         <div className="overflow-x-auto">
@@ -99,15 +159,39 @@ export default function JifRankingTable({ rankings = JIF_CLASSIFICACAO }: JifRan
                 <th className="py-3 px-4 min-w-[170px] sticky left-0 z-20 bg-brand-navy shadow-xs">
                   Freguesia / Associação
                 </th>
-                <th className="py-3 px-3 text-center min-w-[110px]">
+                <th
+                  onClick={() => { setViewMode('breakdown'); setModalidadeFiltro('atletismo'); }}
+                  className={`py-3 px-3 text-center min-w-[110px] cursor-pointer transition-colors ${
+                    viewMode === 'breakdown' && modalidadeFiltro === 'atletismo'
+                      ? 'bg-blue-800 text-amber-300 ring-2 ring-amber-400 font-black'
+                      : 'hover:bg-brand-navy/80'
+                  }`}
+                  title="Clique para ordenar por Atletismo"
+                >
                   <span>🏃 Atletismo</span>
                   <span className="block text-[9px] font-normal text-slate-300">1º = 57 pts</span>
                 </th>
-                <th className="py-3 px-3 text-center min-w-[110px]">
+                <th
+                  onClick={() => { setViewMode('breakdown'); setModalidadeFiltro('futebol'); }}
+                  className={`py-3 px-3 text-center min-w-[110px] cursor-pointer transition-colors ${
+                    viewMode === 'breakdown' && modalidadeFiltro === 'futebol'
+                      ? 'bg-blue-800 text-amber-300 ring-2 ring-amber-400 font-black'
+                      : 'hover:bg-brand-navy/80'
+                  }`}
+                  title="Clique para ordenar por Futebol"
+                >
                   <span>⚽ Futebol</span>
                   <span className="block text-[9px] font-normal text-slate-300">1º = 48 pts</span>
                 </th>
-                <th className="py-3 px-3 text-center min-w-[110px]">
+                <th
+                  onClick={() => { setViewMode('breakdown'); setModalidadeFiltro('futsal'); }}
+                  className={`py-3 px-3 text-center min-w-[110px] cursor-pointer transition-colors ${
+                    viewMode === 'breakdown' && modalidadeFiltro === 'futsal'
+                      ? 'bg-blue-800 text-amber-300 ring-2 ring-amber-400 font-black'
+                      : 'hover:bg-brand-navy/80'
+                  }`}
+                  title="Clique para ordenar por Futsal"
+                >
                   <span>🥅 Futsal</span>
                   <span className="block text-[9px] font-normal text-slate-300">1º = 80 pts</span>
                 </th>
@@ -214,7 +298,11 @@ export default function JifRankingTable({ rankings = JIF_CLASSIFICACAO }: JifRan
                     </td>
 
                     {/* Atletismo */}
-                    <td className="py-3 px-3 text-center align-middle">
+                    <td className={`py-3 px-3 text-center align-middle transition-colors ${
+                      viewMode === 'breakdown' && modalidadeFiltro === 'atletismo'
+                        ? 'bg-blue-500/10 font-bold'
+                        : ''
+                    }`}>
                       <span
                         className={`text-xs font-bold ${
                           item.cmRank === 1 ? 'text-amber-600 dark:text-amber-400 font-black' : 'text-slate-800 dark:text-slate-200'
@@ -226,7 +314,11 @@ export default function JifRankingTable({ rankings = JIF_CLASSIFICACAO }: JifRan
                     </td>
 
                     {/* Futebol */}
-                    <td className="py-3 px-3 text-center align-middle">
+                    <td className={`py-3 px-3 text-center align-middle transition-colors ${
+                      viewMode === 'breakdown' && modalidadeFiltro === 'futebol'
+                        ? 'bg-blue-500/10 font-bold'
+                        : ''
+                    }`}>
                       {item.fbNp ? (
                         <div>
                           <span className="text-xs font-bold text-rose-600 dark:text-rose-400">N/P</span>
@@ -247,7 +339,11 @@ export default function JifRankingTable({ rankings = JIF_CLASSIFICACAO }: JifRan
                     </td>
 
                     {/* Futsal */}
-                    <td className="py-3 px-3 text-center align-middle">
+                    <td className={`py-3 px-3 text-center align-middle transition-colors ${
+                      viewMode === 'breakdown' && modalidadeFiltro === 'futsal'
+                        ? 'bg-blue-500/10 font-bold'
+                        : ''
+                    }`}>
                       {item.fsNp ? (
                         <div>
                           <span className="text-xs font-bold text-rose-600 dark:text-rose-400">N/P</span>
