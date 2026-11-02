@@ -57,7 +57,7 @@ export const JIF_MASTER_EVENTS: JifEvent[] = [
     day: '31',
     month: 'OUT',
     sport: 'futsal',
-    title: 'Futsal • 3ª Jornada • AJAVP em Canidelo (Sub-13 às 8h45, Sub-9 às 9h45, Sub-11 às 10h45)',
+    title: 'Futsal • 3ª Jornada • Vitórias Sub-9 (5-1 Canidelo) e Sub-11 (1-7 Junqueira)',
     location: 'Pavilhão Desportivo de Canidelo',
     time: '08h45 às 11h45'
   },
@@ -69,7 +69,7 @@ export const JIF_MASTER_EVENTS: JifEvent[] = [
     sport: 'tenis-mesa',
     title: 'Ténis de Mesa • 1º Encontro Concelhio Oficial',
     location: 'Casa da Juventude de Guilhabreu',
-    time: 'Manhã 9h30-12h30 | Tarde 14h30-17h30'
+    time: 'Manhã 09h30 (Sub-11, 13 masc, Sub-15 fem) | Tarde 14h30 (Sub-16 e Livre)'
   },
   {
     id: 7,
@@ -169,7 +169,7 @@ export const JIF_MASTER_EVENTS: JifEvent[] = [
     sport: 'tenis-mesa',
     title: 'Ténis de Mesa • 2º Encontro Concelhio Oficial',
     location: 'Casa da Juventude de Guilhabreu',
-    time: 'Manhã 9h30-12h30 | Tarde 14h30-17h30'
+    time: 'Manhã 09h30 (Sub-11, 13 masc, Sub-15 fem) | Tarde 14h30 (Sub-16 e Livre)'
   },
   {
     id: 17,
@@ -239,7 +239,7 @@ export const JIF_MASTER_EVENTS: JifEvent[] = [
     sport: 'tenis-mesa',
     title: 'Ténis de Mesa • 3º Encontro (Fecho do Troféu Concelhio)',
     location: 'Casa da Juventude de Guilhabreu',
-    time: 'Manhã 9h30-12h30 | Tarde 14h30-17h30'
+    time: 'Manhã 09h30 (Sub-11, 13 masc, Sub-15 fem) | Tarde 14h30 (Sub-16 e Livre)'
   },
   {
     id: 24,

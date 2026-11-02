@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { FUTSAL_DATA } from "@/data/jif/futsal";
+import { obterDadosFutsal } from "@/lib/jif/data-service";
 import { FutsalHero } from "@/components/jif/futsal/FutsalHero";
 import { FutsalPavilhoesTabs } from "@/components/jif/futsal/FutsalPavilhoesTabs";
 import { FutsalClassificacoes } from "@/components/jif/futsal/FutsalClassificacoes";
@@ -31,27 +31,29 @@ export const metadata: Metadata = {
   },
 };
 
-export default function JifFutsalPage() {
+export default async function JifFutsalPage() {
+  const futsalData = await obterDadosFutsal();
+
   return (
     <div className="bg-slate-50 dark:bg-slate-950 min-h-screen text-slate-800 dark:text-slate-100 transition-colors">
       {/* Hero Oficial com Breadcrumbs e KPIs */}
-      <FutsalHero destaqueSemana={FUTSAL_DATA.destaqueSemana} />
+      <FutsalHero destaqueSemana={futsalData.destaqueSemana} />
 
       {/* Corpo Principal com Abas Interativas */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-14">
         {/* Jogos e Resultados por Pavilhão */}
         <FutsalPavilhoesTabs
-          jornadas={FUTSAL_DATA.jornadas}
-          jornadaAtivaNumero={FUTSAL_DATA.jornadaAtiva}
+          jornadas={futsalData.jornadas}
+          jornadaAtivaNumero={futsalData.jornadaAtiva}
         />
 
         {/* Tabelas dos 5 Escalões */}
-        <FutsalClassificacoes classificacoes={FUTSAL_DATA.classificacoes} />
+        <FutsalClassificacoes classificacoes={futsalData.classificacoes} />
 
         {/* Quadro de Marcadores e Próxima Jornada */}
         <FutsalMarcadores
-          marcadores={FUTSAL_DATA.melhoresMarcadores}
-          proximaJornada={FUTSAL_DATA.proximaJornada}
+          marcadores={futsalData.melhoresMarcadores}
+          proximaJornada={futsalData.proximaJornada}
         />
       </main>
     </div>

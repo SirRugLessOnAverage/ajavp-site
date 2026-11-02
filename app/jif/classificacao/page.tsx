@@ -5,6 +5,7 @@ import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import JifPodioRanking from '@/components/jif/JifPodioRanking';
 import JifRankingTable from '@/components/jif/JifRankingTable';
 import { JIF_CLASSIFICACAO, JIF_PONTUACAO_RULES } from '@/data/jif/classificacao';
+import { obterDadosClassificacao } from '@/lib/jif/data-service';
 
 export const metadata: Metadata = {
   title: 'Classificação Virtual XL JIF 2026/2027 • Quadro Concelhio Não-Oficial | AJAVP',
@@ -32,7 +33,9 @@ export const metadata: Metadata = {
   }
 };
 
-export default function JifClassificacaoPage() {
+export default async function JifClassificacaoPage() {
+  const rankings = await obterDadosClassificacao();
+
   return (
     <div className="bg-slate-50 dark:bg-slate-950 min-h-screen text-slate-800 dark:text-slate-100">
       {/* Top Banner */}
@@ -200,7 +203,7 @@ export default function JifClassificacaoPage() {
         </div>
 
         {/* Podium Highlight */}
-        <JifPodioRanking rankings={JIF_CLASSIFICACAO} />
+        <JifPodioRanking rankings={rankings} />
 
         {/* Interactive Virtual Ranking Table */}
         <div className="space-y-4">
@@ -213,7 +216,7 @@ export default function JifClassificacaoPage() {
             </p>
           </div>
 
-          <JifRankingTable />
+          <JifRankingTable rankings={rankings} />
         </div>
 
         {/* Official Rules Breakdown */}

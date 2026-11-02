@@ -4,11 +4,15 @@ import { useState } from 'react';
 import { JifParishRanking, JIF_CLASSIFICACAO } from '@/data/jif/classificacao';
 import { Trophy, Layers, Medal, Search, AlertCircle, TrendingUp, Minus } from 'lucide-react';
 
-export default function JifRankingTable() {
+interface JifRankingTableProps {
+  rankings?: JifParishRanking[];
+}
+
+export default function JifRankingTable({ rankings = JIF_CLASSIFICACAO }: JifRankingTableProps) {
   const [viewMode, setViewMode] = useState<'total' | 'breakdown' | 'medals'>('total');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
-  let items = [...JIF_CLASSIFICACAO];
+  let items = [...rankings];
 
   // Sorting
   if (viewMode === 'total' || viewMode === 'breakdown') {

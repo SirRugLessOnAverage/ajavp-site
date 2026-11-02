@@ -29,6 +29,44 @@ export const JIF_VICTORY_SPOTLIGHT = {
 
 export const JIF_CIRCULARS: JifCircular[] = [
   {
+    id: 8,
+    numberFormatted: '08',
+    date: '2026-11-01',
+    formattedDate: '01 de Novembro de 2026',
+    badge: '3ª Jorn. Futsal & Ténis Mesa',
+    badgeColor: 'emerald',
+    title: 'Resultados da 3ª Jornada de Futsal, Liderança Sub-9, Goleada Sub-11 (1-7), Disciplina e Ténis de Mesa',
+    summaryQuote:
+      '"Foi disputada a 3ª Jornada de futsal... No próximo sábado será realizado na Casa da Juventude de Guilhabreu o 1º Encontro de Ténis de Mesa... Por comportamento incorreto (palavras dirigidas ao árbitro) - 15 dias de suspensão ao treinador Jerôme Almeida (Junqueira)."',
+    highlights: [
+      {
+        title: '3ª Jornada de Futsal (Resultados AJAVP)',
+        badge: 'Vitórias Sub-9 & Sub-11',
+        description:
+          'Sub-9: Vilar do Pinheiro 5 - 1 Canidelo (3 jogos, 3 vitórias, 35 golos marcados e liderança isolada com 9 pts). Sub-11: Junqueira 1 - 7 Vilar do Pinheiro (goleada fora e subida ao 2º lugar concelhio). Sub-13: Árvore 12 - 0 Vilar do Pinheiro.'
+      },
+      {
+        title: 'Marcadores: Domínio de Vilar do Pinheiro',
+        badge: 'Top Artilheiros ⚽',
+        description:
+          'Sub-9: Cid Ferreira isolado no topo com 12 golos (1º), seguido de Miguel Magalhães com 8 golos (2º) e Kevin Ferreira com 6 golos (7º). Sub-11: Lourenço Duarte com 9 golos (2º) e Leandro Costa com 5 golos (5º).'
+      },
+      {
+        title: 'Decisões Disciplinares & Regresso',
+        badge: 'Disciplina',
+        description:
+          'Suspensão de 15 dias (01 a 15 de novembro) ao treinador Jerôme Almeida (Junqueira, Sub-16) por palavras dirigidas ao árbitro e registo de danos na porta do balneário por atletas da Junqueira. O treinador Ricardo Leça (AJAVP) cumpriu o castigo em 01/Nov, regressando ao comando técnico.'
+      },
+      {
+        title: '1º Encontro de Ténis de Mesa & Calendário',
+        badge: '07 Nov',
+        description:
+          'Casa da Juventude de Guilhabreu a 07/Nov: 09h30 (Sub-11, 13 masc. e Sub-15 fem.) e 14h30 (Sub-16 e Livre). Reunião da ADCCVC a 09/Nov (21h30). 4ª Jornada de Futsal a 14/Nov nos Pavilhões de Mindelo, Canidelo, Fajozes e Modivas. Duatlo a 05/Dez.'
+      }
+    ]
+  },
+
+  {
     id: 7,
     numberFormatted: '07',
     date: '2026-10-27',
