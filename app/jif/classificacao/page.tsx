@@ -4,6 +4,7 @@ import { Award, Trophy, ChevronRight, Scale, AlertTriangle, ArrowLeft, Info, Hel
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import JifPodioRanking from '@/components/jif/JifPodioRanking';
 import JifRankingTable from '@/components/jif/JifRankingTable';
+import JifEvolucaoKpiChart from '@/components/jif/JifEvolucaoKpiChart';
 import { JIF_CLASSIFICACAO, JIF_PONTUACAO_RULES } from '@/data/jif/classificacao';
 import { obterDadosClassificacao } from '@/lib/jif/data-service';
 
@@ -204,6 +205,9 @@ export default async function JifClassificacaoPage() {
 
         {/* Podium Highlight */}
         <JifPodioRanking rankings={rankings} />
+
+        {/* Dynamic Trajectory & Evolution KPIs Chart */}
+        <JifEvolucaoKpiChart rankings={rankings} />
 
         {/* Interactive Virtual Ranking Table */}
         <div className="space-y-4">

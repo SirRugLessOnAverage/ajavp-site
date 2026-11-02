@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { JifParishRanking, JIF_CLASSIFICACAO } from '@/data/jif/classificacao';
-import { Trophy, Layers, Medal, Search, AlertCircle, TrendingUp, Minus } from 'lucide-react';
+import { Trophy, Layers, Medal, Search, AlertCircle, TrendingUp, TrendingDown, Minus } from 'lucide-react';
 
 interface JifRankingTableProps {
   rankings?: JifParishRanking[];
@@ -92,7 +92,10 @@ export default function JifRankingTable({ rankings = JIF_CLASSIFICACAO }: JifRan
           <table className="w-full text-xs text-left border-collapse min-w-[650px] md:min-w-full">
             <thead>
               <tr className="bg-brand-navy text-white uppercase text-[10px] tracking-wider font-heading font-black">
-                <th className="py-3 px-3 text-center w-12">Pos.</th>
+                <th className="py-3 px-2 text-center w-12">Pos.</th>
+                <th className="py-3 px-2 text-center w-14" title="Variação de classificação vs Etapa Anterior (Pós-Futebol)">
+                  Tend.
+                </th>
                 <th className="py-3 px-4 min-w-[170px] sticky left-0 z-20 bg-brand-navy shadow-xs">
                   Freguesia / Associação
                 </th>
@@ -155,6 +158,35 @@ export default function JifRankingTable({ rankings = JIF_CLASSIFICACAO }: JifRan
                       {pos > 3 && (
                         <span className="inline-flex items-center justify-center w-6 h-6 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-400 font-bold text-xs">
                           {pos}º
+                        </span>
+                      )}
+                    </td>
+
+                    {/* Trend Delta Badge */}
+                    <td className="py-3 px-2 text-center align-middle">
+                      {item.delta > 0 ? (
+                        <span
+                          className="inline-flex items-center justify-center gap-0.5 px-1.5 py-0.5 rounded-md bg-emerald-100 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-400 font-black text-[10px]"
+                          title={`Subiu ${item.delta} posições vs etapa anterior`}
+                        >
+                          <TrendingUp className="w-3 h-3" />
+                          <span>+{item.delta}</span>
+                        </span>
+                      ) : item.delta < 0 ? (
+                        <span
+                          className="inline-flex items-center justify-center gap-0.5 px-1.5 py-0.5 rounded-md bg-amber-100 dark:bg-amber-950/70 text-amber-700 dark:text-amber-400 font-black text-[10px]"
+                          title={`Desceu ${Math.abs(item.delta)} posições vs etapa anterior`}
+                        >
+                          <TrendingDown className="w-3 h-3" />
+                          <span>{item.delta}</span>
+                        </span>
+                      ) : (
+                        <span
+                          className="inline-flex items-center justify-center gap-0.5 px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-white/10 text-slate-500 dark:text-slate-400 font-bold text-[10px]"
+                          title="Manteve a posição"
+                        >
+                          <Minus className="w-3 h-3" />
+                          <span>=</span>
                         </span>
                       )}
                     </td>
