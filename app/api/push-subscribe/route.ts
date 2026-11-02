@@ -8,26 +8,98 @@ const SUPABASE_URL =
 const SUPABASE_ANON_KEY =
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
   process.env.SUPABASE_ANON_KEY ||
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im11ZGduYWFqdG9seXRnZ2tzdnZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIwNjAxODcsImV4cCI6MjEwNzYzNjE4N30.lL5jb84u0PUWH4BjQWdZ4uZLpGKybUuhGISGB9tvdIQ';
+  '';
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'POST, DELETE, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type',
-};
+function getCorsHeaders(req: Request) {
+  const origin = req.headers.get('origin') || '';
+  const allowedOrigins = [
+    'https://ajavp.vercel.app',
+    'https://ajavp-site.vercel.app',
+    'https://ajavp-gestao.vercel.app',
+    'https://ajavp.pt',
+    'https://www.ajavp.pt',
+  ];
 
-export async function OPTIONS() {
-  return new NextResponse(null, { status: 200, headers: corsHeaders });
+  const isLocalhost =
+    origin.startsWith('http://localhost:') ||
+    origin.startsWith('http://127.0.0.1:');
+
+  const allowOrigin =
+    allowedOrigins.includes(origin) || isLocalhost
+      ? origin
+      : allowedOrigins[0];
+
+  return {
+    'Access-Control-Allow-Origin': allowOrigin,
+    'Access-Control-Allow-Methods': 'POST, DELETE, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  };
+}
+
+/**
+ * Validação rigorosa do host do gateway de Push
+ * Impede poluição da base de dados com URLs forjados ou SSRF
+ */
+function isPushEndpointValido(endpointStr: string): boolean {
+  try {
+    const url = new URL(endpointStr);
+    if (url.protocol !== 'https:') return false;
+
+    const hostname = url.hostname.toLowerCase();
+    const hostsAutorizados = [
+      'fcm.googleapis.com',
+      'android.googleapis.com',
+      'updates.push.services.mozilla.com',
+    ];
+
+    if (hostsAutorizados.includes(hostname)) return true;
+    if (hostname.endsWith('.push.apple.com')) return true;
+    if (hostname.endsWith('.notify.windows.com')) return true;
+    if (hostname.endsWith('.push.services.mozilla.com')) return true;
+
+    return false;
+  } catch {
+    return false;
+  }
+}
+
+export async function OPTIONS(req: Request) {
+  return new NextResponse(null, { status: 200, headers: getCorsHeaders(req) });
 }
 
 export async function POST(req: Request) {
+  const corsHeaders = getCorsHeaders(req);
   try {
+    if (!SUPABASE_ANON_KEY) {
+      console.error('NEXT_PUBLIC_SUPABASE_ANON_KEY não configurada no servidor.');
+      return NextResponse.json(
+        { error: 'Configuração de servidor incompleta.' },
+        { status: 500, headers: corsHeaders }
+      );
+    }
+
     const body = await req.json().catch(() => null);
     const { endpoint, keys, userAgent } = body || {};
 
-    if (!endpoint || !keys?.p256dh || !keys?.auth) {
+    if (!endpoint || typeof endpoint !== 'string' || !isPushEndpointValido(endpoint)) {
       return NextResponse.json(
-        { error: 'Dados de subscrição inválidos.' },
+        { error: 'Endpoint de notificação push inválido ou não suportado.' },
+        { status: 400, headers: corsHeaders }
+      );
+    }
+
+    if (
+      !keys?.p256dh ||
+      typeof keys.p256dh !== 'string' ||
+      keys.p256dh.length < 20 ||
+      keys.p256dh.length > 250 ||
+      !keys?.auth ||
+      typeof keys.auth !== 'string' ||
+      keys.auth.length < 10 ||
+      keys.auth.length > 120
+    ) {
+      return NextResponse.json(
+        { error: 'Chaves criptográficas de subscrição inválidas.' },
         { status: 400, headers: corsHeaders }
       );
     }
@@ -40,10 +112,10 @@ export async function POST(req: Request) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        p_endpoint: endpoint,
-        p_p256dh: keys.p256dh,
-        p_auth: keys.auth,
-        p_user_agent: (userAgent || '').slice(0, 300),
+        p_endpoint: endpoint.trim(),
+        p_p256dh: keys.p256dh.trim(),
+        p_auth: keys.auth.trim(),
+        p_user_agent: typeof userAgent === 'string' ? userAgent.slice(0, 300) : '',
       }),
     });
 
@@ -70,13 +142,21 @@ export async function POST(req: Request) {
 }
 
 export async function DELETE(req: Request) {
+  const corsHeaders = getCorsHeaders(req);
   try {
+    if (!SUPABASE_ANON_KEY) {
+      return NextResponse.json(
+        { error: 'Configuração de servidor incompleta.' },
+        { status: 500, headers: corsHeaders }
+      );
+    }
+
     const body = await req.json().catch(() => null);
     const { endpoint } = body || {};
 
-    if (!endpoint) {
+    if (!endpoint || typeof endpoint !== 'string' || !isPushEndpointValido(endpoint)) {
       return NextResponse.json(
-        { error: 'Endpoint obrigatório para cancelamento.' },
+        { error: 'Endpoint de cancelamento inválido ou não suportado.' },
         { status: 400, headers: corsHeaders }
       );
     }
@@ -88,7 +168,7 @@ export async function DELETE(req: Request) {
         Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ p_endpoint: endpoint }),
+      body: JSON.stringify({ p_endpoint: endpoint.trim() }),
     });
 
     if (!rpcRes.ok) {
@@ -108,4 +188,3 @@ export async function DELETE(req: Request) {
     );
   }
 }
-
