@@ -283,7 +283,7 @@ export function Footer() {
             </a>
             <span className="text-slate-600">&bull;</span>
             <Link
-              href="/admin-alertas"
+              href="https://ajavp-gestao.vercel.app/direcao"
               className="text-amber-300 hover:text-amber-200 underline font-semibold transition-colors"
             >
               Área da Direção

@@ -67,11 +67,11 @@ const nextConfig: NextConfig = {
         destination: "/associacao",
         permanent: true,
       },
-    ];
-  },
-  async rewrites() {
-    return [
-      { source: "/admin-alertas", destination: "/admin-alertas.html" },
+      {
+        source: "/admin-alertas",
+        destination: "https://ajavp-gestao.vercel.app/direcao/alertas",
+        permanent: false,
+      },
     ];
   },
   async headers() {
