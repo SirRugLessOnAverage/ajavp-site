@@ -206,9 +206,9 @@ export default function PrivacidadePage() {
                 <MapPin className="w-4 h-4" />
               </span>
               <div>
-                <span className="text-slate-400 block text-xs">Sede Associativa:</span>
+                <span className="text-slate-400 block text-xs">Sede:</span>
                 <span className="font-medium text-slate-200">
-                  Rua da Igreja, Vilar do Pinheiro, Vila do Conde
+                  Rua 103, nº 43, Urbanização de Real, 4485-823
                 </span>
               </div>
             </div>
