@@ -196,8 +196,8 @@ export default function PrivacidadePage() {
               </span>
               <div>
                 <span className="text-slate-400 block text-xs">Email Oficial:</span>
-                <a href="mailto:gerapajavp@gmail.com" className="font-bold text-white hover:text-emerald-400 transition-colors">
-                  gerapajavp@gmail.com
+                <a href="mailto:geralajavp@gmail.com" className="font-bold text-white hover:text-emerald-400 transition-colors">
+                  geralajavp@gmail.com
                 </a>
               </div>
             </div>
