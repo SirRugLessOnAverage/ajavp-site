@@ -7,6 +7,16 @@
 (function (window) {
   'use strict';
 
+  function escapeHtml(value) {
+    const normalized = String(value ?? '');
+    return normalized
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
   const SUPABASE_CONFIG = {
     url: 'https://mudgnaajtolytggksvvq.supabase.co',
     anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im11ZGduYWFqdG9seXRnZ2tzdnZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIwNjAxODcsImV4cCI6MjEwNzYzNjE4N30.lL5jb84u0PUWH4BjQWdZ4uZLpGKybUuhGISGB9tvdIQ'
@@ -81,6 +91,8 @@
       const dataFormatada = n.publicado_em 
         ? new Date(n.publicado_em).toLocaleDateString('pt-PT', { day: '2-digit', month: 'short' })
         : 'Recente';
+      const titulo = escapeHtml(n.titulo || 'Comunicado Oficial');
+      const resumo = escapeHtml(n.resumo || '');
 
       newsContainer.innerHTML = `
         <div class="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-emerald-900 via-slate-900 to-teal-950 text-white border border-emerald-500/30 shadow-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
@@ -94,10 +106,10 @@
                 <span class="text-[11px] text-emerald-300 font-semibold">${dataFormatada}</span>
               </div>
               <h4 class="font-heading font-black text-sm sm:text-base text-white">
-                ${n.titulo}
+                ${titulo}
               </h4>
               <p class="text-xs text-slate-300 line-clamp-2 max-w-3xl">
-                ${n.resumo || ''}
+                ${resumo}
               </p>
             </div>
           </div>
