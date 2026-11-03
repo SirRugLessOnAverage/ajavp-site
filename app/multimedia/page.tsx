@@ -113,7 +113,7 @@ export default function MultimediaPage() {
                 📱 Seguir @ajavp.javip no Instagram ↗
               </a>
               <a
-                href="https://www.facebook.com/AJAVP.JAVIP"
+                href="https://www.facebook.com/ajavp.oficial"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="motion-press inline-flex items-center gap-2 px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider shadow-lg transition-colors"

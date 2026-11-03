@@ -4,11 +4,11 @@ const cspHeader = `
   default-src 'self';
   script-src 'self' 'unsafe-eval' 'unsafe-inline' https://challenges.cloudflare.com;
   style-src 'self' 'unsafe-inline';
-  img-src 'self' data: blob: https://mudgnaajtolytggksvvq.supabase.co https://*.supabase.co;
+  img-src 'self' data: blob: https://mudgnaajtolytggksvvq.supabase.co https://*.supabase.co https://i.ytimg.com https://*.youtube.com;
   font-src 'self' data:;
   connect-src 'self' https://mudgnaajtolytggksvvq.supabase.co wss://mudgnaajtolytggksvvq.supabase.co https://*.supabase.co;
   worker-src 'self' blob:;
-  frame-src 'self' https://challenges.cloudflare.com;
+  frame-src 'self' https://challenges.cloudflare.com https://www.youtube-nocookie.com https://www.youtube.com;
   frame-ancestors 'none';
   base-uri 'self';
   form-action 'self';
@@ -52,6 +52,10 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "mudgnaajtolytggksvvq.supabase.co",
+      },
+      {
+        protocol: "https",
+        hostname: "i.ytimg.com",
       },
     ],
   },
