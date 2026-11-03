@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { MediaGallery } from "@/components/multimedia/MediaGallery";
+import { InstagramFeed } from "@/components/multimedia/InstagramFeed";
 import { GALLERY_PHOTOS, VIDEOS_LIST } from "@/data/institucional";
+import instagramFeed from "@/data/instagram-media.json";
+import type { InstagramMediaFeed } from "@/lib/types/instagram";
 
 export const metadata: Metadata = {
   title: "Galeria & Multimédia • AJAVP — Vilar do Pinheiro",
@@ -11,6 +14,8 @@ export const metadata: Metadata = {
 };
 
 export default function MultimediaPage() {
+  const feed: InstagramMediaFeed = instagramFeed;
+
   return (
     <div className="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white transition-colors">
       <div>
@@ -90,6 +95,7 @@ export default function MultimediaPage() {
         {/* COMPONENTE INTERATIVO DE GALERIA E VÍDEOS */}
         <section className="py-16 lg:py-20 bg-white dark:bg-slate-900 transition-colors">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <InstagramFeed posts={feed.posts} updatedAt={feed.updated_at} />
             <MediaGallery photos={GALLERY_PHOTOS} videos={VIDEOS_LIST} />
           </div>
         </section>

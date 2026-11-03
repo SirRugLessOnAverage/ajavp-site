@@ -1,25 +1,26 @@
 #!/usr/bin/env python3
-"""
-AJAVP - Atualizador Automático do Feed e Estatísticas do Instagram
-Obtém métricas em tempo real de seguidores e publicações do perfil oficial @ajavp.javip
-e atualiza diretamente o index.html e data/instagram.json.
-"""
+"""Atualizador diário das métricas e publicações recentes da AJAVP no Instagram."""
 
 import sys
 import os
 import re
 import json
 import urllib.request
+import urllib.parse
 import datetime
 from pathlib import Path
 
 INSTAGRAM_USERNAME = "ajavp.javip"
 PROFILE_URL = f"https://www.instagram.com/{INSTAGRAM_USERNAME}/"
+GRAPH_API_VERSION = os.environ.get("INSTAGRAM_GRAPH_API_VERSION", "v23.0")
+MEDIA_FIELDS = "id,caption,media_type,media_url,permalink,timestamp"
+MAX_MEDIA_POSTS = 12
 
 # Root do projeto
 ROOT_DIR = Path(__file__).resolve().parent.parent
 INDEX_HTML = ROOT_DIR / "index.html"
 DATA_FILE = ROOT_DIR / "data" / "instagram.json"
+MEDIA_FILE = ROOT_DIR / "data" / "instagram-media.json"
 
 
 def fetch_instagram_meta():
@@ -86,6 +87,103 @@ def fetch_instagram_meta():
     }
 
 
+def parse_instagram_media(payload, limit=MAX_MEDIA_POSTS):
+    """Filtra imagens e carrosséis recentes com URLs HTTPS válidos."""
+    data = payload.get("data")
+    if not isinstance(data, list):
+        raise ValueError("A resposta da API do Instagram não contém uma lista de publicações.")
+
+    posts = []
+    for item in data:
+        if not isinstance(item, dict):
+            continue
+
+        media_type = item.get("media_type")
+        media_id = item.get("id")
+        media_url = item.get("media_url")
+        permalink = item.get("permalink")
+        timestamp = item.get("timestamp")
+        if not all(
+            isinstance(value, str) and value
+            for value in (media_id, media_url, permalink, timestamp)
+        ):
+            continue
+        media_host = urllib.parse.urlparse(media_url or "")
+        post_url = urllib.parse.urlparse(permalink or "")
+
+        if media_type not in ("IMAGE", "CAROUSEL_ALBUM"):
+            continue
+        if media_host.scheme != "https" or not media_host.hostname:
+            continue
+        if not (
+            media_host.hostname.endswith(".cdninstagram.com")
+            or media_host.hostname.endswith(".fbcdn.net")
+        ):
+            continue
+        if (
+            post_url.scheme != "https"
+            or post_url.hostname not in ("instagram.com", "www.instagram.com")
+            or not re.match(r"^/(p|reel|tv)/[A-Za-z0-9_-]+/?$", post_url.path)
+        ):
+            continue
+        posts.append(
+            {
+                "id": media_id,
+                "caption": str(item.get("caption", ""))[:2200],
+                "media_type": media_type,
+                "media_url": media_url,
+                "permalink": permalink,
+                "timestamp": timestamp,
+            }
+        )
+
+        if len(posts) >= limit:
+            break
+
+    return posts
+
+
+def fetch_instagram_media(user_id, access_token, api_version=GRAPH_API_VERSION):
+    """Obtém publicações recentes pela API oficial do Instagram Graph."""
+    if not re.fullmatch(r"\d+", user_id):
+        raise ValueError("INSTAGRAM_USER_ID deve conter apenas algarismos.")
+    if not re.fullmatch(r"v\d+\.\d+", api_version):
+        raise ValueError("INSTAGRAM_GRAPH_API_VERSION inválida.")
+
+    query = urllib.parse.urlencode({"fields": MEDIA_FIELDS, "limit": 50})
+    url = f"https://graph.facebook.com/{api_version}/{user_id}/media?{query}"
+    request = urllib.request.Request(
+        url,
+        headers={
+            "Authorization": f"Bearer {access_token}",
+            "Accept": "application/json",
+            "User-Agent": "AJAVP-Instagram-Gallery/1.0",
+        },
+    )
+
+    with urllib.request.urlopen(request, timeout=20) as response:
+        payload = json.loads(response.read().decode("utf-8"))
+
+    if not isinstance(payload, dict):
+        raise ValueError("A API do Instagram devolveu uma resposta inválida.")
+    if payload.get("error"):
+        error = payload["error"]
+        message = error.get("message", "erro desconhecido") if isinstance(error, dict) else "erro desconhecido"
+        raise RuntimeError(f"Falha na API do Instagram: {message}")
+
+    return parse_instagram_media(payload)
+
+
+def write_json_if_changed(path, data):
+    """Guarda JSON apenas quando o conteúdo foi alterado."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    serialized = json.dumps(data, ensure_ascii=False, indent=2) + "\n"
+    if path.exists() and path.read_text(encoding="utf-8") == serialized:
+        return False
+    path.write_text(serialized, encoding="utf-8")
+    return True
+
+
 def format_pt_number(val_str):
     """Formata strings numéricas para o padrão português com ponto de milhar se aplicável."""
     try:
@@ -97,9 +195,7 @@ def format_pt_number(val_str):
 
 def update_project(data):
     """Atualiza o ficheiro data/instagram.json e o ficheiro index.html."""
-    DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
-    with open(DATA_FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+    write_json_if_changed(DATA_FILE, data)
     print(f"-> Dados guardados em {DATA_FILE}")
 
     if not INDEX_HTML.exists():
@@ -150,14 +246,47 @@ def update_project(data):
 
 def main():
     print(f"A verificar Instagram @{INSTAGRAM_USERNAME}...")
+    access_token = os.environ.get("INSTAGRAM_ACCESS_TOKEN", "").strip()
+    user_id = os.environ.get("INSTAGRAM_USER_ID", "").strip()
+
     try:
-        data = fetch_instagram_meta()
-        print(f"Métricas obtidas: {data['posts']} publicações, {data['followers']} seguidores, {data['following']} a seguir.")
-        changed = update_project(data)
-        if changed:
-            print("Atualização concluída com sucesso!")
+        metrics = None
+        try:
+            metrics = fetch_instagram_meta()
+            print(
+                f"Métricas obtidas: {metrics['posts']} publicações, "
+                f"{metrics['followers']} seguidores, {metrics['following']} a seguir."
+            )
+        except Exception as error:
+            print(f"Aviso: não foi possível atualizar as métricas do perfil: {error}", file=sys.stderr)
+
+        if bool(access_token) != bool(user_id):
+            raise ValueError(
+                "Configure ambos os secrets INSTAGRAM_ACCESS_TOKEN e INSTAGRAM_USER_ID "
+                "para ativar a atualização do feed."
+            )
+
+        media_posts = None
+        if access_token and user_id:
+            media_posts = fetch_instagram_media(user_id, access_token)
+            print(f"Publicações de imagem obtidas pela API oficial: {len(media_posts)}.")
         else:
-            print("Sem alterações no HTML.")
+            print(
+                "Feed automático não configurado; mantêm-se os destaques da galeria. "
+                "Configure os secrets INSTAGRAM_ACCESS_TOKEN e INSTAGRAM_USER_ID."
+            )
+
+        if metrics:
+            update_project(metrics)
+
+        if media_posts is not None:
+            feed = {
+                "username": INSTAGRAM_USERNAME,
+                "updated_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                "posts": media_posts,
+            }
+            write_json_if_changed(MEDIA_FILE, feed)
+            print(f"-> Feed guardado em {MEDIA_FILE}")
     except Exception as e:
         print(f"Erro ao atualizar Instagram: {e}", file=sys.stderr)
         sys.exit(1)

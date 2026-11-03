@@ -1,10 +1,14 @@
-name: Atualizar Métricas do Instagram
+name: Atualizar Feed do Instagram
 
 on:
   schedule:
-    # Executa diariamente às 08:00 UTC (09:00 de Lisboa)
+    # Executa diariamente às 08:00 UTC; a hora local varia com o horário de verão.
     - cron: '0 8 * * *'
   workflow_dispatch: # Permite execução manual no GitHub
+
+concurrency:
+  group: update-instagram-main
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -15,13 +19,23 @@ jobs:
     steps:
       - name: Checkout do Repositório
         uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
+      - name: Testar validação do feed
+        run: |
+          python -m unittest discover -s scripts -p 'test_*.py' -v
+
       - name: Executar Script de Atualização
+        env:
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+          INSTAGRAM_GRAPH_API_VERSION: ${{ vars.INSTAGRAM_GRAPH_API_VERSION || 'v23.0' }}
         run: |
           python scripts/update_instagram.py
 
@@ -30,9 +44,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           if [ -n "$(git status --porcelain)" ]; then
-            git add index.html data/instagram.json
-            git commit -m "chore(instagram): atualizar métricas de seguidores e publicações [skip ci]"
-            git push
+            git add index.html data/instagram.json data/instagram-media.json
+            git commit -m "chore(instagram): atualizar feed e métricas [skip ci]"
+            git push origin HEAD:main
             echo "Alterações enviadas para o repositório com sucesso!"
           else
             echo "Nenhuma alteração detetada no perfil do Instagram."
