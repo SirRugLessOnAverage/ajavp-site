@@ -253,22 +253,6 @@ export const JIF_CLASSIFICACAO: JifParishRanking[] = [
     ]
   },
   {
-    name: "Vairão",
-    isAjavp: false,
-    cmRank: 14, cmPts: 18,
-    fbRank: 16, fbPts: 3,
-    fsRank: 16, fsPts: 5,
-    pontos: 26,
-    gold: 0, silver: 0, bronze: 0,
-    futsalDetail: "Sub-7 (17º) • Sub-9 (17º) • Sub-11 (15º) • Sub-13 (16º) • Sub-16 (13º)",
-    delta: 0,
-    history: [
-      { stageId: 'cm', stageLabel: 'Corta-Mato', stageShort: 'CM', stagePts: 18, cumulativePts: 18, rankAtStage: 14 },
-      { stageId: 'fb', stageLabel: 'Futebol', stageShort: 'FB', stagePts: 3, cumulativePts: 21, rankAtStage: 15 },
-      { stageId: 'fs', stageLabel: 'Futsal (J3)', stageShort: 'FS', stagePts: 5, cumulativePts: 26, rankAtStage: 15 }
-    ]
-  },
-  {
     name: "Aveleda",
     isAjavp: false,
     cmRank: 17, cmPts: 9,
@@ -277,11 +261,27 @@ export const JIF_CLASSIFICACAO: JifParishRanking[] = [
     pontos: 25,
     gold: 0, silver: 0, bronze: 0,
     futsalDetail: "Sub-7 (9º) • Sub-9 (17º) • Sub-11 (15º) • Sub-13 (16º) • Sub-16 (13º)",
-    delta: 0,
+    delta: 1,
     history: [
       { stageId: 'cm', stageLabel: 'Corta-Mato', stageShort: 'CM', stagePts: 9, cumulativePts: 9, rankAtStage: 17 },
-      { stageId: 'fb', stageLabel: 'Futebol', stageShort: 'FB', stagePts: 6, cumulativePts: 15, rankAtStage: 16 },
-      { stageId: 'fs', stageLabel: 'Futsal (J3)', stageShort: 'FS', stagePts: 10, cumulativePts: 25, rankAtStage: 16 }
+      { stageId: 'fb', stageLabel: 'Futebol', stageShort: 'FB', stagePts: 6, cumulativePts: 15, rankAtStage: 15 },
+      { stageId: 'fs', stageLabel: 'Futsal (J3)', stageShort: 'FS', stagePts: 10, cumulativePts: 25, rankAtStage: 15 }
+    ]
+  },
+  {
+    name: "Vairão",
+    isAjavp: false,
+    cmRank: 14, cmPts: 18,
+    fbRank: 0, fbPts: -15, fbNp: true,
+    fsRank: 0, fsPts: -25, fsNp: true,
+    pontos: -22,
+    gold: 0, silver: 0, bronze: 0,
+    futsalDetail: "Não participou (Penalização -25 pts)",
+    delta: -1,
+    history: [
+      { stageId: 'cm', stageLabel: 'Corta-Mato', stageShort: 'CM', stagePts: 18, cumulativePts: 18, rankAtStage: 14 },
+      { stageId: 'fb', stageLabel: 'Futebol', stageShort: 'FB', stagePts: -15, cumulativePts: 3, rankAtStage: 16 },
+      { stageId: 'fs', stageLabel: 'Futsal (J3)', stageShort: 'FS', stagePts: -25, cumulativePts: -22, rankAtStage: 16 }
     ]
   },
   {
