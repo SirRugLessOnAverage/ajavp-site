@@ -1,9 +1,8 @@
+import { timingSafeEqual } from 'node:crypto';
 import { NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
 
-const SECRET_TOKEN =
-  process.env.REVALIDATE_SECRET_TOKEN ||
-  'ajavp_jif_revalidate_secret_2026';
+const REVALIDATE_SECRET = process.env.REVALIDATE_SECRET_TOKEN?.trim();
 
 function getCorsHeaders(req: Request) {
   const origin = req.headers.get('origin') || '';
@@ -31,6 +30,28 @@ function getCorsHeaders(req: Request) {
   };
 }
 
+function getBearerToken(request: Request): string {
+  const authHeader = request.headers.get('authorization') || '';
+  return authHeader.toLowerCase().startsWith('bearer ')
+    ? authHeader.slice(7).trim()
+    : '';
+}
+
+function isValidRevalidationToken(candidate: string): boolean {
+  if (!REVALIDATE_SECRET || !candidate) return false;
+
+  const expected = Buffer.from(REVALIDATE_SECRET, 'utf8');
+  const actual = Buffer.from(candidate, 'utf8');
+
+  if (expected.length !== actual.length) return false;
+
+  try {
+    return timingSafeEqual(expected, actual);
+  } catch {
+    return false;
+  }
+}
+
 export async function OPTIONS(request: Request) {
   return new NextResponse(null, {
     status: 204,
@@ -42,17 +63,16 @@ export async function POST(request: Request) {
   const corsHeaders = getCorsHeaders(request);
 
   try {
-    const authHeader = request.headers.get('authorization') || '';
-    const token = authHeader.startsWith('Bearer ')
-      ? authHeader.slice(7).trim()
-      : '';
+    if (!REVALIDATE_SECRET) {
+      return NextResponse.json(
+        { error: 'Servidor de revalidação não configurado.' },
+        { status: 500, headers: corsHeaders }
+      );
+    }
 
-    const url = new URL(request.url);
-    const querySecret = url.searchParams.get('secret') || '';
+    const token = getBearerToken(request);
 
-    const tokenFornecido = token || querySecret;
-
-    if (!tokenFornecido || tokenFornecido !== SECRET_TOKEN) {
+    if (!isValidRevalidationToken(token)) {
       return NextResponse.json(
         { error: 'Não autorizado. Token de revalidação inválido ou ausente.' },
         { status: 401, headers: corsHeaders }
