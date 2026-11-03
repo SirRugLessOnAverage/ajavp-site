@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Medal, Calendar, MapPin, Users, Award, ChevronRight, UserPlus, Flame } from 'lucide-react';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import JifHubTabs from '@/components/jif/JifHubTabs';
+import { JifRegulamentoTenisMesa } from '@/components/jif/JifRegulamentoTenisMesa';
 
 export const metadata: Metadata = {
   title: 'Portal Oficial XL JIF 2026/2027 • AJAVP Vilar do Pinheiro',
@@ -212,6 +213,11 @@ export default function JifPage() {
       {/* Main Content Area: Simplified Hub Tabs */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
         <JifHubTabs initialTab="geral" />
+
+        {/* Regulamento Oficial das Provas de Ténis de Mesa (ADCCVC / XL JIF) */}
+        <div id="regulamento-tenis-mesa" className="scroll-mt-24">
+          <JifRegulamentoTenisMesa />
+        </div>
 
         {/* Bottom Callout Banner */}
         <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-emerald-900 via-brand-navy to-slate-900 text-white border border-emerald-500/30 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">

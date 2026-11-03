@@ -41,21 +41,21 @@ export const TENIS_MESA_ENCONTROS: TenisMesaEncontroInfo[] = [
     data: '2026-11-07',
     local: 'Casa da Juventude de Guilhabreu',
     estado: 'Agendado',
-    descricao: '1º Encontro Concelhio Oficial de Ténis de Mesa dos XL JIF.'
+    descricao: '1º Encontro Concelhio Oficial de Ténis de Mesa dos XL JIF (Manhã 09h30 • Tarde 14h30).'
   },
   {
     numero: 2,
-    data: 'A definir (Fevereiro 2027)',
+    data: '2027-01-23',
     local: 'Casa da Juventude de Guilhabreu',
     estado: 'Agendado',
-    descricao: '2º Encontro Concelhio Oficial.'
+    descricao: '2º Encontro Concelhio Oficial de Ténis de Mesa dos XL JIF (Manhã 09h30 • Tarde 14h30).'
   },
   {
     numero: 3,
-    data: 'A definir (Março 2027)',
+    data: '2027-03-13',
     local: 'Casa da Juventude de Guilhabreu',
     estado: 'Agendado',
-    descricao: '3º Encontro Concelhio e Fecho do Troféu de Ténis de Mesa.'
+    descricao: '3º Encontro Concelhio Oficial e Fecho do Troféu de Ténis de Mesa (Manhã 09h30 • Tarde 14h30).'
   }
 ];
 

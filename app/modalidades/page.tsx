@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { ModalidadesActionGrid } from "@/components/modalidades/ModalidadesActionGrid";
 import { RingueWeatherSection } from "@/components/modalidades/RingueWeatherSection";
-import { JifRegulamentoTenisMesa } from "@/components/jif/JifRegulamentoTenisMesa";
 import {
   MODALIDADES_LIST,
   ESCALOES_CROMOS,
@@ -166,10 +165,6 @@ export default function ModalidadesPage() {
 
             <ModalidadesActionGrid modalidades={MODALIDADES_LIST} />
 
-            {/* Regulamento Oficial Ténis de Mesa (ADCCVC / XL JIF) */}
-            <div className="mt-16 scroll-mt-24">
-              <JifRegulamentoTenisMesa />
-            </div>
           </div>
         </section>
 

@@ -207,13 +207,13 @@ export const MODALIDADES_LIST: SportModality[] = [
     id: "tenis-mesa",
     title: "Ténis de Mesa",
     subtitle: "Jovens & Adultos • Salão Nobre JF",
-    badge: "1º Encontro: 07 Nov",
+    badge: "3 Encontros: 07/Nov • 23/Jan • 13/Mar",
     description:
-      "Agilidade de reflexos, precisão técnica e concentração mental. Mesas de competição oficiais instaladas no Salão Nobre da Junta de Freguesia de Vilar do Pinheiro e participação nos XL JIF em Guilhabreu.",
+      "Agilidade de reflexos, precisão técnica e concentração mental. Mesas de competição oficiais no Salão Nobre da Junta de Freguesia de Vilar do Pinheiro e presença nos 3 Encontros Concelhios dos XL JIF em Guilhabreu.",
     highlights: [
-      "1º Encontro Oficial JIF: 07 de Novembro de 2026 (Casa da Juventude de Guilhabreu)",
-      "Sessões aos Sábados: Sub-15 às 16h00 | Adultos às 17h00 (Salão Nobre da Junta)",
-      "6 Escalões em Prova: Manhã (09h30) e Tarde (14h30) • Regulamento Oficial ADCCVC",
+      "3 Encontros Concelhios JIF: 07/Nov/2026 • 23/Jan/2027 • 13/Mar/2027 (Guilhabreu)",
+      "Horários de Prova: Manhã às 09h30 (Sub-11, 13 e 15) | Tarde às 14h30 (Sub-16 e Livre)",
+      "Sessões aos Sábados na Junta: Sub-15 às 16h00 | Adultos às 17h00 (Salão Nobre)",
     ],
     photos: [
       {
@@ -229,8 +229,8 @@ export const MODALIDADES_LIST: SportModality[] = [
         objectPosition: "center 25%",
       },
     ],
-    ctaLabel: "Consultar Horários de Treino →",
-    ctaHref: "#horarios",
+    ctaLabel: "Ver Regulamento Oficial JIF →",
+    ctaHref: "/jif#regulamento-tenis-mesa",
     accentColor: "blue",
   },
   {
