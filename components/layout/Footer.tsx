@@ -135,6 +135,14 @@ export function Footer() {
                   Usabilidade
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/privacidade"
+                  className="hover:text-emerald-300 transition-colors flex items-center gap-1.5"
+                >
+                  <span aria-hidden="true">🛡️</span> Privacidade &amp; Cookies
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -282,11 +290,18 @@ export function Footer() {
               Portal Gestão
             </a>
             <span className="text-slate-600">&bull;</span>
-            <Link
+<Link
               href="https://ajavp-gestao.vercel.app/direcao"
               className="text-amber-300 hover:text-amber-200 underline font-semibold transition-colors"
             >
               Área da Direção
+            </Link>
+            <span className="text-slate-600">&bull;</span>
+            <Link
+              href="/privacidade"
+              className="text-slate-300 hover:text-white underline font-semibold transition-colors"
+            >
+              Privacidade &amp; Cookies
             </Link>
           </div>
           <p className="text-slate-400">
