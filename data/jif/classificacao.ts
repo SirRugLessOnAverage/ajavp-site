@@ -354,6 +354,12 @@ export const JIF_PONTUACAO_RULES = [
     npPenalizacao: '-15 pts (Falta de Comparência)'
   },
   {
+    modalidade: 'Ténis de Mesa',
+    incremento: 'Incremento de 3 pts',
+    escala: '3 Encontros Concelhios (Art. XV)',
+    npPenalizacao: '-15 pts (Falta de Comparência) / -6 pts (Desqualificação)'
+  },
+  {
     modalidade: 'Badminton & Duatlo',
     incremento: 'Incremento de 2 pts',
     escala: 'Por equipas',

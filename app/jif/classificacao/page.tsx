@@ -5,6 +5,7 @@ import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import JifPodioRanking from '@/components/jif/JifPodioRanking';
 import JifRankingTable from '@/components/jif/JifRankingTable';
 import JifEvolucaoKpiChart from '@/components/jif/JifEvolucaoKpiChart';
+import { JifRegulamentoTenisMesa } from '@/components/jif/JifRegulamentoTenisMesa';
 import { JIF_CLASSIFICACAO, JIF_PONTUACAO_RULES } from '@/data/jif/classificacao';
 import { obterDadosClassificacao } from '@/lib/jif/data-service';
 
@@ -276,6 +277,9 @@ export default async function JifClassificacaoPage() {
               </p>
             </div>
           </div>
+
+          {/* Regulamento Oficial Ténis de Mesa (Artigo XV & Regras Específicas) */}
+          <JifRegulamentoTenisMesa className="mt-8" />
         </section>
       </main>
     </div>
