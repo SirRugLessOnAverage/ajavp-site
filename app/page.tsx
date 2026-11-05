@@ -19,6 +19,7 @@ import {
 import { createClient } from "@/lib/supabase/server";
 import { NoticiasSection } from "@/components/home/NoticiasSection";
 import { EventosSection } from "@/components/home/EventosSection";
+import { JifLiveTicker } from "@/components/home/JifLiveTicker";
 import type { SiteNoticia, SiteEvento } from "@/lib/types/database";
 
 export const revalidate = 60;
@@ -189,6 +190,17 @@ export default async function HomePage() {
                     </span>
                     <ChevronRight className="w-4 h-4 text-amber-600 dark:text-amber-400 group-hover:translate-x-1 transition-transform" />
                   </Link>
+
+                  <Link
+                    href="/jif#calendario"
+                    className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 hover:bg-emerald-50/70 dark:bg-white/10 dark:hover:bg-white/15 transition-colors border border-slate-200 dark:border-white/10 group"
+                  >
+                    <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white flex items-center gap-2">
+                      <span>📅</span>
+                      <span>Calendário das 36 Provas Oficiais</span>
+                    </span>
+                    <ChevronRight className="w-4 h-4 text-brand-green dark:text-emerald-400 group-hover:translate-x-1 transition-transform" />
+                  </Link>
                 </div>
 
                 <div className="pt-2 text-center">
@@ -205,6 +217,9 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Barra Dinâmica das Próximas Provas JIF */}
+      <JifLiveTicker />
 
       {/* Banner Oficial de Notificações Web Push & Avisos no Telemóvel */}
       <section className="bg-linear-to-r from-amber-500 via-amber-400 to-amber-500 text-slate-950 py-5 sm:py-6 shadow-md border-y border-amber-400">

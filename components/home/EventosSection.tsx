@@ -178,7 +178,7 @@ export function EventosSection({ eventos }: EventosSectionProps) {
             href="/jif#calendario"
             className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-brand-green dark:text-emerald-400 hover:text-brand-greenDark transition-colors group shrink-0"
           >
-            <span>Ver calendário completo (35 provas)</span>
+            <span>Ver calendário completo (36 provas)</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
