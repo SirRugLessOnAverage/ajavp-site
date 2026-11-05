@@ -76,6 +76,14 @@ export function Footer() {
               </li>
               <li>
                 <Link
+                  href="/socios"
+                  className="hover:text-emerald-300 transition-colors font-semibold text-emerald-300 flex items-center gap-1.5"
+                >
+                  <span>🌿</span> Sócios &amp; Quotas 26/27
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/associacao"
                   className="hover:text-emerald-300 transition-colors"
                 >
@@ -272,6 +280,13 @@ export function Footer() {
               &copy; 2026 Associação Jovens e Adultos de Vilar do Pinheiro &bull; NIF 519096045
             </span>
             <span className="text-slate-600 hidden sm:inline">&bull;</span>
+            <Link
+              href="/socios"
+              className="text-amber-300 hover:text-amber-200 underline font-bold transition-colors"
+            >
+              Quero Ser Sócio
+            </Link>
+            <span className="text-slate-600">&bull;</span>
             <a
               href="https://ajavp-gestao.vercel.app/socio"
               target="_blank"

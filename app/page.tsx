@@ -3,6 +3,7 @@ import Link from "next/link";
 import {
   Trophy,
   Users,
+  UserPlus,
   ChevronRight,
   ArrowRight,
   Sparkles,
@@ -349,36 +350,24 @@ export default async function HomePage() {
             Apoia o desporto em Vilar do Pinheiro. Ficha digital de sócio, quotas simplificadas e seguro desportivo incluído nos treinos oficiais.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+            <Link
+              href="/socios"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-heading font-bold px-8 py-4 rounded-full shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-0.5 text-sm sm:text-base group cursor-pointer"
+            >
+              <UserPlus className="w-5 h-5 text-slate-950" />
+              <span>Quero Ser Sócio &bull; Ver Quotas 26/27</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+
             <a
               href="https://ajavp-gestao.vercel.app/socio"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-emerald-500 hover:bg-emerald-600 text-white font-heading font-bold px-7 py-3.5 rounded-full shadow-lg transition-all text-sm group"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white/10 hover:bg-white/20 text-white font-heading font-semibold px-7 py-4 rounded-full border border-white/20 transition-all text-sm sm:text-base"
             >
-              <IdCard className="w-4 h-4 text-emerald-100 group-hover:scale-110 transition-transform" />
-              <span>Área de Sócio (Cartão Digital)</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-            </a>
-
-            <a
-              href="https://ajavp-gestao.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-heading font-semibold px-6 py-3.5 rounded-full border border-white/20 transition-all text-sm"
-            >
-              <LayoutDashboard className="w-4 h-4 text-emerald-300" />
-              <span>Portal AJAVP Gestão</span>
-            </a>
-
-            <a
-              href="https://ajavp-gestao.vercel.app/inscricao"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-950 font-heading font-bold px-7 py-3.5 rounded-full shadow-lg transition-all text-sm"
-            >
-              <Users className="w-4 h-4 text-slate-950" />
-              <span>Formulário de Inscrição</span>
+              <IdCard className="w-5 h-5 text-emerald-400" />
+              <span>Já Sou Sócio (Cartão Digital)</span>
             </a>
           </div>
         </div>

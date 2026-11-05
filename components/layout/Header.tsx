@@ -335,6 +335,9 @@ export function Header() {
             <Link href="/modalidades" className={navLinkClass("/modalidades")}>
               Modalidades &amp; Treinos
             </Link>
+            <Link href="/socios" className={navLinkClass("/socios")}>
+              Sócios &amp; Quotas
+            </Link>
             <Link href="/associacao" className={navLinkClass("/associacao")}>
               Quem Somos
             </Link>
@@ -403,21 +406,18 @@ export function Header() {
             >
               <span className="relative flex items-center justify-center w-5 h-5 rounded-md bg-emerald-600 text-white shadow-xs group-hover:scale-105 transition-transform shrink-0">
                 <IdCard className="w-3.5 h-3.5" />
-                <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse" />
               </span>
               <span>Área de Sócio</span>
             </a>
 
-            {/* Quero Fazer Parte */}
-            <a
-              href="https://ajavp-gestao.vercel.app/inscricao"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 bg-brand-green hover:bg-brand-greenDark text-white px-3 py-2 text-xs xl:px-3.5 xl:py-2 xl:text-[13px] rounded-full font-heading font-semibold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 whitespace-nowrap shrink-0"
+            {/* Quero Ser Sócio */}
+            <Link
+              href="/socios"
+              className="inline-flex items-center gap-1.5 bg-brand-green hover:bg-brand-greenDark text-white px-3.5 py-2 text-xs xl:px-4 xl:py-2 xl:text-[13px] rounded-full font-heading font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 whitespace-nowrap shrink-0"
             >
-              <UserPlus className="w-3.5 h-3.5 shrink-0" />
-              <span>Quero Fazer Parte!</span>
-            </a>
+              <UserPlus className="w-3.5 h-3.5 shrink-0 text-amber-300" />
+              <span>Quero Ser Sócio</span>
+            </Link>
           </div>
 
           {/* Mobile Controls */}
@@ -473,26 +473,40 @@ export function Header() {
         {mobileMenuOpen && (
           <div className="lg:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-white/10 px-6 py-6 shadow-xl space-y-3 max-h-[85vh] overflow-y-auto">
             <div className="space-y-1.5 text-sm font-medium">
-              {/* Portal do Sócio no Mobile */}
-              <div className="mb-2">
-                <a
-                  href="https://ajavp-gestao.vercel.app/socio"
-                  target="_blank"
-                  rel="noopener noreferrer"
+              {/* CTAs de Sócios no Mobile */}
+              <div className="mb-3 space-y-2">
+                <Link
+                  href="/socios"
+                  onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center justify-between py-2.5 px-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs shadow-md transition-all group"
                 >
                   <span className="flex items-center gap-2.5">
                     <span className="flex items-center justify-center w-7 h-7 rounded-lg bg-white/20 text-white">
-                      <IdCard className="w-4 h-4" />
+                      <UserPlus className="w-4 h-4 text-amber-300" />
                     </span>
                     <span>
-                      Área de Sócio
+                      Quero Ser Sócio
                       <span className="text-[10px] font-normal text-emerald-100 block">
-                        Cartão Digital, Quotas &amp; Inscrições
+                        Quotas desde 1€/mês &amp; Inscrição Online
                       </span>
                     </span>
                   </span>
-                  <ExternalLink className="w-4 h-4 text-white/80 group-hover:text-white" />
+                  <ChevronRight className="w-4 h-4 text-white/80 group-hover:text-white" />
+                </Link>
+
+                <a
+                  href="https://ajavp-gestao.vercel.app/socio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between py-2 px-3.5 rounded-xl bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 text-slate-700 dark:text-slate-300 font-bold text-xs border border-slate-200 dark:border-white/10 transition-all"
+                >
+                  <span className="flex items-center gap-2.5">
+                    <span className="flex items-center justify-center w-6 h-6 rounded-lg bg-emerald-600/10 text-emerald-600 dark:text-emerald-400">
+                      <IdCard className="w-3.5 h-3.5" />
+                    </span>
+                    <span>Área de Sócio (Já Sou Sócio)</span>
+                  </span>
+                  <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
                 </a>
               </div>
 
@@ -569,6 +583,14 @@ export function Header() {
                 className="flex items-center justify-between py-2 px-3 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5"
               >
                 <span>Modalidades &amp; Treinos</span>
+                <ChevronRight className="w-4 h-4 text-slate-400" />
+              </Link>
+              <Link
+                href="/socios"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-between py-2 px-3 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5"
+              >
+                <span>Sócios &amp; Quotas 26/27</span>
                 <ChevronRight className="w-4 h-4 text-slate-400" />
               </Link>
               <Link
