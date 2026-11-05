@@ -93,7 +93,7 @@ export default function SociosPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
             {/* SÓCIO ADULTO (POPULAR / RECOMENDADO) */}
-            <div className="relative rounded-3xl p-8 bg-linear-to-b from-emerald-500/10 via-white to-white dark:from-emerald-950/40 dark:via-slate-900 dark:to-slate-900 border-2 border-emerald-500/40 dark:border-emerald-400/40 shadow-xl flex flex-col justify-between">
+            <div className="motion-card relative rounded-3xl p-8 bg-linear-to-b from-emerald-500/10 via-white to-white dark:from-emerald-950/40 dark:via-slate-900 dark:to-slate-900 border-2 border-emerald-500/40 dark:border-emerald-400/40 shadow-xl flex flex-col justify-between">
               <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-emerald-600 text-white text-xs font-black uppercase tracking-wider shadow-md">
                 Mais Escolhido
               </span>
@@ -149,7 +149,7 @@ export default function SociosPage() {
                 href="https://ajavp-gestao.vercel.app/inscricao"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm transition-colors shadow-md shadow-emerald-600/20"
+                className="motion-press w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm transition-colors shadow-md shadow-emerald-600/20"
               >
                 <span>Aderir como Sócio Adulto</span>
                 <ArrowRight className="w-4 h-4" />
@@ -157,7 +157,7 @@ export default function SociosPage() {
             </div>
 
             {/* SÓCIO MENOR / ATLETA */}
-            <div className="relative rounded-3xl p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-lg flex flex-col justify-between">
+            <div className="motion-card relative rounded-3xl p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-lg flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <div>
@@ -209,7 +209,7 @@ export default function SociosPage() {
                 href="https://ajavp-gestao.vercel.app/inscricao"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-slate-900 hover:bg-slate-800 dark:bg-white/10 dark:hover:bg-white/20 text-white font-bold text-sm transition-colors border border-transparent dark:border-white/10"
+                className="motion-press w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-slate-900 hover:bg-slate-800 dark:bg-white/10 dark:hover:bg-white/20 text-white font-bold text-sm transition-colors border border-transparent dark:border-white/10"
               >
                 <span>Inscrever Jovem Atleta (0€)</span>
                 <ArrowRight className="w-4 h-4" />

@@ -85,7 +85,7 @@ export default function JifHubTabs({ initialTab = 'geral' }: JifHubTabsProps) {
           <button
             type="button"
             onClick={() => changeTab('geral')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer whitespace-nowrap ${
+            className={`motion-pill motion-press flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer whitespace-nowrap ${
               activeTab === 'geral'
                 ? 'bg-amber-500 text-slate-950 font-black shadow-xs'
                 : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5'
@@ -98,7 +98,7 @@ export default function JifHubTabs({ initialTab = 'geral' }: JifHubTabsProps) {
           <button
             type="button"
             onClick={() => changeTab('calendario')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer whitespace-nowrap ${
+            className={`motion-pill motion-press flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer whitespace-nowrap ${
               activeTab === 'calendario'
                 ? 'bg-amber-500 text-slate-950 font-black shadow-xs'
                 : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5'
@@ -111,7 +111,7 @@ export default function JifHubTabs({ initialTab = 'geral' }: JifHubTabsProps) {
           <button
             type="button"
             onClick={() => changeTab('pavilhoes')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer whitespace-nowrap ${
+            className={`motion-pill motion-press flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer whitespace-nowrap ${
               activeTab === 'pavilhoes'
                 ? 'bg-amber-500 text-slate-950 font-black shadow-xs'
                 : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5'
@@ -124,7 +124,7 @@ export default function JifHubTabs({ initialTab = 'geral' }: JifHubTabsProps) {
           <button
             type="button"
             onClick={() => changeTab('comunicados')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer whitespace-nowrap ${
+            className={`motion-pill motion-press flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer whitespace-nowrap ${
               activeTab === 'comunicados'
                 ? 'bg-amber-500 text-slate-950 font-black shadow-xs'
                 : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5'
@@ -138,7 +138,7 @@ export default function JifHubTabs({ initialTab = 'geral' }: JifHubTabsProps) {
 
       {/* Tab Panes */}
       {activeTab === 'geral' && (
-        <div className="space-y-8">
+        <div className="space-y-8 animate-drawer-down">
           {/* Virtual Classification Callout Banner */}
           <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-brand-navy via-slate-900 to-emerald-950 text-white border border-emerald-500/30 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
             <div className="space-y-2 max-w-2xl relative z-10">
@@ -384,11 +384,23 @@ export default function JifHubTabs({ initialTab = 'geral' }: JifHubTabsProps) {
         </div>
       )}
 
-      {activeTab === 'calendario' && <JifCalendarList />}
+      {activeTab === 'calendario' && (
+        <div className="animate-drawer-down">
+          <JifCalendarList />
+        </div>
+      )}
 
-      {activeTab === 'pavilhoes' && <JifPavilhoesList />}
+      {activeTab === 'pavilhoes' && (
+        <div className="animate-drawer-down">
+          <JifPavilhoesList />
+        </div>
+      )}
 
-      {activeTab === 'comunicados' && <JifComunicadosList />}
+      {activeTab === 'comunicados' && (
+        <div className="animate-drawer-down">
+          <JifComunicadosList />
+        </div>
+      )}
     </div>
   );
 }

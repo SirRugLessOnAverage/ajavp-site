@@ -117,7 +117,7 @@ export default function JifCalendarList() {
           <button
             type="button"
             onClick={() => setActiveView('2semanas')}
-            className={`px-3.5 py-2 rounded-xl text-xs font-black whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer shrink-0 ${
+            className={`motion-pill motion-press px-3.5 py-2 rounded-xl text-xs font-black whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer shrink-0 ${
               activeView === '2semanas'
                 ? 'bg-amber-400 text-slate-950 shadow-md scale-102 ring-2 ring-amber-400/30'
                 : 'bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-300/60 dark:border-amber-400/30 hover:bg-amber-500/20'
@@ -142,7 +142,7 @@ export default function JifCalendarList() {
                 key={m.chave}
                 type="button"
                 onClick={() => setActiveView(m.chave)}
-                className={`px-3 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer shrink-0 ${
+                className={`motion-pill motion-press px-3 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer shrink-0 ${
                   isSelected
                     ? 'bg-brand-navy dark:bg-white text-white dark:text-slate-950 shadow-xs'
                     : 'bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10'
@@ -171,7 +171,7 @@ export default function JifCalendarList() {
           <button
             type="button"
             onClick={() => setActiveView('all')}
-            className={`px-3 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer shrink-0 ${
+            className={`motion-pill motion-press px-3 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer shrink-0 ${
               activeView === 'all'
                 ? 'bg-brand-navy dark:bg-white text-white dark:text-slate-950 shadow-xs'
                 : 'bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10'
@@ -190,7 +190,7 @@ export default function JifCalendarList() {
             key={s.id}
             type="button"
             onClick={() => setSelectedSport(s.id)}
-            className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
+            className={`motion-pill motion-press px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
               selectedSport === s.id
                 ? 'bg-slate-900 dark:bg-amber-400 text-white dark:text-slate-950 font-bold shadow-xs'
                 : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20'
@@ -241,7 +241,7 @@ export default function JifCalendarList() {
             return (
               <div
                 key={event.id}
-                className={`p-4 sm:p-5 rounded-2xl border transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 ${
+                className={`motion-card p-4 sm:p-5 rounded-2xl border transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 ${
                   isPast
                     ? 'bg-white/80 dark:bg-slate-900/60 border-slate-200/80 dark:border-white/5 opacity-85 hover:opacity-100'
                     : 'bg-white dark:bg-slate-900 border-amber-300/80 dark:border-amber-400/40 shadow-xs hover:shadow-md'

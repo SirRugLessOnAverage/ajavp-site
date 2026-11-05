@@ -104,7 +104,7 @@ export default async function HomePage() {
                   href="https://ajavp-gestao.vercel.app/inscricao"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-brand-green hover:bg-brand-greenDark text-white font-heading font-bold px-7 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-0.5 text-sm sm:text-base cursor-pointer"
+                  className="motion-press w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-brand-green hover:bg-brand-greenDark text-white font-heading font-bold px-7 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-0.5 text-sm sm:text-base cursor-pointer"
                 >
                   <Users className="w-5 h-5" />
                   <span>Inscreve-te &bull; Treino Gratuito</span>
@@ -112,7 +112,7 @@ export default async function HomePage() {
 
                 <Link
                   href="/jif"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white/90 hover:bg-white dark:bg-slate-900/80 dark:hover:bg-slate-900 border border-slate-300 dark:border-white/20 text-brand-navy dark:text-white font-heading font-bold px-7 py-4 rounded-2xl transition-all text-sm sm:text-base backdrop-blur-md shadow-md"
+                  className="motion-press w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white/90 hover:bg-white dark:bg-slate-900/80 dark:hover:bg-slate-900 border border-slate-300 dark:border-white/20 text-brand-navy dark:text-white font-heading font-bold px-7 py-4 rounded-2xl transition-all text-sm sm:text-base backdrop-blur-md shadow-md"
                 >
                   <Trophy className="w-5 h-5 text-amber-500 dark:text-amber-400" />
                   <span>XL Jogos Inter-Freguesias</span>
