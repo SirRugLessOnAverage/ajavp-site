@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Montserrat, Inter } from "next/font/google";
+import { Montserrat, Inter, Lexend } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -18,6 +18,13 @@ const inter = Inter({
   variable: "--font-sans",
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
+});
+
+const lexend = Lexend({
+  subsets: ["latin"],
+  variable: "--font-dyslexic",
+  display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -81,7 +88,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt" suppressHydrationWarning className={`${montserrat.variable} ${inter.variable}`}>
+    <html lang="pt" suppressHydrationWarning className={`${montserrat.variable} ${inter.variable} ${lexend.variable}`}>
       <head>
         {/* Folha de Estilos de Acessibilidade & Usabilidade (WCAG 2.1 AA) */}
         <link rel="stylesheet" href="/assets/css/a11y.css" />

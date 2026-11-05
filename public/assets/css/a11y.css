@@ -4,8 +4,6 @@
  * e Decreto-Lei n.º 83/2018 (Selo de Usabilidade e Acessibilidade AMA).
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&display=swap');
-
 /* =============================================================
  * 1. LINK DE SALTO DE CONTEÚDO (SKIP TO MAIN CONTENT)
  * WCAG 2.4.1 (Bypass Blocks)
@@ -79,7 +77,7 @@ html[data-a11y-dyslexic="true"] button,
 html[data-a11y-dyslexic="true"] input,
 html[data-a11y-dyslexic="true"] textarea,
 html[data-a11y-dyslexic="true"] select {
-  font-family: 'Lexend', system-ui, -apple-system, sans-serif !important;
+  font-family: var(--font-dyslexic), 'Lexend', system-ui, -apple-system, sans-serif !important;
   letter-spacing: 0.03em !important;
   word-spacing: 0.08em !important;
 }

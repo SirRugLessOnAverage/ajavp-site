@@ -42,3 +42,18 @@ test("Scripts: PwaManager.tsx não deve injetar pwa.js em duplicado", () => {
     "PwaManager.tsx deve manter o registo do Service Worker"
   );
 });
+
+
+test("Fontes: public/assets/css/a11y.css não deve ter @import externo para googleapis", () => {
+  const cssContent = fs.readFileSync(path.join(ROOT_DIR, "public", "assets", "css", "a11y.css"), "utf-8");
+  assert.ok(!cssContent.includes("@import url('https://fonts.googleapis.com"), "a11y.css não deve ter @import remoto de fontes");
+  assert.ok(cssContent.includes("var(--font-dyslexic)"), "a11y.css deve usar var(--font-dyslexic)");
+});
+
+test("Fontes: app/layout.tsx deve configurar Lexend com preload false e variavel --font-dyslexic", () => {
+  const layoutContent = fs.readFileSync(path.join(ROOT_DIR, "app", "layout.tsx"), "utf-8");
+  assert.ok(layoutContent.includes("Lexend"), "layout.tsx deve importar Lexend de next/font/google");
+  assert.ok(layoutContent.includes('variable: "--font-dyslexic"'), "layout.tsx deve definir variable: --font-dyslexic");
+  assert.ok(layoutContent.includes("preload: false"), "layout.tsx deve ter preload: false para economizar tráfego");
+  assert.ok(layoutContent.includes("${lexend.variable}"), "layout.tsx deve incluir lexend.variable na tag html");
+});
