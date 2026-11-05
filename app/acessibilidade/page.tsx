@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
@@ -6,6 +7,9 @@ export const metadata: Metadata = {
   title: "Declaração de Acessibilidade e Usabilidade • AJAVP",
   description:
     "Declaração de Acessibilidade e Usabilidade da AJAVP em conformidade com o Decreto-Lei n.º 83/2018 e as diretrizes W3C WCAG 2.1 Nível AA.",
+  alternates: {
+    canonical: `${SITE_URL}/acessibilidade`,
+  },
 };
 
 const WCAG_PRINCIPLES = [

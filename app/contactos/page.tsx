@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { ContactForm } from "@/components/contactos/ContactForm";
@@ -7,6 +8,9 @@ export const metadata: Metadata = {
   title: "Contactos & Inscrições • AJAVP — Vilar do Pinheiro",
   description:
     "Fala diretamente com a direção e coordenação desportiva da AJAVP via WhatsApp, Email ou visita a nossa Sede Social e recintos de treino em Vilar do Pinheiro.",
+  alternates: {
+    canonical: `${SITE_URL}/contactos`,
+  },
 };
 
 export default function ContactosPage() {

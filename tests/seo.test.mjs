@@ -112,3 +112,23 @@ test("Sitemap: Ficheiros estáticos sitemap.xml não devem existir na raiz nem e
   assert.ok(!fs.existsSync(path.join(ROOT_DIR, "sitemap.xml")), "sitemap.xml na raiz não deve existir");
 });
 
+
+test("Canonical: Todas as 12 rotas do sitemap devem ter canonical definido", () => {
+  const sitemapPaths = getSitemapPaths();
+  for (const p of sitemapPaths) {
+    if (p === "/") {
+      const layoutContent = fs.readFileSync(path.join(ROOT_DIR, "app", "layout.tsx"), "utf-8");
+      assert.ok(layoutContent.includes("canonical:"), "app/layout.tsx deve ter canonical para a homepage");
+    } else {
+      const routePath = path.join(ROOT_DIR, "app", ...p.split("/").filter(Boolean), "page.tsx");
+      const content = fs.readFileSync(routePath, "utf-8");
+      assert.ok(content.includes("canonical:"), `Página '${p}' (${routePath}) deve ter canonical definido em metadata.alternates`);
+    }
+  }
+});
+
+test("SEO: Homepage deve renderizar componente JsonLd com dados estruturados", () => {
+  const homeContent = fs.readFileSync(path.join(ROOT_DIR, "app", "page.tsx"), "utf-8");
+  assert.ok(homeContent.includes("<JsonLd />"), "app/page.tsx deve incluir o componente <JsonLd />");
+  assert.ok(fs.existsSync(path.join(ROOT_DIR, "components", "seo", "JsonLd.tsx")), "components/seo/JsonLd.tsx deve existir");
+});

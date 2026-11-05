@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
@@ -13,6 +14,9 @@ export const metadata: Metadata = {
   title: "Patrocinadores e Novo Equipamento 26/27 • AJAVP",
   description:
     "Conhece os Parceiros Institucionais, Patrocinadores Principais e Oficiais que vestem a Mancha Verde na época 2026/2027 da AJAVP.",
+  alternates: {
+    canonical: `${SITE_URL}/patrocinadores`,
+  },
 };
 
 const SPONSOR_ACCENT_STYLES: Record<

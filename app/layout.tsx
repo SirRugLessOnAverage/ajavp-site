@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 import type { Metadata, Viewport } from "next";
 import { Montserrat, Inter, Lexend } from "next/font/google";
 import "./globals.css";
@@ -28,7 +29,10 @@ const lexend = Lexend({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ajavp.vercel.app"),
+  metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: SITE_URL,
+  },
   title: {
     default: "AJAVP | Associação de Jovens e Adultos de Vilar do Pinheiro",
     template: "%s | AJAVP",

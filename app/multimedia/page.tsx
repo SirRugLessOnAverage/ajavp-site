@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
@@ -8,6 +9,9 @@ export const metadata: Metadata = {
   title: "Galeria & Multimédia • AJAVP — Vilar do Pinheiro",
   description:
     "Explora o arquivo fotográfico oficial da AJAVP: estreia do novo equipamento 2026/2027, conquistas no Corta-Mato, Futsal, Ténis de Mesa, Duatlo BTT e vídeos da época.",
+  alternates: {
+    canonical: `${SITE_URL}/multimedia`,
+  },
 };
 
 export default function MultimediaPage() {

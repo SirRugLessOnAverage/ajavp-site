@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import type { SiteDocumento } from "@/lib/types/database";
@@ -33,6 +34,9 @@ export const metadata: Metadata = {
   title: "A Associação • História, Órgãos Sociais & Pavilhões",
   description:
     "Conhece a história da AJAVP, fundada formalmente em dezembro de 2025. Órgãos sociais eleitos, estatutos, regime de votação e localização dos nossos pavilhões desportivos.",
+  alternates: {
+    canonical: `${SITE_URL}/associacao`,
+  },
 };
 
 const SUPABASE_PUBLIC_DOCS_BASE =

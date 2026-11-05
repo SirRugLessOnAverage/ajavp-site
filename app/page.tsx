@@ -1,3 +1,4 @@
+import { JsonLd } from "@/components/seo/JsonLd";
 import React from "react";
 import Link from "next/link";
 import {
@@ -60,6 +61,7 @@ export default async function HomePage() {
 
   return (
     <>
+      <JsonLd />
       {/* Hero Section com Imagem Amálgama das Modalidades */}
       <section className="relative overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white pt-16 pb-20 lg:pt-24 lg:pb-28 border-b border-slate-200 dark:border-white/10 transition-colors">
         {/* Imagem de Fundo Amálgama com Overlay Gradiente Adaptativo */}

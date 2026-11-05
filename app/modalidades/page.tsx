@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
@@ -13,6 +14,9 @@ export const metadata: Metadata = {
   title: "Modalidades e Horários 2026/2027 • AJAVP — Vilar do Pinheiro",
   description:
     "Futsal e Futebol, Atletismo, Ténis de Mesa, Duatlo BTT, Badminton e Futebol de Praia. Consulta os Cromos Oficiais 26/27, o Horário de Treinos e a meteorologia do Ringue.",
+  alternates: {
+    canonical: `${SITE_URL}/modalidades`,
+  },
 };
 
 const VENUE_BADGE_STYLE: Record<string, string> = {
