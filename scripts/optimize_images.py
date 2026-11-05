@@ -27,7 +27,7 @@ def create_og_banner():
     draw.ellipse([(80, 145), (440, 505)], fill=(255, 255, 255))
     draw.ellipse([(75, 140), (445, 510)], outline=(16, 185, 129), width=5)
 
-    logo_path = 'assets/images/logo.png'
+    logo_path = 'public/assets/images/logo.png'
     if os.path.exists(logo_path):
         logo = Image.open(logo_path).convert('RGBA')
         logo = logo.resize((320, 325), Image.Resampling.LANCZOS)
@@ -72,13 +72,13 @@ def create_og_banner():
         draw.text((curr_x + 14, 446), t, fill=(255, 255, 255), font=f_tag)
         curr_x += badge_w + 12
 
-    out_path = 'assets/images/og-share.jpg'
+    out_path = 'public/assets/images/og-share.jpg'
     img.save(out_path, format='JPEG', quality=90, optimize=True)
     print(f'[OK] Banner de partilha criado: {out_path} ({os.path.getsize(out_path)/1024:.1f} KB)')
 
 
 def optimize_logo():
-    logo_path = 'assets/images/logo.png'
+    logo_path = 'public/assets/images/logo.png'
     if not os.path.exists(logo_path):
         return
     old_sz = os.path.getsize(logo_path)
@@ -96,7 +96,7 @@ def optimize_all_images():
     total_after = 0
     count = 0
 
-    for root, dirs, files in os.walk('assets/images'):
+    for root, dirs, files in os.walk('public/assets/images'):
         for f in files:
             ext = os.path.splitext(f)[1].lower()
             if ext in ('.jpg', '.jpeg') and f != 'og-share.jpg':

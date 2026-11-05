@@ -9,7 +9,7 @@ import numpy as np
 
 def create_favicon_suite():
     # 1. Carregar logo original
-    logo_path = 'assets/images/logo.png'
+    logo_path = 'public/assets/images/logo.png'
     if not os.path.exists(logo_path):
         raise FileNotFoundError(f"Não foi encontrado {logo_path}")
 
@@ -81,7 +81,7 @@ def create_favicon_suite():
         img.paste(resized, (ox, oy), resized)
         return img
 
-    os.makedirs('assets/icons', exist_ok=True)
+    os.makedirs('public/assets/icons', exist_ok=True)
 
     # 1. Gerar tamanhos para o favicon.ico multi-resolução
     ico_16 = render_icon(16, style='squircle')
@@ -90,7 +90,7 @@ def create_favicon_suite():
 
     # Guardar favicon.ico com camadas 16x16, 32x32, 48x48
     ico_32.save(
-        'favicon.ico',
+        'public/favicon.ico',
         format='ICO',
         sizes=[(16, 16), (32, 32), (48, 48)],
         append_images=[ico_16, ico_48]

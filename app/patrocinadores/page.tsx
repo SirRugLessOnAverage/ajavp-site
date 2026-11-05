@@ -151,7 +151,7 @@ export default function PatrocinadoresPage() {
                       type="image/webp"
                     />
                     <img
-                      src="/assets/images/patrocinadores/brasao_junta_vilar_pinheiro.png"
+                      src="/assets/images/patrocinadores/brasao_junta_vilar_pinheiro.webp"
                       alt="Brasão e Logótipo da Junta de Freguesia de Vilar do Pinheiro"
                       className="max-h-32 w-auto object-contain"
                     />

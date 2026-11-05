@@ -132,3 +132,17 @@ test("SEO: Homepage deve renderizar componente JsonLd com dados estruturados", (
   assert.ok(homeContent.includes("<JsonLd />"), "app/page.tsx deve incluir o componente <JsonLd />");
   assert.ok(fs.existsSync(path.join(ROOT_DIR, "components", "seo", "JsonLd.tsx")), "components/seo/JsonLd.tsx deve existir");
 });
+
+test("Limpeza: Ficheiros e pastas mortos da camada estática não devem existir na raiz", () => {
+  assert.ok(!fs.existsSync(path.join(ROOT_DIR, "assets")), "Pasta 'assets' não deve existir na raiz (apenas em public/assets)");
+  assert.ok(!fs.existsSync(path.join(ROOT_DIR, "sw.js")), "sw.js não deve existir na raiz (apenas em public/sw.js)");
+  assert.ok(!fs.existsSync(path.join(ROOT_DIR, "manifest.json")), "manifest.json não deve existir na raiz");
+  assert.ok(!fs.existsSync(path.join(ROOT_DIR, "manifest.webmanifest")), "manifest.webmanifest não deve existir na raiz");
+  assert.ok(!fs.existsSync(path.join(ROOT_DIR, "favicon.ico")), "favicon.ico não deve existir na raiz (apenas em public/favicon.ico)");
+  assert.ok(!fs.existsSync(path.join(ROOT_DIR, "robots.txt")), "robots.txt não deve existir na raiz (apenas em public/robots.txt)");
+  assert.ok(!fs.existsSync(path.join(ROOT_DIR, "robots-dev.txt")), "robots-dev.txt não deve existir na raiz");
+  assert.ok(
+    fs.existsSync(path.join(ROOT_DIR, "public", "assets", "images", "galeria", "foto_21.webp")),
+    "foto_21.webp deve existir preservada em public/assets/images/galeria/"
+  );
+});
