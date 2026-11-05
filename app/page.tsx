@@ -179,7 +179,7 @@ export default async function HomePage() {
                   </Link>
 
                   <Link
-                    href="/jif-classificacao"
+                    href="/jif/classificacao"
                     className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 hover:bg-amber-50/70 dark:bg-white/10 dark:hover:bg-white/15 transition-colors border border-slate-200 dark:border-white/10 group"
                   >
                     <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">
