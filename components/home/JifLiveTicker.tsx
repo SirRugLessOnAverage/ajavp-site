@@ -1,13 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import {
-  Calendar,
   Clock,
   MapPin,
-  ChevronRight,
   ArrowRight,
-  Trophy,
-  Flame,
 } from "lucide-react";
 import { JIF_MASTER_EVENTS, type JifEvent } from "@/data/jif/calendario";
 
@@ -189,7 +185,7 @@ export function JifLiveTicker() {
           </Link>
         </div>
 
-        {/* Grelha das Próximas Provas (Formato Português DD/MM/YYYY) */}
+        {/* Grelha das Próximas Provas com Bloco Tátil de Calendário */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
           {upcoming.map((ev) => {
             const datePt = formatPortugueseDate(ev.date);
@@ -205,53 +201,71 @@ export function JifLiveTicker() {
               <Link
                 key={ev.id}
                 href="/jif#calendario"
-                className="group p-4 rounded-2xl bg-slate-50 dark:bg-slate-950/70 border border-slate-200/90 dark:border-white/10 hover:border-emerald-500/60 dark:hover:border-emerald-400/60 hover:shadow-md transition-all flex flex-col justify-between space-y-3 cursor-pointer"
+                className="group p-4 rounded-2xl bg-slate-50 dark:bg-slate-950/70 border border-slate-200/90 dark:border-white/10 hover:border-emerald-500/60 dark:hover:border-emerald-400/60 hover:shadow-md active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 transition-all duration-150 ease-out flex flex-col justify-between space-y-3 cursor-pointer"
               >
-                {/* Linha Topo: Modalidade & Badge Relativo */}
-                <div className="flex items-center justify-between gap-2">
-                  <span
-                    className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold border ${sportCfg.badgeClass}`}
+                {/* Linha Superior: Bloco de Data Tátil + Conteúdo */}
+                <div className="flex items-start gap-3.5">
+                  {/* Bloco de Data Tátil idêntico ao calendário oficial */}
+                  <div
+                    className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex flex-col items-center justify-center shrink-0 font-heading font-black shadow-md border transition-transform duration-200 group-hover:scale-105 ${
+                      relBadge.isLive
+                        ? "bg-gradient-to-br from-emerald-400 to-emerald-500 text-slate-950 border-emerald-300 ring-2 ring-emerald-400/40"
+                        : "bg-gradient-to-br from-amber-400 to-amber-500 text-slate-950 border-amber-300/80"
+                    }`}
                   >
-                    <span>{sportCfg.icon}</span>
-                    <span>{sportCfg.label}</span>
-                  </span>
-
-                  <span
-                    className={`px-2.5 py-0.5 rounded-full text-[10px] uppercase tracking-wider ${relBadge.badgeClass}`}
-                  >
-                    {relBadge.isLive && (
-                      <span className="w-1.5 h-1.5 rounded-full bg-white inline-block mr-1 animate-ping" />
-                    )}
-                    {relBadge.label}
-                  </span>
-                </div>
-
-                {/* Data Central em Formato Português DD/MM/YYYY */}
-                <div>
-                  <div className="flex items-baseline gap-2">
-                    <span className="font-heading font-black text-xl text-brand-navy dark:text-emerald-400 font-mono tracking-tight">
-                      {datePt}
+                    <span className="text-[10px] uppercase font-bold tracking-widest leading-none text-slate-950/75">
+                      {ev.month}
                     </span>
-                    <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">
-                      {weekday}
+                    <span className="text-xl sm:text-2xl font-black leading-none my-0.5">
+                      {ev.day}
+                    </span>
+                    <span className="text-[9px] font-mono font-bold leading-none text-slate-950/60">
+                      {ev.date.substring(0, 4)}
                     </span>
                   </div>
 
-                  <h3 className="font-heading font-bold text-xs sm:text-sm text-slate-900 dark:text-white line-clamp-2 mt-1 leading-snug group-hover:text-brand-green dark:group-hover:text-emerald-300 transition-colors">
-                    {ev.title}
-                  </h3>
+                  {/* Conteúdo Contextual: Badges & Título */}
+                  <div className="flex-1 min-w-0 space-y-1.5">
+                    <div className="flex items-center justify-between gap-1.5 flex-wrap">
+                      <span
+                        className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold border ${sportCfg.badgeClass}`}
+                      >
+                        <span>{sportCfg.icon}</span>
+                        <span>{sportCfg.label}</span>
+                      </span>
+
+                      <span
+                        className={`px-2.5 py-0.5 rounded-full text-[9px] uppercase tracking-wider ${relBadge.badgeClass}`}
+                      >
+                        {relBadge.isLive && (
+                          <span className="w-1.5 h-1.5 rounded-full bg-white inline-block mr-1 animate-ping" />
+                        )}
+                        {relBadge.label}
+                      </span>
+                    </div>
+
+                    <h3 className="font-heading font-bold text-xs sm:text-sm text-slate-900 dark:text-white line-clamp-2 leading-snug group-hover:text-brand-green dark:group-hover:text-emerald-300 transition-colors">
+                      {ev.title}
+                    </h3>
+                  </div>
                 </div>
 
-                {/* Linha Rodapé: Horário & Local */}
-                <div className="pt-2 border-t border-slate-200/60 dark:border-white/5 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
-                  <span className="flex items-center gap-1 font-medium truncate max-w-[190px]">
+                {/* Rodapé do Cartão: Formato Português DD/MM/YYYY + Recinto & Horário */}
+                <div className="pt-2.5 border-t border-slate-200/60 dark:border-white/5 flex flex-col gap-1 text-[11px] text-slate-500 dark:text-slate-400">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="font-semibold text-slate-800 dark:text-slate-200">
+                      {weekday} • {datePt}
+                    </span>
+                    <span className="flex items-center gap-1 font-bold text-amber-800 dark:text-amber-300 shrink-0">
+                      <Clock className="w-3 h-3 shrink-0" />
+                      <span>{ev.time.split(" ")[0]}</span>
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-1 font-medium truncate text-slate-500 dark:text-slate-400">
                     <MapPin className="w-3 h-3 text-slate-400 shrink-0" />
                     <span className="truncate">{ev.location}</span>
-                  </span>
-                  <span className="flex items-center gap-1 font-semibold text-amber-800 dark:text-amber-300 shrink-0">
-                    <Clock className="w-3 h-3 shrink-0" />
-                    <span>{ev.time.split(" ")[0]}</span>
-                  </span>
+                  </div>
                 </div>
               </Link>
             );

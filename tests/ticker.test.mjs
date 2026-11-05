@@ -50,3 +50,4 @@ test("Ticker: EventosSection deve referenciar 36 provas de forma harmonizada", (
     "EventosSection deve ter texto atualizado para 36 provas"
   );
 });
+
