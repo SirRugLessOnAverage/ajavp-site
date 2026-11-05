@@ -31,6 +31,13 @@ export function Header() {
   const [isDark, setIsDark] = useState(false);
   const [isJifDropdownOpen, setIsJifDropdownOpen] = useState(false);
   const jifDropdownRef = useRef<HTMLDivElement>(null);
+  const [isSomosVdpDropdownOpen, setIsSomosVdpDropdownOpen] = useState(false);
+  const somosVdpDropdownRef = useRef<HTMLDivElement>(null);
+
+  const isSomosVdpActive =
+    ["/associacao", "/socios", "/patrocinadores", "/multimedia"].some((p) =>
+      pathname?.startsWith(p)
+    );
 
   const navLinkClass = (href: string, extra = "") => {
     const isActive =
@@ -79,6 +86,7 @@ export function Header() {
   // Fechar dropdowns ao mudar de página
   useEffect(() => {
     setIsJifDropdownOpen(false);
+    setIsSomosVdpDropdownOpen(false);
     setMobileMenuOpen(false);
   }, [pathname]);
 
@@ -91,11 +99,18 @@ export function Header() {
       ) {
         setIsJifDropdownOpen(false);
       }
+      if (
+        somosVdpDropdownRef.current &&
+        !somosVdpDropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsSomosVdpDropdownOpen(false);
+      }
     };
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setIsJifDropdownOpen(false);
+        setIsSomosVdpDropdownOpen(false);
       }
     };
 
@@ -335,22 +350,155 @@ export function Header() {
             <Link href="/modalidades" className={navLinkClass("/modalidades")}>
               Modalidades &amp; Treinos
             </Link>
-            <Link href="/socios" className={navLinkClass("/socios")}>
-              Sócios &amp; Quotas
-            </Link>
-            <Link href="/associacao" className={navLinkClass("/associacao")}>
-              Quem Somos
-            </Link>
-            <Link
-              href="/patrocinadores"
-              className={navLinkClass("/patrocinadores", "flex items-center gap-1.5")}
-            >
-              <HeartHandshake className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
-              <span>Patrocinadores</span>
-            </Link>
-            <Link href="/multimedia" className={navLinkClass("/multimedia")}>
-              Multimédia
-            </Link>
+
+            {/* Menu Dropdown Somos VdP */}
+            <div className="relative" ref={somosVdpDropdownRef}>
+              <button
+                type="button"
+                onClick={() => {
+                  setIsSomosVdpDropdownOpen((prev) => !prev);
+                  setIsJifDropdownOpen(false);
+                }}
+                aria-expanded={isSomosVdpDropdownOpen}
+                className={`${
+                  isSomosVdpActive
+                    ? "text-brand-green dark:text-emerald-300 bg-emerald-50/80 dark:bg-emerald-500/10 font-bold border border-emerald-200/60 dark:border-emerald-500/20"
+                    : "text-slate-700 dark:text-slate-200 hover:text-brand-green dark:hover:text-emerald-400 font-semibold hover:bg-slate-50 dark:hover:bg-white/5"
+                } text-xs xl:text-[13px] px-2.5 xl:px-3 py-1.5 xl:py-2 rounded-xl transition-colors whitespace-nowrap shrink-0 flex items-center gap-1.5 cursor-pointer`}
+              >
+                <span>Somos VdP</span>
+                <ChevronDown
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                    isSomosVdpDropdownOpen
+                      ? "rotate-180 text-brand-green"
+                      : "text-slate-400"
+                  }`}
+                />
+              </button>
+
+              {isSomosVdpDropdownOpen && (
+                <div
+                  role="menu"
+                  className="absolute top-full left-0 mt-2 w-72 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-white/10 shadow-2xl p-2 z-50 animate-in fade-in-0 zoom-in-95 duration-150 backdrop-blur-md"
+                >
+                  <Link
+                    href="/associacao"
+                    role="menuitem"
+                    onClick={() => setIsSomosVdpDropdownOpen(false)}
+                    className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group/item"
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-300 flex items-center justify-center shrink-0">
+                        <Home className="w-3.5 h-3.5" />
+                      </div>
+                      <div>
+                        <strong className="text-xs font-bold text-slate-800 dark:text-slate-100 block group-hover/item:text-brand-green">
+                          Quem Somos &amp; Pavilhões
+                        </strong>
+                        <span className="text-[10px] text-slate-500 dark:text-slate-400 block">
+                          História, órgãos e recintos
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="/socios"
+                    role="menuitem"
+                    onClick={() => setIsSomosVdpDropdownOpen(false)}
+                    className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group/item"
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-7 h-7 rounded-lg bg-amber-100 dark:bg-amber-500/20 text-amber-600 dark:text-amber-300 flex items-center justify-center shrink-0">
+                        <UserPlus className="w-3.5 h-3.5" />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-1.5">
+                          <strong className="text-xs font-bold text-slate-800 dark:text-slate-100 block group-hover/item:text-amber-600">
+                            Sócios &amp; Quotas
+                          </strong>
+                          <span className="text-[8px] uppercase px-1 py-0.2 rounded bg-amber-400 text-slate-950 font-black">
+                            26/27
+                          </span>
+                        </div>
+                        <span className="text-[10px] text-slate-500 dark:text-slate-400 block">
+                          Quotas desde 1€/mês e vantagens
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="/patrocinadores"
+                    role="menuitem"
+                    onClick={() => setIsSomosVdpDropdownOpen(false)}
+                    className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group/item"
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-300 flex items-center justify-center shrink-0">
+                        <HeartHandshake className="w-3.5 h-3.5" />
+                      </div>
+                      <div>
+                        <strong className="text-xs font-bold text-slate-800 dark:text-slate-100 block group-hover/item:text-brand-green">
+                          Patrocinadores &amp; Apoios
+                        </strong>
+                        <span className="text-[10px] text-slate-500 dark:text-slate-400 block">
+                          Parceiros da nossa terra
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="/multimedia"
+                    role="menuitem"
+                    onClick={() => setIsSomosVdpDropdownOpen(false)}
+                    className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group/item"
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-7 h-7 rounded-lg bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-300 flex items-center justify-center shrink-0">
+                        <Play className="w-3.5 h-3.5" />
+                      </div>
+                      <div>
+                        <strong className="text-xs font-bold text-slate-800 dark:text-slate-100 block group-hover/item:text-blue-600">
+                          Multimédia &amp; Galeria
+                        </strong>
+                        <span className="text-[10px] text-slate-500 dark:text-slate-400 block">
+                          Vídeos e fotografias oficiais
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+
+                  <div className="h-px bg-slate-100 dark:bg-white/10 my-1" />
+
+                  <a
+                    href="https://ajavp-gestao.vercel.app/socio"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    role="menuitem"
+                    onClick={() => setIsSomosVdpDropdownOpen(false)}
+                    className="flex items-center justify-between p-2 rounded-xl hover:bg-emerald-50 dark:hover:bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 transition-colors group/item"
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-7 h-7 rounded-lg bg-emerald-600/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
+                        <IdCard className="w-3.5 h-3.5" />
+                      </div>
+                      <div>
+                        <strong className="text-xs font-bold block">
+                          Área de Sócio (Cartão Digital)
+                        </strong>
+                        <span className="text-[10px] text-slate-500 dark:text-slate-400 block">
+                          Para associados existentes
+                        </span>
+                      </div>
+                    </div>
+                    <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover/item:text-emerald-600" />
+                  </a>
+                </div>
+              )}
+            </div>
+
             <Link href="/contactos" className={navLinkClass("/contactos")}>
               Contactos
             </Link>
@@ -396,24 +544,10 @@ export function Header() {
               )}
             </button>
 
-            {/* Link Área de Sócio */}
-            <a
-              href="https://ajavp-gestao.vercel.app/socio"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden xl:inline-flex items-center gap-2 text-xs font-bold text-slate-800 dark:text-slate-100 hover:text-emerald-600 dark:hover:text-emerald-300 py-1.5 px-3 rounded-xl border border-emerald-500/30 bg-emerald-50/50 dark:bg-emerald-500/10 hover:border-emerald-500 hover:bg-emerald-100/60 dark:hover:bg-emerald-500/20 shadow-xs transition-all whitespace-nowrap shrink-0 group"
-              title="Aceder à Área de Sócio da AJAVP (Quotas, Cartão Digital & Dados)"
-            >
-              <span className="relative flex items-center justify-center w-5 h-5 rounded-md bg-emerald-600 text-white shadow-xs group-hover:scale-105 transition-transform shrink-0">
-                <IdCard className="w-3.5 h-3.5" />
-              </span>
-              <span>Área de Sócio</span>
-            </a>
-
-            {/* Quero Ser Sócio */}
+            {/* Quero Ser Sócio (Botão Único em Destaque) */}
             <Link
               href="/socios"
-              className="inline-flex items-center gap-1.5 bg-brand-green hover:bg-brand-greenDark text-white px-3.5 py-2 text-xs xl:px-4 xl:py-2 xl:text-[13px] rounded-full font-heading font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 whitespace-nowrap shrink-0"
+              className="inline-flex items-center gap-1.5 bg-brand-green hover:bg-brand-greenDark text-white px-4 py-2 text-xs xl:px-4.5 xl:py-2.5 xl:text-[13px] rounded-full font-heading font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 whitespace-nowrap shrink-0"
             >
               <UserPlus className="w-3.5 h-3.5 shrink-0 text-amber-300" />
               <span>Quero Ser Sócio</span>
@@ -585,38 +719,48 @@ export function Header() {
                 <span>Modalidades &amp; Treinos</span>
                 <ChevronRight className="w-4 h-4 text-slate-400" />
               </Link>
-              <Link
-                href="/socios"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between py-2 px-3 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5"
-              >
-                <span>Sócios &amp; Quotas 26/27</span>
-                <ChevronRight className="w-4 h-4 text-slate-400" />
-              </Link>
-              <Link
-                href="/associacao"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between py-2 px-3 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5"
-              >
-                <span>Quem Somos</span>
-                <ChevronRight className="w-4 h-4 text-slate-400" />
-              </Link>
-              <Link
-                href="/patrocinadores"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between py-2 px-3 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5"
-              >
-                <span>Patrocinadores &amp; Apoios</span>
-                <ChevronRight className="w-4 h-4 text-slate-400" />
-              </Link>
-              <Link
-                href="/multimedia"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between py-2 px-3 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5"
-              >
-                <span>Multimédia</span>
-                <ChevronRight className="w-4 h-4 text-slate-400" />
-              </Link>
+
+              {/* Bloco Somos VdP no Mobile */}
+              <div className="rounded-2xl border border-emerald-200/80 dark:border-emerald-500/20 bg-emerald-50/50 dark:bg-emerald-500/5 p-2 space-y-1">
+                <div className="px-2.5 py-1 text-emerald-900 dark:text-emerald-300 font-bold text-xs uppercase tracking-wider flex items-center justify-between">
+                  <span>Somos VdP</span>
+                  <span className="text-[10px] text-emerald-600 dark:text-emerald-400 lowercase">associação</span>
+                </div>
+                <div className="pl-2 space-y-1 text-xs pt-1 border-t border-emerald-200/40 dark:border-white/5">
+                  <Link
+                    href="/associacao"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-2 py-1.5 px-2 rounded-lg text-slate-700 dark:text-slate-300 hover:text-emerald-600 font-semibold"
+                  >
+                    <Home className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <span>Quem Somos &amp; Pavilhões</span>
+                  </Link>
+                  <Link
+                    href="/socios"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-2 py-1.5 px-2 rounded-lg text-slate-700 dark:text-slate-300 hover:text-emerald-600 font-semibold"
+                  >
+                    <UserPlus className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                    <span>Sócios &amp; Quotas 26/27</span>
+                  </Link>
+                  <Link
+                    href="/patrocinadores"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-2 py-1.5 px-2 rounded-lg text-slate-700 dark:text-slate-300 hover:text-emerald-600 font-semibold"
+                  >
+                    <HeartHandshake className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <span>Patrocinadores &amp; Apoios</span>
+                  </Link>
+                  <Link
+                    href="/multimedia"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-2 py-1.5 px-2 rounded-lg text-slate-700 dark:text-slate-300 hover:text-emerald-600 font-semibold"
+                  >
+                    <Play className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+                    <span>Multimédia &amp; Galeria</span>
+                  </Link>
+                </div>
+              </div>
               <Link
                 href="/contactos"
                 onClick={() => setMobileMenuOpen(false)}
