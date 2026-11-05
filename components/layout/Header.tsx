@@ -198,10 +198,13 @@ export function Header() {
             </Link>
 
             {/* Dropdown JIF 2026/2027 */}
-            <div ref={jifDropdownRef} className="relative group shrink-0">
+            <div ref={jifDropdownRef} className="relative shrink-0">
               <button
                 type="button"
-                onClick={() => setIsJifDropdownOpen((prev) => !prev)}
+                onClick={() => {
+                  setIsJifDropdownOpen((prev) => !prev);
+                  setIsSomosVdpDropdownOpen(false);
+                }}
                 onKeyDown={(e) => {
                   if (e.key === "ArrowDown" || e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
@@ -211,7 +214,11 @@ export function Header() {
                 aria-expanded={isJifDropdownOpen}
                 aria-haspopup="menu"
                 aria-controls="jif-desktop-menu"
-                className="text-slate-700 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400 font-semibold text-xs xl:text-[13px] px-2 xl:px-2.5 py-1.5 xl:py-2 rounded-xl hover:bg-amber-50/60 dark:hover:bg-amber-500/10 transition-colors flex items-center gap-1.5 whitespace-nowrap cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-amber-500/50"
+                className={`${
+                  pathname?.startsWith("/jif")
+                    ? "text-amber-700 dark:text-amber-300 bg-amber-50/80 dark:bg-amber-500/10 font-bold border border-amber-200/60 dark:border-amber-500/20"
+                    : "text-slate-700 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400 font-semibold hover:bg-amber-50/60 dark:hover:bg-amber-500/10"
+                } text-xs xl:text-[13px] px-2 xl:px-2.5 py-1.5 xl:py-2 rounded-xl transition-colors flex items-center gap-1.5 whitespace-nowrap cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-amber-500/50`}
               >
                 <Medal className="w-3.5 h-3.5 text-amber-500 shrink-0" />
                 <span>JIF 2026/27</span>
@@ -220,22 +227,18 @@ export function Header() {
                 </span>
                 <ChevronDown
                   className={`w-3.5 h-3.5 text-amber-500 transition-transform duration-200 shrink-0 ${
-                    isJifDropdownOpen ? "rotate-180" : "group-hover:rotate-180"
+                    isJifDropdownOpen ? "rotate-180" : ""
                   }`}
                 />
               </button>
 
               {/* Floating Dropdown */}
-              <div
-                id="jif-desktop-menu"
-                role="menu"
-                className={`absolute left-0 top-full pt-2 w-72 transition-all duration-200 transform origin-top-left z-50 ${
-                  isJifDropdownOpen
-                    ? "visible opacity-100 translate-y-0 pointer-events-auto"
-                    : "invisible opacity-0 -translate-y-2 pointer-events-none group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pointer-events-auto"
-                }`}
-              >
-                <div className="p-2 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/15 shadow-2xl space-y-1">
+              {isJifDropdownOpen && (
+                <div
+                  id="jif-desktop-menu"
+                  role="menu"
+                  className="absolute left-0 top-full mt-2 w-72 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-white/10 shadow-2xl p-2 z-50 animate-in fade-in-0 zoom-in-95 duration-150 backdrop-blur-md space-y-1"
+                >
                   <Link
                     href="/jif"
                     role="menuitem"
@@ -344,7 +347,7 @@ export function Header() {
                     </span>
                   </Link>
                 </div>
-              </div>
+              )}
             </div>
 
             <Link href="/modalidades" className={navLinkClass("/modalidades")}>
