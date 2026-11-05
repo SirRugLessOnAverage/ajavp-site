@@ -514,7 +514,7 @@ export function Header() {
             <button
               type="button"
               onClick={handleA11yClick}
-              className="p-2 rounded-xl border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 text-slate-700 dark:text-slate-200 transition-colors cursor-pointer flex items-center justify-center shrink-0"
+              className="motion-press p-2 rounded-xl border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 text-slate-700 dark:text-slate-200 transition-colors cursor-pointer flex items-center justify-center shrink-0"
               title="Acessibilidade &amp; Usabilidade (Atalho: Alt + A)"
               aria-label="Abrir Painel de Acessibilidade"
             >
@@ -527,7 +527,7 @@ export function Header() {
             <button
               data-push-toggle
               type="button"
-              className="p-2 rounded-xl border border-amber-300/60 dark:border-amber-500/30 bg-amber-50/50 dark:bg-amber-500/10 hover:bg-amber-100 dark:hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 transition-colors cursor-pointer flex items-center justify-center shrink-0"
+              className="motion-press p-2 rounded-xl border border-amber-300/60 dark:border-amber-500/30 bg-amber-50/50 dark:bg-amber-500/10 hover:bg-amber-100 dark:hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 transition-colors cursor-pointer flex items-center justify-center shrink-0"
               title="Ativar Avisos e Convocatórias no Telemóvel"
               aria-label="Ativar Notificações da AJAVP"
             >
@@ -537,7 +537,7 @@ export function Header() {
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-xl border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors cursor-pointer flex items-center justify-center shrink-0"
+              className="motion-press p-2 rounded-xl border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors cursor-pointer flex items-center justify-center shrink-0 group"
               title={isDark ? "Mudar para Modo Claro" : "Mudar para Modo Escuro"}
               aria-label={isDark ? "Mudar para Modo Claro" : "Mudar para Modo Escuro"}
             >
@@ -551,7 +551,7 @@ export function Header() {
             {/* Quero Ser Sócio (Botão Único em Destaque) */}
             <Link
               href="/socios"
-              className="inline-flex items-center gap-1.5 bg-brand-green hover:bg-brand-greenDark text-white px-4 py-2 text-xs xl:px-4.5 xl:py-2.5 xl:text-[13px] rounded-full font-heading font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 whitespace-nowrap shrink-0"
+              className="motion-press inline-flex items-center gap-1.5 bg-brand-green hover:bg-brand-greenDark text-white px-4 py-2 text-xs xl:px-4.5 xl:py-2.5 xl:text-[13px] rounded-full font-heading font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 whitespace-nowrap shrink-0"
             >
               <UserPlus className="w-3.5 h-3.5 shrink-0 text-amber-300" />
               <span>Quero Ser Sócio</span>
@@ -566,7 +566,7 @@ export function Header() {
               onClick={handleA11yClick}
               aria-label="Abrir Painel de Acessibilidade"
               title="Acessibilidade (Alt + A)"
-              className="p-2 rounded-lg border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition-colors cursor-pointer"
+              className="motion-press p-2 rounded-lg border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition-colors cursor-pointer"
             >
               <span className="text-base" aria-hidden="true">♿</span>
             </button>
@@ -577,7 +577,7 @@ export function Header() {
               type="button"
               aria-label="Ativar Notificações da AJAVP"
               title="Ativar Avisos no Telemóvel"
-              className="p-2 rounded-lg border border-amber-300/60 dark:border-amber-500/30 bg-amber-50/50 dark:bg-amber-500/10 hover:bg-amber-100 dark:hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 transition-colors cursor-pointer"
+              className="motion-press p-2 rounded-lg border border-amber-300/60 dark:border-amber-500/30 bg-amber-50/50 dark:bg-amber-500/10 hover:bg-amber-100 dark:hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 transition-colors cursor-pointer"
             >
               <Bell className="w-5 h-5 shrink-0" />
             </button>
@@ -585,7 +585,7 @@ export function Header() {
             <button
               onClick={toggleTheme}
               aria-label="Alternar Tema"
-              className="p-2 rounded-lg border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+              className="motion-press p-2 rounded-lg border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
             >
               {isDark ? (
                 <Sun className="w-5 h-5 text-amber-400" />
@@ -596,7 +596,7 @@ export function Header() {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
-              className="p-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+              className="motion-press p-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
             >
               {mobileMenuOpen ? (
                 <X className="w-6 h-6" />
@@ -607,9 +607,15 @@ export function Header() {
           </div>
         </div>
 
-        {/* Mobile Navigation Drawer */}
+        {/* Mobile Navigation Drawer com backdrop blur e animacao suave */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-white/10 px-6 py-6 shadow-xl space-y-3 max-h-[85vh] overflow-y-auto">
+          <>
+            <div
+              className="fixed inset-0 top-16 bg-slate-950/40 backdrop-blur-xs z-40 lg:hidden transition-opacity"
+              onClick={() => setMobileMenuOpen(false)}
+              aria-hidden="true"
+            />
+            <div className="lg:hidden relative z-50 bg-white/95 dark:bg-slate-900/95 backdrop-drawer border-b border-slate-200 dark:border-white/10 px-6 py-6 shadow-2xl space-y-3 max-h-[85vh] overflow-y-auto animate-drawer-down">
             <div className="space-y-1.5 text-sm font-medium">
               {/* CTAs de Sócios no Mobile */}
               <div className="mb-3 space-y-2">
@@ -812,6 +818,7 @@ export function Header() {
               </div>
             </div>
           </div>
+          </>
         )}
       </header>
     </>

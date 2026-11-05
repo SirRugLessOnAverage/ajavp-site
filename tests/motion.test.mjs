@@ -32,3 +32,10 @@ test("Motion: globals.css deve respeitar WCAG com prefers-reduced-motion: reduce
     "prefers-reduced-motion deve desativar transformações"
   );
 });
+
+test("Motion: Header.tsx deve ter drawer suave com backdrop e botoes com feedback tatil", () => {
+  const headerContent = fs.readFileSync(path.join(ROOT_DIR, "components", "layout", "Header.tsx"), "utf-8");
+  assert.ok(headerContent.includes("animate-drawer-down"), "Header deve usar animate-drawer-down no mobile drawer");
+  assert.ok(headerContent.includes("backdrop-drawer"), "Header deve usar backdrop-drawer no mobile drawer");
+  assert.ok(headerContent.includes("motion-press"), "Header deve usar motion-press nos botões interativos");
+});
