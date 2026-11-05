@@ -111,3 +111,4 @@ test("Sitemap: Ficheiros estáticos sitemap.xml não devem existir na raiz nem e
   assert.ok(!fs.existsSync(path.join(ROOT_DIR, "public", "sitemap.xml")), "public/sitemap.xml não deve existir");
   assert.ok(!fs.existsSync(path.join(ROOT_DIR, "sitemap.xml")), "sitemap.xml na raiz não deve existir");
 });
+

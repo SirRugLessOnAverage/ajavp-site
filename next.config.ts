@@ -8,7 +8,7 @@ const cspHeader = `
   font-src 'self' data:;
   connect-src 'self' https://mudgnaajtolytggksvvq.supabase.co wss://mudgnaajtolytggksvvq.supabase.co https://*.supabase.co;
   worker-src 'self' blob:;
-  frame-src 'self' https://challenges.cloudflare.com https://www.youtube-nocookie.com https://www.youtube.com;
+  frame-src 'self' https://challenges.cloudflare.com https://www.youtube-nocookie.com https://www.youtube.com https://maps.google.com https://www.google.com;
   frame-ancestors 'none';
   base-uri 'self';
   form-action 'self';
