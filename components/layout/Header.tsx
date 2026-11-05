@@ -64,7 +64,8 @@ export function Header() {
     }
 
     // Dynamic fallback
-    let script = document.getElementById("a11y-core-script") as HTMLScriptElement | null;
+    let script = (document.getElementById("a11y-core-script") ||
+      document.querySelector('script[src*="a11y.js"]')) as HTMLScriptElement | null;
     if (!script) {
       script = document.createElement("script");
       script.id = "a11y-core-script";

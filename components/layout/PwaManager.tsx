@@ -17,16 +17,6 @@ export function PwaManager() {
           console.debug("[PWA] Service Worker registration status:", error);
         });
     }
-
-    // 2. Garantir injeção do script pwa.js se ainda não existir no DOM
-    const existingScript = document.getElementById("pwa-helper-script");
-    if (!existingScript) {
-      const script = document.createElement("script");
-      script.id = "pwa-helper-script";
-      script.src = "/assets/js/pwa.js";
-      script.defer = true;
-      document.body.appendChild(script);
-    }
   }, []);
 
   return null;
