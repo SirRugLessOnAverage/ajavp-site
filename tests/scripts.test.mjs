@@ -57,3 +57,8 @@ test("Fontes: app/layout.tsx deve configurar Lexend com preload false e variavel
   assert.ok(layoutContent.includes("preload: false"), "layout.tsx deve ter preload: false para economizar tráfego");
   assert.ok(layoutContent.includes("${lexend.variable}"), "layout.tsx deve incluir lexend.variable na tag html");
 });
+
+test("Workflows: update-instagram.yml não deve existir no repositório", () => {
+  const workflowPath = path.join(ROOT_DIR, ".github", "workflows", "update-instagram.yml");
+  assert.ok(!fs.existsSync(workflowPath), ".github/workflows/update-instagram.yml deve ser removido");
+});
