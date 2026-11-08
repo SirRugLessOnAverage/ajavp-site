@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { GESTAO_LINKS, GESTAO_URL } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -207,7 +208,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://ajavp-gestao.vercel.app/socio"
+                  href={GESTAO_LINKS.socio}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-emerald-300 transition-colors text-emerald-400 font-medium flex items-center gap-1.5 py-0.5"
@@ -217,7 +218,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://ajavp-gestao.vercel.app/"
+                  href={GESTAO_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-emerald-300 transition-colors text-slate-300 flex items-center gap-1.5 py-0.5"
@@ -260,7 +261,7 @@ export function Footer() {
             </Link>
             <span className="text-slate-600">&bull;</span>
             <a
-              href="https://ajavp-gestao.vercel.app/socio"
+              href={GESTAO_LINKS.socio}
               target="_blank"
               rel="noopener noreferrer"
               className="text-emerald-400 hover:text-emerald-300 underline font-semibold transition-colors"

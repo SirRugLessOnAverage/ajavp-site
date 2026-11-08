@@ -1,4 +1,4 @@
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, GESTAO_LINKS } from "@/lib/site";
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { ContactForm } from "@/components/contactos/ContactForm";
@@ -49,7 +49,7 @@ export default function ContactosPage() {
                     💬 WhatsApp Direto (+351 917 194 933)
                   </a>
                   <a
-                    href="https://ajavp-gestao.vercel.app/inscricao"
+                    href={GESTAO_LINKS.inscricao}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="motion-press inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-amber-400 text-slate-950 hover:bg-amber-300 font-black text-sm transition-colors shadow-xs"

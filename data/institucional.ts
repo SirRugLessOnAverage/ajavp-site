@@ -1,3 +1,5 @@
+import { GESTAO_LINKS } from "@/lib/site";
+
 export interface SportPhoto {
   src: string;
   alt: string;
@@ -260,7 +262,7 @@ export const MODALIDADES_LIST: SportModality[] = [
       },
     ],
     ctaLabel: "Quero Integrar uma Dupla →",
-    ctaHref: "https://ajavp-gestao.vercel.app/inscricao",
+    ctaHref: GESTAO_LINKS.inscricao,
     externalCta: true,
     accentColor: "teal",
   },
@@ -285,7 +287,7 @@ export const MODALIDADES_LIST: SportModality[] = [
       },
     ],
     ctaLabel: "Inscrever no Badminton →",
-    ctaHref: "https://ajavp-gestao.vercel.app/inscricao",
+    ctaHref: GESTAO_LINKS.inscricao,
     externalCta: true,
     accentColor: "purple",
   },
@@ -316,7 +318,7 @@ export const MODALIDADES_LIST: SportModality[] = [
       },
     ],
     ctaLabel: "Inscrever no Futebol Praia →",
-    ctaHref: "https://ajavp-gestao.vercel.app/inscricao",
+    ctaHref: GESTAO_LINKS.inscricao,
     externalCta: true,
     accentColor: "amber",
   },

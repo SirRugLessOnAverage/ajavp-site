@@ -73,7 +73,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/admin-alertas",
-        destination: "https://ajavp-gestao.vercel.app/direcao/alertas",
+        destination: "https://gestao.ajavp.pt/direcao/alertas",
         permanent: false,
       },
     ];

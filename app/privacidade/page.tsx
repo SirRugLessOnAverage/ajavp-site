@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ShieldCheck, Cookie, Lock, FileText, CheckCircle2, AlertCircle, Mail, MapPin } from "lucide-react";
+import { SITE_URL } from "@/lib/site";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "Política de Privacidade e Gestão de Cookies da AJAVP. Transparência total sobre a proteção de dados dos sócios e atletas, isenção de cookies de rastreio e conformidade com o RGPD.",
   alternates: {
-    canonical: "https://ajavp.vercel.app/privacidade",
+    canonical: `${SITE_URL}/privacidade`,
   },
 };
 

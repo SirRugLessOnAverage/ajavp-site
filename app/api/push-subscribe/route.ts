@@ -13,11 +13,12 @@ const SUPABASE_ANON_KEY =
 function getCorsHeaders(req: Request) {
   const origin = req.headers.get('origin') || '';
   const allowedOrigins = [
+    'https://ajavp.pt',
+    'https://www.ajavp.pt',
+    'https://gestao.ajavp.pt',
     'https://ajavp.vercel.app',
     'https://ajavp-site.vercel.app',
     'https://ajavp-gestao.vercel.app',
-    'https://ajavp.pt',
-    'https://www.ajavp.pt',
   ];
 
   const isLocalhost =

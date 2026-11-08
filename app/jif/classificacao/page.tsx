@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Award, Trophy, ChevronRight, Scale, AlertTriangle, ArrowLeft, Info, HelpCircle } from 'lucide-react';
+import { SITE_URL } from '@/lib/site';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import JifPodioRanking from '@/components/jif/JifPodioRanking';
 import JifRankingTable from '@/components/jif/JifRankingTable';
@@ -14,13 +15,13 @@ export const metadata: Metadata = {
   description:
     'Quadro Concelhio e Classificação Virtual das 19 freguesias nos XL Jogos Inter-Freguesias de Vila do Conde 2026/2027. Consulta posições, pautas de Corta-Mato, Futebol e Futsal e medalheiro oficial.',
   alternates: {
-    canonical: 'https://ajavp.vercel.app/jif/classificacao'
+    canonical: `${SITE_URL}/jif/classificacao`
   },
   openGraph: {
     title: 'Classificação Virtual XL JIF 2026/2027 • AJAVP',
     description:
       'Quadro Concelhio Não-Oficial das 19 freguesias nos XL Jogos Inter-Freguesias. Vilar do Pinheiro no Top 4 Concelhio com Corta-Mato, Futebol e Futsal!',
-    url: 'https://ajavp.vercel.app/jif/classificacao',
+    url: `${SITE_URL}/jif/classificacao`,
     siteName: 'AJAVP',
     images: [
       {

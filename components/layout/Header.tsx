@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { GESTAO_LINKS } from "@/lib/site";
 import { DynamicTopBanner } from "./DynamicTopBanner";
 import {
   Medal,
@@ -477,7 +478,7 @@ export function Header() {
                   <div className="h-px bg-slate-100 dark:bg-white/10 my-1" />
 
                   <a
-                    href="https://ajavp-gestao.vercel.app/socio"
+                    href={GESTAO_LINKS.socio}
                     target="_blank"
                     rel="noopener noreferrer"
                     role="menuitem"
@@ -639,7 +640,7 @@ export function Header() {
                 </Link>
 
                 <a
-                  href="https://ajavp-gestao.vercel.app/socio"
+                  href={GESTAO_LINKS.socio}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-between py-2 px-3.5 rounded-xl bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 text-slate-700 dark:text-slate-300 font-bold text-xs border border-slate-200 dark:border-white/10 transition-all"

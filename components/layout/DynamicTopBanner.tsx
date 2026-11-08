@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Calendar, ChevronRight, Sparkles } from "lucide-react";
+import { GESTAO_LINKS } from "@/lib/site";
 import { getProximoEventoJif, type ProximoEventoInfo } from "@/data/jif/calendario";
 
 interface DynamicTopBannerProps {
@@ -35,7 +36,7 @@ export function DynamicTopBanner({
           &quot;Vem e Traz um Amigo&quot; &bull; Treinos e atividades para todas as idades na AJAVP! 🤩
         </span>
         <a
-          href="https://ajavp-gestao.vercel.app/inscricao"
+          href={GESTAO_LINKS.inscricao}
           target="_blank"
           rel="noopener noreferrer"
           className="underline hover:text-amber-200 font-semibold ml-1 hidden sm:inline"

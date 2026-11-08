@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   description:
     "Associação desportiva, cultural e recreativa de Vilar do Pinheiro, Vila do Conde. Futsal, Atletismo, Ténis de Mesa, Duatlo e XL Jogos Inter-Freguesias (JIF).",
   applicationName: "AJAVP",
-  authors: [{ name: "AJAVP", url: "https://ajavp.vercel.app" }],
+  authors: [{ name: "AJAVP", url: SITE_URL }],
   keywords: [
     "AJAVP",
     "Vilar do Pinheiro",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     title: "AJAVP | Associação de Jovens e Adultos de Vilar do Pinheiro",
     description:
       "Desporto, Cultura e Comunidade em Vilar do Pinheiro. Inscrições abertas e resultados em direto dos XL Jogos Inter-Freguesias.",
-    url: "https://ajavp.vercel.app",
+    url: SITE_URL,
     siteName: "AJAVP",
     locale: "pt_PT",
     type: "website",

@@ -13,13 +13,14 @@ import {
   HelpCircle,
 } from "lucide-react";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import { GESTAO_LINKS, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Torna-te Sócio da AJAVP • Quotas & Vantagens 2026/2027",
   description:
     "Junta-te à família da AJAVP. Quotas transparentes (Adulto 12€/ano e Menores isentos), cartão digital com QR Code no telemóvel e apoio direto ao desporto de Vilar do Pinheiro.",
   alternates: {
-    canonical: "https://ajavp.vercel.app/socios",
+    canonical: `${SITE_URL}/socios`,
   },
 };
 
@@ -53,7 +54,7 @@ export default function SociosPage() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="https://ajavp-gestao.vercel.app/inscricao"
+              href={GESTAO_LINKS.inscricao}
               target="_blank"
               rel="noopener noreferrer"
               className="motion-press w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-brand-green hover:bg-brand-greenDark text-white font-bold text-sm sm:text-base transition-colors shadow-lg shadow-brand-green/25"
@@ -64,7 +65,7 @@ export default function SociosPage() {
             </a>
 
             <a
-              href="https://ajavp-gestao.vercel.app/socio"
+              href={GESTAO_LINKS.socio}
               target="_blank"
               rel="noopener noreferrer"
               className="motion-press w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-white hover:bg-slate-100 dark:bg-white/10 dark:hover:bg-white/15 border border-slate-300 dark:border-white/15 text-slate-800 dark:text-white font-semibold text-sm sm:text-base transition-colors shadow-xs"
@@ -146,7 +147,7 @@ export default function SociosPage() {
               </div>
 
               <a
-                href="https://ajavp-gestao.vercel.app/inscricao"
+                href={GESTAO_LINKS.inscricao}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="motion-press w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm transition-colors shadow-md shadow-emerald-600/20"
@@ -206,7 +207,7 @@ export default function SociosPage() {
               </div>
 
               <a
-                href="https://ajavp-gestao.vercel.app/inscricao"
+                href={GESTAO_LINKS.inscricao}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="motion-press w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-slate-900 hover:bg-slate-800 dark:bg-white/10 dark:hover:bg-white/20 text-white font-bold text-sm transition-colors border border-transparent dark:border-white/10"
@@ -340,7 +341,7 @@ export default function SociosPage() {
 
           <div className="text-center mt-12">
             <a
-              href="https://ajavp-gestao.vercel.app/inscricao"
+              href={GESTAO_LINKS.inscricao}
               target="_blank"
               rel="noopener noreferrer"
               className="motion-press inline-flex items-center gap-2 px-8 py-4 rounded-full bg-brand-green hover:bg-brand-greenDark text-white font-bold text-base transition-colors shadow-xl shadow-brand-green/25"
@@ -363,7 +364,7 @@ export default function SociosPage() {
               Consulta o teu número de sócio, o teu cartão digital com QR Code e o estado da quota na tua Área Reservada.
             </p>
             <a
-              href="https://ajavp-gestao.vercel.app/socio"
+              href={GESTAO_LINKS.socio}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-sm border border-white/20 transition-all hover:scale-105"

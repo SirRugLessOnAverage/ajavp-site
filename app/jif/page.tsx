@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Medal, Calendar, MapPin, Users, Award, ChevronRight, UserPlus, Flame } from 'lucide-react';
+import { SITE_URL, GESTAO_LINKS } from '@/lib/site';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import JifHubTabs from '@/components/jif/JifHubTabs';
 import { JifRegulamentoTenisMesa } from '@/components/jif/JifRegulamentoTenisMesa';
@@ -10,13 +11,13 @@ export const metadata: Metadata = {
   description:
     'Calendário oficial completo, recintos e GPS, comunicados ADCCVC e resultados da participação de Vilar do Pinheiro nos XL Jogos Inter-Freguesias de Vila do Conde.',
   alternates: {
-    canonical: 'https://ajavp.vercel.app/jif'
+    canonical: `${SITE_URL}/jif`
   },
   openGraph: {
     title: 'Portal Oficial XL JIF 2026/2027 • AJAVP',
     description:
       'Acompanha a participação de Vilar do Pinheiro nos XL Jogos Inter-Freguesias: calendário das 36 provas, rotas GPS para os 12 pavilhões e comunicados oficiais.',
-    url: 'https://ajavp.vercel.app/jif',
+    url: `${SITE_URL}/jif`,
     siteName: 'AJAVP',
     images: [
       {
@@ -88,15 +89,15 @@ export default function JifPage() {
                   <span>Classificação Virtual</span>
                 </Link>
 
-                <Link
-                  href="https://ajavp-gestao.vercel.app/inscricao"
+                <a
+                  href={GESTAO_LINKS.inscricao}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white font-heading font-bold text-xs sm:text-sm border border-white/20 transition-colors"
                 >
                   <UserPlus className="w-4 h-4 text-emerald-400" />
                   <span>Inscrever Atleta na AJAVP</span>
-                </Link>
+                </a>
               </div>
 
               {/* Mini-KPIs no rodapé do Hero */}
@@ -230,15 +231,15 @@ export default function JifPage() {
             </p>
           </div>
 
-          <Link
-            href="https://ajavp-gestao.vercel.app/inscricao"
+          <a
+            href={GESTAO_LINKS.inscricao}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-brand-green hover:from-emerald-400 hover:to-emerald-600 text-white font-heading font-bold text-sm shadow-lg hover:shadow-xl hover:scale-105 transition-all shrink-0 cursor-pointer"
           >
             <UserPlus className="w-4 h-4" />
             <span>Ficha de Inscrição Oficial</span>
-          </Link>
+          </a>
         </div>
       </main>
     </div>

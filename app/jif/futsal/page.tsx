@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { SITE_URL } from "@/lib/site";
 import { obterDadosFutsal } from "@/lib/jif/data-service";
 import { FutsalHero } from "@/components/jif/futsal/FutsalHero";
 import { FutsalPavilhoesTabs } from "@/components/jif/futsal/FutsalPavilhoesTabs";
@@ -10,13 +11,13 @@ export const metadata: Metadata = {
   description:
     "Hub Oficial do Futsal nos XL Jogos Inter-Freguesias de Vila do Conde. Consulta resultados por pavilhão, classificações dos 5 escalões (Sub-7 a Sub-16) e quadro de melhores marcadores da AJAVP.",
   alternates: {
-    canonical: "https://ajavp.vercel.app/jif/futsal",
+    canonical: `${SITE_URL}/jif/futsal`,
   },
   openGraph: {
     title: "Futsal Semanal • XL JIF 2026/2027 • Resultados e Classificações • AJAVP",
     description:
       "Acompanha todas as jornadas de Futsal da AJAVP: Sub-9 Líderes Concelhios (30 golos), Sub-11 no Pódio e melhores marcadores.",
-    url: "https://ajavp.vercel.app/jif/futsal",
+    url: `${SITE_URL}/jif/futsal`,
     siteName: "AJAVP",
     images: [
       {

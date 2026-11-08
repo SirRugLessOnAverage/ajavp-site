@@ -17,6 +17,7 @@ import {
   Bell,
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
+import { GESTAO_LINKS } from "@/lib/site";
 import { NoticiasSection } from "@/components/home/NoticiasSection";
 import { EventosSection } from "@/components/home/EventosSection";
 import { JifLiveTicker } from "@/components/home/JifLiveTicker";
@@ -101,7 +102,7 @@ export default async function HomePage() {
 
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
                 <a
-                  href="https://ajavp-gestao.vercel.app/inscricao"
+                  href={GESTAO_LINKS.inscricao}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="motion-press w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-brand-green hover:bg-brand-greenDark text-white font-heading font-bold px-7 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-0.5 text-sm sm:text-base cursor-pointer"
@@ -378,7 +379,7 @@ export default async function HomePage() {
             </Link>
 
             <a
-              href="https://ajavp-gestao.vercel.app/socio"
+              href={GESTAO_LINKS.socio}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white/10 hover:bg-white/20 text-white font-heading font-semibold px-7 py-4 rounded-full border border-white/20 transition-all text-sm sm:text-base"
