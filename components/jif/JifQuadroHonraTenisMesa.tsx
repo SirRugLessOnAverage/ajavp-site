@@ -23,28 +23,28 @@ import {
 
 const FOTOS_DESTAQUE = [
   {
-    src: '/assets/images/galeria/tenis-mesa/tenis_mesa_2026_comitiva_ajavp.webp',
-    title: 'Comitiva Oficial AJAVP',
-    caption: 'Atletas e equipa técnica em Guilhabreu',
-    badge: 'Comitiva',
+    src: '/assets/images/galeria/tenis-mesa/tenis_mesa_2026_podio_sub11_ouro_prata_bronze.webp',
+    title: 'Pódio 100% AJAVP • Sub-11',
+    caption: '1º Johnny Ye, 2º Dong Xuan e 3º Francisco Fernandes',
+    badge: 'Histórico 🥇🥈🥉',
   },
   {
-    src: '/assets/images/galeria/tenis-mesa/tenis_mesa_2026_vitoria_coletiva_trofeu.webp',
-    title: 'Troféu 1º Lugar Coletivo',
-    caption: 'Celebração com a Taça Concelhia',
-    badge: '1º Lugar 🏆',
+    src: '/assets/images/galeria/tenis-mesa/tenis_mesa_2026_podio_livre_masculino_ouro.webp',
+    title: 'Campeão Concelhio • Livres',
+    caption: 'Pedro Cruz no topo do pódio individual com o cachecol',
+    badge: 'Campeão Ouro 🥇',
   },
   {
-    src: '/assets/images/galeria/tenis-mesa/tenis_mesa_2026_campeao_individual.webp',
-    title: 'Campeão no Pódio',
-    caption: 'Ouro individual para a AJAVP',
-    badge: 'Ouro 🥇',
+    src: '/assets/images/galeria/tenis-mesa/tenis_mesa_2026_podio_sub16_campeao_vice.webp',
+    title: 'Final 100% AJAVP • Sub-16',
+    caption: '1º Afonso Fernandes e 2º Rodrigo Pereira',
+    badge: 'Dobradinha 🥇🥈',
   },
   {
-    src: '/assets/images/galeria/tenis-mesa/tenis_mesa_2026_acao_servico_mesa.webp',
-    title: 'Ação de Jogo',
-    caption: 'Foco e rotação na mesa oficial',
-    badge: 'Competição',
+    src: '/assets/images/galeria/tenis-mesa/tenis_mesa_2026_medalhados_tarde_ajavp.webp',
+    title: 'Medalhados da AJAVP',
+    caption: 'Rodrigo, Diana, Afonso e Pedro com o cachecol da Mancha Verde',
+    badge: 'Campeões 🏆',
   },
 ];
 
