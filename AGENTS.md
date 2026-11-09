@@ -9,14 +9,17 @@
   - O projeto irmão (`AJAVP-Gestao`) gere: os dados protegidos de sócios, quotas, pessoas, equipamentos, inscrições com assinatura digital e backoffice da direção.
   - O Site Público NUNCA deve tentar aceder diretamente ou alterar as tabelas de pessoas/sócios sem passar pelos contratos ou RPCs autorizados pela secretaria.
 
-## 🌿 Política de Git e Branches (Regra Oficial Atualizada pelo Utilizador)
-- **Ramo Principal (main):** Todos os desenvolvimentos, alterações, commits e respetivos git push devem ser efetuados **única e exclusivamente** no ramo main (produção direta).
-- **Sem Ramo Develop/Preview:** **NÃO** usar o ramo develop nem ambientes preview nesta área, por determinação expressa do utilizador. Todo o trabalho deve ser feito e enviado diretamente no ramo main.
+## 🌿 Política de Git, Branches e Ambientes (Regra Oficial Atualizada pelo Utilizador)
+- **Produção Principal (`main`):** Aponta para o domínio oficial definitivo `https://ajavp.pt`.
+- **Ambiente de Validação / Preview (`development`):** O branch `development` aponta para o ambiente de preview no Vercel: `https://ajavp.vercel.app`.
+- **Fluxo de Trabalho:**
+  1. Desenvolver, testar e efetuar commits/push no branch `development` para validação em `https://ajavp.vercel.app`.
+  2. Após validação e aprovação explícita do utilizador, efetuar merge e push para `main`, publicando em `https://ajavp.pt`.
 
-## 🌐 Domínio Oficial de Produção (Regra Oficial Atualizada pelo Utilizador)
-- **Domínio Oficial Definitivo:** `https://ajavp.pt` (em processo ativo de configuração DNS pelo utilizador).
-- **Aliases Atuais:** `ajavp.vercel.app` e `ajavp-site.vercel.app`.
-- **Arquitetura de URLs, CORS & SEO:** Toda a arquitetura (canonical, sitemaps, OpenGraph, JSON-LD, CORS e webhooks) deve estar orientada para o domínio `https://ajavp.pt`. A constante centralizada está em `lib/site.ts`.
+## 🌐 Domínios & Arquitetura de URLs
+- **Domínio Oficial de Produção (`main`):** `https://ajavp.pt`.
+- **Domínio de Preview (`development`):** `https://ajavp.vercel.app`.
+- **Arquitetura de URLs, CORS & SEO:** Toda a arquitetura canónica (canonical, sitemaps, OpenGraph, JSON-LD, CORS e webhooks) permanece estritamente orientada para o domínio de produção `https://ajavp.pt`. A constante centralizada está em `lib/site.ts`.
 
 ## 📊 Sistema de Pontuação e Classificação Virtual dos JIF (Regra Oficial)
 - **Simulador Virtual Excel:** O documento Excel de suporte (`GERAL 26_27` / simulador virtual) é a referência para a pontuação e simulação da classificação geral dos Jogos Inter-Freguesias.
