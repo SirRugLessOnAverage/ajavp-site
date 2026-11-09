@@ -100,6 +100,37 @@ export default async function HomePage() {
                 Promovemos o desporto, a formação de jovens e o convívio comunitário em Vilar do Pinheiro. Da formação ao escalão sénior, todos têm lugar na nossa equipa.
               </p>
 
+              {/* Destaque Vitória Histórica no Ténis de Mesa • XL JIF */}
+              <Link
+                href="/jif"
+                className="motion-press group block p-4 rounded-2xl bg-gradient-to-r from-amber-500/15 via-emerald-500/15 to-white/70 dark:from-amber-950/40 dark:via-emerald-950/30 dark:to-slate-900 border-2 border-amber-400/80 dark:border-amber-400/50 shadow-md hover:shadow-lg hover:border-amber-500 transition-all text-left backdrop-blur-xs"
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-11 h-11 rounded-2xl bg-amber-500 text-slate-950 font-black text-2xl flex items-center justify-center shrink-0 shadow-xs">
+                      🏆
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-500 text-slate-950">
+                          XL Jogos Inter-Freguesias
+                        </span>
+                        <span className="text-xs font-bold text-amber-800 dark:text-amber-300">
+                          1º Encontro Ténis de Mesa
+                        </span>
+                      </div>
+                      <p className="text-xs sm:text-sm font-heading font-black text-slate-900 dark:text-white mt-0.5">
+                        AJAVP Campeã do Encontro com 1º Lugar Geral e 9 Pódios!
+                      </p>
+                    </div>
+                  </div>
+                  <span className="hidden sm:inline-flex items-center gap-1 text-xs font-bold text-amber-700 dark:text-amber-400 group-hover:translate-x-1 transition-transform shrink-0">
+                    <span>Quadro de Honra</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </span>
+                </div>
+              </Link>
+
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
                 <a
                   href={GESTAO_LINKS.inscricao}
