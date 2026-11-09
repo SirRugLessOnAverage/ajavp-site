@@ -57,7 +57,7 @@ export const JIF_CLASSIFICACAO: JifParishRanking[] = [
     fsRank: 2, fsPts: 70,
     tmRank: 3, tmPts: 48,
     pontos: 202,
-    gold: 1, silver: 1, bronze: 3,
+    gold: 2, silver: 1, bronze: 2,
     futsalDetail: "Sub-7 (2º) • Sub-9 (6º) • Sub-11 (4º) • Sub-13 (2º) • Sub-16 (6º)",
     delta: 0,
     history: [
@@ -75,7 +75,7 @@ export const JIF_CLASSIFICACAO: JifParishRanking[] = [
     fsRank: 4, fsPts: 60,
     tmRank: 2, tmPts: 51,
     pontos: 198,
-    gold: 1, silver: 3, bronze: 1,
+    gold: 2, silver: 2, bronze: 3,
     futsalDetail: "Sub-7 (7º) • Sub-9 (4º) • Sub-11 (8º) • Sub-13 (9º) • Sub-16 (2º)",
     delta: 0,
     history: [
@@ -93,7 +93,7 @@ export const JIF_CLASSIFICACAO: JifParishRanking[] = [
     fsRank: 5, fsPts: 55,
     tmRank: 1, tmPts: 54,
     pontos: 196,
-    gold: 3, silver: 2, bronze: 2,
+    gold: 5, silver: 5, bronze: 5,
     futsalDetail: "Sub-7 (6º) • Sub-9 (1º 🥇) • Sub-11 (2º 🥈) • Sub-13 (10º)",
     delta: 0,
     history: [
@@ -129,7 +129,7 @@ export const JIF_CLASSIFICACAO: JifParishRanking[] = [
     fsRank: 7, fsPts: 45,
     tmRank: 7, tmPts: 36,
     pontos: 150,
-    gold: 0, silver: 0, bronze: 0,
+    gold: 1, silver: 0, bronze: 1,
     futsalDetail: "Sub-7 (5º) • Sub-9 (7º) • Sub-11 (6º) • Sub-13 (7º) • Sub-16 (7º)",
     delta: 1,
     history: [
@@ -147,7 +147,7 @@ export const JIF_CLASSIFICACAO: JifParishRanking[] = [
     fsRank: 6, fsPts: 50,
     tmRank: 15, tmPts: 12,
     pontos: 146,
-    gold: 0, silver: 1, bronze: 1,
+    gold: 2, silver: 1, bronze: 0,
     futsalDetail: "Sub-7 (3º) • Sub-9 (5º) • Sub-11 (3º) • Sub-13 (8º) • Sub-16 (12º)",
     delta: -1,
     history: [
@@ -165,7 +165,7 @@ export const JIF_CLASSIFICACAO: JifParishRanking[] = [
     fsRank: 8, fsPts: 40,
     tmRank: 10, tmPts: 27,
     pontos: 130,
-    gold: 0, silver: 0, bronze: 0,
+    gold: 0, silver: 1, bronze: 1,
     futsalDetail: "Sub-7 (8º) • Sub-9 (8º) • Sub-11 (8º) • Sub-13 (5º) • Sub-16 (8º)",
     delta: 0,
     history: [
@@ -183,7 +183,7 @@ export const JIF_CLASSIFICACAO: JifParishRanking[] = [
     fsRank: 12, fsPts: 25,
     tmRank: 4, tmPts: 45,
     pontos: 118,
-    gold: 0, silver: 0, bronze: 0,
+    gold: 0, silver: 1, bronze: 2,
     futsalDetail: "Sub-7 (10º) • Sub-9 (9º) • Sub-11 (10º) • Sub-13 (11º) • Sub-16 (10º)",
     delta: 2,
     history: [
@@ -201,7 +201,7 @@ export const JIF_CLASSIFICACAO: JifParishRanking[] = [
     fsRank: 10, fsPts: 30,
     tmRank: 9, tmPts: 30,
     pontos: 105,
-    gold: 0, silver: 0, bronze: 0,
+    gold: 0, silver: 1, bronze: 0,
     futsalDetail: "Sub-7 (9º) • Sub-9 (11º) • Sub-11 (9º) • Sub-13 (9º) • Sub-16 (9º)",
     delta: 0,
     history: [
@@ -219,7 +219,7 @@ export const JIF_CLASSIFICACAO: JifParishRanking[] = [
     fsRank: 13, fsPts: 20,
     tmRank: 6, tmPts: 39,
     pontos: 95,
-    gold: 0, silver: 0, bronze: 0,
+    gold: 1, silver: 0, bronze: 0,
     futsalDetail: "Sub-7 (12º) • Sub-9 (13º) • Sub-11 (12º) • Sub-13 (12º) • Sub-16 (11º)",
     delta: 2,
     history: [
@@ -237,7 +237,7 @@ export const JIF_CLASSIFICACAO: JifParishRanking[] = [
     fsRank: 11, fsPts: 30,
     tmRank: 11, tmPts: 24,
     pontos: 93,
-    gold: 0, silver: 0, bronze: 0,
+    gold: 0, silver: 0, bronze: 1,
     futsalDetail: "Sub-7 (11º) • Sub-9 (10º) • Sub-11 (11º) • Sub-13 (10º) • Sub-16 (11º)",
     delta: 0,
     history: [
@@ -273,7 +273,7 @@ export const JIF_CLASSIFICACAO: JifParishRanking[] = [
     fsRank: 14, fsPts: 20,
     tmRank: 12, tmPts: 21,
     pontos: 65,
-    gold: 0, silver: 0, bronze: 0,
+    gold: 0, silver: 1, bronze: 0,
     futsalDetail: "Sub-7 (11º) • Sub-9 (11º) • Sub-11 (11º) • Sub-13 (11º) • Sub-16 (11º)",
     delta: 0,
     history: [
@@ -351,7 +351,7 @@ export const JIF_CLASSIFICACAO: JifParishRanking[] = [
     fsNp: true,
     tmRank: 13, tmPts: 18,
     pontos: -19,
-    gold: 0, silver: 0, bronze: 0,
+    gold: 0, silver: 1, bronze: 0,
     futsalDetail: "Não Participou (N/P)",
     delta: 1,
     history: [

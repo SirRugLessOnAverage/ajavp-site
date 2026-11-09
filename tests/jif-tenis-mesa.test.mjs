@@ -29,6 +29,7 @@ test("Classificação Geral Virtual: deve integrar 4ª etapa (TM) com rigor mate
   assert.ok(content.includes('name: "Vilar do Pinheiro"'), "Deve conter Vilar do Pinheiro");
   assert.ok(content.includes("tmPts: 54"), "AJAVP deve ter 54 pts em TM");
   assert.ok(content.includes("pontos: 196"), "AJAVP deve ter 196 pontos acumulados");
+  assert.ok(content.includes("gold: 5, silver: 5, bronze: 5"), "AJAVP deve liderar o medalheiro com 5 ouros, 5 pratas e 5 bronzes");
   assert.ok(content.includes("stageId: 'tm'"), "History deve conter etapa tm");
 
   // Top 3 concelhio
@@ -50,3 +51,4 @@ test("UI & Componentes: Hub JIF e Homepage devem integrar Quadro de Honra e Bann
   const tickerContent = fs.readFileSync(tickerPath, "utf-8");
   assert.ok(tickerContent.includes("1º Encontro de Ténis de Mesa"), "Ticker deve destacar vitória no Ténis de Mesa");
 });
+

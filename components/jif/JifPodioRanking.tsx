@@ -40,7 +40,7 @@ export default function JifPodioRanking({ rankings }: JifPodioRankingProps) {
                 {ajavp.pontos} Pontos Acumulados
               </h3>
               <p className="text-xs text-slate-300">
-                1º Corta-Mato (57 pts) • 1º Ténis Mesa (54 pts) • 5º Futsal (55 pts) • 6º Futebol (30 pts) • 3🥇 2🥈 2🥉 Medalhas
+                1º Corta-Mato (57 pts) • 1º Ténis Mesa (54 pts) • 5º Futsal (55 pts) • 6º Futebol (30 pts) • 5🥇 5🥈 5🥉 Medalhas (Líder Concelhio)
               </p>
             </div>
           </div>
