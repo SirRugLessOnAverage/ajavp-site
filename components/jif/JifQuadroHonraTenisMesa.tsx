@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import {
   TENIS_MESA_1_ENCONTRO,
   TenisMesaEscalaoResultado,
@@ -16,7 +17,36 @@ import {
   Sparkles,
   Table as TableIcon,
   CheckCircle2,
+  Camera,
+  ArrowRight,
 } from 'lucide-react';
+
+const FOTOS_DESTAQUE = [
+  {
+    src: '/assets/images/galeria/tenis-mesa/tenis_mesa_2026_comitiva_ajavp.webp',
+    title: 'Comitiva Oficial AJAVP',
+    caption: 'Atletas e equipa técnica em Guilhabreu',
+    badge: 'Comitiva',
+  },
+  {
+    src: '/assets/images/galeria/tenis-mesa/tenis_mesa_2026_vitoria_coletiva_trofeu.webp',
+    title: 'Troféu 1º Lugar Coletivo',
+    caption: 'Celebração com a Taça Concelhia',
+    badge: '1º Lugar 🏆',
+  },
+  {
+    src: '/assets/images/galeria/tenis-mesa/tenis_mesa_2026_campeao_individual.webp',
+    title: 'Campeão no Pódio',
+    caption: 'Ouro individual para a AJAVP',
+    badge: 'Ouro 🥇',
+  },
+  {
+    src: '/assets/images/galeria/tenis-mesa/tenis_mesa_2026_acao_servico_mesa.webp',
+    title: 'Ação de Jogo',
+    caption: 'Foco e rotação na mesa oficial',
+    badge: 'Competição',
+  },
+];
 
 export default function JifQuadroHonraTenisMesa() {
   const [mostrarTabelaFreguesias, setMostrarTabelaFreguesias] = useState(false);
@@ -83,6 +113,65 @@ export default function JifQuadroHonraTenisMesa() {
               <span className="text-[10px] text-amber-200/80 block mt-0.5">Presentes nos 6 Escalões</span>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Mini-Galeria Fotográfica da Vitória */}
+      <div className="bg-white dark:bg-slate-900 rounded-3xl p-5 sm:p-6 border border-slate-200 dark:border-white/10 shadow-xs space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="flex items-center gap-2">
+            <span className="p-2 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400">
+              <Camera className="w-5 h-5" />
+            </span>
+            <div>
+              <h3 className="font-heading font-black text-base sm:text-lg text-slate-900 dark:text-white">
+                Galeria Fotográfica • 1º Encontro
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400">
+                14 fotografias oficiais disponíveis na Galeria Multimédia
+              </p>
+            </div>
+          </div>
+
+          <Link
+            href="/multimedia#galeria-fotos"
+            className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-white/10 dark:hover:bg-white/15 text-xs font-bold text-slate-800 dark:text-slate-200 transition-colors"
+          >
+            <span>Ver todas as fotos</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          {FOTOS_DESTAQUE.map((foto, idx) => (
+            <Link
+              key={idx}
+              href="/multimedia#galeria-fotos"
+              className="group relative rounded-2xl overflow-hidden aspect-4/3 bg-slate-950 border border-slate-200 dark:border-white/10 shadow-xs block"
+            >
+              <img
+                src={foto.src}
+                alt={foto.title}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-90 group-hover:opacity-95 transition-opacity" />
+              <div className="absolute top-2 left-2">
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-black/60 backdrop-blur-md text-amber-300 border border-white/10">
+                  {foto.badge}
+                </span>
+              </div>
+              <div className="absolute bottom-2 left-2 right-2">
+                <p className="text-xs font-bold text-white leading-tight truncate">
+                  {foto.title}
+                </p>
+                <p className="text-[10px] text-slate-300 truncate">
+                  {foto.caption}
+                </p>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
 

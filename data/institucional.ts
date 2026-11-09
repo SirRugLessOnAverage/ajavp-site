@@ -95,7 +95,7 @@ export interface GalleryPhoto {
   src: string;
   title: string;
   badge: string;
-  category: "equipamento" | "futsal" | "atletismo" | "outras" | "familia";
+  category: "equipamento" | "futsal" | "atletismo" | "outras" | "familia" | "tenis-mesa";
   featuredNew?: boolean;
   objectPosition?: string;
 }
@@ -698,6 +698,108 @@ export const SPONSORS_LIST: SponsorItem[] = [
 ];
 
 export const GALLERY_PHOTOS: GalleryPhoto[] = [
+  // XL Jogos Inter-Freguesias 2026/2027 • Ténis de Mesa (Guilhabreu)
+  {
+    id: "tenis-mesa-26-27-comitiva",
+    src: "/assets/images/galeria/tenis-mesa/tenis_mesa_2026_comitiva_ajavp.webp",
+    title: "🏓 Comitiva Oficial de Ténis de Mesa da AJAVP nos XL JIF em Guilhabreu",
+    badge: "Ténis de Mesa • Comitiva",
+    category: "tenis-mesa",
+    featuredNew: true,
+  },
+  {
+    id: "tenis-mesa-26-27-trofeu-coletivo",
+    src: "/assets/images/galeria/tenis-mesa/tenis_mesa_2026_vitoria_coletiva_trofeu.webp",
+    title: "🏆 AJAVP Campeã do 1º Encontro de Ténis de Mesa com o Troféu de 1º Lugar Coletivo",
+    badge: "1º Lugar Coletivo • XL JIF",
+    category: "tenis-mesa",
+    featuredNew: true,
+  },
+  {
+    id: "tenis-mesa-26-27-campeao-individual",
+    src: "/assets/images/galeria/tenis-mesa/tenis_mesa_2026_campeao_individual.webp",
+    title: "🥇 Atleta AJAVP no degrau mais alto do pódio individual de Ténis de Mesa",
+    badge: "Campeão Concelhio",
+    category: "tenis-mesa",
+    featuredNew: true,
+  },
+  {
+    id: "tenis-mesa-26-27-podio-ouro",
+    src: "/assets/images/galeria/tenis-mesa/tenis_mesa_2026_podio_medalhas_ouro.webp",
+    title: "🥇 Consagração de atletas AJAVP no pódio concelhio",
+    badge: "Pódio • Medalhas",
+    category: "tenis-mesa",
+  },
+  {
+    id: "tenis-mesa-26-27-podio-formacao",
+    src: "/assets/images/galeria/tenis-mesa/tenis_mesa_2026_podio_formacao.webp",
+    title: "🥈 Atletas da formação AJAVP no pódio dos XL Jogos Inter-Freguesias",
+    badge: "Formação • Pódio",
+    category: "tenis-mesa",
+  },
+  {
+    id: "tenis-mesa-26-27-podio-veteranos",
+    src: "/assets/images/galeria/tenis-mesa/tenis_mesa_2026_podio_seniores_veteranos.webp",
+    title: "🎖️ Cerimónia de entrega de prémios dos escalões veteranos e seniores",
+    badge: "Veteranos • Pódio",
+    category: "tenis-mesa",
+  },
+  {
+    id: "tenis-mesa-26-27-cerimonia-premios",
+    src: "/assets/images/galeria/tenis-mesa/tenis_mesa_2026_cerimonia_entrega_premios.webp",
+    title: "🏅 Entrega oficial de prémios e diplomas aos participantes do encontro",
+    badge: "Cerimónia de Prémios",
+    category: "tenis-mesa",
+  },
+  {
+    id: "tenis-mesa-26-27-podio-fairplay",
+    src: "/assets/images/galeria/tenis-mesa/tenis_mesa_2026_podio_fairplay.webp",
+    title: "🤝 Espírito de convívio e fair-play entre atletas de todas as freguesias",
+    badge: "Fair-Play • Concelho",
+    category: "tenis-mesa",
+  },
+  {
+    id: "tenis-mesa-26-27-acao-servico",
+    src: "/assets/images/galeria/tenis-mesa/tenis_mesa_2026_acao_servico_mesa.webp",
+    title: "🏓 Atleta AJAVP em ação de serviço em mesa de jogo oficial",
+    badge: "Em Ação • Serviço",
+    category: "tenis-mesa",
+  },
+  {
+    id: "tenis-mesa-26-27-duelo-mesa",
+    src: "/assets/images/galeria/tenis-mesa/tenis_mesa_2026_duelo_troca_bolas.webp",
+    title: "🏓 Duelo disputado ponto a ponto na fase de grupos em Guilhabreu",
+    badge: "Competição • Duelo",
+    category: "tenis-mesa",
+  },
+  {
+    id: "tenis-mesa-26-27-fase-final",
+    src: "/assets/images/galeria/tenis-mesa/tenis_mesa_2026_fase_final_apuramento.webp",
+    title: "🏓 Fases eliminatórias da tarde rumo à vitória coletiva da AJAVP",
+    badge: "Fase Final • Jogo",
+    category: "tenis-mesa",
+  },
+  {
+    id: "tenis-mesa-26-27-abertura-pavilhao",
+    src: "/assets/images/galeria/tenis-mesa/tenis_mesa_2026_abertura_pavilhao.webp",
+    title: "🏟️ Aquecimento e ambientação às mesas no Pavilhão de Guilhabreu",
+    badge: "Pavilhão de Guilhabreu",
+    category: "tenis-mesa",
+  },
+  {
+    id: "tenis-mesa-26-27-apoio-banco",
+    src: "/assets/images/galeria/tenis-mesa/tenis_mesa_2026_apoio_bancada_banco.webp",
+    title: "👏 Companheiros de equipa e claque em apoio vibrante na bancada",
+    badge: "União • Bancada",
+    category: "tenis-mesa",
+  },
+  {
+    id: "tenis-mesa-26-27-celebracao-equipa",
+    src: "/assets/images/galeria/tenis-mesa/tenis_mesa_2026_celebracao_uniao_equipa.webp",
+    title: "💚 Roda de união e celebração dos atletas AJAVP em Guilhabreu",
+    badge: "Mancha Verde • União",
+    category: "tenis-mesa",
+  },
   // Novo Equipamento 26/27 & Futebol/Futsal Recentes
   {
     id: "kit-oficial-26-27",

@@ -16,10 +16,11 @@ const CATEGORY_TABS: {
   icon: string;
 }[] = [
   { id: "todas", label: "Todas as Fotos", icon: "✨" },
+  { id: "tenis-mesa", label: "Ténis de Mesa (JIF)", icon: "🏓" },
   { id: "equipamento", label: "Novo Equipamento 26/27", icon: "👕" },
   { id: "futsal", label: "Futsal & Futebol", icon: "🥅" },
   { id: "atletismo", label: "Atletismo & Campeões", icon: "🏃" },
-  { id: "outras", label: "Outras Modalidades", icon: "🏓" },
+  { id: "outras", label: "Outras Modalidades", icon: "🏅" },
   { id: "familia", label: "Família & 25 de Abril", icon: "💚" },
 ];
 
