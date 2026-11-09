@@ -23,6 +23,9 @@
 
 ## 📊 Sistema de Pontuação e Classificação Virtual dos JIF (Regra Oficial)
 - **Simulador Virtual Excel:** O documento Excel de suporte (`GERAL 26_27` / simulador virtual) é a referência para a pontuação e simulação da classificação geral dos Jogos Inter-Freguesias.
+- **Regra de Cálculo de Pontos por Participação Efetiva:** A divisão e atribuição de pontos de cada prova/modalidade é calculada exclusivamente com base no **número de equipas que efetivamente participaram**.
+  - Exemplo: se numa modalidade com 3 eventos participaram apenas 18 equipas (em vez das 19 do concelho), a pontuação máxima de 1º lugar é `18 × 3 = 54 pontos`, e a fórmula para cada posição é `(N_equipas_participantes - Posição + 1) × N_eventos`.
+  - As equipas que não participam sofrem a penalização regulamentar de não comparência (ex: `-15 pts` em modalidades de 3 eventos), mas **não entram** na base de cálculo de atribuição de pontos das equipas participantes.
 - **Workflow Obrigatório:**
   1. Extrair e validar toda a informação do simulador e dos vários comunicados com a explicação do sistema de pontuação no geral.
   2. Fazer perguntas claras para os pontos que não encontrem resposta no Excel ou nos comunicados.
