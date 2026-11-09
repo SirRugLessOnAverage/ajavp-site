@@ -10,7 +10,7 @@ interface JifRankingTableProps {
 
 export default function JifRankingTable({ rankings = JIF_CLASSIFICACAO }: JifRankingTableProps) {
   const [viewMode, setViewMode] = useState<'total' | 'breakdown' | 'medals'>('total');
-  const [modalidadeFiltro, setModalidadeFiltro] = useState<'atletismo' | 'futebol' | 'futsal'>('futsal');
+  const [modalidadeFiltro, setModalidadeFiltro] = useState<'atletismo' | 'futebol' | 'futsal' | 'tenis-de-mesa'>('tenis-de-mesa');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   let items = [...rankings];
@@ -27,6 +27,8 @@ export default function JifRankingTable({ rankings = JIF_CLASSIFICACAO }: JifRan
       items.sort((a, b) => b.fbPts - a.fbPts);
     } else if (modalidadeFiltro === 'futsal') {
       items.sort((a, b) => b.fsPts - a.fsPts);
+    } else if (modalidadeFiltro === 'tenis-de-mesa') {
+      items.sort((a, b) => b.tmPts - a.tmPts);
     }
   }
 
@@ -134,14 +136,26 @@ export default function JifRankingTable({ rankings = JIF_CLASSIFICACAO }: JifRan
                   : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-blue-100 dark:hover:bg-slate-700'
               }`}
             >
-              <span>🥅 Futsal (Jornada 3)</span>
+              <span>🥅 Futsal (J3)</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setModalidadeFiltro('tenis-de-mesa')}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                modalidadeFiltro === 'tenis-de-mesa'
+                  ? 'bg-blue-600 text-white shadow-xs scale-105'
+                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-blue-100 dark:hover:bg-slate-700'
+              }`}
+            >
+              <span>🏓 Ténis de Mesa (E1)</span>
             </button>
           </div>
 
           <div className="text-[11px] font-bold text-blue-800 dark:text-blue-300 bg-white/70 dark:bg-slate-900/60 px-3 py-1.5 rounded-xl border border-blue-200/60 dark:border-blue-800/40">
             {modalidadeFiltro === 'atletismo' && '🥇 Vilar do Pinheiro em 1º Lugar (57 pts • Campeã Concelhia)'}
             {modalidadeFiltro === 'futebol' && '🥇 Bagunte em 1º Lugar (48 pts • Campeã Torneio Futebol)'}
-            {modalidadeFiltro === 'futsal' && '🥇 Bagunte em 1º Lugar (80 pts) • Vilar do Pinheiro em 5º (60 pts)'}
+            {modalidadeFiltro === 'futsal' && '🥇 Bagunte em 1º Lugar (75 pts) • Vilar do Pinheiro em 5º (55 pts)'}
+            {modalidadeFiltro === 'tenis-de-mesa' && '🥇 Vilar do Pinheiro em 1º Lugar (54 pts • Venceu 1º Encontro com 14 pts de prova)'}
           </div>
         </div>
       )}
@@ -193,7 +207,19 @@ export default function JifRankingTable({ rankings = JIF_CLASSIFICACAO }: JifRan
                   title="Clique para ordenar por Futsal"
                 >
                   <span>🥅 Futsal</span>
-                  <span className="block text-[9px] font-normal text-slate-300">1º = 80 pts</span>
+                  <span className="block text-[9px] font-normal text-slate-300">1º = 75 pts</span>
+                </th>
+                <th
+                  onClick={() => { setViewMode('breakdown'); setModalidadeFiltro('tenis-de-mesa'); }}
+                  className={`py-3 px-3 text-center min-w-[110px] cursor-pointer transition-colors ${
+                    viewMode === 'breakdown' && modalidadeFiltro === 'tenis-de-mesa'
+                      ? 'bg-blue-800 text-amber-300 ring-2 ring-amber-400 font-black'
+                      : 'hover:bg-brand-navy/80'
+                  }`}
+                  title="Clique para ordenar por Ténis de Mesa"
+                >
+                  <span>🏓 Ténis Mesa</span>
+                  <span className="block text-[9px] font-normal text-slate-300">1º = 54 pts</span>
                 </th>
                 <th className="py-3 px-3 text-center min-w-[110px] bg-slate-950 text-amber-300 font-black">
                   <span>{viewMode === 'medals' ? 'Medalhas' : 'Total Pontos'}</span>
@@ -363,6 +389,35 @@ export default function JifRankingTable({ rankings = JIF_CLASSIFICACAO }: JifRan
                             {item.fsRank}º
                           </span>
                           <span className="text-[10px] text-slate-400 block">({item.fsPts} pts)</span>
+                        </div>
+                      )}
+                    </td>
+
+                    {/* Ténis de Mesa (E1) */}
+                    <td className={`py-3 px-3 text-center align-middle transition-colors ${
+                      viewMode === 'breakdown' && modalidadeFiltro === 'tenis-de-mesa'
+                        ? 'bg-blue-500/10 font-bold'
+                        : ''
+                    }`}>
+                      {item.tmNp ? (
+                        <div>
+                          <span className="text-xs font-bold text-rose-600 dark:text-rose-400">N/P</span>
+                          <span className="text-[10px] text-rose-500 font-bold block">(-15 pts)</span>
+                        </div>
+                      ) : (
+                        <div>
+                          <span
+                            className={`text-xs font-bold ${
+                              item.tmRank === 1
+                                ? 'text-amber-600 dark:text-amber-400 font-black'
+                                : item.isAjavp
+                                ? 'text-brand-green dark:text-emerald-400 font-black'
+                                : 'text-slate-800 dark:text-slate-200'
+                            }`}
+                          >
+                            {item.tmRank}º
+                          </span>
+                          <span className="text-[10px] text-slate-400 block">({item.tmPts} pts)</span>
                         </div>
                       )}
                     </td>

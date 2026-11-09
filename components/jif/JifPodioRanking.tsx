@@ -40,7 +40,7 @@ export default function JifPodioRanking({ rankings }: JifPodioRankingProps) {
                 {ajavp.pontos} Pontos Acumulados
               </h3>
               <p className="text-xs text-slate-300">
-                1º Corta-Mato (57 pts) • 6º Futebol (33 pts) • 5º Futsal (60 pts) • 2🥇 2🥈 2🥉 Medalhas
+                1º Corta-Mato (57 pts) • 1º Ténis Mesa (54 pts) • 5º Futsal (55 pts) • 6º Futebol (30 pts) • 3🥇 2🥈 2🥉 Medalhas
               </p>
             </div>
           </div>
@@ -48,7 +48,7 @@ export default function JifPodioRanking({ rankings }: JifPodioRankingProps) {
           <div className="self-end md:self-center shrink-0 text-right">
             <span className="inline-flex items-center gap-1 text-xs font-bold text-amber-300 bg-amber-500/20 px-3 py-1.5 rounded-xl border border-amber-400/40">
               <Flame className="w-4 h-4 text-amber-400" />
-              <span>A 5 pts do Top 3 Geral</span>
+              <span>A escassos 2 pts do Pódio Geral</span>
             </span>
           </div>
         </div>
