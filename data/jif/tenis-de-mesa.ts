@@ -40,8 +40,8 @@ export const TENIS_MESA_ENCONTROS: TenisMesaEncontroInfo[] = [
     numero: 1,
     data: '2026-11-07',
     local: 'Casa da Juventude de Guilhabreu',
-    estado: 'Agendado',
-    descricao: '1º Encontro Concelhio Oficial de Ténis de Mesa dos XL JIF (Manhã 09h30 • Tarde 14h30).'
+    estado: 'Concluído',
+    descricao: '1º Encontro Concelhio Oficial de Ténis de Mesa dos XL JIF • AJAVP Venceu o Encontro em 1º Lugar com 14 pts e 9 Pódios!'
   },
   {
     numero: 2,
@@ -285,3 +285,171 @@ export const TENIS_MESA_SECOES_REGULAMENTO: TenisMesaSecaoRegulamento[] = [
   }
 ];
 
+
+
+export interface TenisMesaAtletaResultado {
+  nome: string;
+  posicao: number;
+  medalha?: 'ouro' | 'prata' | 'bronze';
+  nota?: string;
+}
+
+export interface TenisMesaEscalaoResultado {
+  escalao: string;
+  genero: 'Masculino' | 'Feminino';
+  posicaoEquipa: number;
+  pontosEquipa: number;
+  destaque?: string;
+  atletas: TenisMesaAtletaResultado[];
+}
+
+export interface TenisMesaFreguesiaResultado {
+  clas: number;
+  freguesia: string;
+  sub11: number;
+  sub13: number;
+  sub15F: number;
+  sub16: number;
+  livreM: number;
+  livreF: number;
+  total: number;
+  pontosJif: number;
+  isAjavp?: boolean;
+}
+
+export interface TenisMesa1EncontroData {
+  encontroNumero: number;
+  data: string;
+  local: string;
+  freguesiasParticipantes: number;
+  ajavpResumo: {
+    clasGeral: number;
+    pontosTorneio: number;
+    pontosJif: number;
+    totalAtletas: number;
+    campeoes: number;
+    viceCampeoes: number;
+    bronzes: number;
+    totalPodios: number;
+  };
+  classificacaoColetiva: TenisMesaFreguesiaResultado[];
+  quadroHonraAjavp: TenisMesaEscalaoResultado[];
+}
+
+export const TENIS_MESA_1_ENCONTRO: TenisMesa1EncontroData = {
+  encontroNumero: 1,
+  data: '2026-11-07',
+  local: 'Casa da Juventude de Guilhabreu',
+  freguesiasParticipantes: 18,
+  ajavpResumo: {
+    clasGeral: 1,
+    pontosTorneio: 14,
+    pontosJif: 54,
+    totalAtletas: 24,
+    campeoes: 3,
+    viceCampeoes: 3,
+    bronzes: 3,
+    totalPodios: 9
+  },
+  classificacaoColetiva: [
+    { clas: 1, freguesia: 'Vilar do Pinheiro', sub11: 1, sub13: 5, sub15F: 3, sub16: 1, livreM: 2, livreF: 2, total: 14, pontosJif: 54, isAjavp: true },
+    { clas: 2, freguesia: 'Gião', sub11: 8, sub13: 2, sub15F: 2, sub16: 2, livreM: 3, livreF: 8, total: 25, pontosJif: 51 },
+    { clas: 3, freguesia: 'Árvore', sub11: 4, sub13: 3, sub15F: 4, sub16: 6, livreM: 5, livreF: 4, total: 26, pontosJif: 48 },
+    { clas: 4, freguesia: 'Mosteiró', sub11: 9, sub13: 13, sub15F: 5, sub16: 4, livreM: 1, livreF: 6, total: 38, pontosJif: 45 },
+    { clas: 5, freguesia: 'Bagunte', sub11: 2, sub13: 4, sub15F: 12, sub16: 8, livreM: 10, livreF: 3, total: 39, pontosJif: 42 },
+    { clas: 6, freguesia: 'Outeiro Maior', sub11: 18, sub13: 11, sub15F: 12, sub16: 5, livreM: 4, livreF: 5, total: 55, pontosJif: 39 },
+    { clas: 7, freguesia: 'Fornelo', sub11: 3, sub13: 14, sub15F: 12, sub16: 17, livreM: 9, livreF: 1, total: 56, pontosJif: 36 },
+    { clas: 8, freguesia: 'Junqueira', sub11: 6, sub13: 8, sub15F: 12, sub16: 3, livreM: 16, livreF: 14, total: 59, pontosJif: 33 },
+    { clas: 9, freguesia: 'Fajozes', sub11: 5, sub13: 1, sub15F: 12, sub16: 17, livreM: 14, livreF: 14, total: 63, pontosJif: 30 },
+    { clas: 10, freguesia: 'Arcos', sub11: 18, sub13: 6, sub15F: 6, sub16: 7, livreM: 22, livreF: 14, total: 73, pontosJif: 27 },
+    { clas: 11, freguesia: 'Canidelo', sub11: 11, sub13: 7, sub15F: 12, sub16: 17, livreM: 12, livreF: 14, total: 73, pontosJif: 24 },
+    { clas: 12, freguesia: 'Modivas', sub11: 10, sub13: 20, sub15F: 12, sub16: 10, livreM: 11, livreF: 14, total: 77, pontosJif: 21 },
+    { clas: 13, freguesia: 'Malta', sub11: 18, sub13: 20, sub15F: 1, sub16: 17, livreM: 8, livreF: 14, total: 78, pontosJif: 18 },
+    { clas: 14, freguesia: 'Vairão', sub11: 18, sub13: 12, sub15F: 12, sub16: 9, livreM: 13, livreF: 14, total: 78, pontosJif: 15 },
+    { clas: 15, freguesia: 'Tougues', sub11: 12, sub13: 9, sub15F: 12, sub16: 17, livreM: 15, livreF: 14, total: 79, pontosJif: 12 },
+    { clas: 16, freguesia: 'Macieira', sub11: 18, sub13: 20, sub15F: 12, sub16: 17, livreM: 6, livreF: 7, total: 80, pontosJif: 9 },
+    { clas: 17, freguesia: 'Touguinha Touguinhó', sub11: 7, sub13: 10, sub15F: 12, sub16: 17, livreM: 22, livreF: 14, total: 82, pontosJif: 6 },
+    { clas: 18, freguesia: 'Rio Mau', sub11: 18, sub13: 20, sub15F: 12, sub16: 11, livreM: 7, livreF: 14, total: 82, pontosJif: 3 },
+    { clas: 19, freguesia: 'Aveleda', sub11: 0, sub13: 0, sub15F: 0, sub16: 0, livreM: 0, livreF: 0, total: 0, pontosJif: -15 }
+  ],
+  quadroHonraAjavp: [
+    {
+      escalao: 'Sub 11 Masculinos',
+      genero: 'Masculino',
+      posicaoEquipa: 1,
+      pontosEquipa: 6,
+      destaque: 'Pódio 100% AJAVP • 1º, 2º e 3º Lugares Conquistados',
+      atletas: [
+        { nome: 'Johnny Ye', posicao: 1, medalha: 'ouro', nota: 'Campeão Sub-11 (Venceu final por 2-1)' },
+        { nome: 'Dong Xuan', posicao: 2, medalha: 'prata', nota: 'Vice-Campeão Sub-11' },
+        { nome: 'Francisco Fernandes', posicao: 3, medalha: 'bronze', nota: 'Medalha de Bronze (Venceu 3º lugar por 2-0)' },
+        { nome: 'Diogo Moura', posicao: 7, nota: 'Quartos de Final (7º classificado)' },
+        { nome: 'Tomás Costa', posicao: 15, nota: 'Oitavos de Final (15º classificado)' }
+      ]
+    },
+    {
+      escalao: 'Sub 16 Masculinos',
+      genero: 'Masculino',
+      posicaoEquipa: 1,
+      pontosEquipa: 9,
+      destaque: 'Final 100% AJAVP • Campeão e Vice-Campeão Concelhio',
+      atletas: [
+        { nome: 'Afonso Fernandes', posicao: 1, medalha: 'ouro', nota: 'Campeão Sub-16 (Venceu final por 2-0)' },
+        { nome: 'Rodrigo Pereira', posicao: 2, medalha: 'prata', nota: 'Vice-Campeão Sub-16' },
+        { nome: 'Duarte Gomes', posicao: 6, nota: 'Quartos de Final (6º classificado)' }
+      ]
+    },
+    {
+      escalao: 'Livre Masculinos',
+      genero: 'Masculino',
+      posicaoEquipa: 2,
+      pontosEquipa: 22,
+      destaque: 'Campeão Individual Livre & Vice-Campeões por Equipas',
+      atletas: [
+        { nome: 'Pedro Cruz', posicao: 1, medalha: 'ouro', nota: 'Campeão Individual (Venceu final por 2-1 vs Bruno Miranda/Modivas)' },
+        { nome: 'Paulo Azevedo', posicao: 7, nota: 'Quartos de Final (7º classificado)' },
+        { nome: 'Maurício Xavier', posicao: 14, nota: 'Oitavos de Final (14º classificado)' },
+        { nome: 'Francisco Azevedo', posicao: 20, nota: 'Fase de Séries (20º classificado)' },
+        { nome: 'Rui Vieira', posicao: 21, nota: 'Fase de Séries (21º classificado)' }
+      ]
+    },
+    {
+      escalao: 'Sub 13 Masculinos',
+      genero: 'Masculino',
+      posicaoEquipa: 5,
+      pontosEquipa: 48,
+      destaque: 'Dois Atletas no Pódio Concelhio (Prata e Bronze)',
+      atletas: [
+        { nome: 'Rafael Dawson', posicao: 2, medalha: 'prata', nota: 'Vice-Campeão Sub-13 (Finalista vs Afonso Ramos/Gião)' },
+        { nome: 'Pedro Moreira', posicao: 3, medalha: 'bronze', nota: 'Medalha de Bronze (Venceu 3º lugar por 2-0)' },
+        { nome: 'Diego Feng', posicao: 43, nota: 'Fase de Grupos (43º classificado)' }
+      ]
+    },
+    {
+      escalao: 'Livre Femininos',
+      genero: 'Feminino',
+      posicaoEquipa: 2,
+      pontosEquipa: 22,
+      destaque: 'Pódio Concelhio & Vice-Campeãs por Equipas',
+      atletas: [
+        { nome: 'Diana Barata', posicao: 3, medalha: 'bronze', nota: 'Medalha de Bronze (Venceu 3º lugar por 2-0)' },
+        { nome: 'Beatriz Ribeiro', posicao: 9, nota: 'Quartos de Final (9ª classificada)' },
+        { nome: 'Ana Pereira', posicao: 10, nota: 'Quartos de Final (10ª classificada)' }
+      ]
+    },
+    {
+      escalao: 'Sub 15 Femininos',
+      genero: 'Feminino',
+      posicaoEquipa: 3,
+      pontosEquipa: 33,
+      destaque: 'Pódio Coletivo por Equipas (3º Lugar Geral)',
+      atletas: [
+        { nome: 'Clara Pereira', posicao: 10, nota: 'Quartos de Final (10ª classificada)' },
+        { nome: 'Evelyn Chen', posicao: 11, nota: 'Quartos de Final (11ª classificada)' },
+        { nome: 'Núria Martins', posicao: 12, nota: 'Quartos de Final (12ª classificada)' },
+        { nome: 'Benedita Sousa', posicao: 15, nota: 'Fase de Séries (15ª classificada)' },
+        { nome: 'Carolina Oliveira', posicao: 16, nota: 'Fase de Séries (16ª classificada)' }
+      ]
+    }
+  ]
+};
