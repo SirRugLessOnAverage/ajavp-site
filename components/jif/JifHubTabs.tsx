@@ -6,6 +6,7 @@ import { Trophy, Calendar, MapPin, FileText, ArrowRight, Award, Compass, ShieldC
 import JifPavilhoesList from './JifPavilhoesList';
 import JifCalendarList from './JifCalendarList';
 import JifComunicadosList from './JifComunicadosList';
+import JifQuadroHonraTenisMesa from './JifQuadroHonraTenisMesa';
 import { JIF_MASTER_EVENTS, getRelativeDateLabel } from '@/data/jif/calendario';
 import { resolveGpsLinks } from '@/data/jif/pavilhoes';
 
@@ -139,6 +140,9 @@ export default function JifHubTabs({ initialTab = 'geral' }: JifHubTabsProps) {
       {/* Tab Panes */}
       {activeTab === 'geral' && (
         <div className="space-y-8 animate-drawer-down">
+          {/* Quadro de Honra: Vitória Histórica no Ténis de Mesa (07/11/2026) */}
+          <JifQuadroHonraTenisMesa />
+
           {/* Virtual Classification Callout Banner */}
           <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-brand-navy via-slate-900 to-emerald-950 text-white border border-emerald-500/30 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
             <div className="space-y-2 max-w-2xl relative z-10">

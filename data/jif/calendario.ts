@@ -67,9 +67,9 @@ export const JIF_MASTER_EVENTS: JifEvent[] = [
     day: '07',
     month: 'NOV',
     sport: 'tenis-mesa',
-    title: 'Ténis de Mesa • 1º Encontro Concelhio Oficial',
+    title: 'Ténis de Mesa • 1º Encontro • Vitória Histórica da AJAVP em 1º Lugar (14 pts)',
     location: 'Casa da Juventude de Guilhabreu',
-    time: 'Manhã 09h30 (Sub-11, 13 masc, Sub-15 fem) | Tarde 14h30 (Sub-16 e Livre)'
+    time: 'Manhã 09h30 | Tarde 14h30 • Concluído 🏆'
   },
   {
     id: 7,

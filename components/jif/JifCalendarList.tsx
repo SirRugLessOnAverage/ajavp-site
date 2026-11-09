@@ -266,10 +266,19 @@ export default function JifCalendarList() {
                         {event.title}
                       </h4>
                       {isPast ? (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-400">
-                          <CheckCircle2 className="w-3 h-3 text-emerald-500" />
-                          <span>Concluído</span>
-                        </span>
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          {event.sport === 'tenis-mesa' ? (
+                            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-500 text-slate-950 shadow-2xs">
+                              <Sparkles className="w-3 h-3" />
+                              <span>1º Lugar AJAVP 🏆 (+54 pts)</span>
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-400">
+                              <CheckCircle2 className="w-3 h-3 text-emerald-500" />
+                              <span>Concluído</span>
+                            </span>
+                          )}
+                        </div>
                       ) : (
                         <span
                           className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider ${badge.color} ${
