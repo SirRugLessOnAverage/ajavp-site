@@ -1,8 +1,10 @@
 import type { NextConfig } from "next";
 
+const isDev = process.env.NODE_ENV === "development";
+
 const cspHeader = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://challenges.cloudflare.com;
+  script-src 'self' 'unsafe-inline' ${isDev ? "'unsafe-eval'" : ""} https://challenges.cloudflare.com;
   style-src 'self' 'unsafe-inline';
   img-src 'self' data: blob: https://mudgnaajtolytggksvvq.supabase.co https://*.supabase.co https://i.ytimg.com https://*.youtube.com;
   font-src 'self' data:;
@@ -10,6 +12,7 @@ const cspHeader = `
   worker-src 'self' blob:;
   frame-src 'self' https://challenges.cloudflare.com https://www.youtube-nocookie.com https://www.youtube.com https://maps.google.com https://www.google.com;
   frame-ancestors 'none';
+  object-src 'none';
   base-uri 'self';
   form-action 'self';
 `.replace(/\s{2,}/g, ' ').trim();
@@ -46,6 +49,7 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
   reactStrictMode: true,
   images: {
     remotePatterns: [
