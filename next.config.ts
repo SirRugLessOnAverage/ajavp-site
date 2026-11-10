@@ -72,6 +72,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/quero-ser-socio",
+        destination: "/socios",
+        permanent: true,
+      },
+      {
         source: "/admin-alertas",
         destination: "https://gestao.ajavp.pt/direcao/alertas",
         permanent: false,

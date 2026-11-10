@@ -57,9 +57,9 @@ export const JIF_MASTER_EVENTS: JifEvent[] = [
     day: '31',
     month: 'OUT',
     sport: 'futsal',
-    title: 'Futsal • 3ª Jornada • Vitórias Sub-9 (5-1 Canidelo) e Sub-11 (1-7 Junqueira)',
+    title: 'Futsal • 3ª Jornada • Vitórias Sub-9 (5-1 Canidelo) e Sub-11 (1-7 Junqueira) • Concluído 🏆',
     location: 'Pavilhão Desportivo de Canidelo',
-    time: '08h45 às 11h45'
+    time: '08h45 às 11h45 • Concluído 🏆'
   },
   {
     id: 6,
@@ -77,9 +77,10 @@ export const JIF_MASTER_EVENTS: JifEvent[] = [
     day: '14',
     month: 'NOV',
     sport: 'futsal',
-    title: 'Futsal • 4ª Jornada • AJAVP em Fajozes (Sub-13 às 8h45 e Sub-11 às 9h45)',
+    title: 'Futsal • 4ª Jornada • AJAVP em Fajozes (Sub-13 às 08h45 vs Fajozes e Sub-11 às 09h45 vs Árvore)',
     location: 'Pavilhão Desportivo de Fajozes',
-    time: '08h45 às 11h45'
+    time: '08h45 (Sub-13) | 09h45 (Sub-11)',
+    badge: 'Próxima Prova 🚀'
   },
   {
     id: 8,
@@ -87,9 +88,9 @@ export const JIF_MASTER_EVENTS: JifEvent[] = [
     day: '21',
     month: 'NOV',
     sport: 'futsal',
-    title: 'Futsal • 5ª Jornada & Sub-7 em Caxinas (AJAVP vs Tougues às 11h)',
+    title: 'Futsal • 5ª Jornada & Sub-7 • AJAVP em Canidelo (Sub-9 e Sub-11), Fajozes (Sub-13) e Caxinas (Sub-7)',
     location: 'Pavilhões de Canidelo, Fajozes e Caxinas (Sub-7)',
-    time: '09h00 às 12h00'
+    time: 'Canidelo (10h e 11h) | Fajozes (9h) | Caxinas (11h)'
   },
   {
     id: 9,
@@ -97,9 +98,9 @@ export const JIF_MASTER_EVENTS: JifEvent[] = [
     day: '28',
     month: 'NOV',
     sport: 'futsal',
-    title: 'Futsal • Taça Concelhia (1ª Eliminatória Sub-11 AJAVP vs Tougues às 9h)',
-    location: 'Pavilhão de Fajozes e Mindelo',
-    time: '09h00 às 12h30'
+    title: 'Futsal • Taça Concelhia (1ª Eliminatória Sub-11 AJAVP vs Tougues às 09h00)',
+    location: 'Pavilhão Desportivo de Fajozes e Mindelo',
+    time: '09h00 (Sub-11 AJAVP vs Tougues)'
   },
   {
     id: 10,

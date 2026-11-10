@@ -2,32 +2,32 @@
   "temporada": "2026/2027",
   "edicao": "XL Jogos Inter-Freguesias de Vila do Conde",
   "modalidade": "Futsal Masculino",
-  "ultimaAtualizacao": "2026-11-01",
-  "jornadaAtiva": 3,
+  "ultimaAtualizacao": "10 de Novembro de 2026",
+  "jornadaAtiva": 4,
   "destaqueSemana": {
-    "titulo": "Sub-9 da AJAVP Invictos e Sub-11 Sobem ao 2.º Lugar Concelhio!",
-    "subtitulo": "Vitória categórica 5-1 ao Canidelo isola Sub-9 na liderança com 35 golos. Goleada 1-7 dos Sub-11 fora à Junqueira garante subida à vice-liderança concelhia.",
-    "badge": "Líder Concelhio 🥇",
+    "titulo": "4ª Jornada em Fajozes: Sub-13 e Sub-11 Entram em Campo!",
+    "subtitulo": "A AJAVP ruma ao Pavilhão Desportivo de Fajozes este sábado, 14 de Novembro. Os Sub-13 defrontam os anfitriões às 08h45 e os Sub-11 medem forças às 09h45 com a Árvore num duelo decisivo pelo topo da tabela.",
+    "badge": "Próxima Jornada 🚀",
     "kpis": [
       {
-        "label": "Golos Marcados (Sub-9)",
-        "valor": "35",
-        "sub": "11.7 golos / jogo (Melhor Ataque)"
+        "label": "Sub-13 (8h45)",
+        "valor": "vs Fajozes",
+        "sub": "Pavilhão de Fajozes"
       },
       {
-        "label": "Saldo de Golos",
-        "valor": "+32",
-        "sub": "35 marcados • 3 sofridos"
+        "label": "Sub-11 (9h45)",
+        "valor": "vs Árvore",
+        "sub": "Duelo Direto no Topo"
       },
       {
-        "label": "Pódio Sub-11",
-        "valor": "2.º Lugar 🥈",
-        "sub": "Vitória 1-7 vs Junqueira"
+        "label": "Sub-9 & Sub-7",
+        "valor": "Folga",
+        "sub": "Regresso a 21 de Novembro"
       },
       {
-        "label": "Melhor Marcador",
-        "valor": "12 Golos",
-        "sub": "Cid Ferreira (1.º Isolado)"
+        "label": "Apoio AJAVP",
+        "valor": "Entrada Livre",
+        "sub": "Vem apoiar Vilar do Pinheiro!"
       }
     ]
   },
@@ -88,31 +88,31 @@
   "proximaJornada": {
     "numero": 4,
     "dataPrevisao": "14 de Novembro de 2026",
-    "estado": "Convocatória homologada no Comunicado 8",
+    "estado": "Convocatória e Calendário Oficial Homologado",
     "jogosAjavp": [
       {
         "escalao": "Sub-13",
-        "adversario": "A designar pela ADCCVC",
-        "pavilhao": "Pavilhão de Fajozes",
+        "adversario": "Fajozes",
+        "pavilhao": "Pavilhão Desportivo de Fajozes",
         "hora": "08h45"
       },
       {
         "escalao": "Sub-11",
-        "adversario": "A designar pela ADCCVC",
-        "pavilhao": "Pavilhão de Fajozes",
+        "adversario": "Árvore",
+        "pavilhao": "Pavilhão Desportivo de Fajozes",
         "hora": "09h45"
       },
       {
         "escalao": "Sub-9",
-        "adversario": "A designar pela ADCCVC",
-        "pavilhao": "Pavilhões Concelhios",
-        "hora": "Manhã"
+        "adversario": "Folga Concelhia (Próx. vs Junqueira a 21/Nov)",
+        "pavilhao": "Pavilhão de Canidelo (21/Nov)",
+        "hora": "10h00"
       },
       {
         "escalao": "Sub-7",
-        "adversario": "Folga / Próx. Caxinas 21/Nov",
-        "pavilhao": "A designar",
-        "hora": "Manhã"
+        "adversario": "Folga Concelhia (Próx. vs Tougues a 21/Nov)",
+        "pavilhao": "Pavilhão de Caxinas (21/Nov)",
+        "hora": "11h00"
       }
     ]
   },
@@ -1062,152 +1062,359 @@
   },
   "jornadas": [
     {
+      "numero": 4,
+      "data": "14 de Novembro de 2026",
+      "estado": "Agendada",
+      "pavilhoes": [
+        {
+          "nome": "Pavilhão de Fajozes (Jogos AJAVP)",
+          "cor": "amber",
+          "jogos": [
+            {
+              "escalao": "Sub-13",
+              "hora": "08:45",
+              "casa": "Vilar do Pinheiro",
+              "fora": "Fajozes",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": true
+            },
+            {
+              "escalao": "Sub-11",
+              "hora": "09:45",
+              "casa": "Vilar do Pinheiro",
+              "fora": "Árvore",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": true
+            },
+            {
+              "escalao": "Sub-13",
+              "hora": "10:45",
+              "casa": "Bagunte",
+              "fora": "Árvore",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-9",
+              "hora": "11:45",
+              "casa": "Fornelo",
+              "fora": "Árvore",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": false
+            }
+          ]
+        },
+        {
+          "nome": "Pavilhão de Mindelo",
+          "cor": "emerald",
+          "jogos": [
+            {
+              "escalao": "Sub-13",
+              "hora": "08:45",
+              "casa": "Gião",
+              "fora": "Mosteiró",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-9",
+              "hora": "09:45",
+              "casa": "Bagunte",
+              "fora": "Gião",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-11",
+              "hora": "10:45",
+              "casa": "Tougues",
+              "fora": "Gião",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-9",
+              "hora": "11:45",
+              "casa": "Tougues",
+              "fora": "Arcos",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-16",
+              "hora": "14:30",
+              "casa": "Arcos",
+              "fora": "Junqueira",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-16",
+              "hora": "15:30",
+              "casa": "Outeiro Maior",
+              "fora": "Gião",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": false
+            }
+          ]
+        },
+        {
+          "nome": "Pavilhão de Canidelo",
+          "cor": "blue",
+          "jogos": [
+            {
+              "escalao": "Sub-13",
+              "hora": "09:00",
+              "casa": "Touguinha Touguinhó",
+              "fora": "Tougues",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-9",
+              "hora": "10:00",
+              "casa": "Canidelo",
+              "fora": "Touguinha Touguinhó",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-11",
+              "hora": "11:00",
+              "casa": "Fajozes",
+              "fora": "Touguinha Touguinhó",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": false
+            }
+          ]
+        },
+        {
+          "nome": "Pavilhão de Modivas",
+          "cor": "purple",
+          "jogos": [
+            {
+              "escalao": "Sub-13",
+              "hora": "09:00",
+              "casa": "Junqueira",
+              "fora": "Arcos",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-11",
+              "hora": "10:00",
+              "casa": "Fornelo",
+              "fora": "Junqueira",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-9",
+              "hora": "11:00",
+              "casa": "Modivas",
+              "fora": "Junqueira",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": false
+            }
+          ]
+        }
+      ]
+    },
+    {
       "numero": 3,
       "data": "31 de Outubro de 2026",
       "estado": "Concluída",
       "pavilhoes": [
         {
-          "nome": "Resultados Oficiais Comunicado 8",
-          "cor": "emerald",
+          "nome": "Pavilhão de Canidelo",
+          "cor": "blue",
           "jogos": [
             {
-              "escalao": "Sub-9",
-              "hora": "Manhã",
-              "casa": "Gião",
-              "fora": "Touguinha/Touguinhó",
-              "golosCasa": 1,
-              "golosFora": 8
+              "escalao": "Sub-13",
+              "hora": "08:45",
+              "casa": "Árvore",
+              "fora": "Vilar do Pinheiro",
+              "golosCasa": 12,
+              "golosFora": 0,
+              "isAjavp": true
             },
             {
               "escalao": "Sub-9",
-              "hora": "Manhã",
-              "casa": "Vilar do Pinheiro (AJAVP)",
+              "hora": "09:45",
+              "casa": "Vilar do Pinheiro",
               "fora": "Canidelo",
               "golosCasa": 5,
               "golosFora": 1,
               "isAjavp": true
             },
             {
-              "escalao": "Sub-9",
-              "hora": "Manhã",
+              "escalao": "Sub-11",
+              "hora": "10:45",
               "casa": "Junqueira",
-              "fora": "Fornelo",
-              "golosCasa": 8,
-              "golosFora": 0
-            },
-            {
-              "escalao": "Sub-9",
-              "hora": "Manhã",
-              "casa": "Arcos",
-              "fora": "Bagunte",
-              "golosCasa": 1,
-              "golosFora": 7
-            },
-            {
-              "escalao": "Sub-9",
-              "hora": "Manhã",
-              "casa": "Árvore",
-              "fora": "Tougues",
-              "golosCasa": 2,
-              "golosFora": 3
-            },
-            {
-              "escalao": "Sub-11",
-              "hora": "Manhã",
-              "casa": "Touguinha/Touguinhó",
-              "fora": "Fornelo",
-              "golosCasa": 1,
-              "golosFora": 8
-            },
-            {
-              "escalao": "Sub-11",
-              "hora": "Manhã",
-              "casa": "Gião",
-              "fora": "Bagunte",
-              "golosCasa": 1,
-              "golosFora": 6
-            },
-            {
-              "escalao": "Sub-11",
-              "hora": "Manhã",
-              "casa": "Junqueira",
-              "fora": "Vilar do Pinheiro (AJAVP)",
+              "fora": "Vilar do Pinheiro",
               "golosCasa": 1,
               "golosFora": 7,
               "isAjavp": true
             },
             {
-              "escalao": "Sub-11",
-              "hora": "Manhã",
-              "casa": "Árvore",
-              "fora": "Tougues",
-              "golosCasa": 5,
-              "golosFora": 1
-            },
-            {
-              "escalao": "Sub-13",
-              "hora": "Manhã",
+              "escalao": "Sub-9",
+              "hora": "11:45",
               "casa": "Junqueira",
-              "fora": "Touguinha/Touguinhó",
-              "golosCasa": 0,
-              "golosFora": 3
-            },
-            {
-              "escalao": "Sub-13",
-              "hora": "Manhã",
-              "casa": "Árvore",
-              "fora": "Vilar do Pinheiro (AJAVP)",
-              "golosCasa": 12,
+              "fora": "Fornelo",
+              "golosCasa": 8,
               "golosFora": 0,
-              "isAjavp": true
-            },
+              "isAjavp": false
+            }
+          ]
+        },
+        {
+          "nome": "Pavilhão de Mindelo & Desportos",
+          "cor": "emerald",
+          "jogos": [
             {
               "escalao": "Sub-13",
-              "hora": "Manhã",
-              "casa": "Fajozes",
-              "fora": "Gião",
-              "golosCasa": 1,
-              "golosFora": 0
-            },
-            {
-              "escalao": "Sub-13",
-              "hora": "Manhã",
-              "casa": "Arcos",
-              "fora": "Bagunte",
+              "hora": "08:45",
+              "casa": "Junqueira",
+              "fora": "Touguinha Touguinhó",
               "golosCasa": 0,
-              "golosFora": 6
+              "golosFora": 3,
+              "isAjavp": false
             },
             {
-              "escalao": "Sub-13",
-              "hora": "Manhã",
-              "casa": "Mosteiró",
-              "fora": "Tougues",
-              "golosCasa": 3,
-              "golosFora": 1
+              "escalao": "Sub-11",
+              "hora": "09:45",
+              "casa": "Touguinha Touguinhó",
+              "fora": "Fornelo",
+              "golosCasa": 1,
+              "golosFora": 8,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-9",
+              "hora": "10:45",
+              "casa": "Gião",
+              "fora": "Touguinha Touguinhó",
+              "golosCasa": 9,
+              "golosFora": 1,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-11",
+              "hora": "11:45",
+              "casa": "Gião",
+              "fora": "Bagunte",
+              "golosCasa": 1,
+              "golosFora": 6,
+              "isAjavp": false
             },
             {
               "escalao": "Sub-16",
-              "hora": "Tarde",
+              "hora": "14:30",
               "casa": "Arcos",
               "fora": "Outeiro Maior",
               "golosCasa": 4,
-              "golosFora": 3
+              "golosFora": 3,
+              "isAjavp": false
             },
             {
               "escalao": "Sub-16",
-              "hora": "Tarde",
+              "hora": "15:30",
               "casa": "Árvore",
               "fora": "Gião",
               "golosCasa": 0,
-              "golosFora": 2
+              "golosFora": 2,
+              "isAjavp": false
             },
             {
               "escalao": "Sub-16",
-              "hora": "Tarde",
+              "hora": "16:30",
               "casa": "Junqueira",
               "fora": "Bagunte",
               "golosCasa": 1,
-              "golosFora": 2
+              "golosFora": 2,
+              "isAjavp": false
+            }
+          ]
+        },
+        {
+          "nome": "Pavilhão de Fajozes",
+          "cor": "amber",
+          "jogos": [
+            {
+              "escalao": "Sub-13",
+              "hora": "09:00",
+              "casa": "Fajozes",
+              "fora": "Gião",
+              "golosCasa": 1,
+              "golosFora": 0,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-13",
+              "hora": "10:00",
+              "casa": "Arcos",
+              "fora": "Bagunte",
+              "golosCasa": 0,
+              "golosFora": 6,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-9",
+              "hora": "11:00",
+              "casa": "Arcos",
+              "fora": "Bagunte",
+              "golosCasa": 1,
+              "golosFora": 7,
+              "isAjavp": false
+            }
+          ]
+        },
+        {
+          "nome": "Pavilhão de Modivas",
+          "cor": "purple",
+          "jogos": [
+            {
+              "escalao": "Sub-13",
+              "hora": "09:00",
+              "casa": "Mosteiró",
+              "fora": "Tougues",
+              "golosCasa": 3,
+              "golosFora": 1,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-11",
+              "hora": "10:00",
+              "casa": "Árvore",
+              "fora": "Tougues",
+              "golosCasa": 5,
+              "golosFora": 1,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-9",
+              "hora": "11:00",
+              "casa": "Árvore",
+              "fora": "Tougues",
+              "golosCasa": 2,
+              "golosFora": 3,
+              "isAjavp": false
             }
           ]
         }
