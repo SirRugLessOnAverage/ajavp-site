@@ -182,7 +182,7 @@ export default async function HomePage() {
 
             {/* Right Card / Visual */}
             <div className="lg:col-span-5">
-              <div className="relative rounded-3xl p-6 sm:p-8 bg-white/88 dark:bg-slate-950/82 backdrop-blur-xl border border-slate-200/90 dark:border-white/20 shadow-2xl space-y-6">
+              <div className="relative rounded-3xl p-6 sm:p-7 bg-white/90 dark:bg-slate-950/85 backdrop-blur-xl border border-slate-200/90 dark:border-white/20 shadow-2xl space-y-5">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300 flex items-center gap-2">
                     <Trophy className="w-4 h-4" />
@@ -193,19 +193,52 @@ export default async function HomePage() {
                   </span>
                 </div>
 
-                <div>
-                  <h3 className="font-heading font-bold text-xl sm:text-2xl text-brand-navy dark:text-white">
-                    Hub Semanal de Futsal
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 mt-1 leading-relaxed">
-                    Acompanha marcadores, calendários e resultados dos escalões Sub-7, Sub-9, Sub-11, Sub-13, Sub-16 e Seniores nos XL Jogos Inter-Freguesias.
-                  </p>
+                {/* Card Próxima Jornada AJAVP */}
+                <div className="p-4 rounded-2xl bg-gradient-to-br from-emerald-50/90 to-teal-50/60 dark:from-emerald-950/40 dark:to-slate-900/60 border border-emerald-200 dark:border-emerald-500/30 space-y-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-1.5">
+                      <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                      <span className="text-[11px] font-black uppercase tracking-wider text-emerald-800 dark:text-emerald-300">
+                        Próxima Jornada &bull; 14 Nov
+                      </span>
+                    </div>
+                    <span className="text-[10px] font-semibold text-slate-500 dark:text-slate-400 flex items-center gap-1">
+                      <MapPin className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
+                      Pav. Fajozes
+                    </span>
+                  </div>
+
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between p-2 rounded-xl bg-white/80 dark:bg-slate-900/80 border border-emerald-100 dark:border-white/10 text-xs">
+                      <span className="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+                        <span className="px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-200 text-[10px] font-extrabold">
+                          Sub-13
+                        </span>
+                        Fajozes vs AJAVP
+                      </span>
+                      <span className="font-mono font-black text-emerald-700 dark:text-emerald-400 text-xs">
+                        08h45
+                      </span>
+                    </div>
+
+                    <div className="flex items-center justify-between p-2 rounded-xl bg-white/80 dark:bg-slate-900/80 border border-emerald-100 dark:border-white/10 text-xs">
+                      <span className="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+                        <span className="px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-200 text-[10px] font-extrabold">
+                          Sub-11
+                        </span>
+                        Árvore vs AJAVP
+                      </span>
+                      <span className="font-mono font-black text-emerald-700 dark:text-emerald-400 text-xs">
+                        09h45
+                      </span>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="space-y-2.5">
+                <div className="space-y-2">
                   <Link
                     href="/jif/futsal"
-                    className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 hover:bg-emerald-50/70 dark:bg-white/10 dark:hover:bg-white/15 transition-colors border border-slate-200 dark:border-white/10 group"
+                    className="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-emerald-50/70 dark:bg-white/10 dark:hover:bg-white/15 transition-colors border border-slate-200 dark:border-white/10 group"
                   >
                     <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">
                       Resultados e Marcadores Semanais
@@ -215,17 +248,17 @@ export default async function HomePage() {
 
                   <Link
                     href="/jif/classificacao"
-                    className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 hover:bg-amber-50/70 dark:bg-white/10 dark:hover:bg-white/15 transition-colors border border-slate-200 dark:border-white/10 group"
+                    className="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-amber-50/70 dark:bg-white/10 dark:hover:bg-white/15 transition-colors border border-slate-200 dark:border-white/10 group"
                   >
                     <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">
-                      Classificação Geral Virtual (19 Freguesias)
+                      Classificação Geral Virtual dos XL JIF
                     </span>
                     <ChevronRight className="w-4 h-4 text-amber-600 dark:text-amber-400 group-hover:translate-x-1 transition-transform" />
                   </Link>
 
                   <Link
                     href="/jif#calendario"
-                    className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 hover:bg-emerald-50/70 dark:bg-white/10 dark:hover:bg-white/15 transition-colors border border-slate-200 dark:border-white/10 group"
+                    className="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-emerald-50/70 dark:bg-white/10 dark:hover:bg-white/15 transition-colors border border-slate-200 dark:border-white/10 group"
                   >
                     <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white flex items-center gap-2">
                       <span>📅</span>
@@ -235,7 +268,7 @@ export default async function HomePage() {
                   </Link>
                 </div>
 
-                <div className="pt-2 text-center">
+                <div className="pt-1 text-center">
                   <Link
                     href="/jif"
                     className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-green dark:text-emerald-300 hover:underline transition-colors"

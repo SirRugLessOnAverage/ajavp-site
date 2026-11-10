@@ -49,6 +49,6 @@ test("UI & Componentes: Hub JIF e Homepage devem integrar Quadro de Honra e Bann
 
   const tickerPath = path.join(ROOT_DIR, "components", "home", "JifLiveTicker.tsx");
   const tickerContent = fs.readFileSync(tickerPath, "utf-8");
-  assert.ok(tickerContent.includes("1º Encontro de Ténis de Mesa"), "Ticker deve destacar vitória no Ténis de Mesa");
+  assert.ok(tickerContent.includes("Próximas Provas em Calendário"), "Ticker deve focar nas próximas provas");
 });
 

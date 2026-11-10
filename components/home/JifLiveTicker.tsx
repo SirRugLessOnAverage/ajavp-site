@@ -158,35 +158,6 @@ export function JifLiveTicker() {
   return (
     <section className="bg-white dark:bg-slate-900/90 border-b border-slate-200/90 dark:border-white/10 py-5 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Banner Destaque de Vitória Recente nos XL JIF */}
-        <div className="mb-5 p-3.5 sm:p-4 rounded-2xl bg-gradient-to-r from-amber-500/20 via-emerald-500/15 to-white/5 dark:from-amber-950/40 dark:via-emerald-950/30 dark:to-transparent border-2 border-amber-400/70 dark:border-amber-400/40 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-amber-500 text-slate-950 font-black text-xl flex items-center justify-center shrink-0 shadow-2xs">
-              🏓
-            </div>
-            <div>
-              <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-500 text-slate-950">
-                  Vitória nos XL JIF
-                </span>
-                <span className="text-xs font-bold text-amber-800 dark:text-amber-300">
-                  07 de Novembro • Guilhabreu
-                </span>
-              </div>
-              <h3 className="text-xs sm:text-sm font-heading font-black text-slate-900 dark:text-white mt-0.5">
-                Vilar do Pinheiro Vence o 1º Encontro de Ténis de Mesa! (1º Lugar • 14 pts de prova)
-              </h3>
-            </div>
-          </div>
-          <Link
-            href="/jif"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-heading font-bold text-xs shadow-2xs transition-colors shrink-0 self-end sm:self-center"
-          >
-            <span>Ver Quadro de Honra</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
-        </div>
-
         {/* Cabeçalho da Barra */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
           <div className="flex items-center gap-2.5">
