@@ -9,6 +9,22 @@ interface NoticiasSectionProps {
 
 const FALLBACK_NOTICIAS: SiteNoticia[] = [
   {
+    id: "fallback-n0",
+    slug: "vitoria-historica-1o-encontro-tenis-de-mesa-xl-jif",
+    titulo: "AJAVP Campeã do 1.º Encontro de Ténis de Mesa dos XL JIF com 9 Pódios e 54 Pontos",
+    resumo:
+      "Prestação memorável da comitiva de 24 atletas em Guilhabreu: 1.º lugar geral coletivo, pódio 100% AJAVP em Sub-11, ouro em Sub-16 e Livre Masculino, 9 medalhas e pontuação máxima para Vilar do Pinheiro.",
+    conteudo_html: "",
+    capa_url: "/assets/images/galeria/tenis-mesa/tenis_mesa_2026_medalhados_tarde_ajavp.webp",
+    categoria: "Ténis de Mesa • JIF",
+    autor_nome: "Direção Desportiva AJAVP",
+    destaque: true,
+    publicado: true,
+    publicado_em: "2026-11-08T11:00:00Z",
+    created_at: "2026-11-08T11:00:00Z",
+    updated_at: "2026-11-08T11:00:00Z",
+  },
+  {
     id: "fallback-n1",
     slug: "goleadas-sub9-sub11-2a-jornada-futsal-jif",
     titulo: "Goleadas dos Sub-9 (1-19) e Sub-11 (9-1) na 2.ª Jornada de Futsal",
@@ -109,6 +125,9 @@ const FALLBACK_NOTICIAS: SiteNoticia[] = [
 function getNoticiaLink(item: SiteNoticia): { href: string; label: string } {
   const cat = (item.categoria || "").toLowerCase();
   const slug = (item.slug || "").toLowerCase();
+  if (slug.includes("tenis") || cat.includes("ténis") || cat.includes("tenis")) {
+    return { href: "/jif/classificacao#tenis-de-mesa", label: "Ver Quadro de Honra Ténis de Mesa" };
+  }
   if (slug.includes("equipamento-oficial-treino") || cat.includes("treinos")) {
     return { href: "/modalidades#horarios", label: "Ver Horários & Escalões" };
   }

@@ -29,6 +29,37 @@ export const JIF_VICTORY_SPOTLIGHT = {
 
 export const JIF_CIRCULARS: JifCircular[] = [
   {
+    id: 9,
+    numberFormatted: '09',
+    date: '2026-11-08',
+    formattedDate: '08 de Novembro de 2026',
+    badge: 'Ténis Mesa & 9 Pódios',
+    badgeColor: 'amber',
+    title: 'Vitória Histórica da AJAVP no 1º Encontro de Ténis de Mesa, 54 Pontos e 9 Medalhas Concelhias',
+    summaryQuote:
+      '"Disputou-se no passado sábado na Casa da Juventude de Guilhabreu o 1º Encontro de Ténis de Mesa dos XL Jogos Inter-Freguesias... Vilar do Pinheiro sagrou-se vencedora coletiva do encontro com 14 pontos, somando a pontuação máxima de 54 pontos na classificação geral concelhia."',
+    highlights: [
+      {
+        title: '1º Lugar Coletivo Geral (14 Pontos)',
+        badge: 'Campeões do Encontro 🏆',
+        description:
+          'Com 24 atletas em prova nos 6 escalões, a AJAVP venceu com autoridade o 1º Encontro com 14 pontos (Sub-11: 1º, Sub-13: 5º, Sub-15F: 3º, Sub-16: 1º, Livre M: 2º, Livre F: 2º), superando Gião (25 pts) e Árvore (26 pts).'
+      },
+      {
+        title: '9 Pódios Concelhios (3🥇 • 3🥈 • 3🥉)',
+        badge: 'Quadro de Honra',
+        description:
+          'Sub-11 Masc: Pódio 100% AJAVP (🥇 Johnny Ye, 🥈 Dong Xuan, 🥉 Francisco Fernandes). Sub-16 Masc: Final 100% AJAVP (🥇 Afonso Fernandes, 🥈 Rodrigo Pereira). Livre Masc: 🥇 Pedro Cruz (Campeão Individual). Sub-13 Masc: 🥈 Rafael Dawson e 🥉 Pedro Moreira. Livre Fem: 🥉 Diana Barata.'
+      },
+      {
+        title: 'Classificação Geral & Medalheiro dos XL JIF',
+        badge: '54 Pontos & 15 Medalhas',
+        description:
+          'Vilar do Pinheiro conquista a pontuação máxima de 54 pontos da modalidade e consolida a liderança destacada no medalheiro concelhio dos XL JIF com 15 medalhas conquistadas (6 Ouros, 5 Pratas, 4 Bronzes).'
+      }
+    ]
+  },
+  {
     id: 8,
     numberFormatted: '08',
     date: '2026-11-01',
