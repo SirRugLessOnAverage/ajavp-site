@@ -11,6 +11,7 @@ import {
   ShieldCheck,
   Zap,
   HelpCircle,
+  PlayCircle,
 } from "lucide-react";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { GESTAO_LINKS, SITE_URL } from "@/lib/site";
@@ -289,19 +290,41 @@ export default function SociosPage() {
         </div>
       </section>
 
-      {/* FUNIL EM 3 PASSOS SIMPLES */}
-      <section className="py-16 sm:py-20 bg-white dark:bg-slate-900 border-t border-b border-slate-200 dark:border-white/10 transition-colors">
+      {/* SECÇÃO DO GUIA EM VÍDEO 16:9 & FUNIL EM PASSOS SIMPLES */}
+      <section
+        id="guia-video"
+        className="py-16 sm:py-24 bg-white dark:bg-slate-900 border-t border-b border-slate-200 dark:border-white/10 transition-colors"
+      >
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-brand-green dark:text-emerald-400 text-xs font-bold uppercase tracking-widest block mb-2">
-              Rápido e 100% Digital
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider mb-3">
+              <PlayCircle className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+              <span>Demonstração Oficial &bull; 1 Minuto</span>
             </span>
             <h2 className="font-heading text-3xl sm:text-4xl font-black text-brand-navy dark:text-white mb-3">
-              Como Te Tornas Sócio em 3 Passos
+              Como Funciona a Inscrição Online
             </h2>
+            <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              Sem burocracia nem impressões em papel. Vê em menos de 1 minuto como preencher os dados, confirmar a isenção de menores e assinar a ficha digitalmente no telemóvel.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Player de Vídeo 16:9 de Alto Impacto */}
+          <div className="relative aspect-video w-full max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-2xl border-2 border-emerald-500/30 dark:border-emerald-400/20 bg-black group mb-12">
+            <video
+              src="/videos/ajavp_guia_inscricao_16x9.mp4"
+              poster="/assets/images/cartaz_horizontal_16x9.jpg"
+              controls
+              playsInline
+              preload="metadata"
+              className="w-full h-full object-contain"
+            >
+              O seu navegador não suporta a reprodução deste vídeo.
+            </video>
+          </div>
+
+          {/* 3 Passos Essenciais */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
             <div className="p-6 rounded-3xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-white/10 relative">
               <span className="w-10 h-10 rounded-2xl bg-emerald-600 text-white font-black text-lg flex items-center justify-center mb-4 shadow-md">
                 1
@@ -310,7 +333,7 @@ export default function SociosPage() {
                 Preenche a Ficha Online
               </h3>
               <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                Demora apenas 2 minutos. Indica os teus dados básicos ou do teu educando através do formulário seguro.
+                Demora apenas 1 minuto. Escolhe Atleta JIF ou Sócio Adulto no formulário seguro.
               </p>
             </div>
 
@@ -319,10 +342,10 @@ export default function SociosPage() {
                 2
               </span>
               <h3 className="font-heading font-black text-lg text-slate-900 dark:text-white mb-2">
-                Regulariza a Quota Simples
+                Isenção ou Quota Simples
               </h3>
               <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                Pagamento seguro e prático por MB WAY ou Transferência Bancária. Menores e atletas estão isentos.
+                Menores de 18 anos ficam automaticamente isentos (0€). Adultos pagam 12€/ano com MB WAY.
               </p>
             </div>
 
@@ -331,22 +354,22 @@ export default function SociosPage() {
                 3
               </span>
               <h3 className="font-heading font-black text-lg text-slate-900 dark:text-white mb-2">
-                Recebe o Cartão Digital
+                Assinatura no Ecrã
               </h3>
               <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                O teu número e cartão digital oficial ficam logo emitidos e prontos a guardar no telemóvel.
+                Assina diretamente com o dedo e obtém de imediato o teu número provisório e cartão digital.
               </p>
             </div>
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center">
             <a
               href={GESTAO_LINKS.inscricao}
               target="_blank"
               rel="noopener noreferrer"
-              className="motion-press inline-flex items-center gap-2 px-8 py-4 rounded-full bg-brand-green hover:bg-brand-greenDark text-white font-bold text-base transition-colors shadow-xl shadow-brand-green/25"
+              className="motion-press inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-brand-green hover:bg-brand-greenDark text-white font-heading font-bold text-base transition-colors shadow-xl shadow-brand-green/25"
             >
-              <span>Começar Inscrição de Sócio Agora</span>
+              <span>Começar Inscrição Online</span>
               <ArrowRight className="w-5 h-5" />
             </a>
           </div>

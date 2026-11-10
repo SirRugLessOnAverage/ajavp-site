@@ -21,6 +21,7 @@ import { GESTAO_LINKS } from "@/lib/site";
 import { NoticiasSection } from "@/components/home/NoticiasSection";
 import { EventosSection } from "@/components/home/EventosSection";
 import { JifLiveTicker } from "@/components/home/JifLiveTicker";
+import { BotaoGuiaVideoModal } from "@/components/video/BotaoGuiaVideoModal";
 import type { SiteNoticia, SiteEvento } from "@/lib/types/database";
 
 export const revalidate = 60;
@@ -441,6 +442,8 @@ export default async function HomePage() {
               <span>Quero Ser Sócio &bull; Ver Quotas 26/27</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
+
+            <BotaoGuiaVideoModal />
 
             <a
               href={GESTAO_LINKS.socio}
