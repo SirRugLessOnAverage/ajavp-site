@@ -113,6 +113,7 @@ export function Header() {
       if (event.key === "Escape") {
         setIsJifDropdownOpen(false);
         setIsSomosVdpDropdownOpen(false);
+        setMobileMenuOpen(false);
       }
     };
 
@@ -192,7 +193,7 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav
-            className="hidden lg:flex items-center gap-0.5 xl:gap-1.5"
+            className="hidden xl:flex items-center gap-0.5 xl:gap-1.5"
             aria-label="Navegação Principal"
           >
             <Link href="/" className={navLinkClass("/")}>
@@ -510,7 +511,7 @@ export function Header() {
           </nav>
 
           {/* Action Buttons & Theme Toggle */}
-          <div className="hidden lg:flex items-center gap-2 shrink-0">
+          <div className="hidden xl:flex items-center gap-2 shrink-0">
             {/* A11y Accessibility Modal Trigger */}
             <button
               type="button"
@@ -560,7 +561,7 @@ export function Header() {
           </div>
 
           {/* Mobile Controls */}
-          <div className="flex items-center gap-1.5 sm:gap-2 lg:hidden">
+          <div className="flex items-center gap-1.5 sm:gap-2 xl:hidden">
             {/* A11y Accessibility Mobile Trigger */}
             <button
               type="button"
@@ -585,7 +586,8 @@ export function Header() {
 
             <button
               onClick={toggleTheme}
-              aria-label="Alternar Tema"
+              aria-label={isDark ? "Mudar para Modo Claro" : "Mudar para Modo Escuro"}
+              title={isDark ? "Mudar para Modo Claro" : "Mudar para Modo Escuro"}
               className="motion-press p-2 rounded-lg border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
             >
               {isDark ? (
@@ -596,7 +598,9 @@ export function Header() {
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+              aria-label={mobileMenuOpen ? "Fechar menu de navegação" : "Abrir menu de navegação"}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation-drawer"
               className="motion-press p-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
             >
               {mobileMenuOpen ? (
@@ -612,11 +616,17 @@ export function Header() {
         {mobileMenuOpen && (
           <>
             <div
-              className="fixed inset-0 top-16 bg-slate-950/40 backdrop-blur-xs z-40 lg:hidden transition-opacity"
+              className="fixed inset-0 top-16 bg-slate-950/40 backdrop-blur-xs z-40 xl:hidden transition-opacity"
               onClick={() => setMobileMenuOpen(false)}
               aria-hidden="true"
             />
-            <div className="lg:hidden relative z-50 bg-white/95 dark:bg-slate-900/95 backdrop-drawer border-b border-slate-200 dark:border-white/10 px-6 py-6 shadow-2xl space-y-3 max-h-[85vh] overflow-y-auto animate-drawer-down">
+            <div
+              id="mobile-navigation-drawer"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Menu Principal de Navegação"
+              className="xl:hidden relative z-50 bg-white/95 dark:bg-slate-900/95 backdrop-drawer border-b border-slate-200 dark:border-white/10 px-6 py-6 shadow-2xl space-y-3 max-h-[85vh] overflow-y-auto animate-drawer-down"
+            >
             <div className="space-y-1.5 text-sm font-medium">
               {/* CTAs de Sócios no Mobile */}
               <div className="mb-3 space-y-2">
@@ -658,7 +668,11 @@ export function Header() {
               <Link
                 href="/"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between py-2.5 px-3 rounded-xl bg-emerald-50 dark:bg-emerald-500/10 text-emerald-900 dark:text-emerald-300 border border-emerald-200/70 dark:border-emerald-500/20 font-bold"
+                className={`flex items-center justify-between py-2.5 px-3 rounded-xl transition-colors ${
+                  pathname === "/"
+                    ? "bg-emerald-50 dark:bg-emerald-500/10 text-emerald-900 dark:text-emerald-300 border border-emerald-200/70 dark:border-emerald-500/20 font-bold"
+                    : "text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/5 font-semibold"
+                }`}
               >
                 <span className="flex items-center gap-2.5">
                   <Home className="w-4 h-4 text-emerald-600" /> Início

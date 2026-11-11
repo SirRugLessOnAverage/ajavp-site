@@ -43,6 +43,10 @@ export function ContactForm() {
       );
       return;
     }
+    if (email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      setErrorMsg("O formato do correio eletrónico introduzido não é válido.");
+      return;
+    }
     setErrorMsg(null);
     const url = buildWhatsAppUrl();
     window.open(url, "_blank", "noopener,noreferrer");
@@ -219,7 +223,7 @@ export function ContactForm() {
           type="submit"
           className="motion-press w-full sm:w-auto px-8 py-3.5 bg-brand-green hover:bg-brand-greenDark text-white font-heading font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-brand-green/25 transition-colors cursor-pointer"
         >
-          ✉️ Enviar por Email
+          ✉️ Preparar no Email
         </button>
         <button
           type="button"

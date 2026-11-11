@@ -81,8 +81,7 @@ const A11Y_FEATURES = [
 export default function AcessibilidadePage() {
   return (
     <div className="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white transition-colors">
-      <div id="conteudo-principal">
-        {/* HERO BANNER */}
+      {/* HERO BANNER */}
         <section className="relative pt-12 pb-16 lg:pt-14 lg:pb-20 overflow-hidden bg-linear-to-b from-emerald-50/80 via-white to-slate-50 dark:from-ajavp-green-dark/45 dark:via-slate-950 dark:to-slate-950 border-b border-slate-200 dark:border-white/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <Breadcrumbs
@@ -275,7 +274,6 @@ export default function AcessibilidadePage() {
             </article>
           </div>
         </section>
-      </div>
     </div>
   );
 }

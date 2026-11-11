@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import type { GalleryPhoto, VideoItem } from "@/data/institucional";
 
 interface MediaGalleryProps {
@@ -50,25 +50,101 @@ export function MediaGallery({ photos, videos }: MediaGalleryProps) {
     });
   }, [filteredPhotos.length]);
 
+  const modalTriggerRef = useRef<HTMLElement | null>(null);
+  const videoDialogRef = useRef<HTMLDivElement | null>(null);
+  const lightboxDialogRef = useRef<HTMLDivElement | null>(null);
+  const closeVideoButtonRef = useRef<HTMLButtonElement | null>(null);
+
+  const rememberModalTrigger = () => {
+    if (typeof document !== "undefined" && document.activeElement instanceof HTMLElement) {
+      modalTriggerRef.current = document.activeElement;
+    }
+  };
+
   useEffect(() => {
-    if (lightboxIndex === null && activeVideo === null) return;
+    const hasOpenDialog = lightboxIndex !== null || activeVideo !== null;
+    if (!hasOpenDialog) return;
+
+    const dialog = videoDialogRef.current ?? lightboxDialogRef.current;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    // Foco inicial imediato no controlo interativo do diálogo
+    const focusTimer = setTimeout(() => {
+      if (activeVideo && closeVideoButtonRef.current) {
+        closeVideoButtonRef.current.focus();
+      } else if (dialog) {
+        const firstFocusable = dialog.querySelector<HTMLElement>(
+          'button:not([disabled]), [tabindex]:not([tabindex="-1"]), a[href]'
+        );
+        (firstFocusable ?? dialog).focus();
+      }
+    }, 50);
 
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
+        e.preventDefault();
         setLightboxIndex(null);
         setActiveVideo(null);
-      } else if (lightboxIndex !== null && e.key === "ArrowLeft") {
+        return;
+      }
+
+      if (lightboxIndex !== null && e.key === "ArrowLeft") {
         handlePrevPhoto();
-      } else if (lightboxIndex !== null && e.key === "ArrowRight") {
+        return;
+      }
+      if (lightboxIndex !== null && e.key === "ArrowRight") {
         handleNextPhoto();
+        return;
+      }
+
+      // Confinamento de foco por teclado (Focus Trap)
+      if (e.key === "Tab" && dialog) {
+        const focusableElements = Array.from(
+          dialog.querySelectorAll<HTMLElement>(
+            'button:not([disabled]), [tabindex]:not([tabindex="-1"]), a[href], iframe'
+          )
+        ).filter((el) => el.getClientRects().length > 0);
+
+        if (focusableElements.length > 0) {
+          const first = focusableElements[0];
+          const last = focusableElements[focusableElements.length - 1];
+
+          if (e.shiftKey) {
+            if (document.activeElement === first || document.activeElement === dialog) {
+              e.preventDefault();
+              last.focus();
+            }
+          } else {
+            if (document.activeElement === last) {
+              e.preventDefault();
+              first.focus();
+            }
+          }
+        } else {
+          e.preventDefault();
+          dialog.focus();
+        }
       }
     };
 
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+
+    return () => {
+      clearTimeout(focusTimer);
+      window.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+
+      // Devolução garantida do foco ao acionador original
+      if (modalTriggerRef.current) {
+        modalTriggerRef.current.focus();
+        modalTriggerRef.current = null;
+      }
+    };
   }, [lightboxIndex, activeVideo, handlePrevPhoto, handleNextPhoto]);
 
   const openPhotoInLightbox = (photoId: string) => {
+    rememberModalTrigger();
     const idx = filteredPhotos.findIndex((p) => p.id === photoId);
     if (idx !== -1) {
       setLightboxIndex(idx);
@@ -77,6 +153,11 @@ export function MediaGallery({ photos, videos }: MediaGalleryProps) {
       const globalIdx = photos.findIndex((p) => p.id === photoId);
       if (globalIdx !== -1) setLightboxIndex(globalIdx);
     }
+  };
+
+  const openVideo = (video: VideoItem) => {
+    rememberModalTrigger();
+    setActiveVideo(video);
   };
 
   const currentLightboxPhoto =
@@ -268,7 +349,7 @@ export function MediaGallery({ photos, videos }: MediaGalleryProps) {
                     {video.youtubeId ? (
                       <button
                         type="button"
-                        onClick={() => setActiveVideo(video)}
+                        onClick={() => openVideo(video)}
                         aria-label={`Reproduzir vídeo: ${video.title}`}
                         className="motion-press w-14 h-14 rounded-full bg-brand-green hover:bg-brand-greenDark text-white flex items-center justify-center text-xl shadow-xl ring-4 ring-white/25 transition-colors cursor-pointer"
                       >
@@ -318,7 +399,7 @@ export function MediaGallery({ photos, videos }: MediaGalleryProps) {
                 {video.youtubeId ? (
                   <button
                     type="button"
-                    onClick={() => setActiveVideo(video)}
+                    onClick={() => openVideo(video)}
                     className="font-bold text-brand-green dark:text-emerald-400 hover:underline transition-colors cursor-pointer"
                   >
                     ▶ Assistir Vídeo no Site
@@ -345,8 +426,10 @@ export function MediaGallery({ photos, videos }: MediaGalleryProps) {
         <div
           role="dialog"
           aria-modal="true"
+          ref={lightboxDialogRef}
           aria-label={currentLightboxPhoto.title}
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4"
+          tabIndex={-1}
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4 focus:outline-none"
           onClick={() => setLightboxIndex(null)}
         >
           <div
@@ -412,8 +495,10 @@ export function MediaGallery({ photos, videos }: MediaGalleryProps) {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label={activeVideo.title}
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4"
+          ref={videoDialogRef}
+          aria-labelledby="video-dialog-title"
+          tabIndex={-1}
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4 focus:outline-none"
           onClick={() => setActiveVideo(null)}
         >
           <div
@@ -421,13 +506,14 @@ export function MediaGallery({ photos, videos }: MediaGalleryProps) {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between mb-3">
-              <h3 className="font-heading text-lg font-bold text-white">
+              <h3 id="video-dialog-title" className="font-heading text-lg font-bold text-white">
                 {activeVideo.title}
               </h3>
               <button
+                ref={closeVideoButtonRef}
                 type="button"
                 onClick={() => setActiveVideo(null)}
-                className="px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-colors cursor-pointer"
+                className="px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-amber-400"
               >
                 ✕ Fechar Vídeo (Esc)
               </button>

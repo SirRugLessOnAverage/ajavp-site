@@ -44,7 +44,7 @@ export default function PrivacidadePage() {
       </section>
 
       {/* CONTEÚDO PRINCIPAL */}
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-12">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-12">
         {/* DESTAQUE PRINCIPAL: ISENÇÃO DE COOKIES DE RASTREIO */}
         <div className="p-6 sm:p-8 rounded-3xl bg-emerald-50/80 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-500/30 shadow-xs">
           <div className="flex items-start gap-4">
@@ -215,7 +215,7 @@ export default function PrivacidadePage() {
             </div>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

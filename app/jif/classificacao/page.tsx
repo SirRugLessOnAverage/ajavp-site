@@ -38,6 +38,12 @@ export const metadata: Metadata = {
 
 export default async function JifClassificacaoPage() {
   const rankings = await obterDadosClassificacao();
+  const ajavpIndex = rankings.findIndex(
+    (r) => r.isAjavp || r.name.toLowerCase().includes('vilar do pinheiro')
+  );
+  const ajavpRow = ajavpIndex !== -1 ? rankings[ajavpIndex] : null;
+  const pontosAjavp = ajavpRow?.pontos ?? 196;
+  const posicaoAjavp = ajavpIndex !== -1 ? `${ajavpIndex + 1}.º Lugar` : '4.º Lugar';
 
   return (
     <div className="bg-slate-50 dark:bg-slate-950 min-h-screen text-slate-800 dark:text-slate-100">
@@ -107,12 +113,12 @@ export default async function JifClassificacaoPage() {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-3">
                 <div className="p-3 rounded-2xl bg-white/10 dark:bg-slate-900/60 backdrop-blur-md text-center space-y-0.5 border border-white/15">
                   <span className="text-[10px] text-slate-300 uppercase block font-semibold truncate">Posição AJAVP</span>
-                  <div className="text-lg sm:text-xl font-black text-amber-400">4.º Lugar</div>
+                  <div className="text-lg sm:text-xl font-black text-amber-400">{posicaoAjavp}</div>
                   <span className="text-[10px] text-emerald-200 block truncate">19 Freguesias</span>
                 </div>
                 <div className="p-3 rounded-2xl bg-white/10 dark:bg-slate-900/60 backdrop-blur-md text-center space-y-0.5 border border-white/15">
                   <span className="text-[10px] text-slate-300 uppercase block font-semibold truncate">Pontos Virtuais</span>
-                  <div className="text-lg sm:text-xl font-black text-emerald-400">76 Pts</div>
+                  <div className="text-lg sm:text-xl font-black text-emerald-400">{pontosAjavp} Pts</div>
                   <span className="text-[10px] text-emerald-200 block truncate">Estimativa Geral</span>
                 </div>
                 <div className="p-3 rounded-2xl bg-white/10 dark:bg-slate-900/60 backdrop-blur-md text-center space-y-0.5 border border-white/15">
@@ -179,7 +185,7 @@ export default async function JifClassificacaoPage() {
       </section>
 
       {/* Main Container */}
-      <main id="tabela-classificacao" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10 scroll-mt-24">
+      <div id="tabela-classificacao" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10 scroll-mt-24">
         {/* Notice of Virtual Projection */}
         <div className="p-4 sm:p-5 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border-2 border-amber-300 dark:border-amber-500/40 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-start gap-3">
@@ -187,9 +193,9 @@ export default async function JifClassificacaoPage() {
               <Info className="w-4 h-4" />
             </div>
             <div className="space-y-0.5">
-              <h4 className="font-heading font-black text-xs sm:text-sm text-amber-950 dark:text-amber-200 uppercase tracking-wide">
+              <h2 className="font-heading font-black text-xs sm:text-sm text-amber-950 dark:text-amber-200 uppercase tracking-wide">
                 Sistema Oficial de Pontuação ADCCVC • Artigo XV das Regras Gerais JIF
-              </h4>
+              </h2>
               <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
                 Esta classificação virtual cumpre o simulador oficial da organização: Futsal (80 a 5 pts, N/P -25), Atletismo (57 a 3 pts, N/P -15) e Futebol (48 a 3 pts, N/P -15). As faltas de comparência são penalizadas com pontuações negativas expressas.
               </p>
@@ -214,9 +220,9 @@ export default async function JifClassificacaoPage() {
         {/* Interactive Virtual Ranking Table */}
         <div className="space-y-4">
           <div className="space-y-1">
-            <h3 className="font-heading font-black text-xl sm:text-2xl text-slate-900 dark:text-white">
+            <h2 className="font-heading font-black text-xl sm:text-2xl text-slate-900 dark:text-white">
               Tabela Geral Virtual (19 Freguesias)
-            </h3>
+            </h2>
             <p className="text-xs text-slate-500 dark:text-slate-400">
               Alterna entre a pontuação total virtual, o detalhe por modalidade ou a tabela ordenada por medalhas.
             </p>
@@ -232,9 +238,9 @@ export default async function JifClassificacaoPage() {
               <Scale className="w-4 h-4" />
               <span>Regulamento ADCCVC • Artigo XV</span>
             </div>
-            <h3 className="font-heading font-black text-xl sm:text-2xl text-slate-900 dark:text-white">
+            <h2 className="font-heading font-black text-xl sm:text-2xl text-slate-900 dark:text-white">
               Como Funciona o Sistema de Pontuação
-            </h3>
+            </h2>
             <p className="text-xs text-slate-600 dark:text-slate-300">
               Escalas de pontuação atribuídas por modalidade e penalizações obrigatórias por não participação (N/P):
             </p>
@@ -247,9 +253,9 @@ export default async function JifClassificacaoPage() {
                 className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-xs space-y-2"
               >
                 <div className="flex items-center justify-between">
-                  <h4 className="font-heading font-bold text-sm text-slate-900 dark:text-white">
+                  <h3 className="font-heading font-bold text-sm text-slate-900 dark:text-white">
                     {rule.modalidade}
-                  </h4>
+                  </h3>
                   <span className="px-2 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 text-[10px] font-bold">
                     {rule.escala}
                   </span>
@@ -266,9 +272,9 @@ export default async function JifClassificacaoPage() {
             {/* Tie-breaking rule */}
             <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-xs space-y-2">
               <div className="flex items-center justify-between">
-                <h4 className="font-heading font-bold text-sm text-slate-900 dark:text-white">
+                <h3 className="font-heading font-bold text-sm text-slate-900 dark:text-white">
                   Critério de Desempate
-                </h4>
+                </h3>
                 <span className="px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 text-[10px] font-bold">
                   Artigo XV.1
                 </span>
@@ -282,7 +288,7 @@ export default async function JifClassificacaoPage() {
           {/* Regulamento Oficial Ténis de Mesa (Artigo XV & Regras Específicas) */}
           <JifRegulamentoTenisMesa className="mt-8" />
         </section>
-      </main>
+      </div>
     </div>
   );
 }

@@ -92,7 +92,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt" suppressHydrationWarning className={`${montserrat.variable} ${inter.variable} ${lexend.variable}`}>
+    <html lang="pt-PT" suppressHydrationWarning className={`${montserrat.variable} ${inter.variable} ${lexend.variable}`}>
       <head>
         {/* Folha de Estilos de Acessibilidade & Usabilidade (WCAG 2.1 AA) */}
         <link rel="stylesheet" href="/assets/css/a11y.css" />

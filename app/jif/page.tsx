@@ -212,11 +212,11 @@ export default function JifPage() {
       </section>
 
       {/* Main Content Area: Simplified Hub Tabs */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
         <JifHubTabs initialTab="geral" />
 
         {/* Regulamento Oficial das Provas de Ténis de Mesa (ADCCVC / XL JIF) */}
-        <div id="regulamento-tenis-mesa" className="scroll-mt-24">
+        <div className="scroll-mt-24">
           <JifRegulamentoTenisMesa />
         </div>
 
@@ -241,7 +241,7 @@ export default function JifPage() {
             <span>Ficha de Inscrição Oficial</span>
           </a>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

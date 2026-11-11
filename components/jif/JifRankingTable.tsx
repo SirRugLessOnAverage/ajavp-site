@@ -166,67 +166,95 @@ export default function JifRankingTable({ rankings = JIF_CLASSIFICACAO }: JifRan
           <table className="w-full text-xs text-left border-collapse min-w-[650px] md:min-w-full">
             <thead>
               <tr className="bg-brand-navy text-white uppercase text-[10px] tracking-wider font-heading font-black">
-                <th className="py-3 px-2 text-center w-12">Pos.</th>
-                <th className="py-3 px-2 text-center w-14" title="Variação de classificação vs Etapa Anterior (Pós-Futebol)">
+                <th scope="col" className="py-3 px-2 text-center w-12">Pos.</th>
+                <th scope="col" className="py-3 px-2 text-center w-14" title="Variação de classificação vs Etapa Anterior (Pós-Futebol)">
                   Tend.
                 </th>
-                <th className="py-3 px-4 min-w-[170px] sticky left-0 z-20 bg-brand-navy shadow-xs">
+                <th scope="col" className="py-3 px-4 min-w-[170px] sticky left-0 z-20 bg-brand-navy shadow-xs">
                   Freguesia / Associação
                 </th>
                 <th
-                  onClick={() => { setViewMode('breakdown'); setModalidadeFiltro('atletismo'); }}
-                  className={`py-3 px-3 text-center min-w-[110px] cursor-pointer transition-colors ${
-                    viewMode === 'breakdown' && modalidadeFiltro === 'atletismo'
-                      ? 'bg-blue-800 text-amber-300 ring-2 ring-amber-400 font-black'
-                      : 'hover:bg-brand-navy/80'
-                  }`}
-                  title="Clique para ordenar por Atletismo"
+                  scope="col"
+                  aria-sort={viewMode === 'breakdown' && modalidadeFiltro === 'atletismo' ? 'descending' : 'none'}
+                  className="py-1 px-1 text-center min-w-[110px]"
                 >
-                  <span>🏃 Atletismo</span>
-                  <span className="block text-[9px] font-normal text-slate-300">1º = 57 pts</span>
+                  <button
+                    type="button"
+                    onClick={() => { setViewMode('breakdown'); setModalidadeFiltro('atletismo'); }}
+                    className={`w-full py-2 px-2 rounded-xl transition-colors cursor-pointer text-center focus:outline-hidden focus-visible:ring-2 focus-visible:ring-amber-400 ${
+                      viewMode === 'breakdown' && modalidadeFiltro === 'atletismo'
+                        ? 'bg-blue-800 text-amber-300 ring-2 ring-amber-400 font-black'
+                        : 'hover:bg-brand-navy/80 text-white'
+                    }`}
+                    title="Clique para ordenar por Atletismo"
+                  >
+                    <span className="block font-bold">🏃 Atletismo</span>
+                    <span className="block text-[9px] font-normal text-slate-300">1º = 57 pts</span>
+                  </button>
                 </th>
                 <th
-                  onClick={() => { setViewMode('breakdown'); setModalidadeFiltro('futebol'); }}
-                  className={`py-3 px-3 text-center min-w-[110px] cursor-pointer transition-colors ${
-                    viewMode === 'breakdown' && modalidadeFiltro === 'futebol'
-                      ? 'bg-blue-800 text-amber-300 ring-2 ring-amber-400 font-black'
-                      : 'hover:bg-brand-navy/80'
-                  }`}
-                  title="Clique para ordenar por Futebol"
+                  scope="col"
+                  aria-sort={viewMode === 'breakdown' && modalidadeFiltro === 'futebol' ? 'descending' : 'none'}
+                  className="py-1 px-1 text-center min-w-[110px]"
                 >
-                  <span>⚽ Futebol</span>
-                  <span className="block text-[9px] font-normal text-slate-300">1º = 48 pts</span>
+                  <button
+                    type="button"
+                    onClick={() => { setViewMode('breakdown'); setModalidadeFiltro('futebol'); }}
+                    className={`w-full py-2 px-2 rounded-xl transition-colors cursor-pointer text-center focus:outline-hidden focus-visible:ring-2 focus-visible:ring-amber-400 ${
+                      viewMode === 'breakdown' && modalidadeFiltro === 'futebol'
+                        ? 'bg-blue-800 text-amber-300 ring-2 ring-amber-400 font-black'
+                        : 'hover:bg-brand-navy/80 text-white'
+                    }`}
+                    title="Clique para ordenar por Futebol"
+                  >
+                    <span className="block font-bold">⚽ Futebol</span>
+                    <span className="block text-[9px] font-normal text-slate-300">1º = 48 pts</span>
+                  </button>
                 </th>
                 <th
-                  onClick={() => { setViewMode('breakdown'); setModalidadeFiltro('futsal'); }}
-                  className={`py-3 px-3 text-center min-w-[110px] cursor-pointer transition-colors ${
-                    viewMode === 'breakdown' && modalidadeFiltro === 'futsal'
-                      ? 'bg-blue-800 text-amber-300 ring-2 ring-amber-400 font-black'
-                      : 'hover:bg-brand-navy/80'
-                  }`}
-                  title="Clique para ordenar por Futsal"
+                  scope="col"
+                  aria-sort={viewMode === 'breakdown' && modalidadeFiltro === 'futsal' ? 'descending' : 'none'}
+                  className="py-1 px-1 text-center min-w-[110px]"
                 >
-                  <span>🥅 Futsal</span>
-                  <span className="block text-[9px] font-normal text-slate-300">1º = 75 pts</span>
+                  <button
+                    type="button"
+                    onClick={() => { setViewMode('breakdown'); setModalidadeFiltro('futsal'); }}
+                    className={`w-full py-2 px-2 rounded-xl transition-colors cursor-pointer text-center focus:outline-hidden focus-visible:ring-2 focus-visible:ring-amber-400 ${
+                      viewMode === 'breakdown' && modalidadeFiltro === 'futsal'
+                        ? 'bg-blue-800 text-amber-300 ring-2 ring-amber-400 font-black'
+                        : 'hover:bg-brand-navy/80 text-white'
+                    }`}
+                    title="Clique para ordenar por Futsal"
+                  >
+                    <span className="block font-bold">🥅 Futsal</span>
+                    <span className="block text-[9px] font-normal text-slate-300">1º = 75 pts</span>
+                  </button>
                 </th>
                 <th
-                  onClick={() => { setViewMode('breakdown'); setModalidadeFiltro('tenis-de-mesa'); }}
-                  className={`py-3 px-3 text-center min-w-[110px] cursor-pointer transition-colors ${
-                    viewMode === 'breakdown' && modalidadeFiltro === 'tenis-de-mesa'
-                      ? 'bg-blue-800 text-amber-300 ring-2 ring-amber-400 font-black'
-                      : 'hover:bg-brand-navy/80'
-                  }`}
-                  title="Clique para ordenar por Ténis de Mesa"
+                  scope="col"
+                  aria-sort={viewMode === 'breakdown' && modalidadeFiltro === 'tenis-de-mesa' ? 'descending' : 'none'}
+                  className="py-1 px-1 text-center min-w-[110px]"
                 >
-                  <span>🏓 Ténis Mesa</span>
-                  <span className="block text-[9px] font-normal text-slate-300">1º = 54 pts</span>
+                  <button
+                    type="button"
+                    onClick={() => { setViewMode('breakdown'); setModalidadeFiltro('tenis-de-mesa'); }}
+                    className={`w-full py-2 px-2 rounded-xl transition-colors cursor-pointer text-center focus:outline-hidden focus-visible:ring-2 focus-visible:ring-amber-400 ${
+                      viewMode === 'breakdown' && modalidadeFiltro === 'tenis-de-mesa'
+                        ? 'bg-blue-800 text-amber-300 ring-2 ring-amber-400 font-black'
+                        : 'hover:bg-brand-navy/80 text-white'
+                    }`}
+                    title="Clique para ordenar por Ténis de Mesa"
+                  >
+                    <span className="block font-bold">🏓 Ténis Mesa</span>
+                    <span className="block text-[9px] font-normal text-slate-300">1º = 54 pts</span>
+                  </button>
                 </th>
-                <th className="py-3 px-3 text-center min-w-[110px] bg-slate-950 text-amber-300 font-black">
+                <th scope="col" className="py-3 px-3 text-center min-w-[110px] bg-slate-950 text-amber-300 font-black">
                   <span>{viewMode === 'medals' ? 'Medalhas' : 'Total Pontos'}</span>
                   <span className="block text-[9px] font-normal text-slate-400">Classificação</span>
                 </th>
-                <th className="py-3 px-3 text-center min-w-[80px]">Medalheiro</th>
-                <th className="py-3 px-3 text-center min-w-[90px]">Situação</th>
+                <th scope="col" className="py-3 px-3 text-center min-w-[80px]">Medalheiro</th>
+                <th scope="col" className="py-3 px-3 text-center min-w-[90px]">Situação</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 dark:divide-white/5 font-medium">

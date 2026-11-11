@@ -36,9 +36,9 @@ export default function JifPodioRanking({ rankings }: JifPodioRankingProps) {
                   <span>AJAVP • Vilar do Pinheiro</span>
                 </span>
               </div>
-              <h3 className="font-heading font-black text-xl sm:text-2xl text-white">
+              <h2 className="font-heading font-black text-xl sm:text-2xl text-white">
                 {ajavp.pontos} Pontos Acumulados
-              </h3>
+              </h2>
               <p className="text-xs text-slate-300">
                 1º Corta-Mato (57 pts) • 1º Ténis Mesa (54 pts) • 5º Futsal (55 pts) • 6º Futebol (30 pts) • 5🥇 5🥈 5🥉 Medalhas (Líder Concelhio)
               </p>
@@ -64,9 +64,9 @@ export default function JifPodioRanking({ rankings }: JifPodioRankingProps) {
             </div>
             <div>
               <span className="text-[10px] font-black uppercase tracking-wider text-slate-400">Vice-Líder</span>
-              <h4 className="font-heading font-black text-lg text-slate-900 dark:text-white mt-0.5">
+              <h3 className="font-heading font-black text-lg text-slate-900 dark:text-white mt-0.5">
                 {second.name}
-              </h4>
+              </h3>
             </div>
             <div className="text-2xl font-heading font-black text-slate-800 dark:text-slate-100">
               {second.pontos} <span className="text-xs font-normal text-slate-400">pts</span>
@@ -87,9 +87,9 @@ export default function JifPodioRanking({ rankings }: JifPodioRankingProps) {
               <span className="px-2 py-0.5 rounded-full text-[10px] font-black uppercase bg-amber-400 text-slate-950">
                 Líder Concelhio
               </span>
-              <h4 className="font-heading font-black text-xl text-slate-900 dark:text-white mt-1">
+              <h3 className="font-heading font-black text-xl text-slate-900 dark:text-white mt-1">
                 {first.name}
-              </h4>
+              </h3>
             </div>
             <div className="text-3xl font-heading font-black text-amber-600 dark:text-amber-400">
               {first.pontos} <span className="text-xs font-normal text-slate-400">pts</span>
@@ -108,9 +108,9 @@ export default function JifPodioRanking({ rankings }: JifPodioRankingProps) {
             </div>
             <div>
               <span className="text-[10px] font-black uppercase tracking-wider text-slate-400">Pódio Geral</span>
-              <h4 className="font-heading font-black text-lg text-slate-900 dark:text-white mt-0.5">
+              <h3 className="font-heading font-black text-lg text-slate-900 dark:text-white mt-0.5">
                 {third.name}
-              </h4>
+              </h3>
             </div>
             <div className="text-2xl font-heading font-black text-slate-800 dark:text-slate-100">
               {third.pontos} <span className="text-xs font-normal text-slate-400">pts</span>

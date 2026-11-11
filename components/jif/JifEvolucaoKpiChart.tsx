@@ -314,10 +314,37 @@ export default function JifEvolucaoKpiChart({ rankings }: JifEvolucaoKpiChartPro
           </span>
         </div>
 
+        {/* Tabela Acessível oculta para leitores de ecrã (A11y SVG Chart alternative) */}
+        <div className="sr-only">
+          <table>
+            <caption>Histórico de evolução e classificação de {ativa.name}</caption>
+            <thead>
+              <tr>
+                <th scope="col">Etapa</th>
+                <th scope="col">Pontos na Etapa</th>
+                <th scope="col">Pontos Acumulados</th>
+                <th scope="col">Posição na Etapa</th>
+              </tr>
+            </thead>
+            <tbody>
+              {ativa.history?.map((h) => (
+                <tr key={h.stageId}>
+                  <td>{h.stageLabel}</td>
+                  <td>{h.stagePts} pts</td>
+                  <td>{h.cumulativePts} pts</td>
+                  <td>{h.rankAtStage}º lugar</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
         {/* SVG Container Responsivo */}
         <div className="w-full overflow-x-auto no-scrollbar">
           <div className="min-w-[540px]">
             <svg
+              role="img"
+              aria-label={`Gráfico de evolução da freguesia de ${ativa.name}`}
               viewBox={`0 0 ${chartConfig.width} ${chartConfig.height}`}
               className="w-full h-auto overflow-visible font-sans"
             >
