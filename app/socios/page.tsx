@@ -12,6 +12,11 @@ import {
   Zap,
   HelpCircle,
   PlayCircle,
+  MapPin,
+  FileText,
+  Stethoscope,
+  Camera,
+  Trophy,
 } from "lucide-react";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { GESTAO_LINKS, SITE_URL } from "@/lib/site";
@@ -222,6 +227,169 @@ export default function SociosPage() {
           {/* NOTA SOBRE FUNDADORES E BENEMÉRITOS */}
           <div className="mt-8 p-5 rounded-2xl bg-amber-50/70 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-400/20 text-center text-xs sm:text-sm text-amber-900 dark:text-amber-200">
             <span className="font-bold">✨ Sócios Fundadores & Beneméritos:</span> Os membros fundadores e parceiros que pretendam contribuir com donativos extraordinários têm estatuto de honra nos órgãos sociais e menção especial na história do clube.
+          </div>
+        </div>
+      </section>
+
+      {/* REQUISITOS PARA SER ATLETA & PARTICIPAR NOS JIF */}
+      <section
+        id="requisitos-jif"
+        className="py-16 sm:py-20 bg-emerald-50/40 dark:bg-emerald-950/15 border-b border-emerald-200/70 dark:border-emerald-500/15 transition-colors scroll-mt-20"
+      >
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 border border-emerald-300/60 dark:border-emerald-400/30 text-xs font-bold uppercase tracking-wider mb-3">
+              <Trophy className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+              <span>Competição Oficial • XL Jogos Inter-Freguesias</span>
+            </span>
+            <h2 className="font-heading text-3xl sm:text-4xl font-black text-brand-navy dark:text-white mb-3">
+              O Que é Preciso Para Ser Atleta nos JIF?
+            </h2>
+            <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              Para representar Vilar do Pinheiro e competir oficialmente pela AJAVP nos Jogos Inter-Freguesias, cada atleta tem de cumprir <strong>5 requisitos simples e obrigatórios</strong>:
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {/* 1. Ser Sócio */}
+            <div className="motion-card p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-11 h-11 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+                    <Users className="w-5 h-5" />
+                  </div>
+                  <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300">
+                    Passo 1 • Obrigatório
+                  </span>
+                </div>
+                <h3 className="font-heading font-black text-lg text-slate-900 dark:text-white mb-2">
+                  Ser Sócio da AJAVP
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Ter a <strong>Ficha de Sócio</strong> preenchida e assinada digitalmente. Menores de 18 anos estão <strong>isentos de quota (0€/ano)</strong>; adultos têm quota anual de 12€.
+                </p>
+              </div>
+            </div>
+
+            {/* 2. Ligação à Freguesia */}
+            <div className="motion-card p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-11 h-11 rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300">
+                    Regulamento ADCCVC
+                  </span>
+                </div>
+                <h3 className="font-heading font-black text-lg text-slate-900 dark:text-white mb-2">
+                  Ligação a Vilar do Pinheiro
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Ser <strong>natural, residente ou recenseado</strong> na freguesia de Vilar do Pinheiro (ou cumprir os critérios regulamentares da ADCCVC).
+                </p>
+              </div>
+            </div>
+
+            {/* 3. Cartão de Cidadão */}
+            <div className="motion-card p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-11 h-11 rounded-2xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+                    <IdCard className="w-5 h-5" />
+                  </div>
+                  <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-300">
+                    Documento 1
+                  </span>
+                </div>
+                <h3 className="font-heading font-black text-lg text-slate-900 dark:text-white mb-2">
+                  Cartão de Cidadão Válido
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Cópia ou fotografia legível do documento de identificação válido para confirmar identidade, escalão etário e naturalidade.
+                </p>
+              </div>
+            </div>
+
+            {/* 4. Exame Médico Desportivo */}
+            <div className="motion-card p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-11 h-11 rounded-2xl bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center">
+                    <Stethoscope className="w-5 h-5" />
+                  </div>
+                  <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-rose-100 dark:bg-rose-500/20 text-rose-800 dark:text-rose-300">
+                    Obrigatório por Lei
+                  </span>
+                </div>
+                <h3 className="font-heading font-black text-lg text-slate-900 dark:text-white mb-2">
+                  Exame Médico Desportivo
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Atestado de aptidão física válido para a época desportiva. Podes iniciar a inscrição já e submeter o exame no Portal de Sócio assim que o realizares.
+                </p>
+              </div>
+            </div>
+
+            {/* 5. Foto + Declaração ADCCVC */}
+            <div className="motion-card p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-xs flex flex-col justify-between md:col-span-2 lg:col-span-2">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-2">
+                    <div className="w-11 h-11 rounded-2xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center">
+                      <Camera className="w-5 h-5" />
+                    </div>
+                    <div className="w-11 h-11 rounded-2xl bg-teal-500/10 text-teal-600 dark:text-teal-400 flex items-center justify-center">
+                      <FileText className="w-5 h-5" />
+                    </div>
+                  </div>
+                  <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300">
+                    100% Digital no Ecrã
+                  </span>
+                </div>
+                <h3 className="font-heading font-black text-lg text-slate-900 dark:text-white mb-2">
+                  Fotografia Tipo Passe &amp; Declaração ADCCVC / Imagem
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Uma fotografia tipo passe (pode ser tirada com o telemóvel contra fundo claro) para o cartão de atleta e a assinatura digital da <strong>Declaração ADCCVC &amp; Direitos de Imagem</strong> — feita diretamente no ecrã pelo próprio atleta ou pelo Encarregado de Educação no caso de menores.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Nota de Comodidade & Duplo CTA */}
+          <div className="mt-10 p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-emerald-200 dark:border-emerald-500/25 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="text-center md:text-left space-y-1 max-w-xl">
+              <div className="text-xs font-extrabold uppercase tracking-wider text-emerald-700 dark:text-emerald-400 flex items-center justify-center md:justify-start gap-1.5">
+                <ShieldCheck className="w-4 h-4" />
+                <span>Tudo num só sítio • Zero Papel</span>
+              </div>
+              <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                Se já és sócio mas ainda te falta entregar o Exame Médico, Foto ou Cartão de Cidadão, podes enviar tudo diretamente na tua <strong>Área de Sócio</strong>.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto shrink-0">
+              <a
+                href={GESTAO_LINKS.inscricao}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="motion-press w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-brand-green hover:bg-brand-greenDark text-white font-bold text-sm transition-colors shadow-md shadow-brand-green/20"
+              >
+                <span>Inscrever Atleta</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+
+              <a
+                href={GESTAO_LINKS.socio}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="motion-press w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-white/10 dark:hover:bg-white/15 text-slate-800 dark:text-white font-semibold text-sm transition-colors border border-slate-200 dark:border-white/10"
+              >
+                <IdCard className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                <span>Enviar Docs no Portal</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>

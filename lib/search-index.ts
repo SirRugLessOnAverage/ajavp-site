@@ -159,6 +159,14 @@ const SOCIO_ITEMS: SearchItem[] = [
     external: true,
     keywords: "area socio portal cartao digital qr code numero socio consultar quotas",
   },
+  {
+    id: "socio-requisitos-jif",
+    title: "Requisitos Para Ser Atleta nos JIF",
+    subtitle: "Sócio AJAVP, ligação a Vilar do Pinheiro, CC, Exame Médico, Foto e Declaração ADCCVC",
+    category: "socio",
+    href: "/socios#requisitos-jif",
+    keywords: "atleta jif requisitos documentos exame medico atestado cartao cidadao foto declaracao adccvc naturalidade residencia recenseamento",
+  },
 ];
 
 const VENUE_ITEMS: SearchItem[] = JIF_VENUES.map((venue) => ({
