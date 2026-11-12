@@ -4,15 +4,12 @@ import Link from "next/link";
 import {
   Trophy,
   Users,
-  UserPlus,
   ChevronRight,
   ArrowRight,
   Sparkles,
   MapPin,
   Calendar,
   Shield,
-  HeartHandshake,
-  IdCard,
   LayoutDashboard,
   Bell,
 } from "lucide-react";
@@ -21,7 +18,7 @@ import { GESTAO_LINKS } from "@/lib/site";
 import { NoticiasSection } from "@/components/home/NoticiasSection";
 import { EventosSection } from "@/components/home/EventosSection";
 import { JifLiveTicker } from "@/components/home/JifLiveTicker";
-import { BotaoGuiaVideoModal } from "@/components/video/BotaoGuiaVideoModal";
+import { BannerSociosOficial } from "@/components/home/BannerSociosOficial";
 import type { SiteNoticia, SiteEvento } from "@/lib/types/database";
 
 export const revalidate = 60;
@@ -417,46 +414,8 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Community Banner / CTA */}
-      <section className="py-16 bg-linear-to-r from-brand-navy to-emerald-950 text-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 text-emerald-300 text-xs font-bold uppercase tracking-wider">
-            <HeartHandshake className="w-4 h-4" />
-            <span>Faz Parte da Família AJAVP</span>
-          </div>
-
-          <h2 className="font-heading font-black text-2xl sm:text-4xl max-w-2xl mx-auto leading-tight">
-            Torna-te Sócio ou Inscreve o Teu Educando
-          </h2>
-
-          <p className="text-slate-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-            Apoia o desporto em Vilar do Pinheiro. Ficha digital de sócio, quotas simplificadas e seguro desportivo incluído nos treinos oficiais.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-            <Link
-              href="/socios"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-heading font-bold px-8 py-4 rounded-full shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-0.5 text-sm sm:text-base group cursor-pointer"
-            >
-              <UserPlus className="w-5 h-5 text-slate-950" />
-              <span>Quero Ser Sócio &bull; Ver Quotas 26/27</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-
-            <BotaoGuiaVideoModal />
-
-            <a
-              href={GESTAO_LINKS.socio}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white/10 hover:bg-white/20 text-white font-heading font-semibold px-7 py-4 rounded-full border border-white/20 transition-all text-sm sm:text-base"
-            >
-              <IdCard className="w-5 h-5 text-emerald-400" />
-              <span>Já Sou Sócio (Cartão Digital)</span>
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* Banner Oficial de Sócios (Estilo Portal de Sócio) */}
+      <BannerSociosOficial />
     </>
   );
 }

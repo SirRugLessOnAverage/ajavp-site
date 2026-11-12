@@ -8,4 +8,7 @@ export const GESTAO_LINKS = {
   alertas: `${GESTAO_URL}/direcao/alertas`,
 } as const;
 
+// Marco de associados exibido com honra e prova social no site público
+export const TOTAL_SOCIOS_ESTATISTICA = 120;
+
 

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { GESTAO_LINKS } from "@/lib/site";
 import { DynamicTopBanner } from "./DynamicTopBanner";
+import { SearchPaletteModal } from "./SearchPaletteModal";
 import {
   Medal,
   ChevronDown,
@@ -24,11 +25,13 @@ import {
   IdCard,
   Smartphone,
   Bell,
+  Search,
 } from "lucide-react";
 
 export function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const [isJifDropdownOpen, setIsJifDropdownOpen] = useState(false);
   const jifDropdownRef = useRef<HTMLDivElement>(null);
@@ -90,9 +93,10 @@ export function Header() {
     setIsJifDropdownOpen(false);
     setIsSomosVdpDropdownOpen(false);
     setMobileMenuOpen(false);
+    setIsSearchOpen(false);
   }, [pathname]);
 
-  // Fecho com clique fora e tecla Escape
+  // Fecho com clique fora, Escape e atalho Ctrl+K / Cmd+K
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent | TouchEvent) => {
       if (
@@ -110,6 +114,15 @@ export function Header() {
     };
 
     const handleKeyDown = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        setIsJifDropdownOpen(false);
+        setIsSomosVdpDropdownOpen(false);
+        setMobileMenuOpen(false);
+        setIsSearchOpen((prev) => !prev);
+        return;
+      }
+
       if (event.key === "Escape") {
         setIsJifDropdownOpen(false);
         setIsSomosVdpDropdownOpen(false);
@@ -512,6 +525,17 @@ export function Header() {
 
           {/* Action Buttons & Theme Toggle */}
           <div className="hidden xl:flex items-center gap-2 shrink-0">
+            {/* Search Palette Trigger */}
+            <button
+              type="button"
+              onClick={() => setIsSearchOpen(true)}
+              className="motion-press p-2 rounded-xl border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 text-slate-700 dark:text-slate-200 transition-colors cursor-pointer flex items-center justify-center shrink-0"
+              title="Pesquisar no site (Atalho: Ctrl + K)"
+              aria-label="Pesquisar no site"
+            >
+              <Search className="w-4 h-4 shrink-0" />
+            </button>
+
             {/* A11y Accessibility Modal Trigger */}
             <button
               type="button"
@@ -562,6 +586,17 @@ export function Header() {
 
           {/* Mobile Controls */}
           <div className="flex items-center gap-1.5 sm:gap-2 xl:hidden">
+            {/* Search Palette Mobile Trigger */}
+            <button
+              type="button"
+              onClick={() => setIsSearchOpen(true)}
+              aria-label="Pesquisar no site"
+              title="Pesquisar no site"
+              className="motion-press p-2 rounded-lg border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition-colors cursor-pointer"
+            >
+              <Search className="w-5 h-5 shrink-0" />
+            </button>
+
             {/* A11y Accessibility Mobile Trigger */}
             <button
               type="button"
@@ -836,6 +871,11 @@ export function Header() {
           </>
         )}
       </header>
+
+      <SearchPaletteModal
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+      />
     </>
   );
 }
