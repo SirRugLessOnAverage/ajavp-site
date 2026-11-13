@@ -16,7 +16,7 @@ import {
 import { createClient } from "@/lib/supabase/server";
 import { GESTAO_LINKS } from "@/lib/site";
 import { NoticiasSection } from "@/components/home/NoticiasSection";
-import { EventosSection } from "@/components/home/EventosSection";
+import { AgendaMatchCenter } from "@/components/home/AgendaMatchCenter";
 import { JifLiveTicker } from "@/components/home/JifLiveTicker";
 import { BannerSociosOficial } from "@/components/home/BannerSociosOficial";
 import type { SiteNoticia, SiteEvento } from "@/lib/types/database";
@@ -234,6 +234,17 @@ export default async function HomePage() {
                 </div>
 
                 <div className="space-y-2">
+                  <a
+                    href="#agenda"
+                    className="flex items-center justify-between p-3 rounded-xl bg-emerald-50/90 hover:bg-emerald-100/90 dark:bg-emerald-500/15 dark:hover:bg-emerald-500/25 transition-colors border border-emerald-200 dark:border-emerald-500/30 group text-emerald-950 dark:text-emerald-200 font-bold text-xs sm:text-sm"
+                  >
+                    <span className="flex items-center gap-2">
+                      <span className="text-sm">⚡</span>
+                      <span>Ver Centro de Jogos &amp; Próximas Jornadas</span>
+                    </span>
+                    <ChevronRight className="w-4 h-4 text-emerald-600 dark:text-emerald-400 group-hover:translate-x-1 transition-transform" />
+                  </a>
+
                   <Link
                     href="/jif/futsal"
                     className="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-emerald-50/70 dark:bg-white/10 dark:hover:bg-white/15 transition-colors border border-slate-200 dark:border-white/10 group"
@@ -284,6 +295,9 @@ export default async function HomePage() {
       {/* Barra Dinâmica das Próximas Provas JIF */}
       <JifLiveTicker />
 
+      {/* Centro de Jogos & Agenda Desportiva AJAVP (Match Center Nobre) */}
+      <AgendaMatchCenter eventos={eventos} />
+
       {/* Banner Oficial de Notificações Web Push & Avisos no Telemóvel */}
       <section className="bg-linear-to-r from-amber-500 via-amber-400 to-amber-500 text-slate-950 py-5 sm:py-6 shadow-md border-y border-amber-400">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -323,9 +337,6 @@ export default async function HomePage() {
 
       {/* Supabase Dynamic News Section */}
       <NoticiasSection noticias={noticias} />
-
-      {/* Supabase Dynamic Events Section */}
-      <EventosSection eventos={eventos} />
 
       {/* Modalidades Grid Section */}
       <section className="py-20 bg-white dark:bg-slate-900 transition-colors">
