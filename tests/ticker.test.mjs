@@ -31,9 +31,13 @@ test("Ticker: JifLiveTicker.tsx deve existir e conter links diretos para /jif#ca
   assert.ok(content.includes("36 provas"), "Ticker deve indicar o total oficial de 36 provas");
 });
 
-test("Ticker: Homepage deve renderizar JifLiveTicker logo a seguir ao Hero", () => {
+test("Ticker: Homepage deve renderizar AgendaMatchCenter sem tickers duplicados", () => {
   const homeContent = fs.readFileSync(path.join(ROOT_DIR, "app", "page.tsx"), "utf-8");
-  assert.ok(homeContent.includes("<JifLiveTicker />"), "app/page.tsx deve incluir <JifLiveTicker />");
+  assert.ok(homeContent.includes("<AgendaMatchCenter"), "app/page.tsx deve incluir <AgendaMatchCenter />");
+  assert.ok(
+    !homeContent.includes("<JifLiveTicker />"),
+    "app/page.tsx não deve duplicar o ticker agora que possui o Match Center completo"
+  );
   assert.ok(
     homeContent.includes('href="/jif#calendario"'),
     "Hero card da homepage deve ter link direto para /jif#calendario"

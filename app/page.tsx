@@ -17,7 +17,6 @@ import { createClient } from "@/lib/supabase/server";
 import { GESTAO_LINKS } from "@/lib/site";
 import { NoticiasSection } from "@/components/home/NoticiasSection";
 import { AgendaMatchCenter } from "@/components/home/AgendaMatchCenter";
-import { JifLiveTicker } from "@/components/home/JifLiveTicker";
 import { BannerSociosOficial } from "@/components/home/BannerSociosOficial";
 import type { SiteNoticia, SiteEvento } from "@/lib/types/database";
 
@@ -291,9 +290,6 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* Barra Dinâmica das Próximas Provas JIF */}
-      <JifLiveTicker />
 
       {/* Centro de Jogos & Agenda Desportiva AJAVP (Match Center Nobre) */}
       <AgendaMatchCenter eventos={eventos} />
