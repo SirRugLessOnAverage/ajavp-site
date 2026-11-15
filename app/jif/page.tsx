@@ -6,6 +6,8 @@ import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import JifHubTabs from '@/components/jif/JifHubTabs';
 import { JifRegulamentoTenisMesa } from '@/components/jif/JifRegulamentoTenisMesa';
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: 'Portal Oficial XL JIF 2026/2027 • AJAVP Vilar do Pinheiro',
   description:

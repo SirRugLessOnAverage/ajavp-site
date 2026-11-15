@@ -6,6 +6,8 @@ import { FutsalPavilhoesTabs } from "@/components/jif/futsal/FutsalPavilhoesTabs
 import { FutsalClassificacoes } from "@/components/jif/futsal/FutsalClassificacoes";
 import { FutsalMarcadores } from "@/components/jif/futsal/FutsalMarcadores";
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "Futsal Semanal • XL JIF 2026/2027 • Resultados, Escalões e Marcadores | AJAVP",
   description:
