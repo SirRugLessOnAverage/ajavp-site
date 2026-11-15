@@ -85,6 +85,31 @@ const nextConfig: NextConfig = {
         destination: "https://gestao.ajavp.pt/direcao/alertas",
         permanent: false,
       },
+      {
+        source: "/direcao/:path*",
+        destination: "https://gestao.ajavp.pt/direcao/:path*",
+        permanent: false,
+      },
+      {
+        source: "/direcao",
+        destination: "https://gestao.ajavp.pt/direcao",
+        permanent: false,
+      },
+      {
+        source: "/socio/:path*",
+        destination: "https://gestao.ajavp.pt/socio/:path*",
+        permanent: false,
+      },
+      {
+        source: "/socio",
+        destination: "https://gestao.ajavp.pt/socio",
+        permanent: false,
+      },
+      {
+        source: "/validar/:path*",
+        destination: "https://gestao.ajavp.pt/validar/:path*",
+        permanent: false,
+      },
     ];
   },
   async headers() {
