@@ -64,6 +64,8 @@ function isPushEndpointValido(endpointStr: string): boolean {
   }
 }
 
+const MODALIDADES_PERMITIDAS = ['Todas', 'Futsal', 'Atletismo', 'Ténis de Mesa', 'Badminton'] as const;
+
 export async function OPTIONS(req: Request) {
   return new NextResponse(null, { status: 200, headers: getCorsHeaders(req) });
 }
@@ -80,7 +82,20 @@ export async function POST(req: Request) {
     }
 
     const body = await req.json().catch(() => null);
-    const { endpoint, keys, userAgent } = body || {};
+    const { endpoint, keys, userAgent, modalidades } = body || {};
+
+    const modalidadesLimpos: string[] = Array.isArray(modalidades)
+      ? Array.from(
+          new Set(
+            modalidades
+              .map((m: unknown) => (typeof m === 'string' ? m.trim() : ''))
+              .filter((m: string) =>
+                (MODALIDADES_PERMITIDAS as readonly string[]).includes(m)
+              )
+          )
+        )
+      : [];
+    const modalidadesFinais = modalidadesLimpos.length > 0 ? modalidadesLimpos : ['Todas'];
 
     if (!endpoint || typeof endpoint !== 'string' || !isPushEndpointValido(endpoint)) {
       return NextResponse.json(
@@ -117,6 +132,7 @@ export async function POST(req: Request) {
         p_p256dh: keys.p256dh.trim(),
         p_auth: keys.auth.trim(),
         p_user_agent: typeof userAgent === 'string' ? userAgent.slice(0, 300) : '',
+        p_modalidades: modalidadesFinais,
       }),
     });
 

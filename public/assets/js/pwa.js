@@ -437,6 +437,13 @@
       }
 
       const subData = subscription.toJSON();
+      let modalidadesPref = ['Todas'];
+      try {
+        const rawMods = JSON.parse(localStorage.getItem('ajavp_push_modalidades') || '["Todas"]');
+        if (Array.isArray(rawMods) && rawMods.length > 0) {
+          modalidadesPref = rawMods;
+        }
+      } catch {}
 
       const response = await fetch('/api/push-subscribe', {
         method: 'POST',
@@ -444,7 +451,8 @@
         body: JSON.stringify({
           endpoint: subData.endpoint,
           keys: subData.keys,
-          userAgent: navigator.userAgent
+          userAgent: navigator.userAgent,
+          modalidades: modalidadesPref
         })
       });
 
@@ -517,13 +525,21 @@
         }
         // Garantir que está sincronizado na base de dados
         const subData = subscription.toJSON();
+        let modalidadesPref = ['Todas'];
+        try {
+          const rawMods = JSON.parse(localStorage.getItem('ajavp_push_modalidades') || '["Todas"]');
+          if (Array.isArray(rawMods) && rawMods.length > 0) {
+            modalidadesPref = rawMods;
+          }
+        } catch {}
         fetch('/api/push-subscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             endpoint: subData.endpoint,
             keys: subData.keys,
-            userAgent: navigator.userAgent
+            userAgent: navigator.userAgent,
+            modalidades: modalidadesPref
           })
         }).catch(() => {});
 
