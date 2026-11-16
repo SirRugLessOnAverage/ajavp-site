@@ -3,6 +3,7 @@ import {
   FUTSAL_DATA,
   type FutsalClassificacaoEscalao,
   type FutsalHubData,
+  type FutsalJogo,
   type FutsalJornada,
   type FutsalMarcadoresEscalao,
   type FutsalPavilhao,
@@ -10,8 +11,14 @@ import {
 import { FUTSAL_JORNADAS } from '@/data/jif/futsal-jogos';
 import { JIF_CLASSIFICACAO, type JifParishRanking } from '@/data/jif/classificacao';
 import { JIF_CIRCULARS, type JifCircular, type JifCircularHighlight } from '@/data/jif/comunicados';
+import {
+  chaveCanonicaEquipa,
+  normalizarEscalaoJogo,
+  formatarNomeEquipa,
+} from '@/lib/jif/team-matches';
 
 interface ExtractedJogoRaw {
+  jornada?: number;
   escalao?: string;
   casa?: string;
   fora?: string;
@@ -65,11 +72,184 @@ function normalizarChaveEscalao(escalao?: string): keyof FutsalHubData['classifi
   return null;
 }
 
-function adaptarExtractedParaFutsal(payload: Record<string, unknown>): FutsalHubData {
+function normalizarHora(hora?: string): string {
+  if (!hora) return '';
+  const m = hora.trim().match(/(\d{1,2})[h:](\d{2})/i);
+  if (!m) return hora.trim();
+  return `${m[1].padStart(2, '0')}:${m[2]}`;
+}
+
+function chaveConfronto(escalao?: string, pavNome?: string, casa?: string, fora?: string): string {
+  const esc = normalizarEscalaoJogo(escalao, pavNome);
+  return `${esc}-${chaveCanonicaEquipa(casa)}-${chaveCanonicaEquipa(fora)}`;
+}
+
+function construirJornadasBase(): FutsalJornada[] {
+  return FUTSAL_JORNADAS.map((fj) => ({
+    numero: fj.number,
+    data: fj.formattedDate || fj.date,
+    estado: fj.number < 4 ? 'Concluída' : 'Agendada',
+    pavilhoes: fj.venueSessions.map((v) => ({
+      nome: v.venueName,
+      cor: 'emerald',
+      jogos: v.matches.map((m) => {
+        let golosCasa = 0;
+        let golosFora = 0;
+        if (m.score && m.score.includes('-')) {
+          const parts = m.score.split('-').map((s) => Number(s.trim()));
+          if (!isNaN(parts[0]) && !isNaN(parts[1])) {
+            golosCasa = parts[0];
+            golosFora = parts[1];
+          }
+        }
+        return {
+          escalao: normalizarEscalaoJogo(m.category, v.venueName),
+          campo: v.subLocation,
+          hora: m.time,
+          casa: m.homeTeam,
+          fora: m.awayTeam,
+          golosCasa,
+          golosFora,
+          isAjavp: Boolean(m.isAjavp),
+        };
+      }),
+    })),
+  }));
+}
+
+/**
+ * Funde as jornadas dinâmicas/JSON sobre o calendário oficial (1ª a 6ª Jornada)
+ * utilizando chaves canónicas por confronto para nunca duplicar jogos nem descartar jornadas futuras.
+ */
+export function consolidarTodasJornadas(jornadasExistentes: FutsalJornada[]): FutsalJornada[] {
+  const mapa = new Map<number, FutsalJornada>();
+
+  for (const baseJ of construirJornadasBase()) {
+    mapa.set(baseJ.numero, baseJ);
+  }
+
+  for (const j of jornadasExistentes) {
+    const existente = mapa.get(j.numero);
+    if (!existente) {
+      mapa.set(j.numero, {
+        ...j,
+        pavilhoes: (j.pavilhoes || []).map((p) => ({
+          ...p,
+          jogos: (p.jogos || []).map((jogo) => ({
+            ...jogo,
+            escalao: normalizarEscalaoJogo(jogo.escalao, p.nome),
+          })),
+        })),
+      });
+      continue;
+    }
+
+    // Indexar os jogos base da jornada por chave canónica
+    const indice = new Map<string, FutsalJogo>();
+    for (const pBase of existente.pavilhoes) {
+      for (const jogoBase of pBase.jogos) {
+        const k = chaveConfronto(jogoBase.escalao, pBase.nome, jogoBase.casa, jogoBase.fora);
+        indice.set(k, jogoBase);
+      }
+    }
+
+    for (const p of j.pavilhoes || []) {
+      for (const jogo of p.jogos || []) {
+        const escalaoNorm = normalizarEscalaoJogo(jogo.escalao, p.nome);
+        const k = chaveConfronto(escalaoNorm, p.nome, jogo.casa, jogo.fora);
+        const alvo = indice.get(k);
+
+        if (alvo) {
+          alvo.golosCasa = Number(jogo.golosCasa ?? 0);
+          alvo.golosFora = Number(jogo.golosFora ?? 0);
+          if (jogo.hora) alvo.hora = jogo.hora;
+          if (escalaoNorm) alvo.escalao = escalaoNorm;
+          if (jogo.campo) alvo.campo = jogo.campo;
+          alvo.isAjavp =
+            Boolean(jogo.isAjavp) ||
+            chaveCanonicaEquipa(alvo.casa) === 'ajavp' ||
+            chaveCanonicaEquipa(alvo.fora) === 'ajavp';
+        } else {
+          // Confronto extra não previsto no calendário base
+          let pavDestino = existente.pavilhoes.find(
+            (pb) => pb.nome.toLowerCase() === p.nome.toLowerCase()
+          );
+          if (!pavDestino) {
+            pavDestino = { nome: p.nome, cor: p.cor || 'emerald', jogos: [] };
+            existente.pavilhoes.push(pavDestino);
+          }
+          const novoJogo: FutsalJogo = {
+            ...jogo,
+            escalao: escalaoNorm,
+            isAjavp:
+              Boolean(jogo.isAjavp) ||
+              chaveCanonicaEquipa(jogo.casa) === 'ajavp' ||
+              chaveCanonicaEquipa(jogo.fora) === 'ajavp',
+          };
+          pavDestino.jogos.push(novoJogo);
+          indice.set(k, novoJogo);
+        }
+      }
+    }
+
+    if (j.estado?.toLowerCase().includes('concl')) {
+      existente.estado = 'Concluída';
+    }
+    if (j.data) {
+      existente.data = j.data;
+    }
+  }
+
+  return Array.from(mapa.values()).sort((a, b) => a.numero - b.numero);
+}
+
+function calcularGolosPorEquipa(
+  jornadas: FutsalJornada[],
+  chaveEscalao: keyof FutsalHubData['classificacoes']
+): Map<string, { gm: number; gs: number }> {
+  const totais = new Map<string, { gm: number; gs: number }>();
+
+  for (const j of jornadas) {
+    if (!j.estado.toLowerCase().includes('concl')) continue;
+    for (const p of j.pavilhoes) {
+      for (const jogo of p.jogos) {
+        if (normalizarChaveEscalao(normalizarEscalaoJogo(jogo.escalao, p.nome)) !== chaveEscalao) {
+          continue;
+        }
+        const cCasa = chaveCanonicaEquipa(jogo.casa);
+        const cFora = chaveCanonicaEquipa(jogo.fora);
+        const gc = Number(jogo.golosCasa ?? 0);
+        const gf = Number(jogo.golosFora ?? 0);
+
+        if (cCasa) {
+          const cur = totais.get(cCasa) || { gm: 0, gs: 0 };
+          cur.gm += gc;
+          cur.gs += gf;
+          totais.set(cCasa, cur);
+        }
+        if (cFora) {
+          const cur = totais.get(cFora) || { gm: 0, gs: 0 };
+          cur.gm += gf;
+          cur.gs += gc;
+          totais.set(cFora, cur);
+        }
+      }
+    }
+  }
+
+  return totais;
+}
+
+/**
+ * Adapta os dados extraídos via IA (`site_jif_dados`) reconciliando os resultados
+ * diretamente nas jornadas oficiais (1ª a 6ª Jornada) sem criar jornadas artificiais nem duplicar jogos.
+ */
+export function adaptarExtractedParaFutsal(payload: Record<string, unknown>): FutsalHubData {
+  const jornadasConsolidadas = consolidarTodasJornadas(FUTSAL_DATA.jornadas);
   const base: FutsalHubData = {
     ...FUTSAL_DATA,
     classificacoes: { ...FUTSAL_DATA.classificacoes },
-    jornadas: [...FUTSAL_DATA.jornadas],
+    jornadas: jornadasConsolidadas,
   };
 
   if (typeof payload.dataDocumento === 'string' && payload.dataDocumento) {
@@ -78,45 +258,110 @@ function adaptarExtractedParaFutsal(payload: Record<string, unknown>): FutsalHub
 
   const jogosRaw = Array.isArray(payload.jogos) ? (payload.jogos as ExtractedJogoRaw[]) : [];
   if (jogosRaw.length > 0) {
-    const cores = ['emerald', 'sky', 'amber', 'indigo', 'purple'];
-    const porPavilhao = new Map<string, FutsalPavilhao>();
-
-    for (const j of jogosRaw) {
-      const nomePav = (j.local || 'Pavilhão').trim();
-      if (!porPavilhao.has(nomePav)) {
-        porPavilhao.set(nomePav, {
-          nome: nomePav,
-          cor: cores[porPavilhao.size % cores.length],
-          jogos: [],
-        });
+    // Indexar todas as ocorrências de confrontos em jornadasConsolidadas
+    const indice = new Map<
+      string,
+      Array<{ jornada: FutsalJornada; pav: FutsalPavilhao; jogo: FutsalJogo }>
+    >();
+    for (const jornada of base.jornadas) {
+      for (const pav of jornada.pavilhoes) {
+        for (const jogo of pav.jogos) {
+          const k = chaveConfronto(jogo.escalao, pav.nome, jogo.casa, jogo.fora);
+          if (!indice.has(k)) indice.set(k, []);
+          indice.get(k)!.push({ jornada, pav, jogo });
+        }
       }
-      const casa = j.casa || '';
-      const fora = j.fora || '';
-      porPavilhao.get(nomePav)!.jogos.push({
-        escalao: j.escalao,
-        hora: j.hora || '--:--',
-        casa,
-        fora,
-        golosCasa: Number(j.golosCasa ?? 0),
-        golosFora: Number(j.golosFora ?? 0),
-        isAjavp: /vilar|ajavp/i.test(`${casa} ${fora}`),
-      });
     }
 
-    const numJornada =
-      typeof payload.numeroComunicado === 'number' && payload.numeroComunicado > 0
-        ? payload.numeroComunicado
-        : (FUTSAL_DATA.jornadaAtiva || 1) + 1;
+    const jornadasTocadas = new Set<number>();
 
-    const novaJornada: FutsalJornada = {
-      numero: numJornada,
-      data: typeof payload.dataDocumento === 'string' ? payload.dataDocumento : base.ultimaAtualizacao,
-      estado: 'Concluída',
-      pavilhoes: Array.from(porPavilhao.values()),
-    };
+    for (const j of jogosRaw) {
+      const escalaoNorm = normalizarEscalaoJogo(j.escalao, j.local);
+      const cCasa = chaveCanonicaEquipa(j.casa);
+      const cFora = chaveCanonicaEquipa(j.fora);
+      const k = `${escalaoNorm}-${cCasa}-${cFora}`;
+      const candidatos = indice.get(k) || [];
 
-    base.jornadaAtiva = numJornada;
-    base.jornadas = [novaJornada, ...base.jornadas.filter((j) => j.numero !== numJornada)];
+      let alvo =
+        typeof j.jornada === 'number' && j.jornada > 0
+          ? candidatos.find((c) => c.jornada.numero === j.jornada)
+          : undefined;
+
+      if (!alvo && candidatos.length === 1) {
+        alvo = candidatos[0];
+      } else if (!alvo && candidatos.length > 1) {
+        const horaNorm = normalizarHora(j.hora);
+        alvo =
+          (horaNorm
+            ? candidatos.find((c) => normalizarHora(c.jogo.hora) === horaNorm)
+            : undefined) || candidatos[0];
+      }
+
+      if (alvo) {
+        alvo.jogo.golosCasa = Number(j.golosCasa ?? 0);
+        alvo.jogo.golosFora = Number(j.golosFora ?? 0);
+        if (j.hora) alvo.jogo.hora = j.hora;
+        if (escalaoNorm) alvo.jogo.escalao = escalaoNorm;
+        alvo.jogo.isAjavp = cCasa === 'ajavp' || cFora === 'ajavp';
+        jornadasTocadas.add(alvo.jornada.numero);
+      } else if (typeof j.jornada === 'number' && j.jornada > 0) {
+        // Jogo genuinamente novo com número de jornada explícito
+        let jornadaDestino = base.jornadas.find((jr) => jr.numero === j.jornada);
+        if (!jornadaDestino) {
+          jornadaDestino = {
+            numero: j.jornada,
+            data:
+              typeof payload.dataDocumento === 'string' && payload.dataDocumento
+                ? payload.dataDocumento
+                : base.ultimaAtualizacao,
+            estado: 'Concluída',
+            pavilhoes: [],
+          };
+          base.jornadas.push(jornadaDestino);
+          base.jornadas.sort((a, b) => a.numero - b.numero);
+        }
+        const nomePav = (j.local || 'Pavilhão').trim();
+        let pavDestino = jornadaDestino.pavilhoes.find(
+          (p) => p.nome.toLowerCase() === nomePav.toLowerCase()
+        );
+        if (!pavDestino) {
+          pavDestino = { nome: nomePav, cor: 'emerald', jogos: [] };
+          jornadaDestino.pavilhoes.push(pavDestino);
+        }
+        const novoJogo: FutsalJogo = {
+          escalao: escalaoNorm,
+          hora: j.hora || '--:--',
+          casa: j.casa || '',
+          fora: j.fora || '',
+          golosCasa: Number(j.golosCasa ?? 0),
+          golosFora: Number(j.golosFora ?? 0),
+          isAjavp: cCasa === 'ajavp' || cFora === 'ajavp',
+        };
+        pavDestino.jogos.push(novoJogo);
+        if (!indice.has(k)) indice.set(k, []);
+        indice.get(k)!.push({ jornada: jornadaDestino, pav: pavDestino, jogo: novoJogo });
+        jornadasTocadas.add(jornadaDestino.numero);
+      }
+    }
+
+    // Marcar como Concluída as jornadas atualizadas que tenham resultados registados
+    for (const num of jornadasTocadas) {
+      const jr = base.jornadas.find((item) => item.numero === num);
+      if (!jr) continue;
+      const temGolos = jr.pavilhoes.some((p) =>
+        p.jogos.some((g) => g.golosCasa > 0 || g.golosFora > 0)
+      );
+      if (temGolos) {
+        jr.estado = 'Concluída';
+      }
+    }
+
+    const concluidas = base.jornadas
+      .filter((jr) => jr.estado.toLowerCase().includes('concl'))
+      .map((jr) => jr.numero);
+    if (concluidas.length > 0) {
+      base.jornadaAtiva = Math.max(...concluidas);
+    }
   }
 
   const tabelasRaw = Array.isArray(payload.tabelasClassificacao)
@@ -126,24 +371,55 @@ function adaptarExtractedParaFutsal(payload: Record<string, unknown>): FutsalHub
     const chave = normalizarChaveEscalao(t.escalao);
     if (!chave || !Array.isArray(t.linhas) || t.linhas.length === 0) continue;
     const escAtual: FutsalClassificacaoEscalao = base.classificacoes[chave];
+
+    // Se todas as linhas tiverem gm=0 e gs=0 (tabela sumária sem golos), calcular/preservar golos
+    const semGolosNaTabela = t.linhas.every(
+      (l) => Number(l.gm ?? 0) === 0 && Number(l.gs ?? 0) === 0
+    );
+    const golosCalculados = semGolosNaTabela
+      ? calcularGolosPorEquipa(base.jornadas, chave)
+      : null;
+
     base.classificacoes[chave] = {
       titulo: t.escalao || escAtual.titulo,
       totalEquipas: t.linhas.length,
       tabela: t.linhas.map((l, idx) => {
         const pos = Number(l.pos ?? idx + 1);
-        const equipa = l.equipa || '';
+        const equipaRaw = l.equipa || '';
+        const cEquipa = chaveCanonicaEquipa(equipaRaw);
+
+        let gm = Number(l.gm ?? 0);
+        let gs = Number(l.gs ?? 0);
+        let saldo = Number(l.saldo ?? 0);
+
+        if (semGolosNaTabela && golosCalculados) {
+          const calc = golosCalculados.get(cEquipa);
+          const ant = escAtual.tabela.find(
+            (row) => chaveCanonicaEquipa(row.equipa) === cEquipa
+          );
+          if (calc && (calc.gm > 0 || calc.gs > 0)) {
+            gm = calc.gm;
+            gs = calc.gs;
+            saldo = gm - gs;
+          } else if (ant) {
+            gm = ant.gm;
+            gs = ant.gs;
+            saldo = ant.saldo;
+          }
+        }
+
         return {
           pos,
-          equipa,
+          equipa: formatarNomeEquipa(equipaRaw),
           pontos: Number(l.pontos ?? 0),
           jogos: Number(l.jogos ?? 0),
           v: Number(l.v ?? 0),
           e: Number(l.e ?? 0),
           d: Number(l.d ?? 0),
-          gm: Number(l.gm ?? 0),
-          gs: Number(l.gs ?? 0),
-          saldo: Number(l.saldo ?? 0),
-          isAjavp: /vilar|ajavp/i.test(equipa),
+          gm,
+          gs,
+          saldo,
+          isAjavp: cEquipa === 'ajavp',
           lider: pos === 1,
           podio: pos <= 3,
         };
@@ -160,58 +436,14 @@ function adaptarExtractedParaFutsal(payload: Record<string, unknown>): FutsalHub
       atletas: (m.atletas || []).map((a, idx) => ({
         pos: Number(a.pos ?? idx + 1),
         nome: a.nome || '',
-        equipa: a.equipa || '',
+        equipa: formatarNomeEquipa(a.equipa || ''),
         golos: Number(a.golos ?? 0),
-        isAjavp: /vilar|ajavp/i.test(a.equipa || ''),
+        isAjavp: chaveCanonicaEquipa(a.equipa || '') === 'ajavp',
       })),
     }));
   }
 
   return base;
-}
-function consolidarTodasJornadas(jornadasExistentes: FutsalJornada[]): FutsalJornada[] {
-  const mapa = new Map<number, FutsalJornada>();
-
-  // 1. Converter do calendário oficial integral (todas as 6 jornadas)
-  for (const fj of FUTSAL_JORNADAS) {
-    mapa.set(fj.number, {
-      numero: fj.number,
-      data: fj.formattedDate || fj.date,
-      estado: fj.number < 4 ? 'Concluída' : 'Agendada',
-      pavilhoes: fj.venueSessions.map((v) => ({
-        nome: v.venueName,
-        cor: 'emerald',
-        jogos: v.matches.map((m) => {
-          let golosCasa = 0;
-          let golosFora = 0;
-          if (m.score && m.score.includes('-')) {
-            const parts = m.score.split('-').map((s) => Number(s.trim()));
-            if (!isNaN(parts[0]) && !isNaN(parts[1])) {
-              golosCasa = parts[0];
-              golosFora = parts[1];
-            }
-          }
-          return {
-            escalao: m.category,
-            campo: v.subLocation,
-            hora: m.time,
-            casa: m.homeTeam,
-            fora: m.awayTeam,
-            golosCasa,
-            golosFora,
-            isAjavp: Boolean(m.isAjavp),
-          };
-        }),
-      })),
-    });
-  }
-
-  // 2. Sobrepor com as jornadas fornecidas pelo Hub / Supabase
-  for (const j of jornadasExistentes) {
-    mapa.set(j.numero, j);
-  }
-
-  return Array.from(mapa.values()).sort((a, b) => a.numero - b.numero);
 }
 
 /**
@@ -241,14 +473,7 @@ export async function obterDadosFutsal(): Promise<FutsalHubData> {
         Array.isArray(payload.tabelasClassificacao) ||
         Array.isArray(payload.melhoresMarcadores)
       ) {
-        resultado = adaptarExtractedParaFutsal(payload);
-      }
-      // Formato extraído pela IA (ExtractedJifData)
-      if (
-        Array.isArray(payload.jogos) ||
-        Array.isArray(payload.tabelasClassificacao) ||
-        Array.isArray(payload.melhoresMarcadores)
-      ) {
+        // Formato extraído pela IA (ExtractedJifData) já retorna jornadas consolidadas
         return adaptarExtractedParaFutsal(payload);
       }
     }

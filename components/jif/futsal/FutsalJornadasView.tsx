@@ -16,7 +16,12 @@ import { FutsalPavilhaoModal } from "@/components/jif/futsal/FutsalPavilhaoModal
 import { FutsalTeamMatchesModal } from "@/components/jif/futsal/FutsalTeamMatchesModal";
 import { FutsalDateModal } from "@/components/jif/futsal/FutsalDateModal";
 import { identificarPavilhao, PavilhaoInfo } from "@/lib/jif/pavilhoes";
-import { formatarNomeEquipa, type ConsolidatedMatch } from "@/lib/jif/team-matches";
+import {
+  formatarNomeEquipa,
+  chaveCanonicaEquipa,
+  normalizarEscalaoJogo,
+  type ConsolidatedMatch,
+} from "@/lib/jif/team-matches";
 
 interface FutsalJornadasViewProps {
   jornadas: FutsalJornada[];
@@ -50,13 +55,15 @@ export function FutsalJornadasView({
     const casa = formatarNomeEquipa(jogo.casa);
     const fora = formatarNomeEquipa(jogo.fora);
 
+    const escalaoNorm = normalizarEscalaoJogo(jogo.escalao, nomePavilhao) || "Futsal";
+
     setJogoCalendario({
-      id: `j${jornadaAtual.numero}-${jogo.escalao || "futsal"}-${jogo.casa}-${jogo.fora}`,
+      id: `j${jornadaAtual.numero}-${escalaoNorm}-${chaveCanonicaEquipa(jogo.casa)}-${chaveCanonicaEquipa(jogo.fora)}`,
       jornadaNumero: jornadaAtual.numero,
       jornadaLabel: `${jornadaAtual.numero}ª Jornada`,
       data: jornadaAtual.data,
       hora: jogo.hora,
-      escalao: jogo.escalao || "Futsal",
+      escalao: escalaoNorm,
       pavilhao: nomePavilhao,
       campo: jogo.campo,
       casa,
@@ -212,11 +219,14 @@ export function FutsalJornadasView({
               {/* Tabela de Jogos deste Pavilhão */}
               <div className="divide-y divide-slate-100 dark:divide-white/5">
                 {pavilhao.jogos.map((jogo, jIdx) => {
-                  const isAjavp = jogo.isAjavp;
+                  const isCasaAjavp = chaveCanonicaEquipa(jogo.casa) === "ajavp";
+                  const isForaAjavp = chaveCanonicaEquipa(jogo.fora) === "ajavp";
+                  const isAjavp = Boolean(jogo.isAjavp) || isCasaAjavp || isForaAjavp;
                   const isVitoriaAjavp =
                     isAjavp &&
-                    ((jogo.casa.includes("AJAVP") && jogo.golosCasa > jogo.golosFora) ||
-                      (jogo.fora.includes("AJAVP") && jogo.golosFora > jogo.golosCasa));
+                    ((isCasaAjavp && jogo.golosCasa > jogo.golosFora) ||
+                      (isForaAjavp && jogo.golosFora > jogo.golosCasa));
+                  const escalaoJogo = normalizarEscalaoJogo(jogo.escalao, pavilhao.nome);
 
                   return (
                     <div
@@ -229,9 +239,9 @@ export function FutsalJornadasView({
                     >
                       {/* Meta: Escalão / Campo / Hora (Clicável para Calendário) */}
                       <div className="flex items-center gap-2 shrink-0 sm:w-48">
-                        {jogo.escalao && (
+                        {escalaoJogo && (
                           <span className="text-[10px] uppercase font-black px-2 py-0.5 rounded-md bg-slate-900 dark:bg-slate-800 text-white dark:text-slate-200">
-                            {jogo.escalao}
+                            {escalaoJogo}
                           </span>
                         )}
                         {jogo.campo && (
@@ -255,10 +265,10 @@ export function FutsalJornadasView({
                         {/* Equipa Casa Clicável */}
                         <div className="flex-1 text-right">
                           <button
-                            onClick={() => setModalEquipa({ teamName: jogo.casa, escalao: jogo.escalao })}
-                            title={`Ver jogos de ${formatarNomeEquipa(jogo.casa)} no escalão ${jogo.escalao || 'Futsal'}`}
+                            onClick={() => setModalEquipa({ teamName: jogo.casa, escalao: escalaoJogo || undefined })}
+                            title={`Ver jogos de ${formatarNomeEquipa(jogo.casa)} no escalão ${escalaoJogo || 'Futsal'}`}
                             className={`text-xs sm:text-sm font-bold transition-all cursor-pointer active:scale-[0.97] hover:underline ${
-                              jogo.casa.includes("AJAVP") || /vilar/i.test(jogo.casa)
+                              isCasaAjavp
                                 ? "text-brand-green dark:text-emerald-400 font-black"
                                 : "text-slate-800 dark:text-slate-100 hover:text-brand-navy dark:hover:text-white"
                             }`}
@@ -275,10 +285,10 @@ export function FutsalJornadasView({
                         {/* Equipa Fora Clicável */}
                         <div className="flex-1 text-left">
                           <button
-                            onClick={() => setModalEquipa({ teamName: jogo.fora, escalao: jogo.escalao })}
-                            title={`Ver jogos de ${formatarNomeEquipa(jogo.fora)} no escalão ${jogo.escalao || 'Futsal'}`}
+                            onClick={() => setModalEquipa({ teamName: jogo.fora, escalao: escalaoJogo || undefined })}
+                            title={`Ver jogos de ${formatarNomeEquipa(jogo.fora)} no escalão ${escalaoJogo || 'Futsal'}`}
                             className={`text-xs sm:text-sm font-bold transition-all cursor-pointer active:scale-[0.97] hover:underline ${
-                              jogo.fora.includes("AJAVP") || /vilar/i.test(jogo.fora)
+                              isForaAjavp
                                 ? "text-brand-green dark:text-emerald-400 font-black"
                                 : "text-slate-800 dark:text-slate-100 hover:text-brand-navy dark:hover:text-white"
                             }`}
@@ -309,7 +319,7 @@ export function FutsalJornadasView({
                           </span>
                         ) : (
                           <button
-                            onClick={() => setModalEquipa({ teamName: jogo.casa, escalao: jogo.escalao })}
+                            onClick={() => setModalEquipa({ teamName: jogo.casa, escalao: escalaoJogo || undefined })}
                             className="hidden sm:inline-flex items-center gap-1 text-[10px] text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer"
                           >
                             <Users className="w-3 h-3" />

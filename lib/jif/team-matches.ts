@@ -41,7 +41,9 @@ export interface TeamStatsSummary {
   proximosJogos: ConsolidatedMatch[];
 }
 
-function normalizarNome(nome: string): string {
+export const ORDEM_ESCALOES = ['Sub-7', 'Sub-9', 'Sub-11', 'Sub-13', 'Sub-16'] as const;
+
+function normalizarTextoBase(nome: string): string {
   return nome
     .toLowerCase()
     .normalize('NFD')
@@ -50,43 +52,63 @@ function normalizarNome(nome: string): string {
 }
 
 /**
+ * Gera uma chave canónica determinística por freguesia/clube para deduplicação
+ * entre diferentes fontes (calendário estático, JSON de fallback e extração IA).
+ */
+export function chaveCanonicaEquipa(nome?: string): string {
+  if (!nome) return '';
+  const n = normalizarTextoBase(nome);
+
+  if (n.includes('vilar') || n.includes('ajavp')) return 'ajavp';
+  if (n.includes('touguinha')) return 'touguinha';
+  if (n.includes('outeiro')) return 'outeiro';
+
+  return n.replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
+/**
+ * Normaliza o escalão de um jogo, inferindo-o pelo nome do pavilhão quando omitido
+ * (ex: "Pavilhão de Caxinas (Sub-7)" -> "Sub-7").
+ */
+export function normalizarEscalaoJogo(escalao?: string, nomePavilhao?: string): string {
+  const fontes = [escalao, nomePavilhao];
+  for (const raw of fontes) {
+    if (!raw) continue;
+    const s = raw.toLowerCase().replace(/\s+/g, '');
+    if (s.includes('sub-7') || s.includes('sub7')) return 'Sub-7';
+    if (s.includes('sub-9') || s.includes('sub9')) return 'Sub-9';
+    if (s.includes('sub-11') || s.includes('sub11')) return 'Sub-11';
+    if (s.includes('sub-13') || s.includes('sub13')) return 'Sub-13';
+    if (s.includes('sub-16') || s.includes('sub16')) return 'Sub-16';
+  }
+  return (escalao || '').trim();
+}
+
+/**
  * Padroniza a exibição de equipas:
- * Converte qualquer variante de "Vilar do Pinheiro" ou "AJAVP" para "AJAVP (Vilar do Pinheiro)".
+ * Converte variantes de Vilar do Pinheiro, Touguinha/Touguinhó e Outeiro Maior para os seus nomes oficiais.
  */
 export function formatarNomeEquipa(nome?: string): string {
   if (!nome) return '';
   const n = nome.trim();
-  const lower = n.toLowerCase();
+  const chave = chaveCanonicaEquipa(n);
 
-  if (
-    lower === 'vilar do pinheiro' ||
-    lower === 'vilar' ||
-    lower === 'ajavp' ||
-    lower === 'vilar do pinheiro (ajavp)' ||
-    lower === 'ajavp (vilar do pinheiro)' ||
-    lower === 'ajavp / vilar do pinheiro'
-  ) {
-    return 'AJAVP (Vilar do Pinheiro)';
-  }
+  if (chave === 'ajavp') return 'AJAVP (Vilar do Pinheiro)';
+  if (chave === 'touguinha') return 'Touguinha Touguinhó';
+  if (chave === 'outeiro') return 'Outeiro Maior';
 
   return n;
 }
 
 export function equipaCorresponde(nomeBusca: string, nomeEquipa: string): boolean {
-  const b = normalizarNome(nomeBusca);
-  const e = normalizarNome(nomeEquipa);
+  const cBusca = chaveCanonicaEquipa(nomeBusca);
+  const cEquipa = chaveCanonicaEquipa(nomeEquipa);
 
-  if (b === e) return true;
+  if (!cBusca || !cEquipa) return false;
+  if (cBusca === cEquipa) return true;
 
-  // Equivalência especial para AJAVP / Vilar do Pinheiro
-  const isAjavpBusca = b.includes('vilar') || b.includes('ajavp');
-  const isAjavpEquipa = e.includes('vilar') || e.includes('ajavp');
-  if (isAjavpBusca && isAjavpEquipa) return true;
-
-  return e.includes(b) || b.includes(e);
+  return false;
 }
-
-const ORDEM_ESCALOES = ['Sub-7', 'Sub-9', 'Sub-11', 'Sub-13', 'Sub-16'];
 
 /**
  * Extrai todos os jogos de uma equipa cruzando os dados das jornadas (do Hub/Supabase e do Calendário Oficial).
@@ -108,6 +130,7 @@ export function obterJogosDaEquipa(
 
         if (!correspondeCasa && !correspondeFora) continue;
 
+        const escalaoNorm = normalizarEscalaoJogo(m.category, v.venueName);
         let golosCasa: number | null = null;
         let golosFora: number | null = null;
         let isCompleted = Boolean(m.isCompleted);
@@ -136,14 +159,14 @@ export function obterJogosDaEquipa(
           else resultado = 'D';
         }
 
-        const matchId = `j${j.number}-${m.category}-${m.homeTeam}-${m.awayTeam}`;
+        const matchId = `j${j.number}-${escalaoNorm}-${chaveCanonicaEquipa(m.homeTeam)}-${chaveCanonicaEquipa(m.awayTeam)}`;
         matchesMap.set(matchId, {
           id: matchId,
           jornadaNumero: j.number,
           jornadaLabel: j.label,
           data: j.formattedDate || j.date,
           hora: m.time,
-          escalao: m.category,
+          escalao: escalaoNorm,
           pavilhao: v.venueName,
           campo: v.subLocation,
           casa: casaFormatada,
@@ -164,6 +187,8 @@ export function obterJogosDaEquipa(
   // 2. Sobrepor / Fundir com dados reais do Hub (site_jif_dados do Supabase / jif-futsal.json)
   if (hubJornadas && hubJornadas.length > 0) {
     for (const j of hubJornadas) {
+      const jornadaConcluida = j.estado.toLowerCase().includes('concl');
+
       for (const p of j.pavilhoes) {
         for (const jogo of p.jogos) {
           const correspondeCasa = equipaCorresponde(nomeEquipa, jogo.casa);
@@ -171,18 +196,24 @@ export function obterJogosDaEquipa(
 
           if (!correspondeCasa && !correspondeFora) continue;
 
+          const escalaoNorm = normalizarEscalaoJogo(jogo.escalao, p.nome);
           const isCasa = correspondeCasa;
           const adversarioRaw = isCasa ? jogo.fora : jogo.casa;
           const adversario = formatarNomeEquipa(adversarioRaw);
           const casaFormatada = formatarNomeEquipa(jogo.casa);
           const foraFormatada = formatarNomeEquipa(jogo.fora);
 
-          const golosCasa = Number(jogo.golosCasa ?? 0);
-          const golosFora = Number(jogo.golosFora ?? 0);
-          const isCompleted = j.estado.toLowerCase().includes('concl') || (golosCasa > 0 || golosFora > 0);
+          const rawGolosCasa = Number(jogo.golosCasa ?? 0);
+          const rawGolosFora = Number(jogo.golosFora ?? 0);
+          const temGolos = rawGolosCasa > 0 || rawGolosFora > 0;
+          const isCompleted = jornadaConcluida || temGolos;
+
+          const golosCasa = isCompleted ? rawGolosCasa : null;
+          const golosFora = isCompleted ? rawGolosFora : null;
+          const score = isCompleted ? `${rawGolosCasa}-${rawGolosFora}` : undefined;
 
           let resultado: 'V' | 'E' | 'D' | 'Agendado' = 'Agendado';
-          if (isCompleted) {
+          if (isCompleted && golosCasa !== null && golosFora !== null) {
             const meusGolos = isCasa ? golosCasa : golosFora;
             const golosAdv = isCasa ? golosFora : golosCasa;
             if (meusGolos > golosAdv) resultado = 'V';
@@ -190,26 +221,31 @@ export function obterJogosDaEquipa(
             else resultado = 'D';
           }
 
-          const matchId = `j${j.numero}-${jogo.escalao || 'Geral'}-${jogo.casa}-${jogo.fora}`;
+          const matchId = `j${j.numero}-${escalaoNorm}-${chaveCanonicaEquipa(jogo.casa)}-${chaveCanonicaEquipa(jogo.fora)}`;
+          const existente = matchesMap.get(matchId);
+
           matchesMap.set(matchId, {
             id: matchId,
             jornadaNumero: j.numero,
-            jornadaLabel: `${j.numero}ª Jornada`,
+            jornadaLabel: existente?.jornadaLabel || `${j.numero}ª Jornada`,
             data: j.data,
-            hora: jogo.hora,
-            escalao: jogo.escalao || 'Futsal',
+            hora: jogo.hora || existente?.hora || '--:--',
+            escalao: escalaoNorm,
             pavilhao: p.nome,
-            campo: jogo.campo,
+            campo: jogo.campo || existente?.campo,
             casa: casaFormatada,
             fora: foraFormatada,
             adversario,
             isCasa,
             golosCasa,
             golosFora,
-            score: `${golosCasa}-${golosFora}`,
+            score,
             isCompleted,
             resultado,
-            isAjavp: Boolean(jogo.isAjavp),
+            isAjavp:
+              Boolean(jogo.isAjavp) ||
+              chaveCanonicaEquipa(jogo.casa) === 'ajavp' ||
+              chaveCanonicaEquipa(jogo.fora) === 'ajavp',
           });
         }
       }
@@ -221,16 +257,14 @@ export function obterJogosDaEquipa(
     return a.hora.localeCompare(b.hora);
   });
 
-  // Obter lista única de escalões em que esta equipa joga
+  // Filtrar escalões apenas para os escalões oficiais válidos (nunca incluir 'Futsal' ou 'Geral')
   const escaloesSet = new Set<string>();
   for (const m of allMatches) {
-    if (m.escalao) escaloesSet.add(m.escalao);
+    if (m.escalao && (ORDEM_ESCALOES as readonly string[]).includes(m.escalao)) {
+      escaloesSet.add(m.escalao);
+    }
   }
   const escaloesDisponiveis = ORDEM_ESCALOES.filter((esc) => escaloesSet.has(esc));
-  // Adicionar outros que não estejam na ordem padrão se houver
-  for (const esc of escaloesSet) {
-    if (!escaloesDisponiveis.includes(esc)) escaloesDisponiveis.push(esc);
-  }
 
   // Filtragem se escalaoFiltro estiver ativo
   const escalaoNormalizado = escalaoFiltro?.trim();

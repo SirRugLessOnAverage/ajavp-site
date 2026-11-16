@@ -1585,6 +1585,7 @@
           "cor": "amber",
           "jogos": [
             {
+              "escalao": "Sub-7",
               "campo": "Campo 1",
               "hora": "09h30",
               "casa": "Modivas",
@@ -1593,6 +1594,7 @@
               "golosFora": 8
             },
             {
+              "escalao": "Sub-7",
               "campo": "Campo 1",
               "hora": "10h15",
               "casa": "Canidelo",
@@ -1601,6 +1603,7 @@
               "golosFora": 6
             },
             {
+              "escalao": "Sub-7",
               "campo": "Campo 1",
               "hora": "11h00",
               "casa": "Tougues",
@@ -1609,6 +1612,7 @@
               "golosFora": 0
             },
             {
+              "escalao": "Sub-7",
               "campo": "Campo 1",
               "hora": "11h45",
               "casa": "Junqueira",
@@ -1617,6 +1621,7 @@
               "golosFora": 1
             },
             {
+              "escalao": "Sub-7",
               "campo": "Campo 2",
               "hora": "09h30",
               "casa": "Gião",
@@ -1626,6 +1631,7 @@
               "isAjavp": true
             },
             {
+              "escalao": "Sub-7",
               "campo": "Campo 2",
               "hora": "10h15",
               "casa": "Aveleda",
@@ -1634,6 +1640,7 @@
               "golosFora": 5
             },
             {
+              "escalao": "Sub-7",
               "campo": "Campo 2",
               "hora": "11h00",
               "casa": "Bagunte",
@@ -1642,6 +1649,7 @@
               "golosFora": 0
             },
             {
+              "escalao": "Sub-7",
               "campo": "Campo 2",
               "hora": "11h45",
               "casa": "Vilar do Pinheiro (AJAVP)",
