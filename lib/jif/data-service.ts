@@ -7,6 +7,7 @@ import {
   type FutsalMarcadoresEscalao,
   type FutsalPavilhao,
 } from '@/data/jif/futsal';
+import { FUTSAL_JORNADAS } from '@/data/jif/futsal-jogos';
 import { JIF_CLASSIFICACAO, type JifParishRanking } from '@/data/jif/classificacao';
 import { JIF_CIRCULARS, type JifCircular, type JifCircularHighlight } from '@/data/jif/comunicados';
 
@@ -168,6 +169,50 @@ function adaptarExtractedParaFutsal(payload: Record<string, unknown>): FutsalHub
 
   return base;
 }
+function consolidarTodasJornadas(jornadasExistentes: FutsalJornada[]): FutsalJornada[] {
+  const mapa = new Map<number, FutsalJornada>();
+
+  // 1. Converter do calendário oficial integral (todas as 6 jornadas)
+  for (const fj of FUTSAL_JORNADAS) {
+    mapa.set(fj.number, {
+      numero: fj.number,
+      data: fj.formattedDate || fj.date,
+      estado: fj.number < 4 ? 'Concluída' : 'Agendada',
+      pavilhoes: fj.venueSessions.map((v) => ({
+        nome: v.venueName,
+        cor: 'emerald',
+        jogos: v.matches.map((m) => {
+          let golosCasa = 0;
+          let golosFora = 0;
+          if (m.score && m.score.includes('-')) {
+            const parts = m.score.split('-').map((s) => Number(s.trim()));
+            if (!isNaN(parts[0]) && !isNaN(parts[1])) {
+              golosCasa = parts[0];
+              golosFora = parts[1];
+            }
+          }
+          return {
+            escalao: m.category,
+            campo: v.subLocation,
+            hora: m.time,
+            casa: m.homeTeam,
+            fora: m.awayTeam,
+            golosCasa,
+            golosFora,
+            isAjavp: Boolean(m.isAjavp),
+          };
+        }),
+      })),
+    });
+  }
+
+  // 2. Sobrepor com as jornadas fornecidas pelo Hub / Supabase
+  for (const j of jornadasExistentes) {
+    mapa.set(j.numero, j);
+  }
+
+  return Array.from(mapa.values()).sort((a, b) => a.numero - b.numero);
+}
 
 /**
  * Obtém os dados de Futsal mais recentes.
@@ -175,6 +220,8 @@ function adaptarExtractedParaFutsal(payload: Record<string, unknown>): FutsalHub
  * Fallback: Ficheiro estático de contingência `data/jif-futsal.json`.
  */
 export async function obterDadosFutsal(): Promise<FutsalHubData> {
+  let resultado: FutsalHubData = FUTSAL_DATA;
+
   try {
     const { data, error } = await supabasePublic
       .from('site_jif_dados')
@@ -188,7 +235,13 @@ export async function obterDadosFutsal(): Promise<FutsalHubData> {
       const payload = data.dados as unknown as Record<string, unknown>;
       // Formato completo nativo
       if (payload.jornadaAtiva && payload.classificacoes) {
-        return payload as unknown as FutsalHubData;
+        resultado = payload as unknown as FutsalHubData;
+      } else if (
+        Array.isArray(payload.jogos) ||
+        Array.isArray(payload.tabelasClassificacao) ||
+        Array.isArray(payload.melhoresMarcadores)
+      ) {
+        resultado = adaptarExtractedParaFutsal(payload);
       }
       // Formato extraído pela IA (ExtractedJifData)
       if (
@@ -203,7 +256,10 @@ export async function obterDadosFutsal(): Promise<FutsalHubData> {
     console.warn('Aviso: Leitura dinâmica de futsal indisponível, a usar fallback estático.', err);
   }
 
-  return FUTSAL_DATA;
+  return {
+    ...resultado,
+    jornadas: consolidarTodasJornadas(resultado.jornadas || []),
+  };
 }
 
 /**

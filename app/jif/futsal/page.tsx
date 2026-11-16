@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { SITE_URL } from "@/lib/site";
 import { obterDadosFutsal } from "@/lib/jif/data-service";
 import { FutsalHero } from "@/components/jif/futsal/FutsalHero";
-import { FutsalPavilhoesTabs } from "@/components/jif/futsal/FutsalPavilhoesTabs";
+import { FutsalJornadasView } from "@/components/jif/futsal/FutsalJornadasView";
 import { FutsalClassificacoes } from "@/components/jif/futsal/FutsalClassificacoes";
 import { FutsalMarcadores } from "@/components/jif/futsal/FutsalMarcadores";
 
@@ -44,8 +44,8 @@ export default async function JifFutsalPage() {
 
       {/* Corpo Principal com Abas Interativas */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-14">
-        {/* Jogos e Resultados por Pavilhão */}
-        <FutsalPavilhoesTabs
+        {/* Jogos e Resultados por Jornada (Pavilhões sequenciais e elementos clicáveis) */}
+        <FutsalJornadasView
           jornadas={futsalData.jornadas}
           jornadaAtivaNumero={futsalData.jornadaAtiva}
         />
