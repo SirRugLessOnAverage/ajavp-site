@@ -10,6 +10,8 @@ import { JifRegulamentoTenisMesa } from '@/components/jif/JifRegulamentoTenisMes
 import { JIF_CLASSIFICACAO, JIF_PONTUACAO_RULES } from '@/data/jif/classificacao';
 import { obterDadosClassificacao } from '@/lib/jif/data-service';
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: 'Classificação Virtual XL JIF 2026/2027 • Quadro Concelhio Não-Oficial | AJAVP',
   description:
@@ -20,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Classificação Virtual XL JIF 2026/2027 • AJAVP',
     description:
-      'Quadro Concelhio Não-Oficial das 19 freguesias nos XL Jogos Inter-Freguesias. Vilar do Pinheiro no Top 4 Concelhio com Corta-Mato, Futebol e Futsal!',
+      'Quadro Concelhio Não-Oficial das 19 freguesias nos XL Jogos Inter-Freguesias. Consulta a classificação virtual atualizada da AJAVP (Vilar do Pinheiro) e o medalheiro oficial.',
     url: `${SITE_URL}/jif/classificacao`,
     siteName: 'AJAVP',
     images: [
@@ -42,8 +44,12 @@ export default async function JifClassificacaoPage() {
     (r) => r.isAjavp || r.name.toLowerCase().includes('vilar do pinheiro')
   );
   const ajavpRow = ajavpIndex !== -1 ? rankings[ajavpIndex] : null;
-  const pontosAjavp = ajavpRow?.pontos ?? 196;
-  const posicaoAjavp = ajavpIndex !== -1 ? `${ajavpIndex + 1}.º Lugar` : '4.º Lugar';
+  const pontosAjavp = ajavpRow ? ajavpRow.pontos : '—';
+  const posicaoAjavp = ajavpIndex !== -1 ? `${ajavpIndex + 1}.º Lugar` : '—';
+  const totalFreguesias = rankings.length > 0 ? rankings.length : 19;
+  const totalMedalhas = ajavpRow
+    ? ajavpRow.gold + ajavpRow.silver + ajavpRow.bronze
+    : 0;
 
   return (
     <div className="bg-slate-50 dark:bg-slate-950 min-h-screen text-slate-800 dark:text-slate-100">
@@ -114,7 +120,7 @@ export default async function JifClassificacaoPage() {
                 <div className="p-3 rounded-2xl bg-white/10 dark:bg-slate-900/60 backdrop-blur-md text-center space-y-0.5 border border-white/15">
                   <span className="text-[10px] text-slate-300 uppercase block font-semibold truncate">Posição AJAVP</span>
                   <div className="text-lg sm:text-xl font-black text-amber-400">{posicaoAjavp}</div>
-                  <span className="text-[10px] text-emerald-200 block truncate">19 Freguesias</span>
+                  <span className="text-[10px] text-emerald-200 block truncate">{totalFreguesias} Freguesias</span>
                 </div>
                 <div className="p-3 rounded-2xl bg-white/10 dark:bg-slate-900/60 backdrop-blur-md text-center space-y-0.5 border border-white/15">
                   <span className="text-[10px] text-slate-300 uppercase block font-semibold truncate">Pontos Virtuais</span>
@@ -122,9 +128,11 @@ export default async function JifClassificacaoPage() {
                   <span className="text-[10px] text-emerald-200 block truncate">Estimativa Geral</span>
                 </div>
                 <div className="p-3 rounded-2xl bg-white/10 dark:bg-slate-900/60 backdrop-blur-md text-center space-y-0.5 border border-white/15">
-                  <span className="text-[10px] text-slate-300 uppercase block font-semibold truncate">Pódios Modalidade</span>
-                  <div className="text-lg sm:text-xl font-black text-cyan-400">2 Pódios</div>
-                  <span className="text-[10px] text-cyan-200 block truncate">Corta-Mato &amp; Futsal</span>
+                  <span className="text-[10px] text-slate-300 uppercase block font-semibold truncate">Medalhas AJAVP</span>
+                  <div className="text-lg sm:text-xl font-black text-cyan-400">{totalMedalhas} Medalhas</div>
+                  <span className="text-[10px] text-cyan-200 block truncate">
+                    {ajavpRow ? `${ajavpRow.gold}🥇 ${ajavpRow.silver}🥈 ${ajavpRow.bronze}🥉` : 'Medalheiro Oficial'}
+                  </span>
                 </div>
                 <div className="p-3 rounded-2xl bg-white/10 dark:bg-slate-900/60 backdrop-blur-md text-center space-y-0.5 border border-white/15">
                   <span className="text-[10px] text-slate-300 uppercase block font-semibold truncate">Regulamento</span>

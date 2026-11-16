@@ -207,6 +207,22 @@ export const JIF_VENUES: JifVenue[] = [
     mapsUrl: 'https://www.google.com/maps/dir/?api=1&destination=AJAVP+Vilar+do+Pinheiro',
     wazeUrl: 'https://waze.com/ul?q=AJAVP+Vilar+do+Pinheiro&navigate=yes',
     coords: '41.2785,-8.6756'
+  },
+  {
+    id: 'macieira',
+    name: 'Pavilhão de Macieira da Maia',
+    shortName: 'Pav. Macieira',
+    parish: 'Macieira da Maia, Vila do Conde',
+    category: 'futsal',
+    categoryLabel: 'Futsal Concelhio',
+    sports: ['Futsal Concelhio'],
+    address: 'Rua do Campo de Futebol, 4485-364 Macieira da Maia',
+    driveFromAjavp: '~8 km • 11 min',
+    parkingInfo: 'Estacionamento junto ao recinto desportivo.',
+    badgeColor: 'blue',
+    mapsUrl: 'https://www.google.com/maps/dir/?api=1&destination=Pavilh%C3%A3o+de+Macieira+da+Maia+Vila+do+Conde',
+    wazeUrl: 'https://waze.com/ul?q=Pavilh%C3%A3o+de+Macieira+da+Maia+Vila+do+Conde&navigate=yes',
+    coords: '41.3197,-8.6472'
   }
 ];
 

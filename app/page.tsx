@@ -18,45 +18,72 @@ import { GESTAO_LINKS } from "@/lib/site";
 import { NoticiasSection } from "@/components/home/NoticiasSection";
 import { AgendaMatchCenter } from "@/components/home/AgendaMatchCenter";
 import { BannerSociosOficial } from "@/components/home/BannerSociosOficial";
+import { obterDadosFutsal } from "@/lib/jif/data-service";
+import { formatarNomeEquipa } from "@/lib/jif/team-matches";
+import { JIF_MASTER_EVENTS } from "@/data/jif/calendario";
 import type { SiteNoticia, SiteEvento } from "@/lib/types/database";
 
 export const revalidate = 60;
 
+function isJogoAjavp(casa: string, fora: string, isAjavp?: boolean): boolean {
+  if (isAjavp) return true;
+  const texto = `${casa} ${fora}`.toLowerCase();
+  return texto.includes("vilar do pinheiro") || texto.includes("ajavp");
+}
+
 export default async function HomePage() {
   const supabase = await createClient();
 
-  // Fetch das notícias publicadas
-  let noticias: SiteNoticia[] = [];
-  try {
-    const { data, error } = await supabase
+  const [noticiasRes, eventosRes, futsalData] = await Promise.all([
+    supabase
       .from("site_noticias")
       .select("*")
       .eq("publicado", true)
       .order("publicado_em", { ascending: false })
-      .limit(6);
-
-    if (!error && data) {
-      noticias = data as SiteNoticia[];
-    }
-  } catch (err) {
-    console.error("Erro ao carregar notícias:", err);
-  }
-
-  // Fetch dos eventos agendados
-  let eventos: SiteEvento[] = [];
-  try {
-    const { data, error } = await supabase
+      .limit(6)
+      .then((res) => res, () => ({ data: null, error: true })),
+    supabase
       .from("site_eventos")
       .select("*")
       .order("data_hora", { ascending: true })
-      .limit(6);
+      .limit(6)
+      .then((res) => res, () => ({ data: null, error: true })),
+    obterDadosFutsal(),
+  ]);
 
-    if (!error && data) {
-      eventos = data as SiteEvento[];
-    }
-  } catch (err) {
-    console.error("Erro ao carregar eventos:", err);
-  }
+  const noticias: SiteNoticia[] =
+    !noticiasRes.error && noticiasRes.data ? (noticiasRes.data as SiteNoticia[]) : [];
+  const eventos: SiteEvento[] =
+    !eventosRes.error && eventosRes.data ? (eventosRes.data as SiteEvento[]) : [];
+
+  const destaqueNoticia = noticias.find((n) => n.destaque) ?? null;
+
+  const isConcluida = (estado: string) =>
+    estado.toLowerCase().includes("conclu");
+
+  const jornadasComAjavp = futsalData.jornadas.filter((j) =>
+    j.pavilhoes.some((p) => p.jogos.some((g) => isJogoAjavp(g.casa, g.fora, g.isAjavp)))
+  );
+  const proximaJornada =
+    jornadasComAjavp.find((j) => !isConcluida(j.estado)) ??
+    jornadasComAjavp[jornadasComAjavp.length - 1] ??
+    null;
+
+  const proximosJogosAjavp = proximaJornada
+    ? proximaJornada.pavilhoes.flatMap((pav) =>
+        pav.jogos
+          .filter((g) => isJogoAjavp(g.casa, g.fora, g.isAjavp))
+          .map((g) => ({
+            ...g,
+            pavilhaoNome: pav.nome.replace(/^Pavilh[ãa]o\s*(Desportivo\s*de|Municipal\s*de|de)?\s*/i, "Pav. "),
+          }))
+      )
+    : [];
+
+  const pavilhaoResumo =
+    proximosJogosAjavp.length > 0
+      ? Array.from(new Set(proximosJogosAjavp.map((j) => j.pavilhaoNome))).slice(0, 2).join(" / ")
+      : "A definir";
 
   return (
     <>
@@ -97,9 +124,9 @@ export default async function HomePage() {
                 Promovemos o desporto, a formação de jovens e o convívio comunitário em Vilar do Pinheiro. Da formação ao escalão sénior, todos têm lugar na nossa equipa.
               </p>
 
-              {/* Destaque Vitória Histórica no Ténis de Mesa • XL JIF */}
+              {/* Destaque Dinâmico (Notícia em destaque ou fallback XL JIF Ténis de Mesa) */}
               <Link
-                href="/jif"
+                href={destaqueNoticia ? "/#noticias" : "/jif"}
                 className="motion-press group block p-4 rounded-2xl bg-gradient-to-r from-amber-500/15 via-emerald-500/15 to-white/70 dark:from-amber-950/40 dark:via-emerald-950/30 dark:to-slate-900 border-2 border-amber-400/80 dark:border-amber-400/50 shadow-md hover:shadow-lg hover:border-amber-500 transition-all text-left backdrop-blur-xs"
               >
                 <div className="flex items-center justify-between gap-3">
@@ -110,19 +137,20 @@ export default async function HomePage() {
                     <div>
                       <div className="flex items-center gap-2 flex-wrap">
                         <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-500 text-slate-950">
-                          XL Jogos Inter-Freguesias
+                          {destaqueNoticia?.categoria || "XL Jogos Inter-Freguesias"}
                         </span>
                         <span className="text-xs font-bold text-amber-800 dark:text-amber-300">
-                          1º Encontro Ténis de Mesa
+                          {destaqueNoticia ? "Em Destaque" : "1º Encontro Ténis de Mesa"}
                         </span>
                       </div>
                       <p className="text-xs sm:text-sm font-heading font-black text-slate-900 dark:text-white mt-0.5">
-                        AJAVP Campeã do Encontro com 1º Lugar Geral e 9 Pódios!
+                        {destaqueNoticia?.titulo ||
+                          "AJAVP Campeã do Encontro com 1º Lugar Geral e 9 Pódios!"}
                       </p>
                     </div>
                   </div>
                   <span className="hidden sm:inline-flex items-center gap-1 text-xs font-bold text-amber-700 dark:text-amber-400 group-hover:translate-x-1 transition-transform shrink-0">
-                    <span>Quadro de Honra</span>
+                    <span>{destaqueNoticia ? "Ler Notícia" : "Quadro de Honra"}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
@@ -190,45 +218,48 @@ export default async function HomePage() {
                   </span>
                 </div>
 
-                {/* Card Próxima Jornada AJAVP */}
+                {/* Card Próxima Jornada AJAVP (Dinâmico via obterDadosFutsal) */}
                 <div className="p-4 rounded-2xl bg-gradient-to-br from-emerald-50/90 to-teal-50/60 dark:from-emerald-950/40 dark:to-slate-900/60 border border-emerald-200 dark:border-emerald-500/30 space-y-3">
                   <div className="flex items-center justify-between gap-2">
                     <div className="flex items-center gap-1.5">
                       <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                       <span className="text-[11px] font-black uppercase tracking-wider text-emerald-800 dark:text-emerald-300">
-                        Próxima Jornada &bull; 14 Nov
+                        {proximaJornada
+                          ? `Próxima Jornada • ${proximaJornada.numero}ª Jorn.`
+                          : "Próxima Jornada"}
                       </span>
                     </div>
-                    <span className="text-[10px] font-semibold text-slate-500 dark:text-slate-400 flex items-center gap-1">
-                      <MapPin className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
-                      Pav. Fajozes
+                    <span className="text-[10px] font-semibold text-slate-500 dark:text-slate-400 flex items-center gap-1 truncate">
+                      <MapPin className="w-3 h-3 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                      {proximaJornada?.data ? `${proximaJornada.data} • ${pavilhaoResumo}` : pavilhaoResumo}
                     </span>
                   </div>
 
                   <div className="space-y-2">
-                    <div className="flex items-center justify-between p-2 rounded-xl bg-white/80 dark:bg-slate-900/80 border border-emerald-100 dark:border-white/10 text-xs">
-                      <span className="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                        <span className="px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-200 text-[10px] font-extrabold">
-                          Sub-13
-                        </span>
-                        Fajozes vs AJAVP
-                      </span>
-                      <span className="font-mono font-black text-emerald-700 dark:text-emerald-400 text-xs">
-                        08h45
-                      </span>
-                    </div>
-
-                    <div className="flex items-center justify-between p-2 rounded-xl bg-white/80 dark:bg-slate-900/80 border border-emerald-100 dark:border-white/10 text-xs">
-                      <span className="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                        <span className="px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-200 text-[10px] font-extrabold">
-                          Sub-11
-                        </span>
-                        Árvore vs AJAVP
-                      </span>
-                      <span className="font-mono font-black text-emerald-700 dark:text-emerald-400 text-xs">
-                        09h45
-                      </span>
-                    </div>
+                    {proximosJogosAjavp.length > 0 ? (
+                      proximosJogosAjavp.slice(0, 3).map((jogo, idx) => (
+                        <div
+                          key={`${jogo.escalao ?? "futsal"}-${jogo.hora}-${idx}`}
+                          className="flex items-center justify-between p-2 rounded-xl bg-white/80 dark:bg-slate-900/80 border border-emerald-100 dark:border-white/10 text-xs gap-2"
+                        >
+                          <span className="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5 min-w-0 truncate">
+                            <span className="px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-200 text-[10px] font-extrabold shrink-0">
+                              {jogo.escalao || "Futsal"}
+                            </span>
+                            <span className="truncate">
+                              {formatarNomeEquipa(jogo.casa)} vs {formatarNomeEquipa(jogo.fora)}
+                            </span>
+                          </span>
+                          <span className="font-mono font-black text-emerald-700 dark:text-emerald-400 text-xs shrink-0">
+                            {jogo.hora ? jogo.hora.replace(":", "h") : "—"}
+                          </span>
+                        </div>
+                      ))
+                    ) : (
+                      <div className="p-2 rounded-xl bg-white/80 dark:bg-slate-900/80 border border-emerald-100 dark:border-white/10 text-xs text-slate-600 dark:text-slate-300">
+                        Consulta o calendário completo de jogos no Centro de Jogos abaixo.
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -270,7 +301,7 @@ export default async function HomePage() {
                   >
                     <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white flex items-center gap-2">
                       <span>📅</span>
-                      <span>Calendário das 36 Provas Oficiais</span>
+                      <span>Calendário das {JIF_MASTER_EVENTS.length} Provas Oficiais</span>
                     </span>
                     <ChevronRight className="w-4 h-4 text-brand-green dark:text-emerald-400 group-hover:translate-x-1 transition-transform" />
                   </Link>

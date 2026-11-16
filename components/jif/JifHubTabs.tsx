@@ -8,15 +8,27 @@ import JifCalendarList from './JifCalendarList';
 import JifComunicadosList from './JifComunicadosList';
 import JifQuadroHonraTenisMesa from './JifQuadroHonraTenisMesa';
 import { JIF_MASTER_EVENTS, getRelativeDateLabel } from '@/data/jif/calendario';
-import { resolveGpsLinks } from '@/data/jif/pavilhoes';
+import { JIF_VENUES, resolveGpsLinks } from '@/data/jif/pavilhoes';
 
 export type JifTabType = 'geral' | 'calendario' | 'pavilhoes' | 'comunicados';
 
 interface JifHubTabsProps {
   initialTab?: JifTabType;
+  totalProvas?: number;
+  totalRecintos?: number;
+  totalFreguesias?: number;
+  ajavpRankLabel?: string | null;
+  ajavpPontos?: number | null;
 }
 
-export default function JifHubTabs({ initialTab = 'geral' }: JifHubTabsProps) {
+export default function JifHubTabs({
+  initialTab = 'geral',
+  totalProvas = JIF_MASTER_EVENTS.length,
+  totalRecintos = JIF_VENUES.length,
+  totalFreguesias = 19,
+  ajavpRankLabel = null,
+  ajavpPontos = null,
+}: JifHubTabsProps) {
   const [activeTab, setActiveTab] = useState<JifTabType>(initialTab);
 
   // Sync hash on mount, hashchange and custom events
@@ -106,7 +118,7 @@ export default function JifHubTabs({ initialTab = 'geral' }: JifHubTabsProps) {
             }`}
           >
             <Calendar className="w-4 h-4" />
-            <span>Calendário (36)</span>
+            <span>Calendário ({totalProvas})</span>
           </button>
 
           <button
@@ -119,7 +131,7 @@ export default function JifHubTabs({ initialTab = 'geral' }: JifHubTabsProps) {
             }`}
           >
             <MapPin className="w-4 h-4" />
-            <span>Pavilhões & GPS (12)</span>
+            <span>Pavilhões & GPS ({totalRecintos})</span>
           </button>
 
           <button
@@ -148,10 +160,12 @@ export default function JifHubTabs({ initialTab = 'geral' }: JifHubTabsProps) {
             <div className="space-y-2 max-w-2xl relative z-10">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-400/30">
                 <Trophy className="w-3.5 h-3.5 text-amber-400" />
-                <span>Quadro Concelhio Não-Oficial • 19 Freguesias</span>
+                <span>Quadro Concelhio Não-Oficial • {totalFreguesias} Freguesias</span>
               </div>
               <h3 className="font-heading font-black text-2xl sm:text-3xl text-white">
-                Vilar do Pinheiro no Topo dos XL JIF!
+                {ajavpRankLabel && ajavpPontos !== null
+                  ? `Vilar do Pinheiro em ${ajavpRankLabel} (${ajavpPontos} Pts)!`
+                  : 'Vilar do Pinheiro nos XL JIF!'}
               </h3>
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Vitória coletiva no Corta-Mato do Espaço Agros, Sub-11 no Pódio do Futebol em Retorta e 4 equipas ativas no Futsal Concelhio. Consulta a classificação virtual acumulada com base nas regras oficiais da ADCCVC.

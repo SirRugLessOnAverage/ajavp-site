@@ -1,3 +1,5 @@
+import { JIF_VENUES, type JifVenue } from '@/data/jif/pavilhoes';
+
 export interface PavilhaoInfo {
   id: string;
   nome: string;
@@ -12,99 +14,40 @@ export interface PavilhaoInfo {
   appleMapsUrl: string;
 }
 
-export const PAVILHOES_JIF: Record<string, PavilhaoInfo> = {
-  mindelo: {
-    id: 'mindelo',
-    nome: 'Pavilhão Desportivo de Mindelo',
-    nomeCurto: 'Mindelo',
-    freguesia: 'Mindelo',
-    morada: 'Rua do Pavilhão Desportivo, Mindelo',
-    codigoPostal: '4485-484 Vila do Conde',
-    lat: 41.3128,
-    lng: -8.7185,
-    googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Pavilh%C3%A3o+Desportivo+de+Mindelo+Vila+do+Conde',
-    wazeUrl: 'https://waze.com/ul?ll=41.3128,-8.7185&navigate=yes',
-    appleMapsUrl: 'https://maps.apple.com/?q=Pavilh%C3%A3o+Desportivo+de+Mindelo&ll=41.3128,-8.7185',
-  },
-  fajozes: {
-    id: 'fajozes',
-    nome: 'Pavilhão Desportivo de Fajozes',
-    nomeCurto: 'Fajozes',
-    freguesia: 'Fajozes',
-    morada: 'Rua das Oliveiras, Fajozes',
-    codigoPostal: '4485-055 Vila do Conde',
-    lat: 41.3342,
-    lng: -8.6974,
-    googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Pavilh%C3%A3o+Desportivo+de+Fajozes+Vila+do+Conde',
-    wazeUrl: 'https://waze.com/ul?ll=41.3342,-8.6974&navigate=yes',
-    appleMapsUrl: 'https://maps.apple.com/?q=Pavilh%C3%A3o+Desportivo+de+Fajozes&ll=41.3342,-8.6974',
-  },
-  canidelo: {
-    id: 'canidelo',
-    nome: 'Pavilhão Desportivo de Canidelo',
-    nomeCurto: 'Canidelo',
-    freguesia: 'Canidelo',
-    morada: 'Rua do Centro Desportivo de Canidelo',
-    codigoPostal: '4485-081 Vila do Conde',
-    lat: 41.3289,
-    lng: -8.6653,
-    googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Pavilh%C3%A3o+Desportivo+de+Canidelo+Vila+do+Conde',
-    wazeUrl: 'https://waze.com/ul?ll=41.3289,-8.6653&navigate=yes',
-    appleMapsUrl: 'https://maps.apple.com/?q=Pavilh%C3%A3o+Desportivo+de+Canidelo&ll=41.3289,-8.6653',
-  },
-  modivas: {
-    id: 'modivas',
-    nome: 'Pavilhão Desportivo de Modivas',
-    nomeCurto: 'Modivas',
-    freguesia: 'Modivas',
-    morada: 'Rua da Junta de Freguesia, Modivas',
-    codigoPostal: '4485-520 Vila do Conde',
-    lat: 41.3045,
-    lng: -8.6912,
-    googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Pavilh%C3%A3o+Desportivo+de+Modivas+Vila+do+Conde',
-    wazeUrl: 'https://waze.com/ul?ll=41.3045,-8.6912&navigate=yes',
-    appleMapsUrl: 'https://maps.apple.com/?q=Pavilh%C3%A3o+Desportivo+de+Modivas&ll=41.3045,-8.6912',
-  },
-  caxinas: {
-    id: 'caxinas',
-    nome: 'Pavilhão de Desportos de Caxinas',
-    nomeCurto: 'Caxinas',
-    freguesia: 'Caxinas / Poça da Barca',
-    morada: 'Avenida Dr. Carlos Pinto Ferreira, Vila do Conde',
-    codigoPostal: '4480-776 Vila do Conde',
-    lat: 41.3615,
-    lng: -8.7483,
-    googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Pavilh%C3%A3o+de+Desportos+de+Caxinas+Vila+do+Conde',
-    wazeUrl: 'https://waze.com/ul?ll=41.3615,-8.7483&navigate=yes',
-    appleMapsUrl: 'https://maps.apple.com/?q=Pavilh%C3%A3o+de+Desportos+de+Caxinas&ll=41.3615,-8.7483',
-  },
-  desportos: {
-    id: 'desportos',
-    nome: 'Pavilhão Municipal de Desportos',
-    nomeCurto: 'Vila do Conde',
-    freguesia: 'Vila do Conde (Centro)',
-    morada: 'Avenida General Humberto Delgado, Vila do Conde',
-    codigoPostal: '4480-900 Vila do Conde',
-    lat: 41.3547,
-    lng: -8.7431,
-    googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Pavilh%C3%A3o+Municipal+de+Desportos+Vila+do+Conde',
-    wazeUrl: 'https://waze.com/ul?ll=41.3547,-8.7431&navigate=yes',
-    appleMapsUrl: 'https://maps.apple.com/?q=Pavilh%C3%A3o+Municipal+de+Desportos+Vila+do+Conde&ll=41.3547,-8.7431',
-  },
-  macieira: {
-    id: 'macieira',
-    nome: 'Pavilhão de Macieira da Maia',
-    nomeCurto: 'Macieira',
-    freguesia: 'Macieira da Maia',
-    morada: 'Rua do Campo de Futebol, Macieira da Maia',
-    codigoPostal: '4485-364 Vila do Conde',
-    lat: 41.3197,
-    lng: -8.6472,
-    googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Pavilh%C3%A3o+de+Macieira+da+Maia+Vila+do+Conde',
-    wazeUrl: 'https://waze.com/ul?ll=41.3197,-8.6472&navigate=yes',
-    appleMapsUrl: 'https://maps.apple.com/?q=Pavilh%C3%A3o+de+Macieira+da+Maia&ll=41.3197,-8.6472',
-  },
-};
+function toPavilhaoInfo(venue: JifVenue, overrideId?: string): PavilhaoInfo {
+  const [latStr, lngStr] = venue.coords.split(',');
+  const lat = Number.parseFloat(latStr) || 41.3533;
+  const lng = Number.parseFloat(lngStr) || -8.7439;
+  const postalMatch = venue.address.match(/\d{4}-\d{3}\s+[^,]+/);
+  const freguesia = venue.parish.replace(/,\s*Vila do Conde$/i, '').trim();
+
+  return {
+    id: overrideId ?? venue.id,
+    nome: venue.name,
+    nomeCurto: venue.shortName.replace(/^Pav\.\s*/i, '').trim(),
+    freguesia,
+    morada: venue.address,
+    codigoPostal: postalMatch ? postalMatch[0] : 'Vila do Conde',
+    lat,
+    lng,
+    googleMapsUrl: venue.mapsUrl,
+    wazeUrl: venue.wazeUrl,
+    appleMapsUrl: `https://maps.apple.com/?q=${encodeURIComponent(venue.name)}&ll=${lat},${lng}`,
+  };
+}
+
+/**
+ * Mapa canónico de pavilhões derivado da fonte única `JIF_VENUES` (`data/jif/pavilhoes.ts`).
+ */
+export const PAVILHOES_JIF: Record<string, PavilhaoInfo> = JIF_VENUES.reduce<
+  Record<string, PavilhaoInfo>
+>((acc, venue) => {
+  acc[venue.id] = toPavilhaoInfo(venue);
+  if (venue.id === 'municipal-desportos') {
+    acc.desportos = toPavilhaoInfo(venue, 'desportos');
+  }
+  return acc;
+}, {});
 
 /**
  * Normaliza qualquer referência de texto a um pavilhão e retorna o registo oficial.

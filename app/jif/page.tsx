@@ -5,6 +5,9 @@ import { SITE_URL, GESTAO_LINKS } from '@/lib/site';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import JifHubTabs from '@/components/jif/JifHubTabs';
 import { JifRegulamentoTenisMesa } from '@/components/jif/JifRegulamentoTenisMesa';
+import { JIF_MASTER_EVENTS } from '@/data/jif/calendario';
+import { JIF_VENUES } from '@/data/jif/pavilhoes';
+import { obterDadosClassificacao } from '@/lib/jif/data-service';
 
 export const revalidate = 60;
 
@@ -34,7 +37,17 @@ export const metadata: Metadata = {
   }
 };
 
-export default function JifPage() {
+export default async function JifPage() {
+  const rankings = await obterDadosClassificacao();
+  const totalProvas = JIF_MASTER_EVENTS.length;
+  const totalRecintos = JIF_VENUES.length;
+  const totalFreguesias = rankings.length > 0 ? rankings.length : 19;
+  const ajavpIndex = rankings.findIndex(
+    (r) => r.isAjavp || r.name.toLowerCase().includes('vilar do pinheiro')
+  );
+  const ajavpRankLabel = ajavpIndex !== -1 ? `${ajavpIndex + 1}.º Lugar` : null;
+  const ajavpPontos = ajavpIndex !== -1 ? rankings[ajavpIndex].pontos : null;
+
   return (
     <div className="bg-slate-50 dark:bg-slate-950 min-h-screen text-slate-800 dark:text-slate-100">
       {/* Top Notice Banner */}
@@ -78,7 +91,7 @@ export default function JifPage() {
               </h1>
 
               <p className="text-sm sm:text-base text-slate-300 max-w-2xl leading-relaxed">
-                Toda a informação oficial da 40.ª edição dos Jogos Inter-Freguesias: calendário unificado das 36 provas, guias com rotas GPS em 1 toque para os recintos concelhios e comunicados homologados da ADCCVC.
+                Toda a informação oficial da 40.ª edição dos Jogos Inter-Freguesias: calendário unificado das {totalProvas} provas, guias com rotas GPS em 1 toque para os recintos concelhios e comunicados homologados da ADCCVC.
               </p>
 
               {/* Quick Links */}
@@ -106,23 +119,27 @@ export default function JifPage() {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-3">
                 <div className="p-3 rounded-2xl bg-white/10 dark:bg-slate-900/60 backdrop-blur-md text-center space-y-0.5 border border-white/15">
                   <span className="text-[10px] text-slate-300 uppercase block font-semibold truncate">Provas</span>
-                  <div className="text-lg sm:text-xl font-black text-amber-400">36</div>
+                  <div className="text-lg sm:text-xl font-black text-amber-400">{totalProvas}</div>
                   <span className="text-[10px] text-emerald-200 block truncate">Atletismo &amp; Pavilhão</span>
                 </div>
                 <div className="p-3 rounded-2xl bg-white/10 dark:bg-slate-900/60 backdrop-blur-md text-center space-y-0.5 border border-white/15">
                   <span className="text-[10px] text-slate-300 uppercase block font-semibold truncate">Freguesias</span>
-                  <div className="text-lg sm:text-xl font-black text-emerald-400">19</div>
+                  <div className="text-lg sm:text-xl font-black text-emerald-400">{totalFreguesias}</div>
                   <span className="text-[10px] text-emerald-200 block truncate">Concelho em Prova</span>
                 </div>
                 <div className="p-3 rounded-2xl bg-white/10 dark:bg-slate-900/60 backdrop-blur-md text-center space-y-0.5 border border-white/15">
                   <span className="text-[10px] text-slate-300 uppercase block font-semibold truncate">Recintos GPS</span>
-                  <div className="text-lg sm:text-xl font-black text-cyan-400">12</div>
+                  <div className="text-lg sm:text-xl font-black text-cyan-400">{totalRecintos}</div>
                   <span className="text-[10px] text-cyan-200 block truncate">Waze &amp; Maps</span>
                 </div>
                 <div className="p-3 rounded-2xl bg-white/10 dark:bg-slate-900/60 backdrop-blur-md text-center space-y-0.5 border border-white/15">
-                  <span className="text-[10px] text-slate-300 uppercase block font-semibold truncate">Escalões</span>
-                  <div className="text-lg sm:text-xl font-black text-amber-300">4</div>
-                  <span className="text-[10px] text-amber-200 block truncate">Sub-7 ao Sub-13</span>
+                  <span className="text-[10px] text-slate-300 uppercase block font-semibold truncate">Classificação</span>
+                  <div className="text-lg sm:text-xl font-black text-amber-300">
+                    {ajavpRankLabel ?? 'Top JIF'}
+                  </div>
+                  <span className="text-[10px] text-amber-200 block truncate">
+                    {ajavpPontos !== null ? `${ajavpPontos} Pts Virtuais` : 'Sub-7 ao Livre'}
+                  </span>
                 </div>
               </div>
             </div>
@@ -215,7 +232,14 @@ export default function JifPage() {
 
       {/* Main Content Area: Simplified Hub Tabs */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
-        <JifHubTabs initialTab="geral" />
+        <JifHubTabs
+          initialTab="geral"
+          totalProvas={totalProvas}
+          totalRecintos={totalRecintos}
+          totalFreguesias={totalFreguesias}
+          ajavpRankLabel={ajavpRankLabel}
+          ajavpPontos={ajavpPontos}
+        />
 
         {/* Regulamento Oficial das Provas de Ténis de Mesa (ADCCVC / XL JIF) */}
         <div className="scroll-mt-24">
