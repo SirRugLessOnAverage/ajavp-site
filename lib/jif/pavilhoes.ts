@@ -66,6 +66,7 @@ export function identificarPavilhao(nomeOuTexto?: string): PavilhaoInfo {
   if (normalizado.includes('modivas')) return PAVILHOES_JIF.modivas;
   if (normalizado.includes('caxinas')) return PAVILHOES_JIF.caxinas;
   if (normalizado.includes('macieira')) return PAVILHOES_JIF.macieira;
+  if (normalizado.includes('guilhabreu')) return PAVILHOES_JIF.guilhabreu;
   if (normalizado.includes('desportos') || normalizado.includes('municipal')) {
     return PAVILHOES_JIF.desportos;
   }

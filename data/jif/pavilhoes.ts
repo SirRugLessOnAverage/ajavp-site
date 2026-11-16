@@ -38,8 +38,8 @@ export const JIF_VENUES: JifVenue[] = [
     shortName: 'Pav. Canidelo',
     parish: 'Canidelo, Vila do Conde',
     category: 'futsal',
-    categoryLabel: 'Futsal & Ténis de Mesa',
-    sports: ['Futsal Sub-7, 9, 11 e 13', 'Ténis de Mesa JIF'],
+    categoryLabel: 'Futsal Concelhio',
+    sports: ['Futsal Sub-7, 9, 11 e 13'],
     address: 'Rua do Souto / Lugar do Souto, 4485-060 Canidelo',
     driveFromAjavp: '~7 km • 10 min',
     parkingInfo: 'Parque frontal com lugares disponíveis na rua circundante.',
@@ -223,6 +223,22 @@ export const JIF_VENUES: JifVenue[] = [
     mapsUrl: 'https://www.google.com/maps/dir/?api=1&destination=Pavilh%C3%A3o+de+Macieira+da+Maia+Vila+do+Conde',
     wazeUrl: 'https://waze.com/ul?q=Pavilh%C3%A3o+de+Macieira+da+Maia+Vila+do+Conde&navigate=yes',
     coords: '41.3197,-8.6472'
+  },
+  {
+    id: 'guilhabreu',
+    name: 'Casa da Juventude de Guilhabreu',
+    shortName: 'Pav. Guilhabreu',
+    parish: 'Guilhabreu, Vila do Conde',
+    category: 'pavilhão',
+    categoryLabel: 'Ténis de Mesa JIF',
+    sports: ['Ténis de Mesa (3 Encontros XL JIF)'],
+    address: 'Rua da Igreja, 4485-248 Guilhabreu',
+    driveFromAjavp: '~5 km • 7 min',
+    parkingInfo: 'Estacionamento gratuito junto à Casa da Juventude e zona envolvente.',
+    badgeColor: 'amber',
+    mapsUrl: 'https://www.google.com/maps/dir/?api=1&destination=Casa+da+Juventude+de+Guilhabreu+Vila+do+Conde',
+    wazeUrl: 'https://waze.com/ul?q=Casa+da+Juventude+de+Guilhabreu+Vila+do+Conde&navigate=yes',
+    coords: '41.2980,-8.6350'
   }
 ];
 
@@ -262,6 +278,13 @@ export function resolveGpsLinks(locationText: string): { name: string; maps: str
       name: 'Pavilhão de Mindelo',
       maps: 'https://www.google.com/maps/dir/?api=1&destination=Pavilh%C3%A3o+Desportivo+de+Mindelo',
       waze: 'https://waze.com/ul?q=Pavilh%C3%A3o+Desportivo+de+Mindelo&navigate=yes'
+    };
+  }
+  if (loc.includes('guilhabreu')) {
+    return {
+      name: 'Casa da Juventude de Guilhabreu',
+      maps: 'https://www.google.com/maps/dir/?api=1&destination=Casa+da+Juventude+de+Guilhabreu+Vila+do+Conde',
+      waze: 'https://waze.com/ul?q=Casa+da+Juventude+de+Guilhabreu+Vila+do+Conde&navigate=yes'
     };
   }
   if (loc.includes('agros')) {
