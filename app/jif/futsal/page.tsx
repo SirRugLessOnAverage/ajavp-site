@@ -50,8 +50,11 @@ export default async function JifFutsalPage() {
           jornadaAtivaNumero={futsalData.jornadaAtiva}
         />
 
-        {/* Tabelas dos 5 Escalões */}
-        <FutsalClassificacoes classificacoes={futsalData.classificacoes} />
+        {/* Tabelas Dinâmicas dos 5 Escalões */}
+        <FutsalClassificacoes
+          classificacoes={futsalData.classificacoes}
+          jornadas={futsalData.jornadas}
+        />
 
         {/* Quadro de Marcadores e Próxima Jornada */}
         <FutsalMarcadores

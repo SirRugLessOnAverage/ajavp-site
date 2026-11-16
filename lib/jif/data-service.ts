@@ -2,6 +2,7 @@ import { supabasePublic } from '@/lib/supabase/public';
 import {
   FUTSAL_DATA,
   type FutsalClassificacaoEscalao,
+  type FutsalClassificacaoLinha,
   type FutsalHubData,
   type FutsalJogo,
   type FutsalJornada,
@@ -28,22 +29,6 @@ interface ExtractedJogoRaw {
   hora?: string;
 }
 
-interface ExtractedTabelaRaw {
-  escalao?: string;
-  linhas?: Array<{
-    pos?: number;
-    equipa?: string;
-    pontos?: number;
-    jogos?: number;
-    v?: number;
-    e?: number;
-    d?: number;
-    gm?: number;
-    gs?: number;
-    saldo?: number;
-  }>;
-}
-
 interface ExtractedMarcadoresRaw {
   escalao?: string;
   atletas?: Array<{
@@ -60,16 +45,6 @@ interface ExtractedEventoRaw {
   modalidade?: string;
   titulo?: string;
   local?: string;
-}
-
-function normalizarChaveEscalao(escalao?: string): keyof FutsalHubData['classificacoes'] | null {
-  const s = (escalao || '').toLowerCase().replace(/\s+/g, '');
-  if (s.includes('sub-7') || s.includes('sub7')) return 'sub7';
-  if (s.includes('sub-9') || s.includes('sub9')) return 'sub9';
-  if (s.includes('sub-11') || s.includes('sub11')) return 'sub11';
-  if (s.includes('sub-13') || s.includes('sub13')) return 'sub13';
-  if (s.includes('sub-16') || s.includes('sub16')) return 'sub16';
-  return null;
 }
 
 function normalizarHora(hora?: string): string {
@@ -203,41 +178,175 @@ export function consolidarTodasJornadas(jornadasExistentes: FutsalJornada[]): Fu
   return Array.from(mapa.values()).sort((a, b) => a.numero - b.numero);
 }
 
-function calcularGolosPorEquipa(
+const ESCALOES_CLASSIFICACAO: Array<{
+  chave: keyof FutsalHubData['classificacoes'];
+  nome: string;
+}> = [
+  { chave: 'sub7', nome: 'Sub-7' },
+  { chave: 'sub9', nome: 'Sub-9' },
+  { chave: 'sub11', nome: 'Sub-11' },
+  { chave: 'sub13', nome: 'Sub-13' },
+  { chave: 'sub16', nome: 'Sub-16' },
+];
+
+/**
+ * Calcula dinamicamente as tabelas classificativas dos 5 escalões (PTS, J, V, E, D, GM, GS, SG)
+ * diretamente a partir dos resultados dos jogos realizados nas jornadas de campeonato (excluindo Taça).
+ * Critérios oficiais de ordenação: PTS > SG > GM > Confronto Direto > Menor Nº Jogos.
+ */
+export function calcularClassificacoesDinamicas(
   jornadas: FutsalJornada[],
-  chaveEscalao: keyof FutsalHubData['classificacoes']
-): Map<string, { gm: number; gs: number }> {
-  const totais = new Map<string, { gm: number; gs: number }>();
+  baseClassificacoes: FutsalHubData['classificacoes'] = FUTSAL_DATA.classificacoes
+): FutsalHubData['classificacoes'] {
+  const tacaNumeros = new Set(
+    FUTSAL_JORNADAS.filter((fj) => fj.isTaça).map((fj) => fj.number)
+  );
 
-  for (const j of jornadas) {
-    if (!j.estado.toLowerCase().includes('concl')) continue;
-    for (const p of j.pavilhoes) {
-      for (const jogo of p.jogos) {
-        if (normalizarChaveEscalao(normalizarEscalaoJogo(jogo.escalao, p.nome)) !== chaveEscalao) {
-          continue;
-        }
-        const cCasa = chaveCanonicaEquipa(jogo.casa);
-        const cFora = chaveCanonicaEquipa(jogo.fora);
-        const gc = Number(jogo.golosCasa ?? 0);
-        const gf = Number(jogo.golosFora ?? 0);
+  const resultado = {} as FutsalHubData['classificacoes'];
 
-        if (cCasa) {
-          const cur = totais.get(cCasa) || { gm: 0, gs: 0 };
-          cur.gm += gc;
-          cur.gs += gf;
-          totais.set(cCasa, cur);
-        }
-        if (cFora) {
-          const cur = totais.get(cFora) || { gm: 0, gs: 0 };
-          cur.gm += gf;
-          cur.gs += gc;
-          totais.set(cFora, cur);
+  for (const { chave, nome: escNome } of ESCALOES_CLASSIFICACAO) {
+    const baseEscalao: FutsalClassificacaoEscalao = baseClassificacoes[chave];
+
+    interface AcumuladoEquipa {
+      chave: string;
+      equipa: string;
+      pontos: number;
+      jogos: number;
+      v: number;
+      e: number;
+      d: number;
+      gm: number;
+      gs: number;
+    }
+
+    const equipasMap = new Map<string, AcumuladoEquipa>();
+    const h2h = new Map<string, { ptsDiff: number; gdDiff: number }>();
+
+    const registarEquipa = (nomeBruto?: string): AcumuladoEquipa | null => {
+      if (!nomeBruto) return null;
+      const c = chaveCanonicaEquipa(nomeBruto);
+      if (!c || c === 'folga') return null;
+      const existente = equipasMap.get(c);
+      if (existente) return existente;
+      const novo: AcumuladoEquipa = {
+        chave: c,
+        equipa: formatarNomeEquipa(nomeBruto),
+        pontos: 0,
+        jogos: 0,
+        v: 0,
+        e: 0,
+        d: 0,
+        gm: 0,
+        gs: 0,
+      };
+      equipasMap.set(c, novo);
+      return novo;
+    };
+
+    // 1. Inicializar com todas as equipas conhecidas da tabela base do escalão
+    for (const row of baseEscalao?.tabela || []) {
+      registarEquipa(row.equipa);
+    }
+
+    // 2. Percorrer jornadas de campeonato e agregar resultados realizados
+    for (const j of jornadas) {
+      if (tacaNumeros.has(j.numero)) continue;
+      const jornadaConcluida = j.estado.toLowerCase().includes('concl');
+
+      for (const p of j.pavilhoes || []) {
+        for (const jogo of p.jogos || []) {
+          if (normalizarEscalaoJogo(jogo.escalao, p.nome) !== escNome) continue;
+
+          const sCasa = registarEquipa(jogo.casa);
+          const sFora = registarEquipa(jogo.fora);
+          if (!sCasa || !sFora) continue;
+
+          const gc = Number(jogo.golosCasa ?? 0);
+          const gf = Number(jogo.golosFora ?? 0);
+          const foiRealizado = jornadaConcluida || gc > 0 || gf > 0;
+          if (!foiRealizado) continue;
+
+          sCasa.jogos += 1;
+          sFora.jogos += 1;
+          sCasa.gm += gc;
+          sCasa.gs += gf;
+          sFora.gm += gf;
+          sFora.gs += gc;
+
+          const kAB = `${sCasa.chave}|${sFora.chave}`;
+          const kBA = `${sFora.chave}|${sCasa.chave}`;
+          const hAB = h2h.get(kAB) || { ptsDiff: 0, gdDiff: 0 };
+          const hBA = h2h.get(kBA) || { ptsDiff: 0, gdDiff: 0 };
+
+          if (gc > gf) {
+            sCasa.v += 1;
+            sCasa.pontos += 3;
+            sFora.d += 1;
+            hAB.ptsDiff += 3;
+            hBA.ptsDiff -= 3;
+          } else if (gc < gf) {
+            sFora.v += 1;
+            sFora.pontos += 3;
+            sCasa.d += 1;
+            hAB.ptsDiff -= 3;
+            hBA.ptsDiff += 3;
+          } else {
+            sCasa.e += 1;
+            sFora.e += 1;
+            sCasa.pontos += 1;
+            sFora.pontos += 1;
+          }
+
+          hAB.gdDiff += gc - gf;
+          hBA.gdDiff += gf - gc;
+          h2h.set(kAB, hAB);
+          h2h.set(kBA, hBA);
         }
       }
     }
+
+    const ordenado = Array.from(equipasMap.values())
+      .map((item) => ({
+        ...item,
+        saldo: item.gm - item.gs,
+      }))
+      .sort((a, b) => {
+        if (b.pontos !== a.pontos) return b.pontos - a.pontos;
+        if (b.saldo !== a.saldo) return b.saldo - a.saldo;
+        if (b.gm !== a.gm) return b.gm - a.gm;
+        const direto = h2h.get(`${a.chave}|${b.chave}`);
+        if (direto) {
+          if (direto.ptsDiff !== 0) return -direto.ptsDiff;
+          if (direto.gdDiff !== 0) return -direto.gdDiff;
+        }
+        if (a.jogos !== b.jogos) return a.jogos - b.jogos;
+        return a.equipa.localeCompare(b.equipa, 'pt');
+      });
+
+    const tabela: FutsalClassificacaoLinha[] = ordenado.map((item, idx) => ({
+      pos: idx + 1,
+      equipa: item.equipa,
+      pontos: item.pontos,
+      jogos: item.jogos,
+      v: item.v,
+      e: item.e,
+      d: item.d,
+      gm: item.gm,
+      gs: item.gs,
+      saldo: item.saldo,
+      isAjavp: item.chave === 'ajavp',
+      lider: idx === 0,
+      podio: idx < 3,
+    }));
+
+    resultado[chave] = {
+      titulo: baseEscalao?.titulo || `${escNome} Masculinos`,
+      totalEquipas: tabela.length,
+      tabela,
+    };
   }
 
-  return totais;
+  return resultado;
 }
 
 /**
@@ -364,68 +473,8 @@ export function adaptarExtractedParaFutsal(payload: Record<string, unknown>): Fu
     }
   }
 
-  const tabelasRaw = Array.isArray(payload.tabelasClassificacao)
-    ? (payload.tabelasClassificacao as ExtractedTabelaRaw[])
-    : [];
-  for (const t of tabelasRaw) {
-    const chave = normalizarChaveEscalao(t.escalao);
-    if (!chave || !Array.isArray(t.linhas) || t.linhas.length === 0) continue;
-    const escAtual: FutsalClassificacaoEscalao = base.classificacoes[chave];
-
-    // Se todas as linhas tiverem gm=0 e gs=0 (tabela sumária sem golos), calcular/preservar golos
-    const semGolosNaTabela = t.linhas.every(
-      (l) => Number(l.gm ?? 0) === 0 && Number(l.gs ?? 0) === 0
-    );
-    const golosCalculados = semGolosNaTabela
-      ? calcularGolosPorEquipa(base.jornadas, chave)
-      : null;
-
-    base.classificacoes[chave] = {
-      titulo: t.escalao || escAtual.titulo,
-      totalEquipas: t.linhas.length,
-      tabela: t.linhas.map((l, idx) => {
-        const pos = Number(l.pos ?? idx + 1);
-        const equipaRaw = l.equipa || '';
-        const cEquipa = chaveCanonicaEquipa(equipaRaw);
-
-        let gm = Number(l.gm ?? 0);
-        let gs = Number(l.gs ?? 0);
-        let saldo = Number(l.saldo ?? 0);
-
-        if (semGolosNaTabela && golosCalculados) {
-          const calc = golosCalculados.get(cEquipa);
-          const ant = escAtual.tabela.find(
-            (row) => chaveCanonicaEquipa(row.equipa) === cEquipa
-          );
-          if (calc && (calc.gm > 0 || calc.gs > 0)) {
-            gm = calc.gm;
-            gs = calc.gs;
-            saldo = gm - gs;
-          } else if (ant) {
-            gm = ant.gm;
-            gs = ant.gs;
-            saldo = ant.saldo;
-          }
-        }
-
-        return {
-          pos,
-          equipa: formatarNomeEquipa(equipaRaw),
-          pontos: Number(l.pontos ?? 0),
-          jogos: Number(l.jogos ?? 0),
-          v: Number(l.v ?? 0),
-          e: Number(l.e ?? 0),
-          d: Number(l.d ?? 0),
-          gm,
-          gs,
-          saldo,
-          isAjavp: cEquipa === 'ajavp',
-          lider: pos === 1,
-          podio: pos <= 3,
-        };
-      }),
-    };
-  }
+  // Motor 100% dinâmico: recalcula classificações diretamente a partir dos resultados das jornadas
+  base.classificacoes = calcularClassificacoesDinamicas(base.jornadas, FUTSAL_DATA.classificacoes);
 
   const marcadoresRaw = Array.isArray(payload.melhoresMarcadores)
     ? (payload.melhoresMarcadores as ExtractedMarcadoresRaw[])
@@ -473,7 +522,7 @@ export async function obterDadosFutsal(): Promise<FutsalHubData> {
         Array.isArray(payload.tabelasClassificacao) ||
         Array.isArray(payload.melhoresMarcadores)
       ) {
-        // Formato extraído pela IA (ExtractedJifData) já retorna jornadas consolidadas
+        // Formato extraído pela IA (ExtractedJifData) já retorna jornadas e classificações dinâmicas
         return adaptarExtractedParaFutsal(payload);
       }
     }
@@ -481,9 +530,14 @@ export async function obterDadosFutsal(): Promise<FutsalHubData> {
     console.warn('Aviso: Leitura dinâmica de futsal indisponível, a usar fallback estático.', err);
   }
 
+  const jornadasFinais = consolidarTodasJornadas(resultado.jornadas || []);
   return {
     ...resultado,
-    jornadas: consolidarTodasJornadas(resultado.jornadas || []),
+    jornadas: jornadasFinais,
+    classificacoes: calcularClassificacoesDinamicas(
+      jornadasFinais,
+      resultado.classificacoes || FUTSAL_DATA.classificacoes
+    ),
   };
 }
 

@@ -76,15 +76,21 @@ test('Futsal Jornadas View: FutsalJornadasView.tsx deve unificar apresentação 
   assert.ok(content.includes('active:scale-[0.97]'), 'Deve aplicar feedback de toque mobile-native');
 });
 
-test('Futsal Classificações: deve aplicar formatarNomeEquipa às equipas dos escalões', () => {
+test('Futsal Classificações: deve aplicar formatarNomeEquipa, badges dinâmicos e modal ao clicar na equipa', () => {
   const content = fs.readFileSync('components/jif/futsal/FutsalClassificacoes.tsx', 'utf-8');
   assert.ok(content.includes('formatarNomeEquipa'), 'Deve importar e aplicar formatarNomeEquipa');
+  assert.ok(content.includes('obterBadgeAjavpDinamico'), 'Deve calcular badges de pódio dinamicamente');
+  assert.ok(content.includes('FutsalTeamMatchesModal'), 'Deve abrir modal de jogos da equipa ao clicar na tabela');
+  assert.ok(content.includes('modalEquipa'), 'Deve gerir estado modalEquipa com escalão ativo');
+  const pageContent = fs.readFileSync('app/jif/futsal/page.tsx', 'utf-8');
+  assert.ok(pageContent.includes('jornadas={futsalData.jornadas}'), 'Página futsal deve passar jornadas para FutsalClassificacoes');
 });
 
-test('Futsal Data Service: deve reconciliar jogos extraídos nas jornadas existentes sem duplicar jornadas', () => {
+test('Futsal Data Service: deve calcular classificações dinâmicas e reconciliar jogos extraídos sem duplicar jornadas', () => {
   const content = fs.readFileSync('lib/jif/data-service.ts', 'utf-8');
   assert.ok(content.includes('export function consolidarTodasJornadas'), 'Deve exportar consolidarTodasJornadas');
   assert.ok(content.includes('export function adaptarExtractedParaFutsal'), 'Deve exportar adaptarExtractedParaFutsal');
+  assert.ok(content.includes('export function calcularClassificacoesDinamicas'), 'Deve exportar calcularClassificacoesDinamicas');
   assert.ok(content.includes('chaveConfronto'), 'Deve usar chaveConfronto com chaves canónicas');
   assert.ok(content.includes('chaveCanonicaEquipa'), 'Deve importar e usar chaveCanonicaEquipa');
   assert.ok(content.includes('FUTSAL_JORNADAS'), 'Deve importar calendário integral');
