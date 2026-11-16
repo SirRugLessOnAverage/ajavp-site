@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Table, Award, Shield, ChevronRight } from "lucide-react";
 import type { FutsalClassificacaoEscalao } from "@/data/jif/futsal";
+import { formatarNomeEquipa } from "@/lib/jif/team-matches";
 
 interface FutsalClassificacoesProps {
   classificacoes: {
@@ -136,7 +137,7 @@ export function FutsalClassificacoes({ classificacoes }: FutsalClassificacoesPro
                     <td className="py-3 px-4 font-sans font-medium text-slate-900 dark:text-white">
                       <div className="flex items-center gap-2">
                         <span className={isAjavp ? "font-black text-brand-green dark:text-emerald-300" : ""}>
-                          {linha.equipa}
+                          {formatarNomeEquipa(linha.equipa)}
                         </span>
                         {isAjavp && (
                           <span className="text-[9px] uppercase px-1.5 py-0.2 rounded-full bg-emerald-600 text-white font-black tracking-wider">

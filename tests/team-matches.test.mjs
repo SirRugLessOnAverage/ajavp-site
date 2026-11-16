@@ -6,16 +6,25 @@ test('Futsal Equipa Matches: ficheiro lib/jif/team-matches.ts deve existir e exp
   const content = fs.readFileSync('lib/jif/team-matches.ts', 'utf-8');
   assert.ok(content.includes('export function obterJogosDaEquipa'), 'Deve exportar obterJogosDaEquipa');
   assert.ok(content.includes('export function equipaCorresponde'), 'Deve exportar equipaCorresponde');
+  assert.ok(content.includes('export function formatarNomeEquipa'), 'Deve exportar formatarNomeEquipa');
   assert.ok(content.includes('FUTSAL_JORNADAS'), 'Deve integrar o calendário completo FUTSAL_JORNADAS');
   assert.ok(content.includes('jogosRealizados'), 'Deve categorizar jogosRealizados');
   assert.ok(content.includes('proximosJogos'), 'Deve categorizar proximosJogos');
+  assert.ok(content.includes('escaloesDisponiveis'), 'Deve mapear escaloesDisponiveis');
 });
 
-test('Futsal Modal Equipa: FutsalTeamMatchesModal.tsx deve cumprir acessibilidade e feedback tátil', () => {
+test('Futsal Padronização: formatarNomeEquipa deve normalizar Vilar do Pinheiro para AJAVP (Vilar do Pinheiro)', () => {
+  const content = fs.readFileSync('lib/jif/team-matches.ts', 'utf-8');
+  assert.ok(content.includes("'AJAVP (Vilar do Pinheiro)'"), 'Deve retornar nome padronizado');
+});
+
+test('Futsal Modal Equipa: FutsalTeamMatchesModal.tsx deve cumprir acessibilidade, feedback tátil e pills de escalão', () => {
   const content = fs.readFileSync('components/jif/futsal/FutsalTeamMatchesModal.tsx', 'utf-8');
   assert.ok(content.includes('role="dialog"'), 'Deve ter role="dialog"');
   assert.ok(content.includes('aria-modal="true"'), 'Deve ter aria-modal="true"');
   assert.ok(content.includes('Escape'), 'Deve escutar a tecla Escape');
+  assert.ok(content.includes('escalaoAtivo'), 'Deve gerir estado escalaoAtivo');
+  assert.ok(content.includes('escaloesDisponiveis'), 'Deve renderizar pills dos escaloes disponíveis');
   assert.ok(content.includes('onSelectPavilhao'), 'Deve permitir abrir pavilhão');
   assert.ok(content.includes('onSelectDate'), 'Deve permitir abrir data/calendário');
 });
@@ -33,15 +42,23 @@ test('Futsal Date Modal: FutsalDateModal.tsx deve gerar links Google Calendar e 
   const content = fs.readFileSync('components/jif/futsal/FutsalDateModal.tsx', 'utf-8');
   assert.ok(content.includes('calendar.google.com'), 'Deve conter integração Google Calendar');
   assert.ok(content.includes('BEGIN:VCALENDAR'), 'Deve gerar especificação iCalendar');
+  assert.ok(content.includes('formatarNomeEquipa'), 'Deve aplicar formatarNomeEquipa');
 });
 
 test('Futsal Jornadas View: FutsalJornadasView.tsx deve unificar apresentação sem tabs de pavilhões', () => {
   const content = fs.readFileSync('components/jif/futsal/FutsalJornadasView.tsx', 'utf-8');
   assert.ok(content.includes('jornadaSelecionada'), 'Deve gerir navegação por jornadas');
+  assert.ok(content.includes('modalEquipa'), 'Deve gerir estado modalEquipa');
+  assert.ok(content.includes('formatarNomeEquipa'), 'Deve usar formatarNomeEquipa nos confrontos');
   assert.ok(content.includes('FutsalTeamMatchesModal'), 'Deve integrar modal de equipas');
   assert.ok(content.includes('FutsalPavilhaoModal'), 'Deve integrar modal de pavilhão');
   assert.ok(content.includes('FutsalDateModal'), 'Deve integrar modal de data');
   assert.ok(content.includes('active:scale-[0.97]'), 'Deve aplicar feedback de toque mobile-native');
+});
+
+test('Futsal Classificações: deve aplicar formatarNomeEquipa às equipas dos escalões', () => {
+  const content = fs.readFileSync('components/jif/futsal/FutsalClassificacoes.tsx', 'utf-8');
+  assert.ok(content.includes('formatarNomeEquipa'), 'Deve importar e aplicar formatarNomeEquipa');
 });
 
 test('Futsal Data Service: deve consolidar as 6 jornadas completas', () => {

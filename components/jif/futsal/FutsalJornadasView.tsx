@@ -16,7 +16,7 @@ import { FutsalPavilhaoModal } from "@/components/jif/futsal/FutsalPavilhaoModal
 import { FutsalTeamMatchesModal } from "@/components/jif/futsal/FutsalTeamMatchesModal";
 import { FutsalDateModal } from "@/components/jif/futsal/FutsalDateModal";
 import { identificarPavilhao, PavilhaoInfo } from "@/lib/jif/pavilhoes";
-import type { ConsolidatedMatch } from "@/lib/jif/team-matches";
+import { formatarNomeEquipa, type ConsolidatedMatch } from "@/lib/jif/team-matches";
 
 interface FutsalJornadasViewProps {
   jornadas: FutsalJornada[];
@@ -30,7 +30,7 @@ export function FutsalJornadasView({
   const [jornadaSelecionada, setJornadaSelecionada] = useState<number>(jornadaAtivaNumero);
 
   // Estados dos Modais Interativos
-  const [equipaSelecionada, setEquipaSelecionada] = useState<string | null>(null);
+  const [modalEquipa, setModalEquipa] = useState<{ teamName: string; escalao?: string } | null>(null);
   const [pavilhaoSelecionado, setPavilhaoSelecionado] = useState<PavilhaoInfo | null>(null);
   const [jogoCalendario, setJogoCalendario] = useState<ConsolidatedMatch | null>(null);
 
@@ -47,6 +47,9 @@ export function FutsalJornadasView({
       jogo.golosCasa > 0 ||
       jogo.golosFora > 0;
 
+    const casa = formatarNomeEquipa(jogo.casa);
+    const fora = formatarNomeEquipa(jogo.fora);
+
     setJogoCalendario({
       id: `j${jornadaAtual.numero}-${jogo.escalao || "futsal"}-${jogo.casa}-${jogo.fora}`,
       jornadaNumero: jornadaAtual.numero,
@@ -56,9 +59,9 @@ export function FutsalJornadasView({
       escalao: jogo.escalao || "Futsal",
       pavilhao: nomePavilhao,
       campo: jogo.campo,
-      casa: jogo.casa,
-      fora: jogo.fora,
-      adversario: jogo.fora,
+      casa,
+      fora,
+      adversario: fora,
       isCasa: true,
       golosCasa: jogo.golosCasa,
       golosFora: jogo.golosFora,
@@ -252,15 +255,15 @@ export function FutsalJornadasView({
                         {/* Equipa Casa Clicável */}
                         <div className="flex-1 text-right">
                           <button
-                            onClick={() => setEquipaSelecionada(jogo.casa)}
-                            title={`Ver todos os jogos de ${jogo.casa}`}
+                            onClick={() => setModalEquipa({ teamName: jogo.casa, escalao: jogo.escalao })}
+                            title={`Ver jogos de ${formatarNomeEquipa(jogo.casa)} no escalão ${jogo.escalao || 'Futsal'}`}
                             className={`text-xs sm:text-sm font-bold transition-all cursor-pointer active:scale-[0.97] hover:underline ${
-                              jogo.casa.includes("AJAVP")
+                              jogo.casa.includes("AJAVP") || /vilar/i.test(jogo.casa)
                                 ? "text-brand-green dark:text-emerald-400 font-black"
                                 : "text-slate-800 dark:text-slate-100 hover:text-brand-navy dark:hover:text-white"
                             }`}
                           >
-                            {jogo.casa}
+                            {formatarNomeEquipa(jogo.casa)}
                           </button>
                         </div>
 
@@ -272,15 +275,15 @@ export function FutsalJornadasView({
                         {/* Equipa Fora Clicável */}
                         <div className="flex-1 text-left">
                           <button
-                            onClick={() => setEquipaSelecionada(jogo.fora)}
-                            title={`Ver todos os jogos de ${jogo.fora}`}
+                            onClick={() => setModalEquipa({ teamName: jogo.fora, escalao: jogo.escalao })}
+                            title={`Ver jogos de ${formatarNomeEquipa(jogo.fora)} no escalão ${jogo.escalao || 'Futsal'}`}
                             className={`text-xs sm:text-sm font-bold transition-all cursor-pointer active:scale-[0.97] hover:underline ${
-                              jogo.fora.includes("AJAVP")
+                              jogo.fora.includes("AJAVP") || /vilar/i.test(jogo.fora)
                                 ? "text-brand-green dark:text-emerald-400 font-black"
                                 : "text-slate-800 dark:text-slate-100 hover:text-brand-navy dark:hover:text-white"
                             }`}
                           >
-                            {jogo.fora}
+                            {formatarNomeEquipa(jogo.fora)}
                           </button>
                         </div>
                       </div>
@@ -306,7 +309,7 @@ export function FutsalJornadasView({
                           </span>
                         ) : (
                           <button
-                            onClick={() => setEquipaSelecionada(jogo.casa)}
+                            onClick={() => setModalEquipa({ teamName: jogo.casa, escalao: jogo.escalao })}
                             className="hidden sm:inline-flex items-center gap-1 text-[10px] text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer"
                           >
                             <Users className="w-3 h-3" />
@@ -325,9 +328,10 @@ export function FutsalJornadasView({
 
       {/* Modais Integrados */}
       <FutsalTeamMatchesModal
-        teamName={equipaSelecionada}
-        isOpen={Boolean(equipaSelecionada)}
-        onClose={() => setEquipaSelecionada(null)}
+        teamName={modalEquipa?.teamName || null}
+        initialCategory={modalEquipa?.escalao}
+        isOpen={Boolean(modalEquipa)}
+        onClose={() => setModalEquipa(null)}
         hubJornadas={jornadas}
         onSelectPavilhao={(nome) => {
           abrirModalPavilhao(nome);

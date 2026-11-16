@@ -11,9 +11,11 @@ import {
   ChevronRight,
   Shield,
   Activity,
+  Layers,
 } from "lucide-react";
 import {
   obterJogosDaEquipa,
+  formatarNomeEquipa,
   ConsolidatedMatch,
   TeamStatsSummary,
 } from "@/lib/jif/team-matches";
@@ -21,6 +23,7 @@ import type { FutsalJornada as HubJornada } from "@/data/jif/futsal";
 
 interface FutsalTeamMatchesModalProps {
   teamName: string | null;
+  initialCategory?: string;
   isOpen: boolean;
   onClose: () => void;
   hubJornadas?: HubJornada[];
@@ -30,15 +33,23 @@ interface FutsalTeamMatchesModalProps {
 
 export function FutsalTeamMatchesModal({
   teamName,
+  initialCategory,
   isOpen,
   onClose,
   hubJornadas,
   onSelectPavilhao,
   onSelectDate,
 }: FutsalTeamMatchesModalProps) {
-  const [tabAtiva, setTabAtiva] = useState<"todos" | "realizados" | "proximos">(
-    "todos"
-  );
+  const [tabAtiva, setTabAtiva] = useState<"todos" | "realizados" | "proximos">("todos");
+  const [escalaoAtivo, setEscalaoAtivo] = useState<string>("todos");
+
+  // Atualizar escalão ativo sempre que o modal abre ou initialCategory muda
+  useEffect(() => {
+    if (isOpen) {
+      setEscalaoAtivo(initialCategory || "todos");
+      setTabAtiva("todos");
+    }
+  }, [isOpen, initialCategory]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -58,7 +69,8 @@ export function FutsalTeamMatchesModal({
 
   if (!isOpen || !teamName) return null;
 
-  const stats: TeamStatsSummary = obterJogosDaEquipa(teamName, hubJornadas);
+  // Obter dados recalculados dinamicamente com o escalão ativo
+  const stats: TeamStatsSummary = obterJogosDaEquipa(teamName, hubJornadas, escalaoAtivo);
   const isAjavp =
     teamName.toLowerCase().includes("vilar") ||
     teamName.toLowerCase().includes("ajavp");
@@ -105,12 +117,17 @@ export function FutsalTeamMatchesModal({
                       Nossa Freguesia
                     </span>
                   )}
+                  {escalaoAtivo !== "todos" && (
+                    <span className="text-[9px] px-2 py-0.2 rounded-full font-black bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 uppercase">
+                      {escalaoAtivo}
+                    </span>
+                  )}
                 </div>
                 <h3
                   id="team-modal-title"
                   className="font-heading font-black text-xl sm:text-2xl text-slate-900 dark:text-white"
                 >
-                  {teamName}
+                  {stats.equipaFormatada}
                 </h3>
               </div>
             </div>
@@ -124,8 +141,42 @@ export function FutsalTeamMatchesModal({
             </button>
           </div>
 
-          {/* Mini Dashboard de Estatísticas */}
-          <div className="grid grid-cols-4 sm:grid-cols-6 gap-2 mt-4">
+          {/* Seletor Dinâmico de Escalões (Pills) */}
+          <div className="mt-4 pt-3 border-t border-slate-200/60 dark:border-white/5 space-y-2">
+            <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider">
+              <Layers className="w-3.5 h-3.5 text-brand-green dark:text-emerald-400" />
+              <span>Filtrar por Escalão:</span>
+            </div>
+            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+              <button
+                onClick={() => setEscalaoAtivo("todos")}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap active:scale-[0.97] ${
+                  escalaoAtivo === "todos"
+                    ? "bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-xs"
+                    : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-slate-700"
+                }`}
+              >
+                Todos os Escalões
+              </button>
+
+              {stats.escaloesDisponiveis.map((esc) => (
+                <button
+                  key={esc}
+                  onClick={() => setEscalaoAtivo(esc)}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap active:scale-[0.97] ${
+                    escalaoAtivo === esc
+                      ? "bg-brand-navy dark:bg-amber-400 text-white dark:text-slate-950 shadow-xs"
+                      : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-slate-700"
+                  }`}
+                >
+                  {esc}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Mini Dashboard de Estatísticas Recalculadas */}
+          <div className="grid grid-cols-4 sm:grid-cols-6 gap-2 mt-3">
             <div className="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200/60 dark:border-white/5 text-center">
               <span className="block text-[10px] font-bold text-slate-500 dark:text-slate-400">
                 Jogos
@@ -185,7 +236,7 @@ export function FutsalTeamMatchesModal({
           </div>
         </div>
 
-        {/* Separadores de Filtro */}
+        {/* Separadores de Filtro: Todos / Realizados / A Disputar */}
         <div className="px-6 pt-3 pb-2 flex items-center gap-2 border-b border-slate-100 dark:border-white/10 bg-white dark:bg-slate-900">
           <button
             onClick={() => setTabAtiva("todos")}
@@ -224,7 +275,7 @@ export function FutsalTeamMatchesModal({
           {listaExibida.length === 0 ? (
             <div className="py-12 text-center text-slate-400">
               <Activity className="w-8 h-8 mx-auto mb-2 opacity-40" />
-              <p className="text-sm font-semibold">Nenhum jogo encontrado neste filtro.</p>
+              <p className="text-sm font-semibold">Nenhum jogo encontrado para {escalaoAtivo !== "todos" ? `o escalão ${escalaoAtivo}` : "este filtro"}.</p>
             </div>
           ) : (
             listaExibida.map((jogo) => {
@@ -291,7 +342,7 @@ export function FutsalTeamMatchesModal({
                             : "font-semibold text-slate-600 dark:text-slate-300"
                         }`}
                       >
-                        {jogo.casa}
+                        {formatarNomeEquipa(jogo.casa)}
                       </span>
                     </div>
 
@@ -332,7 +383,7 @@ export function FutsalTeamMatchesModal({
                             : "font-semibold text-slate-600 dark:text-slate-300"
                         }`}
                       >
-                        {jogo.fora}
+                        {formatarNomeEquipa(jogo.fora)}
                       </span>
                     </div>
                   </div>
@@ -345,7 +396,7 @@ export function FutsalTeamMatchesModal({
         {/* Rodapé informativo */}
         <div className="px-6 py-3 bg-slate-50 dark:bg-slate-800/40 border-t border-slate-100 dark:border-white/10 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
           <span>Dados atualizados via Ingestão Oficial JIF</span>
-          <span className="font-semibold">{stats.totalJogos} jogos no calendário</span>
+          <span className="font-semibold">{stats.totalJogos} jogos {escalaoAtivo !== "todos" ? `em ${escalaoAtivo}` : "no calendário"}</span>
         </div>
       </div>
     </div>

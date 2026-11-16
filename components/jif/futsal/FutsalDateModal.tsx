@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import { X, Calendar, Clock, MapPin, Download, ExternalLink, Check } from "lucide-react";
-import type { ConsolidatedMatch } from "@/lib/jif/team-matches";
+import { formatarNomeEquipa, type ConsolidatedMatch } from "@/lib/jif/team-matches";
 
 interface FutsalDateModalProps {
   match: ConsolidatedMatch | null;
@@ -87,9 +87,11 @@ export function FutsalDateModal({
   if (!isOpen || !match) return null;
 
   const { startIso, endIso, dataFormatada } = gerarDatasIso(match.data, match.hora);
+  const casaNome = formatarNomeEquipa(match.casa);
+  const foraNome = formatarNomeEquipa(match.fora);
 
-  const tituloEvento = `JIF Futsal: ${match.casa} vs ${match.fora} (${match.escalao})`;
-  const descricaoEvento = `XL Jogos Inter-Freguesias de Vila do Conde\n${match.jornadaLabel} - Escalão ${match.escalao}\nConfronto: ${match.casa} vs ${match.fora}\nLocal: ${match.pavilhao}\nMais informações em: https://ajavp.pt/jif/futsal`;
+  const tituloEvento = `JIF Futsal: ${casaNome} vs ${foraNome} (${match.escalao})`;
+  const descricaoEvento = `XL Jogos Inter-Freguesias de Vila do Conde\n${match.jornadaLabel} - Escalão ${match.escalao}\nConfronto: ${casaNome} vs ${foraNome}\nLocal: ${match.pavilhao}\nMais informações em: https://ajavp.pt/jif/futsal`;
   const localEvento = `${match.pavilhao}, Vila do Conde`;
 
   // URL Google Calendar

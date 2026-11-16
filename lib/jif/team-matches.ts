@@ -24,6 +24,9 @@ export interface ConsolidatedMatch {
 
 export interface TeamStatsSummary {
   equipa: string;
+  equipaFormatada: string;
+  escalaoAtivo: string;
+  escaloesDisponiveis: string[];
   totalJogos: number;
   jogados: number;
   aJogar: number;
@@ -46,6 +49,29 @@ function normalizarNome(nome: string): string {
     .trim();
 }
 
+/**
+ * Padroniza a exibição de equipas:
+ * Converte qualquer variante de "Vilar do Pinheiro" ou "AJAVP" para "AJAVP (Vilar do Pinheiro)".
+ */
+export function formatarNomeEquipa(nome?: string): string {
+  if (!nome) return '';
+  const n = nome.trim();
+  const lower = n.toLowerCase();
+
+  if (
+    lower === 'vilar do pinheiro' ||
+    lower === 'vilar' ||
+    lower === 'ajavp' ||
+    lower === 'vilar do pinheiro (ajavp)' ||
+    lower === 'ajavp (vilar do pinheiro)' ||
+    lower === 'ajavp / vilar do pinheiro'
+  ) {
+    return 'AJAVP (Vilar do Pinheiro)';
+  }
+
+  return n;
+}
+
 export function equipaCorresponde(nomeBusca: string, nomeEquipa: string): boolean {
   const b = normalizarNome(nomeBusca);
   const e = normalizarNome(nomeEquipa);
@@ -60,12 +86,16 @@ export function equipaCorresponde(nomeBusca: string, nomeEquipa: string): boolea
   return e.includes(b) || b.includes(e);
 }
 
+const ORDEM_ESCALOES = ['Sub-7', 'Sub-9', 'Sub-11', 'Sub-13', 'Sub-16'];
+
 /**
  * Extrai todos os jogos de uma equipa cruzando os dados das jornadas (do Hub/Supabase e do Calendário Oficial).
+ * Suporta filtro opcional por escalão ('todos' ou escalão específico).
  */
 export function obterJogosDaEquipa(
   nomeEquipa: string,
-  hubJornadas?: HubJornada[]
+  hubJornadas?: HubJornada[],
+  escalaoFiltro?: string
 ): TeamStatsSummary {
   const matchesMap = new Map<string, ConsolidatedMatch>();
 
@@ -92,7 +122,10 @@ export function obterJogosDaEquipa(
         }
 
         const isCasa = correspondeCasa;
-        const adversario = isCasa ? m.awayTeam : m.homeTeam;
+        const adversarioRaw = isCasa ? m.awayTeam : m.homeTeam;
+        const adversario = formatarNomeEquipa(adversarioRaw);
+        const casaFormatada = formatarNomeEquipa(m.homeTeam);
+        const foraFormatada = formatarNomeEquipa(m.awayTeam);
 
         let resultado: 'V' | 'E' | 'D' | 'Agendado' = 'Agendado';
         if (isCompleted && golosCasa !== null && golosFora !== null) {
@@ -113,8 +146,8 @@ export function obterJogosDaEquipa(
           escalao: m.category,
           pavilhao: v.venueName,
           campo: v.subLocation,
-          casa: m.homeTeam,
-          fora: m.awayTeam,
+          casa: casaFormatada,
+          fora: foraFormatada,
           adversario,
           isCasa,
           golosCasa,
@@ -139,7 +172,11 @@ export function obterJogosDaEquipa(
           if (!correspondeCasa && !correspondeFora) continue;
 
           const isCasa = correspondeCasa;
-          const adversario = isCasa ? jogo.fora : jogo.casa;
+          const adversarioRaw = isCasa ? jogo.fora : jogo.casa;
+          const adversario = formatarNomeEquipa(adversarioRaw);
+          const casaFormatada = formatarNomeEquipa(jogo.casa);
+          const foraFormatada = formatarNomeEquipa(jogo.fora);
+
           const golosCasa = Number(jogo.golosCasa ?? 0);
           const golosFora = Number(jogo.golosFora ?? 0);
           const isCompleted = j.estado.toLowerCase().includes('concl') || (golosCasa > 0 || golosFora > 0);
@@ -163,8 +200,8 @@ export function obterJogosDaEquipa(
             escalao: jogo.escalao || 'Futsal',
             pavilhao: p.nome,
             campo: jogo.campo,
-            casa: jogo.casa,
-            fora: jogo.fora,
+            casa: casaFormatada,
+            fora: foraFormatada,
             adversario,
             isCasa,
             golosCasa,
@@ -184,8 +221,32 @@ export function obterJogosDaEquipa(
     return a.hora.localeCompare(b.hora);
   });
 
-  const jogosRealizados = allMatches.filter((m) => m.isCompleted);
-  const proximosJogos = allMatches.filter((m) => !m.isCompleted);
+  // Obter lista única de escalões em que esta equipa joga
+  const escaloesSet = new Set<string>();
+  for (const m of allMatches) {
+    if (m.escalao) escaloesSet.add(m.escalao);
+  }
+  const escaloesDisponiveis = ORDEM_ESCALOES.filter((esc) => escaloesSet.has(esc));
+  // Adicionar outros que não estejam na ordem padrão se houver
+  for (const esc of escaloesSet) {
+    if (!escaloesDisponiveis.includes(esc)) escaloesDisponiveis.push(esc);
+  }
+
+  // Filtragem se escalaoFiltro estiver ativo
+  const escalaoNormalizado = escalaoFiltro?.trim();
+  const filtrarPorEscalao =
+    Boolean(escalaoNormalizado) &&
+    escalaoNormalizado?.toLowerCase() !== 'todos' &&
+    escalaoNormalizado !== '';
+
+  const matchesFiltrados = filtrarPorEscalao
+    ? allMatches.filter(
+        (m) => m.escalao.toLowerCase() === escalaoNormalizado!.toLowerCase()
+      )
+    : allMatches;
+
+  const jogosRealizados = matchesFiltrados.filter((m) => m.isCompleted);
+  const proximosJogos = matchesFiltrados.filter((m) => !m.isCompleted);
 
   let vitorias = 0;
   let empates = 0;
@@ -206,7 +267,10 @@ export function obterJogosDaEquipa(
 
   return {
     equipa: nomeEquipa,
-    totalJogos: allMatches.length,
+    equipaFormatada: formatarNomeEquipa(nomeEquipa),
+    escalaoAtivo: filtrarPorEscalao ? escalaoNormalizado! : 'todos',
+    escaloesDisponiveis,
+    totalJogos: matchesFiltrados.length,
     jogados: jogosRealizados.length,
     aJogar: proximosJogos.length,
     vitorias,
