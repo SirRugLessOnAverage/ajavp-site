@@ -1,9 +1,17 @@
 import { SITE_URL } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { supabasePublic } from "@/lib/supabase/public";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { MediaGallery } from "@/components/multimedia/MediaGallery";
-import { GALLERY_PHOTOS, VIDEOS_LIST } from "@/data/institucional";
+import {
+  GALLERY_PHOTOS,
+  VIDEOS_LIST,
+  type GalleryPhoto,
+  type VideoItem,
+} from "@/data/institucional";
+
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Galeria & Multimédia • AJAVP — Vilar do Pinheiro",
@@ -14,7 +22,74 @@ export const metadata: Metadata = {
   },
 };
 
-export default function MultimediaPage() {
+interface DbMultimediaRow {
+  id: string;
+  tipo: string;
+  title: string;
+  badge: string;
+  category: string;
+  media_url: string;
+  thumbnail_url: string | null;
+  external_url: string | null;
+  youtube_id: string | null;
+  description: string | null;
+  featured_new: boolean;
+}
+
+const VALID_CATEGORIES = new Set<GalleryPhoto["category"]>([
+  "equipamento",
+  "futsal",
+  "atletismo",
+  "outras",
+  "familia",
+  "tenis-mesa",
+]);
+
+export default async function MultimediaPage() {
+  let photos: GalleryPhoto[] = GALLERY_PHOTOS;
+  let videos: VideoItem[] = VIDEOS_LIST;
+
+  try {
+    const { data, error } = await supabasePublic
+      .from("site_multimedia")
+      .select("*")
+      .eq("ativo", true)
+      .order("ordem", { ascending: true })
+      .order("created_at", { ascending: false });
+
+    if (!error && Array.isArray(data) && data.length > 0) {
+      const rows = data as unknown as DbMultimediaRow[];
+      const dbPhotos = rows
+        .filter((r) => r.tipo === "foto")
+        .map<GalleryPhoto>((r) => ({
+          id: r.id,
+          src: r.media_url,
+          title: r.title,
+          badge: r.badge,
+          category: VALID_CATEGORIES.has(r.category as GalleryPhoto["category"])
+            ? (r.category as GalleryPhoto["category"])
+            : "outras",
+          featuredNew: r.featured_new,
+        }));
+      const dbVideos = rows
+        .filter((r) => r.tipo === "video")
+        .map<VideoItem>((r) => ({
+          id: r.id,
+          youtubeId: r.youtube_id ?? undefined,
+          externalUrl: r.external_url ?? undefined,
+          thumbnail: r.thumbnail_url || r.media_url,
+          badge: r.badge,
+          title: r.title,
+          description: r.description || "",
+        }));
+
+      if (dbPhotos.length > 0) photos = dbPhotos;
+      if (dbVideos.length > 0) videos = dbVideos;
+    }
+  } catch (err) {
+    console.warn("Aviso: leitura de multimédia indisponível, a usar fallback estático.", err);
+  }
+
   return (
     <div className="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white transition-colors">
       <div>
@@ -45,13 +120,13 @@ export default function MultimediaPage() {
                     href="#galeria-fotos"
                     className="motion-press inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-brand-green hover:bg-brand-greenDark text-white font-bold text-sm transition-colors shadow-lg shadow-brand-green/25"
                   >
-                    🖼️ Explorar {GALLERY_PHOTOS.length} Fotografias
+                    🖼️ Explorar {photos.length} Fotografias
                   </a>
                   <a
                     href="#videos-epoca"
                     className="motion-press inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white hover:bg-slate-100 dark:bg-white/10 dark:hover:bg-white/15 border border-slate-300 dark:border-white/15 text-slate-800 dark:text-white font-semibold text-sm transition-colors shadow-2xs"
                   >
-                    🎬 Ver {VIDEOS_LIST.length} Vídeos & Reels
+                    🎬 Ver {videos.length} Vídeos & Reels
                   </a>
                 </div>
               </div>
@@ -94,7 +169,7 @@ export default function MultimediaPage() {
         {/* COMPONENTE INTERATIVO DE GALERIA E VÍDEOS */}
         <section className="py-16 lg:py-20 bg-white dark:bg-slate-900 transition-colors">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <MediaGallery photos={GALLERY_PHOTOS} videos={VIDEOS_LIST} />
+            <MediaGallery photos={photos} videos={videos} />
           </div>
         </section>
 
