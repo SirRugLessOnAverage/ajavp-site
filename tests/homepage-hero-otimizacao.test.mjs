@@ -28,13 +28,11 @@ test('Otimização da 1ª Página (Homepage AJAVP)', async (t) => {
       'O Hero deve manter o destaque oficial da vitória no Ténis de Mesa'
     );
 
-    // Bloco direito com os próximos jogos da AJAVP em Fajozes
-    assert.ok(content.includes('Próxima Jornada') && content.includes('14 Nov'), 'Deve destacar a data da 4ª jornada');
-    assert.ok(content.includes('Pav. Fajozes'), 'Deve indicar o Pavilhão de Fajozes');
-    assert.ok(content.includes('Fajozes vs AJAVP'), 'Deve listar o jogo dos Sub-13');
-    assert.ok(content.includes('08h45'), 'Deve indicar o horário dos Sub-13');
-    assert.ok(content.includes('Árvore vs AJAVP'), 'Deve listar o jogo dos Sub-11');
-    assert.ok(content.includes('09h45'), 'Deve indicar o horário dos Sub-11');
+    // Bloco direito dinâmico com os próximos jogos da AJAVP via obterDadosFutsal
+    assert.ok(content.includes('obterDadosFutsal'), 'Hero deve obter a próxima jornada dinamicamente via obterDadosFutsal');
+    assert.ok(content.includes('Próxima Jornada'), 'Deve apresentar o cartão da Próxima Jornada');
+    assert.ok(content.includes('formatarNomeEquipa'), 'Deve normalizar o nome das equipas no cartão do Hero');
+    assert.ok(content.includes('JIF_MASTER_EVENTS.length'), 'Deve calcular dinamicamente o número de provas no calendário');
 
     // Atalhos essenciais
     assert.ok(content.includes('/jif/futsal'), 'Deve manter link para resultados de futsal');
