@@ -28,6 +28,7 @@
     scroll-behavior: smooth;
     color-scheme: light;
     accent-color: var(--color-brand-green);
+    -webkit-tap-highlight-color: transparent;
   }
 
   html.dark {
@@ -133,6 +134,17 @@
   .backdrop-drawer {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* Utilitários de Área Segura Mobile (Safe Areas iPhone/Android) */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .bottom-safe {
+    bottom: env(safe-area-inset-bottom, 0px);
   }
 
   @media (prefers-reduced-motion: reduce) {

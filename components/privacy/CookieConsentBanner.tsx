@@ -69,7 +69,7 @@ export function CookieConsentBanner() {
       aria-label="Consentimento de Cookies e Privacidade"
       role="dialog"
       aria-modal="false"
-      className="fixed bottom-4 inset-x-4 sm:inset-x-auto sm:right-6 sm:max-w-md z-50 animate-in fade-in slide-in-from-bottom-5 duration-300"
+      className="fixed bottom-18 sm:bottom-6 inset-x-4 sm:inset-x-auto sm:right-6 sm:max-w-md z-50 animate-in fade-in slide-in-from-bottom-5 duration-300"
     >
       <div className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md rounded-3xl p-5 sm:p-6 border border-slate-200/80 dark:border-white/10 shadow-2xl space-y-4">
         <div className="flex items-start gap-3">

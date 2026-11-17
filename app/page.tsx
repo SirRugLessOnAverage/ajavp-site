@@ -17,6 +17,7 @@ import { createClient } from "@/lib/supabase/server";
 import { GESTAO_LINKS } from "@/lib/site";
 import { NoticiasSection } from "@/components/home/NoticiasSection";
 import { AgendaMatchCenter } from "@/components/home/AgendaMatchCenter";
+import { VdpCommunityHub } from "@/components/home/VdpCommunityHub";
 import { BannerSociosOficial } from "@/components/home/BannerSociosOficial";
 import { obterDadosFutsal } from "@/lib/jif/data-service";
 import { formatarNomeEquipa } from "@/lib/jif/team-matches";
@@ -324,6 +325,9 @@ export default async function HomePage() {
 
       {/* Centro de Jogos & Agenda Desportiva AJAVP (Match Center Nobre) */}
       <AgendaMatchCenter eventos={eventos} />
+
+      {/* Hub Comunitário de Vilar do Pinheiro (Meteo, Ringue, Treinos & Contactos Locais) */}
+      <VdpCommunityHub />
 
       {/* Banner Oficial de Notificações Web Push & Avisos no Telemóvel */}
       <section className="bg-linear-to-r from-amber-500 via-amber-400 to-amber-500 text-slate-950 py-5 sm:py-6 shadow-md border-y border-amber-400">
