@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { GESTAO_LINKS, GESTAO_URL } from "@/lib/site";
+import { CookieSettingsButton } from "@/components/privacy/CookieSettingsButton";
 
 export function Footer() {
   return (
@@ -242,6 +243,14 @@ export function Footer() {
                   <span className="text-xs" aria-hidden="true">🛡️</span> Privacidade &amp; Cookies
                 </Link>
               </li>
+              <li>
+                <div className="flex items-center gap-1.5 py-0.5 text-slate-300">
+                  <span className="text-xs" aria-hidden="true">🍪</span>
+                  <CookieSettingsButton className="hover:text-emerald-300 transition-colors cursor-pointer text-sm">
+                    Gerir Cookies
+                  </CookieSettingsButton>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
@@ -275,6 +284,10 @@ export function Footer() {
             >
               Privacidade &amp; Cookies
             </Link>
+            <span className="text-slate-600">&bull;</span>
+            <CookieSettingsButton className="text-slate-300 hover:text-white underline font-semibold transition-colors cursor-pointer">
+              Gerir Cookies
+            </CookieSettingsButton>
           </div>
           <p className="text-slate-400 text-center md:text-right">
             Desenvolvido com dedicação para a comunidade de Vilar do Pinheiro.

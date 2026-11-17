@@ -4,13 +4,13 @@ const isDev = process.env.NODE_ENV === "development";
 
 const cspHeader = `
   default-src 'self';
-  script-src 'self' 'unsafe-inline' ${isDev ? "'unsafe-eval'" : ""} https://challenges.cloudflare.com;
+  script-src 'self' 'unsafe-inline' ${isDev ? "'unsafe-eval'" : ""} https://challenges.cloudflare.com https://www.googletagmanager.com;
   style-src 'self' 'unsafe-inline';
-  img-src 'self' data: blob: https://mudgnaajtolytggksvvq.supabase.co https://*.supabase.co https://i.ytimg.com https://*.youtube.com;
+  img-src 'self' data: blob: https://mudgnaajtolytggksvvq.supabase.co https://*.supabase.co https://i.ytimg.com https://*.youtube.com https://www.googletagmanager.com https://*.google-analytics.com;
   font-src 'self' data:;
-  connect-src 'self' https://mudgnaajtolytggksvvq.supabase.co wss://mudgnaajtolytggksvvq.supabase.co https://*.supabase.co;
+  connect-src 'self' https://mudgnaajtolytggksvvq.supabase.co wss://mudgnaajtolytggksvvq.supabase.co https://*.supabase.co https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com;
   worker-src 'self' blob:;
-  frame-src 'self' https://challenges.cloudflare.com https://www.youtube-nocookie.com https://www.youtube.com https://maps.google.com https://www.google.com;
+  frame-src 'self' https://challenges.cloudflare.com https://www.youtube-nocookie.com https://www.youtube.com https://maps.google.com https://www.google.com https://www.googletagmanager.com;
   frame-ancestors 'none';
   object-src 'none';
   base-uri 'self';
@@ -51,6 +51,9 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
+  experimental: {
+    agentUpgrade: "security",
+  },
   images: {
     remotePatterns: [
       {

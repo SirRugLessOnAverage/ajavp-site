@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ShieldCheck, Cookie, Lock, FileText, CheckCircle2, AlertCircle, Mail, MapPin } from "lucide-react";
 import { SITE_URL } from "@/lib/site";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import { CookieSettingsButton } from "@/components/privacy/CookieSettingsButton";
 
 export const metadata: Metadata = {
   title: "Privacidade, Gestão de Cookies & RGPD • AJAVP",
@@ -45,7 +46,7 @@ export default function PrivacidadePage() {
 
       {/* CONTEÚDO PRINCIPAL */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-12">
-        {/* DESTAQUE PRINCIPAL: ISENÇÃO DE COOKIES DE RASTREIO */}
+        {/* DESTAQUE PRINCIPAL: ISENÇÃO DE PUBLICIDADE & CONSENTIMENTO TRANSPARENTE */}
         <div className="p-6 sm:p-8 rounded-3xl bg-emerald-50/80 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-500/30 shadow-xs">
           <div className="flex items-start gap-4">
             <span className="p-3 rounded-2xl bg-emerald-600 text-white shrink-0 shadow-xs">
@@ -53,10 +54,10 @@ export default function PrivacidadePage() {
             </span>
             <div className="space-y-2">
               <h2 className="font-heading font-black text-lg sm:text-xl text-emerald-950 dark:text-emerald-200">
-                Sem Cookies de Rastreio, Sem Publicidade, Sem Perfilagem
+                Sem Publicidade, Sem Perfilagem Comercial, Máxima Transparência
               </h2>
               <p className="text-sm text-emerald-900/90 dark:text-emerald-300/90 leading-relaxed">
-                O portal público da AJAVP <strong>não utiliza cookies de rastreio publicitário, nem ferramentas intrusivas de perfilagem ou partilha comercial de dados com terceiros</strong> (como Meta Pixel, Google Ads ou redes de remarketing). A navegação é limpa, segura e respeita integralmente a tua privacidade desde o primeiro segundo.
+                O portal público da AJAVP <strong>não vende dados nem utiliza cookies de rastreio publicitário comercial</strong> (como Meta Pixel, Google Ads ou redes de remarketing). A medição estatística com o <strong>Google Tag Manager e Google Analytics 4</strong> serve unicamente para aferir que notícias e páginas dos JIF têm maior interesse comunitário, operando com o <strong>Google Consent Mode v2</strong> e apenas após a tua autorização expressa.
               </p>
             </div>
           </div>
@@ -66,13 +67,13 @@ export default function PrivacidadePage() {
         <section className="space-y-4">
           <div className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider text-brand-green dark:text-emerald-400">
             <Cookie className="w-4 h-4" />
-            <span>Armazenamento Local no Dispositivo</span>
+            <span>Armazenamento Local &amp; Cookies</span>
           </div>
           <h2 className="font-heading text-2xl font-black text-brand-navy dark:text-white">
             1. Como Funciona a Gestão de Cookies e Dados Técnicos
           </h2>
           <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            Ao abrigo da Diretiva ePrivacy (2002/58/CE) e da Lei n.º 41/2004 (alterada pela Lei n.º 46/2012), o armazenamento de informações técnicas estritamente necessárias para a prestação do serviço solicitado pelo utilizador está isento de consentimento prévio por banner. A AJAVP utiliza unicamente armazenamento local do navegador (<code className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 text-xs font-mono">localStorage</code>) para as seguintes finalidades essenciais:
+            Ao abrigo da Diretiva ePrivacy (2002/58/CE), da Lei n.º 41/2004 e do Regulamento Geral sobre a Proteção de Dados (RGPD), os cookies estritamente técnicos para funcionamento da plataforma são executados com base no interesse legítimo. Os cookies analíticos de medição de tráfego dependem exclusivamente do teu <strong>consentimento prévio e informado</strong>:
           </p>
 
           <div className="overflow-x-auto rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900 shadow-xs mt-4">
@@ -86,6 +87,12 @@ export default function PrivacidadePage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 dark:divide-white/5 text-slate-600 dark:text-slate-300">
+                <tr>
+                  <td className="py-3 px-4 font-mono font-bold text-slate-900 dark:text-white">ajavp_cookie_consent_v1</td>
+                  <td className="py-3 px-4">Técnico / RGPD</td>
+                  <td className="py-3 px-4">Memoriza a tua decisão sobre cookies analíticos (aceitar ou recusar estatísticas).</td>
+                  <td className="py-3 px-4">1 ano</td>
+                </tr>
                 <tr>
                   <td className="py-3 px-4 font-mono font-bold text-slate-900 dark:text-white">theme</td>
                   <td className="py-3 px-4">Técnico / Preferência</td>
@@ -105,6 +112,12 @@ export default function PrivacidadePage() {
                   <td className="py-3 px-4">Persistente no browser</td>
                 </tr>
                 <tr>
+                  <td className="py-3 px-4 font-mono font-bold text-emerald-700 dark:text-emerald-400">_ga / _ga_*</td>
+                  <td className="py-3 px-4">Estatístico (Google Analytics)</td>
+                  <td className="py-3 px-4">Contabiliza visitas anónimas e tempos de permanência para aferir o interesse das notícias e provas. Só é ativado com consentimento.</td>
+                  <td className="py-3 px-4">Até 2 anos</td>
+                </tr>
+                <tr>
                   <td className="py-3 px-4 font-mono font-bold text-slate-900 dark:text-white">youtube-nocookie.com</td>
                   <td className="py-3 px-4">Vídeos Multimédia</td>
                   <td className="py-3 px-4">Utilizamos o domínio de privacidade reforçada do YouTube que impede o rastreio de publicidade antes da reprodução.</td>
@@ -112,6 +125,20 @@ export default function PrivacidadePage() {
                 </tr>
               </tbody>
             </table>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mt-4">
+            <div>
+              <p className="font-heading font-bold text-sm text-slate-900 dark:text-white">
+                Queres rever as tuas opções de cookies?
+              </p>
+              <p className="text-xs text-slate-500 dark:text-slate-400">
+                Podes ativar ou desativar as estatísticas anónimas do Google Tag Manager a qualquer momento.
+              </p>
+            </div>
+            <CookieSettingsButton className="px-4 py-2.5 rounded-xl bg-brand-navy hover:bg-slate-800 dark:bg-emerald-500 dark:hover:bg-emerald-400 text-white font-heading font-bold text-xs shadow-xs transition-all active:scale-[0.98] cursor-pointer whitespace-nowrap">
+              Configurar Consentimento
+            </CookieSettingsButton>
           </div>
         </section>
 
