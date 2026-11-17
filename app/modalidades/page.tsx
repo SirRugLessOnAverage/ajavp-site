@@ -408,7 +408,7 @@ export default async function ModalidadesPage() {
             </div>
 
             {treinadoresAtivos.length > 0 && (
-              <div className="mb-12">
+              <div id="treinadores" className="mb-12 scroll-mt-24">
                 <div className="mb-5">
                   <span className="text-brand-green dark:text-emerald-400 text-xs font-bold uppercase tracking-widest block mb-1">
                     Coordenação &amp; Formação
