@@ -1,6 +1,7 @@
 import { SITE_URL, GESTAO_LINKS } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { supabasePublic } from "@/lib/supabase/public";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { ModalidadesActionGrid } from "@/components/modalidades/ModalidadesActionGrid";
 import { RingueWeatherSection } from "@/components/modalidades/RingueWeatherSection";
@@ -8,7 +9,10 @@ import {
   MODALIDADES_LIST,
   ESCALOES_CROMOS,
   TRAINING_VENUES,
+  type EscalaoCardData,
 } from "@/data/institucional";
+
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Modalidades e Horários 2026/2027 • AJAVP — Vilar do Pinheiro",
@@ -26,7 +30,70 @@ const VENUE_BADGE_STYLE: Record<string, string> = {
   JF: "bg-purple-100 text-purple-900 border-purple-300 dark:bg-purple-500/20 dark:text-purple-300 dark:border-purple-400/30",
 };
 
-export default function ModalidadesPage() {
+interface DbHorarioRow {
+  dia_semana: string;
+  hora_inicio: string;
+  hora_fim: string;
+  recinto: string;
+  notas: string | null;
+  escaloes: { nome: string } | null;
+}
+
+interface DbTreinadorRow {
+  id: string;
+  nome: string;
+  cargo: string;
+  escaloes: { nome: string } | null;
+  modalidades: { nome: string } | null;
+}
+
+function inferVenueCode(recinto: string): "R" | "C" | "P" {
+  const lower = recinto.toLowerCase();
+  if (lower.includes("canidelo")) return "C";
+  if (lower.includes("ringue")) return "R";
+  return "P";
+}
+
+export default async function ModalidadesPage() {
+  let cromosDinamicos: EscalaoCardData[] = ESCALOES_CROMOS;
+  let treinadoresAtivos: DbTreinadorRow[] = [];
+
+  try {
+    const [horariosRes, treinadoresRes] = await Promise.all([
+      supabasePublic
+        .from("site_horarios_treino")
+        .select("dia_semana, hora_inicio, hora_fim, recinto, notas, escaloes(nome)"),
+      supabasePublic
+        .from("site_treinadores")
+        .select("id, nome, cargo, escaloes(nome), modalidades(nome)")
+        .eq("ativo", true)
+        .order("ordem", { ascending: true }),
+    ]);
+
+    if (!horariosRes.error && Array.isArray(horariosRes.data) && horariosRes.data.length > 0) {
+      const dbHorarios = horariosRes.data as unknown as DbHorarioRow[];
+      cromosDinamicos = ESCALOES_CROMOS.map((cromo) => {
+        const doEscalao = dbHorarios.filter((h) =>
+          h.escaloes?.nome?.toLowerCase().includes(cromo.escalao.toLowerCase())
+        );
+        if (doEscalao.length === 0) return cromo;
+        return {
+          ...cromo,
+          sessions: doEscalao.map((h) => ({
+            day: h.dia_semana,
+            time: `${h.hora_inicio}–${h.hora_fim}`,
+            venueCode: inferVenueCode(h.recinto),
+          })),
+        };
+      });
+    }
+
+    if (!treinadoresRes.error && Array.isArray(treinadoresRes.data)) {
+      treinadoresAtivos = treinadoresRes.data as unknown as DbTreinadorRow[];
+    }
+  } catch (err) {
+    console.warn("Aviso: leitura de horários/treinadores indisponível, a usar fallback estático.", err);
+  }
   return (
     <div className="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white transition-colors">
       <div>
@@ -260,7 +327,7 @@ export default function ModalidadesPage() {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {ESCALOES_CROMOS.map((cromo) => {
+                {cromosDinamicos.map((cromo) => {
                   const accentBorder: Record<string, string> = {
                     amber: "border-amber-300 hover:border-amber-500 dark:border-amber-400/40 dark:hover:border-amber-400",
                     emerald: "border-emerald-300 hover:border-emerald-500 dark:border-emerald-400/40 dark:hover:border-emerald-400",
@@ -339,6 +406,37 @@ export default function ModalidadesPage() {
                 })}
               </div>
             </div>
+
+            {treinadoresAtivos.length > 0 && (
+              <div id="treinadores" className="mb-12 scroll-mt-24">
+                <div className="mb-5">
+                  <span className="text-brand-green dark:text-emerald-400 text-xs font-bold uppercase tracking-widest block mb-1">
+                    Coordenação &amp; Formação
+                  </span>
+                  <h3 className="font-heading text-2xl font-black text-brand-navy dark:text-white">
+                    Equipa Técnica Oficial
+                  </h3>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {treinadoresAtivos.map((t) => (
+                    <div
+                      key={t.id}
+                      className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 p-4 shadow-sm"
+                    >
+                      <div className="flex items-center justify-between gap-2 mb-1.5">
+                        <span className="px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-900 dark:text-emerald-300 text-[10px] font-bold uppercase">
+                          {t.escaloes?.nome || t.modalidades?.nome || "AJAVP"}
+                        </span>
+                      </div>
+                      <p className="font-heading font-bold text-sm text-slate-900 dark:text-white">
+                        {t.nome}
+                      </p>
+                      <p className="text-xs text-slate-600 dark:text-slate-300">{t.cargo}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* GRELHA SEMANAL COMPLETA (2.ª FEIRA A DOMINGO - MATRIZ OFICIAL AJAVP) */}
             <div className="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 overflow-hidden mb-10 shadow-lg">

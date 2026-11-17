@@ -1,6 +1,7 @@
 import { SITE_URL } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { supabasePublic } from "@/lib/supabase/public";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { KitShowcase } from "@/components/patrocinadores/KitShowcase";
 import {
@@ -9,6 +10,8 @@ import {
   SPONSORS_LIST,
   type SponsorItem,
 } from "@/data/institucional";
+
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Patrocinadores e Novo Equipamento 26/27 • AJAVP",
@@ -66,9 +69,60 @@ const LOGO_STAGE_BG: Record<SponsorItem["logoStageBg"], string> = {
   slate: "bg-slate-100 border-b border-slate-200 dark:border-white/10",
 };
 
-export default function PatrocinadoresPage() {
-  const mainSponsors = SPONSORS_LIST.filter((s) => s.tier === "principal");
-  const officialSponsors = SPONSORS_LIST.filter((s) => s.tier === "oficial");
+interface DbPatrocinadorRow {
+  slug: string;
+  name: string;
+  tier: string;
+  category_badge: string;
+  secondary_badge: string;
+  logo_url: string;
+  logo_stage_bg: string;
+  accent_color: string;
+  description: string;
+  bullets: unknown;
+  phone: string | null;
+  footer_left: string;
+  footer_right: string;
+}
+
+export default async function PatrocinadoresPage() {
+  let sponsors: SponsorItem[] = SPONSORS_LIST;
+
+  try {
+    const { data, error } = await supabasePublic
+      .from("site_patrocinadores")
+      .select("*")
+      .eq("ativo", true)
+      .order("ordem", { ascending: true });
+
+    if (!error && Array.isArray(data) && data.length > 0) {
+      sponsors = (data as unknown as DbPatrocinadorRow[]).map((row) => ({
+        id: row.slug,
+        name: row.name,
+        tier: row.tier === "principal" ? "principal" : "oficial",
+        categoryBadge: row.category_badge,
+        secondaryBadge: row.secondary_badge,
+        logoWebp: row.logo_url,
+        logoFallback: row.logo_url,
+        logoStageBg: (["white", "black", "slate"].includes(row.logo_stage_bg)
+          ? row.logo_stage_bg
+          : "white") as SponsorItem["logoStageBg"],
+        accentColor: (["teal", "amber", "blue", "red", "emerald"].includes(row.accent_color)
+          ? row.accent_color
+          : "emerald") as SponsorItem["accentColor"],
+        description: row.description,
+        bullets: Array.isArray(row.bullets) ? row.bullets.map(String) : [],
+        phone: row.phone ?? undefined,
+        footerLeft: row.footer_left,
+        footerRight: row.footer_right,
+      }));
+    }
+  } catch (err) {
+    console.warn("Aviso: leitura de patrocinadores indisponível, a usar fallback estático.", err);
+  }
+
+  const mainSponsors = sponsors.filter((s) => s.tier === "principal");
+  const officialSponsors = sponsors.filter((s) => s.tier === "oficial");
 
   return (
     <div className="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white transition-colors">
