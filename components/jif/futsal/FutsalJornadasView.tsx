@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   MapPin,
   Calendar,
@@ -10,6 +10,10 @@ import {
   Navigation,
   Info,
   Users,
+  ChevronLeft,
+  ChevronRight,
+  ChevronDown,
+  CalendarDays,
 } from "lucide-react";
 import type { FutsalJornada, FutsalJogo, FutsalPavilhao } from "@/data/jif/futsal";
 import { FutsalPavilhaoModal } from "@/components/jif/futsal/FutsalPavilhaoModal";
@@ -38,6 +42,51 @@ export function FutsalJornadasView({
   const [modalEquipa, setModalEquipa] = useState<{ teamName: string; escalao?: string } | null>(null);
   const [pavilhaoSelecionado, setPavilhaoSelecionado] = useState<PavilhaoInfo | null>(null);
   const [jogoCalendario, setJogoCalendario] = useState<ConsolidatedMatch | null>(null);
+
+  // Controlo de scroll horizontal do seletor de jornadas
+  const carrosselRef = useRef<HTMLDivElement>(null);
+  const jornadaRefs = useRef<Map<number, HTMLButtonElement>>(new Map());
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  // Monitoriza o scroll horizontal para exibir/ocultar setas e indicadores de fade
+  const verificarScroll = () => {
+    const el = carrosselRef.current;
+    if (!el) return;
+    const { scrollLeft, scrollWidth, clientWidth } = el;
+    setCanScrollLeft(scrollLeft > 6);
+    setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 6);
+  };
+
+  useEffect(() => {
+    verificarScroll();
+    const el = carrosselRef.current;
+    if (!el) return;
+
+    el.addEventListener("scroll", verificarScroll, { passive: true });
+    window.addEventListener("resize", verificarScroll);
+
+    return () => {
+      el.removeEventListener("scroll", verificarScroll);
+      window.removeEventListener("resize", verificarScroll);
+    };
+  }, [jornadas]);
+
+  // Auto-scroll para centrar a jornada selecionada no viewport da barra
+  useEffect(() => {
+    const btn = jornadaRefs.current.get(jornadaSelecionada);
+    if (btn && carrosselRef.current) {
+      btn.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  }, [jornadaSelecionada]);
+
+  const scrollPor = (delta: number) => {
+    carrosselRef.current?.scrollBy({ left: delta, behavior: "smooth" });
+  };
 
   const jornadaAtual =
     jornadas.find((j) => j.numero === jornadaSelecionada) || jornadas[0];
@@ -84,8 +133,8 @@ export function FutsalJornadasView({
 
   return (
     <section id="jogos" className="space-y-6 scroll-mt-24">
-      {/* Cabeçalho da Secção com Seletor de Jornadas */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-white/10">
+      {/* Cabeçalho da Secção */}
+      <div className="space-y-4 pb-4 border-b border-slate-200 dark:border-white/10">
         <div>
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 text-brand-green dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-1">
             <Trophy className="w-3.5 h-3.5" />
@@ -99,38 +148,115 @@ export function FutsalJornadasView({
           </p>
         </div>
 
-        {/* Seletor Horizontal de Jornadas */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 max-w-full scrollbar-none">
-          <div className="inline-flex p-1 rounded-2xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-white/10">
-            {jornadas.map((j) => {
-              const isAtiva = j.numero === jornadaSelecionada;
-              const isJornadaOficialAtiva = j.numero === jornadaAtivaNumero;
+        {/* Barra Dedicada de Navegação de Jornadas */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-1">
+          {/* Carrossel Horizontal com Setas e Auto-Scroll */}
+          <div className="relative flex-1 min-w-0 flex items-center gap-1 sm:gap-2">
+            {/* Seta Esquerda */}
+            <button
+              type="button"
+              aria-label="Jornadas anteriores"
+              onClick={() => scrollPor(-240)}
+              disabled={!canScrollLeft}
+              className={`p-2 rounded-xl border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300 transition-all shrink-0 active:scale-[0.95] ${
+                canScrollLeft
+                  ? "bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 shadow-2xs cursor-pointer opacity-100"
+                  : "bg-slate-100/50 dark:bg-slate-900/50 opacity-30 cursor-not-allowed"
+              }`}
+              title="Recuar jornadas"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
 
-              return (
-                <button
-                  key={j.numero}
-                  onClick={() => setJornadaSelecionada(j.numero)}
-                  className={`px-3 sm:px-4 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer whitespace-nowrap active:scale-[0.97] flex items-center gap-1.5 ${
-                    isAtiva
-                      ? "bg-brand-navy dark:bg-amber-400 text-white dark:text-slate-950 shadow-md"
-                      : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-slate-700/50"
-                  }`}
-                >
-                  <span>{j.numero}ª Jornada</span>
-                  {isJornadaOficialAtiva && (
-                    <span
-                      className={`text-[9px] px-1 py-0.2 rounded font-black ${
-                        isAtiva
-                          ? "bg-amber-400 dark:bg-slate-950 text-slate-950 dark:text-amber-400"
-                          : "bg-amber-400 text-slate-950"
-                      }`}
-                    >
-                      Ativa
-                    </span>
-                  )}
-                </button>
-              );
-            })}
+            {/* Container com Scroll Suave e Fade Mascarado */}
+            <div className="relative flex-1 min-w-0 overflow-hidden">
+              {/* Fade Esquerdo */}
+              {canScrollLeft && (
+                <div className="absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-slate-50 dark:from-slate-950 to-transparent pointer-events-none z-10" />
+              )}
+
+              <div
+                ref={carrosselRef}
+                className="flex items-center gap-1.5 overflow-x-auto pb-1 pt-0.5 scroll-smooth overscroll-x-contain touch-pan-x no-scrollbar"
+              >
+                <div className="inline-flex p-1 rounded-2xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 shrink-0">
+                  {jornadas.map((j) => {
+                    const isAtiva = j.numero === jornadaSelecionada;
+                    const isJornadaOficialAtiva = j.numero === jornadaAtivaNumero;
+
+                    return (
+                      <button
+                        key={j.numero}
+                        ref={(el) => {
+                          if (el) jornadaRefs.current.set(j.numero, el);
+                          else jornadaRefs.current.delete(j.numero);
+                        }}
+                        onClick={() => setJornadaSelecionada(j.numero)}
+                        className={`px-3 sm:px-4 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer whitespace-nowrap active:scale-[0.97] flex items-center gap-1.5 shrink-0 ${
+                          isAtiva
+                            ? "bg-brand-navy dark:bg-amber-400 text-white dark:text-slate-950 shadow-md font-black"
+                            : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-slate-700/50"
+                        }`}
+                      >
+                        <span>{j.numero}ª Jornada</span>
+                        {isJornadaOficialAtiva && (
+                          <span
+                            className={`text-[9px] px-1.5 py-0.2 rounded font-black ${
+                              isAtiva
+                                ? "bg-amber-400 dark:bg-slate-950 text-slate-950 dark:text-amber-400"
+                                : "bg-amber-400 text-slate-950"
+                            }`}
+                          >
+                            Ativa
+                          </span>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Fade Direito */}
+              {canScrollRight && (
+                <div className="absolute right-0 top-0 bottom-0 w-6 bg-gradient-to-l from-slate-50 dark:from-slate-950 to-transparent pointer-events-none z-10" />
+              )}
+            </div>
+
+            {/* Seta Direita */}
+            <button
+              type="button"
+              aria-label="Próximas jornadas"
+              onClick={() => scrollPor(240)}
+              disabled={!canScrollRight}
+              className={`p-2 rounded-xl border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300 transition-all shrink-0 active:scale-[0.95] ${
+                canScrollRight
+                  ? "bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 shadow-2xs cursor-pointer opacity-100"
+                  : "bg-slate-100/50 dark:bg-slate-900/50 opacity-30 cursor-not-allowed"
+              }`}
+              title="Avançar jornadas"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* Dropdown Rápido "Saltar para Jornada" */}
+          <div className="relative shrink-0 sm:max-w-xs">
+            <div className="relative flex items-center">
+              <CalendarDays className="absolute left-3 w-4 h-4 text-slate-400 dark:text-slate-500 pointer-events-none" />
+              <select
+                aria-label="Selecionar jornada específica"
+                value={jornadaSelecionada}
+                onChange={(e) => setJornadaSelecionada(Number(e.target.value))}
+                className="w-full appearance-none pl-9 pr-8 py-2 rounded-xl text-xs font-bold border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 shadow-2xs focus:outline-none focus:ring-2 focus:ring-brand-navy/20 dark:focus:ring-amber-400/20 cursor-pointer transition-colors"
+              >
+                {jornadas.map((j) => (
+                  <option key={j.numero} value={j.numero}>
+                    {j.numero}ª Jornada {j.numero === jornadaAtivaNumero ? "★ (Ativa)" : ""} {j.data ? `• ${j.data}` : ""}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="absolute right-2.5 w-4 h-4 text-slate-400 pointer-events-none" />
+            </div>
           </div>
         </div>
       </div>

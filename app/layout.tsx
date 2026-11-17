@@ -6,6 +6,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppWidget } from "@/components/layout/WhatsAppWidget";
 import { PwaManager } from "@/components/layout/PwaManager";
+import { CookieConsentBanner } from "@/components/privacy/CookieConsentBanner";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -100,6 +101,46 @@ export default function RootLayout({
         {/* Motor PWA & Service Worker */}
         <script id="pwa-helper-script" src="/assets/js/pwa.js" defer></script>
 
+        {/* Google Consent Mode v2 Default (RGPD / ePrivacy) */}
+        <script
+          id="google-consent-mode-default"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('consent', 'default', {
+                'analytics_storage': 'denied',
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
+                'wait_for_update': 500
+              });
+              try {
+                var consent = localStorage.getItem('ajavp_cookie_consent_v1');
+                if (consent === 'granted') {
+                  gtag('consent', 'update', {
+                    'analytics_storage': 'granted'
+                  });
+                }
+              } catch(e) {}
+            `,
+          }}
+        />
+
+        {/* Google Tag Manager (GTM-WMFCGH89) */}
+        <script
+          id="gtm-loader"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-WMFCGH89');
+            `,
+          }}
+        />
+
         {/* Anti-FOUC script for instant theme rendering */}
         <script
           dangerouslySetInnerHTML={{
@@ -120,6 +161,15 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col font-sans bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors">
+        {/* Google Tag Manager (noscript fallback) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-WMFCGH89"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         <a
           href="#conteudo-principal"
           className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-100 focus:px-4 focus:py-2.5 focus:rounded-xl focus:bg-brand-navy focus:text-white dark:focus:bg-amber-400 dark:focus:text-slate-950 focus:font-heading focus:font-bold focus:text-xs focus:shadow-xl"
@@ -131,6 +181,7 @@ export default function RootLayout({
         <Footer />
         <WhatsAppWidget />
         <PwaManager />
+        <CookieConsentBanner />
       </body>
     </html>
   );
