@@ -380,7 +380,7 @@ export default async function HomePage() {
               Desporto para Todas as Idades
             </h2>
             <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
-              Treinos semanais com treinadores dedicados no Pavilhão de Vilar do Pinheiro e recintos desportivos da freguesia.
+              Treinos semanais com treinadores dedicados no Ringue Polidesportivo de Vilar do Pinheiro e recintos oficiais de apoio.
             </p>
           </div>
 
@@ -388,7 +388,7 @@ export default async function HomePage() {
             {[
               {
                 title: "Futsal Masculino & Feminino",
-                desc: "Escalões de formação (Sub-7 a Sub-16) e seniores. Treinos no Pavilhão Municipal de Vilar do Pinheiro.",
+                desc: "Escalões de formação (Sub-7 a Sub-16) e seniores. Treinos no Ringue Polidesportivo de Vilar do Pinheiro e nos pavilhões de Canidelo e MaiaSport.",
                 icon: "⚽",
                 tag: "Formação & Seniores",
               },
