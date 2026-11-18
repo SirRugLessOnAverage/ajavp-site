@@ -25,7 +25,12 @@ function getAppPageRoutes(dir = path.join(ROOT_DIR, "app"), base = "") {
 
   for (const entry of entries) {
     if (entry.isDirectory()) {
-      if (entry.name.startsWith("(") || entry.name.startsWith("_") || entry.name === "api") {
+      if (
+        entry.name.startsWith("(") ||
+        entry.name.startsWith("_") ||
+        entry.name.startsWith("[") ||
+        entry.name === "api"
+      ) {
         continue;
       }
       routes.push(...getAppPageRoutes(path.join(dir, entry.name), `${base}/${entry.name}`));

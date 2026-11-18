@@ -20,6 +20,29 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${SITE_URL}/patrocinadores`,
   },
+  openGraph: {
+    title: "Patrocinadores e Novo Equipamento 26/27 • AJAVP",
+    description:
+      "As empresas e instituições parceiras que apoiam a formação desportiva de Vilar do Pinheiro na época 2026/27.",
+    url: `${SITE_URL}/patrocinadores`,
+    siteName: "AJAVP",
+    locale: "pt_PT",
+    type: "website",
+    images: [
+      {
+        url: "/assets/images/galeria/sub7banco.webp",
+        width: 1200,
+        height: 630,
+        alt: "Novo Equipamento Oficial 2026/27 AJAVP",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Patrocinadores e Equipamento 26/27 • AJAVP",
+    description: "Parceiros que impulsionam o desporto em Vilar do Pinheiro.",
+    images: ["/assets/images/galeria/sub7banco.webp"],
+  },
 };
 
 const SPONSOR_ACCENT_STYLES: Record<

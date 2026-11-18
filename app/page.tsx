@@ -1,4 +1,5 @@
-import { JsonLd } from "@/components/seo/JsonLd";
+import { JsonLd, SportsEventJsonLd } from "@/components/seo/JsonLd";
+import { FUTSAL_JORNADAS } from "@/data/jif/futsal-jogos";
 import React from "react";
 import Link from "next/link";
 import {
@@ -92,9 +93,23 @@ export default async function HomePage() {
       ? Array.from(new Set(proximosJogosAjavp.map((j) => j.pavilhaoNome))).join(" / ")
       : "A definir";
 
+  const jornadaMetaIso = proximaJornada
+    ? FUTSAL_JORNADAS.find((fj) => fj.number === proximaJornada.numero)?.date
+    : undefined;
+
+  const sportsEventsJsonLd = proximaJornada && jornadaMetaIso
+    ? proximosJogosAjavp.map((j) => ({
+        name: `XL JIF Futsal (${j.escalao || "Formação"}): ${formatarNomeEquipa(j.casa)} vs ${formatarNomeEquipa(j.fora)}`,
+        startDate: j.hora ? `${jornadaMetaIso}T${j.hora.replace("h", ":")}:00` : jornadaMetaIso,
+        locationName: j.pavilhaoNome,
+        description: `${proximaJornada.numero}ª Jornada de Futsal dos XL Jogos Inter-Freguesias em ${j.pavilhaoNome}.`,
+      }))
+    : [];
+
   return (
     <>
       <JsonLd />
+      <SportsEventJsonLd events={sportsEventsJsonLd} />
       {/* Hero Section com Imagem Amálgama das Modalidades */}
       <section className="relative overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white pt-16 pb-20 lg:pt-24 lg:pb-28 border-b border-slate-200 dark:border-white/10 transition-colors">
         {/* Imagem de Fundo Amálgama com Overlay Gradiente Adaptativo */}

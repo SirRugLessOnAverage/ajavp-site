@@ -5,6 +5,7 @@ import { supabasePublic } from "@/lib/supabase/public";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { ModalidadesActionGrid } from "@/components/modalidades/ModalidadesActionGrid";
 import { RingueWeatherSection } from "@/components/modalidades/RingueWeatherSection";
+import { FaqJsonLd } from "@/components/seo/JsonLd";
 import {
   MODALIDADES_LIST,
   ESCALOES_CROMOS,
@@ -20,6 +21,29 @@ export const metadata: Metadata = {
     "Futsal e Futebol, Atletismo, Ténis de Mesa, Duatlo BTT, Badminton e Futebol de Praia. Consulta os Cromos Oficiais 26/27, o Horário de Treinos e a meteorologia do Ringue.",
   alternates: {
     canonical: `${SITE_URL}/modalidades`,
+  },
+  openGraph: {
+    title: "Modalidades e Horários de Treino 2026/2027 • AJAVP",
+    description:
+      "6 Modalidades ativas da formação aos adultos em Vilar do Pinheiro. Consulta horários de treino, escalões e recintos.",
+    url: `${SITE_URL}/modalidades`,
+    siteName: "AJAVP",
+    locale: "pt_PT",
+    type: "website",
+    images: [
+      {
+        url: "/assets/images/galeria/Sub-9e11.webp",
+        width: 1200,
+        height: 630,
+        alt: "Equipas de Formação da AJAVP Vilar do Pinheiro",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Modalidades e Horários 2026/2027 • AJAVP",
+    description: "Futsal, Atletismo, Ténis de Mesa, Duatlo BTT, Badminton e Futebol de Praia em Vilar do Pinheiro.",
+    images: ["/assets/images/galeria/Sub-9e11.webp"],
   },
 };
 
@@ -96,6 +120,22 @@ export default async function ModalidadesPage() {
   }
   return (
     <div className="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white transition-colors">
+      <FaqJsonLd
+        items={[
+          {
+            question: "Os treinos experimentais na AJAVP são gratuitos?",
+            answer: "Sim! Qualquer jovem ou adulto pode experimentar gratuitamente uma sessão de treino em Futsal, Atletismo ou Ténis de Mesa em Vilar do Pinheiro antes de formalizar inscrição.",
+          },
+          {
+            question: "Quais são os dias e locais de treino das modalidades da AJAVP?",
+            answer: "O Futsal de Formação (Sub-7 a Sub-13) treina de 2.ª a Sábado no Ringue Polidesportivo de Vilar do Pinheiro e nos pavilhões de apoio de Canidelo e MaiaSport. O Ténis de Mesa realiza-se aos sábados (16h e 17h) no Salão Nobre da Junta de Freguesia, e o Atletismo aos domingos às 09h00.",
+          },
+          {
+            question: "A partir de que idade é possível inscrever na AJAVP?",
+            answer: "Aceitamos jovens atletas a partir dos 4/5 anos na formação (escalão Sub-7) e adultos em todas as modalidades competitivas e recreativas.",
+          },
+        ]}
+      />
       <div>
         {/* HERO COM MURAL POLAROID BENTO GRID DOS ATLETAS */}
         <section className="relative pt-12 pb-20 lg:pt-14 lg:pb-24 overflow-hidden bg-linear-to-b from-emerald-50/70 via-white to-slate-50 dark:from-ajavp-green-dark/40 dark:via-slate-950 dark:to-slate-950 border-b border-slate-200 dark:border-white/10 transition-colors">

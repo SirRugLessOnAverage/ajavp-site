@@ -20,6 +20,29 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${SITE_URL}/multimedia`,
   },
+  openGraph: {
+    title: "Galeria & Multimédia Oficial • AJAVP",
+    description:
+      "Fotografias reais e vídeos dos pódios no Corta-Mato, Ténis de Mesa, Futsal e Duatlo BTT da AJAVP.",
+    url: `${SITE_URL}/multimedia`,
+    siteName: "AJAVP",
+    locale: "pt_PT",
+    type: "website",
+    images: [
+      {
+        url: "/assets/images/galeria/corta_mato_equipa_2026.webp",
+        width: 1200,
+        height: 630,
+        alt: "Arquivo Fotográfico Oficial AJAVP",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Galeria & Multimédia • AJAVP",
+    description: "Fotografias e vídeos da época 2026/2027 em Vilar do Pinheiro.",
+    images: ["/assets/images/galeria/corta_mato_equipa_2026.webp"],
+  },
 };
 
 interface DbMultimediaRow {

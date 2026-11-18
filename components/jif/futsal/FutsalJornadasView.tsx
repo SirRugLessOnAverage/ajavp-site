@@ -19,6 +19,7 @@ import type { FutsalJornada, FutsalJogo, FutsalPavilhao } from "@/data/jif/futsa
 import { FutsalPavilhaoModal } from "@/components/jif/futsal/FutsalPavilhaoModal";
 import { FutsalTeamMatchesModal } from "@/components/jif/futsal/FutsalTeamMatchesModal";
 import { FutsalDateModal } from "@/components/jif/futsal/FutsalDateModal";
+import { ShareBar } from "@/components/shared/ShareBar";
 import { identificarPavilhao, PavilhaoInfo } from "@/lib/jif/pavilhoes";
 import {
   formatarNomeEquipa,
@@ -277,7 +278,7 @@ export function FutsalJornadasView({
           </span>
         </div>
 
-        <div className="flex items-center gap-3 text-slate-500 dark:text-slate-400">
+        <div className="flex flex-wrap items-center gap-3 text-slate-500 dark:text-slate-400">
           <span>
             <strong className="text-slate-900 dark:text-white">{pavilhoes.length}</strong>{" "}
             pavilhões
@@ -287,6 +288,12 @@ export function FutsalJornadasView({
             <strong className="text-slate-900 dark:text-white">{totalJogosJornada}</strong>{" "}
             jogos agendados
           </span>
+          <ShareBar
+            title={`Futsal XL JIF • ${jornadaAtual?.numero}ª Jornada (${jornadaAtual?.data})`}
+            text={`Confere os jogos e resultados da AJAVP na ${jornadaAtual?.numero}ª Jornada do Futsal JIF!`}
+            url="https://ajavp.pt/jif/futsal"
+            compact
+          />
         </div>
       </div>
 
