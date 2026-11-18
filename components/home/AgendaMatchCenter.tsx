@@ -29,6 +29,7 @@ import {
   downloadIcsFile,
   type CalendarEventData,
 } from "@/lib/calendar-export";
+import { ShareBar } from "@/components/shared/ShareBar";
 
 export interface AgendaMatchCenterProps {
   eventos: SiteEvento[];
@@ -459,6 +460,20 @@ export function AgendaMatchCenter({ eventos }: AgendaMatchCenterProps) {
                     <CalendarPlus className="w-3.5 h-3.5" />
                     <span>Adicionar à Agenda</span>
                   </button>
+                </div>
+
+                {/* Partilha Dinâmica para WhatsApp, Facebook e Instagram */}
+                <div className="pt-2 flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mr-1">
+                    Convidar:
+                  </span>
+                  <ShareBar
+                    title={`Jogo AJAVP: ${proximoJogo.title}`}
+                    text={`${proximoJogo.categoryLabel} • ${proximoJogo.dateStr} às ${proximoJogo.timeLabel} (${proximoJogo.locationName})`}
+                    url="https://ajavp.pt/#agenda"
+                    compact
+                    darkSurface
+                  />
                 </div>
               </div>
 

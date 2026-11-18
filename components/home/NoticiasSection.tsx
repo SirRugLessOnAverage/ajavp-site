@@ -7,7 +7,7 @@ interface NoticiasSectionProps {
   noticias: SiteNoticia[];
 }
 
-const FALLBACK_NOTICIAS: SiteNoticia[] = [
+export const FALLBACK_NOTICIAS: SiteNoticia[] = [
   {
     id: "fallback-n0",
     slug: "vitoria-historica-1o-encontro-tenis-de-mesa-xl-jif",
@@ -122,7 +122,7 @@ const FALLBACK_NOTICIAS: SiteNoticia[] = [
   },
 ];
 
-function getNoticiaLink(item: SiteNoticia): { href: string; label: string } {
+export function getNoticiaLink(item: SiteNoticia): { href: string; label: string } {
   const cat = (item.categoria || "").toLowerCase();
   const slug = (item.slug || "").toLowerCase();
   if (slug.includes("tenis") || cat.includes("ténis") || cat.includes("tenis")) {
@@ -202,13 +202,18 @@ export function NoticiasSection({ noticias }: NoticiasSectionProps) {
                   ? "/assets/images/galeria/corta_mato_equipa_2026.webp"
                   : "/assets/images/galeria/Sub-9e11.webp");
 
+              const articleHref = `/noticias/${item.slug}`;
+
               return (
                 <article
                   key={item.id}
-                  className="group flex flex-col bg-slate-50 dark:bg-slate-800/60 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-white/10 hover:border-emerald-300 dark:hover:border-emerald-500/40 transition-all duration-300 hover:shadow-xl"
+                  className="motion-card group flex flex-col bg-slate-50 dark:bg-slate-800/60 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-white/10 hover:border-emerald-300 dark:hover:border-emerald-500/40 transition-all duration-300 hover:shadow-xl"
                 >
-                  {/* Capa */}
-                  <div className="relative aspect-video overflow-hidden bg-slate-200 dark:bg-slate-700">
+                  {/* Capa Clicável -> Artigo */}
+                  <Link
+                    href={articleHref}
+                    className="relative aspect-video overflow-hidden bg-slate-200 dark:bg-slate-700 block"
+                  >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={coverSrc}
@@ -222,7 +227,7 @@ export function NoticiasSection({ noticias }: NoticiasSectionProps) {
                         {item.categoria}
                       </span>
                     )}
-                  </div>
+                  </Link>
 
                   {/* Body */}
                   <div className="p-6 flex flex-col flex-1">
@@ -232,19 +237,29 @@ export function NoticiasSection({ noticias }: NoticiasSectionProps) {
                         <time>{formattedDate}</time>
                       </div>
                     )}
-                    <h3 className="font-heading font-bold text-lg text-slate-900 dark:text-white group-hover:text-brand-green dark:group-hover:text-emerald-400 transition-colors leading-snug mb-2">
-                      {item.titulo}
-                    </h3>
+                    <Link href={articleHref} className="block mb-2">
+                      <h3 className="font-heading font-bold text-lg text-slate-900 dark:text-white group-hover:text-brand-green dark:group-hover:text-emerald-400 transition-colors leading-snug">
+                        {item.titulo}
+                      </h3>
+                    </Link>
                     <p className="text-xs text-slate-600 dark:text-slate-300 line-clamp-3 leading-relaxed flex-1 mb-4">
                       {item.resumo}
                     </p>
-                    <Link
-                      href={cta.href}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-green dark:text-emerald-400 hover:underline pt-3 border-t border-slate-200/80 dark:border-white/10 mt-auto"
-                    >
-                      <span>{cta.label}</span>
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                    </Link>
+                    <div className="flex items-center justify-between gap-2 pt-3 border-t border-slate-200/80 dark:border-white/10 mt-auto">
+                      <Link
+                        href={articleHref}
+                        className="inline-flex items-center gap-1 text-xs font-bold text-brand-navy dark:text-white hover:text-brand-green dark:hover:text-emerald-400 transition-colors"
+                      >
+                        <span>Ler notícia</span>
+                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                      </Link>
+                      <Link
+                        href={cta.href}
+                        className="inline-flex items-center gap-1 text-[11px] font-bold text-brand-green dark:text-emerald-400 hover:underline text-right"
+                      >
+                        <span>{cta.label}</span>
+                      </Link>
+                    </div>
                   </div>
                 </article>
               );

@@ -2,6 +2,7 @@ import { SITE_URL, GESTAO_LINKS } from "@/lib/site";
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { ContactForm } from "@/components/contactos/ContactForm";
+import { FaqJsonLd } from "@/components/seo/JsonLd";
 import { CONTACTOS_FAQ, TRAINING_VENUES } from "@/data/institucional";
 
 export const metadata: Metadata = {
@@ -11,11 +12,40 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${SITE_URL}/contactos`,
   },
+  openGraph: {
+    title: "Contactos & Inscrições • AJAVP Vilar do Pinheiro",
+    description:
+      "WhatsApp oficial, formulário de contacto, sede social e recintos de treino para atletas e sócios.",
+    url: `${SITE_URL}/contactos`,
+    siteName: "AJAVP",
+    locale: "pt_PT",
+    type: "website",
+    images: [
+      {
+        url: "/assets/images/og-share.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Contactos e Inscrições AJAVP",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contactos & Inscrições • AJAVP",
+    description: "Inscreve-te nos treinos gratuitos ou fala com a secretaria da AJAVP.",
+    images: ["/assets/images/og-share.jpg"],
+  },
 };
 
 export default function ContactosPage() {
   return (
     <div className="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white transition-colors">
+      <FaqJsonLd
+        items={CONTACTOS_FAQ.map((f) => ({
+          question: f.question,
+          answer: f.answer,
+        }))}
+      />
       <div>
         {/* HERO COM FOTOGRAFIA DE UNIÃO DA EQUIPA */}
         <section className="relative pt-12 pb-20 lg:pt-14 lg:pb-24 overflow-hidden bg-linear-to-b from-emerald-50/70 via-white to-slate-50 dark:from-ajavp-green-dark/45 dark:via-slate-950 dark:to-slate-950 border-b border-slate-200 dark:border-white/10 transition-colors">

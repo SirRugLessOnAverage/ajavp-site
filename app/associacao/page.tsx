@@ -37,6 +37,29 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${SITE_URL}/associacao`,
   },
+  openGraph: {
+    title: "A Associação • AJAVP Vilar do Pinheiro",
+    description:
+      "História, órgãos sociais eleitos, documentos estatutários e instalações desportivas da AJAVP.",
+    url: `${SITE_URL}/associacao`,
+    siteName: "AJAVP",
+    locale: "pt_PT",
+    type: "website",
+    images: [
+      {
+        url: "/assets/images/hero-amalgama.webp",
+        width: 1200,
+        height: 630,
+        alt: "Associação de Jovens e Adultos de Vilar do Pinheiro",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "A Associação • AJAVP Vilar do Pinheiro",
+    description: "História, transparência estatutária e órgãos sociais da AJAVP.",
+    images: ["/assets/images/hero-amalgama.webp"],
+  },
 };
 
 const SUPABASE_PUBLIC_DOCS_BASE =

@@ -19,6 +19,7 @@ import {
   Trophy,
 } from "lucide-react";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import { FaqJsonLd } from "@/components/seo/JsonLd";
 import { GESTAO_LINKS, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -28,11 +29,46 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${SITE_URL}/socios`,
   },
+  openGraph: {
+    title: "Torna-te Sócio da AJAVP • Quotas & Cartão Digital",
+    description:
+      "Apoia o desporto e a juventude de Vilar do Pinheiro. Quota anual transparente (12€/ano adultos, menores isentos) com Cartão Digital no telemóvel.",
+    url: `${SITE_URL}/socios`,
+    siteName: "AJAVP",
+    locale: "pt_PT",
+    type: "website",
+    images: [
+      {
+        url: "/assets/images/galeria/prova_25_abril_2025_grupo.webp",
+        width: 1200,
+        height: 630,
+        alt: "Comunidade e Sócios AJAVP Vilar do Pinheiro",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Torna-te Sócio da AJAVP • Vilar do Pinheiro",
+    description: "Quota anual de 12€/ano (menores isentos) com Cartão Digital QR Code no telemóvel.",
+    images: ["/assets/images/galeria/prova_25_abril_2025_grupo.webp"],
+  },
 };
 
 export default function SociosPage() {
   return (
     <div className="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white transition-colors">
+      <FaqJsonLd
+        items={[
+          {
+            question: "Qual é o valor da quota anual de sócio da AJAVP?",
+            answer: "A quota anual para sócios adultos (Maiores de 18 anos) é de apenas 12€/ano (1€ por mês). Os associados menores de 18 anos estão totalmente isentos de quota anual.",
+          },
+          {
+            question: "Como acedo ao meu Cartão de Sócio Digital?",
+            answer: "Após aprovação da inscrição na Secretaria, o Cartão de Sócio Digital com QR Code de validação fica disponível em permanência na Área Pessoal em gestao.ajavp.pt.",
+          },
+        ]}
+      />
       {/* HERO SECTION */}
       <section className="relative pt-12 pb-16 lg:pt-14 lg:pb-24 overflow-hidden bg-linear-to-b from-emerald-50/70 via-white to-slate-50 dark:from-ajavp-green-dark/40 dark:via-slate-950 dark:to-slate-950 border-b border-slate-200 dark:border-white/10 transition-colors">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,var(--tw-gradient-stops))] from-emerald-500/10 dark:from-ajavp-green/20 via-transparent to-transparent pointer-events-none" />
