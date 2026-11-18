@@ -66,24 +66,30 @@ export default async function HomePage() {
     j.pavilhoes.some((p) => p.jogos.some((g) => isJogoAjavp(g.casa, g.fora, g.isAjavp)))
   );
   const proximaJornada =
+    jornadasComAjavp.find((j) => j.numero === futsalData.jornadaAtiva) ??
     jornadasComAjavp.find((j) => !isConcluida(j.estado)) ??
     jornadasComAjavp[jornadasComAjavp.length - 1] ??
     null;
 
   const proximosJogosAjavp = proximaJornada
-    ? proximaJornada.pavilhoes.flatMap((pav) =>
-        pav.jogos
-          .filter((g) => isJogoAjavp(g.casa, g.fora, g.isAjavp))
-          .map((g) => ({
-            ...g,
-            pavilhaoNome: pav.nome.replace(/^Pavilh[ãa]o\s*(Desportivo\s*de|Municipal\s*de|de)?\s*/i, "Pav. "),
-          }))
-      )
+    ? proximaJornada.pavilhoes
+        .flatMap((pav) =>
+          pav.jogos
+            .filter((g) => isJogoAjavp(g.casa, g.fora, g.isAjavp))
+            .map((g) => ({
+              ...g,
+              pavilhaoNome: pav.nome
+                .replace(/^Pavilh[ãa]o\s*(Desportivo\s*de|Municipal\s*de|de)?\s*/i, "Pav. ")
+                .replace(/\s*\(Campo\s*\d+\)/i, "")
+                .trim(),
+            }))
+        )
+        .sort((a, b) => (a.hora || "99:99").localeCompare(b.hora || "99:99"))
     : [];
 
   const pavilhaoResumo =
     proximosJogosAjavp.length > 0
-      ? Array.from(new Set(proximosJogosAjavp.map((j) => j.pavilhaoNome))).slice(0, 2).join(" / ")
+      ? Array.from(new Set(proximosJogosAjavp.map((j) => j.pavilhaoNome))).join(" / ")
       : "A definir";
 
   return (
@@ -238,21 +244,31 @@ export default async function HomePage() {
 
                   <div className="space-y-2">
                     {proximosJogosAjavp.length > 0 ? (
-                      proximosJogosAjavp.slice(0, 3).map((jogo, idx) => (
+                      proximosJogosAjavp.map((jogo, idx) => (
                         <div
                           key={`${jogo.escalao ?? "futsal"}-${jogo.hora}-${idx}`}
                           className="flex items-center justify-between p-2 rounded-xl bg-white/80 dark:bg-slate-900/80 border border-emerald-100 dark:border-white/10 text-xs gap-2"
                         >
-                          <span className="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5 min-w-0 truncate">
-                            <span className="px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-200 text-[10px] font-extrabold shrink-0">
-                              {jogo.escalao || "Futsal"}
+                          <span className="flex flex-col min-w-0">
+                            <span className="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5 min-w-0">
+                              <span className="px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-200 text-[10px] font-extrabold shrink-0">
+                                {jogo.escalao || "Futsal"}
+                              </span>
+                              <span className="truncate">
+                                {formatarNomeEquipa(jogo.casa)} vs {formatarNomeEquipa(jogo.fora)}
+                              </span>
                             </span>
-                            <span className="truncate">
-                              {formatarNomeEquipa(jogo.casa)} vs {formatarNomeEquipa(jogo.fora)}
+                            <span className="text-[10px] text-slate-500 dark:text-slate-400 font-medium pl-0.5 truncate sm:hidden">
+                              {jogo.pavilhaoNome}
                             </span>
                           </span>
-                          <span className="font-mono font-black text-emerald-700 dark:text-emerald-400 text-xs shrink-0">
-                            {jogo.hora ? jogo.hora.replace(":", "h") : "—"}
+                          <span className="flex items-center gap-1.5 shrink-0">
+                            <span className="hidden sm:inline text-[10px] font-semibold text-slate-500 dark:text-slate-400">
+                              {jogo.pavilhaoNome}
+                            </span>
+                            <span className="font-mono font-black text-emerald-700 dark:text-emerald-400 text-xs">
+                              {jogo.hora ? jogo.hora.replace(":", "h") : "—"}
+                            </span>
                           </span>
                         </div>
                       ))

@@ -47,6 +47,15 @@ interface ExtractedEventoRaw {
   local?: string;
 }
 
+export function obterDataHojePortugal(referenceDate: Date = new Date()): string {
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Europe/Lisbon',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(referenceDate);
+}
+
 function normalizarHora(hora?: string): string {
   if (!hora) return '';
   const m = hora.trim().match(/(\d{1,2})[h:](\d{2})/i);
@@ -59,11 +68,11 @@ function chaveConfronto(escalao?: string, pavNome?: string, casa?: string, fora?
   return `${esc}-${chaveCanonicaEquipa(casa)}-${chaveCanonicaEquipa(fora)}`;
 }
 
-function construirJornadasBase(): FutsalJornada[] {
+function construirJornadasBase(todayStr: string = obterDataHojePortugal()): FutsalJornada[] {
   return FUTSAL_JORNADAS.map((fj) => ({
     numero: fj.number,
     data: fj.formattedDate || fj.date,
-    estado: fj.number < 4 ? 'Concluída' : 'Agendada',
+    estado: fj.date < todayStr ? 'Concluída' : 'Agendada',
     pavilhoes: fj.venueSessions.map((v) => ({
       nome: v.venueName,
       cor: 'emerald',
@@ -96,10 +105,13 @@ function construirJornadasBase(): FutsalJornada[] {
  * Funde as jornadas dinâmicas/JSON sobre o calendário oficial (1ª a 6ª Jornada)
  * utilizando chaves canónicas por confronto para nunca duplicar jogos nem descartar jornadas futuras.
  */
-export function consolidarTodasJornadas(jornadasExistentes: FutsalJornada[]): FutsalJornada[] {
+export function consolidarTodasJornadas(
+  jornadasExistentes: FutsalJornada[],
+  todayStr: string = obterDataHojePortugal()
+): FutsalJornada[] {
   const mapa = new Map<number, FutsalJornada>();
 
-  for (const baseJ of construirJornadasBase()) {
+  for (const baseJ of construirJornadasBase(todayStr)) {
     mapa.set(baseJ.numero, baseJ);
   }
 
@@ -464,13 +476,6 @@ export function adaptarExtractedParaFutsal(payload: Record<string, unknown>): Fu
         jr.estado = 'Concluída';
       }
     }
-
-    const concluidas = base.jornadas
-      .filter((jr) => jr.estado.toLowerCase().includes('concl'))
-      .map((jr) => jr.numero);
-    if (concluidas.length > 0) {
-      base.jornadaAtiva = Math.max(...concluidas);
-    }
   }
 
   // Motor 100% dinâmico: recalcula classificações diretamente a partir dos resultados das jornadas
@@ -492,7 +497,137 @@ export function adaptarExtractedParaFutsal(payload: Record<string, unknown>): Fu
     }));
   }
 
-  return base;
+  return resolverEstadoDinamicoFutsal(base);
+}
+
+/**
+ * Resolve dinamicamente o estado de cada jornada, a `jornadaAtiva`, o `destaqueSemana`
+ * e `proximaJornada` com base na data civil em Portugal (`Europe/Lisbon`).
+ * Transita automaticamente à meia-noite após a data oficial da jornada (`today > data`).
+ */
+export function resolverEstadoDinamicoFutsal(
+  hubData: FutsalHubData,
+  todayStr: string = obterDataHojePortugal()
+): FutsalHubData {
+  const metaPorNumero = new Map(FUTSAL_JORNADAS.map((fj) => [fj.number, fj]));
+
+  const jornadasAtualizadas = (hubData.jornadas || []).map((jr) => {
+    const meta = metaPorNumero.get(jr.numero);
+    if (!meta) return jr;
+
+    // A jornada mantém-se 'Agendada' durante todo o dia de jogo e passa a 'Concluída' no dia seguinte
+    const estado = meta.date < todayStr ? 'Concluída' : 'Agendada';
+    return {
+      ...jr,
+      data: meta.formattedDate || jr.data,
+      estado,
+    };
+  });
+
+  const proximaObj =
+    jornadasAtualizadas.find((jr) => {
+      const meta = metaPorNumero.get(jr.numero);
+      if (meta) return meta.date >= todayStr;
+      return !jr.estado.toLowerCase().includes('concl');
+    }) || jornadasAtualizadas[jornadasAtualizadas.length - 1];
+
+  if (!proximaObj) {
+    return { ...hubData, jornadas: jornadasAtualizadas };
+  }
+
+  const metaAtiva = metaPorNumero.get(proximaObj.numero);
+  const jogosAjavpDaAtiva: Array<{
+    escalao: string;
+    adversario: string;
+    pavilhao: string;
+    hora: string;
+    horaSort: string;
+  }> = [];
+
+  for (const pav of proximaObj.pavilhoes || []) {
+    for (const jogo of pav.jogos || []) {
+      const ehAjavp =
+        Boolean(jogo.isAjavp) ||
+        chaveCanonicaEquipa(jogo.casa) === 'ajavp' ||
+        chaveCanonicaEquipa(jogo.fora) === 'ajavp';
+
+      if (!ehAjavp) continue;
+
+      const casaEhAjavp = chaveCanonicaEquipa(jogo.casa) === 'ajavp';
+      const adversario = formatarNomeEquipa(casaEhAjavp ? jogo.fora : jogo.casa);
+      const escalao = normalizarEscalaoJogo(jogo.escalao, pav.nome) || 'Futsal';
+      const horaNorm = normalizarHora(jogo.hora);
+
+      jogosAjavpDaAtiva.push({
+        escalao,
+        adversario,
+        pavilhao: pav.nome,
+        hora: jogo.hora || horaNorm || '—',
+        horaSort: horaNorm || '99:99',
+      });
+    }
+  }
+
+  jogosAjavpDaAtiva.sort((a, b) => a.horaSort.localeCompare(b.horaSort));
+
+  const proximaJornada = {
+    numero: proximaObj.numero,
+    dataPrevisao: metaAtiva?.formattedDate || proximaObj.data,
+    estado: metaAtiva?.isTaça ? 'Taça Concelhia' : proximaObj.estado,
+    jogosAjavp: jogosAjavpDaAtiva.map((j) => ({
+      escalao: j.escalao,
+      adversario: j.adversario,
+      pavilhao: j.pavilhao,
+      hora: j.hora.replace(':', 'h'),
+    })),
+  };
+
+  let destaqueSemana = hubData.destaqueSemana;
+  if (jogosAjavpDaAtiva.length > 0) {
+    const escaloesLista = Array.from(new Set(jogosAjavpDaAtiva.map((j) => j.escalao)));
+    const pavilhoesCurtos = Array.from(
+      new Set(
+        jogosAjavpDaAtiva.map((j) =>
+          j.pavilhao
+            .replace(/^Pavilh[ãa]o\s*(Desportivo\s*de|Municipal\s*de|de)?\s*/i, '')
+            .replace(/\s*\(Campo.*\)/i, '')
+            .trim()
+        )
+      )
+    );
+
+    const titulo = metaAtiva?.isTaça
+      ? `Taça Concelhia & ${proximaObj.numero}ª Jornada: ${escaloesLista.join(', ')}!`
+      : `${proximaObj.numero}ª Jornada XL JIF: ${escaloesLista.join(', ')} em Campo!`;
+
+    const subtitulo = `A AJAVP entra em ação em ${metaAtiva?.formattedDate || proximaObj.data} nos pavilhões de ${pavilhoesCurtos.join(', ')}. Vem apoiar a formação de Vilar do Pinheiro!`;
+    const badge =
+      metaAtiva?.date === todayStr ? 'Hoje é Dia de Jogo! 🔥' : 'Próxima Jornada 🚀';
+
+    const kpis = jogosAjavpDaAtiva.slice(0, 4).map((j) => ({
+      label: `${j.escalao} (${j.hora.replace(':', 'h')})`,
+      valor: `vs ${j.adversario}`,
+      sub: j.pavilhao.replace(/^Pavilh[ãa]o\s*(Desportivo\s*de|Municipal\s*de|de)?\s*/i, 'Pav. '),
+    }));
+
+    if (kpis.length < 4) {
+      kpis.push({
+        label: 'Apoio AJAVP',
+        valor: 'Entrada Livre',
+        sub: 'Vem apoiar Vilar do Pinheiro!',
+      });
+    }
+
+    destaqueSemana = { titulo, subtitulo, badge, kpis };
+  }
+
+  return {
+    ...hubData,
+    jornadaAtiva: proximaObj.numero,
+    jornadas: jornadasAtualizadas,
+    destaqueSemana,
+    proximaJornada,
+  };
 }
 
 /**
@@ -531,7 +666,7 @@ export async function obterDadosFutsal(): Promise<FutsalHubData> {
   }
 
   const jornadasFinais = consolidarTodasJornadas(resultado.jornadas || []);
-  return {
+  const hubCalculado: FutsalHubData = {
     ...resultado,
     jornadas: jornadasFinais,
     classificacoes: calcularClassificacoesDinamicas(
@@ -539,6 +674,8 @@ export async function obterDadosFutsal(): Promise<FutsalHubData> {
       resultado.classificacoes || FUTSAL_DATA.classificacoes
     ),
   };
+
+  return resolverEstadoDinamicoFutsal(hubCalculado);
 }
 
 /**
