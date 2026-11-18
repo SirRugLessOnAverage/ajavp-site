@@ -8,6 +8,7 @@ import { WhatsAppWidget } from "@/components/layout/WhatsAppWidget";
 import { PwaManager } from "@/components/layout/PwaManager";
 import { CookieConsentBanner } from "@/components/privacy/CookieConsentBanner";
 import { MobileTabBar } from "@/components/layout/MobileTabBar";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -185,6 +186,7 @@ export default function RootLayout({
         <WhatsAppWidget />
         <PwaManager />
         <CookieConsentBanner />
+        <SpeedInsights />
       </body>
     </html>
   );
