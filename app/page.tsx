@@ -2,6 +2,7 @@ import { JsonLd, SportsEventJsonLd } from "@/components/seo/JsonLd";
 import { FUTSAL_JORNADAS } from "@/data/jif/futsal-jogos";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Trophy,
   Users,
@@ -114,13 +115,14 @@ export default async function HomePage() {
       <section className="relative overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white pt-16 pb-20 lg:pt-24 lg:pb-28 border-b border-slate-200 dark:border-white/10 transition-colors">
         {/* Imagem de Fundo Amálgama com Overlay Gradiente Adaptativo */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src="/assets/images/hero-amalgama.webp"
             alt="Amálgama desportiva da AJAVP: Futsal Formação, Corta-Mato, 25 de Abril, Duatlo BTT e Futebol de Praia"
-            fetchPriority="high"
-            decoding="async"
-            className="w-full h-full object-cover object-center opacity-90 dark:opacity-75 contrast-105 saturate-110"
+            fill
+            priority
+            sizes="100vw"
+            quality={75}
+            className="object-cover object-center opacity-90 dark:opacity-75 contrast-105 saturate-110"
           />
           <div className="absolute inset-0 bg-linear-to-r from-white/95 via-white/82 to-white/20 dark:from-slate-950/95 dark:via-slate-950/80 dark:to-slate-950/25" />
           <div className="absolute inset-0 bg-linear-to-t from-slate-50/90 via-transparent to-white/30 dark:from-slate-950/90 dark:via-transparent dark:to-slate-950/30" />

@@ -183,12 +183,16 @@ export function Header() {
             <img
               src="/assets/images/logo.webp"
               alt="Logótipo AJAVP"
+              width={52}
+              height={52}
               className="h-11 sm:h-13 w-auto object-contain transition-transform group-hover:scale-105 dark:hidden"
             />
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/assets/images/logo_white.webp"
               alt="Logótipo AJAVP"
+              width={52}
+              height={52}
               className="h-11 sm:h-13 w-auto object-contain transition-transform group-hover:scale-105 hidden dark:block"
             />
             <div className="flex flex-col justify-center whitespace-nowrap">

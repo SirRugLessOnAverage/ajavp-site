@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Calendar, ArrowRight, Newspaper } from "lucide-react";
 import type { SiteNoticia } from "@/lib/types/database";
 
@@ -214,12 +215,13 @@ export function NoticiasSection({ noticias }: NoticiasSectionProps) {
                     href={articleHref}
                     className="relative aspect-video overflow-hidden bg-slate-200 dark:bg-slate-700 block"
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Image
                       src={coverSrc}
                       alt={item.titulo}
-                      className="w-full h-full object-cover object-[center_30%] group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      quality={75}
+                      className="object-cover object-[center_30%] group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-linear-to-t from-black/45 via-transparent to-transparent pointer-events-none" />
                     {item.categoria && (
