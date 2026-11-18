@@ -1,6 +1,6 @@
 // AJAVP - Service Worker (PWA)
 // Versão do Cache
-const CACHE_NAME = 'ajavp-pwa-v27';
+const CACHE_NAME = 'ajavp-pwa-v28';
 
 // Recursos essenciais para pré-cache (App Shell - Next.js App Router)
 const PRECACHE_ASSETS = [
