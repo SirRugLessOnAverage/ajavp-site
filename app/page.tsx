@@ -15,7 +15,7 @@ import {
   LayoutDashboard,
   Bell,
 } from "lucide-react";
-import { createClient } from "@/lib/supabase/server";
+import { supabasePublic } from "@/lib/supabase/public";
 import { GESTAO_LINKS } from "@/lib/site";
 import { NoticiasSection } from "@/components/home/NoticiasSection";
 import { AgendaMatchCenter } from "@/components/home/AgendaMatchCenter";
@@ -35,17 +35,15 @@ function isJogoAjavp(casa: string, fora: string, isAjavp?: boolean): boolean {
 }
 
 export default async function HomePage() {
-  const supabase = await createClient();
-
   const [noticiasRes, eventosRes, futsalData] = await Promise.all([
-    supabase
+    supabasePublic
       .from("site_noticias")
       .select("*")
       .eq("publicado", true)
       .order("publicado_em", { ascending: false })
       .limit(6)
       .then((res) => res, () => ({ data: null, error: true })),
-    supabase
+    supabasePublic
       .from("site_eventos")
       .select("*")
       .order("data_hora", { ascending: true })
@@ -120,6 +118,7 @@ export default async function HomePage() {
             alt="Amálgama desportiva da AJAVP: Futsal Formação, Corta-Mato, 25 de Abril, Duatlo BTT e Futebol de Praia"
             fill
             priority
+            fetchPriority="high"
             sizes="100vw"
             quality={75}
             className="object-cover object-center opacity-90 dark:opacity-75 contrast-105 saturate-110"
