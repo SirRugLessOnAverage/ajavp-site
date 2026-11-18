@@ -17,6 +17,7 @@ import { createClient } from "@/lib/supabase/server";
 import { GESTAO_LINKS } from "@/lib/site";
 import { NoticiasSection } from "@/components/home/NoticiasSection";
 import { AgendaMatchCenter } from "@/components/home/AgendaMatchCenter";
+import { VdpCommunityHub } from "@/components/home/VdpCommunityHub";
 import { BannerSociosOficial } from "@/components/home/BannerSociosOficial";
 import { obterDadosFutsal } from "@/lib/jif/data-service";
 import { formatarNomeEquipa } from "@/lib/jif/team-matches";
@@ -325,6 +326,9 @@ export default async function HomePage() {
       {/* Centro de Jogos & Agenda Desportiva AJAVP (Match Center Nobre) */}
       <AgendaMatchCenter eventos={eventos} />
 
+      {/* Hub Comunitário de Vilar do Pinheiro (Meteo, Ringue, Treinos & Contactos Locais) */}
+      <VdpCommunityHub />
+
       {/* Banner Oficial de Notificações Web Push & Avisos no Telemóvel */}
       <section className="bg-linear-to-r from-amber-500 via-amber-400 to-amber-500 text-slate-950 py-5 sm:py-6 shadow-md border-y border-amber-400">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -376,7 +380,7 @@ export default async function HomePage() {
               Desporto para Todas as Idades
             </h2>
             <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
-              Treinos semanais com treinadores dedicados no Pavilhão de Vilar do Pinheiro e recintos desportivos da freguesia.
+              Treinos semanais com treinadores dedicados no Ringue Polidesportivo de Vilar do Pinheiro e recintos oficiais de apoio.
             </p>
           </div>
 
@@ -384,7 +388,7 @@ export default async function HomePage() {
             {[
               {
                 title: "Futsal Masculino & Feminino",
-                desc: "Escalões de formação (Sub-7 a Sub-16) e seniores. Treinos no Pavilhão Municipal de Vilar do Pinheiro.",
+                desc: "Escalões de formação (Sub-7 a Sub-16) e seniores. Treinos no Ringue Polidesportivo de Vilar do Pinheiro e nos pavilhões de Canidelo e MaiaSport.",
                 icon: "⚽",
                 tag: "Formação & Seniores",
               },

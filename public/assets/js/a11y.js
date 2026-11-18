@@ -269,26 +269,8 @@
       }, { passive: true });
     }
 
-    // 8.3 Botão Flutuante de Acessibilidade
-    if (!document.getElementById('a11yTriggerBtn')) {
-      const triggerBtn = document.createElement('button');
-      triggerBtn.id = 'a11yTriggerBtn';
-      triggerBtn.type = 'button';
-      triggerBtn.setAttribute('aria-haspopup', 'dialog');
-      triggerBtn.setAttribute('aria-expanded', 'false');
-      triggerBtn.setAttribute('aria-controls', 'a11yModal');
-      triggerBtn.setAttribute('title', 'Abrir Painel de Acessibilidade (Atalho: Alt + A)');
-      triggerBtn.innerHTML = `
-        <span class="text-base" aria-hidden="true">♿</span>
-        <span class="hidden sm:inline">Acessibilidade</span>
-        <span class="text-[10px] px-1.5 py-0.5 rounded bg-white/20 font-mono hidden md:inline">Alt+A</span>
-      `;
-      document.body.appendChild(triggerBtn);
-
-      triggerBtn.addEventListener('click', function () {
-        toggleModal();
-      });
-    }
+    // 8.3 Painel de Acessibilidade integrado no cabeçalho (atalho Alt + A)
+    // Botão flutuante removido para evitar sobreposição com a MobileTabBar inferior.
 
     // 8.4 Painel Modal de Acessibilidade
     if (!document.getElementById('a11yModalBackdrop')) {

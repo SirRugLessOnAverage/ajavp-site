@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import { WhatsAppWidget } from "@/components/layout/WhatsAppWidget";
 import { PwaManager } from "@/components/layout/PwaManager";
 import { CookieConsentBanner } from "@/components/privacy/CookieConsentBanner";
+import { MobileTabBar } from "@/components/layout/MobileTabBar";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -85,6 +86,7 @@ export const viewport: Viewport = {
   ],
   width: "device-width",
   initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
@@ -177,8 +179,9 @@ export default function RootLayout({
           Saltar para o conteúdo principal
         </a>
         <Header />
-        <main id="conteudo-principal" className="flex-1">{children}</main>
+        <main id="conteudo-principal" className="flex-1 pb-16 xl:pb-0">{children}</main>
         <Footer />
+        <MobileTabBar />
         <WhatsAppWidget />
         <PwaManager />
         <CookieConsentBanner />
