@@ -62,7 +62,7 @@ export function ShareBar({
         rel="noopener noreferrer"
         className={`motion-press inline-flex items-center gap-1.5 rounded-xl font-heading font-bold transition-all active:scale-[0.97] cursor-pointer ${
           compact ? "px-2.5 py-1.5 text-[11px]" : "px-3.5 py-2 text-xs"
-        } bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs`}
+        } bg-brand-green hover:bg-brand-greenDark text-white shadow-xs`}
         title="Partilhar no WhatsApp"
       >
         <MessageCircle className="w-3.5 h-3.5 shrink-0" />

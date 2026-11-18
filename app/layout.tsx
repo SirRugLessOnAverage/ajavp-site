@@ -1,6 +1,7 @@
 import { SITE_URL } from "@/lib/site";
 import type { Metadata, Viewport } from "next";
 import { Montserrat, Inter, Lexend } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -98,8 +99,7 @@ export default function RootLayout({
   return (
     <html lang="pt-PT" suppressHydrationWarning className={`${montserrat.variable} ${inter.variable} ${lexend.variable}`}>
       <head>
-        {/* Folha de Estilos de Acessibilidade & Usabilidade (WCAG 2.1 AA) */}
-        <link rel="stylesheet" href="/assets/css/a11y.css" />
+        {/* Acessibilidade & Usabilidade (a11y.css em globals.css) */}
         <script id="a11y-core-script" src="/assets/js/a11y.js" defer></script>
         {/* Motor PWA & Service Worker */}
         <script id="pwa-helper-script" src="/assets/js/pwa.js" defer></script>
@@ -130,9 +130,10 @@ export default function RootLayout({
           }}
         />
 
-        {/* Google Tag Manager (GTM-WMFCGH89) */}
-        <script
+        {/* Google Tag Manager (GTM-WMFCGH89) — carregado em lazyOnload para não bloquear LCP/TBT */}
+        <Script
           id="gtm-loader"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
