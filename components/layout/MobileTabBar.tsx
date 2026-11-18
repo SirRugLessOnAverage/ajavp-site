@@ -67,7 +67,8 @@ export function MobileTabBar() {
   return (
     <nav
       aria-label="Navegação rápida móvel"
-      className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-t border-slate-200/80 dark:border-white/10 pb-safe xl:hidden transition-colors duration-200"
+      style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
+      className="fixed bottom-0 inset-x-0 z-45 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-t border-slate-200/80 dark:border-white/10 transform-gpu xl:hidden transition-colors duration-200"
     >
       <div className="flex items-center justify-around h-14 max-w-lg mx-auto px-2">
         {navItems.map((item) => {
