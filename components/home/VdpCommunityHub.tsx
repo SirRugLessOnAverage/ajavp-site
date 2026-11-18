@@ -3,14 +3,12 @@ import Link from "next/link";
 import {
   MapPin,
   CloudSun,
-  Phone,
   ShieldCheck,
-  CheckCircle2,
-  AlertTriangle,
   Calendar,
-  Sparkles,
   ArrowRight,
+  Navigation,
 } from "lucide-react";
+import { TRAINING_VENUES } from "@/data/institucional";
 
 interface WeatherSummary {
   tempMax: number;
@@ -18,7 +16,7 @@ interface WeatherSummary {
   rainProb: number;
   condition: string;
   icon: string;
-  ringueStatus: "Ringue Apto" | "Atenção ao Piso" | "Utilizar Pavilhão";
+  ringueStatus: "Ringue Apto" | "Atenção ao Piso" | "Chuva / Piso Molhado";
   statusColor: string;
 }
 
@@ -50,17 +48,28 @@ async function getTodayVdpWeather(): Promise<WeatherSummary> {
     }
 
     let ringueStatus: WeatherSummary["ringueStatus"] = "Ringue Apto";
-    let statusColor = "bg-emerald-100 text-emerald-900 border-emerald-300 dark:bg-emerald-500/20 dark:text-emerald-300 dark:border-emerald-400/30";
+    let statusColor =
+      "bg-emerald-100 text-emerald-900 border-emerald-300 dark:bg-emerald-500/20 dark:text-emerald-300 dark:border-emerald-400/30";
 
     if (rain > 40) {
-      ringueStatus = "Utilizar Pavilhão";
-      statusColor = "bg-rose-100 text-rose-900 border-rose-300 dark:bg-rose-500/20 dark:text-rose-300 dark:border-rose-400/30";
+      ringueStatus = "Chuva / Piso Molhado";
+      statusColor =
+        "bg-rose-100 text-rose-900 border-rose-300 dark:bg-rose-500/20 dark:text-rose-300 dark:border-rose-400/30";
     } else if (rain > 20) {
       ringueStatus = "Atenção ao Piso";
-      statusColor = "bg-amber-100 text-amber-900 border-amber-300 dark:bg-amber-500/20 dark:text-amber-300 dark:border-amber-400/30";
+      statusColor =
+        "bg-amber-100 text-amber-900 border-amber-300 dark:bg-amber-500/20 dark:text-amber-300 dark:border-amber-400/30";
     }
 
-    return { tempMax, tempMin, rainProb: rain, condition, icon, ringueStatus, statusColor };
+    return {
+      tempMax,
+      tempMin,
+      rainProb: rain,
+      condition,
+      icon,
+      ringueStatus,
+      statusColor,
+    };
   } catch {
     return {
       tempMax: 18,
@@ -69,7 +78,8 @@ async function getTodayVdpWeather(): Promise<WeatherSummary> {
       condition: "Clima Ameno",
       icon: "⛅",
       ringueStatus: "Ringue Apto",
-      statusColor: "bg-emerald-100 text-emerald-900 border-emerald-300 dark:bg-emerald-500/20 dark:text-emerald-300 dark:border-emerald-400/30",
+      statusColor:
+        "bg-emerald-100 text-emerald-900 border-emerald-300 dark:bg-emerald-500/20 dark:text-emerald-300 dark:border-emerald-400/30",
     };
   }
 }
@@ -77,15 +87,9 @@ async function getTodayVdpWeather(): Promise<WeatherSummary> {
 export async function VdpCommunityHub() {
   const weather = await getTodayVdpWeather();
 
-  const contactosUteis = [
-    { nome: "Pavilhão de Vilar do Pinheiro", desc: "Recinto Desportivo Oficial", tel: "+351252631200", telLabel: "252 631 200" },
-    { nome: "Junta de Freguesia", desc: "Sede Comunitária VdP", tel: "+351229280450", telLabel: "229 280 450" },
-    { nome: "Extensão de Saúde VdP", desc: "Atendimento Clínico Local", tel: "+351229280145", telLabel: "229 280 145" },
-  ];
-
   return (
     <section
-      aria-label="Hoje em Vilar do Pinheiro e Hub Comunitário"
+      aria-label="Hoje em Vilar do Pinheiro e Horários de Treino"
       className="py-12 bg-white dark:bg-slate-900 border-y border-slate-200/80 dark:border-white/10 transition-colors"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
@@ -93,26 +97,26 @@ export async function VdpCommunityHub() {
           <div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-900 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider mb-2">
               <MapPin className="w-3.5 h-3.5 text-brand-green dark:text-emerald-400" />
-              <span>Vilar do Pinheiro &bull; Comunidade &amp; Desporto</span>
+              <span>Vilar do Pinheiro &bull; Treinos &amp; Recintos</span>
             </div>
             <h2 className="font-heading font-black text-2xl sm:text-3xl text-slate-900 dark:text-white tracking-tight">
               Hoje na Nossa Terra
             </h2>
             <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm mt-1 max-w-xl">
-              Informação de utilidade diária para atletas, famílias e vizinhos: estado do tempo, condições do piso para treinos e contactos imediatos da freguesia.
+              Informação oficial para atletas e famílias: estado do tempo para o Ringue Polidesportivo, horários semanais e localização GPS dos recintos onde treinamos.
             </p>
           </div>
 
           <Link
-            href="/modalidades"
+            href="/modalidades#horarios"
             className="motion-press inline-flex items-center gap-1.5 text-xs font-bold text-brand-green dark:text-emerald-400 hover:underline shrink-0"
           >
-            <span>Ver horários de todos os treinos</span>
+            <span>Ver mapa completo por escalão</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 
-        {/* 3 Cartões de Utilidade Diária */}
+        {/* 3 Cartões com Informação Oficial Verificada */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Card 1: Meteorologia & Ringue */}
           <div className="p-5 sm:p-6 rounded-3xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-white/10 space-y-4 flex flex-col justify-between">
@@ -120,7 +124,7 @@ export async function VdpCommunityHub() {
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
                   <CloudSun className="w-4 h-4 text-amber-500" />
-                  Meteo &amp; Ringue Desportivo
+                  Meteo &amp; Ringue Exterior
                 </span>
                 <span className="text-2xl">{weather.icon}</span>
               </div>
@@ -135,84 +139,95 @@ export async function VdpCommunityHub() {
               </div>
 
               <div className="text-xs text-slate-600 dark:text-slate-300">
-                Probabilidade de precipitação: <strong className="text-slate-900 dark:text-white">{weather.rainProb}%</strong>
+                Probabilidade de precipitação:{" "}
+                <strong className="text-slate-900 dark:text-white">
+                  {weather.rainProb}%
+                </strong>
               </div>
             </div>
 
-            <div className={`mt-3 p-3 rounded-2xl border text-xs font-bold flex items-center gap-2 ${weather.statusColor}`}>
+            <div
+              className={`mt-3 p-3 rounded-2xl border text-xs font-bold flex items-center gap-2 ${weather.statusColor}`}
+            >
               <ShieldCheck className="w-4 h-4 shrink-0" />
               <span>Condição: {weather.ringueStatus}</span>
             </div>
           </div>
 
-          {/* Card 2: Treinos Regulares da Semana */}
+          {/* Card 2: Horários Reais dos Treinos (2.ª a Domingo) */}
           <div className="p-5 sm:p-6 rounded-3xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-white/10 space-y-3 flex flex-col justify-between">
             <div className="space-y-3">
               <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
                 <Calendar className="w-4 h-4 text-emerald-500" />
-                Treinos da Formação AJAVP
+                Horários Oficiais de Treino
               </span>
 
               <div className="space-y-2 text-xs">
-                <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200/60 dark:border-white/5 flex items-center justify-between">
-                  <span className="font-bold text-slate-800 dark:text-slate-200">Futsal Sub-7 a Sub-16</span>
-                  <span className="text-[11px] font-mono text-emerald-700 dark:text-emerald-400 font-black">Ter &amp; Qui 18h30</span>
+                <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200/60 dark:border-white/5 flex items-center justify-between gap-2">
+                  <span className="font-bold text-slate-800 dark:text-slate-200">
+                    ⚽ Futsal Formação
+                  </span>
+                  <span className="text-[11px] font-mono text-emerald-700 dark:text-emerald-400 font-black text-right">
+                    2.ª a Sábado
+                  </span>
                 </div>
-                <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200/60 dark:border-white/5 flex items-center justify-between">
-                  <span className="font-bold text-slate-800 dark:text-slate-200">Ténis de Mesa</span>
-                  <span className="text-[11px] font-mono text-amber-700 dark:text-amber-400 font-black">Seg &amp; Sex 19h00</span>
+                <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200/60 dark:border-white/5 flex items-center justify-between gap-2">
+                  <span className="font-bold text-slate-800 dark:text-slate-200">
+                    🏓 Ténis de Mesa
+                  </span>
+                  <span className="text-[11px] font-mono text-amber-700 dark:text-amber-400 font-black text-right">
+                    Sáb • 16h / 17h
+                  </span>
                 </div>
-                <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200/60 dark:border-white/5 flex items-center justify-between">
-                  <span className="font-bold text-slate-800 dark:text-slate-200">Atletismo / Corta-Mato</span>
-                  <span className="text-[11px] font-mono text-blue-700 dark:text-blue-400 font-black">Qua &amp; Sáb 09h30</span>
+                <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200/60 dark:border-white/5 flex items-center justify-between gap-2">
+                  <span className="font-bold text-slate-800 dark:text-slate-200">
+                    🏃 Atletismo &amp; Marcha
+                  </span>
+                  <span className="text-[11px] font-mono text-blue-700 dark:text-blue-400 font-black text-right">
+                    Dom • 09h00 (JF)
+                  </span>
                 </div>
               </div>
             </div>
 
             <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-snug">
-              Treinos gratuitos para novos atletas com inscrição aberta.
+              Treinos experimentais gratuitos para novos atletas (Sub-7 a Sub-16 e adultos).
             </p>
           </div>
 
-          {/* Card 3: Contactos Imediatos da Freguesia */}
+          {/* Card 3: Recintos Oficiais de Treino (Dados Reais + GPS) */}
           <div className="p-5 sm:p-6 rounded-3xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-white/10 space-y-3 flex flex-col justify-between">
             <div className="space-y-3">
               <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-                <Phone className="w-4 h-4 text-emerald-500" />
-                Contactos Rápidos da Freguesia
+                <MapPin className="w-4 h-4 text-emerald-500" />
+                Onde Treinamos (GPS)
               </span>
 
-              <div className="space-y-2">
-                {contactosUteis.map((c) => (
+              <div className="space-y-1.5">
+                {TRAINING_VENUES.map((venue) => (
                   <a
-                    key={c.nome}
-                    href={`tel:${c.tel}`}
-                    className="motion-press p-2.5 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200/60 dark:border-white/5 hover:border-emerald-300 dark:hover:border-emerald-500/30 flex items-center justify-between transition-colors group cursor-pointer"
+                    key={venue.code}
+                    href={venue.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={venue.mapsLabel}
+                    className="motion-press p-2 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200/60 dark:border-white/5 hover:border-emerald-300 dark:hover:border-emerald-500/30 flex items-center justify-between gap-2 transition-colors group cursor-pointer"
                   >
-                    <div>
-                      <div className="font-bold text-xs text-slate-900 dark:text-white group-hover:text-brand-green dark:group-hover:text-emerald-400 transition-colors">
-                        {c.nome}
+                    <div className="min-w-0">
+                      <div className="font-bold text-xs text-slate-900 dark:text-white group-hover:text-brand-green dark:group-hover:text-emerald-400 transition-colors truncate">
+                        {venue.name}
                       </div>
-                      <div className="text-[10px] text-slate-500 dark:text-slate-400">
-                        {c.desc}
+                      <div className="text-[10px] text-slate-500 dark:text-slate-400 truncate">
+                        {venue.typeBadge}
                       </div>
                     </div>
-                    <span className="text-[11px] font-mono font-bold text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded-md bg-slate-100 dark:bg-white/10 group-hover:bg-emerald-100 dark:group-hover:bg-emerald-900/60 group-hover:text-emerald-800 dark:group-hover:text-emerald-200 transition-colors shrink-0">
-                      {c.telLabel}
+                    <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 dark:text-emerald-300 px-2 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-500/15 shrink-0">
+                      <Navigation className="w-3 h-3" />
+                      <span>Maps</span>
                     </span>
                   </a>
                 ))}
               </div>
-            </div>
-
-            <div className="pt-1">
-              <Link
-                href="/contactos"
-                className="inline-flex items-center gap-1 text-[11px] font-bold text-slate-500 dark:text-slate-400 hover:text-brand-green dark:hover:text-emerald-400 transition-colors"
-              >
-                <span>Ver contactos da direção e secretária</span>
-                <ArrowRight className="w-3 h-3" />
-              </Link>
             </div>
           </div>
         </div>

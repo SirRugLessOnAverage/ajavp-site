@@ -19,6 +19,14 @@ export function MobileTabBar() {
     );
   };
 
+  const handleAgendaClick = () => {
+    if (pathname === "/jif") {
+      window.dispatchEvent(
+        new CustomEvent("jif-tab-change", { detail: "calendario" })
+      );
+    }
+  };
+
   const navItems = [
     {
       label: "Início",
@@ -30,13 +38,16 @@ export function MobileTabBar() {
       label: "Jogos JIF",
       href: "/jif/futsal",
       icon: Trophy,
-      isActive: pathname.startsWith("/jif"),
+      isActive:
+        pathname.startsWith("/jif/futsal") ||
+        pathname.startsWith("/jif/classificacao"),
     },
     {
       label: "Agenda",
-      href: "/#agenda",
+      href: "/jif#calendario",
       icon: Calendar,
-      isActive: false,
+      onLinkClick: handleAgendaClick,
+      isActive: pathname === "/jif",
     },
     {
       label: "Sócios",
@@ -99,6 +110,7 @@ export function MobileTabBar() {
             <Link
               key={item.label}
               href={item.href}
+              onClick={item.onLinkClick}
               className="flex-1 flex items-center justify-center h-full focus:outline-hidden"
               aria-label={item.label}
             >
