@@ -23,23 +23,23 @@ export function DynamicTopBanner({
     setInfo(eventoProximo);
   }, [filtroSport]);
 
-  // Se ainda estiver a hidratar ou não houver evento futuro iminente, renderiza fallback institucional
+  // Se ainda estiver a hidratar ou não houver evento futuro iminente, renderiza fallback institucional com altura fixa anti-CLS
   if (!info || !info.evento) {
     return (
       <div
-        className={`bg-brand-green text-white text-[11px] sm:text-xs py-1.5 px-4 text-center font-medium shadow-inner flex items-center justify-center gap-2 ${className}`}
+        className={`bg-brand-green text-white text-[11px] sm:text-xs h-9 min-h-[36px] px-3 sm:px-4 text-center font-medium shadow-inner flex flex-nowrap items-center justify-center gap-2 overflow-hidden whitespace-nowrap ${className}`}
       >
-        <span className="inline-flex items-center justify-center px-2 py-0.5 rounded-full text-xs font-bold bg-white text-brand-green uppercase tracking-wider">
+        <span className="inline-flex items-center justify-center px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-bold bg-white text-brand-green uppercase tracking-wider shrink-0">
           Inscrições Abertas
         </span>
-        <span>
-          &quot;Vem e Traz um Amigo&quot; &bull; Treinos e atividades para todas as idades na AJAVP! 🤩
+        <span className="truncate max-w-[200px] sm:max-w-md md:max-w-xl">
+          &quot;Vem e Traz um Amigo&quot; &bull; Treinos e atividades na AJAVP!
         </span>
         <a
           href={GESTAO_LINKS.inscricao}
           target="_blank"
           rel="noopener noreferrer"
-          className="underline hover:text-amber-200 font-semibold ml-1 hidden sm:inline"
+          className="underline hover:text-amber-200 font-semibold ml-1 hidden sm:inline shrink-0"
         >
           Inscreve-te &rarr;
         </a>
@@ -53,7 +53,7 @@ export function DynamicTopBanner({
 
   return (
     <div
-      className={`bg-brand-green text-white text-[11px] sm:text-xs py-1.5 px-3 sm:px-4 text-center font-medium shadow-inner flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 transition-colors ${className}`}
+      className={`bg-brand-green text-white text-[11px] sm:text-xs h-9 min-h-[36px] px-3 sm:px-4 text-center font-medium shadow-inner flex flex-nowrap items-center justify-center gap-1.5 sm:gap-2 overflow-hidden whitespace-nowrap transition-colors ${className}`}
     >
       {/* Badge Dinâmica baseada no calendário */}
       <span

@@ -545,7 +545,7 @@ export function AgendaMatchCenter({ eventos }: AgendaMatchCenterProps) {
                   onClick={() => handleSelectEscalao(esc.key)}
                   className={`motion-press px-3 py-1 rounded-full text-[11px] font-bold whitespace-nowrap transition-all duration-150 active:scale-[0.97] cursor-pointer shrink-0 border ${
                     isSelected
-                      ? "bg-emerald-600 dark:bg-emerald-500 text-white dark:text-slate-950 border-emerald-600 dark:border-emerald-400 shadow-xs"
+                      ? "bg-brand-green dark:bg-emerald-400 text-white dark:text-slate-950 border-brand-green dark:border-emerald-300 shadow-xs"
                       : "bg-white/80 dark:bg-slate-900/80 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 border-slate-200/80 dark:border-white/10"
                   }`}
                 >
