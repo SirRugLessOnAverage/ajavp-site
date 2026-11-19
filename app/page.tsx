@@ -101,6 +101,7 @@ export default async function HomePage() {
         name: `XL JIF Futsal (${j.escalao || "Formação"}): ${formatarNomeEquipa(j.casa)} vs ${formatarNomeEquipa(j.fora)}`,
         startDate: j.hora ? `${jornadaMetaIso}T${j.hora.replace("h", ":")}:00` : jornadaMetaIso,
         locationName: j.pavilhaoNome,
+        performers: [formatarNomeEquipa(j.casa), formatarNomeEquipa(j.fora)],
         description: `${proximaJornada.numero}ª Jornada de Futsal dos XL Jogos Inter-Freguesias em ${j.pavilhaoNome}.`,
       }))
     : [];
