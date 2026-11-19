@@ -38,6 +38,12 @@ test('OpenGraph Personalizado: Todas as páginas institucionais devem ter openGr
 test('JSON-LD Rico: SportsEventJsonLd e FaqJsonLd presentes nas páginas estratégicas', () => {
   const home = fs.readFileSync('app/page.tsx', 'utf-8');
   assert.ok(home.includes('<SportsEventJsonLd'), 'app/page.tsx deve renderizar SportsEventJsonLd');
+  assert.ok(home.includes('performers:'), 'app/page.tsx deve passar performers reais para SportsEventJsonLd');
+
+  const jsonLd = fs.readFileSync('components/seo/JsonLd.tsx', 'utf-8');
+  for (const field of ['endDate:', 'image:', 'performer:', 'offers:']) {
+    assert.ok(jsonLd.includes(field), `SportsEventJsonLd deve incluir o campo ${field}`);
+  }
 
   for (const faqPage of ['app/modalidades/page.tsx', 'app/socios/page.tsx', 'app/contactos/page.tsx']) {
     const content = fs.readFileSync(faqPage, 'utf-8');

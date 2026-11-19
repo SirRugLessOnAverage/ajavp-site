@@ -107,39 +107,75 @@ export function NewsArticleJsonLd({
 export interface SportsEventJsonLdItem {
   name: string;
   startDate: string; // YYYY-MM-DD or ISO
+  endDate?: string;
   locationName: string;
   description?: string;
   url?: string;
+  image?: string;
+  performers?: string[];
+}
+
+function computeDefaultEndDate(startDate: string): string {
+  const match = startDate.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::(\d{2}))?/);
+  if (!match) return startDate;
+  const [, y, m, d, hh, mm, ss = "00"] = match;
+  const dt = new Date(Date.UTC(Number(y), Number(m) - 1, Number(d), Number(hh), Number(mm), Number(ss)));
+  dt.setUTCHours(dt.getUTCHours() + 1);
+  return dt.toISOString().slice(0, 19);
 }
 
 export function SportsEventJsonLd({ events }: { events: SportsEventJsonLdItem[] }) {
   if (!events || events.length === 0) return null;
 
-  const data = events.map((ev) => ({
-    "@context": "https://schema.org",
-    "@type": "SportsEvent",
-    name: ev.name,
-    startDate: ev.startDate,
-    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-    eventStatus: "https://schema.org/EventScheduled",
-    location: {
-      "@type": "Place",
-      name: ev.locationName,
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Vila do Conde",
-        addressRegion: "Porto",
-        addressCountry: "PT",
+  const data = events.map((ev) => {
+    const eventUrl = ev.url || `${SITE_URL}/jif/futsal`;
+    const eventImage = ev.image
+      ? ev.image.startsWith("http")
+        ? ev.image
+        : `${SITE_URL}${ev.image.startsWith("/") ? "" : "/"}${ev.image}`
+      : `${SITE_URL}/assets/images/hero-amalgama.webp`;
+
+    const performers =
+      ev.performers && ev.performers.length > 0
+        ? ev.performers.map((name) => ({ "@type": "SportsTeam", name }))
+        : [{ "@type": "SportsTeam", name: "AJAVP — Associação de Jovens e Adultos de Vilar do Pinheiro" }];
+
+    return {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      name: ev.name,
+      startDate: ev.startDate,
+      endDate: ev.endDate || computeDefaultEndDate(ev.startDate),
+      eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+      eventStatus: "https://schema.org/EventScheduled",
+      image: [eventImage],
+      performer: performers,
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "EUR",
+        availability: "https://schema.org/InStock",
+        url: eventUrl,
       },
-    },
-    organizer: {
-      "@type": "Organization",
-      name: "AJAVP / ADCCVC - XL Jogos Inter-Freguesias",
-      url: SITE_URL,
-    },
-    description: ev.description || `${ev.name} nos XL Jogos Inter-Freguesias de Vila do Conde.`,
-    url: ev.url || `${SITE_URL}/jif/futsal`,
-  }));
+      location: {
+        "@type": "Place",
+        name: ev.locationName,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Vila do Conde",
+          addressRegion: "Porto",
+          addressCountry: "PT",
+        },
+      },
+      organizer: {
+        "@type": "Organization",
+        name: "AJAVP / ADCCVC - XL Jogos Inter-Freguesias",
+        url: SITE_URL,
+      },
+      description: ev.description || `${ev.name} nos XL Jogos Inter-Freguesias de Vila do Conde.`,
+      url: eventUrl,
+    };
+  });
 
   return renderJsonLdScript(data);
 }
