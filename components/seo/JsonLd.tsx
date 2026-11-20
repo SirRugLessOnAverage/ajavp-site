@@ -1,4 +1,4 @@
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, EMAIL_GERAL } from "@/lib/site";
 
 export function buildOrganizationJsonLd() {
   return {
@@ -25,7 +25,7 @@ export function buildOrganizationJsonLd() {
       addressCountry: "PT",
     },
     telephone: "+351917194933",
-    email: "geralajavp@gmail.com",
+    email: EMAIL_GERAL,
     sameAs: [
       "https://www.instagram.com/ajavp.javip",
       "https://www.facebook.com/ajavp.oficial",

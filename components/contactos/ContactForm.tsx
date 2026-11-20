@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { EMAIL_GERAL } from "@/lib/site";
 
 const MODALIDADES_OPTIONS = [
   "Futsal / Futebol Formação",
@@ -68,7 +69,7 @@ export function ContactForm() {
         mensagem.trim() || "Sem observações adicionais."
       }`
     );
-    window.location.href = `mailto:geralajavp@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+    window.location.href = `mailto:${EMAIL_GERAL}?subject=${mailtoSubject}&body=${mailtoBody}`;
   };
 
   return (

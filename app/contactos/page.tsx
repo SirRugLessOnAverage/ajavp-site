@@ -1,4 +1,4 @@
-import { SITE_URL, GESTAO_LINKS } from "@/lib/site";
+import { SITE_URL, GESTAO_LINKS, EMAIL_GERAL } from "@/lib/site";
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { ContactForm } from "@/components/contactos/ContactForm";
@@ -174,7 +174,7 @@ export default function ContactosPage() {
                   </p>
                   <div className="pt-2 text-sm font-bold text-slate-900 dark:text-white">
                     <p className="font-mono text-amber-800 dark:text-amber-300">
-                      geralajavp@gmail.com
+                      {EMAIL_GERAL}
                     </p>
                     <p className="text-xs font-normal text-slate-600 dark:text-slate-400 mt-0.5">
                       Resposta habitual no próprio dia útil
@@ -182,7 +182,7 @@ export default function ContactosPage() {
                   </div>
                 </div>
                 <a
-                  href="mailto:geralajavp@gmail.com"
+                  href={`mailto:${EMAIL_GERAL}`}
                   className="motion-press w-full inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-100 dark:bg-white/10 dark:hover:bg-white/15 border border-slate-300 dark:border-white/15 text-slate-800 dark:text-white py-3.5 rounded-xl font-heading font-bold text-xs uppercase tracking-wider shadow-xs transition-colors"
                 >
                   <span>✉️</span>
