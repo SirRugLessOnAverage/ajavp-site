@@ -1,4 +1,4 @@
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, EMAIL_GERAL } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { supabasePublic } from "@/lib/supabase/public";
@@ -510,10 +510,10 @@ export default async function PatrocinadoresPage() {
                   🤝 Falar com a Direção sobre Patrocínios
                 </Link>
                 <a
-                  href="mailto:geralajavp@gmail.com?subject=Proposta%20de%20Patrocinio%20AJAVP"
+                  href={`mailto:${EMAIL_GERAL}?subject=Proposta%20de%20Patrocinio%20AJAVP`}
                   className="motion-press inline-flex items-center gap-2 px-6 py-4 rounded-full bg-white hover:bg-slate-100 dark:bg-white/10 dark:hover:bg-white/15 border border-slate-300 dark:border-white/15 text-slate-800 dark:text-white font-bold text-sm transition-colors shadow-2xs"
                 >
-                  ✉️ geralajavp@gmail.com
+                  ✉️ {EMAIL_GERAL}
                 </a>
               </div>
             </div>

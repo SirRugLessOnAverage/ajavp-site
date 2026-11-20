@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ShieldCheck, Cookie, Lock, FileText, CheckCircle2, AlertCircle, Mail, MapPin } from "lucide-react";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, EMAIL_GERAL } from "@/lib/site";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { CookieSettingsButton } from "@/components/privacy/CookieSettingsButton";
 
@@ -224,8 +224,8 @@ export default function PrivacidadePage() {
               </span>
               <div>
                 <span className="text-slate-400 block text-xs">Email Oficial:</span>
-                <a href="mailto:geralajavp@gmail.com" className="font-bold text-white hover:text-emerald-400 transition-colors">
-                  geralajavp@gmail.com
+                <a href={`mailto:${EMAIL_GERAL}`} className="font-bold text-white hover:text-emerald-400 transition-colors">
+                  {EMAIL_GERAL}
                 </a>
               </div>
             </div>

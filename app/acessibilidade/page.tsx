@@ -1,4 +1,4 @@
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, EMAIL_GERAL } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
@@ -243,11 +243,11 @@ export default function AcessibilidadePage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <a
-                  href="mailto:geralajavp@gmail.com?subject=Acessibilidade%20Site%20AJAVP"
+                  href={`mailto:${EMAIL_GERAL}?subject=Acessibilidade%20Site%20AJAVP`}
                   className="motion-press inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-brand-green hover:bg-ajavp-green-light text-white font-bold text-xs transition-colors shadow-sm"
                 >
                   <span>✉️</span>
-                  <span>geralajavp@gmail.com</span>
+                  <span>{EMAIL_GERAL}</span>
                 </a>
                 <Link
                   href="/contactos"
