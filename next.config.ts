@@ -4,11 +4,11 @@ const isDev = process.env.NODE_ENV === "development";
 
 const cspHeader = `
   default-src 'self';
-  script-src 'self' 'unsafe-inline' ${isDev ? "'unsafe-eval'" : ""} https://challenges.cloudflare.com https://www.googletagmanager.com https://va.vercel-scripts.com;
+  script-src 'self' 'unsafe-inline' ${isDev ? "'unsafe-eval'" : ""} https://challenges.cloudflare.com https://www.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://va.vercel-scripts.com;
   style-src 'self' 'unsafe-inline';
-  img-src 'self' data: blob: https://mudgnaajtolytggksvvq.supabase.co https://*.supabase.co https://i.ytimg.com https://*.youtube.com https://www.googletagmanager.com https://*.google-analytics.com;
+  img-src 'self' data: blob: https://mudgnaajtolytggksvvq.supabase.co https://*.supabase.co https://i.ytimg.com https://*.youtube.com https://www.googletagmanager.com https://*.google-analytics.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.google.com https://www.google.pt;
   font-src 'self' data:;
-  connect-src 'self' https://mudgnaajtolytggksvvq.supabase.co wss://mudgnaajtolytggksvvq.supabase.co https://*.supabase.co https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://va.vercel-scripts.com https://vitals.vercel-insights.com;
+  connect-src 'self' https://mudgnaajtolytggksvvq.supabase.co wss://mudgnaajtolytggksvvq.supabase.co https://*.supabase.co https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://va.vercel-scripts.com https://vitals.vercel-insights.com;
   worker-src 'self' blob:;
   frame-src 'self' https://challenges.cloudflare.com https://www.youtube-nocookie.com https://www.youtube.com https://maps.google.com https://www.google.com https://www.googletagmanager.com;
   frame-ancestors 'none';

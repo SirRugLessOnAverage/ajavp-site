@@ -122,7 +122,10 @@ export default function RootLayout({
                 var consent = localStorage.getItem('ajavp_cookie_consent_v1');
                 if (consent === 'granted') {
                   gtag('consent', 'update', {
-                    'analytics_storage': 'granted'
+                    'analytics_storage': 'granted',
+                    'ad_storage': 'granted',
+                    'ad_user_data': 'granted',
+                    'ad_personalization': 'granted'
                   });
                 }
               } catch(e) {}
@@ -154,6 +157,24 @@ export default function RootLayout({
                 });
                 setTimeout(loadGtm, 3500);
               })(window,document,'script','dataLayer','GTM-WMFCGH89');
+            `,
+          }}
+        />
+
+        {/* Google Ads Tag (AW-16584859062) */}
+        <Script
+          id="google-ads-tag"
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=AW-16584859062"
+        />
+        <Script
+          id="google-ads-config"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('config', 'AW-16584859062');
             `,
           }}
         />
