@@ -210,40 +210,40 @@ export const FUTSAL_JORNADAS: FutsalJornada[] = [
         venueId: 'fajozes',
         venueName: 'Pavilhão de Fajozes',
         matches: [
-          { time: '08:45', category: 'Sub-13', homeTeam: 'Vilar do Pinheiro', awayTeam: 'Fajozes', isCompleted: false, isAjavp: true },
-          { time: '09:45', category: 'Sub-11', homeTeam: 'Vilar do Pinheiro', awayTeam: 'Árvore', isCompleted: false, isAjavp: true },
-          { time: '10:45', category: 'Sub-13', homeTeam: 'Bagunte', awayTeam: 'Árvore', isCompleted: false, isAjavp: false },
-          { time: '11:45', category: 'Sub-9', homeTeam: 'Fornelo', awayTeam: 'Árvore', isCompleted: false, isAjavp: false }
+          { time: '08:45', category: 'Sub-13', homeTeam: 'Vilar do Pinheiro', awayTeam: 'Fajozes', score: '0-10', isCompleted: true, isAjavp: true },
+          { time: '09:45', category: 'Sub-11', homeTeam: 'Vilar do Pinheiro', awayTeam: 'Árvore', score: '1-7', isCompleted: true, isAjavp: true },
+          { time: '10:45', category: 'Sub-13', homeTeam: 'Bagunte', awayTeam: 'Árvore', score: '7-2', isCompleted: true, isAjavp: false },
+          { time: '11:45', category: 'Sub-9', homeTeam: 'Fornelo', awayTeam: 'Árvore', score: '0-4', isCompleted: true, isAjavp: false }
         ]
       },
       {
         venueId: 'mindelo',
         venueName: 'Pavilhão de Mindelo',
         matches: [
-          { time: '08:45', category: 'Sub-13', homeTeam: 'Gião', awayTeam: 'Mosteiró', isCompleted: false, isAjavp: false },
-          { time: '09:45', category: 'Sub-9', homeTeam: 'Bagunte', awayTeam: 'Gião', isCompleted: false, isAjavp: false },
-          { time: '10:45', category: 'Sub-11', homeTeam: 'Tougues', awayTeam: 'Gião', isCompleted: false, isAjavp: false },
-          { time: '11:45', category: 'Sub-9', homeTeam: 'Tougues', awayTeam: 'Arcos', isCompleted: false, isAjavp: false },
-          { time: '14:30', category: 'Sub-16', homeTeam: 'Outeiro Maior', awayTeam: 'Gião', isCompleted: false, isAjavp: false },
-          { time: '15:30', category: 'Sub-16', homeTeam: 'Arcos', awayTeam: 'Junqueira', isCompleted: false, isAjavp: false }
+          { time: '08:45', category: 'Sub-13', homeTeam: 'Gião', awayTeam: 'Mosteiró', score: '3-0', isCompleted: true, isAjavp: false },
+          { time: '09:45', category: 'Sub-9', homeTeam: 'Bagunte', awayTeam: 'Gião', score: '10-4', isCompleted: true, isAjavp: false },
+          { time: '10:45', category: 'Sub-11', homeTeam: 'Tougues', awayTeam: 'Gião', score: '5-1', isCompleted: true, isAjavp: false },
+          { time: '11:45', category: 'Sub-9', homeTeam: 'Tougues', awayTeam: 'Arcos', score: '13-0', isCompleted: true, isAjavp: false },
+          { time: '14:30', category: 'Sub-16', homeTeam: 'Arcos', awayTeam: 'Junqueira', score: '1-3', isCompleted: true, isAjavp: false },
+          { time: '15:30', category: 'Sub-16', homeTeam: 'Outeiro Maior', awayTeam: 'Gião', score: '0-4', isCompleted: true, isAjavp: false }
         ]
       },
       {
         venueId: 'canidelo',
         venueName: 'Pavilhão de Canidelo',
         matches: [
-          { time: '09:00', category: 'Sub-13', homeTeam: 'Touguinha Touguinhó', awayTeam: 'Tougues', isCompleted: false, isAjavp: false },
-          { time: '10:00', category: 'Sub-9', homeTeam: 'Canidelo', awayTeam: 'Touguinha Touguinhó', isCompleted: false, isAjavp: false },
-          { time: '11:00', category: 'Sub-11', homeTeam: 'Fajozes', awayTeam: 'Touguinha Touguinhó', isCompleted: false, isAjavp: false }
+          { time: '09:00', category: 'Sub-13', homeTeam: 'Touguinha Touguinhó', awayTeam: 'Tougues', score: '1-4', isCompleted: true, isAjavp: false },
+          { time: '10:00', category: 'Sub-9', homeTeam: 'Canidelo', awayTeam: 'Touguinha Touguinhó', score: '5-1', isCompleted: true, isAjavp: false },
+          { time: '11:00', category: 'Sub-11', homeTeam: 'Fajozes', awayTeam: 'Touguinha Touguinhó', score: '7-1', isCompleted: true, isAjavp: false }
         ]
       },
       {
         venueId: 'modivas',
         venueName: 'Pavilhão de Modivas',
         matches: [
-          { time: '09:00', category: 'Sub-13', homeTeam: 'Junqueira', awayTeam: 'Arcos', isCompleted: false, isAjavp: false },
-          { time: '10:00', category: 'Sub-11', homeTeam: 'Fornelo', awayTeam: 'Junqueira', isCompleted: false, isAjavp: false },
-          { time: '11:00', category: 'Sub-9', homeTeam: 'Modivas', awayTeam: 'Junqueira', isCompleted: false, isAjavp: false }
+          { time: '09:00', category: 'Sub-13', homeTeam: 'Junqueira', awayTeam: 'Arcos', score: '0-0', isCompleted: true, isAjavp: false },
+          { time: '10:00', category: 'Sub-11', homeTeam: 'Fornelo', awayTeam: 'Junqueira', score: '10-2', isCompleted: true, isAjavp: false },
+          { time: '11:00', category: 'Sub-9', homeTeam: 'Modivas', awayTeam: 'Junqueira', score: '2-6', isCompleted: true, isAjavp: false }
         ]
       }
     ]
@@ -258,18 +258,18 @@ export const FUTSAL_JORNADAS: FutsalJornada[] = [
         venueId: 'canidelo',
         venueName: 'Pavilhão de Canidelo',
         matches: [
-          { time: '09:00', category: 'Sub-13', homeTeam: 'Árvore', awayTeam: 'Junqueira', isCompleted: false, isAjavp: false },
-          { time: '10:00', category: 'Sub-9', homeTeam: 'Junqueira', awayTeam: 'Vilar do Pinheiro', isCompleted: false, isAjavp: true },
-          { time: '11:00', category: 'Sub-11', homeTeam: 'Gião', awayTeam: 'Vilar do Pinheiro', isCompleted: false, isAjavp: true }
+          { time: '09:00', category: 'Sub-13', homeTeam: 'Árvore', awayTeam: 'Junqueira', isCompleted: false, isAjavp: false, notes: 'Adiado' },
+          { time: '10:00', category: 'Sub-9', homeTeam: 'Junqueira', awayTeam: 'Vilar do Pinheiro', isCompleted: false, isAjavp: true, notes: 'Adiado' },
+          { time: '11:00', category: 'Sub-11', homeTeam: 'Gião', awayTeam: 'Vilar do Pinheiro', isCompleted: false, isAjavp: true, notes: 'Adiado' }
         ]
       },
       {
         venueId: 'fajozes',
         venueName: 'Pavilhão de Fajozes',
         matches: [
-          { time: '09:00', category: 'Sub-13', homeTeam: 'Mosteiró', awayTeam: 'Vilar do Pinheiro', isCompleted: false, isAjavp: true },
-          { time: '10:00', category: 'Sub-13', homeTeam: 'Fajozes', awayTeam: 'Bagunte', isCompleted: false, isAjavp: false },
-          { time: '11:00', category: 'Sub-11', homeTeam: 'Junqueira', awayTeam: 'Fajozes', isCompleted: false, isAjavp: false }
+          { time: '09:00', category: 'Sub-13', homeTeam: 'Mosteiró', awayTeam: 'Vilar do Pinheiro', score: '8-2', isCompleted: true, isAjavp: true },
+          { time: '10:00', category: 'Sub-13', homeTeam: 'Fajozes', awayTeam: 'Bagunte', score: '1-5', isCompleted: true, isAjavp: false },
+          { time: '11:00', category: 'Sub-11', homeTeam: 'Junqueira', awayTeam: 'Fajozes', score: '1-12', isCompleted: true, isAjavp: false }
         ]
       },
       {
@@ -277,32 +277,32 @@ export const FUTSAL_JORNADAS: FutsalJornada[] = [
         venueName: 'Pavilhão de Caxinas (Campo 2)',
         subLocation: 'Campo 2 (Sub-7)',
         matches: [
-          { time: '09:30', category: 'Sub-7', homeTeam: 'Fornelo', awayTeam: 'Tougues', isCompleted: false, isAjavp: false },
-          { time: '10:15', category: 'Sub-7', homeTeam: 'Aveleda', awayTeam: 'Bagunte', isCompleted: false, isAjavp: false },
-          { time: '11:00', category: 'Sub-7', homeTeam: 'Tougues', awayTeam: 'Vilar do Pinheiro', isCompleted: false, isAjavp: true },
-          { time: '11:45', category: 'Sub-7', homeTeam: 'Gião', awayTeam: 'Aveleda', isCompleted: false, isAjavp: false }
+          { time: '09:30', category: 'Sub-7', homeTeam: 'Fornelo', awayTeam: 'Tougues', score: '1-9', isCompleted: true, isAjavp: false },
+          { time: '10:15', category: 'Sub-7', homeTeam: 'Aveleda', awayTeam: 'Bagunte', score: '1-11', isCompleted: true, isAjavp: false },
+          { time: '11:00', category: 'Sub-7', homeTeam: 'Tougues', awayTeam: 'Vilar do Pinheiro', score: '8-6', isCompleted: true, isAjavp: true },
+          { time: '11:45', category: 'Sub-7', homeTeam: 'Gião', awayTeam: 'Aveleda', score: '3-0', isCompleted: true, isAjavp: false }
         ]
       },
       {
         venueId: 'mindelo',
         venueName: 'Pavilhão de Mindelo',
         matches: [
-          { time: '08:45', category: 'Sub-13', homeTeam: 'Tougues', awayTeam: 'Gião', isCompleted: false, isAjavp: false },
-          { time: '09:45', category: 'Sub-9', homeTeam: 'Gião', awayTeam: 'Tougues', isCompleted: false, isAjavp: false },
-          { time: '10:45', category: 'Sub-11', homeTeam: 'Bagunte', awayTeam: 'Tougues', isCompleted: false, isAjavp: false },
-          { time: '11:45', category: 'Sub-9', homeTeam: 'Touguinha Touguinhó', awayTeam: 'Bagunte', isCompleted: false, isAjavp: false },
-          { time: '14:30', category: 'Sub-16', homeTeam: 'Junqueira', awayTeam: 'Outeiro Maior', isCompleted: false, isAjavp: false },
-          { time: '15:30', category: 'Sub-16', homeTeam: 'Árvore', awayTeam: 'Bagunte', isCompleted: false, isAjavp: false }
+          { time: '08:45', category: 'Sub-13', homeTeam: 'Tougues', awayTeam: 'Gião', score: '2-1', isCompleted: true, isAjavp: false },
+          { time: '09:45', category: 'Sub-9', homeTeam: 'Gião', awayTeam: 'Tougues', score: '0-16', isCompleted: true, isAjavp: false },
+          { time: '10:45', category: 'Sub-11', homeTeam: 'Bagunte', awayTeam: 'Tougues', score: '11-0', isCompleted: true, isAjavp: false },
+          { time: '11:45', category: 'Sub-9', homeTeam: 'Touguinha Touguinhó', awayTeam: 'Bagunte', score: '2-4', isCompleted: true, isAjavp: false },
+          { time: '14:30', category: 'Sub-16', homeTeam: 'Junqueira', awayTeam: 'Outeiro Maior', score: '3-0', isCompleted: true, isAjavp: false },
+          { time: '15:30', category: 'Sub-16', homeTeam: 'Árvore', awayTeam: 'Bagunte', score: '1-4', isCompleted: true, isAjavp: false }
         ]
       },
       {
         venueId: 'modivas',
         venueName: 'Pavilhão de Modivas',
         matches: [
-          { time: '08:45', category: 'Sub-13', homeTeam: 'Arcos', awayTeam: 'Touguinha Touguinhó', isCompleted: false, isAjavp: false },
-          { time: '09:45', category: 'Sub-9', homeTeam: 'Arcos', awayTeam: 'Fornelo', isCompleted: false, isAjavp: false },
-          { time: '10:45', category: 'Sub-11', homeTeam: 'Árvore', awayTeam: 'Fornelo', isCompleted: false, isAjavp: false },
-          { time: '11:45', category: 'Sub-9', homeTeam: 'Árvore', awayTeam: 'Modivas', isCompleted: false, isAjavp: false }
+          { time: '08:45', category: 'Sub-13', homeTeam: 'Arcos', awayTeam: 'Touguinha Touguinhó', score: '5-3', isCompleted: true, isAjavp: false },
+          { time: '09:45', category: 'Sub-9', homeTeam: 'Arcos', awayTeam: 'Fornelo', score: '4-1', isCompleted: true, isAjavp: false },
+          { time: '10:45', category: 'Sub-11', homeTeam: 'Árvore', awayTeam: 'Fornelo', isCompleted: false, isAjavp: false, notes: 'Adiado' },
+          { time: '11:45', category: 'Sub-9', homeTeam: 'Árvore', awayTeam: 'Modivas', isCompleted: false, isAjavp: false, notes: 'Adiado' }
         ]
       }
     ]

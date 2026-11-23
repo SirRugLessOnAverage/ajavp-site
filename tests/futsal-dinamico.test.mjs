@@ -62,19 +62,19 @@ test('Calendário Futsal J5 (2026-11-21): deve conter os 4 escalões da AJAVP in
 
   assert.ok(content.includes("date: '2026-11-21'"), '5ª Jornada deve ter data 2026-11-21');
   assert.ok(
-    content.includes("{ time: '11:00', category: 'Sub-7', homeTeam: 'Tougues', awayTeam: 'Vilar do Pinheiro', isCompleted: false, isAjavp: true }"),
-    '5ª Jornada deve incluir Sub-7 vs Tougues às 11:00 em Caxinas com isAjavp: true'
+    content.includes("{ time: '11:00', category: 'Sub-7', homeTeam: 'Tougues', awayTeam: 'Vilar do Pinheiro', score: '8-6', isCompleted: true, isAjavp: true }"),
+    '5ª Jornada deve incluir Sub-7 vs Tougues às 11:00 em Caxinas com resultado 8-6'
   );
   assert.ok(
-    content.includes("{ time: '10:00', category: 'Sub-9', homeTeam: 'Junqueira', awayTeam: 'Vilar do Pinheiro', isCompleted: false, isAjavp: true }"),
-    '5ª Jornada deve incluir Sub-9 vs Junqueira às 10:00'
+    content.includes("{ time: '10:00', category: 'Sub-9', homeTeam: 'Junqueira', awayTeam: 'Vilar do Pinheiro', isCompleted: false, isAjavp: true, notes: 'Adiado' }"),
+    '5ª Jornada deve incluir Sub-9 vs Junqueira às 10:00 marcado como Adiado'
   );
   assert.ok(
-    content.includes("{ time: '11:00', category: 'Sub-11', homeTeam: 'Gião', awayTeam: 'Vilar do Pinheiro', isCompleted: false, isAjavp: true }"),
-    '5ª Jornada deve incluir Sub-11 vs Gião às 11:00'
+    content.includes("{ time: '11:00', category: 'Sub-11', homeTeam: 'Gião', awayTeam: 'Vilar do Pinheiro', isCompleted: false, isAjavp: true, notes: 'Adiado' }"),
+    '5ª Jornada deve incluir Sub-11 vs Gião às 11:00 marcado como Adiado'
   );
   assert.ok(
-    content.includes("{ time: '09:00', category: 'Sub-13', homeTeam: 'Mosteiró', awayTeam: 'Vilar do Pinheiro', isCompleted: false, isAjavp: true }"),
-    '5ª Jornada deve incluir Sub-13 vs Mosteiró às 09:00'
+    content.includes("{ time: '09:00', category: 'Sub-13', homeTeam: 'Mosteiró', awayTeam: 'Vilar do Pinheiro', score: '8-2', isCompleted: true, isAjavp: true }"),
+    '5ª Jornada deve incluir Sub-13 vs Mosteiró às 09:00 com resultado 8-2'
   );
 });

@@ -411,9 +411,15 @@ export function FutsalJornadasView({
                         </div>
 
                         {/* Placar */}
-                        <div className="px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-white/10 font-mono font-black text-sm sm:text-base text-slate-900 dark:text-white shrink-0 tracking-wider shadow-xs">
-                          {jogo.golosCasa} – {jogo.golosFora}
-                        </div>
+                        {jogo.adiado ? (
+                          <div className="px-3 py-1.5 rounded-xl bg-amber-100 dark:bg-amber-500/20 border border-amber-300 dark:border-amber-500/40 font-black text-xs uppercase tracking-wider text-amber-800 dark:text-amber-300 shrink-0 shadow-xs">
+                            Adiado
+                          </div>
+                        ) : (
+                          <div className="px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-white/10 font-mono font-black text-sm sm:text-base text-slate-900 dark:text-white shrink-0 tracking-wider shadow-xs">
+                            {jogo.golosCasa} – {jogo.golosFora}
+                          </div>
+                        )}
 
                         {/* Equipa Fora Clicável */}
                         <div className="flex-1 text-left">

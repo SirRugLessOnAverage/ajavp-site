@@ -267,6 +267,7 @@ export function calcularClassificacoesDinamicas(
 
       for (const p of j.pavilhoes || []) {
         for (const jogo of p.jogos || []) {
+          if (jogo.adiado) continue;
           if (normalizarEscalaoJogo(jogo.escalao, p.nome) !== escNome) continue;
 
           const sCasa = registarEquipa(jogo.casa);

@@ -206,7 +206,7 @@ export function obterJogosDaEquipa(
           const rawGolosCasa = Number(jogo.golosCasa ?? 0);
           const rawGolosFora = Number(jogo.golosFora ?? 0);
           const temGolos = rawGolosCasa > 0 || rawGolosFora > 0;
-          const isCompleted = jornadaConcluida || temGolos;
+          const isCompleted = !jogo.adiado && (jornadaConcluida || temGolos);
 
           const golosCasa = isCompleted ? rawGolosCasa : null;
           const golosFora = isCompleted ? rawGolosFora : null;

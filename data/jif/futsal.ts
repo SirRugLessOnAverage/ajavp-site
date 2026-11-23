@@ -22,6 +22,7 @@ export interface FutsalJogo {
   golosCasa: number;
   golosFora: number;
   isAjavp?: boolean;
+  adiado?: boolean;
 }
 
 export interface FutsalPavilhao {

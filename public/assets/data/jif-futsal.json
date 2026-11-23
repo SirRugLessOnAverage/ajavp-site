@@ -160,74 +160,73 @@
       "atletas": [
         {
           "pos": 1,
-          "nome": "Cid Ferreira",
-          "equipa": "Vilar do Pinheiro (AJAVP)",
-          "golos": 12,
-          "isAjavp": true,
-          "coroa": true
+          "nome": "João Marques",
+          "equipa": "Bagunte",
+          "golos": 17,
+          "isAjavp": false
         },
         {
           "pos": 2,
+          "nome": "João Silva",
+          "equipa": "Tougues",
+          "golos": 14,
+          "isAjavp": false
+        },
+        {
+          "pos": 3,
+          "nome": "Diana Tavares",
+          "equipa": "Tougues",
+          "golos": 14,
+          "isAjavp": false
+        },
+        {
+          "pos": 4,
+          "nome": "Cid Ferreira",
+          "equipa": "Vilar do Pinheiro (AJAVP)",
+          "golos": 12,
+          "isAjavp": true
+        },
+        {
+          "pos": 5,
+          "nome": "André Silva",
+          "equipa": "Canidelo",
+          "golos": 9,
+          "isAjavp": false
+        },
+        {
+          "pos": 6,
+          "nome": "Santiago Campos",
+          "equipa": "Gião",
+          "golos": 9,
+          "isAjavp": false
+        },
+        {
+          "pos": 7,
           "nome": "Miguel Magalhães",
           "equipa": "Vilar do Pinheiro (AJAVP)",
           "golos": 8,
           "isAjavp": true
         },
         {
-          "pos": 3,
-          "nome": "André Silva",
-          "equipa": "Canidelo",
-          "golos": 7,
+          "pos": 8,
+          "nome": "Henrique Jesus",
+          "equipa": "Bagunte",
+          "golos": 8,
           "isAjavp": false
         },
         {
-          "pos": 4,
+          "pos": 9,
           "nome": "Rodrigo Silva",
           "equipa": "Árvore",
           "golos": 7,
           "isAjavp": false
         },
         {
-          "pos": 5,
-          "nome": "Santiago Campos",
-          "equipa": "Gião",
-          "golos": 7,
-          "isAjavp": false
-        },
-        {
-          "pos": 6,
-          "nome": "Henrique Jesus",
-          "equipa": "Bagunte",
-          "golos": 7,
-          "isAjavp": false
-        },
-        {
-          "pos": 7,
+          "pos": 10,
           "nome": "Kevin Ferreira",
           "equipa": "Vilar do Pinheiro (AJAVP)",
           "golos": 6,
           "isAjavp": true
-        },
-        {
-          "pos": 8,
-          "nome": "João Marques",
-          "equipa": "Bagunte",
-          "golos": 6,
-          "isAjavp": false
-        },
-        {
-          "pos": 9,
-          "nome": "Diana Tavares",
-          "equipa": "Tougues",
-          "golos": 4,
-          "isAjavp": false
-        },
-        {
-          "pos": 10,
-          "nome": "Tomás Silva",
-          "equipa": "Gião",
-          "golos": 4,
-          "isAjavp": false
         }
       ]
     },
@@ -236,73 +235,73 @@
       "atletas": [
         {
           "pos": 1,
-          "nome": "Rafael Campos",
-          "equipa": "Tougues",
-          "golos": 9,
-          "isAjavp": false
+          "nome": "Lourenço Duarte",
+          "equipa": "Vilar do Pinheiro (AJAVP)",
+          "golos": 10,
+          "isAjavp": true,
+          "coroa": true
         },
         {
           "pos": 2,
-          "nome": "Lourenço Duarte",
-          "equipa": "Vilar do Pinheiro (AJAVP)",
-          "golos": 9,
-          "isAjavp": true,
-          "medalha": "🥈"
+          "nome": "Rafael Campos",
+          "equipa": "Tougues",
+          "golos": 10,
+          "isAjavp": false
         },
         {
           "pos": 3,
+          "nome": "Miguel Ramos",
+          "equipa": "Fornelo",
+          "golos": 8,
+          "isAjavp": false
+        },
+        {
+          "pos": 4,
+          "nome": "Afonso Fradique",
+          "equipa": "Bagunte",
+          "golos": 8,
+          "isAjavp": false
+        },
+        {
+          "pos": 5,
           "nome": "Daniel Cruz",
+          "equipa": "Bagunte",
+          "golos": 7,
+          "isAjavp": false
+        },
+        {
+          "pos": 6,
+          "nome": "Rafael Moreira",
+          "equipa": "Fornelo",
+          "golos": 6,
+          "isAjavp": false
+        },
+        {
+          "pos": 7,
+          "nome": "Afonso Campos",
           "equipa": "Bagunte",
           "golos": 6,
           "isAjavp": false
         },
         {
-          "pos": 4,
-          "nome": "Miguel Ramos",
-          "equipa": "Fornelo",
-          "golos": 5,
-          "isAjavp": false
-        },
-        {
-          "pos": 5,
-          "nome": "Leandro Costa",
-          "equipa": "Vilar do Pinheiro (AJAVP)",
-          "golos": 5,
-          "isAjavp": true
-        },
-        {
-          "pos": 6,
-          "nome": "Octávio Rosa",
-          "equipa": "Junqueira",
-          "golos": 4,
-          "isAjavp": false
-        },
-        {
-          "pos": 7,
-          "nome": "Rafael Moreira",
-          "equipa": "Fornelo",
-          "golos": 3,
-          "isAjavp": false
-        },
-        {
           "pos": 8,
-          "nome": "João Fernandes",
-          "equipa": "Árvore",
-          "golos": 3,
+          "nome": "João Rodrigues",
+          "equipa": "Fajozes",
+          "golos": 5,
           "isAjavp": false
         },
         {
           "pos": 9,
-          "nome": "Rafael Praxedes",
-          "equipa": "Touguinha Touguinhó",
-          "golos": 3,
+          "nome": "Martim Santos",
+          "equipa": "Fajozes",
+          "golos": 5,
           "isAjavp": false
         },
         {
           "pos": 10,
-          "nome": "Diogo Moura",
+          "nome": "Leandro Costa",
           "equipa": "Vilar do Pinheiro (AJAVP)",
-          "golos": 3,
+          "golos": 5,
           "isAjavp": true
         }
       ]
@@ -314,70 +313,70 @@
           "pos": 1,
           "nome": "Duarte Fernandes",
           "equipa": "Bagunte",
-          "golos": 9,
+          "golos": 16,
           "isAjavp": false
         },
         {
           "pos": 2,
-          "nome": "Diogo Moreira",
-          "equipa": "Arcos",
-          "golos": 6,
+          "nome": "Rafael Costa",
+          "equipa": "Mosteiró",
+          "golos": 10,
           "isAjavp": false
         },
         {
           "pos": 3,
-          "nome": "Rafael Costa",
-          "equipa": "Mosteiró",
-          "golos": 6,
+          "nome": "Diogo Moreira",
+          "equipa": "Arcos",
+          "golos": 7,
           "isAjavp": false
         },
         {
           "pos": 4,
-          "nome": "João Silva",
-          "equipa": "Árvore",
-          "golos": 5,
+          "nome": "Afonso Sá",
+          "equipa": "Bagunte",
+          "golos": 7,
           "isAjavp": false
         },
         {
           "pos": 5,
-          "nome": "Gonçalo Faria",
+          "nome": "João Silva",
           "equipa": "Árvore",
-          "golos": 5,
+          "golos": 6,
           "isAjavp": false
         },
         {
           "pos": 6,
-          "nome": "Afonso Sá",
-          "equipa": "Bagunte",
-          "golos": 5,
+          "nome": "Gonçalo Faria",
+          "equipa": "Árvore",
+          "golos": 6,
           "isAjavp": false
         },
         {
           "pos": 7,
-          "nome": "Tiago Silva",
-          "equipa": "Bagunte",
-          "golos": 5,
+          "nome": "Edgar Pentieiros",
+          "equipa": "Fajozes",
+          "golos": 6,
           "isAjavp": false
         },
         {
           "pos": 8,
-          "nome": "Saulo Silva",
-          "equipa": "Mosteiró",
-          "golos": 3,
+          "nome": "Tiago Silva",
+          "equipa": "Bagunte",
+          "golos": 6,
           "isAjavp": false
         },
         {
           "pos": 9,
-          "nome": "Paulo Vinhas",
-          "equipa": "Árvore",
-          "golos": 3,
+          "nome": "Dinis Barros",
+          "equipa": "Arcos",
+          "golos": 5,
           "isAjavp": false
         },
         {
           "pos": 10,
-          "nome": "Pedro Lima",
-          "equipa": "Junqueira",
-          "golos": 3,
+          "nome": "Rodrigo Almeida",
+          "equipa": "Touguinha Touguinhó",
+          "golos": 5,
           "isAjavp": false
         }
       ]
@@ -387,8 +386,8 @@
       "atletas": [
         {
           "pos": 1,
-          "nome": "Afonso Costa",
-          "equipa": "Outeiro Maior",
+          "nome": "Martim Marques",
+          "equipa": "Bagunte",
           "golos": 6,
           "isAjavp": false
         },
@@ -401,58 +400,58 @@
         },
         {
           "pos": 3,
-          "nome": "Martim Marques",
-          "equipa": "Bagunte",
-          "golos": 5,
+          "nome": "Afonso Costa",
+          "equipa": "Outeiro Maior",
+          "golos": 6,
           "isAjavp": false
         },
         {
           "pos": 4,
-          "nome": "Leandro Gomes",
-          "equipa": "Arcos",
-          "golos": 3,
-          "isAjavp": false
-        },
-        {
-          "pos": 5,
           "nome": "Rafael Barbosa",
           "equipa": "Bagunte",
           "golos": 3,
           "isAjavp": false
         },
         {
-          "pos": 6,
+          "pos": 5,
           "nome": "Francisco Ramos",
           "equipa": "Bagunte",
           "golos": 3,
           "isAjavp": false
         },
         {
+          "pos": 6,
+          "nome": "Leandro Gomes",
+          "equipa": "Arcos",
+          "golos": 3,
+          "isAjavp": false
+        },
+        {
           "pos": 7,
-          "nome": "Rodrigo Fonseca",
-          "equipa": "Junqueira",
-          "golos": 2,
+          "nome": "Pedro Maia",
+          "equipa": "Gião",
+          "golos": 3,
           "isAjavp": false
         },
         {
           "pos": 8,
-          "nome": "Gabriel Sousa",
-          "equipa": "Bagunte",
-          "golos": 2,
+          "nome": "André Silva",
+          "equipa": "Junqueira",
+          "golos": 3,
           "isAjavp": false
         },
         {
           "pos": 9,
-          "nome": "Bruno Areias",
-          "equipa": "Gião",
-          "golos": 1,
+          "nome": "Rodrigo Fonseca",
+          "equipa": "Junqueira",
+          "golos": 3,
           "isAjavp": false
         },
         {
           "pos": 10,
-          "nome": "Martim Nogueira",
-          "equipa": "Árvore",
-          "golos": 1,
+          "nome": "Gabriel Sousa",
+          "equipa": "Bagunte",
+          "golos": 3,
           "isAjavp": false
         }
       ]
@@ -1062,9 +1061,366 @@
   },
   "jornadas": [
     {
+      "numero": 6,
+      "data": "28 de Novembro de 2026",
+      "estado": "Agendada",
+      "pavilhoes": [
+        {
+          "nome": "Pavilhão de Fajozes (Jogos AJAVP)",
+          "cor": "amber",
+          "jogos": [
+            {
+              "escalao": "Sub-11",
+              "hora": "09:00",
+              "casa": "Vilar do Pinheiro",
+              "fora": "Tougues",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": true
+            },
+            {
+              "escalao": "Sub-9",
+              "hora": "10:00",
+              "casa": "Tougues",
+              "fora": "Junqueira",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-9",
+              "hora": "11:00",
+              "casa": "Fornelo",
+              "fora": "Gião",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": false
+            }
+          ]
+        },
+        {
+          "nome": "Pavilhão de Mindelo",
+          "cor": "emerald",
+          "jogos": [
+            {
+              "escalao": "Sub-13",
+              "hora": "09:00",
+              "casa": "Gião",
+              "fora": "Mosteiró",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-13",
+              "hora": "10:00",
+              "casa": "Arcos",
+              "fora": "Árvore",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-9",
+              "hora": "11:00",
+              "casa": "Modivas",
+              "fora": "Árvore",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-16",
+              "hora": "14:30",
+              "casa": "Arcos",
+              "fora": "Árvore",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-16",
+              "hora": "15:30",
+              "casa": "Bagunte",
+              "fora": "Gião",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": 5,
+      "data": "21 de Novembro de 2026",
+      "estado": "Concluída",
+      "pavilhoes": [
+        {
+          "nome": "Pavilhão de Canidelo (Jogos Adiados)",
+          "cor": "blue",
+          "jogos": [
+            {
+              "escalao": "Sub-13",
+              "hora": "09:00",
+              "casa": "Árvore",
+              "fora": "Junqueira",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": false,
+              "adiado": true
+            },
+            {
+              "escalao": "Sub-9",
+              "hora": "10:00",
+              "casa": "Junqueira",
+              "fora": "Vilar do Pinheiro",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": true,
+              "adiado": true
+            },
+            {
+              "escalao": "Sub-11",
+              "hora": "11:00",
+              "casa": "Gião",
+              "fora": "Vilar do Pinheiro",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": true,
+              "adiado": true
+            }
+          ]
+        },
+        {
+          "nome": "Pavilhão de Fajozes",
+          "cor": "amber",
+          "jogos": [
+            {
+              "escalao": "Sub-13",
+              "hora": "09:00",
+              "casa": "Mosteiró",
+              "fora": "Vilar do Pinheiro",
+              "golosCasa": 8,
+              "golosFora": 2,
+              "isAjavp": true
+            },
+            {
+              "escalao": "Sub-13",
+              "hora": "10:00",
+              "casa": "Fajozes",
+              "fora": "Bagunte",
+              "golosCasa": 1,
+              "golosFora": 5,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-11",
+              "hora": "11:00",
+              "casa": "Junqueira",
+              "fora": "Fajozes",
+              "golosCasa": 1,
+              "golosFora": 12,
+              "isAjavp": false
+            }
+          ]
+        },
+        {
+          "nome": "Pavilhão de Caxinas (Sub-7 Masculinos)",
+          "cor": "orange",
+          "jogos": [
+            {
+              "escalao": "Sub-7",
+              "campo": "Campo 1 • 2ª Jorn",
+              "hora": "09:30",
+              "casa": "Árvore",
+              "fora": "Junqueira",
+              "golosCasa": 6,
+              "golosFora": 5,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-7",
+              "campo": "Campo 2 • 2ª Jorn",
+              "hora": "09:30",
+              "casa": "Fornelo",
+              "fora": "Tougues",
+              "golosCasa": 1,
+              "golosFora": 9,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-7",
+              "campo": "Campo 1 • 3ª Jorn",
+              "hora": "10:15",
+              "casa": "Mosteiró",
+              "fora": "Canidelo",
+              "golosCasa": 0,
+              "golosFora": 5,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-7",
+              "campo": "Campo 2 • 3ª Jorn",
+              "hora": "10:15",
+              "casa": "Aveleda",
+              "fora": "Bagunte",
+              "golosCasa": 1,
+              "golosFora": 11,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-7",
+              "campo": "Campo 1 • 3ª Jorn",
+              "hora": "11:00",
+              "casa": "Canidelo",
+              "fora": "Fornelo",
+              "golosCasa": 1,
+              "golosFora": 1,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-7",
+              "campo": "Campo 2 • 3ª Jorn",
+              "hora": "11:00",
+              "casa": "Tougues",
+              "fora": "Vilar do Pinheiro",
+              "golosCasa": 8,
+              "golosFora": 6,
+              "isAjavp": true
+            },
+            {
+              "escalao": "Sub-7",
+              "campo": "Campo 1 • 3ª Jorn",
+              "hora": "11:45",
+              "casa": "Modivas",
+              "fora": "Mosteiró",
+              "golosCasa": 1,
+              "golosFora": 2,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-7",
+              "campo": "Campo 2 • 4ª Jorn",
+              "hora": "11:45",
+              "casa": "Gião",
+              "fora": "Aveleda",
+              "golosCasa": 3,
+              "golosFora": 0,
+              "isAjavp": false
+            }
+          ]
+        },
+        {
+          "nome": "Pavilhão de Mindelo",
+          "cor": "emerald",
+          "jogos": [
+            {
+              "escalao": "Sub-13",
+              "hora": "08:45",
+              "casa": "Tougues",
+              "fora": "Gião",
+              "golosCasa": 2,
+              "golosFora": 1,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-9",
+              "hora": "09:45",
+              "casa": "Gião",
+              "fora": "Tougues",
+              "golosCasa": 0,
+              "golosFora": 16,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-11",
+              "hora": "10:45",
+              "casa": "Bagunte",
+              "fora": "Tougues",
+              "golosCasa": 11,
+              "golosFora": 0,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-9",
+              "hora": "11:45",
+              "casa": "Touguinha Touguinhó",
+              "fora": "Bagunte",
+              "golosCasa": 2,
+              "golosFora": 4,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-16",
+              "hora": "14:30",
+              "casa": "Junqueira",
+              "fora": "Outeiro Maior",
+              "golosCasa": 3,
+              "golosFora": 0,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-16",
+              "hora": "15:30",
+              "casa": "Árvore",
+              "fora": "Bagunte",
+              "golosCasa": 1,
+              "golosFora": 4,
+              "isAjavp": false
+            }
+          ]
+        },
+        {
+          "nome": "Pavilhão de Modivas",
+          "cor": "purple",
+          "jogos": [
+            {
+              "escalao": "Sub-13",
+              "hora": "08:45",
+              "casa": "Arcos",
+              "fora": "Touguinha Touguinhó",
+              "golosCasa": 5,
+              "golosFora": 3,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-9",
+              "hora": "09:45",
+              "casa": "Arcos",
+              "fora": "Fornelo",
+              "golosCasa": 4,
+              "golosFora": 1,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-11",
+              "hora": "10:45",
+              "casa": "Árvore",
+              "fora": "Fornelo",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": false,
+              "adiado": true
+            },
+            {
+              "escalao": "Sub-9",
+              "hora": "11:45",
+              "casa": "Árvore",
+              "fora": "Modivas",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": false,
+              "adiado": true
+            }
+          ]
+        }
+      ]
+    },
+    {
       "numero": 4,
       "data": "14 de Novembro de 2026",
-      "estado": "Agendada",
+      "estado": "Concluída",
       "pavilhoes": [
         {
           "nome": "Pavilhão de Fajozes (Jogos AJAVP)",
@@ -1076,7 +1432,7 @@
               "casa": "Vilar do Pinheiro",
               "fora": "Fajozes",
               "golosCasa": 0,
-              "golosFora": 0,
+              "golosFora": 10,
               "isAjavp": true
             },
             {
@@ -1084,8 +1440,8 @@
               "hora": "09:45",
               "casa": "Vilar do Pinheiro",
               "fora": "Árvore",
-              "golosCasa": 0,
-              "golosFora": 0,
+              "golosCasa": 1,
+              "golosFora": 7,
               "isAjavp": true
             },
             {
@@ -1093,8 +1449,8 @@
               "hora": "10:45",
               "casa": "Bagunte",
               "fora": "Árvore",
-              "golosCasa": 0,
-              "golosFora": 0,
+              "golosCasa": 7,
+              "golosFora": 2,
               "isAjavp": false
             },
             {
@@ -1103,7 +1459,7 @@
               "casa": "Fornelo",
               "fora": "Árvore",
               "golosCasa": 0,
-              "golosFora": 0,
+              "golosFora": 4,
               "isAjavp": false
             }
           ]
@@ -1117,7 +1473,7 @@
               "hora": "08:45",
               "casa": "Gião",
               "fora": "Mosteiró",
-              "golosCasa": 0,
+              "golosCasa": 3,
               "golosFora": 0,
               "isAjavp": false
             },
@@ -1126,8 +1482,8 @@
               "hora": "09:45",
               "casa": "Bagunte",
               "fora": "Gião",
-              "golosCasa": 0,
-              "golosFora": 0,
+              "golosCasa": 10,
+              "golosFora": 4,
               "isAjavp": false
             },
             {
@@ -1135,8 +1491,8 @@
               "hora": "10:45",
               "casa": "Tougues",
               "fora": "Gião",
-              "golosCasa": 0,
-              "golosFora": 0,
+              "golosCasa": 5,
+              "golosFora": 1,
               "isAjavp": false
             },
             {
@@ -1144,7 +1500,7 @@
               "hora": "11:45",
               "casa": "Tougues",
               "fora": "Arcos",
-              "golosCasa": 0,
+              "golosCasa": 13,
               "golosFora": 0,
               "isAjavp": false
             },
@@ -1153,8 +1509,8 @@
               "hora": "14:30",
               "casa": "Arcos",
               "fora": "Junqueira",
-              "golosCasa": 0,
-              "golosFora": 0,
+              "golosCasa": 1,
+              "golosFora": 3,
               "isAjavp": false
             },
             {
@@ -1163,7 +1519,7 @@
               "casa": "Outeiro Maior",
               "fora": "Gião",
               "golosCasa": 0,
-              "golosFora": 0,
+              "golosFora": 4,
               "isAjavp": false
             }
           ]
@@ -1177,8 +1533,8 @@
               "hora": "09:00",
               "casa": "Touguinha Touguinhó",
               "fora": "Tougues",
-              "golosCasa": 0,
-              "golosFora": 0,
+              "golosCasa": 1,
+              "golosFora": 4,
               "isAjavp": false
             },
             {
@@ -1186,8 +1542,8 @@
               "hora": "10:00",
               "casa": "Canidelo",
               "fora": "Touguinha Touguinhó",
-              "golosCasa": 0,
-              "golosFora": 0,
+              "golosCasa": 5,
+              "golosFora": 1,
               "isAjavp": false
             },
             {
@@ -1195,8 +1551,8 @@
               "hora": "11:00",
               "casa": "Fajozes",
               "fora": "Touguinha Touguinhó",
-              "golosCasa": 0,
-              "golosFora": 0,
+              "golosCasa": 7,
+              "golosFora": 1,
               "isAjavp": false
             }
           ]
@@ -1219,8 +1575,8 @@
               "hora": "10:00",
               "casa": "Fornelo",
               "fora": "Junqueira",
-              "golosCasa": 0,
-              "golosFora": 0,
+              "golosCasa": 10,
+              "golosFora": 2,
               "isAjavp": false
             },
             {
@@ -1228,8 +1584,8 @@
               "hora": "11:00",
               "casa": "Modivas",
               "fora": "Junqueira",
-              "golosCasa": 0,
-              "golosFora": 0,
+              "golosCasa": 2,
+              "golosFora": 6,
               "isAjavp": false
             }
           ]

@@ -10,6 +10,22 @@ interface NoticiasSectionProps {
 
 export const FALLBACK_NOTICIAS: SiteNoticia[] = [
   {
+    id: "fallback-n-canidelo-adiado",
+    slug: "adiamento-jogos-canidelo-5a-jornada-futsal-jif",
+    titulo: "Jogos no Pavilhão de Canidelo Adiados na 5.ª Jornada de Futsal dos XL JIF",
+    resumo:
+      "Os três encontros agendados para o Pavilhão de Canidelo a 21 de novembro — incluindo os jogos dos Sub-9 e Sub-11 da AJAVP — foram adiados para nova data a anunciar. Sub-13 e Sub-7 entraram em campo em Fajozes e Caxinas.",
+    conteudo_html: "",
+    capa_url: "/assets/images/galeria/Sub-9e11.webp",
+    categoria: "Futsal • JIF",
+    autor_nome: "Direção Desportiva AJAVP",
+    destaque: true,
+    publicado: true,
+    publicado_em: "2026-11-23T15:20:00Z",
+    created_at: "2026-11-23T15:20:00Z",
+    updated_at: "2026-11-23T15:20:00Z",
+  },
+  {
     id: "fallback-n0",
     slug: "vitoria-historica-1o-encontro-tenis-de-mesa-xl-jif",
     titulo: "AJAVP Campeã do 1.º Encontro de Ténis de Mesa dos XL JIF com 9 Pódios e 54 Pontos",
