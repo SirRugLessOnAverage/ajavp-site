@@ -95,6 +95,8 @@ function construirJornadasBase(todayStr: string = obterDataHojePortugal()): Futs
           golosCasa,
           golosFora,
           isAjavp: Boolean(m.isAjavp),
+          adiado: Boolean(m.notes && m.notes.toLowerCase().includes('adiado')),
+          nota: m.notes,
         };
       }),
     })),
@@ -149,7 +151,7 @@ export function consolidarTodasJornadas(
         if (alvo) {
           alvo.golosCasa = Number(jogo.golosCasa ?? 0);
           alvo.golosFora = Number(jogo.golosFora ?? 0);
-          if (jogo.hora) alvo.hora = jogo.hora;
+          if (jogo.hora && !alvo.hora) alvo.hora = jogo.hora;
           if (escalaoNorm) alvo.escalao = escalaoNorm;
           if (jogo.campo) alvo.campo = jogo.campo;
           alvo.isAjavp =

@@ -1071,7 +1071,7 @@
           "jogos": [
             {
               "escalao": "Sub-11",
-              "hora": "09:00",
+              "hora": "08:45",
               "casa": "Vilar do Pinheiro",
               "fora": "Tougues",
               "golosCasa": 0,
@@ -1080,7 +1080,7 @@
             },
             {
               "escalao": "Sub-9",
-              "hora": "10:00",
+              "hora": "09:45",
               "casa": "Tougues",
               "fora": "Junqueira",
               "golosCasa": 0,
@@ -1089,7 +1089,7 @@
             },
             {
               "escalao": "Sub-9",
-              "hora": "11:00",
+              "hora": "10:45",
               "casa": "Fornelo",
               "fora": "Gião",
               "golosCasa": 0,

@@ -48,6 +48,7 @@ export interface DynamicAgendaItem {
   mapsUrl?: string;
   wazeUrl?: string;
   isAjavpMatch?: boolean;
+  notes?: string;
 }
 
 const SPORT_LABELS: Record<string, string> = {
@@ -87,12 +88,13 @@ export function buildDynamicAgenda(
 ): DynamicAgendaItem[] {
   const items: DynamicAgendaItem[] = [];
 
-  // 1. Próxima Jornada de Futsal com jogos detalhados da AJAVP
+  // 1. Todas as Próximas Jornadas de Futsal com jogos detalhados da AJAVP
   const upcomingJornadas = FUTSAL_JORNADAS.filter((j) => j.date >= todayStr);
-  const nextJornada = upcomingJornadas[0];
+  const futsalDatesCovered = new Set<string>();
 
-  if (nextJornada) {
-    for (const session of nextJornada.venueSessions) {
+  for (const jornada of upcomingJornadas) {
+    let addedForJornada = false;
+    for (const session of jornada.venueSessions) {
       for (const match of session.matches) {
         if (match.isAjavp && !match.isCompleted) {
           const isHome = match.homeTeam.toLowerCase().includes("vilar do pinheiro");
@@ -100,10 +102,10 @@ export function buildDynamicAgenda(
           const venue = findVenueInfo(session.venueName, session.venueId);
 
           items.push({
-            id: `futsal-j${nextJornada.number}-${match.category}-${match.time}`,
-            dateStr: nextJornada.date,
+            id: `futsal-j${jornada.number}-${match.category}-${match.time}-${match.homeTeam}`,
+            dateStr: jornada.date,
             timeLabel: `${match.time.replace(":", "h")}`,
-            categoryLabel: `Futsal ${nextJornada.label} • ${match.category}`,
+            categoryLabel: `Futsal ${jornada.label} • ${match.category}`,
             sportKey: "futsal",
             escalao: match.category,
             title: `${match.homeTeam} vs ${match.awayTeam}`,
@@ -112,9 +114,14 @@ export function buildDynamicAgenda(
             mapsUrl: venue.mapsUrl,
             wazeUrl: venue.wazeUrl,
             isAjavpMatch: true,
+            notes: match.notes,
           });
+          addedForJornada = true;
         }
       }
+    }
+    if (addedForJornada) {
+      futsalDatesCovered.add(jornada.date);
     }
   }
 
@@ -171,7 +178,7 @@ export function buildDynamicAgenda(
   );
 
   for (const calEv of upcomingCalendarEvents) {
-    if (nextJornada && calEv.date === nextJornada.date && calEv.sport === "futsal") {
+    if (futsalDatesCovered.has(calEv.date) && calEv.sport === "futsal") {
       continue;
     }
 
@@ -622,9 +629,16 @@ export function AgendaMatchCenter({ eventos }: AgendaMatchCenterProps) {
                     </h4>
 
                     {ev.opponent && (
-                      <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-lg bg-emerald-50 dark:bg-emerald-500/15 border border-emerald-200 dark:border-emerald-500/30 text-xs font-bold text-emerald-800 dark:text-emerald-300">
-                        <Trophy className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-                        <span>Adversário: {ev.opponent}</span>
+                      <div className="flex flex-wrap items-center gap-1.5">
+                        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-lg bg-emerald-50 dark:bg-emerald-500/15 border border-emerald-200 dark:border-emerald-500/30 text-xs font-bold text-emerald-800 dark:text-emerald-300">
+                          <Trophy className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                          <span>Adversário: {ev.opponent}</span>
+                        </div>
+                        {ev.notes && (
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-lg bg-amber-50 dark:bg-amber-500/15 border border-amber-200 dark:border-amber-500/30 text-[11px] font-bold text-amber-800 dark:text-amber-300">
+                            {ev.notes}
+                          </span>
+                        )}
                       </div>
                     )}
                   </div>

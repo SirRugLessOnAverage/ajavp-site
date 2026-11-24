@@ -249,7 +249,9 @@ export default async function HomePage() {
                       <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                       <span className="text-[11px] font-black uppercase tracking-wider text-emerald-800 dark:text-emerald-300">
                         {proximaJornada
-                          ? `Próxima Jornada • ${proximaJornada.numero}ª Jorn.`
+                          ? proximaJornada.numero === 6
+                            ? "Próxima Jornada • Taça (1ª Elim.)"
+                            : `Próxima Jornada • ${proximaJornada.numero}ª Jorn.`
                           : "Próxima Jornada"}
                       </span>
                     </div>
@@ -295,6 +297,17 @@ export default async function HomePage() {
                       </div>
                     )}
                   </div>
+
+                  {/* Aviso Jogos em Atraso 5.ª Jornada */}
+                  <a
+                    href="#agenda"
+                    className="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-amber-50/90 hover:bg-amber-100/90 dark:bg-amber-500/10 dark:hover:bg-amber-500/20 border border-amber-200/90 dark:border-amber-500/30 text-[11px] transition-colors"
+                  >
+                    <span className="font-bold text-amber-900 dark:text-amber-300">
+                      📅 Jogos em Atraso (5.ª Jorn.): <span className="font-black">02 Jan &bull; Mindelo</span> (Sub-11 08h45, Sub-9 09h45)
+                    </span>
+                    <ChevronRight className="w-3.5 h-3.5 text-amber-700 dark:text-amber-400 shrink-0" />
+                  </a>
                 </div>
 
                 <div className="space-y-2">

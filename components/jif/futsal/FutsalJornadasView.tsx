@@ -412,12 +412,19 @@ export function FutsalJornadasView({
 
                         {/* Placar */}
                         {jogo.adiado ? (
-                          <div className="px-3 py-1.5 rounded-xl bg-amber-100 dark:bg-amber-500/20 border border-amber-300 dark:border-amber-500/40 font-black text-xs uppercase tracking-wider text-amber-800 dark:text-amber-300 shrink-0 shadow-xs">
-                            Adiado
+                          <div className="px-3 py-1.5 rounded-xl bg-amber-100 dark:bg-amber-500/20 border border-amber-300 dark:border-amber-500/40 font-black text-[11px] uppercase tracking-wider text-amber-800 dark:text-amber-300 shrink-0 shadow-xs text-center">
+                            {jogo.nota || "Adiado"}
                           </div>
                         ) : (
-                          <div className="px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-white/10 font-mono font-black text-sm sm:text-base text-slate-900 dark:text-white shrink-0 tracking-wider shadow-xs">
-                            {jogo.golosCasa} – {jogo.golosFora}
+                          <div className="flex flex-col items-center gap-1 shrink-0">
+                            <div className="px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-white/10 font-mono font-black text-sm sm:text-base text-slate-900 dark:text-white tracking-wider shadow-xs">
+                              {jogo.golosCasa} – {jogo.golosFora}
+                            </div>
+                            {jogo.nota && (
+                              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-500/20">
+                                {jogo.nota}
+                              </span>
+                            )}
                           </div>
                         )}
 
