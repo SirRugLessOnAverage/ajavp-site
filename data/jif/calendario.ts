@@ -98,9 +98,9 @@ export const JIF_MASTER_EVENTS: JifEvent[] = [
     day: '28',
     month: 'NOV',
     sport: 'futsal',
-    title: 'Futsal • Taça Concelhia (1ª Eliminatória Sub-11 AJAVP vs Tougues às 09h00)',
+    title: 'Futsal • Taça Concelhia (1ª Eliminatória Sub-11 AJAVP vs Tougues às 08h45)',
     location: 'Pavilhão Desportivo de Fajozes e Mindelo',
-    time: '09h00 (Sub-11 AJAVP vs Tougues)'
+    time: '08h45 (Sub-11 AJAVP vs Tougues)'
   },
   {
     id: 10,
@@ -113,14 +113,24 @@ export const JIF_MASTER_EVENTS: JifEvent[] = [
     time: '09h00 às 12h30'
   },
   {
+    id: 37,
+    date: '2026-12-12',
+    day: '12',
+    month: 'DEZ',
+    sport: 'futsal',
+    title: 'Futsal • 6ª Jornada & Sub-7 • AJAVP em Mindelo (Sub-11 08h45, Sub-13 09h45), Caxinas (Sub-7 10h15) e Modivas (Sub-9 11h45)',
+    location: 'Pavilhões de Mindelo, Caxinas, Modivas, Canidelo e Fajozes',
+    time: 'Mindelo (08h45, 09h45) | Caxinas (10h15) | Modivas (11h45)'
+  },
+  {
     id: 11,
     date: '2026-12-19',
     day: '19',
     month: 'DEZ',
     sport: 'futsal',
-    title: 'Torneio de Natal JIF 2026 (Sub-9 e Sub-11)',
-    location: 'Pavilhão Municipal de Desportos',
-    time: 'Dia Completo (09h00 às 18h00)'
+    title: 'Futsal • Sub-9 Masculinos (Arcos vs AJAVP às 10h00 em Mindelo) & Torneio de Natal JIF 2026',
+    location: 'Pavilhão de Mindelo, Fajozes e Pavilhão Municipal de Desportos',
+    time: '10h00 (Sub-9 AJAVP em Mindelo) | Torneio de Natal (09h00-18h00)'
   },
   {
     id: 12,
@@ -138,9 +148,9 @@ export const JIF_MASTER_EVENTS: JifEvent[] = [
     day: '02',
     month: 'JAN',
     sport: 'badminton futsal',
-    title: 'Badminton • 1º Encontro Concelhio & Futsal (Jogos em Atraso)',
-    location: 'Pavilhão de Macieira',
-    time: '09h00 às 17h30'
+    title: 'Futsal • Jogos em Atraso 5ª Jorn. em Mindelo (Sub-11 Gião x AJAVP 08h45, Sub-9 Junqueira x AJAVP 09h45) & Badminton (Macieira)',
+    location: 'Pavilhão de Mindelo (Futsal) & Pavilhão de Macieira (Badminton)',
+    time: '08h45 (Sub-11) | 09h45 (Sub-9) • Badminton 09h00-17h30'
   },
   {
     id: 14,
@@ -158,9 +168,9 @@ export const JIF_MASTER_EVENTS: JifEvent[] = [
     day: '16',
     month: 'JAN',
     sport: 'futsal',
-    title: 'Futsal • 7ª Jornada do Campeonato',
-    location: 'Pavilhões Concelhios',
-    time: 'Manhã 8h45-12h30 | Tarde 14h30-18h00'
+    title: 'Futsal • 7ª Jornada & Sub-7 • AJAVP em Mindelo (Sub-11 08h45, Sub-9 09h45, Sub-13 10h45) e Caxinas (Sub-7 09h30 e 11h00)',
+    location: 'Pavilhões de Mindelo, Caxinas, Canidelo, Fajozes e Macieira',
+    time: 'Mindelo (08h45-11h45) | Caxinas Sub-7 (09h30 e 11h00)'
   },
   {
     id: 16,
@@ -178,9 +188,9 @@ export const JIF_MASTER_EVENTS: JifEvent[] = [
     day: '30',
     month: 'JAN',
     sport: 'futsal',
-    title: 'Futsal • 8ª Jornada do Campeonato',
-    location: 'Pavilhões Concelhios',
-    time: 'Manhã 8h45-12h30 | Tarde 14h30-18h00'
+    title: 'Futsal • 8ª Jornada • AJAVP em Macieira (Sub-13 às 09h00 e Sub-9 às 10h00 vs Touguinha Touguinhó)',
+    location: 'Pavilhões de Macieira, Mindelo, Canidelo e Fajozes',
+    time: '09h00 (Sub-13) | 10h00 (Sub-9) em Macieira'
   },
   {
     id: 18,

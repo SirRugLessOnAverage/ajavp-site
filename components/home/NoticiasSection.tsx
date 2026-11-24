@@ -12,9 +12,9 @@ export const FALLBACK_NOTICIAS: SiteNoticia[] = [
   {
     id: "fallback-n-canidelo-adiado",
     slug: "adiamento-jogos-canidelo-5a-jornada-futsal-jif",
-    titulo: "Jogos no Pavilhão de Canidelo Adiados na 5.ª Jornada de Futsal dos XL JIF",
+    titulo: "Jogos em Atraso da 5.ª Jornada Remarcados para 2 de Janeiro em Mindelo",
     resumo:
-      "Os três encontros agendados para o Pavilhão de Canidelo a 21 de novembro — incluindo os jogos dos Sub-9 e Sub-11 da AJAVP — foram adiados para nova data a anunciar. Sub-13 e Sub-7 entraram em campo em Fajozes e Caxinas.",
+      "Os encontros da 5.ª jornada adiados no Pavilhão de Canidelo já têm nova data oficial: 02 de janeiro de 2027 no Pavilhão de Mindelo — Sub-11 (Gião x AJAVP às 08h45) e Sub-9 (Junqueira x AJAVP às 09h45).",
     conteudo_html: "",
     capa_url: "/assets/images/galeria/Sub-9e11.webp",
     categoria: "Futsal • JIF",

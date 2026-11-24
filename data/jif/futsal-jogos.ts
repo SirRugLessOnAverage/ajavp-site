@@ -259,8 +259,8 @@ export const FUTSAL_JORNADAS: FutsalJornada[] = [
         venueName: 'Pavilhão de Canidelo',
         matches: [
           { time: '09:00', category: 'Sub-13', homeTeam: 'Árvore', awayTeam: 'Junqueira', isCompleted: false, isAjavp: false, notes: 'Adiado' },
-          { time: '10:00', category: 'Sub-9', homeTeam: 'Junqueira', awayTeam: 'Vilar do Pinheiro', isCompleted: false, isAjavp: true, notes: 'Adiado' },
-          { time: '11:00', category: 'Sub-11', homeTeam: 'Gião', awayTeam: 'Vilar do Pinheiro', isCompleted: false, isAjavp: true, notes: 'Adiado' }
+          { time: '10:00', category: 'Sub-9', homeTeam: 'Junqueira', awayTeam: 'Vilar do Pinheiro', isCompleted: false, isAjavp: true, notes: 'Adiado → 02/01/2027 (Mindelo)' },
+          { time: '11:00', category: 'Sub-11', homeTeam: 'Gião', awayTeam: 'Vilar do Pinheiro', isCompleted: false, isAjavp: true, notes: 'Adiado → 02/01/2027 (Mindelo)' }
         ]
       },
       {
@@ -274,13 +274,24 @@ export const FUTSAL_JORNADAS: FutsalJornada[] = [
       },
       {
         venueId: 'caxinas',
+        venueName: 'Pavilhão de Caxinas (Campo 1)',
+        subLocation: 'Campo 1 (Sub-7)',
+        matches: [
+          { time: '09:30', category: 'Sub-7', homeTeam: 'Árvore', awayTeam: 'Junqueira', score: '6-5', isCompleted: true, isAjavp: false, notes: '2ª Jornada' },
+          { time: '10:15', category: 'Sub-7', homeTeam: 'Mosteiró', awayTeam: 'Canidelo', score: '0-5', isCompleted: true, isAjavp: false, notes: '3ª Jornada' },
+          { time: '11:00', category: 'Sub-7', homeTeam: 'Canidelo', awayTeam: 'Fornelo', score: '1-1', isCompleted: true, isAjavp: false, notes: '3ª Jornada' },
+          { time: '11:45', category: 'Sub-7', homeTeam: 'Modivas', awayTeam: 'Mosteiró', score: '1-2', isCompleted: true, isAjavp: false, notes: '3ª Jornada' }
+        ]
+      },
+      {
+        venueId: 'caxinas',
         venueName: 'Pavilhão de Caxinas (Campo 2)',
         subLocation: 'Campo 2 (Sub-7)',
         matches: [
-          { time: '09:30', category: 'Sub-7', homeTeam: 'Fornelo', awayTeam: 'Tougues', score: '1-9', isCompleted: true, isAjavp: false },
-          { time: '10:15', category: 'Sub-7', homeTeam: 'Aveleda', awayTeam: 'Bagunte', score: '1-11', isCompleted: true, isAjavp: false },
-          { time: '11:00', category: 'Sub-7', homeTeam: 'Tougues', awayTeam: 'Vilar do Pinheiro', score: '8-6', isCompleted: true, isAjavp: true },
-          { time: '11:45', category: 'Sub-7', homeTeam: 'Gião', awayTeam: 'Aveleda', score: '3-0', isCompleted: true, isAjavp: false }
+          { time: '09:30', category: 'Sub-7', homeTeam: 'Fornelo', awayTeam: 'Tougues', score: '1-9', isCompleted: true, isAjavp: false, notes: '2ª Jornada' },
+          { time: '10:15', category: 'Sub-7', homeTeam: 'Aveleda', awayTeam: 'Bagunte', score: '1-11', isCompleted: true, isAjavp: false, notes: '3ª Jornada' },
+          { time: '11:00', category: 'Sub-7', homeTeam: 'Tougues', awayTeam: 'Vilar do Pinheiro', score: '8-6', isCompleted: true, isAjavp: true, notes: '3ª Jornada' },
+          { time: '11:45', category: 'Sub-7', homeTeam: 'Gião', awayTeam: 'Aveleda', score: '3-0', isCompleted: true, isAjavp: false, notes: '4ª Jornada' }
         ]
       },
       {
@@ -301,15 +312,15 @@ export const FUTSAL_JORNADAS: FutsalJornada[] = [
         matches: [
           { time: '08:45', category: 'Sub-13', homeTeam: 'Arcos', awayTeam: 'Touguinha Touguinhó', score: '5-3', isCompleted: true, isAjavp: false },
           { time: '09:45', category: 'Sub-9', homeTeam: 'Arcos', awayTeam: 'Fornelo', score: '4-1', isCompleted: true, isAjavp: false },
-          { time: '10:45', category: 'Sub-11', homeTeam: 'Árvore', awayTeam: 'Fornelo', isCompleted: false, isAjavp: false, notes: 'Adiado' },
-          { time: '11:45', category: 'Sub-9', homeTeam: 'Árvore', awayTeam: 'Modivas', isCompleted: false, isAjavp: false, notes: 'Adiado' }
+          { time: '10:45', category: 'Sub-11', homeTeam: 'Árvore', awayTeam: 'Fornelo', isCompleted: false, isAjavp: false, notes: 'Adiado → 28/11/2026 (Fajozes)' },
+          { time: '11:45', category: 'Sub-9', homeTeam: 'Árvore', awayTeam: 'Modivas', isCompleted: false, isAjavp: false, notes: 'Adiado → 02/01/2027 (Mindelo)' }
         ]
       }
     ]
   },
   {
     number: 6,
-    label: 'Taça Concelhia (1ª Elim.) & 6ª Jornada',
+    label: 'Taça Concelhia (1ª Elim.) & 6ª Jornada Sub-16',
     date: '2026-11-28',
     formattedDate: '28 de Novembro de 2026',
     isTaça: true,
@@ -318,9 +329,10 @@ export const FUTSAL_JORNADAS: FutsalJornada[] = [
         venueId: 'fajozes',
         venueName: 'Pavilhão de Fajozes',
         matches: [
-          { time: '09:00', category: 'Sub-11', homeTeam: 'Vilar do Pinheiro', awayTeam: 'Tougues', isCompleted: false, isAjavp: true, notes: 'Taça Concelhia (1ª Eliminatória)' },
-          { time: '10:00', category: 'Sub-9', homeTeam: 'Tougues', awayTeam: 'Junqueira', isCompleted: false, isAjavp: false },
-          { time: '11:00', category: 'Sub-9', homeTeam: 'Fornelo', awayTeam: 'Gião', isCompleted: false, isAjavp: false }
+          { time: '08:45', category: 'Sub-11', homeTeam: 'Vilar do Pinheiro', awayTeam: 'Tougues', isCompleted: false, isAjavp: true, notes: 'Taça Concelhia (1ª Eliminatória)' },
+          { time: '09:45', category: 'Sub-9', homeTeam: 'Tougues', awayTeam: 'Junqueira', isCompleted: false, isAjavp: false },
+          { time: '10:45', category: 'Sub-9', homeTeam: 'Fornelo', awayTeam: 'Gião', isCompleted: false, isAjavp: false },
+          { time: '11:45', category: 'Sub-11', homeTeam: 'Árvore', awayTeam: 'Fornelo', isCompleted: false, isAjavp: false, notes: 'Jogo adiado 5ª Jornada' }
         ]
       },
       {
@@ -330,8 +342,238 @@ export const FUTSAL_JORNADAS: FutsalJornada[] = [
           { time: '09:00', category: 'Sub-13', homeTeam: 'Gião', awayTeam: 'Mosteiró', isCompleted: false, isAjavp: false },
           { time: '10:00', category: 'Sub-13', homeTeam: 'Arcos', awayTeam: 'Árvore', isCompleted: false, isAjavp: false },
           { time: '11:00', category: 'Sub-9', homeTeam: 'Modivas', awayTeam: 'Árvore', isCompleted: false, isAjavp: false },
-          { time: '14:30', category: 'Sub-16', homeTeam: 'Bagunte', awayTeam: 'Gião', isCompleted: false, isAjavp: false },
-          { time: '15:30', category: 'Sub-16', homeTeam: 'Arcos', awayTeam: 'Árvore', isCompleted: false, isAjavp: false }
+          { time: '14:30', category: 'Sub-16', homeTeam: 'Arcos', awayTeam: 'Árvore', isCompleted: false, isAjavp: false },
+          { time: '15:30', category: 'Sub-16', homeTeam: 'Bagunte', awayTeam: 'Gião', isCompleted: false, isAjavp: false }
+        ]
+      }
+    ]
+  },
+  {
+    number: 7,
+    label: '6ª Jornada & Sub-7',
+    date: '2026-12-12',
+    formattedDate: '12 de Dezembro de 2026',
+    venueSessions: [
+      {
+        venueId: 'mindelo',
+        venueName: 'Pavilhão de Mindelo',
+        matches: [
+          { time: '08:45', category: 'Sub-11', homeTeam: 'Vilar do Pinheiro', awayTeam: 'Bagunte', isCompleted: false, isAjavp: true },
+          { time: '09:45', category: 'Sub-13', homeTeam: 'Vilar do Pinheiro', awayTeam: 'Tougues', isCompleted: false, isAjavp: true },
+          { time: '10:45', category: 'Sub-9', homeTeam: 'Tougues', awayTeam: 'Touguinha Touguinhó', isCompleted: false, isAjavp: false },
+          { time: '11:45', category: 'Sub-11', homeTeam: 'Touguinha Touguinhó', awayTeam: 'Junqueira', isCompleted: false, isAjavp: false },
+          { time: '14:30', category: 'Sub-16', homeTeam: 'Gião', awayTeam: 'Arcos', isCompleted: false, isAjavp: false },
+          { time: '15:30', category: 'Sub-16', homeTeam: 'Árvore', awayTeam: 'Junqueira', isCompleted: false, isAjavp: false }
+        ]
+      },
+      {
+        venueId: 'canidelo',
+        venueName: 'Pavilhão de Canidelo',
+        matches: [
+          { time: '09:00', category: 'Sub-13', homeTeam: 'Junqueira', awayTeam: 'Fajozes', isCompleted: false, isAjavp: false },
+          { time: '10:00', category: 'Sub-13', homeTeam: 'Bagunte', awayTeam: 'Mosteiró', isCompleted: false, isAjavp: false },
+          { time: '11:00', category: 'Sub-9', homeTeam: 'Canidelo', awayTeam: 'Bagunte', isCompleted: false, isAjavp: false }
+        ]
+      },
+      {
+        venueId: 'fajozes',
+        venueName: 'Pavilhão de Fajozes',
+        matches: [
+          { time: '09:00', category: 'Sub-13', homeTeam: 'Touguinha Touguinhó', awayTeam: 'Gião', isCompleted: false, isAjavp: false },
+          { time: '10:00', category: 'Sub-9', homeTeam: 'Fornelo', awayTeam: 'Gião', isCompleted: false, isAjavp: false },
+          { time: '11:00', category: 'Sub-11', homeTeam: 'Fornelo', awayTeam: 'Gião', isCompleted: false, isAjavp: false }
+        ]
+      },
+      {
+        venueId: 'modivas',
+        venueName: 'Pavilhão de Modivas',
+        matches: [
+          { time: '08:45', category: 'Sub-9', homeTeam: 'Modivas', awayTeam: 'Arcos', isCompleted: false, isAjavp: false },
+          { time: '09:45', category: 'Sub-13', homeTeam: 'Arcos', awayTeam: 'Árvore', isCompleted: false, isAjavp: false },
+          { time: '10:45', category: 'Sub-11', homeTeam: 'Fajozes', awayTeam: 'Árvore', isCompleted: false, isAjavp: false },
+          { time: '11:45', category: 'Sub-9', homeTeam: 'Vilar do Pinheiro', awayTeam: 'Árvore', isCompleted: false, isAjavp: true }
+        ]
+      },
+      {
+        venueId: 'caxinas',
+        venueName: 'Pavilhão de Caxinas (Campo 1)',
+        subLocation: 'Campo 1 (Sub-7)',
+        matches: [
+          { time: '09:30', category: 'Sub-7', homeTeam: 'Mosteiró', awayTeam: 'Árvore', isCompleted: false, isAjavp: false, notes: '4ª Jornada' },
+          { time: '10:15', category: 'Sub-7', homeTeam: 'Fornelo', awayTeam: 'Modivas', isCompleted: false, isAjavp: false, notes: '4ª Jornada' },
+          { time: '11:00', category: 'Sub-7', homeTeam: 'Junqueira', awayTeam: 'Mosteiró', isCompleted: false, isAjavp: false, notes: '5ª Jornada' },
+          { time: '11:45', category: 'Sub-7', homeTeam: 'Árvore', awayTeam: 'Fornelo', isCompleted: false, isAjavp: false, notes: '5ª Jornada' }
+        ]
+      },
+      {
+        venueId: 'caxinas',
+        venueName: 'Pavilhão de Caxinas (Campo 2)',
+        subLocation: 'Campo 2 (Sub-7)',
+        matches: [
+          { time: '09:30', category: 'Sub-7', homeTeam: 'Bagunte', awayTeam: 'Tougues', isCompleted: false, isAjavp: false, notes: '4ª Jornada' },
+          { time: '10:15', category: 'Sub-7', homeTeam: 'Vilar do Pinheiro', awayTeam: 'Canidelo', isCompleted: false, isAjavp: true, notes: '4ª Jornada' },
+          { time: '11:00', category: 'Sub-7', homeTeam: 'Tougues', awayTeam: 'Gião', isCompleted: false, isAjavp: false, notes: '5ª Jornada' },
+          { time: '11:45', category: 'Sub-7', homeTeam: 'Canidelo', awayTeam: 'Bagunte', isCompleted: false, isAjavp: false, notes: '5ª Jornada' }
+        ]
+      }
+    ]
+  },
+  {
+    number: 8,
+    label: 'Sub-9 Masculinos & Torneio de Natal',
+    date: '2026-12-19',
+    formattedDate: '19 de Dezembro de 2026',
+    venueSessions: [
+      {
+        venueId: 'mindelo',
+        venueName: 'Pavilhão de Mindelo',
+        matches: [
+          { time: '09:00', category: 'Sub-9', homeTeam: 'Touguinha Touguinhó', awayTeam: 'Fornelo', isCompleted: false, isAjavp: false },
+          { time: '10:00', category: 'Sub-9', homeTeam: 'Arcos', awayTeam: 'Vilar do Pinheiro', isCompleted: false, isAjavp: true },
+          { time: '11:00', category: 'Sub-9', homeTeam: 'Gião', awayTeam: 'Modivas', isCompleted: false, isAjavp: false }
+        ]
+      },
+      {
+        venueId: 'fajozes',
+        venueName: 'Pavilhão de Fajozes',
+        matches: [
+          { time: '09:30', category: 'Sub-9', homeTeam: 'Junqueira', awayTeam: 'Canidelo', isCompleted: false, isAjavp: false },
+          { time: '10:30', category: 'Sub-9', homeTeam: 'Bagunte', awayTeam: 'Tougues', isCompleted: false, isAjavp: false }
+        ]
+      }
+    ]
+  },
+  {
+    number: 9,
+    label: 'Jogos em Atraso • 5ª Jornada',
+    date: '2027-01-02',
+    formattedDate: '02 de Janeiro de 2027',
+    venueSessions: [
+      {
+        venueId: 'mindelo',
+        venueName: 'Pavilhão de Mindelo',
+        matches: [
+          { time: '08:45', category: 'Sub-11', homeTeam: 'Gião', awayTeam: 'Vilar do Pinheiro', isCompleted: false, isAjavp: true, notes: 'Jogo em atraso 5ª Jornada' },
+          { time: '09:45', category: 'Sub-9', homeTeam: 'Junqueira', awayTeam: 'Vilar do Pinheiro', isCompleted: false, isAjavp: true, notes: 'Jogo em atraso 5ª Jornada' },
+          { time: '11:45', category: 'Sub-9', homeTeam: 'Árvore', awayTeam: 'Modivas', isCompleted: false, isAjavp: false, notes: 'Jogo em atraso 5ª Jornada' }
+        ]
+      }
+    ]
+  },
+  {
+    number: 10,
+    label: '7ª Jornada & Sub-7',
+    date: '2027-01-16',
+    formattedDate: '16 de Janeiro de 2027',
+    venueSessions: [
+      {
+        venueId: 'mindelo',
+        venueName: 'Pavilhão de Mindelo',
+        matches: [
+          { time: '08:45', category: 'Sub-11', homeTeam: 'Tougues', awayTeam: 'Vilar do Pinheiro', isCompleted: false, isAjavp: true },
+          { time: '09:45', category: 'Sub-9', homeTeam: 'Vilar do Pinheiro', awayTeam: 'Gião', isCompleted: false, isAjavp: true },
+          { time: '10:45', category: 'Sub-13', homeTeam: 'Gião', awayTeam: 'Vilar do Pinheiro', isCompleted: false, isAjavp: true },
+          { time: '11:45', category: 'Sub-11', homeTeam: 'Gião', awayTeam: 'Fajozes', isCompleted: false, isAjavp: false },
+          { time: '14:30', category: 'Sub-16', homeTeam: 'Outeiro Maior', awayTeam: 'Bagunte', isCompleted: false, isAjavp: false },
+          { time: '15:30', category: 'Sub-16', homeTeam: 'Gião', awayTeam: 'Junqueira', isCompleted: false, isAjavp: false }
+        ]
+      },
+      {
+        venueId: 'canidelo',
+        venueName: 'Pavilhão de Canidelo',
+        matches: [
+          { time: '08:45', category: 'Sub-11', homeTeam: 'Bagunte', awayTeam: 'Fornelo', isCompleted: false, isAjavp: false },
+          { time: '09:45', category: 'Sub-9', homeTeam: 'Fornelo', awayTeam: 'Bagunte', isCompleted: false, isAjavp: false },
+          { time: '10:45', category: 'Sub-13', homeTeam: 'Tougues', awayTeam: 'Bagunte', isCompleted: false, isAjavp: false },
+          { time: '11:45', category: 'Sub-9', homeTeam: 'Canidelo', awayTeam: 'Tougues', isCompleted: false, isAjavp: false }
+        ]
+      },
+      {
+        venueId: 'fajozes',
+        venueName: 'Pavilhão de Fajozes',
+        matches: [
+          { time: '09:00', category: 'Sub-13', homeTeam: 'Fajozes', awayTeam: 'Arcos', isCompleted: false, isAjavp: false },
+          { time: '10:00', category: 'Sub-9', homeTeam: 'Modivas', awayTeam: 'Touguinha Touguinhó', isCompleted: false, isAjavp: false },
+          { time: '11:00', category: 'Sub-13', homeTeam: 'Árvore', awayTeam: 'Touguinha Touguinhó', isCompleted: false, isAjavp: false }
+        ]
+      },
+      {
+        venueId: 'macieira',
+        venueName: 'Pavilhão de Macieira',
+        matches: [
+          { time: '09:00', category: 'Sub-11', homeTeam: 'Árvore', awayTeam: 'Touguinha Touguinhó', isCompleted: false, isAjavp: false },
+          { time: '10:00', category: 'Sub-9', homeTeam: 'Junqueira', awayTeam: 'Árvore', isCompleted: false, isAjavp: false },
+          { time: '11:00', category: 'Sub-13', homeTeam: 'Mosteiró', awayTeam: 'Junqueira', isCompleted: false, isAjavp: false }
+        ]
+      },
+      {
+        venueId: 'caxinas',
+        venueName: 'Pavilhão de Caxinas (Campo 1)',
+        subLocation: 'Campo 1 (Sub-7)',
+        matches: [
+          { time: '09:30', category: 'Sub-7', homeTeam: 'Modivas', awayTeam: 'Vilar do Pinheiro', isCompleted: false, isAjavp: true, notes: '5ª Jornada' },
+          { time: '10:15', category: 'Sub-7', homeTeam: 'Fornelo', awayTeam: 'Junqueira', isCompleted: false, isAjavp: false, notes: '6ª Jornada' },
+          { time: '11:00', category: 'Sub-7', homeTeam: 'Vilar do Pinheiro', awayTeam: 'Árvore', isCompleted: false, isAjavp: true, notes: '6ª Jornada' },
+          { time: '11:45', category: 'Sub-7', homeTeam: 'Mosteiró', awayTeam: 'Fornelo', isCompleted: false, isAjavp: false, notes: '7ª Jornada' }
+        ]
+      },
+      {
+        venueId: 'caxinas',
+        venueName: 'Pavilhão de Caxinas (Campo 2)',
+        subLocation: 'Campo 2 (Sub-7)',
+        matches: [
+          { time: '09:30', category: 'Sub-7', homeTeam: 'Aveleda', awayTeam: 'Tougues', isCompleted: false, isAjavp: false, notes: '6ª Jornada' },
+          { time: '10:15', category: 'Sub-7', homeTeam: 'Gião', awayTeam: 'Canidelo', isCompleted: false, isAjavp: false, notes: '6ª Jornada' },
+          { time: '11:00', category: 'Sub-7', homeTeam: 'Bagunte', awayTeam: 'Modivas', isCompleted: false, isAjavp: false, notes: '6ª Jornada' },
+          { time: '11:45', category: 'Sub-7', homeTeam: 'Canidelo', awayTeam: 'Aveleda', isCompleted: false, isAjavp: false, notes: '7ª Jornada' }
+        ]
+      }
+    ]
+  },
+  {
+    number: 11,
+    label: '8ª Jornada',
+    date: '2027-01-30',
+    formattedDate: '30 de Janeiro de 2027',
+    venueSessions: [
+      {
+        venueId: 'mindelo',
+        venueName: 'Pavilhão de Mindelo',
+        matches: [
+          { time: '08:45', category: 'Sub-11', homeTeam: 'Fornelo', awayTeam: 'Tougues', isCompleted: false, isAjavp: false },
+          { time: '09:45', category: 'Sub-9', homeTeam: 'Tougues', awayTeam: 'Fornelo', isCompleted: false, isAjavp: false },
+          { time: '10:45', category: 'Sub-13', homeTeam: 'Junqueira', awayTeam: 'Tougues', isCompleted: false, isAjavp: false },
+          { time: '11:45', category: 'Sub-9', homeTeam: 'Arcos', awayTeam: 'Junqueira', isCompleted: false, isAjavp: false },
+          { time: '14:30', category: 'Sub-16', homeTeam: 'Arcos', awayTeam: 'Bagunte', isCompleted: false, isAjavp: false },
+          { time: '15:30', category: 'Sub-16', homeTeam: 'Árvore', awayTeam: 'Outeiro Maior', isCompleted: false, isAjavp: false }
+        ]
+      },
+      {
+        venueId: 'canidelo',
+        venueName: 'Pavilhão de Canidelo',
+        matches: [
+          { time: '08:45', category: 'Sub-11', homeTeam: 'Junqueira', awayTeam: 'Árvore', isCompleted: false, isAjavp: false },
+          { time: '09:45', category: 'Sub-9', homeTeam: 'Árvore', awayTeam: 'Canidelo', isCompleted: false, isAjavp: false },
+          { time: '10:45', category: 'Sub-13', homeTeam: 'Árvore', awayTeam: 'Fajozes', isCompleted: false, isAjavp: false },
+          { time: '11:45', category: 'Sub-11', homeTeam: 'Fajozes', awayTeam: 'Bagunte', isCompleted: false, isAjavp: false }
+        ]
+      },
+      {
+        venueId: 'macieira',
+        venueName: 'Pavilhão de Macieira',
+        matches: [
+          { time: '09:00', category: 'Sub-13', homeTeam: 'Touguinha Touguinhó', awayTeam: 'Vilar do Pinheiro', isCompleted: false, isAjavp: true },
+          { time: '10:00', category: 'Sub-9', homeTeam: 'Touguinha Touguinhó', awayTeam: 'Vilar do Pinheiro', isCompleted: false, isAjavp: true },
+          { time: '11:00', category: 'Sub-11', homeTeam: 'Touguinha Touguinhó', awayTeam: 'Gião', isCompleted: false, isAjavp: false }
+        ]
+      },
+      {
+        venueId: 'fajozes',
+        venueName: 'Pavilhão de Fajozes',
+        matches: [
+          { time: '09:00', category: 'Sub-13', homeTeam: 'Bagunte', awayTeam: 'Gião', isCompleted: false, isAjavp: false },
+          { time: '10:00', category: 'Sub-9', homeTeam: 'Bagunte', awayTeam: 'Modivas', isCompleted: false, isAjavp: false },
+          { time: '11:00', category: 'Sub-13', homeTeam: 'Arcos', awayTeam: 'Mosteiró', isCompleted: false, isAjavp: false }
         ]
       }
     ]
