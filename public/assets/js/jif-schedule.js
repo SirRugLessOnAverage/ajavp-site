@@ -13,7 +13,7 @@ const JIF_MASTER_EVENTS = [
   { id: 7, date: '2026-11-14', day: '14', month: 'NOV', sport: 'tenis-mesa', title: 'Ténis de Mesa • 1º Encontro Concelhio', location: 'Casa da Juventude de Guilhabreu', time: 'Manhã 9h30-12h30 | Tarde 14h30-17h30' },
   { id: 8, date: '2026-11-21', day: '21', month: 'NOV', sport: 'futsal', title: 'Futsal • 5ª Jornada & Sub-7 em Caxinas', location: 'Pavilhões de Canidelo, Fajozes e Caxinas', time: '09h00 às 12h00' },
   { id: 9, date: '2026-11-28', day: '28', month: 'NOV', sport: 'futsal', title: 'Futsal • 6ª Jornada & Taça JIF (Sub-11)', location: 'Pavilhão de Mindelo e Modivas', time: '09h00 às 12h30' },
-  { id: 10, date: '2026-12-05', day: '05', month: 'DEZ', sport: 'duatlo', title: 'Duatlo • 1ª Prova Individual dos XL JIF', location: 'Freguesia a designar', time: '09h00 às 12h30' },
+  { id: 10, date: '2026-12-05', day: '05', month: 'DEZ', sport: 'duatlo', title: 'Duatlo • 1ª Prova Individual dos XL JIF', location: 'Bagunte, Vila do Conde', time: '09h00 às 12h30' },
   { id: 11, date: '2026-12-12', day: '12', month: 'DEZ', sport: 'tenis-mesa', title: 'Ténis de Mesa • 2º Encontro Concelhio', location: 'Casa da Juventude de Guilhabreu', time: 'Manhã 9h30-12h30 | Tarde 14h30-17h30' },
   { id: 12, date: '2026-12-19', day: '19', month: 'DEZ', sport: 'futsal', title: 'Torneio de Natal JIF 2026 (Sub-9 e Sub-11)', location: 'Pavilhão Municipal de Desportos', time: 'Dia Completo (09h00 às 18h00)' },
   { id: 13, date: '2026-12-26', day: '26', month: 'DEZ', sport: 'futsal', title: 'Futsal • 1ª Eliminatória da Taça Concelhia', location: 'Pavilhões Concelhios', time: 'Manhã 8h45-12h30 | Tarde 14h30-18h00' },

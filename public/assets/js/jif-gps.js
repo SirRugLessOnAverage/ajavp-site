@@ -268,6 +268,13 @@
         waze: 'https://waze.com/ul?q=Praia+da+Olinda+Vila+do+Conde&navigate=yes'
       };
     }
+    if (loc.includes('bagunte')) {
+      return {
+        name: 'Bagunte, Vila do Conde',
+        maps: 'https://www.google.com/maps/dir/?api=1&destination=Bagunte+Vila+do+Conde',
+        waze: 'https://waze.com/ul?q=Bagunte+Vila+do+Conde&navigate=yes'
+      };
+    }
     if (loc.includes('ribeirinha') || loc.includes('cais') || loc.includes('duatlo')) {
       return {
         name: 'Cais das Lavandeiras',

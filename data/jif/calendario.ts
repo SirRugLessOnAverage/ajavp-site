@@ -109,7 +109,7 @@ export const JIF_MASTER_EVENTS: JifEvent[] = [
     month: 'DEZ',
     sport: 'duatlo',
     title: 'Duatlo • 1ª Prova Individual dos XL JIF (Sub-11, 13, 16, Seniores e Veteranos)',
-    location: 'Freguesia a designar (Candidatura Bagunte)',
+    location: 'Bagunte, Vila do Conde',
     time: '09h00 às 12h30'
   },
   {
