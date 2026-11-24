@@ -177,6 +177,22 @@ export const JIF_VENUES: JifVenue[] = [
     coords: '41.3508,-8.7447'
   },
   {
+    id: 'cividade-bagunte',
+    name: 'Cividade de Bagunte (Duatlo XL JIF)',
+    shortName: 'Cividade Bagunte',
+    parish: 'UF Bagunte, Ferreiró, Outeiro Maior e Parada',
+    category: 'atletismo',
+    categoryLabel: 'Duatlo Individual',
+    sports: ['Duatlo Individual XL JIF (05/Dez)'],
+    address: 'Parque de Estacionamento da Cividade de Bagunte, 4480 Vila do Conde',
+    driveFromAjavp: '~17 km • 20 min',
+    parkingInfo: 'Concentração oficial no parque de estacionamento à entrada da Cividade.',
+    badgeColor: 'amber',
+    mapsUrl: 'https://www.google.com/maps/dir/?api=1&destination=Cividade+de+Bagunte+Vila+do+Conde',
+    wazeUrl: 'https://waze.com/ul?q=Cividade+de+Bagunte+Vila+do+Conde&navigate=yes',
+    coords: '41.3849,-8.6656'
+  },
+  {
     id: 'praia-olinda',
     name: 'Praia da Olinda (Frente Urbana)',
     shortName: 'Praia da Olinda',

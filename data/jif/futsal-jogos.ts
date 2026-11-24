@@ -289,7 +289,7 @@ export const FUTSAL_JORNADAS: FutsalJornada[] = [
         subLocation: 'Campo 2 (Sub-7)',
         matches: [
           { time: '09:30', category: 'Sub-7', homeTeam: 'Fornelo', awayTeam: 'Tougues', score: '1-9', isCompleted: true, isAjavp: false, notes: '2ª Jornada' },
-          { time: '10:15', category: 'Sub-7', homeTeam: 'Aveleda', awayTeam: 'Bagunte', score: '1-11', isCompleted: true, isAjavp: false, notes: '3ª Jornada' },
+          { time: '10:15', category: 'Sub-7', homeTeam: 'Aveleda', awayTeam: 'Bagunte', score: '1-1', isCompleted: true, isAjavp: false, notes: '3ª Jornada' },
           { time: '11:00', category: 'Sub-7', homeTeam: 'Tougues', awayTeam: 'Vilar do Pinheiro', score: '8-6', isCompleted: true, isAjavp: true, notes: '3ª Jornada' },
           { time: '11:45', category: 'Sub-7', homeTeam: 'Gião', awayTeam: 'Aveleda', score: '3-0', isCompleted: true, isAjavp: false, notes: '4ª Jornada' }
         ]

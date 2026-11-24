@@ -10,6 +10,34 @@ interface NoticiasSectionProps {
 
 export const FALLBACK_NOTICIAS: SiteNoticia[] = [
   {
+    id: "fallback-n-comunicado11-duatlo",
+    slug: "comunicado-11-duatlo-bagunte-e-torneio-natal-sub11",
+    titulo: "Comunicado 11: Duatlo em Bagunte a 05/Dez (09h30) e Novo Formato do Torneio de Natal Sub-11",
+    resumo:
+      "Com 135 atletas inscritos, o Duatlo Individual arranca às 09h30 na Cividade de Bagunte com regras estritas de capacete no BTT e zona de transição. Já o Torneio de Natal (19/Dez) será exclusivo para Sub-11.",
+    conteudo_html: `
+      <p>A ADCCVC publicou o <strong>Comunicado Oficial n.º 11</strong> com decisões importantes para as próximas semanas dos <strong>XL Jogos Inter-Freguesias</strong>:</p>
+      <h3>🚴‍♂️ Duatlo Individual na Cividade de Bagunte — 05 de Dezembro (09h30)</h3>
+      <ul>
+        <li><strong>Concentração:</strong> Parque de estacionamento à entrada da Cividade de Bagunte (135 inscritos).</li>
+        <li><strong>Início:</strong> <strong>09h30</strong>, com provas seguidas a começar nos escalões Livres.</li>
+        <li><strong>Regras Obrigatórias:</strong> Capacete homologado obrigatório apenas no segmento de BTT; proibido usar capacete na corrida; desmontar antes da zona de transição e proibido acompanhamento de técnicos/terceiros (penalização de 3 a 5 lugares).</li>
+      </ul>
+      <h3>🎄 Torneio de Natal Sub-11 (19 de Dezembro)</h3>
+      <p>O Torneio de Natal será disputado exclusivamente no escalão <strong>Sub-11</strong> por 4 equipas: as 3 primeiras classificadas do campeonato (definidas após a 6.ª jornada de 12 de dezembro) e uma Seleção composta por 2 atletas de cada uma das restantes equipas. No mesmo dia disputa-se a 7.ª jornada de Sub-9.</p>
+      <h3>🏃 Atletismo Confirmado em Arcos</h3>
+      <p>A 2.ª prova de Atletismo, agendada para <strong>09 de janeiro de 2027</strong>, terá lugar na <strong>Freguesia de Arcos</strong>.</p>
+    `.trim(),
+    capa_url: "/assets/images/galeria/corta_mato_equipa_2026.webp",
+    categoria: "Duatlo • JIF",
+    autor_nome: "Direção Desportiva AJAVP",
+    destaque: true,
+    publicado: true,
+    publicado_em: "2026-11-24T17:45:00Z",
+    created_at: "2026-11-24T17:45:00Z",
+    updated_at: "2026-11-24T17:45:00Z",
+  },
+  {
     id: "fallback-n-remarcacao-atrasos-2027",
     slug: "remarcacao-jogos-atraso-5a-jornada-mindelo-2027",
     titulo: "Jogos em Atraso da 5.ª Jornada Remarcados para 2 de Janeiro em Mindelo",
@@ -174,6 +202,9 @@ export const FALLBACK_NOTICIAS: SiteNoticia[] = [
 export function getNoticiaLink(item: SiteNoticia): { href: string; label: string } {
   const cat = (item.categoria || "").toLowerCase();
   const slug = (item.slug || "").toLowerCase();
+  if (slug.includes("duatlo") || cat.includes("duatlo")) {
+    return { href: "/jif#duatlo", label: "Ver Regulamento & Percursos Duatlo" };
+  }
   if (slug.includes("tenis") || cat.includes("ténis") || cat.includes("tenis")) {
     return { href: "/jif/classificacao#tenis-de-mesa", label: "Ver Quadro de Honra Ténis de Mesa" };
   }

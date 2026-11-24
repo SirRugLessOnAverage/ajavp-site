@@ -108,9 +108,9 @@ export const JIF_MASTER_EVENTS: JifEvent[] = [
     day: '05',
     month: 'DEZ',
     sport: 'duatlo',
-    title: 'Duatlo • 1ª Prova Individual dos XL JIF (Sub-11, 13, 16, Seniores e Veteranos)',
-    location: 'Bagunte, Vila do Conde',
-    time: '09h00 às 12h30'
+    title: 'Duatlo • 1ª Prova Individual dos XL JIF (135 Atletas • Sub-11, 13, Sub-15 Fem, 16, Seniores e Veteranos)',
+    location: 'Cividade de Bagunte (Parque de Estacionamento)',
+    time: '09h30 (início pelos Livres)'
   },
   {
     id: 37,
@@ -128,9 +128,9 @@ export const JIF_MASTER_EVENTS: JifEvent[] = [
     day: '19',
     month: 'DEZ',
     sport: 'futsal',
-    title: 'Futsal • Sub-9 Masculinos (Arcos vs AJAVP às 10h00 em Mindelo) & Torneio de Natal JIF 2026',
-    location: 'Pavilhão de Mindelo, Fajozes e Pavilhão Municipal de Desportos',
-    time: '10h00 (Sub-9 AJAVP em Mindelo) | Torneio de Natal (09h00-18h00)'
+    title: 'Futsal • Torneio de Natal Sub-11 (Top 3 + Seleção) & 7ª Jorn. Sub-9 (Arcos vs AJAVP às 10h00 em Mindelo)',
+    location: 'Pavilhão de Desportos (Natal Sub-11), Mindelo e Fajozes (Sub-9)',
+    time: '10h00 (Sub-9 AJAVP em Mindelo) | Torneio Natal Sub-11 (09h00-18h00)'
   },
   {
     id: 12,
@@ -158,8 +158,8 @@ export const JIF_MASTER_EVENTS: JifEvent[] = [
     day: '09',
     month: 'JAN',
     sport: 'atletismo',
-    title: 'Atletismo • 2ª Prova: Milha Urbana de Estrada',
-    location: 'Freguesia a designar (Candidaturas Malta / Arcos)',
+    title: 'Atletismo • 2ª Prova: Milha Urbana / Estrada',
+    location: 'Freguesia de Arcos, Vila do Conde',
     time: '10h00 às 12h30'
   },
   {

@@ -29,6 +29,43 @@ export const JIF_VICTORY_SPOTLIGHT = {
 
 export const JIF_CIRCULARS: JifCircular[] = [
   {
+    id: 11,
+    numberFormatted: '11',
+    date: '2026-11-24',
+    formattedDate: '24 de Novembro de 2026',
+    badge: 'Comunicado 11 • Duatlo & Natal',
+    badgeColor: 'amber',
+    title: 'Comunicado 11: Jogos em Atraso, Duatlo na Cividade de Bagunte (05/12), Torneio de Natal Sub-11 e Futebol',
+    summaryQuote:
+      '"Foi uma manhã bastante complicada, marcada pela muita chuva e pelos pisos escorregadios, o que acabou por resultar no adiamento de cinco jogos... Os restantes serão realizados no dia 2 de janeiro em simultâneo com o badminton. Inscreveram-se 135 atletas para a prova de duatlo a realizar no dia 5/dez. junto à Cividade de Bagunte."',
+    highlights: [
+      {
+        title: 'Adiamentos da 5.ª Jornada & Remarcação Oficial',
+        badge: '28/Nov & 02/Jan',
+        description:
+          'Cinco jogos adiados por chuva e piso escorregadio em Canidelo e Modivas. Árvore x Fornelo (Sub-11) realiza-se já a 28/Nov (11h45 em Fajozes); os restantes disputam-se a 02/Jan/2027 no Pavilhão de Mindelo em simultâneo com o Badminton (Sub-11 Gião x AJAVP às 08h45, Sub-9 Junqueira x AJAVP às 09h45).'
+      },
+      {
+        title: 'Prova de Duatlo Individual • 05 de Dezembro (09h30)',
+        badge: '135 Atletas • Cividade de Bagunte',
+        description:
+          'Concentração no parque de estacionamento da Cividade de Bagunte (UF Bagunte, Ferreiró, Outeiro Maior e Parada). Início pelas 09h30 com provas seguidas a começar nos Livres. Uso obrigatório de capacete homologado no segmento BTT e proibição de acompanhamento.'
+      },
+      {
+        title: 'Torneio de Natal (19/Dez) • Novo Formato Sub-11',
+        badge: 'Sub-11 & 7ª Jorn. Sub-9',
+        description:
+          'O Torneio de Natal será disputado exclusivamente no escalão Sub-11 por 4 equipas: as 3 primeiras classificadas do campeonato (definidas após a 6.ª jornada de 12/Dez) e 1 Seleção composta por 2 atletas de cada uma das restantes equipas (orientada pelo treinador do 4.º classificado). No mesmo dia realiza-se a 7.ª jornada de Sub-9 em Mindelo e Fajozes.'
+      },
+      {
+        title: 'Futebol, Disciplina & Próximas Reuniões',
+        badge: '07 Dez & 09 Jan',
+        description:
+          'Reunião a 07/Dez para confirmação das 10 equipas de Futebol em duas séries alternadas (Fajozes, Mindelo e Macieira). Averiguação disciplinar Sub-16 (Arcos x Junqueira). Prova de Atletismo de 09/Jan/2027 confirmada na Freguesia de Arcos.'
+      }
+    ]
+  },
+  {
     id: 9,
     numberFormatted: '09',
     date: '2026-11-08',

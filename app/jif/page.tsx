@@ -5,6 +5,7 @@ import { SITE_URL, GESTAO_LINKS } from '@/lib/site';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import JifHubTabs from '@/components/jif/JifHubTabs';
 import { JifRegulamentoTenisMesa } from '@/components/jif/JifRegulamentoTenisMesa';
+import { JifRegulamentoDuatlo } from '@/components/jif/JifRegulamentoDuatlo';
 import { JIF_MASTER_EVENTS } from '@/data/jif/calendario';
 import { JIF_VENUES } from '@/data/jif/pavilhoes';
 import { obterDadosClassificacao } from '@/lib/jif/data-service';
@@ -240,6 +241,11 @@ export default async function JifPage() {
           ajavpRankLabel={ajavpRankLabel}
           ajavpPontos={ajavpPontos}
         />
+
+        {/* Regulamento Oficial da Prova de Duatlo Individual (05/Dez • Cividade de Bagunte) */}
+        <div className="scroll-mt-24">
+          <JifRegulamentoDuatlo />
+        </div>
 
         {/* Regulamento Oficial das Provas de Ténis de Mesa (ADCCVC / XL JIF) */}
         <div className="scroll-mt-24">
