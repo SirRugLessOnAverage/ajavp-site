@@ -13,6 +13,7 @@ export function getNoticiaCoverUrl(item: SiteNoticia): string {
 }
 
 export async function obterNoticiasPublicadas(limite = 24): Promise<SiteNoticia[]> {
+  let dbNoticias: SiteNoticia[] = [];
   try {
     const { data, error } = await supabasePublic
       .from("site_noticias")
@@ -22,13 +23,33 @@ export async function obterNoticiasPublicadas(limite = 24): Promise<SiteNoticia[
       .limit(limite);
 
     if (!error && Array.isArray(data) && data.length > 0) {
-      return data as SiteNoticia[];
+      dbNoticias = data as SiteNoticia[];
     }
   } catch (err) {
     console.warn("Aviso: Leitura dinâmica de notícias indisponível, a usar fallback estático.", err);
   }
 
-  return FALLBACK_NOTICIAS;
+  // Combinar notícias locais mais recentes (não presentes ou mais atualizadas que o Supabase)
+  const porSlug = new Map<string, SiteNoticia>();
+  for (const item of dbNoticias) {
+    if (item.slug) porSlug.set(item.slug, item);
+  }
+  for (const fallback of FALLBACK_NOTICIAS) {
+    const existente = porSlug.get(fallback.slug);
+    if (!existente) {
+      porSlug.set(fallback.slug, fallback);
+    } else if (fallback.updated_at && existente.updated_at && fallback.updated_at > existente.updated_at) {
+      porSlug.set(fallback.slug, fallback);
+    }
+  }
+
+  return Array.from(porSlug.values())
+    .sort((a, b) => {
+      const da = a.publicado_em || a.created_at || "";
+      const db = b.publicado_em || b.created_at || "";
+      return db.localeCompare(da);
+    })
+    .slice(0, limite);
 }
 
 export async function obterNoticiaPorSlug(slug: string): Promise<SiteNoticia | null> {

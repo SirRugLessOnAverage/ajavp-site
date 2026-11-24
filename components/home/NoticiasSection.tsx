@@ -10,6 +10,38 @@ interface NoticiasSectionProps {
 
 export const FALLBACK_NOTICIAS: SiteNoticia[] = [
   {
+    id: "fallback-n-remarcacao-atrasos-2027",
+    slug: "remarcacao-jogos-atraso-5a-jornada-mindelo-2027",
+    titulo: "Jogos em Atraso da 5.ª Jornada Remarcados para 2 de Janeiro em Mindelo",
+    resumo:
+      "A ADCCVC oficializou a nova calendarização dos jogos adiados: a AJAVP entra em campo a 02 de janeiro de 2027 no Pavilhão de Mindelo (Sub-11 às 08h45 e Sub-9 às 09h45). Já este sábado (28/11), os Sub-11 jogam a Taça às 08h45 em Fajozes.",
+    conteudo_html: `
+      <p>A Associação de Desportos e Cultura do Concelho de Vila do Conde (ADCCVC) divulgou a atualização oficial do calendário de Futsal Masculino dos <strong>XL Jogos Inter-Freguesias</strong>, confirmando as novas datas e pavilhões para a reposição dos jogos adiados da 5.ª jornada.</p>
+      <h3>📅 Jogos em Atraso da 5.ª Jornada — 02 de Janeiro de 2027</h3>
+      <p>Os encontros adiados em Canidelo serão disputados no <strong>Pavilhão Desportivo de Mindelo</strong> na manhã de sábado, <strong>2 de janeiro de 2027</strong>:</p>
+      <ul>
+        <li><strong>08h45 • Sub-11:</strong> Gião vs <strong>Vilar do Pinheiro (AJAVP)</strong></li>
+        <li><strong>09h45 • Sub-9:</strong> Junqueira vs <strong>Vilar do Pinheiro (AJAVP)</strong></li>
+        <li><strong>11h45 • Sub-9:</strong> Árvore vs Modivas</li>
+      </ul>
+      <h3>🏆 Taça Concelhia &amp; Reposição a 28 de Novembro</h3>
+      <p>Já este sábado, <strong>28 de novembro de 2026</strong>, no <strong>Pavilhão Desportivo de Fajozes</strong>, o escalão Sub-11 da AJAVP entra em campo para a 1.ª Eliminatória da Taça Concelhia com novo horário confirmado:</p>
+      <ul>
+        <li><strong>08h45 • Sub-11 (Taça Concelhia):</strong> <strong>Vilar do Pinheiro (AJAVP)</strong> vs Tougues</li>
+        <li><strong>11h45 • Sub-11 (Jogo em atraso 5.ª Jornada):</strong> Árvore vs Fornelo</li>
+      </ul>
+      <p>Todas as restantes jornadas até ao final de janeiro — <strong>6.ª Jornada (12/12)</strong>, <strong>Sub-9 &amp; Torneio de Natal (19/12)</strong>, <strong>7.ª Jornada (16/01/2027)</strong> e <strong>8.ª Jornada (30/01/2027)</strong> — já se encontram totalmente atualizadas no Portal JIF e no Centro de Jogos.</p>
+    `.trim(),
+    capa_url: "/assets/images/noticias/jogos-atraso-5a-jornada-mindelo.png",
+    categoria: "Futsal • JIF",
+    autor_nome: "Direção Desportiva AJAVP",
+    destaque: true,
+    publicado: true,
+    publicado_em: "2026-11-24T16:30:00Z",
+    created_at: "2026-11-24T16:30:00Z",
+    updated_at: "2026-11-24T16:30:00Z",
+  },
+  {
     id: "fallback-n-canidelo-adiado",
     slug: "adiamento-jogos-canidelo-5a-jornada-futsal-jif",
     titulo: "Jogos em Atraso da 5.ª Jornada Remarcados para 2 de Janeiro em Mindelo",
