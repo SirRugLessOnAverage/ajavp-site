@@ -22,11 +22,14 @@ test('Notícia de Remarcação dos Jogos em Atraso + Imagem Oficial', async (t) 
     assert.ok(content.includes('09h45 • Sub-9:'), 'Deve detalhar horário 09h45 Sub-9');
   });
 
-  await t.test('lib/noticias.ts faz merge entre Supabase e FALLBACK_NOTICIAS por slug', () => {
+  await t.test('lib/noticias.ts faz merge entre Supabase e FALLBACK_NOTICIAS por slug e app/page.tsx usa-o', () => {
     const libPath = path.resolve('lib/noticias.ts');
     const libContent = fs.readFileSync(libPath, 'utf-8');
+    const homePath = path.resolve('app/page.tsx');
+    const homeContent = fs.readFileSync(homePath, 'utf-8');
 
     assert.ok(libContent.includes('porSlug.set(fallback.slug, fallback)'), 'Deve combinar notícias locais recentes com as do Supabase');
     assert.ok(libContent.includes('db.localeCompare(da)'), 'Deve ordenar cronologicamente por data de publicação');
+    assert.ok(homeContent.includes('obterNoticiasPublicadas(6)'), 'A Homepage deve usar obterNoticiasPublicadas para exibir notícias combinadas');
   });
 });

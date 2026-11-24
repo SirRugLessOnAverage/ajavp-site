@@ -22,6 +22,7 @@ import { AgendaMatchCenter } from "@/components/home/AgendaMatchCenter";
 import { VdpCommunityHub } from "@/components/home/VdpCommunityHub";
 import { BannerSociosOficial } from "@/components/home/BannerSociosOficial";
 import { obterDadosFutsal } from "@/lib/jif/data-service";
+import { obterNoticiasPublicadas } from "@/lib/noticias";
 import { formatarNomeEquipa } from "@/lib/jif/team-matches";
 import { JIF_MASTER_EVENTS } from "@/data/jif/calendario";
 import type { SiteNoticia, SiteEvento } from "@/lib/types/database";
@@ -35,14 +36,8 @@ function isJogoAjavp(casa: string, fora: string, isAjavp?: boolean): boolean {
 }
 
 export default async function HomePage() {
-  const [noticiasRes, eventosRes, futsalData] = await Promise.all([
-    supabasePublic
-      .from("site_noticias")
-      .select("*")
-      .eq("publicado", true)
-      .order("publicado_em", { ascending: false })
-      .limit(6)
-      .then((res) => res, () => ({ data: null, error: true })),
+  const [noticias, eventosRes, futsalData] = await Promise.all([
+    obterNoticiasPublicadas(6),
     supabasePublic
       .from("site_eventos")
       .select("*")
@@ -52,8 +47,6 @@ export default async function HomePage() {
     obterDadosFutsal(),
   ]);
 
-  const noticias: SiteNoticia[] =
-    !noticiasRes.error && noticiasRes.data ? (noticiasRes.data as SiteNoticia[]) : [];
   const eventos: SiteEvento[] =
     !eventosRes.error && eventosRes.data ? (eventosRes.data as SiteEvento[]) : [];
 
