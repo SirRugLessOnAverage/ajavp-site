@@ -14,14 +14,14 @@ import {
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Patrocinadores e Novo Equipamento 26/27 • AJAVP",
+  title: "Patrocinadores e Equipamento 26/27",
   description:
     "Conhece os Parceiros Institucionais, Patrocinadores Principais e Oficiais que vestem a Mancha Verde na época 2026/2027 da AJAVP.",
   alternates: {
     canonical: `${SITE_URL}/patrocinadores`,
   },
   openGraph: {
-    title: "Patrocinadores e Novo Equipamento 26/27 • AJAVP",
+    title: "Patrocinadores e Equipamento 26/27",
     description:
       "As empresas e instituições parceiras que apoiam a formação desportiva de Vilar do Pinheiro na época 2026/27.",
     url: `${SITE_URL}/patrocinadores`,

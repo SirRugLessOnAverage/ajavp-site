@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
-  title: "Declaração de Acessibilidade e Usabilidade • AJAVP",
+  title: "Declaração de Acessibilidade e Usabilidade",
   description:
     "Declaração de Acessibilidade e Usabilidade da AJAVP em conformidade com o Decreto-Lei n.º 83/2018 e as diretrizes W3C WCAG 2.1 Nível AA.",
   alternates: {

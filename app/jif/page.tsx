@@ -12,7 +12,7 @@ import { obterDadosClassificacao } from '@/lib/jif/data-service';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Portal Oficial XL JIF 2026/2027 • AJAVP Vilar do Pinheiro',
+  title: 'XL Jogos Inter-Freguesias 2026/2027 (JIF)',
   description:
     'Calendário oficial completo, recintos e GPS, comunicados ADCCVC e resultados da participação de Vilar do Pinheiro nos XL Jogos Inter-Freguesias de Vila do Conde.',
   alternates: {

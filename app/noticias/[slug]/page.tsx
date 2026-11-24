@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: NoticiaPageProps): Promise<Me
 
   if (!noticia) {
     return {
-      title: "Notícia não encontrada • AJAVP",
+      title: "Notícia não encontrada",
     };
   }
 
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: NoticiaPageProps): Promise<Me
   const canonicalUrl = `${SITE_URL}/noticias/${noticia.slug}`;
 
   return {
-    title: `${noticia.titulo} • AJAVP`,
+    title: noticia.titulo,
     description: noticia.resumo,
     alternates: {
       canonical: canonicalUrl,

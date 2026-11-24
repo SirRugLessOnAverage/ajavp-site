@@ -23,7 +23,7 @@ import { FaqJsonLd } from "@/components/seo/JsonLd";
 import { GESTAO_LINKS, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Torna-te Sócio da AJAVP • Quotas & Vantagens 2026/2027",
+  title: "Torna-te Sócio • Quotas e Cartão Digital",
   description:
     "Junta-te à família da AJAVP. Quotas transparentes (Adulto 12€/ano e Menores isentos), cartão digital com QR Code no telemóvel e apoio direto ao desporto de Vilar do Pinheiro.",
   alternates: {

@@ -152,7 +152,7 @@ export default function RootLayout({
                 ['pointerdown','keydown','scroll','touchstart'].forEach(function(ev){
                   w.addEventListener(ev, loadGtm, { once: true, passive: true });
                 });
-                setTimeout(loadGtm, 3500);
+                setTimeout(loadGtm, 1200);
               })(window,document,'script','dataLayer','GTM-WMFCGH89');
             `,
           }}

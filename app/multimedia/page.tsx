@@ -14,7 +14,7 @@ import {
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Galeria & Multimédia • AJAVP — Vilar do Pinheiro",
+  title: "Galeria de Fotos e Multimédia",
   description:
     "Explora o arquivo fotográfico oficial da AJAVP: estreia do novo equipamento 2026/2027, conquistas no Corta-Mato, Futsal, Ténis de Mesa, Duatlo BTT e vídeos da época.",
   alternates: {

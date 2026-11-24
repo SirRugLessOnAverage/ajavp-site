@@ -13,7 +13,7 @@ import { obterDadosClassificacao } from '@/lib/jif/data-service';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Classificação Virtual XL JIF 2026/2027 • Quadro Concelhio Não-Oficial | AJAVP',
+  title: 'Classificação Virtual XL JIF 2026/2027',
   description:
     'Quadro Concelhio e Classificação Virtual das 19 freguesias nos XL Jogos Inter-Freguesias de Vila do Conde 2026/2027. Consulta posições, pautas de Corta-Mato, Futebol e Futsal e medalheiro oficial.',
   alternates: {

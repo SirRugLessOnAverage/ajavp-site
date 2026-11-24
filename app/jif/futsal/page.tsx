@@ -9,7 +9,7 @@ import { FutsalMarcadores } from "@/components/jif/futsal/FutsalMarcadores";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "Futsal Semanal • XL JIF 2026/2027 • Resultados, Escalões e Marcadores | AJAVP",
+  title: "Futsal XL JIF 2026/2027 • Resultados e Escalões",
   description:
     "Hub Oficial do Futsal nos XL Jogos Inter-Freguesias de Vila do Conde. Consulta resultados por pavilhão, classificações dos 5 escalões (Sub-7 a Sub-16) e quadro de melhores marcadores da AJAVP.",
   alternates: {

@@ -16,7 +16,7 @@ import {
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Modalidades e Horários 2026/2027 • AJAVP — Vilar do Pinheiro",
+  title: "Modalidades e Horários em Vila do Conde",
   description:
     "Futsal e Futebol, Atletismo, Ténis de Mesa, Duatlo BTT, Badminton e Futebol de Praia. Consulta os Cromos Oficiais 26/27, o Horário de Treinos e a meteorologia do Ringue.",
   alternates: {
@@ -184,6 +184,33 @@ export default async function ModalidadesPage() {
                   >
                     📝 Inscrever Atleta
                   </a>
+                </div>
+
+                {/* Hub-and-spoke: Links para páginas dedicadas SEO/SEM */}
+                <div className="mt-6 pt-5 border-t border-slate-200/80 dark:border-white/10">
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2.5">
+                    Páginas Dedicadas por Modalidade
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <Link
+                      href="/modalidades/futsal"
+                      className="motion-press px-3.5 py-1.5 rounded-full bg-white dark:bg-white/10 border border-slate-200 dark:border-white/15 hover:border-brand-green text-xs font-bold text-slate-800 dark:text-white transition-colors"
+                    >
+                      ⚽ Futsal Sub-7 a Sub-16
+                    </Link>
+                    <Link
+                      href="/modalidades/atletismo-ciclismo"
+                      className="motion-press px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-500/15 border border-emerald-200 dark:border-emerald-400/30 hover:border-brand-green text-xs font-bold text-emerald-900 dark:text-emerald-300 transition-colors"
+                    >
+                      🏃🚴 Dia Aberto Atletismo & Ciclismo
+                    </Link>
+                    <Link
+                      href="/modalidades/tenis-de-mesa"
+                      className="motion-press px-3.5 py-1.5 rounded-full bg-white dark:bg-white/10 border border-slate-200 dark:border-white/15 hover:border-brand-green text-xs font-bold text-slate-800 dark:text-white transition-colors"
+                    >
+                      🏓 Ténis de Mesa
+                    </Link>
+                  </div>
                 </div>
               </div>
 

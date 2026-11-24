@@ -6,7 +6,7 @@ import { FaqJsonLd } from "@/components/seo/JsonLd";
 import { CONTACTOS_FAQ, TRAINING_VENUES } from "@/data/institucional";
 
 export const metadata: Metadata = {
-  title: "Contactos & Inscrições • AJAVP — Vilar do Pinheiro",
+  title: "Contactos e Inscrições em Vilar do Pinheiro",
   description:
     "Fala diretamente com a direção e coordenação desportiva da AJAVP via WhatsApp, Email ou visita a nossa Sede Social e recintos de treino em Vilar do Pinheiro.",
   alternates: {

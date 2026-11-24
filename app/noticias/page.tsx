@@ -12,14 +12,14 @@ import {
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "Notícias e Atualidade • AJAVP — Vilar do Pinheiro",
+  title: "Notícias e Atualidade de Vilar do Pinheiro",
   description:
     "Todas as notícias, crónicas desportivas, pódios nos XL Jogos Inter-Freguesias e comunicados oficiais da Associação de Jovens e Adultos de Vilar do Pinheiro.",
   alternates: {
     canonical: `${SITE_URL}/noticias`,
   },
   openGraph: {
-    title: "Notícias e Atualidade • AJAVP — Vilar do Pinheiro",
+    title: "Notícias e Atualidade de Vilar do Pinheiro",
     description:
       "Crónicas desportivas, vitórias nos XL JIF e atualidade oficial da AJAVP.",
     url: `${SITE_URL}/noticias`,

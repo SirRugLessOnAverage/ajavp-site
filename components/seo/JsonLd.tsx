@@ -11,11 +11,24 @@ export function buildOrganizationJsonLd() {
     sport: [
       "Futsal",
       "Atletismo",
+      "Ciclismo",
       "Ténis de Mesa",
       "Duatlo",
       "Badminton",
       "Futebol de Praia",
     ],
+    areaServed: [
+      "Vilar do Pinheiro",
+      "Vila do Conde",
+      "Maia",
+      "Matosinhos",
+      "Póvoa de Varzim",
+    ],
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 41.2804,
+      longitude: -8.6852,
+    },
     address: {
       "@type": "PostalAddress",
       streetAddress: "Rua 103, n.º 43, Urbanização de Real",

@@ -6,7 +6,7 @@ import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { CookieSettingsButton } from "@/components/privacy/CookieSettingsButton";
 
 export const metadata: Metadata = {
-  title: "Privacidade, Gestão de Cookies & RGPD • AJAVP",
+  title: "Privacidade, Cookies e RGPD",
   description:
     "Política de Privacidade e Gestão de Cookies da AJAVP. Transparência total sobre a proteção de dados dos sócios e atletas, isenção de cookies de rastreio e conformidade com o RGPD.",
   alternates: {
