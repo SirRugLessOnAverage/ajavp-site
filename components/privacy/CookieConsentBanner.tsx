@@ -49,6 +49,9 @@ export function CookieConsentBanner() {
     if (typeof window !== "undefined" && typeof window.gtag === "function") {
       window.gtag("consent", "update", {
         analytics_storage: status,
+        ad_storage: status,
+        ad_user_data: status,
+        ad_personalization: status,
       });
     }
   };
