@@ -271,9 +271,9 @@ export function DiaAbertoForm() {
           onChange={(e) => setElegibilidadeJif(e.target.value as ElegibilidadeOption)}
           className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-white/15 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-green"
         >
-          <option value="reside_vc">Reside em Vilar do Pinheiro / Vila do Conde</option>
-          <option value="estuda_vc">Estuda em Vila do Conde</option>
-          <option value="nasceu_vc">Nasceu em Vila do Conde</option>
+          <option value="reside_vc">Residente ou recenseado em Vila do Conde</option>
+          <option value="estuda_vc">Estuda em instituição de ensino de Vila do Conde</option>
+          <option value="nasceu_vc">Natural de Vila do Conde (nasceu no concelho)</option>
           <option value="nao_aplicavel">Outro concelho (apenas interessado nos treinos)</option>
         </select>
       </div>

@@ -307,7 +307,7 @@ export default function SociosPage() {
               </div>
             </div>
 
-            {/* 2. Ligação à Freguesia */}
+            {/* 2. Ligação ao Concelho / ADCCVC */}
             <div className="motion-card p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-xs flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -319,10 +319,10 @@ export default function SociosPage() {
                   </span>
                 </div>
                 <h3 className="font-heading font-black text-lg text-slate-900 dark:text-white mb-2">
-                  Ligação a Vilar do Pinheiro
+                  Ligação a Vila do Conde
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                  Ser <strong>natural, residente ou recenseado</strong> na freguesia de Vilar do Pinheiro (ou cumprir os critérios regulamentares da ADCCVC).
+                  Ser <strong>natural, residente ou recenseado no concelho de Vila do Conde</strong>, ou <strong>estudar em instituições de ensino de Vila do Conde</strong> (ou cumprir os critérios regulamentares da ADCCVC).
                 </p>
               </div>
             </div>
