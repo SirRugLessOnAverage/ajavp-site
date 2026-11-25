@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { obterIpCliente, verificarRateLimitMemoria } from '@/lib/security';
 
 const SUPABASE_URL =
   process.env.NEXT_PUBLIC_SUPABASE_URL ||
@@ -61,6 +62,22 @@ export async function OPTIONS(req: Request) {
 export async function POST(req: Request) {
   const corsHeaders = getCorsHeaders(req);
   try {
+    const rate = verificarRateLimitMemoria(
+      'dia_aberto',
+      obterIpCliente(req),
+      6,
+      15 * 60 * 1000
+    );
+    if (!rate.allowed) {
+      return NextResponse.json(
+        { error: 'Demasiados pedidos seguidos. Aguarda alguns minutos e tenta novamente.' },
+        {
+          status: 429,
+          headers: { ...corsHeaders, 'Retry-After': String(rate.retryAfterSec) },
+        }
+      );
+    }
+
     const body = (await req.json().catch(() => null)) as DiaAbertoPayload | null;
     if (!body || typeof body !== 'object') {
       return NextResponse.json(
@@ -99,9 +116,12 @@ export async function POST(req: Request) {
       );
     }
 
-    if (!Number.isInteger(anoNascimento) || anoNascimento < 2005 || anoNascimento > 2023) {
+    const anoAtual = new Date().getFullYear();
+    const anoMin = Math.min(2005, anoAtual - 21);
+    const anoMax = Math.max(2023, anoAtual - 3);
+    if (!Number.isInteger(anoNascimento) || anoNascimento < anoMin || anoNascimento > anoMax) {
       return NextResponse.json(
-        { error: 'Seleciona um ano de nascimento válido (entre 2005 e 2023).' },
+        { error: `Seleciona um ano de nascimento válido (entre ${anoMin} e ${anoMax}).` },
         { status: 400, headers: corsHeaders }
       );
     }

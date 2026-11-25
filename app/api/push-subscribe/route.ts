@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { obterIpCliente, verificarRateLimitMemoria } from '@/lib/security';
 
 const SUPABASE_URL =
   process.env.NEXT_PUBLIC_SUPABASE_URL ||
@@ -73,6 +74,22 @@ export async function OPTIONS(req: Request) {
 export async function POST(req: Request) {
   const corsHeaders = getCorsHeaders(req);
   try {
+    const rate = verificarRateLimitMemoria(
+      'push_subscribe',
+      obterIpCliente(req),
+      15,
+      15 * 60 * 1000
+    );
+    if (!rate.allowed) {
+      return NextResponse.json(
+        { error: 'Demasiados pedidos consecutivos. Tenta novamente dentro de alguns minutos.' },
+        {
+          status: 429,
+          headers: { ...corsHeaders, 'Retry-After': String(rate.retryAfterSec) },
+        }
+      );
+    }
+
     if (!SUPABASE_ANON_KEY) {
       console.error('NEXT_PUBLIC_SUPABASE_ANON_KEY não configurada no servidor.');
       return NextResponse.json(
@@ -161,6 +178,22 @@ export async function POST(req: Request) {
 export async function DELETE(req: Request) {
   const corsHeaders = getCorsHeaders(req);
   try {
+    const rate = verificarRateLimitMemoria(
+      'push_subscribe',
+      obterIpCliente(req),
+      15,
+      15 * 60 * 1000
+    );
+    if (!rate.allowed) {
+      return NextResponse.json(
+        { error: 'Demasiados pedidos consecutivos. Tenta novamente dentro de alguns minutos.' },
+        {
+          status: 429,
+          headers: { ...corsHeaders, 'Retry-After': String(rate.retryAfterSec) },
+        }
+      );
+    }
+
     if (!SUPABASE_ANON_KEY) {
       return NextResponse.json(
         { error: 'Configuração de servidor incompleta.' },

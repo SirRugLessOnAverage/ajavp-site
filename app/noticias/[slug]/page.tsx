@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Calendar, ArrowLeft, ArrowRight, UserCheck, Tag } from "lucide-react";
 import { SITE_URL } from "@/lib/site";
+import { escapeHtmlText, sanitizarHtmlEditorial } from "@/lib/security";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { NewsArticleJsonLd } from "@/components/seo/JsonLd";
 import { ShareBar } from "@/components/shared/ShareBar";
@@ -66,12 +67,6 @@ export async function generateMetadata({ params }: NoticiaPageProps): Promise<Me
   };
 }
 
-function sanitizarHtmlBasico(html: string): string {
-  return html
-    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "")
-    .replace(/\son\w+\s*=\s*(['"]).*?\1/gi, "");
-}
-
 export default async function NoticiaDetalhePage({ params }: NoticiaPageProps) {
   const { slug } = await params;
   const noticia = await obterNoticiaPorSlug(slug);
@@ -96,8 +91,8 @@ export default async function NoticiaDetalhePage({ params }: NoticiaPageProps) {
     : null;
 
   const corpoHtml = noticia.conteudo_html?.trim()
-    ? sanitizarHtmlBasico(noticia.conteudo_html)
-    : `<p>${noticia.resumo}</p>`;
+    ? sanitizarHtmlEditorial(noticia.conteudo_html)
+    : `<p>${escapeHtmlText(noticia.resumo || "")}</p>`;
 
   return (
     <div className="bg-slate-50 dark:bg-slate-950 min-h-screen text-slate-900 dark:text-white transition-colors py-10 sm:py-14">
