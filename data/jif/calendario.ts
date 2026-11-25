@@ -99,8 +99,8 @@ export const JIF_MASTER_EVENTS: JifEvent[] = [
     month: 'NOV',
     sport: 'futsal',
     title: 'Futsal • Taça Concelhia (1ª Eliminatória Sub-11 AJAVP vs Tougues às 08h45)',
-    location: 'Pavilhão Desportivo de Fajozes e Mindelo',
-    time: '08h45 (Sub-11 AJAVP vs Tougues)'
+    location: 'Pavilhão de Canidelo e Pavilhão de Mindelo',
+    time: '08h45 (Sub-11 AJAVP vs Tougues em Canidelo)'
   },
   {
     id: 10,
@@ -148,9 +148,9 @@ export const JIF_MASTER_EVENTS: JifEvent[] = [
     day: '02',
     month: 'JAN',
     sport: 'badminton futsal',
-    title: 'Futsal • Jogos em Atraso 5ª Jorn. em Mindelo (Sub-11 Gião x AJAVP 08h45, Sub-9 Junqueira x AJAVP 09h45) & Badminton (Macieira)',
+    title: 'Futsal • Jogos em Atraso 5ª Jorn. em Mindelo (Sub-11 Gião x AJAVP 08h45, Sub-9 Junqueira x AJAVP 09h45, Sub-13 Árvore x Junqueira 10h45) & Badminton (Macieira)',
     location: 'Pavilhão de Mindelo (Futsal) & Pavilhão de Macieira (Badminton)',
-    time: '08h45 (Sub-11) | 09h45 (Sub-9) • Badminton 09h00-17h30'
+    time: '08h45 (Sub-11) | 09h45 (Sub-9) | 10h45 (Sub-13) • Badminton 09h00-17h30'
   },
   {
     id: 14,

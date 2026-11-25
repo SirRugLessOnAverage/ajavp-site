@@ -43,7 +43,7 @@ export const JIF_CIRCULARS: JifCircular[] = [
         title: 'Adiamentos da 5.ª Jornada & Remarcação Oficial',
         badge: '28/Nov & 02/Jan',
         description:
-          'Cinco jogos adiados por chuva e piso escorregadio em Canidelo e Modivas. Árvore x Fornelo (Sub-11) realiza-se já a 28/Nov (11h45 em Fajozes); os restantes disputam-se a 02/Jan/2027 no Pavilhão de Mindelo em simultâneo com o Badminton (Sub-11 Gião x AJAVP às 08h45, Sub-9 Junqueira x AJAVP às 09h45).'
+          'Cinco jogos adiados por chuva e piso escorregadio em Canidelo e Modivas. Árvore x Fornelo (Sub-11) realiza-se já a 28/Nov (11h45 em Canidelo); os restantes disputam-se a 02/Jan/2027 no Pavilhão de Mindelo em simultâneo com o Badminton (Sub-11 Gião x AJAVP às 08h45, Sub-9 Junqueira x AJAVP às 09h45, Sub-13 Árvore x Junqueira às 10h45).'
       },
       {
         title: 'Prova de Duatlo Individual • 05 de Dezembro (09h30)',

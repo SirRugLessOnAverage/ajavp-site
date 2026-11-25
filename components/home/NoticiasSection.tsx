@@ -10,6 +10,39 @@ interface NoticiasSectionProps {
 
 export const FALLBACK_NOTICIAS: SiteNoticia[] = [
   {
+    id: "fallback-n-mudanca-canidelo-28nov",
+    slug: "mudanca-pavilhao-canidelo-jogos-28-novembro-jif",
+    titulo: "Alteração de Recinto: Jogos de Sábado (28/Nov) Passam de Fajozes para o Pavilhão de Canidelo",
+    resumo:
+      "Os jogos de Futsal dos XL JIF previstos para este sábado, 28 de novembro, no Pavilhão de Fajozes — incluindo a Taça Concelhia Sub-11 (AJAVP vs Tougues às 08h45) — foram transferidos para o Pavilhão de Canidelo.",
+    conteudo_html: `
+      <p>Informamos todos os atletas, encarregados de educação e adeptos que os encontros dos <strong>XL Jogos Inter-Freguesias</strong> inicialmente previstos para o Pavilhão de Fajozes neste sábado, <strong>28 de novembro de 2026</strong>, passaram oficialmente para o <strong>Pavilhão de Canidelo</strong>.</p>
+      <h3>Jogos no Pavilhão de Canidelo (28/Nov)</h3>
+      <ul>
+        <li><strong>08h45 • Sub-11 (Taça Concelhia - 1.ª Eliminatória):</strong> Vilar do Pinheiro (AJAVP) vs Tougues</li>
+        <li><strong>09h45 • Sub-9:</strong> Tougues vs Junqueira</li>
+        <li><strong>10h45 • Sub-9:</strong> Fornelo vs Gião</li>
+        <li><strong>11h45 • Sub-11 (Jogo em atraso da 5.ª Jornada):</strong> Árvore vs Fornelo</li>
+      </ul>
+      <p>Os jogos agendados para o <strong>Pavilhão de Mindelo</strong> mantêm-se inalterados.</p>
+      <h3>Jogos em atraso a 2 de janeiro de 2027 (Pavilhão de Mindelo)</h3>
+      <p>Recordamos ainda que os restantes encontros adiados da 5.ª jornada serão disputados a <strong>02 de janeiro de 2027</strong> no Pavilhão de Mindelo, em simultâneo com o Badminton:</p>
+      <ul>
+        <li><strong>08h45 • Sub-11:</strong> Gião vs Vilar do Pinheiro (AJAVP)</li>
+        <li><strong>09h45 • Sub-9:</strong> Junqueira vs Vilar do Pinheiro (AJAVP)</li>
+        <li><strong>10h45 • Sub-13:</strong> Árvore vs Junqueira</li>
+      </ul>
+    `.trim(),
+    capa_url: "/assets/images/galeria/sub11.webp",
+    categoria: "Futsal • JIF",
+    autor_nome: "Direção Desportiva AJAVP",
+    destaque: true,
+    publicado: true,
+    publicado_em: "2026-11-25T17:35:00Z",
+    created_at: "2026-11-25T17:35:00Z",
+    updated_at: "2026-11-25T17:35:00Z",
+  },
+  {
     id: "fallback-n-comunicado11-duatlo",
     slug: "comunicado-11-duatlo-bagunte-e-torneio-natal-sub11",
     titulo: "Comunicado 11: Duatlo em Bagunte a 05/Dez (09h30) e Novo Formato do Torneio de Natal Sub-11",

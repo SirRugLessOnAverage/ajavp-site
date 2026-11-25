@@ -42,7 +42,7 @@ test('Atualização do Calendário de Futsal & Jogos em Atraso', async (t) => {
   });
 
   await t.test('JIF_MASTER_EVENTS inclui 12/12, 08h45 em 28/11 e detalhes dos Jogos em Atraso em 02/01/2027', () => {
-    assert.ok(calContent.includes('08h45 (Sub-11 AJAVP vs Tougues)'), '28/11 deve estar às 08h45');
+    assert.ok(calContent.includes('08h45 (Sub-11 AJAVP vs Tougues em Canidelo)'), '28/11 deve estar às 08h45 em Canidelo');
     assert.ok(calContent.includes("date: '2026-12-12'"), 'Calendário deve incluir 6ª Jornada em 12/12/2026');
     assert.ok(calContent.includes('Jogos em Atraso 5ª Jorn. em Mindelo'), 'Calendário de 02/01/2027 deve detalhar Jogos em Atraso em Mindelo');
   });

@@ -312,7 +312,7 @@ export const FUTSAL_JORNADAS: FutsalJornada[] = [
         matches: [
           { time: '08:45', category: 'Sub-13', homeTeam: 'Arcos', awayTeam: 'Touguinha Touguinhó', score: '5-3', isCompleted: true, isAjavp: false },
           { time: '09:45', category: 'Sub-9', homeTeam: 'Arcos', awayTeam: 'Fornelo', score: '4-1', isCompleted: true, isAjavp: false },
-          { time: '10:45', category: 'Sub-11', homeTeam: 'Árvore', awayTeam: 'Fornelo', isCompleted: false, isAjavp: false, notes: 'Adiado → 28/11/2026 (Fajozes)' },
+          { time: '10:45', category: 'Sub-11', homeTeam: 'Árvore', awayTeam: 'Fornelo', isCompleted: false, isAjavp: false, notes: 'Adiado → 28/11/2026 (Canidelo)' },
           { time: '11:45', category: 'Sub-9', homeTeam: 'Árvore', awayTeam: 'Modivas', isCompleted: false, isAjavp: false, notes: 'Adiado → 02/01/2027 (Mindelo)' }
         ]
       }
@@ -326,8 +326,8 @@ export const FUTSAL_JORNADAS: FutsalJornada[] = [
     isTaça: true,
     venueSessions: [
       {
-        venueId: 'fajozes',
-        venueName: 'Pavilhão de Fajozes',
+        venueId: 'canidelo',
+        venueName: 'Pavilhão de Canidelo',
         matches: [
           { time: '08:45', category: 'Sub-11', homeTeam: 'Vilar do Pinheiro', awayTeam: 'Tougues', isCompleted: false, isAjavp: true, notes: 'Taça Concelhia (1ª Eliminatória)' },
           { time: '09:45', category: 'Sub-9', homeTeam: 'Tougues', awayTeam: 'Junqueira', isCompleted: false, isAjavp: false },
@@ -455,6 +455,7 @@ export const FUTSAL_JORNADAS: FutsalJornada[] = [
         matches: [
           { time: '08:45', category: 'Sub-11', homeTeam: 'Gião', awayTeam: 'Vilar do Pinheiro', isCompleted: false, isAjavp: true, notes: 'Jogo em atraso 5ª Jornada' },
           { time: '09:45', category: 'Sub-9', homeTeam: 'Junqueira', awayTeam: 'Vilar do Pinheiro', isCompleted: false, isAjavp: true, notes: 'Jogo em atraso 5ª Jornada' },
+          { time: '10:45', category: 'Sub-13', homeTeam: 'Árvore', awayTeam: 'Junqueira', isCompleted: false, isAjavp: false, notes: 'Jogo em atraso 5ª Jornada' },
           { time: '11:45', category: 'Sub-9', homeTeam: 'Árvore', awayTeam: 'Modivas', isCompleted: false, isAjavp: false, notes: 'Jogo em atraso 5ª Jornada' }
         ]
       }

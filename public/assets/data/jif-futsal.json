@@ -1066,8 +1066,8 @@
       "estado": "Agendada",
       "pavilhoes": [
         {
-          "nome": "Pavilhão de Fajozes (Jogos AJAVP)",
-          "cor": "amber",
+          "nome": "Pavilhão de Canidelo (Jogos AJAVP)",
+          "cor": "blue",
           "jogos": [
             {
               "escalao": "Sub-11",
@@ -1092,6 +1092,15 @@
               "hora": "10:45",
               "casa": "Fornelo",
               "fora": "Gião",
+              "golosCasa": 0,
+              "golosFora": 0,
+              "isAjavp": false
+            },
+            {
+              "escalao": "Sub-11",
+              "hora": "11:45",
+              "casa": "Árvore",
+              "fora": "Fornelo",
               "golosCasa": 0,
               "golosFora": 0,
               "isAjavp": false

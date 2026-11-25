@@ -28,5 +28,7 @@ test('Calendário JIF: Master Events deve incluir 4ª e 5ª jornada e Taça com 
 
   assert.ok(content.includes('AJAVP em Fajozes (Sub-13 às 08h45 vs Fajozes e Sub-11 às 09h45 vs Árvore)'), 'Evento 14/Nov deve detalhar jogos em Fajozes');
   assert.ok(content.includes('Taça Concelhia (1ª Eliminatória Sub-11 AJAVP vs Tougues às 08h45)'), 'Evento 28/Nov deve detalhar Taça');
+  assert.ok(content.includes("location: 'Pavilhão de Canidelo e Pavilhão de Mindelo'"), 'Evento 28/Nov deve apontar para o Pavilhão de Canidelo');
+  assert.ok(content.includes('Sub-13 Árvore x Junqueira 10h45'), 'Evento 02/Jan deve incluir Sub-13 Árvore x Junqueira às 10h45');
 });
 
