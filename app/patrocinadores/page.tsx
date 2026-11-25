@@ -216,9 +216,9 @@ export default async function PatrocinadoresPage() {
           </div>
         </section>
 
-        {/* PARCEIRO INSTITUCIONAL PRINCIPAL: JUNTA DE FREGUESIA DE VILAR DO PINHEIRO */}
+        {/* PARCEIROS INSTITUCIONAIS: JUNTA DE FREGUESIA & CÂMARA MUNICIPAL */}
         <section className="py-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-white/10 transition-colors">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
             <div className="rounded-3xl bg-linear-to-r from-emerald-50 via-white to-amber-50/40 dark:from-ajavp-green-dark/40 dark:via-slate-900 dark:to-slate-900 border-2 border-amber-300 dark:border-amber-400/40 p-6 sm:p-10 shadow-xl">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-4 flex flex-col items-center justify-center bg-white rounded-2xl p-6 border border-slate-200 dark:border-transparent shadow-sm">
@@ -262,6 +262,50 @@ export default async function PatrocinadoresPage() {
                     </span>
                     <span className="px-3.5 py-1.5 rounded-xl bg-emerald-100 dark:bg-emerald-500/20 text-emerald-900 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-400/30">
                       ✓ Representação Oficial nos XL JIF
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* PARCEIRO INSTITUCIONAL: CÂMARA MUNICIPAL DE VILA DO CONDE */}
+            <div className="rounded-3xl bg-linear-to-r from-sky-50 via-white to-emerald-50/40 dark:from-slate-800/60 dark:via-slate-900 dark:to-slate-900 border-2 border-sky-300 dark:border-sky-400/40 p-6 sm:p-10 shadow-xl">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div className="lg:col-span-4 flex flex-col items-center justify-center bg-white rounded-2xl p-6 border border-slate-200 dark:border-transparent shadow-sm">
+                  <img
+                    src="/assets/images/patrocinadores/camara_vila_do_conde.svg"
+                    alt="Brasão e Logótipo da Câmara Municipal de Vila do Conde"
+                    className="max-h-32 w-auto object-contain"
+                  />
+                </div>
+
+                <div className="lg:col-span-8">
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-sky-100 dark:bg-sky-500/20 border border-sky-300 dark:border-sky-400/40 text-sky-900 dark:text-sky-300 text-xs font-black uppercase tracking-widest mb-3">
+                    🏛️ Parceiro Institucional
+                  </div>
+                  <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-black text-brand-navy dark:text-white mb-3">
+                    Câmara Municipal de Vila do Conde
+                  </h2>
+                  <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed mb-5">
+                    O nosso sincero agradecimento à{" "}
+                    <strong className="text-slate-900 dark:text-white">
+                      Câmara Municipal de Vila do Conde
+                    </strong>{" "}
+                    pelo apoio contínuo ao associativismo desportivo e pela{" "}
+                    <strong className="text-sky-800 dark:text-sky-300">
+                      alocação de locais de treino municipais
+                    </strong>
+                    , nomeadamente o Pavilhão Desportivo Municipal de Canidelo e recintos de competição, garantindo condições de excelência para a formação dos nossos atletas.
+                  </p>
+                  <div className="flex flex-wrap gap-3 text-xs font-bold">
+                    <span className="px-3.5 py-1.5 rounded-xl bg-white dark:bg-white/10 text-slate-800 dark:text-white border border-slate-200 dark:border-white/15">
+                      ✓ Apoio Institucional ao Desporto
+                    </span>
+                    <span className="px-3.5 py-1.5 rounded-xl bg-white dark:bg-white/10 text-slate-800 dark:text-white border border-slate-200 dark:border-white/15">
+                      ✓ Locais de Treino Alocados (Pavilhão de Canidelo)
+                    </span>
+                    <span className="px-3.5 py-1.5 rounded-xl bg-sky-100 dark:bg-sky-500/20 text-sky-900 dark:text-sky-300 border border-sky-300 dark:border-sky-400/30">
+                      ✓ Dinamização dos XL JIF
                     </span>
                   </div>
                 </div>
